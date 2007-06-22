@@ -1,0 +1,26 @@
+===== v0.3 =====
+renamed com.mimswright.animation to com.mimswright.sync
+Created SVN repository at http://svn.mimswright.com/kitchensync/
+
+===== v0.2 =====
+Staggered groups
+SyncrhonizedSound (not tested)
+Wait class
+Renamed SynchronizedEvent to SynchronizedDispatchEvent
+rewrote all penner v2 easing functions to use fewer arguments and ported to as3
+Sine.oscillate() and Random.ease() easing functions
+EasingUtil added with call() method for more safely calling easing functions and the generateArray() method for precalculating
+ability to set easing function modifiers on a Tween object (includes shortcuts for amplitude, period, and overshoot)
+Fixed a bug with Parallel where items were deleted from array on complete.
+ITweenable and TargetProperty classes (aren't implemented yet)
+
+===== v0.1 =====
+Synchronizer
+AbstractSyncrhonizedAction
+AbstractSyncrhonizedActionGroup
+Sequence and Parallel
+SynchronizedFunction
+SynchronizedTrace
+SynchronizedEvent
+SynchronizerEvent
+Penner's Easing v3 (from alex uhlmann)
