@@ -22,6 +22,11 @@ package com.mimswright.sync
 		protected var _easingMod2:Number;
 		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
 		public function get easingMod1():Number { return _easingMod1; }
+		public function set easingMod2(easingMod2:Number):void { _easingMod2 = easingMod2; }
+		public function get easingMod2():Number { return _easingMod2; }
+		
+		protected var _snapToValue:Boolean = true;
+		public function set snapToValue(snapToValue:Boolean):void { _snapToValue = snapToValue; }
 		
 		protected function get delta():Number {
 			return _toValue - _fromValue;
@@ -74,7 +79,9 @@ package com.mimswright.sync
 				targetProperty = result;
 
 				if (_durationHasElapsed) {
-					if (targetProperty != _toValue) { targetProperty = _toValue; }
+					// if snapToValue is set to true, the target property will be set to the target value 
+					// regardless of the results of the easing function.
+					if (_snapToValue) { targetProperty = _toValue; }
 					complete();
 				}
 			}
@@ -117,13 +124,6 @@ package com.mimswright.sync
 			_toValue = temp;						
 		}
 		
-		override public function clone():AbstractSynchronizedAction {
-			var clone:Tween = new Tween(_target, _property, _fromValue, _toValue, _duration, _offset, _easingFunction);
-			clone._easingMod1 = _easingMod1;
-			clone._easingMod2 = _easingMod2;
-			clone.autoDelete = _autoDelete;
-			return clone;
-		}
 		
 		/**
 		 * Creates a copy of this Tween which targets a different object and / or property.
@@ -149,6 +149,15 @@ package com.mimswright.sync
 			var clone:Tween = Tween(this.clone());
 			if (target)		{ clone._target = target; }
 			if (property) 	{ clone._property = property; }
+			return clone;
+		}
+		
+		override public function clone():AbstractSynchronizedAction {
+			var clone:Tween = new Tween(_target, _property, _fromValue, _toValue, _duration, _offset, _easingFunction);
+			clone._easingMod1 = _easingMod1;
+			clone._easingMod2 = _easingMod2;
+			clone.autoDelete = _autoDelete;
+			clone.snapToValue = _snapToValue;
 			return clone;
 		}
 		

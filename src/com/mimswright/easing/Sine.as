@@ -46,7 +46,6 @@ package com.mimswright.easing
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed.
 	    */  
 		public static function oscillate(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
-			if (timeElapsed >= duration) { return 1.0; }
 			return 0.5 * (1 - Math.cos( TWICE_PI * timeElapsed * frequency));
 		}	
 	}

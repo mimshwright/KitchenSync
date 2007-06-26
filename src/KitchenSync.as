@@ -105,6 +105,7 @@ package {
 			// Test the Sine.oscillate tweening function
 			var wave:Tween = new Tween(sprite, "y", 0, 300, 300, 0, Sine.oscillate);
 			wave.easingMod1 = 0.01; // frequency in oscillations per unit (frame).
+			wave.snapToValue = false;
 			sequence.addAction(new Parallel(wave,new Tween(sprite, "x", 0, 300, 300, 0, Linear.ease)));
 			
 			// add a synchronized event that is broadcast after the last motion tween. also add traceEvent as its listener
