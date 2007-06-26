@@ -5,6 +5,7 @@ package com.mimswright.sync
 	import com.mimswright.utils.AbstractEnforcer;
 	import flash.utils.ByteArray;
 	import flash.net.registerClassAlias;
+	import flash.errors.IllegalOperationError;
 	
 	/**
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
@@ -26,6 +27,10 @@ package com.mimswright.sync
 		public function get offset():int { return _offset; }
 		public function set offset(offset:int):void { _offset = offset; }
 		
+		protected var _autoDelete:Boolean = true;
+		public function get autoDelete():Boolean { return _autoDelete; }
+		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
+		
 	/* 	protected var _id:String;
 		public function get id ():String {
 			return _id;
@@ -36,14 +41,13 @@ package com.mimswright.sync
 		protected var _running:Boolean = false;
 		
 		/**
-		 * Constructor. Registers the action with the synchronizer.
+		 * Constructor.
 		 * @abstract
 		 */
 		public function AbstractSynchronizedAction()
 		{
 			super(null);
 			AbstractEnforcer.enforceConstructor(this, AbstractSynchronizedAction);
-			register();
 		}
 		
 		/**
@@ -62,10 +66,18 @@ package com.mimswright.sync
 		
 		/**
 		 * Starts the timer for this action.
+		 * Registers the action with the synchronizer.
+		 * 
+		 * @throws IllegalOperationError - if the method is called while the action is already running.
 		 */
 		public function start():void {
-			_running = true;
-			_startTime = Synchronizer.getInstance().currentTimestamp;
+			if (!_running) {
+				_running = true;
+				register();
+				_startTime = Synchronizer.getInstance().currentTimestamp;
+			} else {
+				throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
+			}
 		}
 		
 		
@@ -105,7 +117,13 @@ package com.mimswright.sync
 		 	return false;
 		 }
 		
-		
+		/**
+		 * Creates a copy of the object with all the property values of the original and returns it.
+		 * This method should be overrided by child classes to ensure that all properties are copied.
+		 * 
+		 * @abstract
+		 * @returns AbstractSyncrhonizedAction - A copy of the original object. Type casting may be necessary.
+		 */
 		public function clone():AbstractSynchronizedAction {
 			AbstractEnforcer.enforceMethod();
 			return this;
@@ -119,15 +137,16 @@ package com.mimswright.sync
 		protected function complete():void {
 			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));
 			_running = false;
-			kill();
+			unregister();
+			if (_autoDelete) { kill(); }
 		}		
 		
 		/**
+		 * Unregisters the function and removes any refrerences to objects that it may be holding onto.
 		 * Subclass this function to remove references to objects used by the action.
 		 */
 		 public function kill():void {
 		 	if (_running) { complete(); }
-		 	unregister();
 		 }
 	}
 }

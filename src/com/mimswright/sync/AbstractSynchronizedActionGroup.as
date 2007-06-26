@@ -93,7 +93,7 @@ package com.mimswright.sync
 			}
 			return false;
 		}
-				
+		
 		override public function kill():void {
 			super.kill();
 			_childActions = null;

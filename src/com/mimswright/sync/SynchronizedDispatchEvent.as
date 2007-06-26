@@ -96,7 +96,8 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:SynchronizedDispatchEvent = new SynchronizedDispatchEvent(_event, _target, _offset);
-			clone._duration = _duration;
+			clone.duration = _duration;
+			clone.autoDelete = _autoDelete;
 			return clone;
 		}
 	}

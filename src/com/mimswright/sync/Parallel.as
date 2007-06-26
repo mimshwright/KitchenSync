@@ -74,7 +74,8 @@ package com.mimswright.sync
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Parallel = new Parallel();
 			clone._childActions = _childActions;
-			clone._offset = _offset;
+			clone.offset = _offset;
+			clone.autoDelete = _autoDelete;
 			return clone;
 		}
 	}

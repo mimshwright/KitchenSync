@@ -49,17 +49,16 @@ package {
 			var ballTween:Tween = new Tween(ball1, "x", 0, 400, 30, 0, Cubic.easeInOut);
 			
 			// demo the Staggered Parallel Group. Each tween is spaced out by 5 frames.
-			// also demo the tween.cloneWithTarget() method
 			new Sequence(
 				new Staggered(5, 
-					ballTween,
+					ballTween, // demo the tween.cloneWithTarget() method
 					ballTween.cloneWithTarget(ball2),
 					ballTween.cloneWithTarget(ball3, "x")
 				),	
 				new Staggered(5, 
-					new Tween(ball1, "x", 400, 0, 30, 0, Elastic.easeOut), 
-					new Tween(ball2, "x", 400, 0, 30, 0, Elastic.easeOut),
-					new Tween(ball3, "x", 400, 0, 30, 0, Elastic.easeOut)
+					ballTween.cloneReversed(), // demo the cloneReversed() method
+					ballTween.cloneReversed(ball2),
+					ballTween.cloneReversed(ball3)
 				),
 				new Staggered(5,
 					new Tween(ball1, "alpha", 1.0, 0, 30, 0, Linear.ease),

@@ -22,12 +22,6 @@ package com.mimswright.sync
 		protected var _easingMod2:Number;
 		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
 		public function get easingMod1():Number { return _easingMod1; }
-		public function set overshoot(overshoot:Number):void { _easingMod1 = overshoot; }
-		public function get overshoot():Number { return _easingMod1; }
-		public function set amplitude(amplitude:Number):void { _easingMod1 = amplitude; }
-		public function get amplitude():Number { return _easingMod1; }
-		public function set period(period:Number):void { _easingMod2 = period; }
-		public function get period():Number { return _easingMod2; }
 		
 		protected function get delta():Number {
 			return _toValue - _fromValue;
@@ -68,6 +62,8 @@ package com.mimswright.sync
 		
 		/**
 		 * Executes the tween.
+		 * 
+		 * @todo - make snapping to the final value optional.
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
@@ -84,17 +80,75 @@ package com.mimswright.sync
 			}
 		}
 		
+		/**
+		 * Creates a new Tween and reverses the start and end values of the target property.
+		 * 
+		 * @use <code>
+		 * 			var tween:Tween = new Tween(foo, "x", 100, 200);
+		 * 			var sequence:Sequence = new Sequence(
+		 * 				tween,							// tweens foo's x from 100 to 200
+		 * 				tween.cloneReversed()			// tweens foo's x from 200 to 100
+		 * 				tween.cloneReversed(bar)		// tweens bar's x from 200 to 100
+		 * 				tween.cloneReversed(foo, y)		// tweens foo's y from 200 to 100
+		 * 			);
+		 * 		</code>
+		 * 
+		 * @see #cloneWithTarget()
+		 * @see #reverse()
+		 * 
+		 * @param target - The optional target object of the new Tween
+		 * @param property - The optional property to tween with the new Tween. 
+		 * @returns Tween - A new Tween identical to this but with start and end reversed.
+		 */
+		public function cloneReversed(target:Object = null, property:String = null):Tween {
+			var clone:Tween = Tween(cloneWithTarget(target, property));
+			clone.reverse();
+			return clone;
+		}
+		
+		/**
+		 * Flips the values for to and from values. Essentially, causes the animation to run backwards.
+		 * 
+		 * @see #cloneReversed()
+		 */
+		public function reverse():void {
+			var temp:Number = _fromValue;
+			_fromValue = _toValue;
+			_toValue = temp;						
+		}
+		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Tween = new Tween(_target, _property, _fromValue, _toValue, _duration, _offset, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
+			clone.autoDelete = _autoDelete;
 			return clone;
 		}
 		
-		public function cloneWithTarget(target:Object, property:String = null):Tween {
-			var clone:Tween = Tween(clone());
-			clone._target = target;
-			if (property) { clone._property = property; }
+		/**
+		 * Creates a copy of this Tween which targets a different object and / or property.
+		 * This is mostly used as a convenient way to reuse a tween, e.g. in a sequence.
+		 * 
+		 * @use <code>
+		 *		var tween:Tween = new Tween(foo, "x", 100, 200);
+		 *		var sequence:Sequence = new Sequence(
+		 *			tween,							// tweens foo's x property from 100 to 200
+		 *			tween.cloneWithTarget(bar),		// tweens bar's x property from 100 to 200
+		 *			tween.cloneWithTarget(foo, y)	// tweens foo's y property from 100 to 200
+		 *			tween.cloneWithTarget(bar, y)	// tweens bar's y property from 100 to 200
+		 *		);
+		 *	</code>
+		 * 
+		 * @see #clone()
+		 * 
+		 * @param target - The new object to target. Defaults to the same target as this.
+		 * @param property - The new target object's property to target. Defaults to the same property as this.
+		 * @return Tween - a copy of this tween with a new target/property.
+		 */
+		public function cloneWithTarget(target:Object = null, property:String = null):Tween {
+			var clone:Tween = Tween(this.clone());
+			if (target)		{ clone._target = target; }
+			if (property) 	{ clone._property = property; }
 			return clone;
 		}
 		

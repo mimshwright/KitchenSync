@@ -1,11 +1,16 @@
 ===== v0.3 =====
-renamed com.mimswright.animation to com.mimswright.sync
-renamed project to KitchenSync. Moved code to src folder
 Created SVN repository at http://svn.mimswright.com/kitchensync/
-added recerseChildOrder() to ActionGroup
+renamed project to KitchenSync. Moved code to src folder
+renamed com.mimswright.animation to com.mimswright.sync
+optimized the way that actions listen to synchronizer
+ensured the reusability of action classes
+added autoDelete flag which deletes actions on complete if true
 Tested and tweaked the SynchronizedSound class
 Added clone() method to most SynchronizedAction classes
 Added cloneWithTarget() method to Tween class
+Added reverse() and cloneReversed() methods to the Tween class
+added reverseChildOrder() to ActionGroup
+removed shortcuts for amplitude, period, and overshoot
 
 ===== v0.2 =====
 Staggered groups

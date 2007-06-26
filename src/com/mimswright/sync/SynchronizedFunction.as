@@ -55,8 +55,9 @@ package com.mimswright.sync
 		override public function clone():AbstractSynchronizedAction {
 			var clone:SynchronizedFunction = new SynchronizedFunction(_offset, _func);
 			clone._args = _args;
-			clone._duration = _duration;
 			clone._result = _result;
+			clone.duration = _duration;
+			clone.autoDelete = _autoDelete;
 			return clone;
 		}
 	}

@@ -21,7 +21,9 @@ package com.mimswright.sync
 			}
 		}
 		override public function clone():AbstractSynchronizedAction {
-			return new Wait(_offset);
+			var clone:Wait = new Wait(_offset);
+			clone.autoDelete = _autoDelete;
+			return clone;
 		}
 	}
 }
