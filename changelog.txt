@@ -1,6 +1,11 @@
 ===== v0.3 =====
 renamed com.mimswright.animation to com.mimswright.sync
+renamed project to KitchenSync. Moved code to src folder
 Created SVN repository at http://svn.mimswright.com/kitchensync/
+added recerseChildOrder() to ActionGroup
+Tested and tweaked the SynchronizedSound class
+Added clone() method to most SynchronizedAction classes
+Added cloneWithTarget() method to Tween class
 
 ===== v0.2 =====
 Staggered groups
