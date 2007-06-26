@@ -70,5 +70,12 @@ package com.mimswright.sync
 				complete();
 			}
 		}
+		
+		override public function clone():AbstractSynchronizedAction {
+			var clone:Parallel = new Parallel();
+			clone._childActions = _childActions;
+			clone._offset = _offset;
+			return clone;
+		}
 	}
 }

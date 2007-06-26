@@ -1,5 +1,8 @@
 package {
 	import flash.display.Sprite;
+	import flash.media.Sound;
+	import flash.net.URLRequest;
+	import flash.media.SoundChannel;
 
 	public class KitchenSync extends Sprite
 	{
@@ -36,12 +39,22 @@ package {
 			addChild(ball3);			
 			ball3.y = 150;
 			
+			
+			// demo synchronized sound
+			//var sound:Sound = new Sound(new URLRequest("song.mp3"));
+			//var song:SynchronizedSound = new SynchronizedSound(sound, 40);
+			var song:SynchronizedSound = new SynchronizedSound("song.mp3", 40);
+			//song.start();
+
+			var ballTween:Tween = new Tween(ball1, "x", 0, 400, 30, 0, Cubic.easeInOut);
+			
 			// demo the Staggered Parallel Group. Each tween is spaced out by 5 frames.
+			// also demo the tween.cloneWithTarget() method
 			new Sequence(
 				new Staggered(5, 
-					new Tween(ball1, "x", 0, 400, 30, 0, Cubic.easeInOut),
-					new Tween(ball2, "x", 0, 400, 30, 0, Cubic.easeInOut),
-					new Tween(ball3, "x", 0, 400, 30, 0, Cubic.easeInOut)
+					ballTween,
+					ballTween.cloneWithTarget(ball2),
+					ballTween.cloneWithTarget(ball3, "x")
 				),	
 				new Staggered(5, 
 					new Tween(ball1, "x", 400, 0, 30, 0, Elastic.easeOut), 
@@ -103,9 +116,12 @@ package {
 				new Tween(sprite, "scaleY", 1.0, 5.0, 30, 0, Cubic.easeInOut),
 				new Tween(sprite, "rotation", 0, 360, 30, 0, Cubic.easeInOut)
 			));
+			
+			// scaling back down and showing off the cloneWithTarget() method
+			var scaleDown:Tween = new Tween(sprite, "scaleX", 5.0, 1.0, 30, 0, Cubic.easeInOut);
 			sequence.addAction(new Parallel(
-				new Tween(sprite, "scaleX", 5.0, 1.0, 30, 0, Cubic.easeInOut),
-				new Tween(sprite, "scaleY", 5.0, 1.0, 30, 0, Cubic.easeInOut)
+				scaleDown,
+				scaleDown.cloneWithTarget(sprite, "scaleY")
 			));
 			// add another event. this time, only the type is passed in and the event is automatically created
 			sequence.addAction(new SynchronizedDispatchEvent("Scaling demo complete", sequence, 0, traceEvent));

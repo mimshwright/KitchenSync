@@ -3,6 +3,7 @@ package com.mimswright.sync
 	import com.mimswright.easing.Linear;
 	import flash.display.FrameLabel;
 	import com.mimswright.easing.EasingUtil;
+	import flash.net.registerClassAlias;
 	
 	/**
 	 * A tween will change an object's numeric value over time.
@@ -28,16 +29,14 @@ package com.mimswright.sync
 		public function set period(period:Number):void { _easingMod2 = period; }
 		public function get period():Number { return _easingMod2; }
 		
-		protected function get _delta():Number {
+		protected function get delta():Number {
 			return _toValue - _fromValue;
 		}
-		protected function set _targetProperty(value:Number):void {
+		protected function set targetProperty(value:Number):void {
 			_target[_property] = value;
 		}
-		protected function get _targetProperty():Number {
-			return _target[_property];
-		}
-		public function get targetProperty():Number {
+		
+		protected function get targetProperty():Number {
 			return _target[_property];
 		}
 		
@@ -54,11 +53,11 @@ package com.mimswright.sync
 		 * @param offset - the time to wait before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		public function Tween(target:Object, propterty:String, fromValue:Number, toValue:Number, duration:int = 0, offset:int = 0, easingFunction:Function = null)
+		public function Tween(target:Object, property:String, fromValue:Number, toValue:Number, duration:int = 0, offset:int = 0, easingFunction:Function = null)
 		{
 			super();
 			_target = target;
-			_property = propterty;
+			_property = property;
 			_fromValue = fromValue;
 			_toValue = toValue;
 			if (isNaN(_fromValue)) { _fromValue = targetProperty; }
@@ -74,15 +73,29 @@ package com.mimswright.sync
 			var time:Timestamp = event.timestamp;
 			if (_startTimeHasElapsed) {
 				var timeElapsed:int = time.currentFrame - _startTime.currentFrame - _offset;
-				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2) * _delta + _fromValue; 
+				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2) * delta + _fromValue; 
 				
-				_targetProperty = result;
+				targetProperty = result;
 
 				if (_durationHasElapsed) {
-					if (_targetProperty != _toValue) { _targetProperty = _toValue; }
+					if (targetProperty != _toValue) { targetProperty = _toValue; }
 					complete();
 				}
 			}
+		}
+		
+		override public function clone():AbstractSynchronizedAction {
+			var clone:Tween = new Tween(_target, _property, _fromValue, _toValue, _duration, _offset, _easingFunction);
+			clone._easingMod1 = _easingMod1;
+			clone._easingMod2 = _easingMod2;
+			return clone;
+		}
+		
+		public function cloneWithTarget(target:Object, property:String = null):Tween {
+			var clone:Tween = Tween(clone());
+			clone._target = target;
+			if (property) { clone._property = property; }
+			return clone;
 		}
 		
 		/**
@@ -97,7 +110,6 @@ package com.mimswright.sync
 		 * Returns either the _id or a description of the tween.
 		 */
 		override public function toString():String {
-			if (_id) { return _id; }
 			return "Tween " + _target + "." + _property + "=" + _fromValue + "~" + _toValue;
 		}
 	}

@@ -93,5 +93,11 @@ package com.mimswright.sync
 			_target = null;
 			_event = null;
 		}
+		
+		override public function clone():AbstractSynchronizedAction {
+			var clone:SynchronizedDispatchEvent = new SynchronizedDispatchEvent(_event, _target, _offset);
+			clone._duration = _duration;
+			return clone;
+		}
 	}
 }

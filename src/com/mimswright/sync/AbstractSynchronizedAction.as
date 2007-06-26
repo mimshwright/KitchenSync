@@ -3,6 +3,8 @@ package com.mimswright.sync
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	import com.mimswright.utils.AbstractEnforcer;
+	import flash.utils.ByteArray;
+	import flash.net.registerClassAlias;
 	
 	/**
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
@@ -24,11 +26,11 @@ package com.mimswright.sync
 		public function get offset():int { return _offset; }
 		public function set offset(offset:int):void { _offset = offset; }
 		
-		protected var _id:String;
+	/* 	protected var _id:String;
 		public function get id ():String {
 			return _id;
 		}
-		public function set id (id:String):void { _id = id; }
+		public function set id (id:String):void { _id = id; } */
 		
 		protected var _startTime:Timestamp;
 		protected var _running:Boolean = false;
@@ -103,6 +105,12 @@ package com.mimswright.sync
 		 	return false;
 		 }
 		
+		
+		public function clone():AbstractSynchronizedAction {
+			AbstractEnforcer.enforceMethod();
+			return this;
+		}
+				
 		/**
 		 * Call this when the action has completed.
 		 * 

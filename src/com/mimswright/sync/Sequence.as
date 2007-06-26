@@ -83,5 +83,12 @@ package com.mimswright.sync
 			super.start();
 			checkForComplete();
 		}
+		
+		override public function clone():AbstractSynchronizedAction {
+			var clone:Sequence = new Sequence();
+			clone._childActions = _childActions;
+			clone._offset = _offset;
+			return clone;
+		}
 	}
 }

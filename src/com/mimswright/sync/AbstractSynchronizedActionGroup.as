@@ -72,6 +72,14 @@ package com.mimswright.sync
 				return _childActions.splice(index, 1)[0];
 			}
 		 }
+		 
+		 /**
+		 * Reverse the order that the children play back in. Essentially, this just reverses the child array.
+		 * @todo - test this
+		 */
+		 public function reverseChildOrder():void {
+		 	_childActions = _childActions.reverse();
+		 }
 			
 		/**
 		 * Checks to see if all of the children have completed. If so, calls the complete method.
@@ -84,6 +92,11 @@ package com.mimswright.sync
 				return true;
 			}
 			return false;
+		}
+				
+		override public function kill():void {
+			super.kill();
+			_childActions = null;
 		}
 
 		override public function toString():String {

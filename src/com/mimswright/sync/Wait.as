@@ -5,8 +5,12 @@ package com.mimswright.sync
 	 */
 	public class Wait extends AbstractSynchronizedAction
 	{
-		public function Wait (delay:Number):void {
-			_offset = delay;
+		override public function set duration(duration:int):void {
+			throw new Error("duration is ignored for Wait");
+		}
+		
+		public function Wait (offset:Number):void {
+			_offset = offset;
 		}
 		
 		override internal function onUpdate(event:SynchronizerEvent):void {
@@ -16,6 +20,8 @@ package com.mimswright.sync
 				}
 			}
 		}
-		
+		override public function clone():AbstractSynchronizedAction {
+			return new Wait(_offset);
+		}
 	}
 }
