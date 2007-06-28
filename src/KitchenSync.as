@@ -46,7 +46,7 @@ package {
 			var ballTween:Tween = new Tween(ball1, "x", 0, 400, 30, 0, Cubic.easeInOut);
 			
 			// demo the Staggered Parallel Group. Each tween is spaced out by 5 frames.
-			new Sequence(
+			var ballSequence:Sequence = new Sequence(
 				new Staggered(5, 
 					ballTween, // demo the tween.cloneWithTarget() method
 					ballTween.cloneWithTarget(ball2),
@@ -62,7 +62,8 @@ package {
 					new Tween(ball2, "alpha", 1.0, 0, 30, 0, Linear.ease),
 					new Tween(ball3, "alpha", 1.0, 0, 30, 0, Linear.ease)
 				)
-			).start();
+			);
+			ballSequence.start();
 
 
 			// use the EasingUtil.generateArray() if you want to get an array of precalculated values from an 
@@ -164,13 +165,13 @@ package {
 			sequence.addAction(func);
 
 			// delay the sequence by 2 seconds
-			sequence.offset = 100;
+			//sequence.offset = 100;
 			// adding a listener to the sequence to show when it completes
 			sequence.addEventListener(SynchronizerEvent.COMPLETE, onSequenceCompleted);
 			// and one for when the sequence's children complete
 			sequence.addEventListener(SynchronizerEvent.CHILD_COMPLETE, onChildCompleted);
 			// start the whole sequence
-			sequence.start(); 
+			sequence.setTrigger(ballSequence);
 			
 			// DEBUG
 			TargetProperty;

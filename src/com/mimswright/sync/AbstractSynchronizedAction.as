@@ -1,11 +1,11 @@
 package com.mimswright.sync
 {
+	import com.mimswright.utils.AbstractEnforcer;
+	
+	import flash.errors.IllegalOperationError;
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	import com.mimswright.utils.AbstractEnforcer;
-	import flash.utils.ByteArray;
-	import flash.net.registerClassAlias;
-	import flash.errors.IllegalOperationError;
 	
 	/**
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
@@ -68,7 +68,7 @@ package com.mimswright.sync
 		 * Starts the timer for this action.
 		 * Registers the action with the synchronizer.
 		 * 
-		 * @throws IllegalOperationError - if the method is called while the action is already running.
+		 * @throws flash.errors.IllegalOperationError - if the method is called while the action is already running.
 		 */
 		public function start():void {
 			if (!_running) {
@@ -78,6 +78,43 @@ package com.mimswright.sync
 			} else {
 				throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
 			}
+		}
+		
+		/**
+		 * Causes the action to start playing when another event completes.
+		 * 
+		 * @param trigger Another action that will trigger the start of this action.
+		 * @throws flash.errors.Error If the trigger action is the same as this action.
+		 * 
+		 * @todo - add removeTrigger() method
+		 */
+		public function addTrigger(trigger:AbstractSynchronizedAction):void {
+		 	if (trigger == this) { throw new Error("An action cannot be triggered by itself."); }
+			trigger.addEventListener(SynchronizerEvent.COMPLETE, onTrigger, false, 0, true);
+		}
+
+		/**
+		 * Causes the action to start playing when a specified event is fired.
+		 * 
+		 * @param dispatcher The object that will dispatch the event.
+		 * @param eventType The event type to listen for.
+		 * 
+		 * @todo - add removeEventTrigger() method
+		 */
+		public function addEventTrigger(dispatcher:IEventDispatcher, eventType:String):void {
+			dispatcher.addEventListener(eventType, onTrigger, false, 0, true);
+		}
+		
+		/**
+		 * Handler that starts playing the action that is called by a trigger event.
+		 * @see #addTrigger()
+		 * @see #addEventTrigger()
+		 * 
+		 * @todo make sure this doesn't screw up if there are multiple triggers or if the thing isn't meant to
+		 * 		repeat.
+		 */
+		protected function onTrigger(event:Event):void {
+			if (!_running) { start(); }
 		}
 		
 		
@@ -100,7 +137,7 @@ package com.mimswright.sync
 		 * checks to see whether the action is ready to execute. Duration is handled seperately.
 		 * @return false if _startTime is null, true if the offset has elapsed.
 		 */
-		 protected function get _startTimeHasElapsed():Boolean {
+		 protected function get startTimeHasElapsed():Boolean {
 		 	if (!_startTime || !_running) { return false; }
 		 	if (_startTime.currentFrame + _offset < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	return false;
@@ -111,7 +148,7 @@ package com.mimswright.sync
 		 * checks to see whether the action is finished executing. 
 		 * @return false if _startTime is null, true if the duration has elapsed.
 		 */
-		 protected function get _durationHasElapsed():Boolean {
+		 protected function get durationHasElapsed():Boolean {
 		 	if (!_startTime || !_running) { return false; }
 		 	if (_startTime.currentFrame + _offset + _duration-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	return false;

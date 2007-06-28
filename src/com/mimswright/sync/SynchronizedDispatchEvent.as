@@ -77,9 +77,9 @@ package com.mimswright.sync
 		 * Note that if duration is > 0, this will continue to fire for every frame until duration is elapsed.
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
-			if (_startTimeHasElapsed) {
+			if (startTimeHasElapsed) {
 				_target.dispatchEvent(_event);
-				if (_durationHasElapsed) {
+				if (durationHasElapsed) {
 					complete();
 				}
 			}

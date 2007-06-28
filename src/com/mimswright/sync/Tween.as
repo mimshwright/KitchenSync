@@ -73,13 +73,13 @@ package com.mimswright.sync
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
-			if (_startTimeHasElapsed) {
+			if (startTimeHasElapsed) {
 				var timeElapsed:int = time.currentFrame - _startTime.currentFrame - _offset;
 				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2) * delta + _fromValue; 
 				
 				targetProperty = result;
 
-				if (_durationHasElapsed) {
+				if (durationHasElapsed) {
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
 					if (_snapToValue) { targetProperty = _toValue; }

@@ -59,7 +59,7 @@ package com.mimswright.sync
 		 * If the sound hasn't loaded yet, it continues to check each frame until it is loaded, then it plays.
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
-			if (_startTimeHasElapsed) {
+			if (startTimeHasElapsed) {
 				if (_sound.bytesLoaded == _sound.bytesTotal) {
 					_channel = _sound.play(_soundOffset);
 					_channel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);

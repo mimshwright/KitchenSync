@@ -44,9 +44,9 @@ package com.mimswright.sync
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
-			if (_startTimeHasElapsed) {
+			if (startTimeHasElapsed) {
 				invoke();
-				if (_durationHasElapsed) {
+				if (durationHasElapsed) {
 					complete();
 				}
 			}

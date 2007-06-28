@@ -35,7 +35,7 @@ package com.mimswright.sync
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
-			if (_startTimeHasElapsed) {
+			if (startTimeHasElapsed) {
 				// reset the number of running children.
 				_runningChildren = 0;				
 				// for all child actions

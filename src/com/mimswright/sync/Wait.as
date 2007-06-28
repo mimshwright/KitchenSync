@@ -14,8 +14,8 @@ package com.mimswright.sync
 		}
 		
 		override internal function onUpdate(event:SynchronizerEvent):void {
-			if (_startTimeHasElapsed) {
-				if (_durationHasElapsed) {
+			if (startTimeHasElapsed) {
+				if (durationHasElapsed) {
 					complete();
 				}
 			}

@@ -6,6 +6,7 @@ optimized the way that actions listen to synchronizer
 ensured the reusability of action classes
 added autoDelete flag which deletes actions on complete if true
 Tested and tweaked the SynchronizedSound class
+Added addTrigger() and addEventTrigger() to AbstractSyncrhonizedAction so that actions can be triggered by other actions or by events
 Added clone() method to most SynchronizedAction classes
 Added cloneWithTarget() method to Tween class
 Added reverse() and cloneReversed() methods to the Tween class
