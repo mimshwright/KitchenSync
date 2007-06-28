@@ -75,7 +75,7 @@ package com.mimswright.sync
 		 
 		 /**
 		 * Reverse the order that the children play back in. Essentially, this just reverses the child array.
-		 * @todo - test this
+		 * -todo - test this
 		 */
 		 public function reverseChildOrder():void {
 		 	_childActions = _childActions.reverse();

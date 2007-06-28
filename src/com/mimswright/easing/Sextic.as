@@ -24,8 +24,8 @@ package com.mimswright.easing
 	    * 
 	    * @param timeElapsed The time since the tween began in milliseconds or frames.
 	    * @param duration The duration of the tween, in milliseconds or frames.
-	    * @return percentage complete - between 0.0 and 1.0 but with the overshoot, it may extend below 0.0 or above 1.0
-	    */  
+	    * @return percentage complete - between 0.0 and 1.0
+	    */ 
 		public static function easeIn(timeElapsed:Number, duration:Number):Number
 		{
 			return (timeElapsed/=duration)*timeElapsed*timeElapsed*timeElapsed*timeElapsed*timeElapsed;
@@ -36,26 +36,26 @@ package com.mimswright.easing
 	    * 
 	    * @param timeElapsed Specifies the time since the tween began in milliseconds or frames.
 	    * @param duration Specifies the duration of the tween, in milliseconds or frames.
-	    * @return percentage complete - between 0.0 and 1.0 but with the overshoot, it may extend below 0.0 or above 1.0
+	    * @return percentage complete - between 0.0 and 1.0
 	    */  
 		public static function easeOut(timeElapsed:Number, duration:Number):Number
 		{
-			return ((timeElapsed=timeElapsed/duration-1)*timeElapsed*timeElapsed*timeElapsed*timeElapsed*timeElapsed + 1);
+			return  -1 * ((timeElapsed=timeElapsed/duration-1)*timeElapsed*timeElapsed*timeElapsed*timeElapsed*timeElapsed - 1);
 		}
 	
-	     /**
-		 * easeInOut combines the motion of easeIn and easeOut by starting out slow and increasing in speed 
-		 * towards the middle of the duration, then slowing down again towards the end.
-		 *  
-		 * @param timeElapsed Specifies the time since the tween began in milliseconds or frames.
-		 * @param duration Specifies the duration of the tween, in milliseconds or frames.
-		 * @param overshoot The ammount to go over past the target value. The higher the number, the farther it will go.
-		 * @return percentage complete - between 0.0 and 1.0 but with the overshoot, it may extend below 0.0 or above 1.0
-		 */  
+	    /**
+		* easeInOut combines the motion of easeIn and easeOut by starting out slow and increasing in speed 
+		* towards the middle of the duration, then slowing down again towards the end.
+		*  
+		* @param timeElapsed Specifies the time since the tween began in milliseconds or frames.
+		* @param duration Specifies the duration of the tween, in milliseconds or frames.
+		* @param overshoot The ammount to go over past the target value. The higher the number, the farther it will go.
+		* @return percentage complete - between 0.0 and 1.0
+		*/  
 		public static function easeInOut(timeElapsed:Number, duration:Number):Number
 		{
 			if ((timeElapsed/=duration/2) < 1) return 0.5*timeElapsed*timeElapsed*timeElapsed*timeElapsed*timeElapsed*timeElapsed;
-			return 0.5*((timeElapsed-=2)*timeElapsed*timeElapsed*timeElapsed*timeElapsed*timeElapsed + 2);
+			return -0.5*((timeElapsed-=2)*timeElapsed*timeElapsed*timeElapsed*timeElapsed*timeElapsed - 2);
 		}		
 	}
 }

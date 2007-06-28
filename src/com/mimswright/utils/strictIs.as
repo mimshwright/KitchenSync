@@ -3,12 +3,21 @@ package com.mimswright.utils
 	import flash.utils.*;
 	
 	/**
-	 * Checks the class of instance against the compareClass for strict
+	 * Checks the class of <code>instance</code> against the <code>compareClass</code> for strict
 	 * equality. If the classes are exactly the same, returns true. If
-	 * the classes are different even if the instance's class is a subclass
-	 * of compareClass, it returns false.
+	 * the classes are different even if the <code>instance</code>'s class is a subclass
+	 * of <code>compareClass</code>, it returns false.
+	 * Does not work with interfaces. The compareClass must be a class.
 	 * 
 	 * @author Mims Wright
+	 * 
+	 * @use <code>
+	 * 			var myBase:BaseClass = new BaseClass();
+	 * 			var mySub:SubClass = new SubClass();
+	 * 			trace(strictIs(myBase, BaseClass)); // true
+	 * 			trace(strictIs(mySub, SubClass)); 	// true
+	 * 			trace(strictIs(mySub, BaseClass)); 	// false
+	 * 		</code>
 	 * 
 	 * @param instance - the object whos class you want to check.
 	 * @param compareClass - the class to compare your object against.
@@ -16,8 +25,6 @@ package com.mimswright.utils
 	 */
 	public function strictIs(instance:Object, compareClass:Class):Boolean {
 		var instanceClass:Class = Class(getDefinitionByName(getQualifiedClassName(instance)));
-		//trace("instance class: " + instanceClass);
-		//trace("compare class: " + compareClass);
 		return instanceClass == compareClass;
 	}
 }

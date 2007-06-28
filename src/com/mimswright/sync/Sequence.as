@@ -6,7 +6,7 @@ package com.mimswright.sync
 	/**
 	 * A group of actions that execute one at a time in the order that they were added to the group.
 	 * 
-	 * @TODO - Child actions should not be deleted from the Aray until they are completed.
+	 * -todo - Child actions should not be deleted from the Aray until they are completed.
 	 */
 	public class Sequence extends AbstractSynchronizedActionGroup
 	{
@@ -49,7 +49,7 @@ package com.mimswright.sync
 		 * and runs onChildFinished() when each child completes. The action that is currently playing
 		 * will be stored in _currentAction which is publicly accessible. 
 		 * 
-		 * @TODO - fix bug where child action begins playing 1 frame late.
+		 * -todo - fix bug where child action begins playing 1 frame late.
 		 * @return The currently playing action.
 		 */
 		protected function startNextAction():AbstractSynchronizedAction {
@@ -65,7 +65,7 @@ package com.mimswright.sync
 		 * Also remove reference to child action so it can be garbage collected.
 		 * 
 		 * @param event - The SynchronizerEvent.COMPLETE from the _currentAction
-		 * @todo - Add a reference to the completed child to the CHILD_COMPLETE event.
+		 * -todo - Add a reference to the completed child to the CHILD_COMPLETE event.
 		 */
 		protected function onChildFinished (event:Event):void {
 			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.CHILD_COMPLETE, Synchronizer.getInstance().currentTimestamp));

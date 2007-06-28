@@ -4,13 +4,17 @@ package com.mimswright.easing
 	{	
 		private static const TWICE_PI:Number = Math.PI * 2;
 		private static const DEFAULT_PERIOD:Number = 0.3;
+	    
 	    /**
-	     *  @param timeElapsed - The time since the tween began in milliseconds or frames.
-	     *  @param duration - The duration of the tween, in milliseconds or frames.
-	     *  @param amplitude - The aplitude of the sine wave. Low numbers are less extreme than high numbers.
-	     *  @param period - The period of the sine wave. Low numbers are wobbly, high numbers are smooth.
-	     *  @return Number percentage complete - between 0.0 and 1.0
-	     */  
+	    * easeIn starts out slow and increases in speed towards the end of the duration.
+	    * The values wobble around the starting point before going towards the end point.
+	    * 
+	    * @param timeElapsed The time since the tween began in milliseconds or frames.
+	    * @param duration The duration of the tween, in milliseconds or frames.
+	    * @param amplitude The aplitude of the sine wave. Low numbers are less extreme than high numbers.
+	    * @param period The period of the sine wave. Low numbers are wobbly, high numbers are smooth.
+	    * @return percentage complete - between 0.0 and 1.0 but it may extend below 0.0 or above 1.0
+	    */  
 		public static function easeIn(timeElapsed:Number, duration:Number, amplitude:Number = 0, period:Number = 0):Number
 		{
 			if (timeElapsed <= 0) {
@@ -34,12 +38,15 @@ package com.mimswright.easing
 	
 	
 	    /**
-	     *  @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
-	     *  @param duration - Specifies the duration of the tween, in milliseconds or frames.
-	     *  @param amplitude - The aplitude of the sine wave. Low numbers are less extreme than high numbers.
-	     *  @param period - The period of the sine wave. Low numbers are wobbly, high numbers are smooth.
-	     *  @return Number percentage complete - between 0.0 and 1.0
-	     */  
+	    * easeOut starts out fast and decreases in speed towards the end of the duration.
+	    * The values wobble around the endpoint after reaching it.
+	    * 
+	    * @param timeElapsed The time since the tween began in milliseconds or frames.
+	    * @param duration The duration of the tween, in milliseconds or frames.
+	    * @param amplitude The aplitude of the sine wave. Low numbers are less extreme than high numbers.
+	    * @param period The period of the sine wave. Low numbers are wobbly, high numbers are smooth.
+	    * @return percentage complete - between 0.0 and 1.0 but it may extend below 0.0 or above 1.0
+	    */  
 		public static function easeOut(timeElapsed:Number, duration:Number, amplitude:Number = 0, period:Number = 0):Number
 		{
 			if (timeElapsed <= 0) {
@@ -62,12 +69,16 @@ package com.mimswright.easing
 		}
 	
 	    /**
-	     *  @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
-	     *  @param duration - Specifies the duration of the tween, in milliseconds or frames.
-	     *  @param amplitude - The aplitude of the sine wave. Low numbers are less extreme than high numbers.
-	     *  @param period - The period of the sine wave. Low numbers are wobbly, high numbers are smooth.
-	     *  @return Number percentage complete - between 0.0 and 1.0
-	     */  
+	  	* easeInOut combines the motion of easeIn and easeOut by starting out slow and increasing in speed 
+	    * towards the middle of the duration, then slowing down again towards the end.
+	    * The values wobble around the starting point (0.0) then go to the the end point (1.0) and wobble there as well.
+	    * 
+	    * @param timeElapsed The time since the tween began in milliseconds or frames.
+	    * @param duration The duration of the tween, in milliseconds or frames.
+	    * @param amplitude The aplitude of the sine wave. Low numbers are less extreme than high numbers.
+	    * @param period The period of the sine wave. Low numbers are wobbly, high numbers are smooth.
+	    * @return percentage complete - between 0.0 and 1.0 but it may extend below 0.0 or above 1.0
+	    */  
 		public static function easeInOut(timeElapsed:Number, duration:Number, amplitude:Number = 0, period:Number = 0):Number
 		{
 			if (timeElapsed <= 0) {

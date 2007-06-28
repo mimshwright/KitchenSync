@@ -5,7 +5,7 @@ package com.mimswright.sync
 		protected var _target:Object;
 		public function get target():Object { return _target; }
 		
-		protected var _propterty:String;
+		protected var _property:String;
 		public function get property():Object { return _property; }
 		
 		public function setTargetPropterty(target:Object, property:String):void {
@@ -42,7 +42,7 @@ package com.mimswright.sync
 		public function set useSnapping(useSnapping:Boolean):void { _useSnapping = useSnapping; }
 		
 		public function TargetProperty (target:Object, property:String, startValue:Number = NaN, endValue:Number = NaN) {
-			setTargetProperty(target, property);
+			setTargetPropterty(target, property);
 			_startValue = (isNaN(startValue)) ? currentValue : startValue;
 			_endValue   = (isNaN(endValue))   ? currentValue : endValue;
 		}

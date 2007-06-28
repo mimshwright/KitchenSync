@@ -1,8 +1,5 @@
 package {
 	import flash.display.Sprite;
-	import flash.media.Sound;
-	import flash.net.URLRequest;
-	import flash.media.SoundChannel;
 
 	public class KitchenSync extends Sprite
 	{
@@ -12,7 +9,7 @@ package {
 		import com.mimswright.sync.*;
 		
 		public function KitchenSync()
-		{
+		{	
 			stage.frameRate = 30;
 			Synchronizer.initialize(this);
 						
@@ -72,11 +69,37 @@ package {
 			// easing function rather than updating each frame.
 			trace(EasingUtil.generateArray(Cubic.easeIn, 10));
 			
+			var sequence:Sequence = new Sequence();
+			
+			// Test the Oscillate easing functions
+			var absSin:Tween = new Tween(sprite, "y", 0, 200, 200, 0, Oscillate.absoluteSine);
+			absSin.easingMod1 = 0.03; // frequency in oscillations per unit (frame).
+			absSin.snapToValue = false;
+			
+			var sin:Tween = Tween(absSin.clone());
+			sin.easingFunction = Oscillate.sine;
+			
+			var saw:Tween = Tween(absSin.clone());
+			saw.easingFunction = Oscillate.sawtooth;
+			
+			var square:Tween = Tween(absSin.clone());
+			square.easingFunction = Oscillate.pulse;
+			square.easingMod1 = 0.8;
+			
+			var pulse:Tween = Tween(square.clone());
+			pulse.easingMod2 = 0.8;
+
+			/* sequence.addAction(new Parallel(square,new Tween(sprite, "x", 0, 300, absSin.duration, 0, Linear.ease)));
+			sequence.addAction(new Parallel(pulse,new Tween(sprite, "x", 0, 300, absSin.duration, 0, Linear.ease)));
+			sequence.addAction(new Parallel(saw,new Tween(sprite, "x", 0, 300, absSin.duration, 0, Linear.ease)));
+			sequence.addAction(new Parallel(absSin,new Tween(sprite, "x", 0, 300, absSin.duration, 0, Linear.ease)));
+			sequence.addAction(new Parallel(sin,new Tween(sprite, "x", 0, 300, absSin.duration, 0, Linear.ease))); */
+			
 			// create a new sequence using the constructor to populate with motion tweens
-			var sequence:Sequence = new Sequence( 
+			var demoAll:Sequence = new Sequence( 
 			// demo all the motion tweens
 				new SynchronizedTrace("Linear"),
-				new Tween(sprite, "x", 0, 200, 40, 0, Linear.easeInOut),
+				new Tween(sprite, "x", 0, 200, 40, 0, Linear.ease),
 			// trace out a message at a given time with SynchronizedTrace
 				new SynchronizedTrace("Quadratic"),
 				new Tween(sprite, "y", 0, 200, 40, 0, Quadratic.easeInOut),
@@ -99,15 +122,14 @@ package {
 				new SynchronizedTrace("Back"),
 				new Tween(sprite, "x", 200, 0, 40, 0, Back.easeInOut),
 				new SynchronizedTrace("Random"),
-				new Tween(sprite, "x", 200, 0, 40, 0, Random.easeInOut)
+				new Tween(sprite, "y", 200, 0, 40, 0, Random.ease),
+				new SynchronizedTrace("Sextic"),
+				new Tween(sprite, "x", 0, 200, 40, 0, Sextic.easeInOut),
+				new Tween(sprite, "y", 0, 200, 40, 0, Sextic.easeOut),
+				new Tween(sprite, "x", 200, 0, 40, 0, Sextic.easeIn)
 			);
 			
-			// Test the Sine.oscillate tweening function
-			var wave:Tween = new Tween(sprite, "y", 0, 300, 300, 0, Sine.oscillate);
-			wave.easingMod1 = 0.01; // frequency in oscillations per unit (frame).
-			wave.snapToValue = false;
-			sequence.addAction(new Parallel(wave,new Tween(sprite, "x", 0, 300, 300, 0, Linear.ease)));
-			
+			sequence.addAction(demoAll);
 			// add a synchronized event that is broadcast after the last motion tween. also add traceEvent as its listener
 			sequence.addAction(new SynchronizedDispatchEvent(new SynchronizerEvent("square motion demo complete"), sequence, 0, traceEvent));
 			// add more motion, this time using a Parallel object. All children will run simultaneously.
@@ -150,10 +172,8 @@ package {
 			// start the whole sequence
 			sequence.start(); 
 			
-			////
-			//todo: test the synchronized sound.
-			////
-			
+			// DEBUG
+			TargetProperty;
 		}
 	
 		// traces out the contents of an event object

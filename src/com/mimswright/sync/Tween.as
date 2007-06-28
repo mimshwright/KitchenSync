@@ -1,18 +1,19 @@
 package com.mimswright.sync
 {
-	import com.mimswright.easing.Linear;
-	import flash.display.FrameLabel;
 	import com.mimswright.easing.EasingUtil;
-	import flash.net.registerClassAlias;
+	import com.mimswright.easing.Linear;
 	
 	/**
 	 * A tween will change an object's numeric value over time.
 	 * 
-	 * @TODO - make getters and setters for most of the properties.
+	 * -todo - make getters and setters for most of the properties.
 	 */
 	public class Tween extends AbstractSynchronizedAction
 	{
 		protected var _easingFunction:Function;
+		public function get easingFunction():Function { return _easingFunction; }
+		public function set easingFunction(easingFunction:Function):void{ _easingFunction = easingFunction;}
+		
 		protected var _target:Object;
 		protected var _property:String;
 		protected var _fromValue:Number;
@@ -42,7 +43,7 @@ package com.mimswright.sync
 		/**
 		 * Constructor
 		 * 
-		 * @todo - make all of these optional
+		 * -todo - make all of these optional
 		 * 
 		 * @param target - the object whose property will be changed.
 		 * @param property - the name of the property to change. Must be a numeric property such as a Sprite object's "alpha"
@@ -62,13 +63,13 @@ package com.mimswright.sync
 			if (isNaN(_fromValue)) { _fromValue = targetProperty; }
 			_duration = duration;
 			_offset = offset;
-			if (easingFunction != null) { _easingFunction = easingFunction; } else { _easingFunction = Linear.easeIn; }
+			if (easingFunction != null) { _easingFunction = easingFunction; } else { _easingFunction = Linear.ease; }
 		}
 		
 		/**
 		 * Executes the tween.
 		 * 
-		 * @todo - make snapping to the final value optional.
+		 * -todo - make snapping to the final value optional.
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;

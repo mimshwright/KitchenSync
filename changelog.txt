@@ -11,7 +11,12 @@ Added cloneWithTarget() method to Tween class
 Added reverse() and cloneReversed() methods to the Tween class
 added reverseChildOrder() to ActionGroup
 removed shortcuts for amplitude, period, and overshoot
-Added snapToValue to Tween class.
+Added snapToValue to Tween class
+Added documentation to easing functions
+Moved Sine.oscillate() to Oscillate.sine()
+Added absoluteSine(), sawtooth(), and pulse() to the Oscillate class
+Added Sextic easing class
+Removed easeIn(), easeOut(), easeInOut() for Linear and Random
 
 ===== v0.2 =====
 Staggered groups

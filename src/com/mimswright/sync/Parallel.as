@@ -31,7 +31,7 @@ package com.mimswright.sync
 		
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
-		 * @TODO: Currently, the child actions execute one frame late.
+		 * -todo: Currently, the child actions execute one frame late.
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;

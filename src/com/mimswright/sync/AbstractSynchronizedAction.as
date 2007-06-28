@@ -11,11 +11,11 @@ package com.mimswright.sync
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
 	 * timing. 
 	 * 
-	 * @TODO - add pause() and continue (start())
-	 * @todo - add stop()
-	 * @todo - add a settings object
-	 * @todo - add the ability to use msec instead of frames.
-	 * @todo - better implementation of ids
+	 * -todo - add pause() and continue (start())
+	 * -todo - add stop()
+	 * -todo - add a settings object
+	 * -todo - add the ability to use msec instead of frames.
+	 * -todo - better implementation of ids
 	 */
 	public class AbstractSynchronizedAction extends EventDispatcher
 	{
@@ -132,7 +132,7 @@ package com.mimswright.sync
 		/**
 		 * Call this when the action has completed.
 		 * 
-		 * @TODO - Make kill() optional.
+		 * -todo - Make kill() optional.
 		 */
 		protected function complete():void {
 			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));

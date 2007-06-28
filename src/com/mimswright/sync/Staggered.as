@@ -6,7 +6,7 @@ package com.mimswright.sync
 	/**
 	 * A group of actions that executes in sequence seperated by a specified gap.
 	 * 
-	 * @TODO - update the way that Parallel checks for completeness to not destroy the array of children. This will cause issues for Staggered.
+	 * -todo - update the way that Parallel checks for completeness to not destroy the array of children. This will cause issues for Staggered.
 	 */
 	public class Staggered extends Parallel
 	{	
@@ -46,7 +46,7 @@ package com.mimswright.sync
 		
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
-		 * @TODO: Currently, the child actions execute one frame late.
+		 * -todo: Currently, the child actions execute one frame late.
 		 */
 		override internal function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
