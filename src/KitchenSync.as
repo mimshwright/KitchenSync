@@ -171,7 +171,7 @@ package {
 			// and one for when the sequence's children complete
 			sequence.addEventListener(SynchronizerEvent.CHILD_COMPLETE, onChildCompleted);
 			// start the whole sequence
-			sequence.setTrigger(ballSequence);
+			sequence.addTrigger(ballSequence);
 			
 			// DEBUG
 			TargetProperty;
