@@ -75,7 +75,7 @@ package {
 			// Test the Oscillate easing functions
 			var absSin:Tween = new Tween(sprite, "y", 0, 200, 200, 0, Oscillate.absoluteSine);
 			absSin.easingMod1 = 0.03; // frequency in oscillations per unit (frame).
-			absSin.snapToValue = false;
+			absSin.snapToValueOnComplete= false;
 			
 			var sin:Tween = Tween(absSin.clone());
 			sin.easingFunction = Oscillate.sine;

@@ -20,14 +20,35 @@ package com.mimswright.sync
 		protected var _toValue:Number;
 		
 		protected var _easingMod1:Number;
-		protected var _easingMod2:Number;
 		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
 		public function get easingMod1():Number { return _easingMod1; }
+
+		protected var _easingMod2:Number;
 		public function set easingMod2(easingMod2:Number):void { _easingMod2 = easingMod2; }
 		public function get easingMod2():Number { return _easingMod2; }
 		
-		protected var _snapToValue:Boolean = true;
-		public function set snapToValue(snapToValue:Boolean):void { _snapToValue = snapToValue; }
+		/**
+		 * Indicates whether the final value for the easing function should snap to the 
+		 * target _toValue. If set to true, the target property will equal _toValue regardless
+		 * of the results of the easing function.
+		 * 
+		 * @default true
+		 */
+		protected var _snapToValueOnComplete:Boolean = true;
+		public function set snapToValueOnComplete(snapToValueOnComplete:Boolean):void { _snapToValueOnComplete = snapToValueOnComplete; }
+		
+		/**
+		 * Indicates whether tweened values should snap to whole value numbers or use decimals.
+		 * If set to true, the results of the easing functions on the target property will be 
+		 * rounded to the nearest integer.
+		 * 
+		 * @default false
+		 * @todo test
+		 */
+		protected var _snapToWholeNumber:Boolean = false;
+		public function set snapToWholeNumber(snapToWholeNumber:Boolean):void {
+			_snapToWholeNumber = snapToWholeNumber;
+		}
 		
 		protected function get delta():Number {
 			return _toValue - _fromValue;
@@ -77,12 +98,14 @@ package com.mimswright.sync
 				var timeElapsed:int = time.currentFrame - _startTime.currentFrame - _offset;
 				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2) * delta + _fromValue; 
 				
+				if (_snapToWholeNumber) { result = Math.round(result); }
+				
 				targetProperty = result;
 
 				if (durationHasElapsed) {
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
-					if (_snapToValue) { targetProperty = _toValue; }
+					if (_snapToValueOnComplete) { targetProperty = _toValue; }
 					complete();
 				}
 			}
@@ -158,7 +181,8 @@ package com.mimswright.sync
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
-			clone.snapToValue = _snapToValue;
+			clone.snapToValueOnComplete = _snapToValueOnComplete;
+			clone.snapToWholeNumber = _snapToWholeNumber;
 			return clone;
 		}
 		
