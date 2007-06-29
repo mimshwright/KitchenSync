@@ -90,7 +90,7 @@ package com.mimswright.sync
 		 */
 		public function addTrigger(trigger:AbstractSynchronizedAction):void {
 		 	if (trigger == this) { throw new Error("An action cannot be triggered by itself."); }
-			trigger.addEventListener(SynchronizerEvent.COMPLETE, onTrigger, false, 0, true);
+			trigger.addEventListener(SynchronizerEvent.COMPLETE, onTrigger);
 		}
 
 		/**
@@ -102,7 +102,7 @@ package com.mimswright.sync
 		 * @todo - add removeEventTrigger() method
 		 */
 		public function addEventTrigger(dispatcher:IEventDispatcher, eventType:String):void {
-			dispatcher.addEventListener(eventType, onTrigger, false, 0, true);
+			dispatcher.addEventListener(eventType, onTrigger);
 		}
 		
 		/**
