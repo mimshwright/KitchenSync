@@ -10,6 +10,8 @@ package com.mimswright.sync
 	 */
 	public class Tween extends AbstractSynchronizedAction
 	{
+		public static const EXISTING_FROM_VALUE:Number = Number.NEGATIVE_INFINITY;
+		
 		protected var _easingFunction:Function;
 		public function get easingFunction():Function { return _easingFunction; }
 		public function set easingFunction(easingFunction:Function):void{ _easingFunction = easingFunction;}
@@ -68,20 +70,19 @@ package com.mimswright.sync
 		 * 
 		 * @param target - the object whose property will be changed.
 		 * @param property - the name of the property to change. Must be a numeric property such as a Sprite object's "alpha"
-		 * @param fromValue - the starting value of the tween. By default, this is the value of the property before the tween.
 		 * @param toValue - the target value to tween the property to.
+		 * @param fromValue - the starting value of the tween. By default, this is the value of the property before the tween.
 		 * @param duration - the time in frames that this tween will take to execute.
 		 * @param offset - the time to wait before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		public function Tween(target:Object, property:String, fromValue:Number, toValue:Number, duration:int = 0, offset:int = 0, easingFunction:Function = null)
+		public function Tween(target:Object, property:String, toValue:Number, fromValue:Number = EXISTING_FROM_VALUE, duration:int = 0, offset:int = 0, easingFunction:Function = null)
 		{
 			super();
 			_target = target;
 			_property = property;
 			_fromValue = fromValue;
 			_toValue = toValue;
-			if (isNaN(_fromValue)) { _fromValue = targetProperty; }
 			_duration = duration;
 			_offset = offset;
 			if (easingFunction != null) { _easingFunction = easingFunction; } else { _easingFunction = Linear.ease; }
@@ -96,6 +97,9 @@ package com.mimswright.sync
 			var time:Timestamp = event.timestamp;
 			if (startTimeHasElapsed) {
 				var timeElapsed:int = time.currentFrame - _startTime.currentFrame - _offset;
+				if (_fromValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
+					_fromValue = targetProperty; 
+				}
 				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2) * delta + _fromValue; 
 				
 				if (_snapToWholeNumber) { result = Math.round(result); }
@@ -177,7 +181,7 @@ package com.mimswright.sync
 		}
 		
 		override public function clone():AbstractSynchronizedAction {
-			var clone:Tween = new Tween(_target, _property, _fromValue, _toValue, _duration, _offset, _easingFunction);
+			var clone:Tween = new Tween(_target, _property, _toValue, _fromValue, _duration, _offset, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
