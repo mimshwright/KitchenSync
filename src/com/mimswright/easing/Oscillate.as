@@ -10,10 +10,7 @@ package com.mimswright.easing
 	 *  - <code>easeIn()</code>, <code>easeOut()</code> and <code>easeInOut()</code> - which vary the rate of change
 	 *  of the values. Most of the easing functions produce values as a percentage - a number between 0.0 and 1.0</p>
 	 *
-	 * @todo Add sawtooth wave
-	 * @todo Add square wave
-	 * @todo Add pulse wave
-	 * @todo Add inverse sine
+	 * @todo Add triangle wave
 	 * 
  	 * @author Mims H. Wright
 	 * @see EasingUtil
