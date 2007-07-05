@@ -17,7 +17,10 @@ Added documentation to easing functions
 Moved Sine.oscillate() to Oscillate.sine()
 Added absoluteSine(), sawtooth(), and pulse() to the Oscillate class
 Added Sextic easing class
+Added Stepped easing class
 Removed easeIn(), easeOut(), easeInOut() for Linear and Random
+Added Tween.EXISTING_FROM_VALUE as the from value default. Reordered Tween constructor parameters.
+
 
 ===== v0.2 =====
 Staggered groups
