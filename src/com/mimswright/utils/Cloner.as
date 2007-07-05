@@ -13,11 +13,11 @@ package com.mimswright.utils
     	 * using flash.net.registerClassAlias() before cloning.
     	 * AMF rules apply. Check out the documentation for more info.
     	 * 
-    	 * @use <code>
+    	 * @example <listing version="3.0">
     	 * 		registerClassAlias("com.example.Example", Example);
     	 * 		var example:Example = new Example();
     	 * 		var clone:Example = Cloner.clone(example) as Example;
-    	 * 		</code>
+    	 * 		</listing>
     	 * 
     	 * @see flash.net#registerClassAlias()
     	 * @param source - the object to duplicate.

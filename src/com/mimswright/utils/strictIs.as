@@ -11,13 +11,13 @@ package com.mimswright.utils
 	 * 
 	 * @author Mims Wright
 	 * 
-	 * @use <code>
+	 * @example <listing version="3.0">
 	 * 			var myBase:BaseClass = new BaseClass();
 	 * 			var mySub:SubClass = new SubClass();
 	 * 			trace(strictIs(myBase, BaseClass)); // true
 	 * 			trace(strictIs(mySub, SubClass)); 	// true
 	 * 			trace(strictIs(mySub, BaseClass)); 	// false
-	 * 		</code>
+	 * 			</listing>
 	 * 
 	 * @param instance - the object whos class you want to check.
 	 * @param compareClass - the class to compare your object against.
