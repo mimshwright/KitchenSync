@@ -43,7 +43,7 @@ package {
 			//var song:SynchronizedSound = new SynchronizedSound("song.mp3", 40);
 			//song.start();
 
-			var ballTween:Tween = new Tween(ball1, "x", 400, 0, 30, 0, Average.getAveragedFunction(Cubic.easeInOut, Oscillate.sine));
+			var ballTween:Tween = new Tween(ball1, "x", 400, 0, 30, 0, EasingUtil.getAveragedFunction(Cubic.easeInOut, Bounce.easeIn));
 			var steppedBallTween:Tween = Tween(ballTween.clone());
 			steppedBallTween.easingFunction = Stepped.getSteppedFunction(Quadratic.easeInOut, 8);
 			
