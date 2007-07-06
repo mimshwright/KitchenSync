@@ -1,6 +1,7 @@
 ===== v0.3 =====
 Created SVN repository at http://svn.mimswright.com/kitchensync/
 renamed project to KitchenSync. Moved code to src folder
+Added asdoc pages in the /bin/docs folder.
 renamed com.mimswright.animation to com.mimswright.sync
 optimized the way that actions listen to synchronizer
 ensured the reusability of action classes

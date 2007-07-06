@@ -64,7 +64,7 @@ package com.mimswright.easing
 		 * 
 		 * @example Combine cubic in/out easing with a sine wave oscillator.
 		 * 			<listing version="3.0">
-		 * 				myTween.easingFunction = Average.getAveragedFunction(Cubic.easeInOut, Oscillate.sine);	
+		 * 				myTween.easingFunction = EasingUtil.getAveragedFunction(Cubic.easeInOut, Oscillate.sine);	
 		 * 			</listing>
 		 * 
 		 * @param easingFunciton1 One of the two easing functions that will be averaged by the new function.
