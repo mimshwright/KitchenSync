@@ -1,0 +1,56 @@
+<html>
+<head></head>
+<body>
+
+<h2>What is KitchenSync?</h2>
+
+<p>KitchenSync is an ActionScript 3.0 library for sequencing animations and other time-based <em>actions</em>.</p>
+
+<h3>KitchenSync was designed with developers in mind</h3>
+
+<p>KitchenSync was designed for developers who want a smart way to handle animation or other time-based functionality with code. Written from the ground up in ActionScript 3.0, KitchenSync relies on smart object-oriented architecture rather than complicated shorthand. It includes a number of features and shortcuts, such as the <code>clone()</code> method, that save effort for developers. KitchenSync makes extensive use of events and informative runtime errors and is quite flexible when it comes to extending the funcitonality.</p>
+
+<h3>KitchenSync is more than an animation library</h3>
+
+<p>Tweens are a major part of KitchenSync but that is not the end. It also allows you to sequence sounds, functions, and event dispatches among other actions. The framework is open-ended allowing you to come up with new ways to work with the virtual timeline.</p>
+
+<h2>How does it work?</h2>
+<p>KS uses an abstract class called <code>AbstractSynchronizedAction</code> as the base for all sequenceable events. These include (among other things) tweens, function calls, and event dispatches as well as groups of multiple actions. All synchronized actions share certain methods and properties such as <code>duration</code> and <code>start()</code> making them interchangeable and very easy to work with.</p>
+
+<img src="fig2.png" alt="All action classes (including groups) inheret from the AbstractSynchronizedAction class." />
+
+<h3>Commonly Used Actions</h3>
+
+<h4>Tween</h4>
+<p>Perhaps the most used action is the <em>Tween</em>. A tween is an object that represents a change of a property from one value to another over time. However, in most cases, the word tween is more likely to be synonymous with animation. A tween object has a target object (usually a display object) whose properties are affected, a target property, a duration, a start value and an end value. Tweens also use a special type of function, called an <em>easing function</em>, to determine the interpolation from the start to the ending values.</p>
+
+<h4>SynchronizedFunction</h4>
+<p>The <em>SynchronizedFunction</em> class represents a function or method and any specified arguments that are to be called at a specified time or after some delay. Just pass in the function you want to call and any arguments. The function will be called when the action executes.</p>
+<p>Note that unlike earlier versions of ActionScript, with AS3 there is no need to use a delegate to retain the scope of the function.</p>
+
+<h4>SynchronizedDispatchEvent</h4>
+<p></p>
+
+<h4>SynchronizedSound</h4>
+<p>This class represents a sound that is to be played at a specified time or after some delay.</p>
+
+<h3>The Action Groups</h3>
+<p>The <code>AbstractSynchronizedActionGroup</code> class defines common characteristics of all action groups. All action groups use the <code>addAction()</code> method to add actions to the group. As you can see from figure XXX,  <code>AbstractSynchronizedActionGroup</code> is itself a subclass of <code>AbstractSynchronizedAction</code> allowing you to nest action groups within  other action groups or use a group as if it were a single action. This distinction makes creating long strings of time based events a relatively simple task.</p>
+
+<h4>Parallel</h4>
+<p></p>
+
+<h4>Sequence</h4>
+<p></p>
+
+<h4>Staggered</h4>
+<p></p>
+
+<img src="fig3.png" alt="Three types of Action Groups: Sequence, Parallel, and Staggered." />
+
+<p>Behind the scenes, a class called <code>Synchronizer</code> acts as a timing clock for all of the synchronized action. Each time an action starts, the Synchronizer adds it to a sort of <em>virtual timeline</em>.</p>
+
+<img src="fig1.png" alt="Sequencer assigns actions to a 'virtual timeline'." />
+
+</body>
+</html>
