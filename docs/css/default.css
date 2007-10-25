@@ -19,6 +19,9 @@ body {
 	border: 1px solid #776666;
 	border-width: 0 1px;
 }
+#main p {
+	text-indent: 3em;
+}
 
 a {color: #325;}
 a:hover {color: #8863A2;}
@@ -31,6 +34,7 @@ h2 {
 	background: #325; /* #302020; */
 	color: #FFF;
 	padding: 10px;
+	margin: 30px 0 0;
 }
 
 .caption { 
