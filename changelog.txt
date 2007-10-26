@@ -1,6 +1,7 @@
 ===== v0.4 =====
 Added pause(), unpause(), and stop() to AbstractSynchronizedAction. Also created reset() for Tweens.
 Added new AbstractSynchronizedAction type - ActionController - which can tell another action to play, pause, unpause, stop, or kill. 
+Added SynchronizedGotoFrame for controlling MovieClips (untested)
 Also added ActionControllerCommands class for holding static constants for each command.
 Added getChildAtIndex() method to AbstractSynchronizedActionGroup.
 Added removeTrigger() and removeEventTrigger() to AbstractSynchronizedAction.
