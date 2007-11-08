@@ -8,6 +8,7 @@ Added removeTrigger() and removeEventTrigger() to AbstractSynchronizedAction.
 Added setTime() to Timestamp
 Added new class TimestampUtil with add(), subtract() methods.
 Added minimum and maximum modifiers to Random.ease function.
+Added triangle() to Oscillate class.
 Cleaned up performance of some functions with sounds and groups.
 Changed Tween's 'targetProperty' getter and setter to 'value' 
 Made startTimeIsElapsed and durationIsElapsed public read-only properties.
@@ -15,7 +16,7 @@ Moved some as3 library files to an externally linked library
 
 ===== v0.3.1 (2007.09.28) =====
 Moved code into a Flex Library Project (and moved demo to a seperate as3 project). Destroyed old repository.
-Added a User's Guide to the docs folder
+Added a User's Guide to the docs folder. Docs are available at http://mimswright.com/kitchensync/docs
 
 ===== v0.3 (2007.07.07) =====
 Created SVN repository at http://svn.mimswright.com/kitchensync/

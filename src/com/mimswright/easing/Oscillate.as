@@ -10,8 +10,6 @@ package com.mimswright.easing
 	 *  - <code>easeIn()</code>, <code>easeOut()</code> and <code>easeInOut()</code> - which vary the rate of change
 	 *  of the values. Most of the easing functions produce values as a percentage - a number between 0.0 and 1.0</p>
 	 *
-	 * @todo Add triangle wave
-	 * 
  	 * @author Mims H. Wright
 	 * @see EasingUtil
 	 */
@@ -64,6 +62,23 @@ package com.mimswright.easing
 		public static function sawtooth(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			return timeElapsed * frequency % 1.0;
+		}	
+		
+		/**
+	    * Oscillates between 0 and 1.0 (starting with 0 and ending with 1.0) for as long as the duration lasts 
+	    * in linear motion.
+	    * The position will be based on the timeElapsed and frequency.
+	    *
+	    * @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
+	    * @param duration - Specifies the duration of the tween, in milliseconds or frames.
+  	    * @param frequency - The frequency of the sine wave in oscillations per unit (ms or frames). Higher is faster. 1/frequency = wavelength
+	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
+	    */  
+		public static function triangle(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
+			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			var position:Number = timeElapsed * frequency;
+			if (position % 2.0 >= 1.0) { return 1.0 - (position % 1.0); }
+			return position % 1.0;
 		}	
 
 		/**

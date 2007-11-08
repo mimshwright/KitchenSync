@@ -11,8 +11,6 @@ package com.mimswright.sync
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
 	 * timing. 
 	 * 
-	 * -todo - test pause, stop, reset on functions and events
-	 * -todo - test removeTrigger method
 	 * -todo - add a settings object
 	 * -todo - add the ability to use msec instead of frames.
 	 * -todo - better implementation of ids
@@ -147,8 +145,6 @@ package com.mimswright.sync
 		 * Removes a trigger added with addTrigger().
 		 * 
 		 * @param trigger Another action that triggers the start of this action.
-		 * 
-		 * @todo - test
 		 */
 		public function removeTrigger(trigger:AbstractSynchronizedAction):void {
 		 	trigger.removeEventListener(SynchronizerEvent.COMPLETE, onTrigger);

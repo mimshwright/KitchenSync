@@ -51,10 +51,18 @@
 <img src="img/synchronizedActionUML.png" alt="All action classes (including groups) inherit from the AbstractSynchronizedAction class." />
 <p class="caption"><em>Fig 1</em> - Overview of the synchronized action inheritance. All action classes (including groups) inherit from the <code>AbstractSynchronizedAction</code> class.</p>
 
+<h3>The Synchronizer</h3>
+<p>Behind the scenes, a class called <code>Synchronizer</code> acts as a timing clock for all of the synchronized action. Each time an action starts, the Synchronizer adds it to a sort of <em>virtual timeline</em>.</p>
+
+<img src="img/virtualTimeline.png" alt="Sequencer assigns actions to a 'virtual timeline'." />
+<p class="caption"><em>Fig 2</em> - <code>Sequencer</code> assigns actions to a 'virtual timeline'.</p>
+
+<p>Most synchronized actions have two properties that control time. They are <em>duration</em> and <em>offset</em>. The <code>duration</code> is the time during which the action executes. Some actions, such as functions and event dispatchers, have a duration of 0 meaning that they execute instantaneously and only once. The other property, <code>offset</code>, controls how much time will pass before the action will start to execute. Offset is synonymous with delay. Both properties start counting only after the action's <code>start()</code> method has been called.</p>
+
 <h3>Commonly Used Actions</h3>
 
 <h4>Tween</h4>
-<p>Perhaps the most used action is the <em>Tween</em>. A tween is an object that represents a change of a property from one value to another over time. However, in most cases, the word tween is more likely to be synonymous with animation. A tween object has a target object (usually a display object) whose properties are affected, a target property, a duration, a start value and an end value. Tweens also use a special type of function, called an <em>easing function</em>, to determine the interpolation from the start to the ending values.</p>
+<p>Perhaps the most used action is the <code>Tween</code>. A tween is an object that represents a change of a property from one value to another over time. However, in most cases, the word tween is more likely to be synonymous with animation. A tween object has a target object (usually a display object) whose properties are affected, a target property, a duration, a start value and an end value. Tweens also use a special type of function, called an <em>easing function</em>, to determine the interpolation from the start to the ending values.</p>
 
 <h4>SynchronizedFunction</h4>
 <p>The <code>SynchronizedFunction</code> class represents a function or method and any specified arguments that are to be called at a specified time or after some delay. Just pass in the function you want to call and any arguments. The function will be called when the action executes.</p>
@@ -70,7 +78,7 @@
 <p>The <code>AbstractSynchronizedActionGroup</code> class defines common characteristics of all action groups. All action groups use the <code>addAction()</code> method to add actions to the group. As you can see from Figure 1,  <code>AbstractSynchronizedActionGroup</code> is itself a subclass of <code>AbstractSynchronizedAction</code> allowing you to nest action groups within  other action groups or use a group as if it were a single action. This distinction makes creating long strings of time based events a relatively simple task.</p>
 
 <img src="img/actionGroups.png" alt="Three types of Action Groups: Sequence, Parallel, and Staggered." />
-<p class="caption"><em>Fig 2</em> - Three types of Action Groups: <code>Sequence</code>, <code>Parallel</code>, and <code>Staggered</code>.</p>
+<p class="caption"><em>Fig 3</em> - Three types of Action Groups: <code>Sequence</code>, <code>Parallel</code>, and <code>Staggered</code>.</p>
 
 <h4>Sequence</h4>
 <p>In a <code>Sequence</code> group, actions are executed one after the other in order. Delays in between individual actions within the group are still maintained and will begin counting when the action's turn in the sequence comes up.</p>
@@ -83,14 +91,6 @@
 
 <p>Groups can be used in conjunction with one another. For example, you may wish to create a sequence that contains a parallel action so that you can have several actions occur at the same point in a sequence.</p>
 <p>With all of the action groups, separate events are dispatched upon completion of individual items and of the entire group.</p>
-
-<h3>The Synchronizer</h3>
-<p>Behind the scenes, a class called <code>Synchronizer</code> acts as a timing clock for all of the synchronized action. Each time an action starts, the Synchronizer adds it to a sort of <em>virtual timeline</em>.</p>
-
-<img src="img/virtualTimeline.png" alt="Sequencer assigns actions to a 'virtual timeline'." />
-<p class="caption"><em>Fig 3</em> - <code>Sequencer</code> assigns actions to a 'virtual timeline'.</p>
-
-<p>Most synchronized actions have two properties that control time. They are <em>duration</em> and <em>offset</em>. The <code>duration</code> is the time during which the action executes. Some actions, such as functions and event dispatchers, have a duration of 0 meaning that they execute instantaneously and only once. The other property, <code>offset</code>, controls how much time will pass before the action will start to execute. Offset is synonymous with delay. Both properties start counting only after the action's <code>start()</code> method has been called.</p>
 </div><!-- END main -->
 </body>
 </html>

@@ -7,13 +7,11 @@ package com.mimswright.sync
 	
 	/**
 	 * A sound that will be played back at the specified offset.
-	 * 
-	 * todo: add other accessors for the sound's properties.
 	 */
 	public class SynchronizedSound extends AbstractSynchronizedAction
 	{
 		protected var _sound:Sound;
-		public function get sound():Sound { return _sound; }
+		public function get sound():Sound { return _sound; } 
 		public function set sound(sound:Sound):void { _sound = sound; }
 		
 		protected var _channel:SoundChannel;
