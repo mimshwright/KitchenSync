@@ -42,7 +42,7 @@ package com.mimswright.sync
 		 * Executes the function when the offset has elapsed.
 		 * If the duration is > 0, it will repeat until the duration has elapsed.
 		 */
-		override internal function onUpdate(event:SynchronizerEvent):void {
+		override protected function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
 			if (startTimeHasElapsed) {
 				invoke();

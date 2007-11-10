@@ -58,6 +58,11 @@ package com.mimswright.sync
 		 */
 		internal function register():void {
 			Synchronizer.getInstance().addEventListener(SynchronizerEvent.UPDATE, onUpdate);
+			_startTime = Synchronizer.getInstance().currentTimestamp;
+			
+			// since the first update won't occur until the next frame, force one here to make it
+			// happen right away.
+			forceUpdate();
 		}
 		
 		/**
@@ -73,18 +78,19 @@ package com.mimswright.sync
 		 * 
 		 * @throws flash.errors.IllegalOperationError - if the method is called while the action is already running.
 		 */
-		public function start():void {
+		public function start():AbstractSynchronizedAction {
 			if (!_running) {
 				if (_paused) {
 					unpause();				
 				} else {
 					_running = true;
 					register();
-					_startTime = Synchronizer.getInstance().currentTimestamp;
+					dispatchEvent(new SynchronizerEvent(SynchronizerEvent.START, _startTime));
 				}
 			} else {
 				throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
 			}
+			return this;
 		}
 		
 		/**
@@ -165,8 +171,6 @@ package com.mimswright.sync
 		 * 
 		 * @param dispatcher The event dispatcher to remove.
 		 * @param eventType The event type to listen for.
-		 * 
-		 * @todo - test
 		 */
 		public function removeEventTrigger(dispatcher:IEventDispatcher, eventType:String):void {
 			dispatcher.removeEventListener(eventType, onTrigger);
@@ -185,6 +189,7 @@ package com.mimswright.sync
 		}
 		
 		
+		
 		/**
 		 * This function will be registered by the register method to respond to update events from the synchronizer.
 		 * Code that performs the action associated with this object should go in this function.
@@ -195,8 +200,17 @@ package com.mimswright.sync
 		 * @abstract
 		 * @param event - A SychronizerEvent with a timestamp from the Synchronizer.
 		 */
-		internal function onUpdate(event:SynchronizerEvent):void {
+		protected function onUpdate(event:SynchronizerEvent):void {
 			AbstractEnforcer.enforceMethod();
+		}
+		
+		/**
+		 * Foreces the onUpdate() method to fire without being triggered by Synchronizer.
+		 * 
+		 * @see #onUpdate()
+		 */
+		protected function forceUpdate():void {
+			onUpdate(new SynchronizerEvent(SynchronizerEvent.UPDATE, Synchronizer.getInstance().currentTimestamp));
 		}
 		
 		/**
@@ -206,7 +220,7 @@ package com.mimswright.sync
 		 */
 		 public function get startTimeHasElapsed():Boolean {
 		 	if (!_startTime || !_running) { return false; }
-		 	if (_startTime.currentFrame + _offset < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+		 	if (_startTime.currentFrame + _offset <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	return false;
 		 }
 		
@@ -237,9 +251,9 @@ package com.mimswright.sync
 		 * Call this when the action has completed.
 		 */
 		protected function complete():void {
-			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));
 			_running = false;
 			unregister();
+			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));
 			if (_autoDelete) { kill(); }
 		}		
 		

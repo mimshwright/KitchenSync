@@ -59,7 +59,7 @@ package com.mimswright.sync
 		 * If so, it starts playing the song from the soundOffset and unregisters itself.
 		 * If the sound hasn't loaded yet, it continues to check each frame until it is loaded, then it plays.
 		 */
-		override internal function onUpdate(event:SynchronizerEvent):void {
+		override protected function onUpdate(event:SynchronizerEvent):void {
 			if (startTimeHasElapsed) {
 				if (_sound.bytesLoaded == _sound.bytesTotal && _channel == null) {
 					_channel = _sound.play(_soundOffset);

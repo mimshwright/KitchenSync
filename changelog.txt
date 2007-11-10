@@ -9,6 +9,9 @@ Added setTime() to Timestamp
 Added new class TimestampUtil with add(), subtract() methods.
 Added minimum and maximum modifiers to Random.ease function.
 Added triangle() to Oscillate class.
+start() now returns the started action to make it easier declare and start in the same line: var tween:Tween = Tween(new Tween(x,y,...).start());
+Fixed the pesky bug where child actions executed 1 frame late.
+Fixed a bug where Parallel didn't dispatch CHILD_COMPLETE
 Cleaned up performance of some functions with sounds and groups.
 Changed Tween's 'targetProperty' getter and setter to 'value' 
 Made startTimeIsElapsed and durationIsElapsed public read-only properties.

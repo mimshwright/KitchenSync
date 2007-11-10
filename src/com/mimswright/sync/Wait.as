@@ -13,7 +13,7 @@ package com.mimswright.sync
 			_offset = offset;
 		}
 		
-		override internal function onUpdate(event:SynchronizerEvent):void {
+		override protected function onUpdate(event:SynchronizerEvent):void {
 			if (startTimeHasElapsed) {
 				if (durationHasElapsed) {
 					complete();

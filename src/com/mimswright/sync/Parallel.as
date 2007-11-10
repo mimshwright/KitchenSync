@@ -33,9 +33,8 @@ package com.mimswright.sync
 		
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
-		 * -todo: Currently, the child actions execute one frame late.
 		 */
-		override internal function onUpdate(event:SynchronizerEvent):void {
+		override protected function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
 			if (startTimeHasElapsed && !childrenAreRunning) {
 				// reset the number of running children.
@@ -47,8 +46,6 @@ package com.mimswright.sync
 					childAction.addEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
 					// start the child action
 					childAction.start();
-					// force an update
-					childAction.onUpdate(event);
 					// add one running child.
 					_runningChildren++;
 				}
@@ -64,11 +61,13 @@ package com.mimswright.sync
 		 * Completed children are removed from the array so they can be garbage collected.
 		 * 
 		 * @param event - The SynchronizerEvent.COMPLETE
+		 * @param event - The SynchronizerEvent.CHILD_COMPLETE
 		 */
 		protected function onChildFinished (event:Event):void {
 			var childAction:AbstractSynchronizedAction = AbstractSynchronizedAction(event.target);
 			childAction.removeEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
 			_runningChildren--;
+			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.CHILD_COMPLETE, Synchronizer.getInstance().currentTimestamp));
 			if (_runningChildren == 0) {
 				complete();
 			}
@@ -80,6 +79,10 @@ package com.mimswright.sync
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;
 			return clone;
+		}
+		
+		override public function toString():String {
+			return "Parallel group containing " + _childActions.length + " children";
 		}
 	}
 }

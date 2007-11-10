@@ -6,8 +6,7 @@ package com.mimswright.sync
 	/**
 	 * A group of actions that execute one at a time in the order that they were added to the group.
 	 * 
-	 * -todo - Child actions should not be deleted from the Aray until they are completed.
-	 */
+	 * */
 	public class Sequence extends AbstractSynchronizedActionGroup
 	{
 		protected const NO_CURRENT_ACTION_INDEX:int = -1;
@@ -41,10 +40,12 @@ package com.mimswright.sync
 		 * The first action in the sequence is called by using the startNextAction() method.
 		 * After the Sequence starts running, it no longer needs to listen to updates so it unregisters.
 		 */
-		override internal function onUpdate(event:SynchronizerEvent):void {
+		override protected function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
 			if (startTimeHasElapsed && !childrenAreRunning) {
 				startNextAction();
+				// Sequence no longer needs to listen for events from Synchronizer
+				// since it now receives all cues from its children.
 				unregister();
 			}
 		}
@@ -54,7 +55,6 @@ package com.mimswright.sync
 		 * and runs onChildFinished() when each child completes. The action that is currently playing
 		 * will be stored in _currentAction which is publicly accessible. 
 		 * 
-		 * -todo - fix bug where child action begins playing 1 frame late.
 		 * @return The currently playing action.
 		 */
 		protected function startNextAction():AbstractSynchronizedAction {
@@ -79,6 +79,8 @@ package com.mimswright.sync
 			_currentAction = null;
 			if (!checkForComplete()) {
 				startNextAction();
+			} else {
+				complete();
 			}
 		}
 		
@@ -88,8 +90,7 @@ package com.mimswright.sync
 		 * @return true if complete, otherwise false.
 		 */
 		protected function checkForComplete():Boolean{
-			if (_currentActionIndex >= _childActions.length-1) { 
-				complete();
+			if (_childActions && (_childActions.length > 0 ) && (_currentActionIndex >= _childActions.length-1)) { 
 				return true;
 			}
 			return false;
@@ -106,17 +107,25 @@ package com.mimswright.sync
 		/**
 		 * Override start to automatically quit if there are no children.
 		 */
-		override public function start():void {
+		override public function start():AbstractSynchronizedAction {
 			super.start();
-			checkForComplete();
+			if (childActions && childActions.length < 1) { complete(); }
+			return this;
 		}
 		
+		/**
+		 * todo - check for bugs
+		 */
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Sequence = new Sequence();
 			clone._childActions = _childActions;
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;
 			return clone;
+		}
+		
+		override public function toString():String {
+			return "Sequence Group";// containing " + _childActions.length + " children";
 		}
 	}
 }

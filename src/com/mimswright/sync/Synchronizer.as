@@ -20,7 +20,7 @@ package com.mimswright.sync
 		
 		private var _frames:Number = 0;
 		private var _previousTime:Number  = 0;
-		private var _currentTime:Number = 1;
+		private var _currentTime:Number = 0;
 		//private var _active:Boolean = true;
 		//public function get active ():Boolean { return _active; }
 		//public function set active (active:Boolean):void { _active = active; }
@@ -57,6 +57,7 @@ package com.mimswright.sync
 					_instance = new Synchronizer(new SingletonEnforcer());
 					_instance._stage = frameRateSeed.stage;
 					_instance._stage.addEventListener(Event.ENTER_FRAME, _instance.onEnterFrame, false, int.MAX_VALUE, false);
+					//_instance.onEnterFrame();
 					//_instance._active = true;
 					return _instance;
 				} else {
@@ -88,7 +89,7 @@ package com.mimswright.sync
 		 * Triggered by every passing frame of the Stage. Rebroadcasts the event with additional
 		 * information about the time at which it occurred. 
 		 */
-		private function onEnterFrame(event:Event):void {
+		private function onEnterFrame(event:Event = null):void {
 			_frames++;
 			_previousTime = _currentTime;
 			_currentTime = getTimer();

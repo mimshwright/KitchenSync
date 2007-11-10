@@ -76,7 +76,7 @@ package com.mimswright.sync
 		 * When the offset is reached, the event will be fired from the target.
 		 * Note that if duration is > 0, this will continue to fire for every frame until duration is elapsed.
 		 */
-		override internal function onUpdate(event:SynchronizerEvent):void {
+		override protected function onUpdate(event:SynchronizerEvent):void {
 			if (startTimeHasElapsed) {
 				_target.dispatchEvent(_event);
 				if (durationHasElapsed) {

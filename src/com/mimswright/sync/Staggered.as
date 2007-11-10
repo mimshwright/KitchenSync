@@ -5,8 +5,6 @@ package com.mimswright.sync
 	
 	/**
 	 * A group of actions that executes in sequence seperated by a specified gap.
-	 * 
-	 * -todo - update the way that Parallel checks for completeness to not destroy the array of children. This will cause issues for Staggered.
 	 */
 	public class Staggered extends Parallel
 	{	
@@ -48,7 +46,7 @@ package com.mimswright.sync
 		 * When the first update occurs, all of the child actions are started simultaniously.
 		 * -todo: Currently, the child actions execute one frame late.
 		 */
-		override internal function onUpdate(event:SynchronizerEvent):void {
+		override protected function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
 			if (startTimeHasElapsed) {
 				if (!_lastStartTime) {
@@ -64,8 +62,6 @@ package com.mimswright.sync
 					childAction.addEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
 					// start the child action
 					childAction.start();
-					// force an update
-					childAction.onUpdate(event);
 					
 					// if this is the last child, unregister
 					if (childActionIndex == _childActions.length - 1) {
@@ -81,6 +77,10 @@ package com.mimswright.sync
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;
 			return clone;
+		}
+		
+		override public function toString():String {
+			return "Staggered Group containing " + _childActions.length + " children";
 		}
 	}
 }
