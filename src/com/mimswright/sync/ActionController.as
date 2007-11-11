@@ -27,22 +27,22 @@ package com.mimswright.sync
 				throw new ArgumentError ("target AbstractSynchronizedAction must not be null.");
 			}
 			switch (command) {
-				case ActionControllerCommands.START:
+				case ActionControllerCommand.START:
 					_func = function ():void { _target.start(); };
 				break;
-				case ActionControllerCommands.PAUSE:
+				case ActionControllerCommand.PAUSE:
 					_func = function ():void { _target.pause(); };
 				break;
-				case ActionControllerCommands.UNPAUSE:
+				case ActionControllerCommand.UNPAUSE:
 					_func = function ():void { _target.unpause(); };
 				break;
-				case ActionControllerCommands.STOP:
+				case ActionControllerCommand.STOP:
 					_func = function ():void { _target.stop(); };
 				break;
-				case ActionControllerCommands.KILL:
+				case ActionControllerCommand.KILL:
 					_func = function ():void { _target.kill(); this.kill(); };
 				break;
-				case ActionControllerCommands.RESET:
+				case ActionControllerCommand.RESET:
 					// RESET only appllies to Tweens so use stop() if the object isn't a Tween.
 					_func = function ():void { 
 						if (_target is Tween) { 
