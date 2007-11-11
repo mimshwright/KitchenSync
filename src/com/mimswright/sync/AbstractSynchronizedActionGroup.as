@@ -101,6 +101,28 @@ package com.mimswright.sync
 		 public function reverseChildOrder():void {
 		 	_childActions = _childActions.reverse();
 		 }
+		 
+		 /**
+		 * Dispatches a CHILD_START event when the child begins.
+		 * 
+		 * @param event - The SynchronizerEvent.START from the child action
+		 * @event SynchronizerEvent.CHILD_START
+		 * -todo - Add a reference to the started child to the event.
+		 */
+		 protected function onChildStart(event:SynchronizerEvent):void {
+		 	dispatchEvent(new SynchronizerEvent(SynchronizerEvent.CHILD_START, event.timestamp));
+		 }
+		 
+		 /**
+		 * Called when child actions are completed.
+		 * 
+		 * @param event - The SynchronizerEvent.COMPLETE from the child action
+		 * @event SynchronizerEvent.CHILD_COMPLETE
+		 * -todo - Add a reference to the completed child to the event.
+		 */
+		protected function onChildFinished (event:SynchronizerEvent):void {
+			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.CHILD_COMPLETE, event.timestamp));
+		}
 		
 		override public function pause():void {
 			super.pause();

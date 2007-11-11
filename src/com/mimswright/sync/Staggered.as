@@ -9,7 +9,7 @@ package com.mimswright.sync
 	public class Staggered extends Parallel
 	{	
 		
-		protected var _stagger:int = 1;
+		protected var _stagger:int = 1000;
 		public function get stagger():int { return _stagger;}
 		public function set stagger(stagger:int):void { 
 			if (stagger <= 0) {
@@ -30,7 +30,7 @@ package com.mimswright.sync
 		 *					 The first one will not stagger (but will use the offset for the Staggered object)
 		 * @params children - a list of AbstractSynchronizedActions that will be added as children of the group.
 		 */
-		public function Staggered (stagger:int=1, ... children) {
+		public function Staggered (stagger:int, ... children) {
 			_stagger = stagger;
 			for (var i:int = 0; i < children.length; i++) {
 				if (children[i] is AbstractSynchronizedAction) {
@@ -52,14 +52,15 @@ package com.mimswright.sync
 				if (!_lastStartTime) {
 					_runningChildren = _childActions.length;
 				}
-				if (!_lastStartTime || time.currentFrame - _lastStartTime.currentFrame > _stagger) {
+				if (!_lastStartTime || time.currentFrame - _lastStartTime.currentFrame > convertToFrames(_stagger)) {
 					_lastStartTime = time;
-					var currentTime:int = time.currentFrame - offset - _startTime.currentFrame;
-					var childActionIndex:int = Math.floor(currentTime / _stagger);
+					var currentTime:int = time.currentFrame - convertToFrames(offset) - _startTime.currentFrame;
+					var childActionIndex:int = Math.floor(currentTime / convertToFrames(_stagger));
 					var childAction:AbstractSynchronizedAction = AbstractSynchronizedAction(_childActions[childActionIndex]);
 
 					// add a listener to each action so that the completion of the entire group can be tracked.
 					childAction.addEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
+					childAction.addEventListener(SynchronizerEvent.START, onChildStart);
 					// start the child action
 					childAction.start();
 					
@@ -73,6 +74,7 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Staggered = new Staggered(_stagger);
+			clone.timeUnit = _timeUnit;
 			clone._childActions = _childActions;
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;

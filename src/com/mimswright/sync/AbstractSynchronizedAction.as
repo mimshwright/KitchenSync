@@ -16,18 +16,31 @@ package com.mimswright.sync
 	 * -todo - better implementation of ids
 	 */
 	public class AbstractSynchronizedAction extends EventDispatcher
-	{
+	{	
 		protected var _duration:int = 0;
 		public function get duration():int { return _duration; }
-		public function set duration(duration:int):void { _duration = duration; }
+		public function set duration(duration:int):void { 
+			_duration = duration;
+		}
 		
 		protected var _offset:int = 0;
 		public function get offset():int { return _offset; }
-		public function set offset(offset:int):void { _offset = offset; }
+		public function set offset(offset:int):void { 
+			_offset = offset;
+		}
 		
 		protected var _autoDelete:Boolean = true;
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
+		
+		protected var _timeUnit:String = TimeUnit.DEFAULT;
+		public function get timeUnit():String { return _timeUnit; }
+		public function set timeUnit(timeUnit:String):void {
+			if (timeUnit != _timeUnit) { 
+				if (_running || _paused) { throw Error ("Cannot change timeUnits while the action is running or paused."); }
+				_timeUnit = timeUnit;
+			}
+		}
 		
 	/* 	protected var _id:String;
 		public function get id ():String {
@@ -220,7 +233,7 @@ package com.mimswright.sync
 		 */
 		 public function get startTimeHasElapsed():Boolean {
 		 	if (!_startTime || !_running) { return false; }
-		 	if (_startTime.currentFrame + _offset <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+			 if (_startTime.currentFrame + convertToFrames(_offset) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	return false;
 		 }
 		
@@ -231,8 +244,20 @@ package com.mimswright.sync
 		 */
 		 public function get durationHasElapsed():Boolean {
 		 	if (!_startTime || !_running) { return false; }
-		 	if (_startTime.currentFrame + _offset + _duration-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+		 	if (_startTime.currentFrame + convertToFrames(_offset) + convertToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	return false;
+		 }
+		 
+		 /**
+		 * Convert times to frames so that all timing can be done in frames.
+		 */
+		 protected function convertToFrames(time:int):int {
+		 	switch (_timeUnit) {
+		 		case TimeUnit.MILLISECONDS: return TimestampUtil.millisecondsToFrames(time);
+		 		case TimeUnit.SECONDS: return TimestampUtil.millisecondsToFrames(time * 1000) ; 
+		 		case TimeUnit.FRAMES: return time; 
+		 		default: return time;
+		 	}
 		 }
 		
 		/**

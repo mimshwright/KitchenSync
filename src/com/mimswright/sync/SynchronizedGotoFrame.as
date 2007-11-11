@@ -30,6 +30,7 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:SynchronizedGotoFrame = new SynchronizedGotoFrame();
+			clone.timeUnit = _timeUnit; 
 			clone._args = _args;
 			clone._result = _result;
 			clone.duration = _duration;

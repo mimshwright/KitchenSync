@@ -7,6 +7,7 @@ package com.mimswright.sync
 		public static const START:String = "ActionStart";
 		public static const UPDATE:String = "SynchronizerUpdate";
 		public static const COMPLETE:String = "ActionComplete";
+		public static const CHILD_START:String = "ChildActionStart";
 		public static const CHILD_COMPLETE:String = "ChildActionComplete";
 		
 		private var _timestamp:Timestamp;

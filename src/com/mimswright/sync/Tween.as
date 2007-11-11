@@ -191,6 +191,7 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Tween = new Tween(_target, _property, _toValue, _fromValue, _duration, _offset, _easingFunction);
+			clone._timeUnit = _timeUnit;
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;

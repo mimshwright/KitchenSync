@@ -1,6 +1,5 @@
 package com.mimswright.sync
 {
-	import flash.events.Event;
 	import flash.utils.getQualifiedClassName;
 	
 	/**
@@ -43,6 +42,7 @@ package com.mimswright.sync
 				for (var i:int=0; i < _childActions.length; i++) {
 					var childAction:AbstractSynchronizedAction = AbstractSynchronizedAction(_childActions[i]);
 					// add a listener to each action so that the completion of the entire group can be tracked.
+					childAction.addEventListener(SynchronizerEvent.START, onChildStart);
 					childAction.addEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
 					// start the child action
 					childAction.start();
@@ -63,11 +63,12 @@ package com.mimswright.sync
 		 * @param event - The SynchronizerEvent.COMPLETE
 		 * @param event - The SynchronizerEvent.CHILD_COMPLETE
 		 */
-		protected function onChildFinished (event:Event):void {
+		override protected function onChildFinished (event:SynchronizerEvent):void {
+			super.onChildFinished(event);
 			var childAction:AbstractSynchronizedAction = AbstractSynchronizedAction(event.target);
 			childAction.removeEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
+			childAction.removeEventListener(SynchronizerEvent.START, onChildStart);
 			_runningChildren--;
-			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.CHILD_COMPLETE, Synchronizer.getInstance().currentTimestamp));
 			if (_runningChildren == 0) {
 				complete();
 			}
@@ -75,6 +76,7 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Parallel = new Parallel();
+			clone.timeUnit = _timeUnit;
 			clone._childActions = _childActions;
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;

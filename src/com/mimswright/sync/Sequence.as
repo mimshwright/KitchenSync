@@ -1,6 +1,5 @@
 package com.mimswright.sync
 {
-	import flash.events.Event;
 	import flash.utils.getQualifiedClassName;
 	
 	/**
@@ -61,6 +60,7 @@ package com.mimswright.sync
 			_currentActionIndex++;
 			_currentAction = getChildAtIndex(_currentActionIndex);
 			_currentAction.addEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
+			_currentAction.addEventListener(SynchronizerEvent.START, onChildStart);
 			_currentAction.start();
 			return _currentAction;
 		}
@@ -73,9 +73,10 @@ package com.mimswright.sync
 		 * @param event - The SynchronizerEvent.COMPLETE from the _currentAction
 		 * -todo - Add a reference to the completed child to the CHILD_COMPLETE event.
 		 */
-		protected function onChildFinished (event:Event):void {
-			dispatchEvent(new SynchronizerEvent(SynchronizerEvent.CHILD_COMPLETE, Synchronizer.getInstance().currentTimestamp));
+		override protected function onChildFinished (event:SynchronizerEvent):void {
+			super.onChildFinished(event);
 			_currentAction.removeEventListener(SynchronizerEvent.COMPLETE, onChildFinished);
+			_currentAction.removeEventListener(SynchronizerEvent.START, onChildStart);
 			_currentAction = null;
 			if (!checkForComplete()) {
 				startNextAction();
@@ -118,6 +119,7 @@ package com.mimswright.sync
 		 */
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Sequence = new Sequence();
+			clone.timeUnit = _timeUnit;
 			clone._childActions = _childActions;
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;

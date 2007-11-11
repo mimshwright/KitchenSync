@@ -1,4 +1,3 @@
-
 package com.mimswright.sync
 {	
 	/**
@@ -9,21 +8,21 @@ package com.mimswright.sync
 	public class ActionControllerCommand
 	{
 		/** start() command. */
-		public static const START:ActionControllerCommand = new ActionControllerCommand();
+		public static const START:String = "start";
 		
 		/** pause() command. */
-		public static const PAUSE:ActionControllerCommand = new ActionControllerCommand();
+		public static const PAUSE:String = "pause";
 
 		/** unpause() command. */
-		public static const UNPAUSE:ActionControllerCommand = new ActionControllerCommand();
+		public static const UNPAUSE:String = "unpause";
 
 		/** stop() command. */
-		public static const STOP:ActionControllerCommand = new ActionControllerCommand();
+		public static const STOP:String = "stop";
 
 		/** kill() command. */
-		public static const KILL:ActionControllerCommand = new ActionControllerCommand();
+		public static const KILL:String = "kill";
 
 		/** reset() command. For Tween objects only. */
-		public static const RESET:ActionControllerCommand = new ActionControllerCommand();
+		public static const RESET:String = "reset";
 	}
 }
