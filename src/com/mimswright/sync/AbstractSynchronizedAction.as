@@ -12,27 +12,49 @@ package com.mimswright.sync
 	 * timing. 
 	 * 
 	 * -todo - add a settings object
-	 * -todo - add the ability to use msec instead of frames.
 	 * -todo - better implementation of ids
 	 */
 	public class AbstractSynchronizedAction extends EventDispatcher
-	{	
+	{			
+		/**
+		 * duration is the length of time that the action will run.
+		 * 
+		 * @see #timeUnit
+		 */
 		protected var _duration:int = 0;
 		public function get duration():int { return _duration; }
 		public function set duration(duration:int):void { 
 			_duration = duration;
 		}
 		
+		/**
+		 * offset is the time that will pass after the start() method is called
+		 * before the action begins. Also known as delay.
+		 * 
+		 * @see #timeUnit
+		 */
 		protected var _offset:int = 0;
 		public function get offset():int { return _offset; }
 		public function set offset(offset:int):void { 
 			_offset = offset;
 		}
 		
-		protected var _autoDelete:Boolean = true;
+		/**
+		 * autoDelete is a flag that indicates whether the action should be deleted 
+		 * when it is done executing. The default is set to false so the actions must 
+		 * be deleted manually.
+		 */
+		protected var _autoDelete:Boolean = false;
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
 		
+		/**
+		 * timeUnit is the units that will be used when dealing with times. This affects
+		 * such values as offset and duration.
+		 * 
+		 * todo - add support for fractions of seconds.
+		 * @see TimeUnit
+		 */ 
 		protected var _timeUnit:String = TimeUnit.DEFAULT;
 		public function get timeUnit():String { return _timeUnit; }
 		public function set timeUnit(timeUnit:String):void {
@@ -41,6 +63,10 @@ package com.mimswright.sync
 				_timeUnit = timeUnit;
 			}
 		}
+		
+		protected var _name:String;
+		public function get name():String { return _name; }
+		public function set name(name:String):void { _name = name; }
 		
 	/* 	protected var _id:String;
 		public function get id ():String {

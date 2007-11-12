@@ -1,17 +1,19 @@
 ===== v0.4 =====
 Added pause(), unpause(), and stop() to AbstractSynchronizedAction. Also created reset() for Tweens.
+Added support for milliseconds or frames using the TimeUnit class. The default time unit is now milliseconds.
 Added new AbstractSynchronizedAction type - ActionController - which can tell another action to play, pause, unpause, stop, or kill. 
-Added SynchronizedGotoFrame for controlling MovieClips (untested)
 Also added ActionControllerCommands class for holding static constants for each command.
+Added SynchronizedGotoFrame for controlling MovieClips (untested)
+Added new class TimestampUtil with add(), subtract() methods.
 Added getChildAtIndex() method to AbstractSynchronizedActionGroup.
 Added removeTrigger() and removeEventTrigger() to AbstractSynchronizedAction.
 Added setTime() to Timestamp
-Added new class TimestampUtil with add(), subtract() methods.
 Added minimum and maximum modifiers to Random.ease function.
 Added triangle() to Oscillate class.
 start() now returns the started action to make it easier declare and start in the same line: var tween:Tween = Tween(new Tween(x,y,...).start());
 Fixed the pesky bug where child actions executed 1 frame late.
 Fixed a bug where Parallel didn't dispatch CHILD_COMPLETE
+Added CHILD_START events and moved onChildComplete() and onChildStart() into the AbstractSynchronizedActionGroup class.
 Cleaned up performance of some functions with sounds and groups.
 Changed Tween's 'targetProperty' getter and setter to 'value' 
 Made startTimeIsElapsed and durationIsElapsed public read-only properties.
@@ -47,13 +49,13 @@ Removed easeIn(), easeOut(), easeInOut() for Linear and Random
 Added Tween.EXISTING_FROM_VALUE as the from value default. Reordered Tween constructor parameters.
 
 ===== v0.2 (2007.06.21) =====
-Staggered groups
-SyncrhonizedSound (not tested)
-Wait class
+Added Staggered groups
+Added SyncrhonizedSound (not tested)
+Added Wait class
+Added EasingUtil added with call() method for more safely calling easing functions and the generateArray() method for pre-calculating
+Added Sine.oscillate() and Random.ease() easing functions
 Renamed SynchronizedEvent to SynchronizedDispatchEvent
 rewrote all penner v2 easing functions to use fewer arguments and ported to as3
-Sine.oscillate() and Random.ease() easing functions
-EasingUtil added with call() method for more safely calling easing functions and the generateArray() method for pre-calculating
 ability to set easing function modifiers on a Tween object (includes shortcuts for amplitude, period, and overshoot)
 Fixed a bug with Parallel where items were deleted from array on complete.
 ITweenable and TargetProperty classes (aren't implemented yet)
