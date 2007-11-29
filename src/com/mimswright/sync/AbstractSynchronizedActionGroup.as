@@ -1,6 +1,6 @@
 package com.mimswright.sync
 {
-	import com.mimswright.utils.AbstractEnforcer;
+	import org.as3lib.utils.AbstractEnforcer;
 	
 	public class AbstractSynchronizedActionGroup extends AbstractSynchronizedAction
 	{

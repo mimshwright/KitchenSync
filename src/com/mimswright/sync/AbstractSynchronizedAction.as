@@ -1,6 +1,6 @@
 package com.mimswright.sync
 {
-	import com.mimswright.utils.AbstractEnforcer;
+	import org.as3lib.utils.AbstractEnforcer;
 	
 	import flash.errors.IllegalOperationError;
 	import flash.events.Event;
