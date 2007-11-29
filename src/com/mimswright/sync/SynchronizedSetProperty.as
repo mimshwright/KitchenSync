@@ -1,6 +1,8 @@
 package com.mimswright.sync
-{
+{	
 	/**
+	 * SynchronizedAction to set a property for any object to a specified value.
+	 * 
 	 * @todo - write docs
 	 * @todo - test
 	 */
@@ -8,12 +10,17 @@ package com.mimswright.sync
 	{
 		public function SynchronizedSetProperty(target:Object, key:String, value:*, offset:int = 0)
 		{
-			var func:Function = new Function
 			super(offset, setProperty, target, key, value);
 		}
 		
 		public function setProperty(target:Object, key:String, value:*):void {
 			target[key] = value;	
 		}
+		
+		override public function kill():void {
+			super.kill();
+			_func = null;
+			_args = null;
+		} 
 	}
 }

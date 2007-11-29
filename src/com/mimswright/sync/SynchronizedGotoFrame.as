@@ -14,6 +14,9 @@ package com.mimswright.sync
 		public function get target ():MovieClip { return _target; }
 		public function set target (target:MovieClip):void { _target = target; }
 		
+		/**
+		 * A frame identifier could be a string or a frame number to play
+		 */
 		protected var _frameIdentifier:*;
 		public function get frameIdentifier ():* { return _frameIdentifier; }
 		public function set frameIdentifier (frameIdentifier:*):void { _frameIdentifier = frameIdentifier ;}
