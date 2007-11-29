@@ -4,19 +4,19 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="AbstractSynchronizedAction,com.mimswright.sync.AbstractSynchronizedAction,_duration,_offset,_autoDelete,_running,_paused,_startTime,_pauseTime,duration,offset,autoDelete,isRunning,isPaused,startTimeHasElapsed,durationHasElapsed,register,unregister,start,pause,unpause,stop,addTrigger,removeTrigger,addEventTrigger,removeEventTrigger,onTrigger,onUpdate,clone,complete,kill" name="keywords">
+<meta content="AbstractSynchronizedAction,com.mimswright.sync.AbstractSynchronizedAction,_autoDelete,_duration,_name,_offset,_pauseTime,_paused,_running,_startTime,_sync,_timeUnit,autoDelete,duration,durationHasElapsed,isPaused,isRunning,name,offset,startTimeHasElapsed,sync,timeUnit,addEventTrigger,addTrigger,clone,complete,convertToFrames,convertToMilliseconds,forceUpdate,kill,onTrigger,onUpdate,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister" name="keywords">
 <title>com.mimswright.sync.AbstractSynchronizedAction</title>
 </head>
 <body>
 <script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'AbstractSynchronizedAction - API Documentation';
+				asdocTitle = 'AbstractSynchronizedAction - My Application';
 				var baseRef = '../../../';
 				window.onload = configPage;
 			--></script>
 <table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
 <tr>
-<td align="left" class="titleTableTitle">KitchenSync</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?com/mimswright/sync/AbstractSynchronizedAction.html&amp;com/mimswright/sync/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?com/mimswright/sync/AbstractSynchronizedAction.html&amp;com/mimswright/sync/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
 </tr>
 <tr class="titleTableRow2">
 <td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;AbstractSynchronizedAction</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
@@ -48,10 +48,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
   This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
   timing. 
   
-  -todo - test pause, stop, reset on functions and events
-  -todo - test removeTrigger method
+  -todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
+    18100 msec; 819 frames We use debuggers so you know our shit don't crash
+    18121 msec; 820 frames We use debuggers so you know our shit don't crash
   -todo - add a settings object
-  -todo - add the ability to use msec instead of frames.
   -todo - better implementation of ids
   <p></p>
 <br>
@@ -86,12 +86,24 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#name">name</a> : String<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offset">offset</a> : int<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTimeHasElapsed">startTimeHasElapsed</a> : Boolean<div class="summaryTableDescription">[read-only]
    Checks to see whether the start time offset has elapsed and if the _startTime is defined.</div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sync">sync</a> : Boolean<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeUnit">timeUnit</a> : String<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 </table>
@@ -104,15 +116,24 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_autoDelete">_autoDelete</a> : Boolean = true<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_autoDelete">_autoDelete</a> : Boolean = false<div class="summaryTableDescription">
+   autoDelete is a flag that indicates whether the action should be deleted 
+   when it is done executing.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_duration">_duration</a> : int = 0<div class="summaryTableDescription">
+   duration is the length of time that the action will run.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_offset">_offset</a> : int = 0<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_name">_name</a> : String<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_offset">_offset</a> : int = 0<div class="summaryTableDescription">
+   offset is the time that will pass after the start() method is called
+   before the action begins.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -131,6 +152,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTime">_startTime</a> : <a href="../sync/Timestamp.html">Timestamp</a>
 <div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_sync">_sync</a> : Boolean = true<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_timeUnit">_timeUnit</a> : String = "milliseconds"<div class="summaryTableDescription">
+   timeUnit is the units that will be used when dealing with times.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 </table>
@@ -186,14 +216,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#onUpdate()">onUpdate</a>(event:<a href="SynchronizerEvent.html">SynchronizerEvent</a>):void</div>
-<div class="summaryTableDescription">
-   This function will be registered by the register method to respond to update events from the synchronizer.</div>
-</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
 <a class="signatureLink" href="#pause()">pause</a>():void</div>
 <div class="summaryTableDescription">
    Causes the action to be paused.</div>
@@ -226,7 +248,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#start()">start</a>():void</div>
+<a class="signatureLink" href="#start()">start</a>():<a href="../sync/AbstractSynchronizedAction.html">AbstractSynchronizedAction</a>
+</div>
 <div class="summaryTableDescription">
    Starts the timer for this action.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
@@ -274,9 +297,41 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#convertToFrames()">convertToFrames</a>(time:int):int</div>
+<div class="summaryTableDescription">
+   Convert times to frames so that all timing can be done in frames.</div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#convertToMilliseconds()">convertToMilliseconds</a>(time:int):int</div>
+<div class="summaryTableDescription">
+   </div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forceUpdate()">forceUpdate</a>():void</div>
+<div class="summaryTableDescription">
+   Foreces the onUpdate() method to fire without being triggered by Synchronizer.</div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#onTrigger()">onTrigger</a>(event:Event):void</div>
 <div class="summaryTableDescription">
    Handler that starts playing the action that is called by a trigger event.</div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onUpdate()">onUpdate</a>(event:<a href="SynchronizerEvent.html">SynchronizerEvent</a>):void</div>
+<div class="summaryTableDescription">
+   This function will be registered by the register method to respond to update events from the synchronizer.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 </table>
@@ -295,8 +350,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _autoDelete:Boolean = true</code>
-</div>
+<code>protected var _autoDelete:Boolean = false</code><p>
+   autoDelete is a flag that indicates whether the action should be deleted 
+   when it is done executing. The default is set to false so the actions must 
+   be deleted manually.
+   </p></div>
 <a name="autoDelete"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -318,7 +376,15 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _duration:int = 0</code>
+<code>protected var _duration:int = 0</code><p>
+   duration is the length of time that the action will run.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../sync/AbstractSynchronizedAction.html#timeUnit" target="">timeUnit</a>
+</div>
 </div>
 <a name="duration"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -373,6 +439,29 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isRunning():Boolean</code>
 <br>
 </div>
+<a name="_name"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_name</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _name:String</code>
+</div>
+<a name="name"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">name</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>name:String</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get name():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set name(value:String):void</code>
+<br>
+</div>
 <a name="_offset"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -380,7 +469,16 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _offset:int = 0</code>
+<code>protected var _offset:int = 0</code><p>
+   offset is the time that will pass after the start() method is called
+   before the action begins. Also known as delay.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../sync/AbstractSynchronizedAction.html#timeUnit" target="">timeUnit</a>
+</div>
 </div>
 <a name="offset"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -445,6 +543,62 @@ showHideInherited();
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTimeHasElapsed():Boolean</code>
+<br>
+</div>
+<a name="_sync"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_sync</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _sync:Boolean = true</code>
+</div>
+<a name="sync"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sync</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>sync:Boolean</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get sync():Boolean</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set sync(value:Boolean):void</code>
+<br>
+</div>
+<a name="_timeUnit"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_timeUnit</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _timeUnit:String = "milliseconds"</code><p>
+   timeUnit is the units that will be used when dealing with times. This affects
+   such values as offset and duration.
+   
+   todo - add support for fractions of seconds.
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="TimeUnit.html" target="">TimeUnit</a>
+</div>
+</div>
+<a name="timeUnit"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeUnit</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>timeUnit:String</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timeUnit():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set timeUnit(value:String):void</code>
 <br>
 </div>
 <a name="constructorDetail"></a>
@@ -541,6 +695,68 @@ showHideInherited();
 <code>protected function complete():void</code><p>
    Call this when the action has completed.
    </p></div>
+<a name="convertToFrames()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">convertToFrames</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function convertToFrames(time:int):int</code><p>
+   Convert times to frames so that all timing can be done in frames.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:int</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code></td>
+</tr>
+</table>
+</div>
+<a name="convertToMilliseconds()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">convertToMilliseconds</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function convertToMilliseconds(time:int):int</code><p>
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:int</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code></td>
+</tr>
+</table>
+</div>
+<a name="forceUpdate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forceUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function forceUpdate():void</code><p>
+   Foreces the onUpdate() method to fire without being triggered by Synchronizer.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../sync/AbstractSynchronizedAction.html#onUpdate()" target="">onUpdate()</a>
+</div>
+</div>
 <a name="kill()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -583,7 +799,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function onUpdate(event:<a href="SynchronizerEvent.html">SynchronizerEvent</a>):void</code><p>
+<code>protected function onUpdate(event:<a href="SynchronizerEvent.html">SynchronizerEvent</a>):void</code><p>
    This function will be registered by the register method to respond to update events from the synchronizer.
    Code that performs the action associated with this object should go in this function.
    This function must be implemented by the subclass.
@@ -627,6 +843,7 @@ showHideInherited();
 <div class="detailBody">
 <code>public function register():void</code><p>
    Adds the action as a listener to the Synchronizer's update event.
+   
    </p></div>
 <a name="removeEventTrigger()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -649,7 +866,6 @@ showHideInherited();
 </tr>
 <tr>
 <td width="20px"></td><td><code><span class="label">eventType</span>:String</code> &mdash; The event type to listen for.
-   
    </td>
 </tr>
 </table>
@@ -668,7 +884,6 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">trigger</span>:<a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></code> &mdash; Another action that triggers the start of this action.
-   
    </td>
 </tr>
 </table>
@@ -680,11 +895,18 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function start():void</code><p>
+<code>public function start():<a href="../sync/AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></code><p>
    Starts the timer for this action.
    Registers the action with the synchronizer.
    
-   </p><br>
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../sync/AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></code></td>
+</tr>
+</table>
+<br>
 <span class="label">Throws</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>

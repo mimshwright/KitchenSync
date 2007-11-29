@@ -10,13 +10,13 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'EasingUtil - API Documentation';
+				asdocTitle = 'EasingUtil - My Application';
 				var baseRef = '../../../';
 				window.onload = configPage;
 			--></script>
 <table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
 <tr>
-<td align="left" class="titleTableTitle">KitchenSync</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?com/mimswright/easing/EasingUtil.html&amp;com/mimswright/easing/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?com/mimswright/easing/EasingUtil.html&amp;com/mimswright/easing/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
 </tr>
 <tr class="titleTableRow2">
 <td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;EasingUtil</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
@@ -63,7 +63,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#generateArray()">generateArray</a>(func:Function, steps:int):Array</div>
+<a class="signatureLink" href="#generateArray()">generateArray</a>(func:Function, steps:int, mod1:Number, mod2:Number):Array</div>
 <div class="summaryTableDescription">[static]
    Uses one of the easing functions to generate an array of results for as many steps as are specified.</div>
 </td><td class="summaryTableOwnerCol">EasingUtil</td>
@@ -161,7 +161,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public static function generateArray(func:Function, steps:int):Array</code><p>
+<code>public static function generateArray(func:Function, steps:int, mod1:Number, mod2:Number):Array</code><p>
    Uses one of the easing functions to generate an array of results for as many steps as are specified.
    If steps is 10, you will have an array with length 10.
    
@@ -176,6 +176,20 @@ showHideInherited();
 </tr>
 <tr>
 <td width="20px"></td><td><code><span class="label">steps</span>:int</code> &mdash; - The number of results desired for the array.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mod1</span>:Number</code> &mdash; - An optional modifier for the function. Used for tweens such as Back and Elastic.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mod2</span>:Number</code> &mdash; - An optional modifier for the function. Used for tweens such as Elastic.
    </td>
 </tr>
 </table>
