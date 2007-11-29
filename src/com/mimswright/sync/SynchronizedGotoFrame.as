@@ -1,5 +1,7 @@
 package com.mimswright.sync
 {
+	import flash.display.MovieClip;
+	
 	/**
 	 * Tells a target MovieClip to play a specified frame.
 	 *
@@ -10,11 +12,11 @@ package com.mimswright.sync
 	{
 		protected var _target:MovieClip;
 		public function get target ():MovieClip { return _target; }
-		public function set target (target:MovieClip):Void { _target = target; }
+		public function set target (target:MovieClip):void { _target = target; }
 		
 		protected var _frameIdentifier:*;
 		public function get frameIdentifier ():* { return _frameIdentifier; }
-		public function set frameIdentifier (frameIdentifier:*) { _frameIdentifier = frameIdentifier ;}
+		public function set frameIdentifier (frameIdentifier:*):void { _frameIdentifier = frameIdentifier ;}
 		
 		/**
 		 * Constructor.
@@ -23,13 +25,13 @@ package com.mimswright.sync
 		 * @param target - the MovieClip whose frames you are going to
 		 * @param frameIdentifier - a String or uint to go to
 		 */
-		public function SynchronizedFunction(offset:int, target:MovieClip, frameIdentifier:*)
+		public function SynchronizedGotoFrame(offset:int, target:MovieClip, frameIdentifier:*)
 		{
 			super(offset, target.gotoAndPlay, frameIdentifier);
 		}
 		
 		override public function clone():AbstractSynchronizedAction {
-			var clone:SynchronizedGotoFrame = new SynchronizedGotoFrame();
+			var clone:SynchronizedGotoFrame = new SynchronizedGotoFrame(offset, target, frameIdentifier);
 			clone.timeUnit = _timeUnit; 
 			clone._args = _args;
 			clone._result = _result;
