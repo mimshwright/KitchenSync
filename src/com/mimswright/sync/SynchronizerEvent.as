@@ -5,6 +5,8 @@ package com.mimswright.sync
 	public class SynchronizerEvent extends Event
 	{
 		public static const START:String = "ActionStart";
+		public static const PAUSE:String = "ActionPause";
+		public static const UNPAUSE:String = "ActionUnpause";
 		public static const UPDATE:String = "SynchronizerUpdate";
 		public static const COMPLETE:String = "ActionComplete";
 		public static const CHILD_START:String = "ChildActionStart";

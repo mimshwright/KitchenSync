@@ -3,6 +3,8 @@ package com.mimswright.sync
 	/**
 	 * Timestamp encapsulates an instant as a frame number and a real time so that either may be used for 
 	 * calculating synchronicity.
+	 * 
+	 * @todo rename currentTime and currentFrame to frames and milliseconds
 	 */
 	public class Timestamp
 	{
@@ -19,6 +21,10 @@ package com.mimswright.sync
 		internal function setTime(frame:Number = 0, currentTime:Number = 0):void {
 			_currentFrame = frame;
 			_currentTime = currentTime;
+		}
+		
+		public function clone():Timestamp {
+			return new Timestamp(currentFrame, currentTime);
 		}
 		
 		public function toString():String {

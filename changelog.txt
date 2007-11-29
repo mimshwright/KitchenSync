@@ -4,6 +4,7 @@ Added support for milliseconds or frames using the TimeUnit class. The default t
 Added new AbstractSynchronizedAction type - ActionController - which can tell another action to play, pause, unpause, stop, or kill. 
 Also added ActionControllerCommands class for holding static constants for each command.
 Added SynchronizedGotoFrame for controlling MovieClips (untested)
+Added SynchronizedSetProperty (not tested)
 Added new class TimestampUtil with add(), subtract() methods.
 Added getChildAtIndex() method to AbstractSynchronizedActionGroup.
 Added removeTrigger() and removeEventTrigger() to AbstractSynchronizedAction.
@@ -14,6 +15,8 @@ start() now returns the started action to make it easier declare and start in th
 Fixed the pesky bug where child actions executed 1 frame late.
 Fixed a bug where Parallel didn't dispatch CHILD_COMPLETE
 Added CHILD_START events and moved onChildComplete() and onChildStart() into the AbstractSynchronizedActionGroup class.
+Added PAUSE and UNPAUSE events
+Added clone() to Timestamp
 Cleaned up performance of some functions with sounds and groups.
 Changed Tween's 'targetProperty' getter and setter to 'value' 
 Made startTimeIsElapsed and durationIsElapsed public read-only properties.

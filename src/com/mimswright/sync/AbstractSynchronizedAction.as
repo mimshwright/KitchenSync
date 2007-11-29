@@ -11,6 +11,9 @@ package com.mimswright.sync
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
 	 * timing. 
 	 * 
+	 * -todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
+	 * 		18100 msec; 819 frames We use debuggers so you know our shit don't crash
+	 * 		18121 msec; 820 frames We use debuggers so you know our shit don't crash
 	 * -todo - add a settings object
 	 * -todo - better implementation of ids
 	 */
@@ -64,6 +67,11 @@ package com.mimswright.sync
 			}
 		}
 		
+		protected var _sync:Boolean = true;
+		public function get sync():Boolean { return _sync; }
+		public function set sync(sync:Boolean):void { _sync = sync; }
+		
+		
 		protected var _name:String;
 		public function get name():String { return _name; }
 		public function set name(name:String):void { _name = name; }
@@ -94,10 +102,12 @@ package com.mimswright.sync
 		
 		/**
 		 * Adds the action as a listener to the Synchronizer's update event.
+		 * 
+		 * @todo see if moving forceUpdate() into start helps.
 		 */
 		internal function register():void {
 			Synchronizer.getInstance().addEventListener(SynchronizerEvent.UPDATE, onUpdate);
-			_startTime = Synchronizer.getInstance().currentTimestamp;
+			//_startTime = Synchronizer.getInstance().currentTimestamp;
 			
 			// since the first update won't occur until the next frame, force one here to make it
 			// happen right away.
@@ -123,6 +133,7 @@ package com.mimswright.sync
 					unpause();				
 				} else {
 					_running = true;
+					_startTime = Synchronizer.getInstance().currentTimestamp;
 					register();
 					dispatchEvent(new SynchronizerEvent(SynchronizerEvent.START, _startTime));
 				}
@@ -149,6 +160,7 @@ package com.mimswright.sync
 				_pauseTime = Synchronizer.getInstance().currentTimestamp;
 				_paused = true;
 				unregister();
+				dispatchEvent(new SynchronizerEvent(SynchronizerEvent.PAUSE, _pauseTime));
 			}
 		}
 		
@@ -162,6 +174,11 @@ package com.mimswright.sync
 				_paused = false;
 				var timeSincePause:Timestamp = TimestampUtil.subtract(Synchronizer.getInstance().currentTimestamp, _pauseTime);
 				_startTime = TimestampUtil.add(_startTime, timeSincePause); 
+				dispatchEvent(new SynchronizerEvent(SynchronizerEvent.UNPAUSE, _startTime));
+				//trace("_pauseTime:", _pauseTime);
+				//trace("_startTime:", _startTime);
+				//trace("timeSincePause:", timeSincePause);
+				
 			}
 		}
 		
@@ -258,8 +275,12 @@ package com.mimswright.sync
 		 * @return false if _startTime is null, true if the offset has elapsed.
 		 */
 		 public function get startTimeHasElapsed():Boolean {
-		 	if (!_startTime || !_running) { return false; }
-			 if (_startTime.currentFrame + convertToFrames(_offset) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+		 	if (!_startTime || !_running || _paused) { return false; }
+			if (_sync) {
+				if (_startTime.currentTime + convertToMilliseconds(_offset) <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }
+			} else {
+				if (_startTime.currentFrame + convertToFrames(_offset) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+			}
 		 	return false;
 		 }
 		
@@ -269,8 +290,12 @@ package com.mimswright.sync
 		 * @return false if _startTime is null, true if the duration has elapsed.
 		 */
 		 public function get durationHasElapsed():Boolean {
-		 	if (!_startTime || !_running) { return false; }
-		 	if (_startTime.currentFrame + convertToFrames(_offset) + convertToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+		 	if (!_startTime || !_running || _paused) { return false; }
+		 	if (_sync) {
+		 		if (_startTime.currentTime + convertToMilliseconds(_offset) + convertToMilliseconds(_duration) < Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
+		 	} else {
+		 		if (_startTime.currentFrame + convertToFrames(_offset) + convertToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+		 	}
 		 	return false;
 		 }
 		 
@@ -280,8 +305,21 @@ package com.mimswright.sync
 		 protected function convertToFrames(time:int):int {
 		 	switch (_timeUnit) {
 		 		case TimeUnit.MILLISECONDS: return TimestampUtil.millisecondsToFrames(time);
-		 		case TimeUnit.SECONDS: return TimestampUtil.millisecondsToFrames(time * 1000) ; 
+		 		//case TimeUnit.SECONDS: return TimestampUtil.millisecondsToFrames(time * 1000) ; 
 		 		case TimeUnit.FRAMES: return time; 
+		 		default: return time;
+		 	}
+		 }
+		 
+		 /**
+		 * @todo docs
+		 * @todo test
+		 */
+		 protected function convertToMilliseconds(time:int):int {
+		 	switch (_timeUnit) {
+		 		case TimeUnit.MILLISECONDS: return time;
+		 		//case TimeUnit.SECONDS: return TimestampUtil.millisecondsToFrames(time * 1000) ; 
+		 		case TimeUnit.FRAMES: return TimestampUtil.framesToMilliseconds(time); 
 		 		default: return time;
 		 	}
 		 }
