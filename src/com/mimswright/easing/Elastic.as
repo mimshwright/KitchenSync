@@ -9,6 +9,11 @@ package com.mimswright.easing
 	    * easeIn starts out slow and increases in speed towards the end of the duration.
 	    * The values wobble around the starting point before going towards the end point.
 	    * 
+	    * @author modified by Mims H. Wright, 2007
+	 	* @author (c) 2003 Robert Penner, all rights reserved. - This work is subject to the terms in http://www.robertpenner.com/easing_terms_of_use.html
+	 	* @see http://www.robertpenner.com/easing_terms_of_use.html
+	 	* @see http://www.robertpenner.com/easing/
+	    * 
 	    * @param timeElapsed The time since the tween began in milliseconds or frames.
 	    * @param duration The duration of the tween, in milliseconds or frames.
 	    * @param amplitude The aplitude of the sine wave. Low numbers are less extreme than high numbers.
