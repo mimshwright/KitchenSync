@@ -1,4 +1,6 @@
-===== v0.4 =====
+===== v0.4 (2007.12.04) =====
+Moved project to Google Code (http://kitchensynclib.googlecode.com/)
+
 Added pause(), unpause(), and stop() to AbstractSynchronizedAction. Also created reset() for Tweens.
 Added support for milliseconds or frames using the TimeUnit class. The default time unit is now milliseconds.
 Added new AbstractSynchronizedAction type - ActionController - which can tell another action to play, pause, unpause, stop, or kill. 
