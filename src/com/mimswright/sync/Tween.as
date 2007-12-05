@@ -114,7 +114,7 @@ package com.mimswright.sync
 				if (_snapToWholeNumber) { result = Math.round(result); }
 				
 				value = result;
-
+				
 				if (durationHasElapsed) {
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.

@@ -67,7 +67,7 @@ package com.mimswright.sync
 			}
 		}
 		
-		protected var _sync:Boolean = true;
+		protected var _sync:Boolean = false;
 		public function get sync():Boolean { return _sync; }
 		public function set sync(sync:Boolean):void { _sync = sync; }
 		

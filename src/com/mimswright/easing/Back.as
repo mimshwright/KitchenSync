@@ -18,7 +18,7 @@ package com.mimswright.easing
 	public class Back
 	{
 		/** The default amount of overshoot if the user doesn't specify. Rougly 10% */
-		private static const DEFAULT_OVERSHOOT:Number = 1.70158;
+		public static const DEFAULT_OVERSHOOT:Number = 1.70158;
 		/** Constant used to calculate easeInOut() */
 		private static const OVERSHOOT_GROWTH:Number = 1.525;
 		

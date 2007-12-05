@@ -10,6 +10,6 @@ package com.mimswright.sync
 		public static const MILLISECONDS:String = "milliseconds";
 		public static const FRAMES:String = "frames";
 		
-		public static const DEFAULT:String = MILLISECONDS;
+		public static var DEFAULT:String = MILLISECONDS;
 	}
 }

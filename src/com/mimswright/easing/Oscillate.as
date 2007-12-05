@@ -16,7 +16,8 @@ package com.mimswright.easing
 	public class Oscillate
 	{
 		private static const TWICE_PI:Number = Math.PI*2;
-		private static const DEFAULT_FREQUENCY:Number = 0.1; // oscillations per unit, that's 1 cycle every 10 frames / milliseconds
+		public static const DEFAULT_FREQUENCY:Number = 0.1; // oscillations per unit, that's 1 cycle every 10 frames / milliseconds
+		public static const DEFAULT_PULSE_WIDTH:Number = 0.5; // Square Wave
 		
 		public static var snapping:Boolean = false;
 		
@@ -92,7 +93,7 @@ package com.mimswright.easing
   	    * @param pulseWidth - The width of the upside of the square wave as a percentage. 0.5 is half up, half down. 0.0 is all down, 1.0 is all up.
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
-		public static function pulse(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY, pulseWidth:Number= 0.5):Number {
+		public static function pulse(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY, pulseWidth:Number= DEFAULT_PULSE_WIDTH):Number {
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			if ((timeElapsed * frequency % 1.0) >= pulseWidth) { return 1.0 }
 			return 0;
