@@ -1,20 +1,46 @@
 package com.mimswright.sync
 {
-	import flash.events.IEventDispatcher;
 	import flash.events.Event;
+	import flash.events.IEventDispatcher;
 	
+	/**
+	 * An object that causes an event to be dispatched at the time of execution.
+	 * An AS3 Event can be dispatched after a delay or as part of a sequence using this class. 
+	 * Events are dispatched using the AS3 event dispatching system and can be sent from the 
+	 * SynchronizedDispatchEvent itself or from any other IEventDispatcher. The constructor can 
+	 * be passed either an Event object or a string for the event type.
+	 * Uses weak references by default.
+	 */
 	public class SynchronizedDispatchEvent extends AbstractSynchronizedAction
 	{
 		public static const SELF:IEventDispatcher = null;
 		
+		/** 
+		 * Set to false if you want to keep a strong reference to the event being dispatched.
+		 * Default is true.
+		 * @todo - if this is set to false, cleanup event listeners on <code>kill()</code>
+		 */
+		protected var _useWeakReferences:Boolean = true;
+		public function get useWeakReferences():Boolean { return _useWeakReferences; }
+		public function set useWeakReferences(useWeakreferences:Boolean):void { _useWeakReferences = useWeakreferences; }
+		
+		/**
+		 * This is the IEventDispatcher that the event will be dispatched from. Default is <code>this</code>. 
+		 */ 
 		protected var _target:IEventDispatcher;
 		public function get target ():IEventDispatcher { return _target; }
 		public function set target (target:IEventDispatcher):void { _target = target; }
 		
+		/**
+		 * The event that will be dispatched.
+		 */
 		protected var _event:Event;
 		public function get event():Event { return _event; }
 		public function set event(event:Event):void { _event = event; }
 		
+		/**
+		 * Using this will set the event to a generic Event object with type of <code>type</code>.
+		 */
 		public function set eventType(type:String):void {
 			_event = new Event(type);
 		}
@@ -26,8 +52,8 @@ package com.mimswright.sync
 		 * 
 		 * @param event - Can be either an Event object or a String. If event is an Event, that object is used.
 		 * 				  If event is a string, a new event with that type is automatically created.
-		 * @param target - The IEventDispatcher that will dispatch the event. The default is this.
-		 * @param offset - 
+		 * @param target - The IEventDispatcher that will dispatch the event. The default is <code>this</code>.
+		 * @param offset - time to wait before execution
 		 * @param listeners - Any additional objects passed in will be added as listeners (if they're functions)
 		 */
 		public function SynchronizedDispatchEvent(event:*, target:IEventDispatcher = SELF, offset:int = 0, ... listeners) {
@@ -39,10 +65,10 @@ package com.mimswright.sync
 				throw new TypeError ("Invalid event parameter. Must be of type Event or String.");
 			}
 			
-			if (target) {
-				_target = target;
-			} else {
+			if (target == null || target == SELF) {
 				_target = this;
+			} else {
+				_target = target;
 			}
 			
 			_offset = offset;
@@ -62,7 +88,7 @@ package com.mimswright.sync
 		 * Note that useWeakReference will always be true so that the listeners don't need to be removed.
 		 */
 		public function addEventListenerToTarget(listener:Function, useCapture:Boolean=false, priority:int=0.0):void {
-			_target.addEventListener(_event.type, listener, useCapture, priority, true);
+			_target.addEventListener(_event.type, listener, useCapture, priority, _useWeakReferences);
 		}
 		
 		/**
@@ -99,6 +125,7 @@ package com.mimswright.sync
 			clone.timeUnit = _timeUnit;
 			clone.duration = _duration;
 			clone.autoDelete = _autoDelete;
+			clone.useWeakReferences = _useWeakReferences;
 			return clone;
 		}
 	}

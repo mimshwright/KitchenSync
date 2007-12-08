@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="SynchronizedDispatchEvent,com.mimswright.sync.SynchronizedDispatchEvent,SELF,_event,_target,event,target,eventType,addEventListenerToTarget,clone,kill,onUpdate,removeEventListenerFromTarget" name="keywords">
+<meta content="SynchronizedDispatchEvent,com.mimswright.sync.SynchronizedDispatchEvent,SELF,_event,_target,_useWeakReferences,event,target,useWeakReferences,eventType,addEventListenerToTarget,clone,kill,onUpdate,removeEventListenerFromTarget" name="keywords">
 <title>com.mimswright.sync.SynchronizedDispatchEvent</title>
 </head>
 <body>
@@ -42,7 +42,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  An object that causes an event to be dispatched at the time of execution.
+  An AS3 Event can be dispatched after a delay or as part of a sequence using this class. 
+  Events are dispatched using the AS3 event dispatching system and can be sent from the 
+  SynchronizedDispatchEvent itself or from any other IEventDispatcher. The constructor can 
+  be passed either an Event object or a string for the event type.
+  Uses weak references by default.
+  <p></p>
 <br>
 <hr>
 </div>
@@ -79,7 +85,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">SynchronizedDispatchEvent</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#eventType">eventType</a> : String<div class="summaryTableDescription">[write-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#eventType">eventType</a> : String<div class="summaryTableDescription">[write-only]
+   Using this will set the event to a generic Event object with type of <code>type</code>.</div>
 </td><td class="summaryTableOwnerCol">SynchronizedDispatchEvent</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -115,6 +122,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#timeUnit">timeUnit</a> : String<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#useWeakReferences">useWeakReferences</a> : Boolean<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">SynchronizedDispatchEvent</td>
+</tr>
 </table>
 </div>
 <a name="protectedPropertySummary"></a>
@@ -144,7 +155,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_event">_event</a> : Event<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_event">_event</a> : Event<div class="summaryTableDescription">
+   The event that will be dispatched.</div>
 </td><td class="summaryTableOwnerCol">SynchronizedDispatchEvent</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -180,13 +192,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_target">_target</a> : IEventDispatcher<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_target">_target</a> : IEventDispatcher<div class="summaryTableDescription">
+   This is the IEventDispatcher that the event will be dispatched from.</div>
 </td><td class="summaryTableOwnerCol">SynchronizedDispatchEvent</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_timeUnit">_timeUnit</a> : String<div class="summaryTableDescription">
    timeUnit is the units that will be used when dealing with times.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_useWeakReferences">_useWeakReferences</a> : Boolean = true<div class="summaryTableDescription"> 
+   Set to false if you want to keep a strong reference to the event being dispatched.</div>
+</td><td class="summaryTableOwnerCol">SynchronizedDispatchEvent</td>
 </tr>
 </table>
 </div>
@@ -419,8 +437,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _event:Event</code>
-</div>
+<code>protected var _event:Event</code><p>
+   The event that will be dispatched.
+   </p></div>
 <a name="event"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -442,7 +461,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>eventType:String</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<code>eventType:String</code>&nbsp;&nbsp;[write-only]<p>
+   Using this will set the event to a generic Event object with type of <code>type</code>.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set eventType(value:String):void</code>
 <br>
@@ -454,8 +475,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _target:IEventDispatcher</code>
-</div>
+<code>protected var _target:IEventDispatcher</code><p>
+   This is the IEventDispatcher that the event will be dispatched from. Default is <code>this</code>. 
+   </p></div>
 <a name="target"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -468,6 +490,31 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get target():IEventDispatcher</code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set target(value:IEventDispatcher):void</code>
+<br>
+</div>
+<a name="_useWeakReferences"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_useWeakReferences</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _useWeakReferences:Boolean = true</code><p> 
+   Set to false if you want to keep a strong reference to the event being dispatched.
+   Default is true.
+   </p></div>
+<a name="useWeakReferences"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">useWeakReferences</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>useWeakReferences:Boolean</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get useWeakReferences():Boolean</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set useWeakReferences(value:Boolean):void</code>
 <br>
 </div>
 <a name="constructorDetail"></a>
@@ -493,14 +540,14 @@ showHideInherited();
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">target</span>:IEventDispatcher</code> &mdash; - The IEventDispatcher that will dispatch the event. The default is this.
+<td width="20px"></td><td><code><span class="label">target</span>:IEventDispatcher</code> &mdash; - The IEventDispatcher that will dispatch the event. The default is <code>this</code>.
    </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">offset</span>:int</code> (default = <code>0</code>)<code></code> &mdash; - 
+<td width="20px"></td><td><code><span class="label">offset</span>:int</code> (default = <code>0</code>)<code></code> &mdash; - time to wait before execution
    </td>
 </tr>
 <tr>
