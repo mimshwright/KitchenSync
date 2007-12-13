@@ -155,7 +155,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_sync">_sync</a> : Boolean = false<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_sync">_sync</a> : Boolean = true<div class="summaryTableDescription"> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -552,8 +554,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _sync:Boolean = false</code>
-</div>
+<code>protected var _sync:Boolean = true</code><p> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops. Otherwise, the action will be synced to frames.
+   </p></div>
 <a name="sync"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -578,6 +582,7 @@ showHideInherited();
 <code>protected var _timeUnit:String</code><p>
    timeUnit is the units that will be used when dealing with times. This affects
    such values as offset and duration.
+   By default, this is set to MILLISECONDS.
    
    todo - add support for fractions of seconds.
    </p><p>

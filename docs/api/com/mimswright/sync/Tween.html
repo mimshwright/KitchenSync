@@ -172,7 +172,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">Tween</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_fromValue">_fromValue</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_fromValue">_fromValue</a> : Number<div class="summaryTableDescription"> 
+   The starting value for the tween.</div>
 </td><td class="summaryTableOwnerCol">Tween</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -195,7 +196,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_property">_property</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_property">_property</a> : String<div class="summaryTableDescription"> property is the name of the property belonging to target that will be affected by the tween.</div>
 </td><td class="summaryTableOwnerCol">Tween</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -219,11 +220,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_sync">_sync</a> : Boolean = false<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_sync">_sync</a> : Boolean = true<div class="summaryTableDescription"> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_target">_target</a> : Object<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_target">_target</a> : Object<div class="summaryTableDescription"> target is the object that will be affected by the tween.</div>
 </td><td class="summaryTableOwnerCol">Tween</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -232,7 +235,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_toValue">_toValue</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_toValue">_toValue</a> : Number<div class="summaryTableDescription">
+   The ending value for the tween.</div>
 </td><td class="summaryTableOwnerCol">Tween</td>
 </tr>
 <tr class="">
@@ -582,8 +586,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _fromValue:Number</code>
-</div>
+<code>protected var _fromValue:Number</code><p> 
+   The starting value for the tween. 
+   You can use EXISTING_FROM_VALUE to cause the tween to start from the from value at
+   the start of the tween.
+   </p></div>
 <a name="_property"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -591,8 +598,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _property:String</code>
-</div>
+<code>protected var _property:String</code><p> property is the name of the property belonging to target that will be affected by the tween. </p></div>
 <a name="_snapToValueOnComplete"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -652,8 +658,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _target:Object</code>
-</div>
+<code>protected var _target:Object</code><p> target is the object that will be affected by the tween. </p></div>
 <a name="_toValue"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -661,8 +666,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _toValue:Number</code>
-</div>
+<code>protected var _toValue:Number</code><p>
+   The ending value for the tween.
+   </p></div>
 <a name="value"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
