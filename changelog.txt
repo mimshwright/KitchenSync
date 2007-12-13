@@ -1,11 +1,8 @@
-===== v04.1 =====
-Adjusted Easing funcitons slightly. 
-Set sync = false by default.
-TODO: Fix sync and timeUnit problems
-
-===== v0.4 (2007.12.04) =====
+===== v04.1 (2007.12.13) =====
+Fixed problems with sync property for Tweens
 Moved project to Google Code (http://kitchensynclib.googlecode.com/)
 
+===== v0.4 (2007.12.04) =====
 Added pause(), unpause(), and stop() to AbstractSynchronizedAction. Also created reset() for Tweens.
 Added support for milliseconds or frames using the TimeUnit class. The default time unit is now milliseconds.
 Added new AbstractSynchronizedAction type - ActionController - which can tell another action to play, pause, unpause, stop, or kill. 
