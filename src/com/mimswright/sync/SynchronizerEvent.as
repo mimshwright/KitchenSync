@@ -2,6 +2,11 @@ package com.mimswright.sync
 {
 	import flash.events.Event;
 
+	/**
+	 * Event type that is dispatched by the Synchronizer and AbstractSynchronizedActions. 
+	 * 
+	 * @todo - take the timestamp property out of this class. This value can always be gotten from the synchronizer.
+	 */
 	public class SynchronizerEvent extends Event
 	{
 		public static const START:String = "ActionStart";

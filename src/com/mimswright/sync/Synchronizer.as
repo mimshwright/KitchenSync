@@ -11,7 +11,6 @@ package com.mimswright.sync
 	 * event of the Stage to trigger updates.
 	 * 
 	 * @author Mims H. Wright
-	 * @version 0.2
 	 */
 	public class Synchronizer extends EventDispatcher
 	{

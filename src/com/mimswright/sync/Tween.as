@@ -17,9 +17,20 @@ package com.mimswright.sync
 		public function get easingFunction():Function { return _easingFunction; }
 		public function set easingFunction(easingFunction:Function):void{ _easingFunction = easingFunction;}
 		
+		/** target is the object that will be affected by the tween. */
 		protected var _target:Object;
+		/** property is the name of the property belonging to target that will be affected by the tween. */
 		protected var _property:String;
+		/** 
+		 * The starting value for the tween. 
+		 * You can use EXISTING_FROM_VALUE to cause the tween to start from the from value at
+		 * the start of the tween.
+		 */
 		protected var _fromValue:Number;
+		
+		/**
+		 * The ending value for the tween.
+		 */
 		protected var _toValue:Number;
 		
 		protected var _easingMod1:Number;
@@ -104,17 +115,25 @@ package com.mimswright.sync
 		 */
 		override protected function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;
+			var timeElapsed:int;
+			var convertedDuration:int;
 			if (startTimeHasElapsed) {
-				var timeElapsed:int = time.currentFrame - _startTime.currentFrame - _offset;
+				if (_sync) {
+			 		timeElapsed = time.currentTime - _startTime.currentTime - convertToMilliseconds(_offset);
+			 		convertedDuration = convertToMilliseconds(duration);		 				 		
+			 	} else {
+			 		timeElapsed = time.currentFrame - _startTime.currentFrame - convertToFrames(_offset);
+			 		convertedDuration = convertToFrames(duration);
+			 	}
+				//timeElapsed = time.currentFrame - _startTime.currentFrame - _offset;
 				if (_fromValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
 					_fromValue = value; 
-				}
-				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2) * delta + _fromValue; 
-				
+				} 
+				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2) * delta + _fromValue; 
 				if (_snapToWholeNumber) { result = Math.round(result); }
 				
 				value = result;
-				
+				trace(result, time);
 				if (durationHasElapsed) {
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.

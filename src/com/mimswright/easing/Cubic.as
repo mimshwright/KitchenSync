@@ -41,7 +41,7 @@ package com.mimswright.easing
 	    */  
 		public static function easeOut(timeElapsed:Number, duration:Number):Number
 		{
-			return ((timeElapsed = timeElapsed / duration - 1) * timeElapsed * timeElapsed + 1);
+			return ((timeElapsed /= duration - 1) * timeElapsed * timeElapsed + 1);
 		}
 	
 	    /**

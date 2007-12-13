@@ -1,11 +1,11 @@
 package com.mimswright.sync
 {
-	import org.as3lib.utils.AbstractEnforcer;
-	
 	import flash.errors.IllegalOperationError;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
+	
+	import org.as3lib.utils.AbstractEnforcer;
 	
 	/**
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
@@ -54,6 +54,7 @@ package com.mimswright.sync
 		/**
 		 * timeUnit is the units that will be used when dealing with times. This affects
 		 * such values as offset and duration.
+		 * By default, this is set to MILLISECONDS.
 		 * 
 		 * todo - add support for fractions of seconds.
 		 * @see TimeUnit
@@ -67,7 +68,11 @@ package com.mimswright.sync
 			}
 		}
 		
-		protected var _sync:Boolean = false;
+		/** 
+		 * Setting sync to true will cause the action to sync up with real time
+		 * even if framerate drops. Otherwise, the action will be synced to frames.
+		 */ 
+		protected var _sync:Boolean = true;
 		public function get sync():Boolean { return _sync; }
 		public function set sync(sync:Boolean):void { _sync = sync; }
 		
