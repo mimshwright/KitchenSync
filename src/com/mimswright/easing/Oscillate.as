@@ -16,7 +16,7 @@ package com.mimswright.easing
 	public class Oscillate
 	{
 		private static const TWICE_PI:Number = Math.PI*2;
-		public static const DEFAULT_FREQUENCY:Number = 0.1; // oscillations per unit, that's 1 cycle every 10 frames / milliseconds
+		public static const DEFAULT_FREQUENCY:Number = 0.1; // in hertz, that's 1 cycle every 10 second
 		public static const DEFAULT_PULSE_WIDTH:Number = 0.5; // Square Wave
 		
 		public static var snapping:Boolean = false;
@@ -27,11 +27,12 @@ package com.mimswright.easing
 	    *
 	    * @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
 	    * @param duration - Specifies the duration of the tween, in milliseconds or frames.
-  	    * @param frequency - The frequency of the sine wave in oscillations per unit (ms or frames). Higher is faster. 1/frequency = wavelength
+  	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
 		public static function sine(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			frequency /= 1000;
 			return 0.5 * (1 - Math.cos( TWICE_PI * timeElapsed * frequency));
 		}	
 
@@ -42,11 +43,12 @@ package com.mimswright.easing
 	    *
 	    * @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
 	    * @param duration - Specifies the duration of the tween, in milliseconds or frames.
-  	    * @param frequency - The frequency of the sine wave in oscillations per unit (ms or frames). Higher is faster. 1/frequency = wavelength
+  	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
 		public static function absoluteSine(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			frequency /= 1000;
 			return Math.abs(Math.cos( TWICE_PI * timeElapsed * frequency));
 		}	
 	
@@ -57,11 +59,12 @@ package com.mimswright.easing
 	    *
 	    * @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
 	    * @param duration - Specifies the duration of the tween, in milliseconds or frames.
-  	    * @param frequency - The frequency of the sine wave in oscillations per unit (ms or frames). Higher is faster. 1/frequency = wavelength
+  	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
 		public static function sawtooth(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			frequency /= 1000;
 			return timeElapsed * frequency % 1.0;
 		}	
 		
@@ -72,11 +75,12 @@ package com.mimswright.easing
 	    *
 	    * @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
 	    * @param duration - Specifies the duration of the tween, in milliseconds or frames.
-  	    * @param frequency - The frequency of the sine wave in oscillations per unit (ms or frames). Higher is faster. 1/frequency = wavelength
+  	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
 		public static function triangle(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			frequency /= 1000;
 			var position:Number = timeElapsed * frequency;
 			if (position % 2.0 >= 1.0) { return 1.0 - (position % 1.0); }
 			return position % 1.0;
@@ -89,11 +93,12 @@ package com.mimswright.easing
 	    *
 	    * @param timeElapsed - Specifies the time since the tween began in milliseconds or frames.
 	    * @param duration - Specifies the duration of the tween, in milliseconds or frames.
-  	    * @param frequency - The frequency of the sine wave in oscillations per unit (ms or frames). Higher is faster. 1/frequency = wavelength
+  	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
   	    * @param pulseWidth - The width of the upside of the square wave as a percentage. 0.5 is half up, half down. 0.0 is all down, 1.0 is all up.
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
 		public static function pulse(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY, pulseWidth:Number= DEFAULT_PULSE_WIDTH):Number {
+			frequency /= 1000;
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			if ((timeElapsed * frequency % 1.0) >= pulseWidth) { return 1.0 }
 			return 0;
