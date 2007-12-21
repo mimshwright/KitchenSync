@@ -10,6 +10,8 @@ package com.mimswright.easing
 	 *  - <code>easeIn()</code>, <code>easeOut()</code> and <code>easeInOut()</code> - which vary the rate of change
 	 *  of the values. Most of the easing functions produce values as a percentage - a number between 0.0 and 1.0</p>
 	 *
+	 * @todo - add phase property
+	 * 
  	 * @author Mims H. Wright
 	 * @see EasingUtil
 	 */

@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="AbstractSynchronizedAction,com.mimswright.sync.AbstractSynchronizedAction,_autoDelete,_duration,_name,_offset,_pauseTime,_paused,_running,_startTime,_sync,_timeUnit,autoDelete,duration,durationHasElapsed,isPaused,isRunning,name,offset,startTimeHasElapsed,sync,timeUnit,addEventTrigger,addTrigger,clone,complete,convertToFrames,convertToMilliseconds,forceUpdate,kill,onTrigger,onUpdate,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister" name="keywords">
+<meta content="AbstractSynchronizedAction,com.mimswright.sync.AbstractSynchronizedAction,_autoDelete,_duration,_name,_offset,_pauseTime,_paused,_running,_startTime,_sync,_timeUnit,timeStringParser,autoDelete,duration,durationHasElapsed,isPaused,isRunning,name,offset,startTimeHasElapsed,sync,timeUnit,addEventTrigger,addTrigger,clone,complete,convertToFrames,convertToMilliseconds,forceUpdate,kill,onTrigger,onUpdate,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister" name="keywords">
 <title>com.mimswright.sync.AbstractSynchronizedAction</title>
 </head>
 <body>
@@ -103,7 +103,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeUnit">timeUnit</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeStringParser">timeStringParser</a> : <a href="../sync/ITimeStringParser.html">ITimeStringParser</a>
+<div class="summaryTableDescription">[static] 
+   The timeStringParser will determine how strings are parsed into valid 
+   time values.</div>
+</td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeUnit">timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 </table>
@@ -161,7 +169,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_timeUnit">_timeUnit</a> : String<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_timeUnit">_timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
+<div class="summaryTableDescription">
    timeUnit is the units that will be used when dealing with times.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
@@ -572,6 +581,17 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set sync(value:Boolean):void</code>
 <br>
 </div>
+<a name="timeStringParser"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeStringParser</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var timeStringParser:<a href="../sync/ITimeStringParser.html">ITimeStringParser</a></code><p> 
+   The timeStringParser will determine how strings are parsed into valid 
+   time values.
+   </p></div>
 <a name="_timeUnit"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -579,7 +599,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _timeUnit:String</code><p>
+<code>protected var _timeUnit:<a href="../sync/TimeUnit.html">TimeUnit</a></code><p>
    timeUnit is the units that will be used when dealing with times. This affects
    such values as offset and duration.
    By default, this is set to MILLISECONDS.
@@ -599,11 +619,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>timeUnit:String</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>timeUnit:<a href="../sync/TimeUnit.html">TimeUnit</a></code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timeUnit():String</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timeUnit():<a href="../sync/TimeUnit.html">TimeUnit</a></code>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set timeUnit(value:String):void</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set timeUnit(value:<a href="../sync/TimeUnit.html">TimeUnit</a>):void</code>
 <br>
 </div>
 <a name="constructorDetail"></a>

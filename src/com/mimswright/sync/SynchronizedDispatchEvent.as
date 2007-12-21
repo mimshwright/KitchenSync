@@ -56,7 +56,7 @@ package com.mimswright.sync
 		 * @param offset - time to wait before execution
 		 * @param listeners - Any additional objects passed in will be added as listeners (if they're functions)
 		 */
-		public function SynchronizedDispatchEvent(event:*, target:IEventDispatcher = SELF, offset:int = 0, ... listeners) {
+		public function SynchronizedDispatchEvent(event:*, target:IEventDispatcher = SELF, offset:* = 0, ... listeners) {
 			if (event is Event) {
 				_event = Event(event);
 			} else if (event is String) {
@@ -71,7 +71,7 @@ package com.mimswright.sync
 				_target = target;
 			}
 			
-			_offset = offset;
+			this.offset = offset;
 			
 			for (var i:int = 0; i < listeners.length; i++) {
 				var func:Function = listeners[i] as Function;

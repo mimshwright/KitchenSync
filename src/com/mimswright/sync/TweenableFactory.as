@@ -19,7 +19,7 @@ package com.mimswright.sync
 	{
 		private static var _instance:TweenableFactory;
 		public static function get instance():TweenableFactory { 
-			if (!_instance) { _instance = new TweenableFactory(new SingletonEnforcer); }
+			if (!_instance) { _instance = new TweenableFactory(new SingletonEnforcer()); }
 			return _instance; 
 		}
 		public function TweenableFactory (singletonEnforcer:SingletonEnforcer) {}

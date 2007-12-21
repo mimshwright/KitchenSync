@@ -12,10 +12,19 @@ package com.mimswright.sync
 		protected var _stagger:int = 1000;
 		public function get stagger():int { return _stagger;}
 		public function set stagger(stagger:int):void { 
-			if (stagger <= 0) {
+			if (Number(offset)) {
+				_stagger = stagger; 
+			} else {
+				var timeString:String = stagger.toString();
+				var result:TimeStringParserResult = timeStringParser.parseTimeString(timeString);
+				_stagger = result.time;
+				if (result.timeUnit) {
+					_timeUnit = result.timeUnit;
+				}
+			}
+			if (_stagger <= 0) {
 				throw new RangeError("Stagger amount must be an integer greater than 0.");
 			}
-			_stagger = stagger; 
 		}
 		
 		protected var _lastStartTime:Timestamp;
@@ -30,8 +39,8 @@ package com.mimswright.sync
 		 *					 The first one will not stagger (but will use the offset for the Staggered object)
 		 * @params children - a list of AbstractSynchronizedActions that will be added as children of the group.
 		 */
-		public function Staggered (stagger:int, ... children) {
-			_stagger = stagger;
+		public function Staggered (stagger:*, ... children) {
+			this.stagger = stagger;
 			for (var i:int = 0; i < children.length; i++) {
 				if (children[i] is AbstractSynchronizedAction) {
 					var action:AbstractSynchronizedAction = AbstractSynchronizedAction(children[i]);

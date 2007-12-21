@@ -1,4 +1,9 @@
-===== v04.1 (2007.12.13) =====
+===== v0.4.2 (2007.12.20) =====
+Added ITimeStringParser. duration and offset now support string values such as "12sec" or "15 frames" or "1h1m2s3ms". See TimeStringParser_en for details
+Made TimeUnit and ActionControllerCommands strong-typed enumerations.
+Partially fixed bug in Oscillate when dealing with frequencies and different time units.
+
+===== v0.4.1 (2007.12.13) =====
 Fixed problems with sync property for Tweens
 Moved project to Google Code (http://kitchensynclib.googlecode.com/)
 

@@ -28,7 +28,7 @@ package com.mimswright.sync
 		 * @param target - the MovieClip whose frames you are going to
 		 * @param frameIdentifier - a String or uint to go to
 		 */
-		public function SynchronizedGotoFrame(offset:int, target:MovieClip, frameIdentifier:*)
+		public function SynchronizedGotoFrame(offset:*, target:MovieClip, frameIdentifier:*)
 		{
 			super(offset, target.gotoAndPlay, frameIdentifier);
 		}

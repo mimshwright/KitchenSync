@@ -19,14 +19,14 @@ package com.mimswright.sync
 		 * @param command - the function that the SynchronizedAction will perform when the ActionController executes.
 		 * @param offset - the number of frames to offset the action.
 		 */ 
-		public function ActionController (target:AbstractSynchronizedAction, command:String = ActionControllerCommand.START, offset:int = 0) {
+		public function ActionController (target:AbstractSynchronizedAction, command:ActionControllerCommand = null, offset:* = 0) {
 			super(offset, null);
 			if (target) {
 				_target = target;
 			} else {
 				throw new ArgumentError ("target AbstractSynchronizedAction must not be null.");
 			}
-			if (command == null) {  command = ActionControllerCommand.START; }
+			if (command == null) {  command = ActionControllerCommand.DEFAULT; }
 			switch (command) {
 				case ActionControllerCommand.START:
 					_func = function ():void { _target.start(); };
@@ -55,7 +55,7 @@ package com.mimswright.sync
 				break;
 				
 				default:
-					throw new ArgumentError ("Please provide an appropriate value for the command argument. Use one of the constant values from ActionControllerCommands.");
+					throw new ArgumentError ("Please provide an appropriate value for the command argument. Use one of the enumeration values from ActionControllerCommands.");
 					kill();
 				break;
 			}

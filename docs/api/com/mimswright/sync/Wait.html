@@ -67,7 +67,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : int<div class="summaryTableDescription">[write-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : *<div class="summaryTableDescription">[write-only]</div>
 </td><td class="summaryTableOwnerCol">Wait</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -101,7 +101,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#timeUnit">timeUnit</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#timeStringParser">timeStringParser</a> : <a href="../sync/ITimeStringParser.html">ITimeStringParser</a>
+<div class="summaryTableDescription">[static] 
+   The timeStringParser will determine how strings are parsed into valid 
+   time values.</div>
+</td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#timeUnit">timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 </table>
@@ -167,7 +175,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_timeUnit">_timeUnit</a> : String<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_timeUnit">_timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
+<div class="summaryTableDescription">
    timeUnit is the units that will be used when dealing with times.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
@@ -191,7 +200,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#Wait()">Wait</a>(offset:Number)</div>
+<a class="signatureLink" href="#Wait()">Wait</a>(offset:*)</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">Wait</td>
 </tr>
@@ -371,9 +380,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>duration:int</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<code>duration:*</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set duration(value:int):void</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set duration(value:*):void</code>
 <br>
 </div>
 <a name="constructorDetail"></a>
@@ -385,10 +394,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function Wait(offset:Number)</code><span class="label">Parameters</span>
+<code>public function Wait(offset:*)</code><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">offset</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">offset</span>:*</code></td>
 </tr>
 </table>
 </div>

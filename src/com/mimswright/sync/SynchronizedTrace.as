@@ -10,7 +10,7 @@ package com.mimswright.sync
 		 * @param message - the message to be displayed in the trace window.
 		 * @param offset - the time to wait before tracing in frames.
 		 */
-		public function SynchronizedTrace(message:*, offset:int = 0)
+		public function SynchronizedTrace(message:*, offset:* = 0)
 		{
 			super(offset, trace, message.toString());
 		}

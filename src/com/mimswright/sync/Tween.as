@@ -88,15 +88,17 @@ package com.mimswright.sync
 		 * @param offset - the time to wait before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		public function Tween(target:Object, property:String, toValue:Number, fromValue:Number = EXISTING_FROM_VALUE, duration:int = 0, offset:int = 0, easingFunction:Function = null)
+		public function Tween(target:Object, property:String, toValue:Number, fromValue:Number = EXISTING_FROM_VALUE, duration:* = 0, offset:* = 0, easingFunction:Function = null)
 		{
 			super();
 			_target = target;
 			_property = property;
 			_fromValue = fromValue;
 			_toValue = toValue;
-			_duration = duration;
-			_offset = offset;
+			
+			this.duration = duration;
+			this.offset = offset;
+			
 			if (easingFunction != null) { _easingFunction = easingFunction; } else { _easingFunction = Linear.ease; }
 		}
 		
@@ -133,7 +135,7 @@ package com.mimswright.sync
 				if (_snapToWholeNumber) { result = Math.round(result); }
 				
 				value = result;
-				trace(result, time);
+				//trace(result, time);
 				if (durationHasElapsed) {
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.

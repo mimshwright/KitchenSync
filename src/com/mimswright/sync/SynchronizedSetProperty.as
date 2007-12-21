@@ -8,7 +8,7 @@ package com.mimswright.sync
 	 */
 	public class SynchronizedSetProperty extends SynchronizedFunction
 	{
-		public function SynchronizedSetProperty(target:Object, key:String, value:*, offset:int = 0)
+		public function SynchronizedSetProperty(target:Object, key:String, value:*, offset:* = 0)
 		{
 			super(offset, setProperty, target, key, value);
 		}

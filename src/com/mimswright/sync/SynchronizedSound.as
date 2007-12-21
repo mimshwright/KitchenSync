@@ -24,7 +24,7 @@ package com.mimswright.sync
 		
 		protected var _soundPauseTime:int = 0;
 		
-		override public function set duration(duration:int):void {
+		override public function set duration(duration:*):void {
 			throw new Error("duration is ignored for SynchronizedSounds");
 		}
 		
@@ -37,7 +37,7 @@ package com.mimswright.sync
 		 * @param offset - The delay before starting the sound.
 		 * @param soundOffset - The point at which to begin playing the sound in milliseconds.
 		 */
-		public function SynchronizedSound(sound:*, offset:int = 0, soundOffset:int = 0) {
+		public function SynchronizedSound(sound:*, offset:* = 0, soundOffset:int = 0) {
 			if (sound is Sound) {
 				_sound = Sound(sound);
 			} else if (sound is URLRequest) {
@@ -47,7 +47,7 @@ package com.mimswright.sync
 			} else {
 				throw new TypeError("The sound parameter must be of type Sound, URLRequest or String.");
 			}
-			_offset = offset;
+			this.offset = offset;
 			_soundOffset = soundOffset;
 			_soundPauseTime = _soundOffset;
 			

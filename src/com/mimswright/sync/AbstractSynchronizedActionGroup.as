@@ -7,7 +7,7 @@ package com.mimswright.sync
 		protected var _childActions:Array = new Array();
 		public function get childActions():Array { return _childActions; }
 		
-		override public function set duration(duration:int):void {
+		override public function set duration(duration:*):void {
 			throw new Error("duration is ignored for SynchronizedActionGroups");
 		}
 		

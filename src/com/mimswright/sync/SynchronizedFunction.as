@@ -19,10 +19,10 @@ package com.mimswright.sync
 		 * @param func - the function or method to call at the specified time
 		 * @param args - the rest of the parameters become arguments passed to the function at the time it's called.
 		 */
-		public function SynchronizedFunction(offset:int, func:Function, ... args)
+		public function SynchronizedFunction(offset:*, func:Function, ... args)
 		{
 			super();
-			_offset = offset;
+			this.offset = offset;
 			_func = func;
 			_args = args;
 		}

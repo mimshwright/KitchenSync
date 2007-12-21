@@ -1,9 +1,7 @@
 package com.mimswright.sync
 {
-	import flash.errors.IllegalOperationError;
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
-	import flash.events.IEventDispatcher;
+	import flash.errors.*;
+	import flash.events.*;
 	
 	import org.as3lib.utils.AbstractEnforcer;
 	
@@ -19,6 +17,12 @@ package com.mimswright.sync
 	 */
 	public class AbstractSynchronizedAction extends EventDispatcher
 	{			
+		/** 
+		 * The timeStringParser will determine how strings are parsed into valid 
+		 * time values.
+		 */
+		public static var timeStringParser:ITimeStringParser = new TimeStringParser_en();
+		
 		/**
 		 * duration is the length of time that the action will run.
 		 * 
@@ -26,8 +30,17 @@ package com.mimswright.sync
 		 */
 		protected var _duration:int = 0;
 		public function get duration():int { return _duration; }
-		public function set duration(duration:int):void { 
-			_duration = duration;
+		public function set duration(duration:*):void { 
+			if (Number(duration)) {
+				_duration = duration;
+			} else {
+				var timeString:String = duration.toString();
+				var result:TimeStringParserResult = timeStringParser.parseTimeString(timeString);
+				_duration = result.time;
+				if (result.timeUnit) {
+					_timeUnit = result.timeUnit;
+				}
+			}
 		}
 		
 		/**
@@ -38,8 +51,17 @@ package com.mimswright.sync
 		 */
 		protected var _offset:int = 0;
 		public function get offset():int { return _offset; }
-		public function set offset(offset:int):void { 
-			_offset = offset;
+		public function set offset(offset:*):void { 
+			if (Number(offset)) {
+				_offset = offset;
+			} else {
+				var timeString:String = offset.toString();
+				var result:TimeStringParserResult = timeStringParser.parseTimeString(timeString);
+				_offset = result.time;
+				if (result.timeUnit) {
+					_timeUnit = result.timeUnit;
+				}
+			}
 		}
 		
 		/**
@@ -59,9 +81,9 @@ package com.mimswright.sync
 		 * todo - add support for fractions of seconds.
 		 * @see TimeUnit
 		 */ 
-		protected var _timeUnit:String = TimeUnit.DEFAULT;
-		public function get timeUnit():String { return _timeUnit; }
-		public function set timeUnit(timeUnit:String):void {
+		protected var _timeUnit:TimeUnit = TimeUnit.DEFAULT;
+		public function get timeUnit():TimeUnit { return _timeUnit; }
+		public function set timeUnit(timeUnit:TimeUnit):void {
 			if (timeUnit != _timeUnit) { 
 				if (_running || _paused) { throw Error ("Cannot change timeUnits while the action is running or paused."); }
 				_timeUnit = timeUnit;
@@ -94,6 +116,7 @@ package com.mimswright.sync
 		
 		protected var _startTime:Timestamp;
 		protected var _pauseTime:Timestamp;
+		
 		
 		/**
 		 * Constructor.
