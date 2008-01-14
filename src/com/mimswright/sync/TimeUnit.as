@@ -8,7 +8,7 @@ package com.mimswright.sync
 	 */
 	final public class TimeUnit {
 		
-		/** Use whole and fractions of seconds as the unit of time. */
+		/* Use whole and fractions of seconds as the unit of time. */
 		//public static const SECONDS:TimeUnit = new TimeUnit("seconds");
 		/** Use milliseconds (1/1000th of a second) as the unit of time. */
 		public static const MILLISECONDS:TimeUnit = new TimeUnit("milliseconds");

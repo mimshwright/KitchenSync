@@ -31,7 +31,7 @@ package com.mimswright.sync
 		protected var _duration:int = 0;
 		public function get duration():int { return _duration; }
 		public function set duration(duration:*):void { 
-			if (Number(duration)) {
+			if (!isNaN(duration)) {
 				_duration = duration;
 			} else {
 				var timeString:String = duration.toString();
@@ -52,7 +52,7 @@ package com.mimswright.sync
 		protected var _offset:int = 0;
 		public function get offset():int { return _offset; }
 		public function set offset(offset:*):void { 
-			if (Number(offset)) {
+			if (!isNaN(offset)) {
 				_offset = offset;
 			} else {
 				var timeString:String = offset.toString();
