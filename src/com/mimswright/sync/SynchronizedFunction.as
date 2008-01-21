@@ -61,5 +61,12 @@ package com.mimswright.sync
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}
+		
+		override public function kill():void {
+			super.kill();
+			_func = null;
+			_args = null;
+			_result = null;
+		} 
 	}
 }

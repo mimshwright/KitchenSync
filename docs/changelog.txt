@@ -1,3 +1,8 @@
+===== v1.0 (2008.01.21) =====
+Note: This is Milestone 1.0 as it is the official release and all basic functionality is complete.
+Added lots of documentation on the project wiki (http://code.google.com/p/kitchensynclib/w/list)
+Tested SynchronizedSetProperty and made minor changes.
+
 ===== v0.4.2 (2007.12.20) =====
 Added ITimeStringParser. duration and offset now support string values such as "12sec" or "15 frames" or "1h1m2s3ms". See TimeStringParser_en for details
 Made TimeUnit and ActionControllerCommands strong-typed enumerations.

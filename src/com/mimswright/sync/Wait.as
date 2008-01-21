@@ -9,8 +9,17 @@ package com.mimswright.sync
 			throw new Error("duration is ignored for Wait");
 		}
 		
-		public function Wait (offset:*):void {
-			this.offset = offset;
+		/** Time that the action will wait. Synonym for offset. */
+		public function get waitTime():int { return this.offset;}
+		public function set waitTime(waitTime:*):void { this.offset = waitTime; }
+		
+		/**
+		 * Constructor.
+		 * 
+		 * @param waitTime Time that the action will wait.
+		 */
+		public function Wait (waitTime:*):void {
+			this.offset = waitTime;
 		}
 		
 		override protected function onUpdate(event:SynchronizerEvent):void {

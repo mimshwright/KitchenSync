@@ -15,7 +15,7 @@ package com.mimswright.sync
 		/**
 		 * Constructor.
 		 * 
-		 * @param target - the AbstractSynchronizedAction that will recieve the commands from the controller.
+		 * @param target - the AbstractSynchronizedAction that will receive the commands from the controller.
 		 * @param command - the function that the SynchronizedAction will perform when the ActionController executes.
 		 * @param offset - the number of frames to offset the action.
 		 */ 

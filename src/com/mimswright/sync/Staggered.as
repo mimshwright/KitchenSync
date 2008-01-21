@@ -1,6 +1,5 @@
 package com.mimswright.sync
 {
-	import flash.events.Event;
 	import flash.utils.getQualifiedClassName;
 	
 	/**
@@ -8,7 +7,12 @@ package com.mimswright.sync
 	 */
 	public class Staggered extends Parallel
 	{	
-		
+		/**
+		 * Time to wait between the execution of each of the children.
+		 * Accepts integer or parsable time string.
+		 * 
+		 * @see com.mimswright.sync.ITimeStringParser;
+		 */
 		protected var _stagger:int = 1000;
 		public function get stagger():int { return _stagger;}
 		public function set stagger(stagger:int):void { 
@@ -33,11 +37,13 @@ package com.mimswright.sync
 		/**
 		 * Constructor.
 		 * 
-		 * @throws TypeError - if any children are not of type AbstractSynchronizedAction.
 		 * 
 		 * @params stagger - The amount of time to stagger between each action starting. 
 		 *					 The first one will not stagger (but will use the offset for the Staggered object)
+		 * 					 Accepts an integer or a parseable string.
 		 * @params children - a list of AbstractSynchronizedActions that will be added as children of the group.
+		 * 
+		 * @throws TypeError - if any children are not of type AbstractSynchronizedAction.
 		 */
 		public function Staggered (stagger:*, ... children) {
 			this.stagger = stagger;
@@ -51,9 +57,9 @@ package com.mimswright.sync
 			}
 		}
 		
+		
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
-		 * -todo: Currently, the child actions execute one frame late.
 		 */
 		override protected function onUpdate(event:SynchronizerEvent):void {
 			var time:Timestamp = event.timestamp;

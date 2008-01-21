@@ -10,8 +10,8 @@ package com.mimswright.sync
 	 * timing. 
 	 * 
 	 * -todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
-	 * 		18100 msec; 819 frames We use debuggers so you know our shit don't crash
-	 * 		18121 msec; 820 frames We use debuggers so you know our shit don't crash
+	 * 		18100 msec; 819 frames We use debuggers
+	 * 		18121 msec; 820 frames We use debuggers
 	 * -todo - add a settings object
 	 * -todo - better implementation of ids
 	 */
@@ -20,15 +20,19 @@ package com.mimswright.sync
 		/** 
 		 * The timeStringParser will determine how strings are parsed into valid 
 		 * time values.
+		 * 
+		 * @see com.mimswright.sync.ITimeStringParser
+		 * @see com.mimswright.sync.TimeStringParser_en
 		 */
 		public static var timeStringParser:ITimeStringParser = new TimeStringParser_en();
 		
 		/**
 		 * duration is the length of time that the action will run.
+		 * Will accept an integer or a parsable string.
 		 * 
+		 * @see com.mimswright.sync.ITimeStringParser
 		 * @see #timeUnit
 		 */
-		protected var _duration:int = 0;
 		public function get duration():int { return _duration; }
 		public function set duration(duration:*):void { 
 			if (!isNaN(duration)) {
@@ -42,14 +46,17 @@ package com.mimswright.sync
 				}
 			}
 		}
+		protected var _duration:int = 0;
 		
 		/**
 		 * offset is the time that will pass after the start() method is called
 		 * before the action begins. Also known as delay.
+		 * Will accept an integer or a parsable string.
+		 * 
+		 * @see com.mimswright.sync.ITimeStringParser
 		 * 
 		 * @see #timeUnit
 		 */
-		protected var _offset:int = 0;
 		public function get offset():int { return _offset; }
 		public function set offset(offset:*):void { 
 			if (!isNaN(offset)) {
@@ -63,15 +70,16 @@ package com.mimswright.sync
 				}
 			}
 		}
+		protected var _offset:int = 0;
 		
 		/**
 		 * autoDelete is a flag that indicates whether the action should be deleted 
 		 * when it is done executing. The default is set to false so the actions must 
 		 * be deleted manually.
 		 */
-		protected var _autoDelete:Boolean = false;
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
+		protected var _autoDelete:Boolean = false;
 		
 		/**
 		 * timeUnit is the units that will be used when dealing with times. This affects
@@ -79,9 +87,8 @@ package com.mimswright.sync
 		 * By default, this is set to MILLISECONDS.
 		 * 
 		 * todo - add support for fractions of seconds.
-		 * @see TimeUnit
+		 * @see com.mimswright.syncTimeUnit
 		 */ 
-		protected var _timeUnit:TimeUnit = TimeUnit.DEFAULT;
 		public function get timeUnit():TimeUnit { return _timeUnit; }
 		public function set timeUnit(timeUnit:TimeUnit):void {
 			if (timeUnit != _timeUnit) { 
@@ -89,19 +96,22 @@ package com.mimswright.sync
 				_timeUnit = timeUnit;
 			}
 		}
+		protected var _timeUnit:TimeUnit = TimeUnit.DEFAULT;
 		
 		/** 
 		 * Setting sync to true will cause the action to sync up with real time
 		 * even if framerate drops. Otherwise, the action will be synced to frames.
 		 */ 
-		protected var _sync:Boolean = true;
 		public function get sync():Boolean { return _sync; }
 		public function set sync(sync:Boolean):void { _sync = sync; }
+		protected var _sync:Boolean = true;
 		
-		
-		protected var _name:String;
+		/**
+		 * The human-readable name of this action. 
+		 */
 		public function get name():String { return _name; }
 		public function set name(name:String):void { _name = name; }
+		protected var _name:String;
 		
 	/* 	protected var _id:String;
 		public function get id ():String {
@@ -109,12 +119,28 @@ package com.mimswright.sync
 		}
 		public function set id (id:String):void { _id = id; } */
 		
-		protected var _running:Boolean = false;
+		/**
+		 * Will return true when the action is running (after start() has been called).
+		 * Will continue running until stop() is called or until the action is completed.
+		 * Pausing does not change the value of isRunning.
+		 */
 		public function get isRunning ():Boolean { return _running; }
-		protected var _paused:Boolean = false;
-		public function get isPaused ():Boolean { return _paused; }
+		protected var _running:Boolean = false;
 		
+		/**
+		 * Will return true if the action is paused (after pause() has been called).
+		 * Calling unpause() or stop() will return the value to false.
+		 */ 
+		public function get isPaused ():Boolean { return _paused; }
+		protected var _paused:Boolean = false;
+		
+		/**
+		 * The time at which the action was last started.
+		 */
 		protected var _startTime:Timestamp;
+		/**
+		 * The time at which the action was last paused.
+		 */
 		protected var _pauseTime:Timestamp;
 		
 		
@@ -172,10 +198,10 @@ package com.mimswright.sync
 		}
 		
 		/**
-		 * Causes the action to be paused. The onUpdate event will not be called. When unpause() is called,
-		 * the action will continue where it was paused (including offset).
-		 * 
-		 * @throws flash.errors.IllegalOperationError - if the action is already paused.
+		 * Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
+		 * and the onUpdate() handler will not be called. When unpause() is called,
+		 * the action will continue at the point where it was paused.
+		 * If the pause() method affects the start time even if the offset time hasn't expired yet. 
 		 */
 		public function pause():void {
 			if (!_running) {
@@ -192,6 +218,9 @@ package com.mimswright.sync
 			}
 		}
 		
+		/**
+		 * Resumes the action at the point where it was paused.
+		 */
 		public function unpause():void {
 			if (!_running) {
 				//throw new IllegalOperationError("The unpause() method cannot be called when the action is not already running or after it has finished running. Use the start() method first.");
