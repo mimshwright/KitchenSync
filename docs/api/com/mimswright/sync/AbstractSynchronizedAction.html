@@ -49,8 +49,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
   timing. 
   
   -todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
-    18100 msec; 819 frames We use debuggers so you know our shit don't crash
-    18121 msec; 820 frames We use debuggers so you know our shit don't crash
+    18100 msec; 819 frames We use debuggers
+    18121 msec; 820 frames We use debuggers
   -todo - add a settings object
   -todo - better implementation of ids
   <p></p>
@@ -65,11 +65,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription">
+   autoDelete is a flag that indicates whether the action should be deleted 
+   when it is done executing.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : int<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : int<div class="summaryTableDescription">
+   duration is the length of time that the action will run.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -78,19 +81,24 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Will return true if the action is paused (after pause() has been called).</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Will return true when the action is running (after start() has been called).</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#name">name</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#name">name</a> : String<div class="summaryTableDescription">
+   The human-readable name of this action.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offset">offset</a> : int<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offset">offset</a> : int<div class="summaryTableDescription">
+   offset is the time that will pass after the start() method is called
+   before the action begins.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -99,7 +107,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sync">sync</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sync">sync</a> : Boolean<div class="summaryTableDescription"> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -111,7 +121,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeUnit">timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   timeUnit is the units that will be used when dealing with times.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 </table>
@@ -124,14 +135,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_autoDelete">_autoDelete</a> : Boolean = false<div class="summaryTableDescription">
-   autoDelete is a flag that indicates whether the action should be deleted 
-   when it is done executing.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_autoDelete">_autoDelete</a> : Boolean = false<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_duration">_duration</a> : int = 0<div class="summaryTableDescription">
-   duration is the length of time that the action will run.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -139,9 +147,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_offset">_offset</a> : int = 0<div class="summaryTableDescription">
-   offset is the time that will pass after the start() method is called
-   before the action begins.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_offset">_offset</a> : int = 0<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -150,7 +156,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_pauseTime">_pauseTime</a> : <a href="../sync/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   The time at which the action was last paused.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -159,19 +166,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTime">_startTime</a> : <a href="../sync/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   The time at which the action was last started.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_sync">_sync</a> : Boolean = true<div class="summaryTableDescription"> 
-   Setting sync to true will cause the action to sync up with real time
-   even if framerate drops.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_sync">_sync</a> : Boolean = true<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_timeUnit">_timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
-<div class="summaryTableDescription">
-   timeUnit is the units that will be used when dealing with times.</div>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 </table>
@@ -277,7 +282,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#unpause()">unpause</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Resumes the action at the point where it was paused.</div>
 </td><td class="summaryTableOwnerCol">AbstractSynchronizedAction</td>
 </tr>
 <tr class="">
@@ -361,11 +367,8 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _autoDelete:Boolean = false</code><p>
-   autoDelete is a flag that indicates whether the action should be deleted 
-   when it is done executing. The default is set to false so the actions must 
-   be deleted manually.
-   </p></div>
+<code>protected var _autoDelete:Boolean = false</code>
+</div>
 <a name="autoDelete"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -373,7 +376,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>autoDelete:Boolean</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>autoDelete:Boolean</code>&nbsp;&nbsp;[read-write]<p>
+   autoDelete is a flag that indicates whether the action should be deleted 
+   when it is done executing. The default is set to false so the actions must 
+   be deleted manually.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get autoDelete():Boolean</code>
 <br>
@@ -387,15 +394,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _duration:int = 0</code><p>
-   duration is the length of time that the action will run.
-   
-   </p><p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../sync/AbstractSynchronizedAction.html#timeUnit" target="">timeUnit</a>
-</div>
+<code>protected var _duration:int = 0</code>
 </div>
 <a name="duration"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -404,12 +403,24 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>duration:int</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>duration:int</code>&nbsp;&nbsp;[read-write]<p>
+   duration is the length of time that the action will run.
+   Will accept an integer or a parsable string.
+   
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get duration():int</code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set duration(value:int):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../sync/ITimeStringParser.html" target="">com.mimswright.sync.ITimeStringParser</a>
+<br>
+<a href="../sync/AbstractSynchronizedAction.html#timeUnit" target="">timeUnit</a>
+</div>
 </div>
 <a name="durationHasElapsed"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -433,7 +444,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>isPaused:Boolean</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>isPaused:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Will return true if the action is paused (after pause() has been called).
+   Calling unpause() or stop() will return the value to false.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isPaused():Boolean</code>
 <br>
@@ -445,7 +459,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>isRunning:Boolean</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>isRunning:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Will return true when the action is running (after start() has been called).
+   Will continue running until stop() is called or until the action is completed.
+   Pausing does not change the value of isRunning.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isRunning():Boolean</code>
 <br>
@@ -466,7 +484,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>name:String</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>name:String</code>&nbsp;&nbsp;[read-write]<p>
+   The human-readable name of this action. 
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get name():String</code>
 <br>
@@ -480,16 +500,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _offset:int = 0</code><p>
-   offset is the time that will pass after the start() method is called
-   before the action begins. Also known as delay.
-   
-   </p><p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../sync/AbstractSynchronizedAction.html#timeUnit" target="">timeUnit</a>
-</div>
+<code>protected var _offset:int = 0</code>
 </div>
 <a name="offset"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -498,12 +509,25 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>offset:int</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>offset:int</code>&nbsp;&nbsp;[read-write]<p>
+   offset is the time that will pass after the start() method is called
+   before the action begins. Also known as delay.
+   Will accept an integer or a parsable string.
+   
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get offset():int</code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set offset(value:int):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../sync/ITimeStringParser.html" target="">com.mimswright.sync.ITimeStringParser</a>
+<br>
+<a href="../sync/AbstractSynchronizedAction.html#timeUnit" target="">timeUnit</a>
+</div>
 </div>
 <a name="_paused"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -521,8 +545,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _pauseTime:<a href="../sync/Timestamp.html">Timestamp</a></code>
-</div>
+<code>protected var _pauseTime:<a href="../sync/Timestamp.html">Timestamp</a></code><p>
+   The time at which the action was last paused.
+   </p></div>
 <a name="_running"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -539,8 +564,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _startTime:<a href="../sync/Timestamp.html">Timestamp</a></code>
-</div>
+<code>protected var _startTime:<a href="../sync/Timestamp.html">Timestamp</a></code><p>
+   The time at which the action was last started.
+   </p></div>
 <a name="startTimeHasElapsed"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -563,10 +589,8 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _sync:Boolean = true</code><p> 
-   Setting sync to true will cause the action to sync up with real time
-   even if framerate drops. Otherwise, the action will be synced to frames.
-   </p></div>
+<code>protected var _sync:Boolean = true</code>
+</div>
 <a name="sync"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -574,7 +598,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>sync:Boolean</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>sync:Boolean</code>&nbsp;&nbsp;[read-write]<p> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops. Otherwise, the action will be synced to frames.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get sync():Boolean</code>
 <br>
@@ -591,7 +618,16 @@ showHideInherited();
 <code>public static var timeStringParser:<a href="../sync/ITimeStringParser.html">ITimeStringParser</a></code><p> 
    The timeStringParser will determine how strings are parsed into valid 
    time values.
-   </p></div>
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../sync/ITimeStringParser.html" target="">com.mimswright.sync.ITimeStringParser</a>
+<br>
+<a href="../sync/TimeStringParser_en.html" target="">com.mimswright.sync.TimeStringParser_en</a>
+</div>
+</div>
 <a name="_timeUnit"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -599,18 +635,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _timeUnit:<a href="../sync/TimeUnit.html">TimeUnit</a></code><p>
-   timeUnit is the units that will be used when dealing with times. This affects
-   such values as offset and duration.
-   By default, this is set to MILLISECONDS.
-   
-   todo - add support for fractions of seconds.
-   </p><p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="TimeUnit.html" target="">TimeUnit</a>
-</div>
+<code>protected var _timeUnit:<a href="../sync/TimeUnit.html">TimeUnit</a></code>
 </div>
 <a name="timeUnit"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -619,12 +644,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>timeUnit:<a href="../sync/TimeUnit.html">TimeUnit</a></code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>timeUnit:<a href="../sync/TimeUnit.html">TimeUnit</a></code>&nbsp;&nbsp;[read-write]<p>
+   timeUnit is the units that will be used when dealing with times. This affects
+   such values as offset and duration.
+   By default, this is set to MILLISECONDS.
+   
+   todo - add support for fractions of seconds.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timeUnit():<a href="../sync/TimeUnit.html">TimeUnit</a></code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set timeUnit(value:<a href="../sync/TimeUnit.html">TimeUnit</a>):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">com.mimswright.syncTimeUnit</div>
 </div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
@@ -847,18 +882,11 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public function pause():void</code><p>
-   Causes the action to be paused. The onUpdate event will not be called. When unpause() is called,
-   the action will continue where it was paused (including offset).
-   
-   </p><br>
-<span class="label">Throws</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code></code> &mdash; - if the action is already paused.
-   </td>
-</tr>
-</table>
-</div>
+   Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
+   and the onUpdate() handler will not be called. When unpause() is called,
+   the action will continue at the point where it was paused.
+   If the pause() method affects the start time even if the offset time hasn't expired yet. 
+   </p></div>
 <a name="register()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -957,8 +985,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function unpause():void</code>
-</div>
+<code>public function unpause():void</code><p>
+   Resumes the action at the point where it was paused.
+   </p></div>
 <a name="unregister()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>

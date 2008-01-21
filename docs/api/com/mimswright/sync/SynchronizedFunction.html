@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="SynchronizedFunction,com.mimswright.sync.SynchronizedFunction,_args,_func,_result,result,func,clone,invoke,onUpdate" name="keywords">
+<meta content="SynchronizedFunction,com.mimswright.sync.SynchronizedFunction,_args,_func,_result,result,func,clone,invoke,kill,onUpdate" name="keywords">
 <title>com.mimswright.sync.SynchronizedFunction</title>
 </head>
 <body>
@@ -67,11 +67,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription">
+   autoDelete is a flag that indicates whether the action should be deleted 
+   when it is done executing.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#duration">duration</a> : int<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#duration">duration</a> : int<div class="summaryTableDescription">
+   duration is the length of time that the action will run.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -84,19 +87,24 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">SynchronizedFunction</td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription">
+   Will return true if the action is paused (after pause() has been called).</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">
+   Will return true when the action is running (after start() has been called).</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#name">name</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#name">name</a> : String<div class="summaryTableDescription">
+   The human-readable name of this action.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#offset">offset</a> : int<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#offset">offset</a> : int<div class="summaryTableDescription">
+   offset is the time that will pass after the start() method is called
+   before the action begins.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
@@ -109,7 +117,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#sync">sync</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#sync">sync</a> : Boolean<div class="summaryTableDescription"> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -121,7 +131,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#timeUnit">timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   timeUnit is the units that will be used when dealing with times.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 </table>
@@ -146,14 +157,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">SynchronizedFunction</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_autoDelete">_autoDelete</a> : Boolean = false<div class="summaryTableDescription">
-   autoDelete is a flag that indicates whether the action should be deleted 
-   when it is done executing.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_autoDelete">_autoDelete</a> : Boolean = false<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_duration">_duration</a> : int = 0<div class="summaryTableDescription">
-   duration is the length of time that the action will run.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
@@ -165,9 +173,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_offset">_offset</a> : int = 0<div class="summaryTableDescription">
-   offset is the time that will pass after the start() method is called
-   before the action begins.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_offset">_offset</a> : int = 0<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -176,7 +182,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_pauseTime">_pauseTime</a> : <a href="../sync/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   The time at which the action was last paused.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="">
@@ -189,19 +196,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_startTime">_startTime</a> : <a href="../sync/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   The time at which the action was last started.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_sync">_sync</a> : Boolean = true<div class="summaryTableDescription"> 
-   Setting sync to true will cause the action to sync up with real time
-   even if framerate drops.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_sync">_sync</a> : Boolean = true<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractSynchronizedAction.html#_timeUnit">_timeUnit</a> : <a href="../sync/TimeUnit.html">TimeUnit</a>
-<div class="summaryTableDescription">
-   timeUnit is the units that will be used when dealing with times.</div>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 </table>
@@ -261,13 +266,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    Calls the function with the arguments specified.</div>
 </td><td class="summaryTableOwnerCol">SynchronizedFunction</td>
 </tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="AbstractSynchronizedAction.html#kill()">kill</a>():void</div>
-<div class="summaryTableDescription">
-   Unregisters the function and removes any refrerences to objects that it may be holding onto.</div>
-</td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
+<a class="signatureLink" href="#kill()">kill</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">SynchronizedFunction</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -322,7 +326,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="AbstractSynchronizedAction.html#unpause()">unpause</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Resumes the action at the point where it was paused.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractSynchronizedAction.html">AbstractSynchronizedAction</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -528,6 +533,15 @@ showHideInherited();
 <td width="20"></td><td><code>*</code></td>
 </tr>
 </table>
+</div>
+<a name="kill()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">kill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function kill():void</code>
 </div>
 <a name="onUpdate()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
