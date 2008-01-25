@@ -72,7 +72,7 @@ package com.mimswright.sync
 			// separate by number / unit pairs separated by spaces or commas.
 			var unitValuePairs:Array = timeString.match(/(\d+(\.\d+)?)\s*[a-z]+\s*,?\s*/g);
 			if (unitValuePairs.length < 1) {
-				throw new ParseError(ParseError.MALFORMED_DATA);
+				throw new ParseError(ParseError.MALFORMED_DATA + ": " + timeString);
 				return null;
 			}
 			

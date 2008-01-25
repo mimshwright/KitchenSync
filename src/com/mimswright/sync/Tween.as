@@ -38,11 +38,13 @@ package com.mimswright.sync
 		 * @see #EXISTING_FROM_VALUE
 		 */
 		protected var _fromValue:Number;
+		public function get fromValue():Number { return _fromValue; }
 		
 		/**
 		 * The ending value for the tween.
 		 */
 		protected var _toValue:Number;
+		public function get toValue():Number { return _toValue; }
 		
 		/**
 		 * Used to modify the results of the easing function. 
@@ -67,7 +69,7 @@ package com.mimswright.sync
 		 * 
 		 * @default true
 		 */
-		protected var _snapToValueOnComplete:Boolean = true;
+		protected var _snapToValueOnComplete:Boolean = false;
 		public function set snapToValueOnComplete(snapToValueOnComplete:Boolean):void { _snapToValueOnComplete = snapToValueOnComplete; }
 		
 		/**

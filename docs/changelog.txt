@@ -1,5 +1,6 @@
 ===== v1.0.1 ======
 Fixed Cubic.easeOut bug.
+Made getters for Tween's toValue and fromValue
 
 ===== v1.0 (2008.01.21) =====
 Note: This is Milestone 1.0 as it is the official release and all basic functionality is complete.
