@@ -16,7 +16,12 @@ package com.mimswright.sync
 	 * -todo - better implementation of ids
 	 */
 	public class AbstractSynchronizedAction extends EventDispatcher
-	{			
+	{	
+		[Event(name="actionStart", type="com.mimswright.sync.SynchronizerEvent")]
+		[Event(name="actionPause", type="com.mimswright.sync.SynchronizerEvent")]
+		[Event(name="actionUnpause", type="com.mimswright.sync.SynchronizerEvent")]
+		[Event(name="actionComplete", type="com.mimswright.sync.SynchronizerEvent")]
+		
 		/** 
 		 * The timeStringParser will determine how strings are parsed into valid 
 		 * time values.

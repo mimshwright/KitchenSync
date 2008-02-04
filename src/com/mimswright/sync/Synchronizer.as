@@ -14,6 +14,8 @@ package com.mimswright.sync
 	 */
 	public class Synchronizer extends EventDispatcher
 	{
+		[Event(name="synchronizerUpdate", type="com.mimswright.sync.SynchronizerEvent")]
+		
 		private static var _instance:Synchronizer = null;
 		private var _stage:Stage = null;
 		
