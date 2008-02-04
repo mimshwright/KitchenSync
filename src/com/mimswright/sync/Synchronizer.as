@@ -6,6 +6,8 @@ package com.mimswright.sync
 	import flash.display.Stage;
 	import flash.utils.getTimer;
 	
+	[Event(name="synchronizerUpdate", type="com.mimswright.sync.SynchronizerEvent")]
+	
 	/**
 	 * Synchronizer acts as the main time keeper for the animation engine. It uses the EnterFrame
 	 * event of the Stage to trigger updates.
@@ -14,7 +16,6 @@ package com.mimswright.sync
 	 */
 	public class Synchronizer extends EventDispatcher
 	{
-		[Event(name="synchronizerUpdate", type="com.mimswright.sync.SynchronizerEvent")]
 		
 		private static var _instance:Synchronizer = null;
 		private var _stage:Stage = null;

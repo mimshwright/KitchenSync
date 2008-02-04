@@ -5,6 +5,11 @@ package com.mimswright.sync
 	
 	import org.as3lib.utils.AbstractEnforcer;
 	
+	[Event(name="actionStart", type="com.mimswright.sync.SynchronizerEvent")]
+	[Event(name="actionPause", type="com.mimswright.sync.SynchronizerEvent")]
+	[Event(name="actionUnpause", type="com.mimswright.sync.SynchronizerEvent")]
+	[Event(name="actionComplete", type="com.mimswright.sync.SynchronizerEvent")]
+	
 	/**
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
 	 * timing. 
@@ -17,10 +22,6 @@ package com.mimswright.sync
 	 */
 	public class AbstractSynchronizedAction extends EventDispatcher
 	{	
-		[Event(name="actionStart", type="com.mimswright.sync.SynchronizerEvent")]
-		[Event(name="actionPause", type="com.mimswright.sync.SynchronizerEvent")]
-		[Event(name="actionUnpause", type="com.mimswright.sync.SynchronizerEvent")]
-		[Event(name="actionComplete", type="com.mimswright.sync.SynchronizerEvent")]
 		
 		/** 
 		 * The timeStringParser will determine how strings are parsed into valid 

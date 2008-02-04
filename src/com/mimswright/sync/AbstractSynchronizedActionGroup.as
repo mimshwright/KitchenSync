@@ -2,10 +2,11 @@ package com.mimswright.sync
 {
 	import org.as3lib.utils.AbstractEnforcer;
 	
+	[Event(name="childActionStart", type="com.mimswright.sync.SynchronizerEvent")]
+	[Event(name="childActionComplete", type="com.mimswright.sync.SynchronizerEvent")]
+	
 	public class AbstractSynchronizedActionGroup extends AbstractSynchronizedAction
 	{
-		[Event(name="childActionStart", type="com.mimswright.sync.SynchronizerEvent")]
-		[Event(name="childActionComplete", type="com.mimswright.sync.SynchronizerEvent")]
 		
 		protected var _childActions:Array = new Array();
 		public function get childActions():Array { return _childActions; }
