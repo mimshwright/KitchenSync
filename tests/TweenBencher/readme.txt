@@ -1,0 +1,1 @@
+These are benchmark test classes for use with Moses Gunesch's Go benchmark tester. http://go.mosessupposes.com/?p=5 To use them, you'll need to download the appropriate files from the google code site http://code.google.com/p/goasap/ .
