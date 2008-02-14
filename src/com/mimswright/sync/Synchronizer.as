@@ -1,9 +1,10 @@
 package com.mimswright.sync
 {
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
 	import flash.display.DisplayObject;
 	import flash.display.Stage;
+	import flash.errors.IllegalOperationError;
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
 	import flash.utils.getTimer;
 	
 	[Event(name="synchronizerUpdate", type="com.mimswright.sync.SynchronizerEvent")]
@@ -16,7 +17,12 @@ package com.mimswright.sync
 	 */
 	public class Synchronizer extends EventDispatcher
 	{
-		
+		/** 
+		 * The current version of the library. Use this to verify that the library is the
+		 * version that your software expects. 
+		 */ 
+		public static const VERSION:String = "1.1"
+			
 		private static var _instance:Synchronizer = null;
 		private var _stage:Stage = null;
 		
@@ -27,6 +33,7 @@ package com.mimswright.sync
 		//public function get active ():Boolean { return _active; }
 		//public function set active (active:Boolean):void { _active = active; }
 		
+		/** The frameRate (as defined in the stage) */
 		public function get frameRate():int {return _stage.frameRate; }
 		//public function get actualFrameRate():Number {
 		//	return 1000/(_currentTime - _previousTime);	
@@ -47,13 +54,18 @@ package com.mimswright.sync
 		 * once. After that, use getInstance() to get references to the Synchronizer.
 		 * 
 		 * @see getInstance()
-		 * @throws Error - if frameRateSeed isn't a part of the display list. 
-		 * @throws Error - if initialize() has already been called.
+		 * @throws Error - if versionCheck fails
+		 * @throws ArgumentError - if frameRateSeed isn't a part of the display list. 
+		 * @throws IllegalOperationError - if initialize() has already been called.
 		 * 
 		 * @param frameRateSeed - This DisplayObject must be added to the stage. Use the application route.
+		 * @param versionCheck - Use this to make sure the version of Synchronizer is what you're program expects.
 		 * @return a reference to the only instance of the Synchronizer.
 		 */
-		public static function initialize(frameRateSeed:DisplayObject):Synchronizer {
+		public static function initialize(frameRateSeed:DisplayObject, versionCheck:String = VERSION):Synchronizer {
+			if (versionCheck != VERSION) {
+				throw new Error("Version check failed. Please update to the correct version or to continue using this version (at your own risk) put the initialize() method inside a try{} block.");
+			}
 			if (!_instance) {
 				if (frameRateSeed && frameRateSeed.stage) {
 					_instance = new Synchronizer(new SingletonEnforcer());
@@ -63,10 +75,10 @@ package com.mimswright.sync
 					//_instance._active = true;
 					return _instance;
 				} else {
-					throw new Error("frameRateSeed must be a DisplayObject that is part of the Display List.");
+					throw new ArgumentError("frameRateSeed must be a DisplayObject that is part of the Display List.");
 				}
 			} else {
-				throw new Error("Synchronizer has already been initialized.");
+				throw new IllegalOperationError("Synchronizer has already been initialized.");
 			}
 			return null;
 		}

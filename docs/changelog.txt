@@ -3,6 +3,7 @@ ADDED jumpToTime() method to Tween (this may be moved to AbstractSynchronizedAct
 ADDED getTimestampFromFrames() and getTimestampFromMilliseconds() to TimestampUtil
 ADDED KitchenSyncDefaults class for storing default initialization values. (not hooked up yet)
 ADDED easeOutIn() to most of the easing functions (inaccurate. seems to overshoot target)
+ADDED version check in Synchronizer.initialize()
 CHANGED type of Numbers within Timestamp to int.
 COMMENTED out errors that are thrown when pause() and start() are called at the wrong times.
 
