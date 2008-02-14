@@ -32,6 +32,7 @@ package com.mimswright.sync
 		 */
 		public static var timeStringParser:ITimeStringParser = new TimeStringParser_en();
 		
+		
 		/**
 		 * duration is the length of time that the action will run.
 		 * Will accept an integer or a parsable string.
@@ -53,6 +54,7 @@ package com.mimswright.sync
 			}
 		}
 		protected var _duration:int = 0;
+		
 		
 		/**
 		 * offset is the time that will pass after the start() method is called
@@ -78,6 +80,7 @@ package com.mimswright.sync
 		}
 		protected var _offset:int = 0;
 		
+		
 		/**
 		 * autoDelete is a flag that indicates whether the action should be deleted 
 		 * when it is done executing. The default is set to false so the actions must 
@@ -86,6 +89,7 @@ package com.mimswright.sync
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
 		protected var _autoDelete:Boolean = false;
+		
 		
 		/**
 		 * timeUnit is the units that will be used when dealing with times. This affects
@@ -104,6 +108,7 @@ package com.mimswright.sync
 		}
 		protected var _timeUnit:TimeUnit = TimeUnit.DEFAULT;
 		
+		
 		/** 
 		 * Setting sync to true will cause the action to sync up with real time
 		 * even if framerate drops. Otherwise, the action will be synced to frames.
@@ -111,6 +116,7 @@ package com.mimswright.sync
 		public function get sync():Boolean { return _sync; }
 		public function set sync(sync:Boolean):void { _sync = sync; }
 		protected var _sync:Boolean = true;
+		
 		
 		/**
 		 * The human-readable name of this action. 
@@ -125,6 +131,7 @@ package com.mimswright.sync
 		}
 		public function set id (id:String):void { _id = id; } */
 		
+		
 		/**
 		 * Will return true when the action is running (after start() has been called).
 		 * Will continue running until stop() is called or until the action is completed.
@@ -133,6 +140,7 @@ package com.mimswright.sync
 		public function get isRunning ():Boolean { return _running; }
 		protected var _running:Boolean = false;
 		
+		
 		/**
 		 * Will return true if the action is paused (after pause() has been called).
 		 * Calling unpause() or stop() will return the value to false.
@@ -140,15 +148,22 @@ package com.mimswright.sync
 		public function get isPaused ():Boolean { return _paused; }
 		protected var _paused:Boolean = false;
 		
+		
 		/**
 		 * The time at which the action was last started.
 		 */
 		protected var _startTime:Timestamp;
+		// DEBUG
+		public function get startTime():Timestamp { return _startTime; }
+		//
+		
 		/**
 		 * The time at which the action was last paused.
 		 */
 		protected var _pauseTime:Timestamp;
-		
+		// DEBUG
+		public function get pauseTime():Timestamp { return _pauseTime; }
+		//
 		
 		/**
 		 * Constructor.
@@ -188,17 +203,17 @@ package com.mimswright.sync
 		 * @throws flash.errors.IllegalOperationError - if the method is called while the action is already running.
 		 */
 		public function start():AbstractSynchronizedAction {
-			if (!_running) {
-				if (_paused) {
-					unpause();				
-				} else {
+			if (_paused) {
+				unpause();				
+			} else {
+				if (!_running) {
 					_running = true;
 					_startTime = Synchronizer.getInstance().currentTimestamp;
 					register();
 					dispatchEvent(new SynchronizerEvent(SynchronizerEvent.START, _startTime));
+				} else {
+					throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
 				}
-			} else {
-				throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
 			}
 			return this;
 		}
@@ -215,7 +230,7 @@ package com.mimswright.sync
 				
 				//throw new IllegalOperationError("The pause() method cannot be called when the action is not already running or after it has finished running. Use the start() method first.");
 			} else if (_paused) {
-				throw new IllegalOperationError("The pause() method cannot be called when the action is already paused. Use the unpause() method first.");
+				//throw new IllegalOperationError("The pause() method cannot be called when the action is already paused. Use the unpause() method first.");
 			} else {
 				_pauseTime = Synchronizer.getInstance().currentTimestamp;
 				_paused = true;
@@ -244,6 +259,7 @@ package com.mimswright.sync
 				
 			}
 		}
+		
 		
 		/**
 		 * Stops the action from running and resets the timer.

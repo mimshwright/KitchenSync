@@ -67,5 +67,19 @@ package com.mimswright.easing
 			}
 			return 0.5*((timeElapsed-=2)*timeElapsed*(((overshoot*=OVERSHOOT_GROWTH)+1)*timeElapsed + overshoot) + 2);
 		}	
+		
+		/**
+		* easeOutIn combines the motion of easeIn and easeOut by starting out decelerating 
+		* towards the middle of the duration, then accelerating end.
+		*  
+	    * @param timeElapsed Specifies the time since the tween began in milliseconds or frames.
+	    * @param duration Specifies the duration of the tween, in milliseconds or frames.
+	    * @param overshoot The ammount to go over past the target value. The higher the number, the farther it will go.
+	    * @return percentage complete - between 0.0 and 1.0 but with the overshoot, it may extend below 0.0 or above 1.0
+		*/ 
+		public static function easeOutIn (timeElapsed:Number, duration:Number, overshoot:Number = DEFAULT_OVERSHOOT):Number {
+			if (timeElapsed < duration/2) return easeOut(timeElapsed*2, duration, overshoot)/2;
+			return easeIn((timeElapsed*2)-duration, duration, overshoot)/2 + 0.5;
+		}
 	}
 }

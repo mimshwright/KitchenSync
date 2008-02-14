@@ -3,6 +3,8 @@ package com.mimswright.sync
 	import com.mimswright.easing.EasingUtil;
 	import com.mimswright.easing.Linear;
 	
+	import flash.errors.IllegalOperationError;
+	
 	/**
 	 * A tween will change an object's numeric value over time.
 	 * 
@@ -172,6 +174,92 @@ package com.mimswright.sync
 				}
 			}
 		}
+		
+		
+		
+		/**
+		 * Moves the playhead to a specified time in the action. If this method is called while the 
+		 * action is paused, it will not appear to jump until after the action is unpaused.
+		 * 
+		 * @param time The time parameter can either be a number or a parsable time string. If the 
+		 * time to jump to is greater than the total duration of the action, it will throw an IllegalOperationError.
+		 * @param ignoreOffset If set to true, the offset will be ignored and the action will jump to
+		 * the specified time in relation to the duration.
+		 * 
+		 * @throws flash.errors.IllegalOperationError If the time to jump to is longer than the total time for the action.
+		 */
+		public function jumpToTime(time:*, ignoreOffset:Boolean = false):void {
+			// jumpToTime will fail if the action isn't running.
+			if (!isRunning) { 
+				throw new IllegalOperationError("Can't jump to time if the action isn't running.");
+				return; 
+			}
+			
+			// parse time strings if this is a string.
+			var jumpTimeNumber:int;
+			var result:TimeStringParserResult;
+			var useUnits:TimeUnit = timeUnit;
+			if (!isNaN(time)) {
+				jumpTimeNumber = int(time);
+			} else {
+				var timeString:String = time.toString();
+				result = timeStringParser.parseTimeString(timeString);
+				jumpTimeNumber = result.time;
+				if (result.timeUnit) {
+					useUnits = result.timeUnit;
+				}
+			}
+			
+			// Convert the jump time into a timestamp
+			var jumpTime:Timestamp;
+			if (useUnits == TimeUnit.FRAMES) {
+				jumpTime = TimestampUtil.getTimestampFromFrames(jumpTimeNumber);
+			} else if (useUnits == TimeUnit.MILLISECONDS) {
+				jumpTime = TimestampUtil.getTimestampFromMilliseconds(jumpTimeNumber);
+			}
+			
+			// Ignore the offset in this equation if ignoreOffset is true.
+			var totalDuration:int = ignoreOffset ? duration : duration + offset;
+			
+			// extract the jump time based on the action's timeUnit
+			var offsetTimestamp:Timestamp;
+			if (timeUnit == TimeUnit.FRAMES) {
+				jumpTimeNumber = jumpTime.currentFrame;
+				offsetTimestamp = TimestampUtil.getTimestampFromFrames(offset);
+			} else if (timeUnit == TimeUnit.MILLISECONDS) {
+				jumpTimeNumber = jumpTime.currentTime;
+				offsetTimestamp = TimestampUtil.getTimestampFromMilliseconds(offset);
+			}
+			
+			// check that the jump time is valid
+			if (jumpTimeNumber > totalDuration) {
+				// you can't jump to a time that is past the end of the action's total time.
+				throw new IllegalOperationError("'time' must be less than the total time of the action.");
+			} else {
+				// If the action is paused, factor that into your jump (resluts wont appear until it's restarted)
+				var runningTime:Timestamp
+				if (isPaused) {
+					runningTime = TimestampUtil.subtract(_pauseTime, _startTime);
+				} else {
+					runningTime = TimestampUtil.subtract(Synchronizer.getInstance().currentTimestamp, _startTime); 
+				} 
+				
+				// adjust the startTime to make it appear that the playhead should be at 
+				// a different point in time on the next update.
+				_startTime = TimestampUtil.subtract(_startTime, TimestampUtil.subtract(jumpTime, runningTime));
+				
+				// if ignoring the offset, also move the playhead forward by the offset amount.
+				if (ignoreOffset) { 
+					_startTime = TimestampUtil.subtract(_startTime, offsetTimestamp); 
+				} 
+			}
+		}
+		
+		// TODO
+		// add jumpByTime() method
+		
+		
+		
 		
 		/**
 		 * Creates a new Tween and reverses the start and end values of the target property.

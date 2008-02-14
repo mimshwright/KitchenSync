@@ -108,5 +108,20 @@ package com.mimswright.easing
 			return 0.5*(amplitude*Math.pow(2,-10*(timeElapsed-=1)) * Math.sin((timeElapsed*duration-decay)*TWICE_PI/period )) + 1;
 		}
 	
+		/**
+		* easeOutIn combines the motion of easeIn and easeOut by starting out decelerating 
+		* towards the middle of the duration, then accelerating end.
+		*
+		* @param timeElapsed The time since the tween began in milliseconds or frames.
+	    * @param duration The duration of the tween, in milliseconds or frames.
+	    * @param amplitude The aplitude of the sine wave. Low numbers are less extreme than high numbers.
+	    * @param period The period of the sine wave. Low numbers are wobbly, high numbers are smooth.
+	    * @return percentage complete - between 0.0 and 1.0 but it may extend below 0.0 or above 1.0
+	    */  
+		public static function easeOutIn (timeElapsed:Number, duration:Number, amplitude:Number = 0, period:Number = 0):Number {
+			if (timeElapsed < duration/2) return easeOut(timeElapsed*2, duration, amplitude, period)/2;
+			return easeIn((timeElapsed*2)-duration, duration, amplitude, period)/2 + 0.5;
+		}
+	
 	}
 }

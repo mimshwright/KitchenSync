@@ -53,5 +53,13 @@ package com.mimswright.sync
 		public static function millisecondsToFrames(milliseconds:int):int {
 			return Math.round ( milliseconds / 1000 * Synchronizer.getInstance().frameRate );
 		}
+		
+		public static function getTimestampFromMilliseconds(milliseconds:int):Timestamp {
+			return new Timestamp (millisecondsToFrames(milliseconds), milliseconds);
+		}
+		
+		public static function getTimestampFromFrames(frames:int):Timestamp {
+			return new Timestamp (frames, framesToMilliseconds(frames));
+		}
 	}
 }
