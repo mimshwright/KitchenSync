@@ -38,6 +38,7 @@ package com.mimswright.sync
 		 * @param soundOffset - The point at which to begin playing the sound in milliseconds.
 		 */
 		public function SynchronizedSound(sound:*, offset:* = 0, soundOffset:int = 0) {
+			super();
 			if (sound is Sound) {
 				_sound = Sound(sound);
 			} else if (sound is URLRequest) {

@@ -20,6 +20,7 @@ package com.mimswright.sync
 		 * @params children - a list of AbstractSynchronizedActions that will be added as children of the group.
 		 */
 		public function Parallel (... children) {
+			super();
 			for (var i:int = 0; i < children.length; i++) {
 				if (children[i] is AbstractSynchronizedAction) {
 					var action:AbstractSynchronizedAction = AbstractSynchronizedAction(children[i]);

@@ -19,6 +19,7 @@ package com.mimswright.sync
 		 * @param waitTime Time that the action will wait.
 		 */
 		public function Wait (waitTime:*):void {
+			super();
 			this.offset = waitTime;
 		}
 		

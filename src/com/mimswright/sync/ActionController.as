@@ -8,6 +8,9 @@ package com.mimswright.sync
 	 */
 	public class ActionController extends SynchronizedFunction
 	{
+		/**
+		 * The action that the ActionController will send commands to.
+		 */
 		protected var _target:AbstractSynchronizedAction;
 		public function set target (target:AbstractSynchronizedAction):void { _target = target; }
 		public function get target ():AbstractSynchronizedAction { return _target; }

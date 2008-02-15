@@ -6,11 +6,22 @@ package com.mimswright.sync
 	 */
 	public class SynchronizedFunction extends AbstractSynchronizedAction
 	{
-		protected var _func:Function;
+		/**
+		 * The function that will be called by the action.
+		 */
 		public function set func(func:Function):void { _func = func; }
+		protected var _func:Function;
+		
+		/**
+		 * Arguments that will be passed into the function.
+		 */
 		protected var _args:Array;
-		protected var _result:*;
+		
+		/**
+		 * The result of the function (if the function generates one.
+		 */		
 		public function get result():* { return _result; }
+		protected var _result:*;
 		
 		/**
 		 * Constructor.

@@ -30,7 +30,7 @@ package com.mimswright.sync
 		 * @see com.mimswright.sync.ITimeStringParser
 		 * @see com.mimswright.sync.TimeStringParser_en
 		 */
-		public static var timeStringParser:ITimeStringParser = new TimeStringParser_en();
+		public static var timeStringParser:ITimeStringParser;
 		
 		
 		/**
@@ -88,7 +88,7 @@ package com.mimswright.sync
 		 */
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
-		protected var _autoDelete:Boolean = false;
+		protected var _autoDelete:Boolean;
 		
 		
 		/**
@@ -106,7 +106,7 @@ package com.mimswright.sync
 				_timeUnit = timeUnit;
 			}
 		}
-		protected var _timeUnit:TimeUnit = TimeUnit.DEFAULT;
+		protected var _timeUnit:TimeUnit;
 		
 		
 		/** 
@@ -115,7 +115,7 @@ package com.mimswright.sync
 		 */ 
 		public function get sync():Boolean { return _sync; }
 		public function set sync(sync:Boolean):void { _sync = sync; }
-		protected var _sync:Boolean = true;
+		protected var _sync:Boolean;
 		
 		
 		/**
@@ -172,6 +172,12 @@ package com.mimswright.sync
 		public function AbstractSynchronizedAction()
 		{
 			super(null);
+			
+			timeStringParser = ActionDefaults.timeStringParser;
+			autoDelete = ActionDefaults.autoDelete;
+			sync = ActionDefaults.sync;
+			timeUnit = ActionDefaults.timeUnit;
+			
 			AbstractEnforcer.enforceConstructor(this, AbstractSynchronizedAction);
 		}
 		

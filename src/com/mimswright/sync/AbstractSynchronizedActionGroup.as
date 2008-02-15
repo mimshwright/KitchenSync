@@ -21,6 +21,7 @@ package com.mimswright.sync
 		 * @abstract
 		 */
 		public function AbstractSynchronizedActionGroup() {
+			super();
 			AbstractEnforcer.enforceConstructor(this, AbstractSynchronizedActionGroup);
 		}
 		

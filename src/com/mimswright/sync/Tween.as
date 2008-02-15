@@ -1,7 +1,6 @@
 package com.mimswright.sync
 {
 	import com.mimswright.easing.EasingUtil;
-	import com.mimswright.easing.Linear;
 	
 	import flash.errors.IllegalOperationError;
 	
@@ -32,6 +31,7 @@ package com.mimswright.sync
 		protected var _target:Object;
 		/** property is the name of the property belonging to target that will be affected by the tween. */
 		protected var _property:String;
+		
 		/** 
 		 * The starting value for the tween. 
 		 * You can use EXISTING_FROM_VALUE to cause the tween to start from the from value at
@@ -39,14 +39,14 @@ package com.mimswright.sync
 		 * 
 		 * @see #EXISTING_FROM_VALUE
 		 */
-		protected var _fromValue:Number;
 		public function get fromValue():Number { return _fromValue; }
+		protected var _fromValue:Number;
 		
 		/**
 		 * The ending value for the tween.
 		 */
-		protected var _toValue:Number;
 		public function get toValue():Number { return _toValue; }
+		protected var _toValue:Number;
 		
 		/**
 		 * Used to modify the results of the easing function. 
@@ -71,21 +71,21 @@ package com.mimswright.sync
 		 * 
 		 * @default true
 		 */
-		protected var _snapToValueOnComplete:Boolean = false;
 		public function set snapToValueOnComplete(snapToValueOnComplete:Boolean):void { _snapToValueOnComplete = snapToValueOnComplete; }
+		public function get snapToValueOnComplete():Boolean { return _snapToValueOnComplete; }
+		protected var _snapToValueOnComplete:Boolean;
 		
 		/**
 		 * Indicates whether tweened values should snap to whole value numbers or use decimals.
 		 * If set to true, the results of the easing functions on the target property will be 
 		 * rounded to the nearest integer.
 		 * 
-		 * @default false
+		 * @see com.mimswright.sync.ActionDefaults
 		 * @todo test
 		 */
-		protected var _snapToWholeNumber:Boolean = false;
-		public function set snapToWholeNumber(snapToWholeNumber:Boolean):void {
-			_snapToWholeNumber = snapToWholeNumber;
-		}
+		public function set snapToWholeNumber(snapToWholeNumber:Boolean):void { _snapToWholeNumber = snapToWholeNumber; }
+		public function get snapToWholeNumber():Boolean { return _snapToWholeNumber; }
+		protected var _snapToWholeNumber:Boolean;
 		
 		/**
 		 * Used internally to get the current change between start and end values.
@@ -126,10 +126,16 @@ package com.mimswright.sync
 			_fromValue = fromValue;
 			_toValue = toValue;
 			
+			snapToValueOnComplete = ActionDefaults.snapToValueOnComplete;
+			snapToWholeNumber = ActionDefaults.snapToWholeNumber;
+			
 			this.duration = duration;
 			this.offset = offset;
 			
-			if (easingFunction != null) { _easingFunction = easingFunction; } else { _easingFunction = Linear.ease; }
+			if (easingFunction == null) { 
+				easingFunction = ActionDefaults.easingFunction;
+			}
+			_easingFunction = easingFunction;
 		}
 		
 		/**

@@ -4,13 +4,13 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="TimestampUtil,com.mimswright.sync.TimestampUtil,add,framesToMilliseconds,millisecondsToFrames,subtract" name="keywords">
+<meta content="TimestampUtil,com.mimswright.sync.TimestampUtil,add,framesToMilliseconds,getTimestampFromFrames,getTimestampFromMilliseconds,millisecondsToFrames,subtract" name="keywords">
 <title>com.mimswright.sync.TimestampUtil</title>
 </head>
 <body>
 <script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'TimestampUtil - KitchenSync';
+				asdocTitle = 'TimestampUtil - $App.title';
 				var baseRef = '../../../';
 				window.onload = configPage;
 			--></script>
@@ -75,6 +75,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <a class="signatureLink" href="#framesToMilliseconds()">framesToMilliseconds</a>(frames:int):int</div>
 <div class="summaryTableDescription">[static]
    Convert frames to milliseconds based on the framerate of the Synchronizer.</div>
+</td><td class="summaryTableOwnerCol">TimestampUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getTimestampFromFrames()">getTimestampFromFrames</a>(frames:int):<a href="../sync/Timestamp.html">Timestamp</a>
+</div>
+<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">TimestampUtil</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getTimestampFromMilliseconds()">getTimestampFromMilliseconds</a>(milliseconds:int):<a href="../sync/Timestamp.html">Timestamp</a>
+</div>
+<div class="summaryTableDescription">[static]</div>
 </td><td class="summaryTableOwnerCol">TimestampUtil</td>
 </tr>
 <tr class="">
@@ -168,6 +184,48 @@ showHideInherited();
 <div class="seeAlso">
 <a href="../sync/TimestampUtil.html#millisecondsToFrames()" target="">millisecondsToFrames()</a>
 </div>
+</div>
+<a name="getTimestampFromFrames()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getTimestampFromFrames</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getTimestampFromFrames(frames:int):<a href="../sync/Timestamp.html">Timestamp</a></code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">frames</span>:int</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../sync/Timestamp.html">Timestamp</a></code></td>
+</tr>
+</table>
+</div>
+<a name="getTimestampFromMilliseconds()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getTimestampFromMilliseconds</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getTimestampFromMilliseconds(milliseconds:int):<a href="../sync/Timestamp.html">Timestamp</a></code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">milliseconds</span>:int</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../sync/Timestamp.html">Timestamp</a></code></td>
+</tr>
+</table>
 </div>
 <a name="millisecondsToFrames()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

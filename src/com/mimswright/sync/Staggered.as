@@ -13,7 +13,6 @@ package com.mimswright.sync
 		 * 
 		 * @see com.mimswright.sync.ITimeStringParser;
 		 */
-		protected var _stagger:int = 1000;
 		public function get stagger():int { return _stagger;}
 		public function set stagger(stagger:int):void { 
 			if (Number(offset)) {
@@ -30,6 +29,7 @@ package com.mimswright.sync
 				throw new RangeError("Stagger amount must be an integer greater than 0.");
 			}
 		}
+		protected var _stagger:int;
 		
 		protected var _lastStartTime:Timestamp;
 		
@@ -46,15 +46,8 @@ package com.mimswright.sync
 		 * @throws TypeError - if any children are not of type AbstractSynchronizedAction.
 		 */
 		public function Staggered (stagger:*, ... children) {
+			super();
 			this.stagger = stagger;
-			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is AbstractSynchronizedAction) {
-					var action:AbstractSynchronizedAction = AbstractSynchronizedAction(children[i]);
-					addAction(action); 
-				} else {
-					throw new TypeError ("All children must be of type AbstractSynchronizedAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractSynchronizedAction was expected.");
-				}
-			}
 		}
 		
 		

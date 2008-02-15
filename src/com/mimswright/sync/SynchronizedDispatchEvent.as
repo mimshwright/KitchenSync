@@ -20,23 +20,23 @@ package com.mimswright.sync
 		 * Default is true.
 		 * @todo - if this is set to false, cleanup event listeners on <code>kill()</code>
 		 */
-		protected var _useWeakReferences:Boolean = true;
 		public function get useWeakReferences():Boolean { return _useWeakReferences; }
 		public function set useWeakReferences(useWeakreferences:Boolean):void { _useWeakReferences = useWeakreferences; }
+		protected var _useWeakReferences:Boolean = true;
 		
 		/**
 		 * This is the IEventDispatcher that the event will be dispatched from. Default is <code>this</code>. 
 		 */ 
-		protected var _target:IEventDispatcher;
 		public function get target ():IEventDispatcher { return _target; }
 		public function set target (target:IEventDispatcher):void { _target = target; }
+		protected var _target:IEventDispatcher;
 		
 		/**
 		 * The event that will be dispatched.
 		 */
-		protected var _event:Event;
 		public function get event():Event { return _event; }
 		public function set event(event:Event):void { _event = event; }
+		protected var _event:Event;
 		
 		/**
 		 * Using this will set the event to a generic Event object with type of <code>type</code>.
@@ -57,6 +57,8 @@ package com.mimswright.sync
 		 * @param listeners - Any additional objects passed in will be added as listeners (if they're functions)
 		 */
 		public function SynchronizedDispatchEvent(event:*, target:IEventDispatcher = SELF, offset:* = 0, ... listeners) {
+			super();
+			
 			if (event is Event) {
 				_event = Event(event);
 			} else if (event is String) {

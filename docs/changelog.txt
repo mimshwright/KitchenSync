@@ -1,11 +1,12 @@
 ===== v1.1 () =====
 ADDED jumpToTime() method to Tween (this may be moved to AbstractSynchronizedAction in a later release)
 ADDED getTimestampFromFrames() and getTimestampFromMilliseconds() to TimestampUtil
-ADDED KitchenSyncDefaults class for storing default initialization values. (not hooked up yet)
-ADDED easeOutIn() to most of the easing functions (inaccurate. seems to overshoot target)
+ADDED ActionDefaults class for storing default initialization values.
+ADDED easeOutIn() to most of the easing functions (buggy. seems to overshoot target in some cases)
 ADDED version check in Synchronizer.initialize()
 CHANGED type of Numbers within Timestamp to int.
-COMMENTED out errors that are thrown when pause() and start() are called at the wrong times.
+REFACTORED all actions to contain super() in the constructor.
+REMOVED errors that are thrown when pause() and start() are called at the wrong times.
 
 ===== v1.0.1 (2008.02.04) ======
 FIXED Cubic.easeOut bug.
