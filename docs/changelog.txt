@@ -1,6 +1,7 @@
 ===== v1.1 () =====
 ADDED jumpToTime() method to Tween (this may be moved to AbstractSynchronizedAction in a later release)
 ADDED getTimestampFromFrames() and getTimestampFromMilliseconds() to TimestampUtil
+ADDED Timecode to TimeStringParser. Now ":ss", "mm:ss;ff", and "dd:hh:mm:ss;ff" are supported.
 ADDED ActionDefaults class for storing default initialization values.
 ADDED easeOutIn() to most of the easing functions (buggy. seems to overshoot target in some cases)
 ADDED version check in Synchronizer.initialize()

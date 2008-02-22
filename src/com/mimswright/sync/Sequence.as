@@ -120,7 +120,7 @@ package com.mimswright.sync
 		 */
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Sequence = new Sequence();
-			clone.timeUnit = _timeUnit;
+			//clone.timeUnit = _timeUnit;
 			clone._childActions = _childActions;
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;

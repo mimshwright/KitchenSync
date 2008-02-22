@@ -157,11 +157,11 @@ package com.mimswright.sync
 			var convertedDuration:int;
 			if (startTimeHasElapsed) {
 				if (_sync) {
-			 		timeElapsed = time.currentTime - _startTime.currentTime - convertToMilliseconds(_offset);
-			 		convertedDuration = convertToMilliseconds(duration);		 				 		
+			 		timeElapsed = time.currentTime - _startTime.currentTime - _offset;
+			 		convertedDuration = duration;		 				 		
 			 	} else {
-			 		timeElapsed = time.currentFrame - _startTime.currentFrame - convertToFrames(_offset);
-			 		convertedDuration = convertToFrames(duration);
+			 		timeElapsed = time.currentFrame - _startTime.currentFrame - TimestampUtil.millisecondsToFrames(_offset);
+			 		convertedDuration = TimestampUtil.millisecondsToFrames(duration);
 			 	}
 				//timeElapsed = time.currentFrame - _startTime.currentFrame - _offset;
 				if (_fromValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
@@ -171,7 +171,6 @@ package com.mimswright.sync
 				if (_snapToWholeNumber) { result = Math.round(result); }
 				
 				value = result;
-				//trace(result, time);
 				if (durationHasElapsed) {
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
@@ -203,41 +202,26 @@ package com.mimswright.sync
 			
 			// parse time strings if this is a string.
 			var jumpTimeNumber:int;
-			var result:TimeStringParserResult;
-			var useUnits:TimeUnit = timeUnit;
+			//if time is a number
 			if (!isNaN(time)) {
 				jumpTimeNumber = int(time);
 			} else {
 				var timeString:String = time.toString();
-				result = timeStringParser.parseTimeString(timeString);
-				jumpTimeNumber = result.time;
-				if (result.timeUnit) {
-					useUnits = result.timeUnit;
-				}
+				jumpTimeNumber = timeStringParser.parseTimeString(timeString);
 			}
 			
 			// Convert the jump time into a timestamp
-			var jumpTime:Timestamp;
-			if (useUnits == TimeUnit.FRAMES) {
-				jumpTime = TimestampUtil.getTimestampFromFrames(jumpTimeNumber);
-			} else if (useUnits == TimeUnit.MILLISECONDS) {
-				jumpTime = TimestampUtil.getTimestampFromMilliseconds(jumpTimeNumber);
-			}
+			var jumpTime:Timestamp =TimestampUtil.getTimestampFromMilliseconds(jumpTimeNumber);
 			
 			// Ignore the offset in this equation if ignoreOffset is true.
 			var totalDuration:int = ignoreOffset ? duration : duration + offset;
 			
 			// extract the jump time based on the action's timeUnit
 			var offsetTimestamp:Timestamp;
-			if (timeUnit == TimeUnit.FRAMES) {
-				jumpTimeNumber = jumpTime.currentFrame;
-				offsetTimestamp = TimestampUtil.getTimestampFromFrames(offset);
-			} else if (timeUnit == TimeUnit.MILLISECONDS) {
-				jumpTimeNumber = jumpTime.currentTime;
-				offsetTimestamp = TimestampUtil.getTimestampFromMilliseconds(offset);
-			}
+			offsetTimestamp = TimestampUtil.getTimestampFromMilliseconds(offset);
 			
 			// check that the jump time is valid
+			jumpTimeNumber = jumpTime.currentTime;
 			if (jumpTimeNumber > totalDuration) {
 				// you can't jump to a time that is past the end of the action's total time.
 				throw new IllegalOperationError("'time' must be less than the total time of the action.");
@@ -334,7 +318,6 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Tween = new Tween(_target, _property, _toValue, _fromValue, _duration, _offset, _easingFunction);
-			clone._timeUnit = _timeUnit;
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;

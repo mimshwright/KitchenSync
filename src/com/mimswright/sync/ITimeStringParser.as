@@ -5,6 +5,7 @@ package com.mimswright.sync
 	 */
 	public interface ITimeStringParser
 	{
-		function parseTimeString(timeString:String):TimeStringParserResult;
+		/** Takes a time in string format and returns a number in milliseconds */
+		function parseTimeString(timeString:String):int;
 	}
 }

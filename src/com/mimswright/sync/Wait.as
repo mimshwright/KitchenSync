@@ -32,7 +32,7 @@ package com.mimswright.sync
 		}
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Wait = new Wait(_offset);
-			clone.timeUnit = _timeUnit;
+			//clone.timeUnit = _timeUnit;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

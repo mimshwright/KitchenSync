@@ -14,16 +14,12 @@ package com.mimswright.sync
 		 * @see com.mimswright.sync.ITimeStringParser;
 		 */
 		public function get stagger():int { return _stagger;}
-		public function set stagger(stagger:int):void { 
-			if (Number(offset)) {
+		public function set stagger(stagger:*):void { 
+			if (!isNaN(Number(stagger))) {
 				_stagger = stagger; 
 			} else {
 				var timeString:String = stagger.toString();
-				var result:TimeStringParserResult = timeStringParser.parseTimeString(timeString);
-				_stagger = result.time;
-				if (result.timeUnit) {
-					_timeUnit = result.timeUnit;
-				}
+				_stagger = timeStringParser.parseTimeString(timeString);
 			}
 			if (_stagger <= 0) {
 				throw new RangeError("Stagger amount must be an integer greater than 0.");
@@ -47,6 +43,14 @@ package com.mimswright.sync
 		 */
 		public function Staggered (stagger:*, ... children) {
 			super();
+			for (var i:int = 0; i < children.length; i++) {
+				if (children[i] is AbstractSynchronizedAction) {
+					var action:AbstractSynchronizedAction = AbstractSynchronizedAction(children[i]);
+					addAction(action); 
+				} else {
+					throw new TypeError ("All children must be of type AbstractSynchronizedAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractSynchronizedAction was expected.");
+				}
+			}
 			this.stagger = stagger;
 		}
 		
@@ -60,10 +64,10 @@ package com.mimswright.sync
 				if (!_lastStartTime) {
 					_runningChildren = _childActions.length;
 				}
-				if (!_lastStartTime || time.currentFrame - _lastStartTime.currentFrame > convertToFrames(_stagger)) {
+				if (!_lastStartTime || time.currentFrame - _lastStartTime.currentFrame > TimestampUtil.millisecondsToFrames(_stagger)) {
 					_lastStartTime = time;
-					var currentTime:int = time.currentFrame - convertToFrames(offset) - _startTime.currentFrame;
-					var childActionIndex:int = Math.floor(currentTime / convertToFrames(_stagger));
+					var currentTime:int = time.currentFrame - TimestampUtil.millisecondsToFrames(offset) - _startTime.currentFrame;
+					var childActionIndex:int = Math.floor(currentTime / TimestampUtil.millisecondsToFrames(_stagger));
 					var childAction:AbstractSynchronizedAction = AbstractSynchronizedAction(_childActions[childActionIndex]);
 
 					// add a listener to each action so that the completion of the entire group can be tracked.
@@ -82,7 +86,6 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:Staggered = new Staggered(_stagger);
-			clone.timeUnit = _timeUnit;
 			clone._childActions = _childActions;
 			clone.offset = _offset;
 			clone.autoDelete = _autoDelete;

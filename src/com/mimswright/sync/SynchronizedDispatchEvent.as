@@ -124,7 +124,7 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:SynchronizedDispatchEvent = new SynchronizedDispatchEvent(_event, _target, _offset);
-			clone.timeUnit = _timeUnit;
+			//clone.timeUnit = _timeUnit;
 			clone.duration = _duration;
 			clone.autoDelete = _autoDelete;
 			clone.useWeakReferences = _useWeakReferences;

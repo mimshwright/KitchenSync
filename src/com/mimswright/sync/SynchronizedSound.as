@@ -122,7 +122,7 @@ package com.mimswright.sync
 		
 		override public function clone():AbstractSynchronizedAction {
 			var clone:SynchronizedSound = new SynchronizedSound(_sound, _offset, _soundOffset);
-			clone.timeUnit = _timeUnit;
+			//clone.timeUnit = _timeUnit;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

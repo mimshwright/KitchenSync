@@ -46,11 +46,7 @@ package com.mimswright.sync
 				_duration = duration;
 			} else {
 				var timeString:String = duration.toString();
-				var result:TimeStringParserResult = timeStringParser.parseTimeString(timeString);
-				_duration = result.time;
-				if (result.timeUnit) {
-					_timeUnit = result.timeUnit;
-				}
+				_duration = timeStringParser.parseTimeString(timeString);
 			}
 		}
 		protected var _duration:int = 0;
@@ -71,11 +67,7 @@ package com.mimswright.sync
 				_offset = offset;
 			} else {
 				var timeString:String = offset.toString();
-				var result:TimeStringParserResult = timeStringParser.parseTimeString(timeString);
-				_offset = result.time;
-				if (result.timeUnit) {
-					_timeUnit = result.timeUnit;
-				}
+				_offset = timeStringParser.parseTimeString(timeString);
 			}
 		}
 		protected var _offset:int = 0;
@@ -89,24 +81,6 @@ package com.mimswright.sync
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
 		protected var _autoDelete:Boolean;
-		
-		
-		/**
-		 * timeUnit is the units that will be used when dealing with times. This affects
-		 * such values as offset and duration.
-		 * By default, this is set to MILLISECONDS.
-		 * 
-		 * todo - add support for fractions of seconds.
-		 * @see com.mimswright.syncTimeUnit
-		 */ 
-		public function get timeUnit():TimeUnit { return _timeUnit; }
-		public function set timeUnit(timeUnit:TimeUnit):void {
-			if (timeUnit != _timeUnit) { 
-				if (_running || _paused) { throw Error ("Cannot change timeUnits while the action is running or paused."); }
-				_timeUnit = timeUnit;
-			}
-		}
-		protected var _timeUnit:TimeUnit;
 		
 		
 		/** 
@@ -124,12 +98,6 @@ package com.mimswright.sync
 		public function get name():String { return _name; }
 		public function set name(name:String):void { _name = name; }
 		protected var _name:String;
-		
-	/* 	protected var _id:String;
-		public function get id ():String {
-			return _id;
-		}
-		public function set id (id:String):void { _id = id; } */
 		
 		
 		/**
@@ -176,7 +144,6 @@ package com.mimswright.sync
 			timeStringParser = ActionDefaults.timeStringParser;
 			autoDelete = ActionDefaults.autoDelete;
 			sync = ActionDefaults.sync;
-			timeUnit = ActionDefaults.timeUnit;
 			
 			AbstractEnforcer.enforceConstructor(this, AbstractSynchronizedAction);
 		}
@@ -188,7 +155,6 @@ package com.mimswright.sync
 		 */
 		internal function register():void {
 			Synchronizer.getInstance().addEventListener(SynchronizerEvent.UPDATE, onUpdate);
-			//_startTime = Synchronizer.getInstance().currentTimestamp;
 			
 			// since the first update won't occur until the next frame, force one here to make it
 			// happen right away.
@@ -362,9 +328,9 @@ package com.mimswright.sync
 		 public function get startTimeHasElapsed():Boolean {
 		 	if (!_startTime || !_running || _paused) { return false; }
 			if (_sync) {
-				if (_startTime.currentTime + convertToMilliseconds(_offset) <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }
+				if (_startTime.currentTime + _offset <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }
 			} else {
-				if (_startTime.currentFrame + convertToFrames(_offset) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+				if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_offset) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 			}
 		 	return false;
 		 }
@@ -377,38 +343,14 @@ package com.mimswright.sync
 		 public function get durationHasElapsed():Boolean {
 		 	if (!_startTime || !_running || _paused) { return false; }
 		 	if (_sync) {
-		 		if (_startTime.currentTime + convertToMilliseconds(_offset) + convertToMilliseconds(_duration) < Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
+		 		if (_startTime.currentTime + _offset + _duration < Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
 		 	} else {
-		 		if (_startTime.currentFrame + convertToFrames(_offset) + convertToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+		 		if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_offset) + TimestampUtil.millisecondsToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	}
 		 	return false;
 		 }
 		 
-		 /**
-		 * Convert times to frames so that all timing can be done in frames.
-		 */
-		 protected function convertToFrames(time:int):int {
-		 	switch (_timeUnit) {
-		 		case TimeUnit.MILLISECONDS: return TimestampUtil.millisecondsToFrames(time);
-		 		//case TimeUnit.SECONDS: return TimestampUtil.millisecondsToFrames(time * 1000) ; 
-		 		case TimeUnit.FRAMES: return time; 
-		 		default: return time;
-		 	}
-		 }
-		 
-		 /**
-		 * @todo docs
-		 * @todo test
-		 */
-		 protected function convertToMilliseconds(time:int):int {
-		 	switch (_timeUnit) {
-		 		case TimeUnit.MILLISECONDS: return time;
-		 		//case TimeUnit.SECONDS: return TimestampUtil.millisecondsToFrames(time * 1000) ; 
-		 		case TimeUnit.FRAMES: return TimestampUtil.framesToMilliseconds(time); 
-		 		default: return time;
-		 	}
-		 }
-		
+
 		/**
 		 * Creates a copy of the object with all the property values of the original and returns it.
 		 * This method should be overrided by child classes to ensure that all properties are copied.
