@@ -153,8 +153,12 @@ package com.mimswright.sync
 		}
 		
 		override public function kill():void {
-			super.kill();
+			// Kill child actions to avoid zombie actions.
+			for each (var child:AbstractSynchronizedAction in _childActions) {
+				child.kill();
+			}
 			_childActions = null;
+			super.kill();
 		}
 
 		override public function toString():String {
