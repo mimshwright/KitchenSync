@@ -1,3 +1,10 @@
+===== v1.2 (2008.05.2) =====
+RENAMED Nearly the entire library
+MOVED All classes into new packages
+ADDED KitchenSync as the entry point to the library. Use KitchenSync.initialize(this, "1.2"); to start the app.
+CHANGED Synchronizer is no longer used to initialize the library and getInstance() no longer throws an error.
+FIXED A bug in Sequence.kill()
+
 ===== v1.1 (2008.02.22) =====
 ADDED jumpToTime() method to Tween (this may be moved to AbstractSynchronizedAction in a later release)
 ADDED getTimestampFromFrames() and getTimestampFromMilliseconds() to TimestampUtil
