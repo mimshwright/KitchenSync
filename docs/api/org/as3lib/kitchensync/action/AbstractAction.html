@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="AbstractAction,org.as3lib.kitchensync.action.AbstractAction,_autoDelete,_duration,_name,_offset,_pauseTime,_paused,_running,_startTime,_sync,timeStringParser,autoDelete,duration,durationHasElapsed,isPaused,isRunning,name,offset,pauseTime,startTime,startTimeHasElapsed,sync,addEventTrigger,addTrigger,clone,complete,forceUpdate,kill,onTrigger,onUpdate,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister" name="keywords">
+<title>org.as3lib.kitchensync.action.AbstractAction</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'AbstractAction - KitchenSync';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/as3lib/kitchensync/action/AbstractAction.html&amp;org/as3lib/kitchensync/action/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;AbstractAction</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class AbstractAction"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class AbstractAction</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">AbstractAction <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../action/AbstractActionGroup.html">AbstractActionGroup</a>, <a href="../action/KSDispatchEvent.html">KSDispatchEvent</a>, <a href="../action/KSFunction.html">KSFunction</a>, <a href="../action/KSSoundController.html">KSSoundController</a>, <a href="../action/KSTween.html">KSTween</a>, <a href="../action/KSWait.html">KSWait</a></td>
+</tr>
+</table>
+<p></p>
+  This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
+  timing. 
+  
+  -todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
+    18100 msec; 819 frames We use debuggers
+    18121 msec; 820 frames We use debuggers
+  -todo - add a settings object
+  -todo - better implementation of ids
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription">
+   autoDelete is a flag that indicates whether the action should be deleted 
+   when it is done executing.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : int<div class="summaryTableDescription">
+   duration is the length of time that the action will run.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#durationHasElapsed">durationHasElapsed</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Checks to see whether the duration of the action has elapsed and if the _startTime is defined.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Will return true if the action is paused (after pause() has been called).</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Will return true when the action is running (after start() has been called).</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#name">name</a> : String<div class="summaryTableDescription">
+   The human-readable name of this action.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offset">offset</a> : int<div class="summaryTableDescription">
+   offset is the time that will pass after the start() method is called
+   before the action begins.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pauseTime">pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
+<div class="summaryTableDescription">[read-only]</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTime">startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
+<div class="summaryTableDescription">[read-only]</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTimeHasElapsed">startTimeHasElapsed</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Checks to see whether the start time offset has elapsed and if the _startTime is defined.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sync">sync</a> : Boolean<div class="summaryTableDescription"> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeStringParser">timeStringParser</a> : <a href="../util/ITimeStringParser.html">ITimeStringParser</a>
+<div class="summaryTableDescription">[static] 
+   The timeStringParser will determine how strings are parsed into valid 
+   time values.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_autoDelete">_autoDelete</a> : Boolean<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_name">_name</a> : String<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_offset">_offset</a> : int = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_pauseTime">_pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
+<div class="summaryTableDescription">
+   The time at which the action was last paused.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_running">_running</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTime">_startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
+<div class="summaryTableDescription">
+   The time at which the action was last started.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_sync">_sync</a> : Boolean<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#AbstractAction()">AbstractAction</a>()</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addEventTrigger()">addEventTrigger</a>(dispatcher:IEventDispatcher, eventType:String):void</div>
+<div class="summaryTableDescription">
+   Causes the action to start playing when a specified event is fired.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addTrigger()">addTrigger</a>(trigger:<a href="AbstractAction.html">AbstractAction</a>):void</div>
+<div class="summaryTableDescription">
+   Causes the action to start playing when another event completes.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clone()">clone</a>():<a href="../action/AbstractAction.html">AbstractAction</a>
+</div>
+<div class="summaryTableDescription">
+   Creates a copy of the object with all the property values of the original and returns it.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#kill()">kill</a>():void</div>
+<div class="summaryTableDescription">
+   Unregisters the function and removes any refrerences to objects that it may be holding onto.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pause()">pause</a>():void</div>
+<div class="summaryTableDescription">
+   Causes the action to be paused.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#register()">register</a>():void</div>
+<div class="summaryTableDescription">
+   Adds the action as a listener to the Synchronizer's update event.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeEventTrigger()">removeEventTrigger</a>(dispatcher:IEventDispatcher, eventType:String):void</div>
+<div class="summaryTableDescription">
+   Removes an event trigger added by addEventTrigger().</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeTrigger()">removeTrigger</a>(trigger:<a href="AbstractAction.html">AbstractAction</a>):void</div>
+<div class="summaryTableDescription">
+   Removes a trigger added with addTrigger().</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#start()">start</a>():<a href="../action/AbstractAction.html">AbstractAction</a>
+</div>
+<div class="summaryTableDescription">
+   Starts the timer for this action.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#stop()">stop</a>():void</div>
+<div class="summaryTableDescription">
+   Stops the action from running and resets the timer.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unpause()">unpause</a>():void</div>
+<div class="summaryTableDescription">
+   Resumes the action at the point where it was paused.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unregister()">unregister</a>():void</div>
+<div class="summaryTableDescription">
+   Removes the action as a listener to the Synchronizer's update event.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#complete()">complete</a>():void</div>
+<div class="summaryTableDescription">
+   Call this when the action has completed.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#forceUpdate()">forceUpdate</a>():void</div>
+<div class="summaryTableDescription">
+   Foreces the onUpdate() method to fire without being triggered by Synchronizer.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onTrigger()">onTrigger</a>(event:Event):void</div>
+<div class="summaryTableDescription">
+   Handler that starts playing the action that is called by a trigger event.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onUpdate()">onUpdate</a>(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
+<div class="summaryTableDescription">
+   This function will be registered by the register method to respond to update events from the synchronizer.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:actionComplete">actionComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:actionPause">actionPause</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:actionStart">actionStart</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:actionUnpause">actionUnpause</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="_autoDelete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_autoDelete</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _autoDelete:Boolean</code>
+</div>
+<a name="autoDelete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">autoDelete</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>autoDelete:Boolean</code>&nbsp;&nbsp;[read-write]<p>
+   autoDelete is a flag that indicates whether the action should be deleted 
+   when it is done executing. The default is set to false so the actions must 
+   be deleted manually.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get autoDelete():Boolean</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set autoDelete(value:Boolean):void</code>
+<br>
+</div>
+<a name="_duration"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_duration</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _duration:int = 0</code>
+</div>
+<a name="duration"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">duration</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>duration:int</code>&nbsp;&nbsp;[read-write]<p>
+   duration is the length of time that the action will run.
+   Will accept an integer or a parsable string.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get duration():int</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set duration(value:int):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">org.as3lib.kitchensync.ITimeStringParser<br>
+<a href="../action/AbstractAction.html#timeUnit" target="">timeUnit</a>
+</div>
+</div>
+<a name="durationHasElapsed"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">durationHasElapsed</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>durationHasElapsed:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Checks to see whether the duration of the action has elapsed and if the _startTime is defined. In other words, 
+   checks to see whether the action is finished executing. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get durationHasElapsed():Boolean</code>
+<br>
+</div>
+<a name="isPaused"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isPaused</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>isPaused:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Will return true if the action is paused (after pause() has been called).
+   Calling unpause() or stop() will return the value to false.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isPaused():Boolean</code>
+<br>
+</div>
+<a name="isRunning"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isRunning</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>isRunning:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Will return true when the action is running (after start() has been called).
+   Will continue running until stop() is called or until the action is completed.
+   Pausing does not change the value of isRunning.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isRunning():Boolean</code>
+<br>
+</div>
+<a name="_name"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_name</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _name:String</code>
+</div>
+<a name="name"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">name</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>name:String</code>&nbsp;&nbsp;[read-write]<p>
+   The human-readable name of this action. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get name():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set name(value:String):void</code>
+<br>
+</div>
+<a name="_offset"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_offset</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _offset:int = 0</code>
+</div>
+<a name="offset"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">offset</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>offset:int</code>&nbsp;&nbsp;[read-write]<p>
+   offset is the time that will pass after the start() method is called
+   before the action begins. Also known as delay.
+   Will accept an integer or a parsable string.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get offset():int</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set offset(value:int):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">org.as3lib.kitchensync.ITimeStringParser<br>
+<a href="../action/AbstractAction.html#timeUnit" target="">timeUnit</a>
+</div>
+</div>
+<a name="_paused"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_paused</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _paused:Boolean = false</code>
+</div>
+<a name="_pauseTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_pauseTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code><p>
+   The time at which the action was last paused.
+   </p></div>
+<a name="pauseTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pauseTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pauseTime():<a href="../core/Timestamp.html">Timestamp</a></code>
+<br>
+</div>
+<a name="_running"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_running</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _running:Boolean = false</code>
+</div>
+<a name="_startTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_startTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _startTime:<a href="../core/Timestamp.html">Timestamp</a></code><p>
+   The time at which the action was last started.
+   </p></div>
+<a name="startTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">startTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>startTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTime():<a href="../core/Timestamp.html">Timestamp</a></code>
+<br>
+</div>
+<a name="startTimeHasElapsed"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">startTimeHasElapsed</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>startTimeHasElapsed:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Checks to see whether the start time offset has elapsed and if the _startTime is defined. In other words, 
+   checks to see whether the action is ready to execute. Duration is handled seperately.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTimeHasElapsed():Boolean</code>
+<br>
+</div>
+<a name="_sync"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_sync</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _sync:Boolean</code>
+</div>
+<a name="sync"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sync</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>sync:Boolean</code>&nbsp;&nbsp;[read-write]<p> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops. Otherwise, the action will be synced to frames.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get sync():Boolean</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set sync(value:Boolean):void</code>
+<br>
+</div>
+<a name="timeStringParser"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeStringParser</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var timeStringParser:<a href="../util/ITimeStringParser.html">ITimeStringParser</a></code><p> 
+   The timeStringParser will determine how strings are parsed into valid 
+   time values.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">org.as3lib.kitchensync.ITimeStringParser<br>org.as3lib.kitchensync.TimeStringParser_en</div>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="AbstractAction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">AbstractAction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function AbstractAction()</code><p>
+   Constructor.
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addEventTrigger()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addEventTrigger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addEventTrigger(dispatcher:IEventDispatcher, eventType:String):void</code><p>
+   Causes the action to start playing when a specified event is fired.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">dispatcher</span>:IEventDispatcher</code> &mdash; The object that will dispatch the event.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">eventType</span>:String</code> &mdash; The event type to listen for.
+   </td>
+</tr>
+</table>
+</div>
+<a name="addTrigger()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addTrigger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addTrigger(trigger:<a href="AbstractAction.html">AbstractAction</a>):void</code><p>
+   Causes the action to start playing when another event completes.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">trigger</span>:<a href="AbstractAction.html">AbstractAction</a></code> &mdash; Another action that will trigger the start of this action.
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code></code> &mdash; If the trigger action is the same as this action.
+   </td>
+</tr>
+</table>
+</div>
+<a name="clone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function clone():<a href="../action/AbstractAction.html">AbstractAction</a></code><p>
+   Creates a copy of the object with all the property values of the original and returns it.
+   This method should be overrided by child classes to ensure that all properties are copied.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../action/AbstractAction.html">AbstractAction</a></code></td>
+</tr>
+</table>
+</div>
+<a name="complete()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">complete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function complete():void</code><p>
+   Call this when the action has completed.
+   </p></div>
+<a name="forceUpdate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">forceUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function forceUpdate():void</code><p>
+   Foreces the onUpdate() method to fire without being triggered by Synchronizer.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../action/AbstractAction.html#onUpdate()" target="">onUpdate()</a>
+</div>
+</div>
+<a name="kill()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">kill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function kill():void</code><p>
+   Unregisters the function and removes any refrerences to objects that it may be holding onto.
+   Subclass this function to remove references to objects used by the action.
+   </p></div>
+<a name="onTrigger()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onTrigger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onTrigger(event:Event):void</code><p>
+   Handler that starts playing the action that is called by a trigger event.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:Event</code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../action/AbstractAction.html#addTrigger()" target="">addTrigger()</a>
+<br>
+<a href="../action/AbstractAction.html#addEventTrigger()" target="">addEventTrigger()</a>
+</div>
+</div>
+<a name="onUpdate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onUpdate(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</code><p>
+   This function will be registered by the register method to respond to update events from the synchronizer.
+   Code that performs the action associated with this object should go in this function.
+   This function must be implemented by the subclass.
+   The internal allows certain other classes such as the AbstractSynchronizedGroup to force an update 
+   of its children.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a></code> &mdash; - A SychronizerEvent with a timestamp from the Synchronizer.
+   </td>
+</tr>
+</table>
+</div>
+<a name="pause()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function pause():void</code><p>
+   Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
+   and the onUpdate() handler will not be called. When unpause() is called,
+   the action will continue at the point where it was paused.
+   If the pause() method affects the start time even if the offset time hasn't expired yet. 
+   </p></div>
+<a name="register()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">register</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function register():void</code><p>
+   Adds the action as a listener to the Synchronizer's update event.
+   
+   </p></div>
+<a name="removeEventTrigger()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeEventTrigger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeEventTrigger(dispatcher:IEventDispatcher, eventType:String):void</code><p>
+   Removes an event trigger added by addEventTrigger().
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">dispatcher</span>:IEventDispatcher</code> &mdash; The event dispatcher to remove.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">eventType</span>:String</code> &mdash; The event type to listen for.
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeTrigger()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeTrigger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeTrigger(trigger:<a href="AbstractAction.html">AbstractAction</a>):void</code><p>
+   Removes a trigger added with addTrigger().
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">trigger</span>:<a href="AbstractAction.html">AbstractAction</a></code> &mdash; Another action that triggers the start of this action.
+   </td>
+</tr>
+</table>
+</div>
+<a name="start()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function start():<a href="../action/AbstractAction.html">AbstractAction</a></code><p>
+   Starts the timer for this action.
+   Registers the action with the synchronizer.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../action/AbstractAction.html">AbstractAction</a></code></td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code></code> &mdash; - if the method is called while the action is already running.
+   </td>
+</tr>
+</table>
+</div>
+<a name="stop()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">stop</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function stop():void</code><p>
+   Stops the action from running and resets the timer.
+   </p></div>
+<a name="unpause()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unpause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unpause():void</code><p>
+   Resumes the action at the point where it was paused.
+   </p></div>
+<a name="unregister()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unregister</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unregister():void</code><p>
+   Removes the action as a listener to the Synchronizer's update event.
+   </p></div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:actionComplete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actionComplete</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href=""><code>org.as3lib.kitchensync.KitchenSyncEvent</code></a>
+<br>
+<p></p>
+</div>
+<a name="event:actionPause"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actionPause</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href=""><code>org.as3lib.kitchensync.KitchenSyncEvent</code></a>
+<br>
+<p></p>
+</div>
+<a name="event:actionStart"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actionStart</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href=""><code>org.as3lib.kitchensync.KitchenSyncEvent</code></a>
+<br>
+<p></p>
+</div>
+<a name="event:actionUnpause"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actionUnpause</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href=""><code>org.as3lib.kitchensync.KitchenSyncEvent</code></a>
+<br>
+<p></p>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->
