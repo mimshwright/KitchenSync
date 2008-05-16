@@ -117,18 +117,19 @@ package org.as3lib.kitchensync.action
 			return this;
 		}
 		
-		// todo - check for bugs
 		override public function clone():AbstractAction {
 			var clone:KSSequenceGroup = new KSSequenceGroup();
-			//clone.timeUnit = _timeUnit;
-			clone._childActions = _childActions;
+			for (var i:int = 0; i < _childActions.length; i++) {
+				var action:AbstractAction = getChildAtIndex(i).clone();
+				clone.addActionAtIndex(action, i);
+			}
 			clone.delay = _delay;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}
 		
 		override public function toString():String {
-			return "Sequence Group";// containing " + _childActions.length + " children";
+			return "KSSequenceGroup";// containing " + _childActions.length + " children";
 		}
 	}
 }

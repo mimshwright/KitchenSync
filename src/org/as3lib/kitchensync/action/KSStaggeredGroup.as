@@ -104,7 +104,10 @@ package org.as3lib.kitchensync.action
 		
 		override public function clone():AbstractAction {
 			var clone:KSStaggeredGroup = new KSStaggeredGroup(_stagger);
-			clone._childActions = _childActions;
+			for (var i:int = 0; i < _childActions.length; i++) {
+				var action:AbstractAction = getChildAtIndex(i).clone();
+				clone.addActionAtIndex(action, i);
+			}
 			clone.delay = _delay;
 			clone.autoDelete = _autoDelete;
 			return clone;

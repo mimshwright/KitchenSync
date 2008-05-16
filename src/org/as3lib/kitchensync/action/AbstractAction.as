@@ -18,9 +18,6 @@ package org.as3lib.kitchensync.action
 	 * timing. 
 	 *
 	 */ 
-	 // todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
-	 // 		18100 msec; 819 frames We use debuggers
-	 // 		18121 msec; 820 frames We use debuggers
 	 // todo - add a settings object
 	 // todo - better implementation of ids
 	public class AbstractAction extends EventDispatcher
@@ -161,7 +158,6 @@ package org.as3lib.kitchensync.action
 		 * Adds the action as a listener to the Synchronizer's update event.
 		 * 
 		 */
-		 // todo see if moving forceUpdate() into start helps.
 		internal function register():void {
 			Synchronizer.getInstance().addEventListener(KitchenSyncEvent.UPDATE, onUpdate);
 			
@@ -351,7 +347,7 @@ package org.as3lib.kitchensync.action
 		 public function get durationHasElapsed():Boolean {
 		 	if (!_startTime || !_running || _paused) { return false; }
 		 	if (_sync) {
-		 		if (_startTime.currentTime + _delay + _duration < Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
+		 		if (_startTime.currentTime + _delay + _duration <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
 		 	} else {
 		 		if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_delay) + TimestampUtil.millisecondsToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	}

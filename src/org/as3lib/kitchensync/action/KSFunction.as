@@ -1,5 +1,7 @@
 package org.as3lib.kitchensync.action
 {
+	import flash.errors.IllegalOperationError;
+	
 	import org.as3lib.kitchensync.core.*;
 	
 	/**
@@ -13,6 +15,10 @@ package org.as3lib.kitchensync.action
 		 */
 		public function set func(func:Function):void { _func = func; }
 		protected var _func:Function;
+		
+		override public function set duration(duration:*):void { 
+			throw new IllegalOperationError("Duration cannot be set for KSFunction"); 
+		}
 		
 		/**
 		 * Arguments that will be passed into the function.
@@ -36,6 +42,7 @@ package org.as3lib.kitchensync.action
 		{
 			super();
 			this.delay = delay;
+			_duration = 0;
 			_func = func;
 			_args = args;
 		}
@@ -70,7 +77,6 @@ package org.as3lib.kitchensync.action
 			//clone.timeUnit = _timeUnit;
 			clone._args = _args;
 			clone._result = _result;
-			clone.duration = _duration;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

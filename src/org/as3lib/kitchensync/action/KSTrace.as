@@ -5,6 +5,10 @@ package org.as3lib.kitchensync.action
 	 */
 	public class KSTrace extends KSFunction
 	{
+		/** The message to trace */
+		public function get message():String { return _args[0]; }
+		public function set message(message:String):void { _args[0] = message; }
+		
 		/**
 		 * Constructor.
 		 * @param message - the message to be displayed in the trace window.
@@ -14,5 +18,12 @@ package org.as3lib.kitchensync.action
 		{
 			super(delay, trace, message.toString());
 		}
+		
+		override public function clone():AbstractAction { 
+			var clone:KSTrace = new KSTrace(message, _delay);
+			clone.autoDelete = _autoDelete;
+			return clone;
+		}
+		
 	}
 }

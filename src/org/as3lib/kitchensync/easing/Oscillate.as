@@ -14,7 +14,6 @@ package org.as3lib.kitchensync.easing
  	 * @author Mims H. Wright
 	 * @see EasingUtil
 	 */
-	 //todo - add phase property
 	public class Oscillate
 	{
 		private static const TWICE_PI:Number = Math.PI*2;
