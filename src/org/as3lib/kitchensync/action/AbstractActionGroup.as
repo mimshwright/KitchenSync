@@ -102,8 +102,8 @@ package org.as3lib.kitchensync.action
 		 
 		 /**
 		 * Reverse the order that the children play back in. Essentially, this just reverses the child array.
-		 * -todo - test this
 		 */
+		 // todo - test this
 		 public function reverseChildOrder():void {
 		 	_childActions = _childActions.reverse();
 		 }
@@ -113,8 +113,8 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param event - The SynchronizerEvent.START from the child action
 		 * @event SynchronizerEvent.CHILD_START
-		 * -todo - Add a reference to the started child to the event.
 		 */
+		 // todo - Add a reference to the started child to the event.
 		 protected function onChildStart(event:KitchenSyncEvent):void {
 		 	dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_START, event.timestamp));
 		 }
@@ -124,8 +124,8 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param event - The SynchronizerEvent.COMPLETE from the child action
 		 * @event SynchronizerEvent.CHILD_COMPLETE
-		 * -todo - Add a reference to the completed child to the event.
 		 */
+		 // todo - Add a reference to the completed child to the event.
 		protected function onChildFinished (event:KitchenSyncEvent):void {
 			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_COMPLETE, event.timestamp));
 		}

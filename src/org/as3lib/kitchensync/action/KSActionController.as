@@ -20,10 +20,10 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param target - the AbstractSynchronizedAction that will receive the commands from the controller.
 		 * @param command - the function that the SynchronizedAction will perform when the ActionController executes.
-		 * @param offset - the number of frames to offset the action.
+		 * @param delay - the number of frames to delay the action.
 		 */ 
-		public function KSActionController (target:AbstractAction, command:ActionControllerCommand = null, offset:* = 0) {
-			super(offset, null);
+		public function KSActionController (target:AbstractAction, command:ActionControllerCommand = null, delay:* = 0) {
+			super(delay, null);
 			if (target) {
 				_target = target;
 			} else {

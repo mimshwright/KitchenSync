@@ -1,3 +1,11 @@
+===== v1.3 =====
+ADDED FrameRateView which displays the framerate of the Synchronizer.
+FIXED a bug in KSStaggeredGroup that caused some children not to fire.
+RENAMED 'offset' to 'delay'
+CHANGED default policy for snapToValueOnComplete to true.
+CHANGED the core of the Synchronizer to a timer based system.
+REFACTORED to optimize performance. Saw an improvement of about 50%
+
 ===== v1.2 (2008.05.2) =====
 RENAMED Nearly the entire library
 MOVED All classes into new packages

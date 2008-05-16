@@ -74,8 +74,8 @@ package org.as3lib.kitchensync.action
 		 * Also remove reference to child action so it can be garbage collected.
 		 * 
 		 * @param event - The SynchronizerEvent.COMPLETE from the _currentAction
-		 * -todo - Add a reference to the completed child to the CHILD_COMPLETE event.
 		 */
+		 // todo - Add a reference to the completed child to the CHILD_COMPLETE event.
 		override protected function onChildFinished (event:KitchenSyncEvent):void {
 			super.onChildFinished(event);
 			_currentAction.removeEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
@@ -117,14 +117,12 @@ package org.as3lib.kitchensync.action
 			return this;
 		}
 		
-		/**
-		 * todo - check for bugs
-		 */
+		// todo - check for bugs
 		override public function clone():AbstractAction {
 			var clone:KSSequenceGroup = new KSSequenceGroup();
 			//clone.timeUnit = _timeUnit;
 			clone._childActions = _childActions;
-			clone.offset = _offset;
+			clone.delay = _delay;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

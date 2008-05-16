@@ -4,7 +4,10 @@ package org.as3lib.kitchensync.core
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	import flash.utils.getTimer;
+	
 	
 	[Event(name="synchronizerUpdate", type="org.as3lib.kitchensync.KitchenSyncEvent")]
 	
@@ -14,19 +17,17 @@ package org.as3lib.kitchensync.core
 	 * @author Mims H. Wright
 	 * @since 0.1
 	 */
-	public class Synchronizer extends EventDispatcher
+	public final class Synchronizer extends EventDispatcher
 	{
-		/** 
-		 * The current version of the library. Use this to verify that the library is the
-		 * version that your software expects. 
-		 */ 
-		public static const VERSION:String = "1.1"
-			
+		
 		private static var _instance:Synchronizer = null;
 		private var _stage:Stage = null;
 		
+		private var _timer:Timer;
+		private var _timerDelay:int = 10;
+		public function get timerDelay():int { return _timerDelay; }
+				
 		private var _frames:Number = 0;
-		private var _previousTime:Number  = 0;
 		private var _currentTime:Number = 0;
 		//private var _active:Boolean = true;
 		//public function get active ():Boolean { return _active; }
@@ -34,9 +35,7 @@ package org.as3lib.kitchensync.core
 		
 		/** The frameRate (as defined in the stage) */
 		public function get frameRate():int {return _stage.frameRate; }
-		//public function get actualFrameRate():Number {
-		//	return 1000/(_currentTime - _previousTime);	
-		//}
+		
 		
 		/**
 		 * Constructor. SingletonEnforcer prevents this class from being instantiated without
@@ -57,6 +56,10 @@ package org.as3lib.kitchensync.core
 			if (frameRateSeed && frameRateSeed.stage) {
 				_stage = frameRateSeed.stage;
 				_stage.addEventListener(Event.ENTER_FRAME, _instance.onEnterFrame, false, int.MAX_VALUE, false);
+				_timerDelay = Math.floor(1/frameRate*1000);
+				_timer = new Timer(_timerDelay);
+				_timer.addEventListener(TimerEvent.TIMER, onTimer);
+				_timer.start();
 			} else {
 				throw new ArgumentError("frameRateSeed must be a DisplayObject that is part of the Display List.");
 			}
@@ -81,10 +84,20 @@ package org.as3lib.kitchensync.core
 		 */
 		private function onEnterFrame(event:Event = null):void {
 			_frames++;
-			_previousTime = _currentTime;
+			//dispatchUpdate();
+		}
+		
+		private function onTimer(event:TimerEvent):void {
+			dispatchUpdate();
+		}
+		
+		/**
+		 * Dispatches events to children for them to update.
+		 */
+		private function dispatchUpdate():void {
 			_currentTime = getTimer();
 			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UPDATE, currentTimestamp));
-			//trace(currentTimestamp);
+			//trace(currentTimestamp);			
 		}
 		
 		/**

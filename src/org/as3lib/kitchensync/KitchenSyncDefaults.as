@@ -12,7 +12,7 @@ package org.as3lib.kitchensync
 		public static var easingFunction:Function = Linear.ease;
 		
 		// TWEENS
-		public static var snapToValueOnComplete:Boolean = false;
+		public static var snapToValueOnComplete:Boolean = true;
 		public static var snapToWholeNumber:Boolean = false;
 	}
 }

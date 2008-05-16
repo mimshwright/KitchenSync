@@ -5,7 +5,7 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.core.*;
 	
 	/**
-	 * A group of actions that executes all at once the group is started and the offset is reached.
+	 * A group of actions that executes all at once the group is started and the delay is reached.
 	 */
 	public class KSParallelGroup extends AbstractActionGroup
 	{	
@@ -80,7 +80,7 @@ package org.as3lib.kitchensync.action
 		override public function clone():AbstractAction {
 			var clone:KSParallelGroup = new KSParallelGroup();
 			clone._childActions = _childActions;
-			clone.offset = _offset;
+			clone.delay = _delay;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

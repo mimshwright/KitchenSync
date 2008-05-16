@@ -20,7 +20,7 @@ package org.as3lib.kitchensync
 		 * The current version of the library. Use this to verify that the library is the
 		 * version that your software expects. 
 		 */ 
-		public static const VERSION:String = "1.2"
+		public static const VERSION:String = "1.3"
 		private static var _initialized:Boolean = false;
 		
 		/**

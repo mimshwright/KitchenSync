@@ -8,11 +8,11 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Constructor.
 		 * @param message - the message to be displayed in the trace window.
-		 * @param offset - the time to wait before tracing in frames.
+		 * @param delay - the time to wait before tracing in frames.
 		 */
-		public function KSTrace(message:*, offset:* = 0)
+		public function KSTrace(message:*, delay:* = 0)
 		{
-			super(offset, trace, message.toString());
+			super(delay, trace, message.toString());
 		}
 	}
 }

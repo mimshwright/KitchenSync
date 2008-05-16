@@ -16,13 +16,13 @@ package org.as3lib.kitchensync.action
 	/**
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
 	 * timing. 
-	 * 
-	 * -todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
-	 * 		18100 msec; 819 frames We use debuggers
-	 * 		18121 msec; 820 frames We use debuggers
-	 * -todo - add a settings object
-	 * -todo - better implementation of ids
-	 */
+	 *
+	 */ 
+	 // todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
+	 // 		18100 msec; 819 frames We use debuggers
+	 // 		18121 msec; 820 frames We use debuggers
+	 // todo - add a settings object
+	 // todo - better implementation of ids
 	public class AbstractAction extends EventDispatcher
 	{	
 		
@@ -56,7 +56,7 @@ package org.as3lib.kitchensync.action
 		
 		
 		/**
-		 * offset is the time that will pass after the start() method is called
+		 * delay is the time that will pass after the start() method is called
 		 * before the action begins. Also known as delay.
 		 * Will accept an integer or a parsable string.
 		 * 
@@ -64,16 +64,22 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @see #timeUnit
 		 */
-		public function get offset():int { return _offset; }
-		public function set offset(offset:*):void { 
-			if (!isNaN(offset)) {
-				_offset = offset;
+		public function get delay():int { return _delay; }
+		public function set delay(delay:*):void { 
+			if (!isNaN(delay)) {
+				_delay = delay;
 			} else {
-				var timeString:String = offset.toString();
-				_offset = timeStringParser.parseTimeString(timeString);
+				var timeString:String = delay.toString();
+				_delay = timeStringParser.parseTimeString(timeString);
 			}
 		}
-		protected var _offset:int = 0;
+		protected var _delay:int = 0;
+		
+		/** 
+		 * legacy accessors. synonomous with delay.
+		 */
+		public function get offset():int { return offset; }
+		public function set offset(offset:*):void { this.offset = offset; }
 		
 		
 		/**
@@ -136,14 +142,14 @@ package org.as3lib.kitchensync.action
 		public function get pauseTime():Timestamp { return _pauseTime; }
 		//
 		
+		
 		/**
 		 * Constructor.
 		 * @abstract
 		 */
 		public function AbstractAction()
 		{
-			super(null);
-			
+			super();
 			timeStringParser = KitchenSyncDefaults.timeStringParser;
 			autoDelete = KitchenSyncDefaults.autoDelete;
 			sync = KitchenSyncDefaults.sync;
@@ -154,8 +160,8 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Adds the action as a listener to the Synchronizer's update event.
 		 * 
-		 * @todo see if moving forceUpdate() into start helps.
 		 */
+		 // todo see if moving forceUpdate() into start helps.
 		internal function register():void {
 			Synchronizer.getInstance().addEventListener(KitchenSyncEvent.UPDATE, onUpdate);
 			
@@ -197,7 +203,7 @@ package org.as3lib.kitchensync.action
 		 * Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
 		 * and the onUpdate() handler will not be called. When unpause() is called,
 		 * the action will continue at the point where it was paused.
-		 * If the pause() method affects the start time even if the offset time hasn't expired yet. 
+		 * If the pause() method affects the start time even if the delay time hasn't expired yet. 
 		 */
 		public function pause():void {
 			if (!_running) {
@@ -291,9 +297,8 @@ package org.as3lib.kitchensync.action
 		 * @see #addTrigger()
 		 * @see #addEventTrigger()
 		 * 
-		 * @todo make sure this doesn't screw up if there are multiple triggers or if the thing isn't meant to
-		 * 		repeat.
 		 */
+		 // todo - make sure this doesn't screw up if there are multiple triggers or if the thing isn't meant to repeat.
 		protected function onTrigger(event:Event):void {
 			if (!_running) { start(); }
 		}
@@ -324,16 +329,16 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Checks to see whether the start time offset has elapsed and if the _startTime is defined. In other words, 
+		 * Checks to see whether the start time delay has elapsed and if the _startTime is defined. In other words, 
 		 * checks to see whether the action is ready to execute. Duration is handled seperately.
-		 * @return false if _startTime is null, true if the offset has elapsed.
+		 * @return false if _startTime is null, true if the delay has elapsed.
 		 */
 		 public function get startTimeHasElapsed():Boolean {
 		 	if (!_startTime || !_running || _paused) { return false; }
 			if (_sync) {
-				if (_startTime.currentTime + _offset <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }
+				if (_startTime.currentTime + _delay <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }
 			} else {
-				if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_offset) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+				if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_delay) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 			}
 		 	return false;
 		 }
@@ -346,9 +351,9 @@ package org.as3lib.kitchensync.action
 		 public function get durationHasElapsed():Boolean {
 		 	if (!_startTime || !_running || _paused) { return false; }
 		 	if (_sync) {
-		 		if (_startTime.currentTime + _offset + _duration < Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
+		 		if (_startTime.currentTime + _delay + _duration < Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
 		 	} else {
-		 		if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_offset) + TimestampUtil.millisecondsToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
+		 		if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_delay) + TimestampUtil.millisecondsToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
 		 	}
 		 	return false;
 		 }

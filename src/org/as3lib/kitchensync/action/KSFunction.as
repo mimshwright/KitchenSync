@@ -28,14 +28,14 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Constructor.
 		 * 
-		 * @param offset - the number of frames to offset the action
+		 * @param delay - the number of frames to delay the action
 		 * @param func - the function or method to call at the specified time
 		 * @param args - the rest of the parameters become arguments passed to the function at the time it's called.
 		 */
-		public function KSFunction(offset:*, func:Function, ... args)
+		public function KSFunction(delay:*, func:Function, ... args)
 		{
 			super();
-			this.offset = offset;
+			this.delay = delay;
 			_func = func;
 			_args = args;
 		}
@@ -52,7 +52,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Executes the function when the offset has elapsed.
+		 * Executes the function when the delay has elapsed.
 		 * If the duration is > 0, it will repeat until the duration has elapsed.
 		 */
 		override protected function onUpdate(event:KitchenSyncEvent):void {
@@ -66,7 +66,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function clone():AbstractAction {
-			var clone:KSFunction = new KSFunction(_offset, _func);
+			var clone:KSFunction = new KSFunction(_delay, _func);
 			//clone.timeUnit = _timeUnit;
 			clone._args = _args;
 			clone._result = _result;

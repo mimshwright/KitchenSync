@@ -11,9 +11,9 @@ package org.as3lib.kitchensync.action
 			throw new Error("duration is ignored for Wait");
 		}
 		
-		/** Time that the action will wait. Synonym for offset. */
-		public function get waitTime():int { return this.offset;}
-		public function set waitTime(waitTime:*):void { this.offset = waitTime; }
+		/** Time that the action will wait. Synonym for delay. */
+		public function get waitTime():int { return this.delay;}
+		public function set waitTime(waitTime:*):void { this.delay = waitTime; }
 		
 		/**
 		 * Constructor.
@@ -22,7 +22,7 @@ package org.as3lib.kitchensync.action
 		 */
 		public function KSWait (waitTime:*):void {
 			super();
-			this.offset = waitTime;
+			this.delay = waitTime;
 		}
 		
 		override protected function onUpdate(event:KitchenSyncEvent):void {
@@ -33,7 +33,7 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		override public function clone():AbstractAction {
-			var clone:KSWait = new KSWait(_offset);
+			var clone:KSWait = new KSWait(_delay);
 			//clone.timeUnit = _timeUnit;
 			clone.autoDelete = _autoDelete;
 			return clone;

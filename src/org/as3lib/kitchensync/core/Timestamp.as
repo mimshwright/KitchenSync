@@ -4,8 +4,8 @@ package org.as3lib.kitchensync.core
 	 * Timestamp encapsulates an instant as a frame int and a real time so that either may be used for 
 	 * calculating synchronicity.
 	 * 
-	 * @todo rename currentTime and currentFrame to frames and milliseconds
 	 */
+	 // todo rename currentTime and currentFrame to frames and milliseconds
 	public class Timestamp
 	{
 		private var _currentTime:int = 0;

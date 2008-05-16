@@ -55,10 +55,10 @@ package org.as3lib.kitchensync.action
 		 * @param event - Can be either an Event object or a String. If event is an Event, that object is used.
 		 * 				  If event is a string, a new event with that type is automatically created.
 		 * @param target - The IEventDispatcher that will dispatch the event. The default is <code>this</code>.
-		 * @param offset - time to wait before execution
+		 * @param delay - time to wait before execution
 		 * @param listeners - Any additional objects passed in will be added as listeners (if they're functions)
 		 */
-		public function KSDispatchEvent(event:*, target:IEventDispatcher = SELF, offset:* = 0, ... listeners) {
+		public function KSDispatchEvent(event:*, target:IEventDispatcher = SELF, delay:* = 0, ... listeners) {
 			super();
 			
 			if (event is Event) {
@@ -75,7 +75,7 @@ package org.as3lib.kitchensync.action
 				_target = target;
 			}
 			
-			this.offset = offset;
+			this.delay = delay;
 			
 			for (var i:int = 0; i < listeners.length; i++) {
 				var func:Function = listeners[i] as Function;
@@ -103,7 +103,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * When the offset is reached, the event will be fired from the target.
+		 * When the delay is reached, the event will be fired from the target.
 		 * Note that if duration is > 0, this will continue to fire for every frame until duration is elapsed.
 		 */
 		override protected function onUpdate(event:KitchenSyncEvent):void {
@@ -125,7 +125,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function clone():AbstractAction {
-			var clone:KSDispatchEvent = new KSDispatchEvent(_event, _target, _offset);
+			var clone:KSDispatchEvent = new KSDispatchEvent(_event, _target, _delay);
 			//clone.timeUnit = _timeUnit;
 			clone.duration = _duration;
 			clone.autoDelete = _autoDelete;

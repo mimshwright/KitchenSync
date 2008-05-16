@@ -4,8 +4,6 @@ package org.as3lib.kitchensync.core
 
 	/**
 	 * Event type that is dispatched by the Synchronizer and AbstractSynchronizedActions. 
-	 * 
-	 * @todo - take the timestamp property out of this class. This value can always be gotten from the synchronizer.
 	 */
 	public class KitchenSyncEvent extends Event
 	{

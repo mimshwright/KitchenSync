@@ -5,9 +5,8 @@ package org.as3lib.kitchensync.action
 	/**
 	 * Tells a target MovieClip to play a specified frame.
 	 *
-	 * @todo consider expanding this to a MovieClip controller
-	 * @todo test
 	 */
+	 // todo test
 	public class KSMovieClipController extends KSFunction
 	{
 		protected var _target:MovieClip;
@@ -24,17 +23,17 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Constructor.
 		 * 
-		 * @param offset - the number of frames to offset the action
+		 * @param delay - the number of frames to delay the action
 		 * @param target - the MovieClip whose frames you are going to
 		 * @param frameIdentifier - a String or uint to go to
 		 */
-		public function KSMovieClipController(offset:*, target:MovieClip, frameIdentifier:*)
+		public function KSMovieClipController(delay:*, target:MovieClip, frameIdentifier:*)
 		{
-			super(offset, target.gotoAndPlay, frameIdentifier);
+			super(delay, target.gotoAndPlay, frameIdentifier);
 		}
 		
 		override public function clone():AbstractAction {
-			var clone:KSMovieClipController = new KSMovieClipController(offset, target, frameIdentifier);
+			var clone:KSMovieClipController = new KSMovieClipController(delay, target, frameIdentifier);
 			//clone.timeUnit = _timeUnit; 
 			clone._args = _args;
 			clone._result = _result;

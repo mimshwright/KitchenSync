@@ -31,6 +31,7 @@ package org.as3lib.kitchensync.action
 		protected var _stagger:int;
 		
 		protected var _lastStartTime:Timestamp;
+		protected var _lastStartIndex:int;
 		
 		
 		/**
@@ -38,7 +39,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * 
 		 * @params stagger - The amount of time to stagger between each action starting. 
-		 *					 The first one will not stagger (but will use the offset for the Staggered object)
+		 *					 The first one will not stagger (but will use the delay for the Staggered object)
 		 * 					 Accepts an integer or a parseable string.
 		 * @params children - a list of AbstractSynchronizedActions that will be added as children of the group.
 		 * 
@@ -58,6 +59,12 @@ package org.as3lib.kitchensync.action
 		}
 		
 		
+		override public function start():AbstractAction {
+			var action:AbstractAction = super.start();
+			_lastStartIndex = -1;
+			return action;
+		}
+		
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
 		 */
@@ -69,18 +76,26 @@ package org.as3lib.kitchensync.action
 				}
 				if (!_lastStartTime || time.currentFrame - _lastStartTime.currentFrame > TimestampUtil.millisecondsToFrames(_stagger)) {
 					_lastStartTime = time;
-					var currentTime:int = time.currentFrame - TimestampUtil.millisecondsToFrames(offset) - _startTime.currentFrame;
-					var childActionIndex:int = Math.floor(currentTime / TimestampUtil.millisecondsToFrames(_stagger));
-					var childAction:AbstractAction = AbstractAction(_childActions[childActionIndex]);
-
-					// add a listener to each action so that the completion of the entire group can be tracked.
-					childAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
-					childAction.addEventListener(KitchenSyncEvent.START, onChildStart);
-					// start the child action
-					childAction.start();
+					var currentTime:int = time.currentFrame - TimestampUtil.millisecondsToFrames(delay) - _startTime.currentFrame;
+					var currentStartIndex:int = Math.floor(currentTime / TimestampUtil.millisecondsToFrames(_stagger));
+					
+					// for all of the indexes since the last index.
+					for (var i:int = _lastStartIndex + 1; i <= currentStartIndex; i++) {
+						if (i < childActions.length) {
+							var childAction:AbstractAction = AbstractAction(_childActions[i]);
+							// add a listener to each action so that the completion of the entire group can be tracked.
+							childAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
+							childAction.addEventListener(KitchenSyncEvent.START, onChildStart);
+							// start the child action
+							childAction.start();
+						}
+					} 
+					
+					_lastStartIndex = currentStartIndex;
+					
 					
 					// if this is the last child, unregister
-					if (childActionIndex == _childActions.length - 1) {
+					if (currentStartIndex == _childActions.length - 1) {
 						unregister();
 					}
 				}
@@ -90,7 +105,7 @@ package org.as3lib.kitchensync.action
 		override public function clone():AbstractAction {
 			var clone:KSStaggeredGroup = new KSStaggeredGroup(_stagger);
 			clone._childActions = _childActions;
-			clone.offset = _offset;
+			clone.delay = _delay;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

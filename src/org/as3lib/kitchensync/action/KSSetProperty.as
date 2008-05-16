@@ -9,11 +9,11 @@ package org.as3lib.kitchensync.action
 		 * @param target - The object whose property you want to modify.
 		 * @param key - The name of the property to modify.
 		 * @param value - The new value of the property.
-		 * @param offset - The delay before the action executes.
+		 * @param delay - The delay before the action executes.
 		 */ 
-		public function KSSetProperty(target:Object, key:String, value:*, offset:* = 0)
+		public function KSSetProperty(target:Object, key:String, value:*, delay:* = 0)
 		{
-			super(offset, setProperty, target, key, value);
+			super(delay, setProperty, target, key, value);
 		}
 		
 		/** This is the function that will be called to set the property. */

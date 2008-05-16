@@ -9,10 +9,9 @@ package org.as3lib.kitchensync.action
 	
 	/**
 	 * A tween will change an object's numeric value over time.
-	 * 
-	 * -todo - make getters and setters for most of the properties.
-	 * -todo - make target property accessable
 	 */
+	 // todo - make getters and setters for most of the properties.
+	 // todo - make target property accessable
 	public class KSTween extends AbstractAction
 	{
 		/**
@@ -84,8 +83,8 @@ package org.as3lib.kitchensync.action
 		 * rounded to the nearest integer.
 		 * 
 		 * @see org.as3lib.kitchensync.ActionDefaults
-		 * @todo test
 		 */
+		 // todo test
 		public function set snapToWholeNumber(snapToWholeNumber:Boolean):void { _snapToWholeNumber = snapToWholeNumber; }
 		public function get snapToWholeNumber():Boolean { return _snapToWholeNumber; }
 		protected var _snapToWholeNumber:Boolean;
@@ -110,18 +109,18 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Constructor
 		 * 
-		 * -todo - make all of these optional
-		 * -todo - make fromValue come before toValue
 		 * 
 		 * @param target - the object whose property will be changed.
 		 * @param property - the name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
 		 * @param toValue - the value to tween the property to. After the tween is done, this will be the value of the property.
 		 * @param fromValue - the starting value of the tween. By default, this is the value of the property before the tween begins.
 		 * @param duration - the time in frames that this tween will take to execute.
-		 * @param offset - the time to wait before starting the tween.
+		 * @param delay - the time to wait before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		public function KSTween(target:Object, property:String, toValue:Number, fromValue:Number = EXISTING_FROM_VALUE, duration:* = 0, offset:* = 0, easingFunction:Function = null)
+		// todo - make all of these optional
+		// todo - make fromValue come before toValue
+		public function KSTween(target:Object, property:String, toValue:Number, fromValue:Number = EXISTING_FROM_VALUE, duration:* = 0, delay:* = 0, easingFunction:Function = null)
 		{
 			super();
 			_target = target;
@@ -133,7 +132,7 @@ package org.as3lib.kitchensync.action
 			snapToWholeNumber = KitchenSyncDefaults.snapToWholeNumber;
 			
 			this.duration = duration;
-			this.offset = offset;
+			this.delay = delay;
 			
 			if (easingFunction == null) { 
 				easingFunction = KitchenSyncDefaults.easingFunction;
@@ -151,8 +150,6 @@ package org.as3lib.kitchensync.action
 		
 		/**
 		 * Executes the tween.
-		 * 
-		 * -todo - make snapping to the final value optional.
 		 */
 		override protected function onUpdate(event:KitchenSyncEvent):void {
 			var time:Timestamp = event.timestamp;
@@ -160,13 +157,13 @@ package org.as3lib.kitchensync.action
 			var convertedDuration:int;
 			if (startTimeHasElapsed) {
 				if (_sync) {
-			 		timeElapsed = time.currentTime - _startTime.currentTime - _offset;
+			 		timeElapsed = time.currentTime - _startTime.currentTime - _delay;
 			 		convertedDuration = duration;		 				 		
 			 	} else {
-			 		timeElapsed = time.currentFrame - _startTime.currentFrame - TimestampUtil.millisecondsToFrames(_offset);
+			 		timeElapsed = time.currentFrame - _startTime.currentFrame - TimestampUtil.millisecondsToFrames(_delay);
 			 		convertedDuration = TimestampUtil.millisecondsToFrames(duration);
 			 	}
-				//timeElapsed = time.currentFrame - _startTime.currentFrame - _offset;
+				//timeElapsed = time.currentFrame - _startTime.currentFrame - _delay;
 				if (_fromValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
 					_fromValue = value; 
 				} 
@@ -191,12 +188,12 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param time The time parameter can either be a number or a parsable time string. If the 
 		 * time to jump to is greater than the total duration of the action, it will throw an IllegalOperationError.
-		 * @param ignoreOffset If set to true, the offset will be ignored and the action will jump to
+		 * @param ignoreDelay If set to true, the delay will be ignored and the action will jump to
 		 * the specified time in relation to the duration.
 		 * 
 		 * @throws flash.errors.IllegalOperationError If the time to jump to is longer than the total time for the action.
 		 */
-		public function jumpToTime(time:*, ignoreOffset:Boolean = false):void {
+		public function jumpToTime(time:*, ignoreDelay:Boolean = false):void {
 			// jumpToTime will fail if the action isn't running.
 			if (!isRunning) { 
 				throw new IllegalOperationError("Can't jump to time if the action isn't running.");
@@ -216,12 +213,12 @@ package org.as3lib.kitchensync.action
 			// Convert the jump time into a timestamp
 			var jumpTime:Timestamp =TimestampUtil.getTimestampFromMilliseconds(jumpTimeNumber);
 			
-			// Ignore the offset in this equation if ignoreOffset is true.
-			var totalDuration:int = ignoreOffset ? duration : duration + offset;
+			// Ignore the delay in this equation if ignoreDelay is true.
+			var totalDuration:int = ignoreDelay ? duration : duration + delay;
 			
 			// extract the jump time based on the action's timeUnit
 			var offsetTimestamp:Timestamp;
-			offsetTimestamp = TimestampUtil.getTimestampFromMilliseconds(offset);
+			offsetTimestamp = TimestampUtil.getTimestampFromMilliseconds(delay);
 			
 			// check that the jump time is valid
 			jumpTimeNumber = jumpTime.currentTime;
@@ -241,15 +238,14 @@ package org.as3lib.kitchensync.action
 				// a different point in time on the next update.
 				_startTime = TimestampUtil.subtract(_startTime, TimestampUtil.subtract(jumpTime, runningTime));
 				
-				// if ignoring the offset, also move the playhead forward by the offset amount.
-				if (ignoreOffset) { 
+				// if ignoring the delay, also move the playhead forward by the delay amount.
+				if (ignoreDelay) { 
 					_startTime = TimestampUtil.subtract(_startTime, offsetTimestamp); 
 				} 
 			}
 		}
 		
-		// TODO
-		// add jumpByTime() method
+		// TODO add jumpByTime() method
 		
 		
 		
@@ -320,7 +316,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function clone():AbstractAction {
-			var clone:KSTween = new KSTween(_target, _property, _toValue, _fromValue, _duration, _offset, _easingFunction);
+			var clone:KSTween = new KSTween(_target, _property, _toValue, _fromValue, _duration, _delay, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;

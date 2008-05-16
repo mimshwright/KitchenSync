@@ -29,7 +29,7 @@ package org.as3lib.kitchensync.test {
 		public function KitchenSyncBenchmark(tweenBencher : TweenBencher, name:String = "KitchenSync") 
 		{
 			super(tweenBencher, name);
-			syncMode = false;
+			syncMode = false;	
 		}
 
 		/**
@@ -43,9 +43,9 @@ package org.as3lib.kitchensync.test {
 		public override function addTween(target:Sprite, firstInNewSet:Boolean):void
 		{
 			// each tween fires onMotionEnd on completion.
-			var tween:Tween = new Tween (target, "width", 760, 0, tweenDuration * 1000, 0, Exponential.easeInOut);
+			var tween:KSTween = new KSTween (target, "width", 760, 0, tweenDuration * 1000, 0, Exponential.easeInOut);
 			tween.sync = syncMode;
-			tween.addEventListener(SynchronizerEvent.COMPLETE, onMotionEnd);
+			tween.addEventListener(KitchenSyncEvent.COMPLETE, onMotionEnd);
 			tween.start();
 		}
 		

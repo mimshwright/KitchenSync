@@ -8,7 +8,7 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.core.*;
 	
 	/**
-	 * A sound that will be played back at the specified offset.
+	 * A sound that will be played back at the specified delay.
 	 */
 	public class KSSoundController extends AbstractAction
 	{
@@ -36,10 +36,10 @@ package org.as3lib.kitchensync.action
 		 * @throws TypeError - If the sound parameter is not the correct data type.
 		 * @param sound - The sound to be played.
 		 * 				  Can be an object of type Sound, URLRequest, or the URL of the sound as a String.
-		 * @param offset - The delay before starting the sound.
+		 * @param delay - The delay before starting the sound.
 		 * @param soundOffset - The point at which to begin playing the sound in milliseconds.
 		 */
-		public function KSSoundController(sound:*, offset:* = 0, soundOffset:int = 0) {
+		public function KSSoundController(sound:*, delay:* = 0, soundOffset:int = 0) {
 			super();
 			if (sound is Sound) {
 				_sound = Sound(sound);
@@ -50,7 +50,7 @@ package org.as3lib.kitchensync.action
 			} else {
 				throw new TypeError("The sound parameter must be of type Sound, URLRequest or String.");
 			}
-			this.offset = offset;
+			this.delay = delay;
 			_soundOffset = soundOffset;
 			_soundPauseTime = _soundOffset;
 			
@@ -123,7 +123,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function clone():AbstractAction {
-			var clone:KSSoundController = new KSSoundController(_sound, _offset, _soundOffset);
+			var clone:KSSoundController = new KSSoundController(_sound, _delay, _soundOffset);
 			//clone.timeUnit = _timeUnit;
 			clone.autoDelete = _autoDelete;
 			return clone;
