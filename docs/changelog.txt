@@ -1,12 +1,14 @@
 ===== v1.3 =====
 ADDED FrameRateView which displays the framerate of the Synchronizer.
 ADDED message accessor to KSTrace
+ADDED TargetProperty and ITweenable to KSTweens
 FIXED a bug where children of a group are not cloned when the group is cloned.
 FIXED a bug in KSStaggeredGroup that caused some children not to fire.
 FIXED a bug where actions get fired multiple times in sync mode. (needs verification)
 RENAMED 'offset' to 'delay'
-CHANGED default policy for snapToValueOnComplete to true.
 CHANGED the core of the Synchronizer to a timer based system.
+CHANGED default policy for snapToValueOnComplete to true.
+CHANGED default frequency for oscillating funcitons
 REFACTORED to optimize performance. Saw an improvement of about 50%
 
 ===== v1.2 (2008.05.2) =====

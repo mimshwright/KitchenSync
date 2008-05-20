@@ -6,7 +6,7 @@ package org.as3lib.kitchensync.action.tweenable
 		public function get target():Object { return _target; }
 		
 		protected var _property:String;
-		public function get property():Object { return _property; }
+		public function get property():String { return _property; }
 		
 		public function setTargetPropterty(target:Object, property:String):void {
 			if (target[property] is Number) {
@@ -19,7 +19,6 @@ package org.as3lib.kitchensync.action.tweenable
 		
 		public function set currentValue(currentValue:Number):void{
 			if (_target && _property) {
-				if (_useSnapping) { currentValue = Math.round(currentValue); }
 				_target[_property] = currentValue;
 			} else {
 				throw new Error ("Target and Property must both be defined before setting the value.");
@@ -37,14 +36,21 @@ package org.as3lib.kitchensync.action.tweenable
 		public function set endValue(endValue:Number):void	{ _endValue = endValue; }
 		public function get endValue():Number {	return _endValue; }
 		
-		protected var _useSnapping:Boolean = false;
-		public function get useSnapping():Boolean { return _useSnapping; }
-		public function set useSnapping(useSnapping:Boolean):void { _useSnapping = useSnapping; }
+		public function get differenceInValues():Number { return _endValue - _startValue; }
 		
 		public function TargetProperty (target:Object, property:String, startValue:Number = NaN, endValue:Number = NaN) {
 			setTargetPropterty(target, property);
 			_startValue = (isNaN(startValue)) ? currentValue : startValue;
 			_endValue   = (isNaN(endValue))   ? currentValue : endValue;
+		}
+		
+		public function reset():void {
+			currentValue = startValue;
+		}
+		
+		public function clone():ITweenable {
+			var clone:TargetProperty = new TargetProperty(_target, _property, _startValue, _endValue);
+			return clone;
 		}
 	}
 }

@@ -3,9 +3,11 @@ package org.as3lib.kitchensync.action
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
+	import org.as3lib.kitchensync.action.tweenable.ITweenable;
+	import org.as3lib.kitchensync.action.tweenable.TargetProperty;
 	import org.as3lib.kitchensync.core.*;
-	import org.as3lib.kitchensync.util.*;
 	import org.as3lib.kitchensync.easing.EasingUtil;
+	import org.as3lib.kitchensync.util.*;
 	
 	/**
 	 * A tween will change an object's numeric value over time.
@@ -29,26 +31,14 @@ package org.as3lib.kitchensync.action
 		public function set easingFunction(easingFunction:Function):void{ _easingFunction = easingFunction;}
 		protected var _easingFunction:Function;
 		
-		/** target is the object that will be affected by the tween. */
-		protected var _target:Object;
-		/** property is the name of the property belonging to target that will be affected by the tween. */
-		protected var _property:String;
-		
-		/** 
-		 * The starting value for the tween. 
-		 * You can use EXISTING_FROM_VALUE to cause the tween to start from the from value at
-		 * the start of the tween.
-		 * 
-		 * @see #EXISTING_FROM_VALUE
-		 */
-		public function get fromValue():Number { return _fromValue; }
-		protected var _fromValue:Number;
 		
 		/**
-		 * The ending value for the tween.
+		 * 
 		 */
-		public function get toValue():Number { return _toValue; }
-		protected var _toValue:Number;
+		protected var _tweenable:ITweenable;
+		public function get tweenable():ITweenable { return _tweenable; }
+		public function set tweenable(tweenable:ITweenable):void { _tweenable = tweenable; }
+		
 		
 		/**
 		 * Used to modify the results of the easing function. 
@@ -89,28 +79,12 @@ package org.as3lib.kitchensync.action
 		public function get snapToWholeNumber():Boolean { return _snapToWholeNumber; }
 		protected var _snapToWholeNumber:Boolean;
 		
-		/**
-		 * Used internally to get the current change between start and end values.
-		 */
-		protected function get delta():Number {
-			return _toValue - _fromValue;
-		}
-		
-		/**
-		 * Used to set the target's property.
-		 */		
-		protected function set value(value:Number):void {
-			_target[_property] = value;
-		}
-		protected function get value():Number {
-			return _target[_property];
-		}
 		
 		/**
 		 * Constructor
 		 * 
 		 * 
-		 * @param target - the object whose property will be changed.
+		 * @param target - the object whose property will be changed (or an ITweenable, but it would be better to use newWithTweenable)
 		 * @param property - the name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
 		 * @param toValue - the value to tween the property to. After the tween is done, this will be the value of the property.
 		 * @param fromValue - the starting value of the tween. By default, this is the value of the property before the tween begins.
@@ -118,15 +92,17 @@ package org.as3lib.kitchensync.action
 		 * @param delay - the time to wait before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		// todo - make all of these optional
-		// todo - make fromValue come before toValue
-		public function KSTween(target:Object, property:String, toValue:Number, fromValue:Number = EXISTING_FROM_VALUE, duration:* = 0, delay:* = 0, easingFunction:Function = null)
+		public function KSTween(target:Object = null, property:String = "", startValue:Number = EXISTING_FROM_VALUE, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null)
 		{
 			super();
-			_target = target;
-			_property = property;
-			_fromValue = fromValue;
-			_toValue = toValue;
+			var tweenable:ITweenable;
+			
+			if (target is ITweenable) {
+				tweenable = ITweenable(target);
+			} else {
+				tweenable = new TargetProperty(target, property, startValue, endValue);
+			}
+			_tweenable = tweenable;
 			
 			snapToValueOnComplete = KitchenSyncDefaults.snapToValueOnComplete;
 			snapToWholeNumber = KitchenSyncDefaults.snapToWholeNumber;
@@ -140,12 +116,25 @@ package org.as3lib.kitchensync.action
 			_easingFunction = easingFunction;
 		}
 		
+		public static function newWithTweenable(tweenable:ITweenable, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+			return new KSTween(tweenable, "", NaN, NaN, duration, delay, easingFunction);
+		} 
+		
+		override public function start():AbstractAction {
+			if (_tweenable == null) { 
+				throw new Error("'tweenable' must not be null. Cannot start tween without a Tweenable target.");
+				return null;
+			}
+			return super.start();
+		}
+		
+		
 		/**
 		 * Stops the tween and sets the target property to the start value.
 		 */
 		public function reset():void {
 			stop();
-			value = _fromValue;
+			_tweenable.reset();
 		}
 		
 		/**
@@ -164,17 +153,18 @@ package org.as3lib.kitchensync.action
 			 		convertedDuration = TimestampUtil.millisecondsToFrames(duration);
 			 	}
 				//timeElapsed = time.currentFrame - _startTime.currentFrame - _delay;
-				if (_fromValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
-					_fromValue = value; 
-				} 
-				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2) * delta + _fromValue; 
+				if (_tweenable.startValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
+					_tweenable.startValue = _tweenable.currentValue; 
+				}
+				var delta:Number = _tweenable.endValue - _tweenable.startValue; 
+				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2) * delta + _tweenable.startValue; 
 				if (_snapToWholeNumber) { result = Math.round(result); }
 				
-				value = result;
+				_tweenable.currentValue = result;
 				if (durationHasElapsed) {
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
-					if (_snapToValueOnComplete) { value = _toValue; }
+					if (_snapToValueOnComplete) { _tweenable.currentValue = _tweenable.endValue; }
 					complete();
 				}
 			}
@@ -282,9 +272,9 @@ package org.as3lib.kitchensync.action
 		 * @see #cloneReversed()
 		 */
 		public function reverse():void {
-			var temp:Number = _fromValue;
-			_fromValue = _toValue;
-			_toValue = temp;						
+			var temp:Number = _tweenable.startValue;
+			_tweenable.startValue = _tweenable.endValue;
+			_tweenable.endValue = temp;						
 		}
 		
 		
@@ -308,15 +298,16 @@ package org.as3lib.kitchensync.action
 		 * @param property - The new target object's property to target. Defaults to the same property as this.
 		 * @return Tween - a copy of this tween with a new target/property.
 		 */
-		public function cloneWithTarget(target:Object = null, property:String = null):KSTween {
+		public function cloneWithTarget(target:Object, property:String):KSTween {
 			var clone:KSTween = KSTween(this.clone());
-			if (target)		{ clone._target = target; }
-			if (property) 	{ clone._property = property; }
+			var targetProperty:TargetProperty = new TargetProperty(target, property, clone._tweenable.startValue, clone._tweenable.endValue);
+			clone._tweenable = targetProperty;
 			return clone;
 		}
 		
 		override public function clone():AbstractAction {
-			var clone:KSTween = new KSTween(_target, _property, _toValue, _fromValue, _duration, _delay, _easingFunction);
+			var tweenableClone:ITweenable = _tweenable.clone();
+			var clone:KSTween = newWithTweenable(tweenableClone, _duration, _delay, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
@@ -330,14 +321,14 @@ package org.as3lib.kitchensync.action
 		 */
 		override public function kill():void {
 			super.kill();
-			_target = null;
+			_tweenable = null;
 		}
 		
 		/**
 		 * Returns either the _id or a description of the tween.
 		 */
 		override public function toString():String {
-			return "Tween " + _target + "." + _property + "=" + _fromValue + "~" + _toValue;
+			return "KSTween :" + Object(_tweenable).toString();
 		}
 	}
 }

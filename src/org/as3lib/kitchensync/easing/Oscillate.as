@@ -17,8 +17,8 @@ package org.as3lib.kitchensync.easing
 	public class Oscillate
 	{
 		private static const TWICE_PI:Number = Math.PI*2;
-		public static const DEFAULT_FREQUENCY:Number = 0.1; // in hertz, that's 1 cycle every 10 second
-		public static const DEFAULT_PULSE_WIDTH:Number = 0.5; // Square Wave
+		public static var defaultFrequency:Number = 1; // in hertz, that's 1 cycle every 1 second
+		public static var defaultPulseWidth:Number = 0.5; // Square Wave
 		
 		public static var snapping:Boolean = false;
 		
@@ -31,7 +31,8 @@ package org.as3lib.kitchensync.easing
   	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
-		public static function sine(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
+		public static function sine(timeElapsed:Number, duration:Number, frequency:Number = NaN):Number {
+			if (isNaN(frequency)) { frequency = defaultFrequency; }
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			frequency /= 1000;
 			return 0.5 * (1 - Math.cos( TWICE_PI * timeElapsed * frequency));
@@ -47,7 +48,8 @@ package org.as3lib.kitchensync.easing
   	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
-		public static function absoluteSine(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
+		public static function absoluteSine(timeElapsed:Number, duration:Number, frequency:Number=NaN):Number {
+			if (isNaN(frequency)) { frequency = defaultFrequency; }
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			frequency /= 1000;
 			return Math.abs(Math.cos( TWICE_PI * timeElapsed * frequency));
@@ -63,7 +65,8 @@ package org.as3lib.kitchensync.easing
   	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
-		public static function sawtooth(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
+		public static function sawtooth(timeElapsed:Number, duration:Number, frequency:Number=NaN):Number {
+			if (isNaN(frequency)) { frequency = defaultFrequency; }
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			frequency /= 1000;
 			return timeElapsed * frequency % 1.0;
@@ -79,7 +82,8 @@ package org.as3lib.kitchensync.easing
   	    * @param frequency - The frequency of the sine wave in hertz. Higher is faster. 1/frequency = wavelength
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
-		public static function triangle(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY):Number {
+		public static function triangle(timeElapsed:Number, duration:Number, frequency:Number = NaN):Number {
+			if (isNaN(frequency)) { frequency = defaultFrequency; }
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			frequency /= 1000;
 			var position:Number = timeElapsed * frequency;
@@ -98,7 +102,9 @@ package org.as3lib.kitchensync.easing
   	    * @param pulseWidth - The width of the upside of the square wave as a percentage. 0.5 is half up, half down. 0.0 is all down, 1.0 is all up.
 	    * @return Number - between 0.0 and 1.0 based on the time and frequency. Returns 1.0 if duration is elapsed and snapping is turned on.
 	    */  
-		public static function pulse(timeElapsed:Number, duration:Number, frequency:Number=DEFAULT_FREQUENCY, pulseWidth:Number= DEFAULT_PULSE_WIDTH):Number {
+		public static function pulse(timeElapsed:Number, duration:Number, frequency:Number = NaN, pulseWidth:Number= NaN):Number {
+			if (isNaN(frequency)) { frequency = defaultFrequency; }
+			if (isNaN(pulseWidth)) { pulseWidth = defaultPulseWidth; }
 			frequency /= 1000;
 			if (timeElapsed >= duration && snapping == true) { return 1.0 }
 			if ((timeElapsed * frequency % 1.0) >= pulseWidth) { return 1.0 }
