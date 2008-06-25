@@ -74,6 +74,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#delay">delay</a> : int<div class="summaryTableDescription">
+   delay is the time that will pass after the start() method is called
+   before the action begins.</div>
+</td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#duration">duration</a> : int<div class="summaryTableDescription">
    duration is the length of time that the action will run.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
@@ -109,24 +115,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#offset">offset</a> : int<div class="summaryTableDescription">
-   offset is the time that will pass after the start() method is called
-   before the action begins.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#offset">offset</a> : int<div class="summaryTableDescription"> 
+   legacy accessors.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#pauseTime">pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   The time at which the action was last paused.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#startTime">startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   The time at which the action was last started.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#startTimeHasElapsed">startTimeHasElapsed</a> : Boolean<div class="summaryTableDescription">
-   Checks to see whether the start time offset has elapsed and if the _startTime is defined.</div>
+   Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -141,7 +148,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">KSDispatchEvent</td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#timeStringParser">timeStringParser</a> : <a href="../util/ITimeStringParser.html">ITimeStringParser</a>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#timeStringParser">timeStringParser</a> : <a href="../utils/ITimeStringParser.html">ITimeStringParser</a>
 <div class="summaryTableDescription">[static] 
    The timeStringParser will determine how strings are parsed into valid 
    time values.</div>
@@ -174,6 +181,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_delay">_delay</a> : int = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
@@ -186,17 +197,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_offset">_offset</a> : int = 0<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_pauseTime">_pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">
-   The time at which the action was last paused.</div>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -205,8 +211,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_startTime">_startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">
-   The time at which the action was last started.</div>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -241,7 +246,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#KSDispatchEvent()">KSDispatchEvent</a>(event:*, target:IEventDispatcher, ... offset = 0, listeners:*)</div>
+<a class="signatureLink" href="#KSDispatchEvent()">KSDispatchEvent</a>(event:*, target:IEventDispatcher, ... delay = 0, listeners:*)</div>
 <div class="summaryTableDescription">
    Constructor.</div>
 </td><td class="summaryTableOwnerCol">KSDispatchEvent</td>
@@ -405,7 +410,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#onUpdate()">onUpdate</a>(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
 <div class="summaryTableDescription">
-   When the offset is reached, the event will be fired from the target.</div>
+   When the delay is reached, the event will be fired from the target.</div>
 </td><td class="summaryTableOwnerCol">KSDispatchEvent</td>
 </tr>
 </table>
@@ -574,7 +579,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function KSDispatchEvent(event:*, target:IEventDispatcher, ... offset = 0, listeners:*)</code><p>
+<code>public function KSDispatchEvent(event:*, target:IEventDispatcher, ... delay = 0, listeners:*)</code><p>
    Constructor.
    
    </p><span class="label">Parameters</span>
@@ -595,7 +600,7 @@ showHideInherited();
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code>... <span class="label">offset</span></code> (default = <code>0</code>)<code></code> &mdash; - time to wait before execution
+<td width="20px"></td><td><code>... <span class="label">delay</span></code> (default = <code>0</code>)<code></code> &mdash; - time to wait before execution
    </td>
 </tr>
 <tr>
@@ -681,7 +686,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>protected override function onUpdate(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</code><p>
-   When the offset is reached, the event will be fired from the target.
+   When the delay is reached, the event will be fired from the target.
    Note that if duration is > 0, this will continue to fire for every frame until duration is elapsed.
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">

@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="AbstractAction,org.as3lib.kitchensync.action.AbstractAction,_autoDelete,_duration,_name,_offset,_pauseTime,_paused,_running,_startTime,_sync,timeStringParser,autoDelete,duration,durationHasElapsed,isPaused,isRunning,name,offset,pauseTime,startTime,startTimeHasElapsed,sync,addEventTrigger,addTrigger,clone,complete,forceUpdate,kill,onTrigger,onUpdate,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister" name="keywords">
+<meta content="AbstractAction,org.as3lib.kitchensync.action.AbstractAction,_autoDelete,_delay,_duration,_name,_pauseTime,_paused,_running,_startTime,_sync,timeStringParser,autoDelete,delay,duration,durationHasElapsed,isPaused,isRunning,name,offset,pauseTime,startTime,startTimeHasElapsed,sync,addEventTrigger,addTrigger,clone,complete,forceUpdate,kill,onTrigger,onUpdate,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister" name="keywords">
 <title>org.as3lib.kitchensync.action.AbstractAction</title>
 </head>
 <body>
@@ -47,13 +47,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <p></p>
   This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
   timing. 
-  
-  -todo - sync mode seems to work but i'm seeing multiple calls of the same function sometimes one frame apart.
-    18100 msec; 819 frames We use debuggers
-    18121 msec; 820 frames We use debuggers
-  -todo - add a settings object
-  -todo - better implementation of ids
-  <p></p>
+    <p></p>
 <br>
 <hr>
 </div>
@@ -68,6 +62,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription">
    autoDelete is a flag that indicates whether the action should be deleted 
    when it is done executing.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#delay">delay</a> : int<div class="summaryTableDescription">
+   delay is the time that will pass after the start() method is called
+   before the action begins.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -96,24 +96,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offset">offset</a> : int<div class="summaryTableDescription">
-   offset is the time that will pass after the start() method is called
-   before the action begins.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offset">offset</a> : int<div class="summaryTableDescription"> 
+   legacy accessors.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pauseTime">pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">[read-only]</div>
+<div class="summaryTableDescription">[read-only]
+   The time at which the action was last paused.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTime">startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">[read-only]</div>
+<div class="summaryTableDescription">[read-only]
+   The time at which the action was last started.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTimeHasElapsed">startTimeHasElapsed</a> : Boolean<div class="summaryTableDescription">[read-only]
-   Checks to see whether the start time offset has elapsed and if the _startTime is defined.</div>
+   Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -123,7 +124,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeStringParser">timeStringParser</a> : <a href="../util/ITimeStringParser.html">ITimeStringParser</a>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeStringParser">timeStringParser</a> : <a href="../utils/ITimeStringParser.html">ITimeStringParser</a>
 <div class="summaryTableDescription">[static] 
    The timeStringParser will determine how strings are parsed into valid 
    time values.</div>
@@ -143,6 +144,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_delay">_delay</a> : int = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
@@ -151,17 +156,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_offset">_offset</a> : int = 0<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">AbstractAction</td>
-</tr>
-<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_pauseTime">_pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">
-   The time at which the action was last paused.</div>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -170,8 +170,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTime">_startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">
-   The time at which the action was last started.</div>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -407,6 +406,40 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set autoDelete(value:Boolean):void</code>
 <br>
 </div>
+<a name="_delay"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_delay</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _delay:int = 0</code>
+</div>
+<a name="delay"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">delay</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>delay:int</code>&nbsp;&nbsp;[read-write]<p>
+   delay is the time that will pass after the start() method is called
+   before the action begins. Also known as delay.
+   Will accept an integer or a parsable string.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get delay():int</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set delay(value:int):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">org.as3lib.kitchensync.ITimeStringParser<br>
+<a href="../action/AbstractAction.html#timeUnit" target="">timeUnit</a>
+</div>
+</div>
 <a name="_duration"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -511,15 +544,6 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set name(value:String):void</code>
 <br>
 </div>
-<a name="_offset"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_offset</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _offset:int = 0</code>
-</div>
 <a name="offset"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -527,23 +551,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>offset:int</code>&nbsp;&nbsp;[read-write]<p>
-   offset is the time that will pass after the start() method is called
-   before the action begins. Also known as delay.
-   Will accept an integer or a parsable string.
-   
+<code>offset:int</code>&nbsp;&nbsp;[read-write]<p> 
+   legacy accessors. synonomous with delay.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get offset():int</code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set offset(value:int):void</code>
 <br>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">org.as3lib.kitchensync.ITimeStringParser<br>
-<a href="../action/AbstractAction.html#timeUnit" target="">timeUnit</a>
-</div>
 </div>
 <a name="_paused"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -561,9 +576,8 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code><p>
-   The time at which the action was last paused.
-   </p></div>
+<code>protected var _pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code>
+</div>
 <a name="pauseTime"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -571,7 +585,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<p>
+   The time at which the action was last paused.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pauseTime():<a href="../core/Timestamp.html">Timestamp</a></code>
 <br>
@@ -592,9 +608,8 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _startTime:<a href="../core/Timestamp.html">Timestamp</a></code><p>
-   The time at which the action was last started.
-   </p></div>
+<code>protected var _startTime:<a href="../core/Timestamp.html">Timestamp</a></code>
+</div>
 <a name="startTime"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -602,7 +617,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>startTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>startTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<p>
+   The time at which the action was last started.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTime():<a href="../core/Timestamp.html">Timestamp</a></code>
 <br>
@@ -615,7 +632,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>startTimeHasElapsed:Boolean</code>&nbsp;&nbsp;[read-only]<p>
-   Checks to see whether the start time offset has elapsed and if the _startTime is defined. In other words, 
+   Checks to see whether the start time delay has elapsed and if the _startTime is defined. In other words, 
    checks to see whether the action is ready to execute. Duration is handled seperately.
    </p><span class="label">Implementation</span>
 <br>
@@ -655,7 +672,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public static var timeStringParser:<a href="../util/ITimeStringParser.html">ITimeStringParser</a></code><p> 
+<code>public static var timeStringParser:<a href="../utils/ITimeStringParser.html">ITimeStringParser</a></code><p> 
    The timeStringParser will determine how strings are parsed into valid 
    time values.
    
@@ -843,7 +860,7 @@ showHideInherited();
    Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
    and the onUpdate() handler will not be called. When unpause() is called,
    the action will continue at the point where it was paused.
-   If the pause() method affects the start time even if the offset time hasn't expired yet. 
+   If the pause() method affects the start time even if the delay time hasn't expired yet. 
    </p></div>
 <a name="register()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
