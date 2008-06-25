@@ -5,6 +5,7 @@ package org.as3lib.kitchensync.action.tweenable
 	
 	
 	/** 
+	 * NOT YET IMPLEMENTED.
 	 * Manages the instantiation of ITweenable objects.
 	 * 
 	 * @example <listing version="3.0">
