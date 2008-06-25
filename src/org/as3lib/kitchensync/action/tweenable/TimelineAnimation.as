@@ -3,7 +3,6 @@ package org.as3lib.kitchensync.action.tweenable
 	import flash.display.FrameLabel;
 	import flash.display.MovieClip;
 	
-	// TODO add documentation.
 	// TODO add option for gotoAndPlay?
 	/**
 	 * A Tweenable that controls a timeline animation in a MovieClip.
@@ -14,6 +13,7 @@ package org.as3lib.kitchensync.action.tweenable
 	public class TimelineAnimation implements ITweenable
 	{
 		
+		/** The current frame of the movieclip. Setting it causes the MC to gotoAndStop() at that frame. */
 		public function get currentValue():Number {
 			if (target != null) {
 				return _target.currentFrame;
@@ -34,14 +34,17 @@ package org.as3lib.kitchensync.action.tweenable
 			}
 		}
 		
+		/** The number of the frame to begin at */
 		public function get startValue():Number { return _startValue; }
 		public function set startValue(startValue:Number):void { _startValue = int(startValue); }
 		protected var _startValue:int = 1;
 		
+		/** The number of the frame to end on */
 		public function get endValue():Number { return _endValue; }
 		public function set endValue(endValue:Number):void { _endValue = int(endValue); }
 		protected var _endValue:int;
 		
+		/** The target movieclip that will be tweened. */
 		public function get target():MovieClip { return _target; }
 		public function set target(target:MovieClip):void { 
 			_target = target; 
@@ -50,6 +53,13 @@ package org.as3lib.kitchensync.action.tweenable
 		} 
 		protected var _target:MovieClip;
 		
+		/**
+		 * Constructor.
+		 * 
+		 * @param target The MovieClip object to animate.
+		 * @param startFrame The frame to begin at. Can be of types String, FrameLabel or a numerical type. Defaults to 1.
+		 * @param endFrame The frame to end on. Can be of types String, FrameLabel or a numerical type. Defaults to the last frame in the MovieClip.
+		 */
 		public function TimelineAnimation(target:MovieClip, startFrame:Object = null, endFrame:Object = null) {
 			this.target = target;
 				
@@ -68,6 +78,12 @@ package org.as3lib.kitchensync.action.tweenable
 			}
 		}
 		
+		/**
+		 * Determines the frame number based on an unknown object.
+		 * 
+		 * @param frameLabel An unknown object that can be of type int, uint, Number, FrameLabel, or String. 
+		 * @return the frame number as an int 
+		 */
 		protected function evaluateFrameLabel(frameLabel:Object):int {
 			if (frameLabel is FrameLabel) {
 				return FrameLabel(frameLabel).frame;
@@ -79,7 +95,13 @@ package org.as3lib.kitchensync.action.tweenable
 			throw new ArgumentError("The 'frameLabel' parameter must be one of the following types: int, uint, Number, FrameLabel, String");
 		}
 
-		// todo Move this to a utility function.
+		// todo Move this to a utility class.
+		/**
+		 * Returns a frame number based on a string label.
+		 * 
+		 * @param the frame label you're looking for as a string.
+		 * @return int number of the frame or throws an error.
+		 */
 		protected function getFrameNumberFromString(matchLabel:String):int {
 			var labelList:Array = _target.currentLabels;
 			var l:int = labelList.length;
