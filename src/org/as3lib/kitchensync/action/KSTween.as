@@ -288,31 +288,6 @@ package org.as3lib.kitchensync.action
 		
 		
 		
-		/**
-		 * Creates a new Tween and reverses the start and end values of the target property.
-		 * 
-		 * @use <code>
-		 * 			var tween:Tween = new Tween(foo, "x", 100, 200);
-		 * 			var sequence:Sequence = new Sequence(
-		 * 				tween,							// tweens foo's x from 100 to 200
-		 * 				tween.cloneReversed()			// tweens foo's x from 200 to 100
-		 * 				tween.cloneReversed(bar)		// tweens bar's x from 200 to 100
-		 * 				tween.cloneReversed(foo, y)		// tweens foo's y from 200 to 100
-		 * 			);
-		 * 		</code>
-		 * 
-		 * @see #cloneWithTarget()
-		 * @see #reverse()
-		 * 
-		 * @param target - The optional target object of the new Tween
-		 * @param property - The optional property to tween with the new Tween. 
-		 * @returns Tween - A new Tween identical to this but with start and end reversed.
-		 */
-		public function cloneReversed(target:Object = null, property:String = null):KSTween {
-			var clone:KSTween = KSTween(cloneWithTarget(target, property));
-			clone.reverse();
-			return clone;
-		}
 		
 		/**
 		 * Flips the values for to and from values. Essentially, causes the animation to run backwards.
@@ -325,6 +300,16 @@ package org.as3lib.kitchensync.action
 			_tweenable.endValue = temp;						
 		}
 		
+		override public function clone():AbstractAction {
+			var tweenableClone:ITweenable = _tweenable.clone();
+			var clone:KSTween = newWithTweenable(tweenableClone, _duration, _delay, _easingFunction);
+			clone._easingMod1 = _easingMod1;
+			clone._easingMod2 = _easingMod2;
+			clone.autoDelete = _autoDelete;
+			clone.snapToValueOnComplete = _snapToValueOnComplete;
+			clone.snapToWholeNumber = _snapToWholeNumber;
+			return clone;
+		}
 		
 		/**
 		 * Creates a copy of this Tween which targets a different object and / or property.
@@ -353,16 +338,37 @@ package org.as3lib.kitchensync.action
 			return clone;
 		}
 		
-		override public function clone():AbstractAction {
-			var tweenableClone:ITweenable = _tweenable.clone();
-			var clone:KSTween = newWithTweenable(tweenableClone, _duration, _delay, _easingFunction);
-			clone._easingMod1 = _easingMod1;
-			clone._easingMod2 = _easingMod2;
-			clone.autoDelete = _autoDelete;
-			clone.snapToValueOnComplete = _snapToValueOnComplete;
-			clone.snapToWholeNumber = _snapToWholeNumber;
+		/**
+		 * Creates a new Tween and reverses the start and end values of the target property.
+		 * 
+		 * @use <code>
+		 * 			var tween:Tween = new Tween(foo, "x", 100, 200);
+		 * 			var sequence:Sequence = new Sequence(
+		 * 				tween,							// tweens foo's x from 100 to 200
+		 * 				tween.cloneReversed()			// tweens foo's x from 200 to 100
+		 * 				tween.cloneReversed(bar)		// tweens bar's x from 200 to 100
+		 * 				tween.cloneReversed(foo, y)		// tweens foo's y from 200 to 100
+		 * 			);
+		 * 		</code>
+		 * 
+		 * @see #cloneWithTarget()
+		 * @see #reverse()
+		 * 
+		 * @param target - The optional target object of the new Tween
+		 * @param property - The optional property to tween with the new Tween. 
+		 * @returns Tween - A new Tween identical to this but with start and end reversed.
+		 */
+		public function cloneReversed(target:Object = null, property:String = null):KSTween {
+			var clone:KSTween;
+			if (target != null && property != null) {
+			 	clone = KSTween(cloneWithTarget(target, property));
+			} else {
+				clone = KSTween(this.clone());
+			}
+			clone.reverse();
 			return clone;
 		}
+		
 		
 		/**
 		 * Clean up references to target
