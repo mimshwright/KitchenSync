@@ -7,13 +7,19 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.action.tweenable.TargetProperty;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.easing.EasingUtil;
-	import org.as3lib.kitchensync.util.*;
+	import org.as3lib.kitchensync.utils.*;
 	
 	/**
 	 * A tween will change an object's numeric value over time.
+	 * Uses a Tweenable object to determine what to tween. This can be handled automatically
+	 * or declared explicitly.
+	 * Rule of thumb: KSTween is the action that handles the timing and starting and stopping
+	 * the tween while ITweenables control the values of the tween.
+	 * 
+	 * @see org.as3lib.kitchensync.action.tweenable.ITweenable
+	 * @since 0.1
+	 * @author Mims Wright
 	 */
-	 // todo - make getters and setters for most of the properties.
-	 // todo - make target property accessable
 	public class KSTween extends AbstractAction
 	{
 		/**
@@ -33,7 +39,10 @@ package org.as3lib.kitchensync.action
 		
 		
 		/**
+		 * Represents the values that will be tweened by the tween. KSTween will use a TargetProperty by default.
 		 * 
+		 * @see org.as3lib.kitchensync.action.tweenable.ITweenable
+		 * @see org.as3lib.kitchensync.action.tweenable.TargetProperty
 		 */
 		protected var _tweenable:ITweenable;
 		public function get tweenable():ITweenable { return _tweenable; }
@@ -44,16 +53,16 @@ package org.as3lib.kitchensync.action
 		 * Used to modify the results of the easing function. 
 		 * This is only used on some functions such as Elastic.
 		 */
-		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
 		public function get easingMod1():Number { return _easingMod1; }
+		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
 		protected var _easingMod1:Number;
 
 		/**
 		 * Used to modify the results of the easing function. 
 		 * This is only used on some functions such as Elastic.
 		 */
-		public function set easingMod2(easingMod2:Number):void { _easingMod2 = easingMod2; }
 		public function get easingMod2():Number { return _easingMod2; }
+		public function set easingMod2(easingMod2:Number):void { _easingMod2 = easingMod2; }
 		protected var _easingMod2:Number;
 		
 		/**
@@ -63,8 +72,8 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @default true
 		 */
-		public function set snapToValueOnComplete(snapToValueOnComplete:Boolean):void { _snapToValueOnComplete = snapToValueOnComplete; }
 		public function get snapToValueOnComplete():Boolean { return _snapToValueOnComplete; }
+		public function set snapToValueOnComplete(snapToValueOnComplete:Boolean):void { _snapToValueOnComplete = snapToValueOnComplete; }
 		protected var _snapToValueOnComplete:Boolean;
 		
 		/**
@@ -74,15 +83,16 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @see org.as3lib.kitchensync.ActionDefaults
 		 */
-		 // todo test
-		public function set snapToWholeNumber(snapToWholeNumber:Boolean):void { _snapToWholeNumber = snapToWholeNumber; }
+		 // todo rename to snapToInteger 
 		public function get snapToWholeNumber():Boolean { return _snapToWholeNumber; }
+		public function set snapToWholeNumber(snapToWholeNumber:Boolean):void { _snapToWholeNumber = snapToWholeNumber; }
 		protected var _snapToWholeNumber:Boolean;
 		
 		
 		/**
-		 * Constructor
+		 * Constructor.
 		 * 
+		 * @see #newWithTweenable()
 		 * 
 		 * @param target - the object whose property will be changed (or an ITweenable, but it would be better to use newWithTweenable)
 		 * @param property - the name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
@@ -97,12 +107,17 @@ package org.as3lib.kitchensync.action
 			super();
 			var tweenable:ITweenable;
 			
+			// If target is a tweenable...
 			if (target is ITweenable) {
+				// use the tweenable and ignore the first four params.
+				// (it's recommended that you use newWithTweenable() instead)
 				tweenable = ITweenable(target);
 			} else {
+				// otherwise, create a TargetProperty object.
 				tweenable = new TargetProperty(target, property, startValue, endValue);
 			}
 			_tweenable = tweenable;
+			
 			
 			snapToValueOnComplete = KitchenSyncDefaults.snapToValueOnComplete;
 			snapToWholeNumber = KitchenSyncDefaults.snapToWholeNumber;
@@ -116,10 +131,24 @@ package org.as3lib.kitchensync.action
 			_easingFunction = easingFunction;
 		}
 		
+		/**
+		 * Alternative constructor: creates a new KSTween using an ITweenable that you pass into it.
+		 * 
+		 * @param tweenable An explicitly defined tweenable object that contains the values you want to tween.
+		 * @param duration - the time in frames that this tween will take to execute.
+		 * @param delay - the time to wait before starting the tween.
+		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
+		 * @return A new KSTween object.
+		 */
 		public static function newWithTweenable(tweenable:ITweenable, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
 			return new KSTween(tweenable, "", NaN, NaN, duration, delay, easingFunction);
 		} 
 		
+		/**
+		 * Starts the Tween. 
+		 * 
+		 * @returns A reference to this tween.
+		 */
 		override public function start():AbstractAction {
 			if (_tweenable == null) { 
 				throw new Error("'tweenable' must not be null. Cannot start tween without a Tweenable target.");
@@ -144,27 +173,46 @@ package org.as3lib.kitchensync.action
 			var time:Timestamp = event.timestamp;
 			var timeElapsed:int;
 			var convertedDuration:int;
+			
+			// if the tween is running and the delay time has elapsed, perform tweening.
 			if (startTimeHasElapsed) {
+				// if sync is true... 
 				if (_sync) {
+					// use the actual time elapsed... 
 			 		timeElapsed = time.currentTime - _startTime.currentTime - _delay;
 			 		convertedDuration = duration;		 				 		
 			 	} else {
+			 		// rather than the number of cycles that have passed since the tween began.
 			 		timeElapsed = time.currentFrame - _startTime.currentFrame - TimestampUtil.millisecondsToFrames(_delay);
 			 		convertedDuration = TimestampUtil.millisecondsToFrames(duration);
 			 	}
-				//timeElapsed = time.currentFrame - _startTime.currentFrame - _delay;
+				
+				// if using the 'existing from value' set the start value at the time that the tween begins.
 				if (_tweenable.startValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
 					_tweenable.startValue = _tweenable.currentValue; 
 				}
-				var delta:Number = _tweenable.endValue - _tweenable.startValue; 
-				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2) * delta + _tweenable.startValue; 
-				if (_snapToWholeNumber) { result = Math.round(result); }
 				
-				_tweenable.currentValue = result;
+				// total change in values for the tween.
+				var delta:Number = _tweenable.endValue - _tweenable.startValue; 
+				
+				// invoke the easing function.
+				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2); 
+				
+				
+				// set the tweenable's value.
+				_tweenable.updateTween(result);
+				
+				// if snapToWholeNumber is true, round to the nearest integer.
+				if (_snapToWholeNumber) { _tweenable.currentValue = Math.round(_tweenable.currentValue); }
+				
+				// if the tween's duration is complete.
 				if (durationHasElapsed) {
+					
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
 					if (_snapToValueOnComplete) { _tweenable.currentValue = _tweenable.endValue; }
+					
+					// end the tween.
 					complete();
 				}
 			}

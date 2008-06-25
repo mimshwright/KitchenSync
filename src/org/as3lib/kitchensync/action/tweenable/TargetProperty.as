@@ -1,13 +1,45 @@
 package org.as3lib.kitchensync.action.tweenable
 {
+	/**
+	 * A Tweenable used to tween numeric properties of an object.
+	 * 
+	 * @use Generally used internally by KSTween but can be explicitly created thusly...
+	 * 		<code>
+	 * 		var target:Sprite = new Sprite();
+	 * 		var property:String = "x";
+	 * 		var startValue:Number = 0;
+	 * 		var endValue:Number = 250;
+	 *		var tweenableProperty:ITweenable = new TargetProperty(target, property, startValue, endValue);
+	 * 
+	 * 		var duration:int = 2000;
+	 *		var delay:int = 500;
+	 *		var tweeen:KSTween = KSTween.newWithTweenable(tweenableProperty, duration, delay);
+	 * 		</code>
+	 * 
+	 * @since 1.3
+	 * @author Mims H. Wright
+	 */
 	public class TargetProperty implements ITweenable
 	{
-		protected var _target:Object;
+		/**
+		 * The object containing the property you want to tween.
+		 */
 		public function get target():Object { return _target; }
+		protected var _target:Object;
 		
-		protected var _property:String;
+		/**
+		 * The string name of the property of the target object that you want to tween.
+		 * Note: the property must be a numeric value.
+		 */
 		public function get property():String { return _property; }
+		protected var _property:String;
 		
+		/**
+		 * Sets the target object and property name that will be tweened.  
+		 * 
+		 * @param target an object that contains the numeric property to tween.
+		 * @param property the name of the numeric property to tween.
+		 */
 		public function setTargetPropterty(target:Object, property:String):void {
 			if (target[property] is Number) {
 				_target = target;
@@ -17,6 +49,19 @@ package org.as3lib.kitchensync.action.tweenable
 			}
 		}
 		
+		/**
+		 * The current value of the property. Using the setter directly sets the value. 
+		 * 
+		 * @throws Error if the target or property aren't set.
+		 */
+		public function get currentValue():Number { 
+			if (_target) {
+				return _target[_property];
+			} else { 
+				throw new Error ("Target doesn't exist.");
+				return NaN; 
+			}
+		}
 		public function set currentValue(currentValue:Number):void{
 			if (_target && _property) {
 				_target[_property] = currentValue;
@@ -24,30 +69,58 @@ package org.as3lib.kitchensync.action.tweenable
 				throw new Error ("Target and Property must both be defined before setting the value.");
 			}
 		}
-		public function get currentValue():Number {
-			return _target[_property];
-		}
 		
-		protected var _startValue:Number;
-		public function set startValue(startValue:Number):void { _startValue = startValue; }
+		/**
+		 * The value to start from when tweening.
+		 */ 
 		public function get startValue():Number	{ return _startValue; }
+		public function set startValue(startValue:Number):void { _startValue = startValue; }
+		protected var _startValue:Number;
 		
-		protected var _endValue:Number;
-		public function set endValue(endValue:Number):void	{ _endValue = endValue; }
+		/**
+		 * The value to end on when tweening.
+		 */		
 		public function get endValue():Number {	return _endValue; }
+		public function set endValue(endValue:Number):void	{ _endValue = endValue; }
+		protected var _endValue:Number;
 		
+		/**
+		 * The total amount of change between the start and end values. (used internally)
+		 */
 		public function get differenceInValues():Number { return _endValue - _startValue; }
 		
+		/**
+		 * Constructor.
+		 * 
+		 * @param target the object whose property you want to tween
+		 * @param property the name of the numeric property to tween
+		 * @param startValue the value to start from when tweening
+		 * @param endValue the value to end on when tweening 
+		 */
 		public function TargetProperty (target:Object, property:String, startValue:Number = NaN, endValue:Number = NaN) {
 			setTargetPropterty(target, property);
 			_startValue = (isNaN(startValue)) ? currentValue : startValue;
 			_endValue   = (isNaN(endValue))   ? currentValue : endValue;
 		}
 		
+		/**
+		 * The main function that the Tween uses to update the Tweenable. 
+		 * Sets the percentage complete.
+		 * 
+		 * @param percentComplete a number between 0 and 1 (but sometimes more or less) that represents
+		 * 		  the percentage of the tween that has been completed. This should update
+		 * @return Number the new current value of the tween.
+		 */
+		public function updateTween(percentComplete:Number):Number {
+			return currentValue = percentComplete * differenceInValues + startValue;
+		}
+		
+		/** Returns the tweenable to its pre-tweened state */
 		public function reset():void {
 			currentValue = startValue;
 		}
 		
+		/** Create a copy of the tweenable object */
 		public function clone():ITweenable {
 			var clone:TargetProperty = new TargetProperty(_target, _property, _startValue, _endValue);
 			return clone;

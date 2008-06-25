@@ -9,8 +9,11 @@ package org.as3lib.kitchensync.action
 	public class AbstractActionGroup extends AbstractAction
 	{
 		
-		protected var _childActions:Array = new Array();
+		/**
+		 * An array containing all of the child actions of the group.
+		 */
 		public function get childActions():Array { return _childActions; }
+		protected var _childActions:Array = new Array();
 		
 		override public function set duration(duration:*):void {
 			throw new Error("duration is ignored for SynchronizedActionGroups");

@@ -5,7 +5,7 @@ package org.as3lib.kitchensync.action
 	
 	import org.as3lib.kitchensync.*;
 	import org.as3lib.kitchensync.core.*;
-	import org.as3lib.kitchensync.util.*;
+	import org.as3lib.kitchensync.utils.*;
 	import org.as3lib.utils.AbstractEnforcer;
 	
 	[Event(name="actionStart", type="org.as3lib.kitchensync.KitchenSyncEvent")]
@@ -126,18 +126,14 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The time at which the action was last started.
 		 */
+		public function get startTime():Timestamp { return _startTime; } // DEBUG
 		protected var _startTime:Timestamp;
-		// DEBUG
-		public function get startTime():Timestamp { return _startTime; }
-		//
 		
 		/**
 		 * The time at which the action was last paused.
 		 */
+		public function get pauseTime():Timestamp { return _pauseTime; } // DEBUG
 		protected var _pauseTime:Timestamp;
-		// DEBUG
-		public function get pauseTime():Timestamp { return _pauseTime; }
-		//
 		
 		
 		/**
