@@ -1,28 +1,36 @@
-===== v1.3 =====
-ADDED FrameRateView which displays the framerate of the Synchronizer.
+KitchenSync lib Change Log.
+Visit http://code.google.com/p/kitchensynclib/ for the latest version
+
+* = Contains syntax changes that may require refactoring of legacy code.
+
+===== v1.3* (in progress) =====
+ADDED TargetProperty and ITweenable to KSTweens (actually, these have been in there for a while, but now they're working)
+ADDED FrameRateView utility which displays the framerate of the Synchronizer.
+ADDED KSTween.newWithTweenable() method for creating tweens with custom tweenables.
 ADDED message accessor to KSTrace
-ADDED TargetProperty and ITweenable to KSTweens
 FIXED a bug where children of a group are not cloned when the group is cloned.
 FIXED a bug in KSStaggeredGroup that caused some children not to fire.
 FIXED a bug where actions get fired multiple times in sync mode. (needs verification)
-RENAMED 'offset' to 'delay'
-CHANGED the core of the Synchronizer to a timer based system.
+*CHANGED* syntax of KSTween constructor. Now 'startTime' comes before 'endTime'. 
+*CHANGED* 'util' to 'utils' to match Adobe's and AS3lib's naming conventions.
+CHANGED 'offset' to 'delay' (kept legacy accessors for offset)
+CHANGED the core of the Synchronizer to a timer based system thus improving speed.
 CHANGED default policy for snapToValueOnComplete to true.
 CHANGED default frequency for oscillating funcitons
 REFACTORED to optimize performance. Saw an improvement of about 50%
 
-===== v1.2 (2008.05.2) =====
-RENAMED Nearly the entire library
-MOVED All classes into new packages
-ADDED KitchenSync as the entry point to the library. Use KitchenSync.initialize(this, "1.2"); to start the app.
+===== v1.2* (2008.05.2) =====
+*RENAMED* Nearly the entire library
+*MOVED* All classes into new packages
+*ADDED* KitchenSync as the entry point to the library. Use KitchenSync.initialize(this, "1.2"); to start the app.
 CHANGED Synchronizer is no longer used to initialize the library and getInstance() no longer throws an error.
 FIXED A bug in Sequence.kill()
 
 ===== v1.1 (2008.02.22) =====
 ADDED jumpToTime() method to Tween (this may be moved to AbstractSynchronizedAction in a later release)
 ADDED getTimestampFromFrames() and getTimestampFromMilliseconds() to TimestampUtil
-ADDED Timecode to TimeStringParser. Now ":ss", "mm:ss;ff", and "dd:hh:mm:ss;ff" are supported.
-ADDED ActionDefaults class for storing default initialization values.
+ADDED Timecode to TimeStringParser. Now ":ss", "mm:ss;ff", "dd:hh:mm:ss;ff", etc. are now supported.
+*ADDED* ActionDefaults class for storing default initialization values.
 ADDED easeOutIn() to most of the easing functions (buggy. seems to overshoot target in some cases)
 ADDED version check in Synchronizer.initialize()
 CHANGED type of Numbers within Timestamp to int.
