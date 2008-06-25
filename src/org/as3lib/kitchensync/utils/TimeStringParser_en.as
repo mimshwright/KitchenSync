@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.util
+package org.as3lib.kitchensync.utils
 {
 	
 	/**

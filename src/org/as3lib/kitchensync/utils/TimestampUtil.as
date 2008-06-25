@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.util
+package org.as3lib.kitchensync.utils
 {
 	import org.as3lib.kitchensync.core.Synchronizer;
 	import org.as3lib.kitchensync.core.Timestamp;
