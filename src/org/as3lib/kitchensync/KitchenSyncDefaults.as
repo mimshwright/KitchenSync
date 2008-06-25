@@ -1,7 +1,7 @@
 package org.as3lib.kitchensync
 {
 	import org.as3lib.kitchensync.easing.Linear;
-	import org.as3lib.kitchensync.util.*;
+	import org.as3lib.kitchensync.utils.*;
 	
 	public class KitchenSyncDefaults
 	{
