@@ -9,7 +9,7 @@ package org.as3lib.kitchensync.action.tweenable
 	 * @since 1.4
 	 * @see org.as3lib.kitchensync.action.KSTween
 	 */
-	public interface ITweenable
+	public interface ITweenTarget
 	{
 		/**
 		 * The main function that the Tween uses to update the Tweenable. 
@@ -50,6 +50,6 @@ package org.as3lib.kitchensync.action.tweenable
 		function reset():void;
 		
 		/** Create a copy of the tweenable object */
-		function clone():ITweenable;
+		function clone():ITweenTarget;
 	}
 }

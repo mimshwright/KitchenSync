@@ -55,7 +55,7 @@ package org.as3lib.kitchensync.action.tweenable
 			currentValue = _startValue;
 		}
 		
-		public function clone():ITweenable {
+		public function clone():ITweenTarget {
 			return new SimpleBlurTweenable(_target, _startValue, _endValue);
 		}
 		
