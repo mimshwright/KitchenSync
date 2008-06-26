@@ -10,7 +10,7 @@ package org.as3lib.kitchensync.action.tweenable
 	 * @since 1.3
 	 * @author Mims Wright
 	 */
-	public class TimelineAnimation implements ITweenable
+	public class TimelineController implements ITweenable
 	{
 		
 		/** The current frame of the movieclip. Setting it causes the MC to gotoAndStop() at that frame. */
@@ -60,7 +60,7 @@ package org.as3lib.kitchensync.action.tweenable
 		 * @param startFrame The frame to begin at. Can be of types String, FrameLabel or a numerical type. Defaults to 1.
 		 * @param endFrame The frame to end on. Can be of types String, FrameLabel or a numerical type. Defaults to the last frame in the MovieClip.
 		 */
-		public function TimelineAnimation(target:MovieClip, startFrame:Object = null, endFrame:Object = null) {
+		public function TimelineController(target:MovieClip, startFrame:Object = null, endFrame:Object = null) {
 			this.target = target;
 				
 			if (startFrame == null) {
@@ -130,7 +130,7 @@ package org.as3lib.kitchensync.action.tweenable
 		}
 		
 		public function clone():ITweenable {
-			return new TimelineAnimation(_target, _startValue, _endValue);
+			return new TimelineController(_target, _startValue, _endValue);
 		}
 	}
 }
