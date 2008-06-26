@@ -369,6 +369,15 @@ package org.as3lib.kitchensync.action
 			return clone;
 		}
 		
+		/**
+		 * Clones the tween with a new tweenable.
+		 */
+		public function cloneWithTweenable(tweenable:ITweenable):KSTween {
+			var clone:KSTween = KSTween(this.clone());
+			clone.tweenable = tweenable;
+			return clone;
+		}
+		
 		
 		/**
 		 * Clean up references to target
