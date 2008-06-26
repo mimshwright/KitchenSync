@@ -1,8 +1,6 @@
 package org.as3lib.kitchensync.action.tweenable
 {
 	import flash.display.DisplayObject;
-	import flash.filters.BitmapFilter;
-	import flash.filters.BitmapFilterQuality;
 	import flash.filters.BlurFilter;
 	
 	// todo documentation
@@ -26,6 +24,8 @@ package org.as3lib.kitchensync.action.tweenable
 		public function get target():DisplayObject { return _target; }
 		public function set target(target:DisplayObject):void { _target = target; }
 		protected var _target:DisplayObject;
+		
+		public function get filterType():Class { return BlurFilter; }
 		
 		public function SimpleBlurTweenable(target:DisplayObject, startValue:Number, endValue:Number = 0) {
 			_target = target;

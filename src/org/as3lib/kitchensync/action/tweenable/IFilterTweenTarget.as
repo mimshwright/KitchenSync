@@ -1,7 +1,9 @@
 package org.as3lib.kitchensync.action.tweenable
 {
+	// todo document
+	// todo add more?
 	public interface IFilterTweenTarget extends ITweenTarget
 	{
-		// TODO implement
+		function get filterType():Class;
 	}
 }
