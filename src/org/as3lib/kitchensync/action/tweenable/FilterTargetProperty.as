@@ -4,7 +4,7 @@ package org.as3lib.kitchensync.action.tweenable
 	import flash.filters.BitmapFilter;
 	
 	// todo add docs
-	public class FilterTargetProperty implements IFilterTweenable
+	public class FilterTargetProperty implements IFilterTweenTarget
 	{
 		/**
 		 * The object containing the filter property you want to tween. 

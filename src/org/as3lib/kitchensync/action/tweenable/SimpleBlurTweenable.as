@@ -7,7 +7,7 @@ package org.as3lib.kitchensync.action.tweenable
 	
 	// todo documentation
 	// todo make a target property tweenable for a blur filter.
-	public class SimpleBlurTweenable implements IFilterTweenable
+	public class SimpleBlurTweenable implements IFilterTweenTarget
 	{
 		public function get currentValue():Number { return _blurXTweenable.currentValue; }
 		public function set currentValue(currentValue:Number):void { 

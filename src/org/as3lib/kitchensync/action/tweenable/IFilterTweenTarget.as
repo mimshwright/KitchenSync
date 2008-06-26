@@ -1,6 +1,6 @@
 package org.as3lib.kitchensync.action.tweenable
 {
-	public interface IFilterTweenable extends ITweenTarget
+	public interface IFilterTweenTarget extends ITweenTarget
 	{
 		// TODO implement
 	}
