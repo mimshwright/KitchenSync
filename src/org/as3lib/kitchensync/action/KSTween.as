@@ -311,6 +311,7 @@ package org.as3lib.kitchensync.action
 			return clone;
 		}
 		
+		
 		/**
 		 * Creates a copy of this Tween which targets a different object and / or property.
 		 * This is mostly used as a convenient way to reuse a tween, e.g. in a sequence.
