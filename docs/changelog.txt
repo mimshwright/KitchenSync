@@ -1,16 +1,12 @@
 KitchenSync lib Change Log.
 Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
-* = Syntax changes that may require refactoring of legacy code.
+* = Contains syntax changes that may require refactoring of legacy code.
 
 ===== v1.3* (in progress) =====
 ADDED TargetProperty and ITweenable to KSTweens (actually, these have been in there for a while, but now they're working)
-ADDED TimelineController tweenable for controlling movieclip time lines with KS. (this is really cool!)
-ADDED FilterTargetProperty class for controlling DisplayObject filters.
-ADDED SimpleBlurTweenable class for creating uniform blurs.
-ADDED KSTween.newWithTweenable() method for creating tweens with custom tweenables.
-ADDED cloneWithTweenable() method to KSTween
 ADDED FrameRateView utility which displays the framerate of the Synchronizer.
+ADDED KSTween.newWithTweenable() method for creating tweens with custom tweenables.
 ADDED message accessor to KSTrace
 FIXED a bug where children of a group are not cloned when the group is cloned.
 FIXED a bug in KSStaggeredGroup that caused some children not to fire.
