@@ -3,8 +3,8 @@ package org.as3lib.kitchensync.action
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
-	import org.as3lib.kitchensync.action.tweenable.ITweenable;
-	import org.as3lib.kitchensync.action.tweenable.TargetProperty;
+	import org.as3lib.kitchensync.action.tweentarget.ITweenable;
+	import org.as3lib.kitchensync.action.tweentarget.TargetProperty;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.easing.EasingUtil;
 	import org.as3lib.kitchensync.utils.*;
@@ -16,7 +16,7 @@ package org.as3lib.kitchensync.action
 	 * Rule of thumb: KSTween is the action that handles the timing and starting and stopping
 	 * the tween while ITweenables control the values of the tween.
 	 * 
-	 * @see org.as3lib.kitchensync.action.tweenable.ITweenable
+	 * @see org.as3lib.kitchensync.action.tweentarget.ITweenable
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
@@ -41,8 +41,8 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Represents the values that will be tweened by the tween. KSTween will use a TargetProperty by default.
 		 * 
-		 * @see org.as3lib.kitchensync.action.tweenable.ITweenable
-		 * @see org.as3lib.kitchensync.action.tweenable.TargetProperty
+		 * @see org.as3lib.kitchensync.action.tweentarget.ITweenable
+		 * @see org.as3lib.kitchensync.action.tweentarget.TargetProperty
 		 */
 		protected var _tweenable:ITweenable;
 		public function get tweenable():ITweenable { return _tweenable; }
