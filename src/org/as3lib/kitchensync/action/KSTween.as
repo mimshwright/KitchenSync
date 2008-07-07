@@ -11,12 +11,12 @@ package org.as3lib.kitchensync.action
 	
 	/**
 	 * A tween will change an object's numeric value over time.
-	 * Uses a Tweenable object to determine what to tween. This can be handled automatically
+	 * Uses a TweenTarget object to determine what to tween. This can be handled automatically
 	 * or declared explicitly.
 	 * Rule of thumb: KSTween is the action that handles the timing and starting and stopping
-	 * the tween while ITweenables control the values of the tween.
+	 * the tween while ITweenTargets control the values of the tween.
 	 * 
-	 * @see org.as3lib.kitchensync.action.tweentarget.ITweenable
+	 * @see org.as3lib.kitchensync.action.tweentarget.ITweenTarget
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
@@ -41,12 +41,12 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Represents the values that will be tweened by the tween. KSTween will use a TargetProperty by default.
 		 * 
-		 * @see org.as3lib.kitchensync.action.tweentarget.ITweenable
+		 * @see org.as3lib.kitchensync.action.tweentarget.ITweenTarget
 		 * @see org.as3lib.kitchensync.action.tweentarget.TargetProperty
 		 */
-		protected var _tweenable:ITweenTarget;
-		public function get tweenable():ITweenTarget { return _tweenable; }
-		public function set tweenable(tweenable:ITweenTarget):void { _tweenable = tweenable; }
+		protected var _tweenTarget:ITweenTarget;
+		public function get tweenTarget():ITweenTarget { return _tweenTarget; }
+		public function set tweenTarget(tweenTarget:ITweenTarget):void { _tweenTarget = tweenTarget; }
 		
 		
 		/**
@@ -92,9 +92,9 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Constructor.
 		 * 
-		 * @see #newWithTweenable()
+		 * @see #newWithTweenTarget()
 		 * 
-		 * @param target - the object whose property will be changed (or an ITweenable, but it would be better to use newWithTweenable)
+		 * @param target - the object whose property will be changed (or an ITweenTarget, but it would be better to use newWithTweenTarget)
 		 * @param property - the name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
 		 * @param toValue - the value to tween the property to. After the tween is done, this will be the value of the property.
 		 * @param fromValue - the starting value of the tween. By default, this is the value of the property before the tween begins.
@@ -105,18 +105,18 @@ package org.as3lib.kitchensync.action
 		public function KSTween(target:Object = null, property:String = "", startValue:Number = EXISTING_FROM_VALUE, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null)
 		{
 			super();
-			var tweenable:ITweenTarget;
+			var tweenTarget:ITweenTarget;
 			
-			// If target is a tweenable...
+			// If target is a tweenTarget...
 			if (target is ITweenTarget) {
-				// use the tweenable and ignore the first four params.
-				// (it's recommended that you use newWithTweenable() instead)
-				tweenable = ITweenTarget(target);
+				// use the tweenTarget and ignore the first four params.
+				// (it's recommended that you use newWithTweenTarget() instead)
+				tweenTarget = ITweenTarget(target);
 			} else {
 				// otherwise, create a TargetProperty object.
-				tweenable = new TargetProperty(target, property, startValue, endValue);
+				tweenTarget = new TargetProperty(target, property, startValue, endValue);
 			}
-			_tweenable = tweenable;
+			_tweenTarget = tweenTarget;
 			
 			
 			snapToValueOnComplete = KitchenSyncDefaults.snapToValueOnComplete;
@@ -132,16 +132,16 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Alternative constructor: creates a new KSTween using an ITweenable that you pass into it.
+		 * Alternative constructor: creates a new KSTween using an ITweenTarget that you pass into it.
 		 * 
-		 * @param tweenable An explicitly defined tweenable object that contains the values you want to tween.
+		 * @param tweenTarget An explicitly defined tweenTarget object that contains the values you want to tween.
 		 * @param duration - the time in frames that this tween will take to execute.
 		 * @param delay - the time to wait before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 * @return A new KSTween object.
 		 */
-		public static function newWithTweenable(tweenable:ITweenTarget, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
-			return new KSTween(tweenable, "", NaN, NaN, duration, delay, easingFunction);
+		public static function newWithTweenTarget(tweenTarget:ITweenTarget, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+			return new KSTween(tweenTarget, "", NaN, NaN, duration, delay, easingFunction);
 		} 
 		
 		/**
@@ -150,8 +150,8 @@ package org.as3lib.kitchensync.action
 		 * @returns A reference to this tween.
 		 */
 		override public function start():AbstractAction {
-			if (_tweenable == null) { 
-				throw new Error("'tweenable' must not be null. Cannot start tween without a Tweenable target.");
+			if (_tweenTarget == null) { 
+				throw new Error("'tweenTarget' must not be null. Cannot start tween without a TweenTarget target.");
 				return null;
 			}
 			return super.start();
@@ -163,7 +163,7 @@ package org.as3lib.kitchensync.action
 		 */
 		public function reset():void {
 			stop();
-			_tweenable.reset();
+			_tweenTarget.reset();
 		}
 		
 		/**
@@ -188,29 +188,29 @@ package org.as3lib.kitchensync.action
 			 	}
 				
 				// if using the 'existing from value' set the start value at the time that the tween begins.
-				if (_tweenable.startValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
-					_tweenable.startValue = _tweenable.currentValue; 
+				if (_tweenTarget.startValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
+					_tweenTarget.startValue = _tweenTarget.currentValue; 
 				}
 				
 				// total change in values for the tween.
-				var delta:Number = _tweenable.endValue - _tweenable.startValue; 
+				var delta:Number = _tweenTarget.endValue - _tweenTarget.startValue; 
 				
 				// invoke the easing function.
 				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2); 
 				
 				
-				// set the tweenable's value.
-				_tweenable.updateTween(result);
+				// set the tweenTarget's value.
+				_tweenTarget.updateTween(result);
 				
 				// if snapToWholeNumber is true, round to the nearest integer.
-				if (_snapToWholeNumber) { _tweenable.currentValue = Math.round(_tweenable.currentValue); }
+				if (_snapToWholeNumber) { _tweenTarget.currentValue = Math.round(_tweenTarget.currentValue); }
 				
 				// if the tween's duration is complete.
 				if (durationHasElapsed) {
 					
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
-					if (_snapToValueOnComplete) { _tweenable.currentValue = _tweenable.endValue; }
+					if (_snapToValueOnComplete) { _tweenTarget.currentValue = _tweenTarget.endValue; }
 					
 					// end the tween.
 					complete();
@@ -295,14 +295,14 @@ package org.as3lib.kitchensync.action
 		 * @see #cloneReversed()
 		 */
 		public function reverse():void {
-			var temp:Number = _tweenable.startValue;
-			_tweenable.startValue = _tweenable.endValue;
-			_tweenable.endValue = temp;						
+			var temp:Number = _tweenTarget.startValue;
+			_tweenTarget.startValue = _tweenTarget.endValue;
+			_tweenTarget.endValue = temp;						
 		}
 		
 		override public function clone():AbstractAction {
-			var tweenableClone:ITweenTarget = _tweenable.clone();
-			var clone:KSTween = newWithTweenable(tweenableClone, _duration, _delay, _easingFunction);
+			var tweenTargetClone:ITweenTarget = _tweenTarget.clone();
+			var clone:KSTween = newWithTweenTarget(tweenTargetClone, _duration, _delay, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
@@ -334,8 +334,8 @@ package org.as3lib.kitchensync.action
 		 */
 		public function cloneWithTarget(target:Object, property:String):KSTween {
 			var clone:KSTween = KSTween(this.clone());
-			var targetProperty:TargetProperty = new TargetProperty(target, property, clone._tweenable.startValue, clone._tweenable.endValue);
-			clone._tweenable = targetProperty;
+			var targetProperty:TargetProperty = new TargetProperty(target, property, clone._tweenTarget.startValue, clone._tweenTarget.endValue);
+			clone._tweenTarget = targetProperty;
 			return clone;
 		}
 		
@@ -371,11 +371,11 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Clones the tween with a new tweenable.
+		 * Clones the tween with a new tweenTarget.
 		 */
-		public function cloneWithTweenable(tweenable:ITweenTarget):KSTween {
+		public function cloneWithTweenTarget(tweenTarget:ITweenTarget):KSTween {
 			var clone:KSTween = KSTween(this.clone());
-			clone.tweenable = tweenable;
+			clone.tweenTarget = tweenTarget;
 			return clone;
 		}
 		
@@ -385,14 +385,14 @@ package org.as3lib.kitchensync.action
 		 */
 		override public function kill():void {
 			super.kill();
-			_tweenable = null;
+			_tweenTarget = null;
 		}
 		
 		/**
 		 * Returns either the _id or a description of the tween.
 		 */
 		override public function toString():String {
-			return "KSTween :" + Object(_tweenable).toString();
+			return "KSTween :" + Object(_tweenTarget).toString();
 		}
 	}
 }

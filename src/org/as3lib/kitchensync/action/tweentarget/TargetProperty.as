@@ -1,7 +1,7 @@
 package org.as3lib.kitchensync.action.tweentarget
 {
 	/**
-	 * A Tweenable used to tween numeric properties of an object.
+	 * A TweenTarget used to tween numeric properties of an object.
 	 * 
 	 * @use Generally used internally by KSTween but can be explicitly created thusly...
 	 * 		<code>
@@ -9,11 +9,11 @@ package org.as3lib.kitchensync.action.tweentarget
 	 * 		var property:String = "x";
 	 * 		var startValue:Number = 0;
 	 * 		var endValue:Number = 250;
-	 *		var tweenableProperty:ITweenable = new TargetProperty(target, property, startValue, endValue);
+	 *		var tweenTargetProperty:ITweenTarget = new TargetProperty(target, property, startValue, endValue);
 	 * 
 	 * 		var duration:int = 2000;
 	 *		var delay:int = 500;
-	 *		var tweeen:KSTween = KSTween.newWithTweenable(tweenableProperty, duration, delay);
+	 *		var tweeen:KSTween = KSTween.newWithTweenTarget(tweenTargetProperty, duration, delay);
 	 * 		</code>
 	 * 
 	 * @since 1.3
@@ -104,7 +104,7 @@ package org.as3lib.kitchensync.action.tweentarget
 		}
 		
 		/**
-		 * The main function that the Tween uses to update the Tweenable. 
+		 * The main function that the Tween uses to update the TweenTarget. 
 		 * Sets the percentage complete.
 		 * 
 		 * @param percentComplete a number between 0 and 1 (but sometimes more or less) that represents
@@ -115,12 +115,12 @@ package org.as3lib.kitchensync.action.tweentarget
 			return currentValue = percentComplete * differenceInValues + startValue;
 		}
 		
-		/** Returns the tweenable to its pre-tweened state */
+		/** Returns the tweenTarget to its pre-tweened state */
 		public function reset():void {
 			currentValue = startValue;
 		}
 		
-		/** Create a copy of the tweenable object */
+		/** Create a copy of the tweenTarget object */
 		public function clone():ITweenTarget {
 			var clone:TargetProperty = new TargetProperty(_target, _property, _startValue, _endValue);
 			return clone;

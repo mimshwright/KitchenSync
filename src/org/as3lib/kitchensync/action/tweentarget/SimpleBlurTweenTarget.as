@@ -4,13 +4,13 @@ package org.as3lib.kitchensync.action.tweentarget
 	import flash.filters.BlurFilter;
 	
 	// todo documentation
-	// todo make a target property tweenable for a blur filter.
+	// todo make a target property tweenTarget for a blur filter.
 	public class SimpleBlurTweenTarget implements IFilterTweenTarget
 	{
-		public function get currentValue():Number { return _blurXTweenable.currentValue; }
+		public function get currentValue():Number { return _blurXTweenTarget.currentValue; }
 		public function set currentValue(currentValue:Number):void { 
-			_blurXTweenable.currentValue = currentValue;
-			_blurYTweenable.currentValue = currentValue;
+			_blurXTweenTarget.currentValue = currentValue;
+			_blurYTweenTarget.currentValue = currentValue;
 		}
 		
 		public function get startValue():Number	{ return _startValue; }
@@ -32,15 +32,15 @@ package org.as3lib.kitchensync.action.tweentarget
 			_startValue = startValue;
 			_endValue = endValue;
 			
-			_blurXTweenable = new FilterTargetProperty(target, BlurFilter, "blurX", _startValue, _endValue);
-			_blurYTweenable = new FilterTargetProperty(target, BlurFilter, "blurY", _startValue, _endValue);
+			_blurXTweenTarget = new FilterTargetProperty(target, BlurFilter, "blurX", _startValue, _endValue);
+			_blurYTweenTarget = new FilterTargetProperty(target, BlurFilter, "blurY", _startValue, _endValue);
 		}
 
-		protected var _blurXTweenable:FilterTargetProperty;
-		protected var _blurYTweenable:FilterTargetProperty;
+		protected var _blurXTweenTarget:FilterTargetProperty;
+		protected var _blurYTweenTarget:FilterTargetProperty;
 
 		/**
-		 * The main function that the Tween uses to update the Tweenable. 
+		 * The main function that the Tween uses to update the TweenTarget. 
 		 * Sets the percentage complete.
 		 * 
 		 * @param percentComplete a number between 0 and 1 (but sometimes more or less) that represents

@@ -5,7 +5,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	
 	// TODO add option for gotoAndPlay?
 	/**
-	 * A Tweenable that controls a timeline animation in a MovieClip.
+	 * A TweenTarget that controls a timeline animation in a MovieClip.
 	 * 
 	 * @since 1.3
 	 * @author Mims Wright

@@ -6,26 +6,26 @@ package org.as3lib.kitchensync.action.tweentarget
 	
 	/** 
 	 * NOT YET IMPLEMENTED.
-	 * Manages the instantiation of ITweenable objects.
+	 * Manages the instantiation of ITweenTarget objects.
 	 * 
 	 * @example <listing version="3.0">
-	 * 		var tweenTarget:ITweenable = TweenableFactory.
+	 * 		var tweenTarget:ITweenTarget = TweenTargetFactory.
 	 * 		</listing>
 	 * 
-	 * @see ITweenable
-	 * @see TweenableType
+	 * @see ITweenTarget
+	 * @see TweenTargetType
 	 * @see Tween
 	 */
-	public class TweenableFactory
+	public class TweenTargetFactory
 	{
-		private static var _instance:TweenableFactory;
-		public static function get instance():TweenableFactory { 
-			if (!_instance) { _instance = new TweenableFactory(new SingletonEnforcer()); }
+		private static var _instance:TweenTargetFactory;
+		public static function get instance():TweenTargetFactory { 
+			if (!_instance) { _instance = new TweenTargetFactory(new SingletonEnforcer()); }
 			return _instance; 
 		}
-		public function TweenableFactory (singletonEnforcer:SingletonEnforcer) {}
+		public function TweenTargetFactory (singletonEnforcer:SingletonEnforcer) {}
 		
-		public function getTweenable(target:Object, property:String):ITweenTarget {
+		public function getTweenTarget(target:Object, property:String):ITweenTarget {
 			/*	
 			if (target is DisplayObject) {
 				switch ( property ) {

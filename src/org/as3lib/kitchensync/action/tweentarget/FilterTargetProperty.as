@@ -57,7 +57,7 @@ package org.as3lib.kitchensync.action.tweentarget
 		}
 
 		/**
-		 * The main function that the Tween uses to update the Tweenable. 
+		 * The main function that the Tween uses to update the TweenTarget. 
 		 * Sets the percentage complete.
 		 * 
 		 * @param percentComplete a number between 0 and 1 (but sometimes more or less) that represents

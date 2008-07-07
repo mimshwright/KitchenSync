@@ -2,7 +2,7 @@ package org.as3lib.kitchensync.action.tweentarget
 {
 	/**
 	 * A bundle that wraps up a property or other value that can be tweened by a KSTween.
-	 * Generally speaking, a KSTween will handle the timing of the tween while the ITweenable
+	 * Generally speaking, a KSTween will handle the timing of the tween while the ITweenTarget
 	 * handles the values of the tween.
 	 * 
 	 * @author Mims Wright
@@ -12,7 +12,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	public interface ITweenTarget extends INumericController
 	{
 		/**
-		 * The main function that the Tween uses to update the Tweenable. 
+		 * The main function that the Tween uses to update the TweenTarget. 
 		 * Sets the percentage complete.
 		 * 
 		 * @use Typically this is implemented as such: 
@@ -29,19 +29,19 @@ package org.as3lib.kitchensync.action.tweentarget
 		function updateTween (percentComplete:Number):Number;
 		
 		/**
-		 * This is the current value of the tweenable.
+		 * This is the current value of the tweenTarget.
 		 */
 		function get currentValue():Number;
 		function set currentValue(currentValue:Number):void;
 		
 		/**
-		 * The value that the tweenable will begin from.
+		 * The value that the tweenTarget will begin from.
 		 */
 		function get startValue():Number;
 		function set startValue(startValue:Number):void;
 		
 		/**
-		 * The value that the tweenable will end on.
+		 * The value that the tweenTarget will end on.
 		 */
 		function get endValue():Number;
 		function set endValue(endValue:Number):void;
@@ -52,7 +52,7 @@ package org.as3lib.kitchensync.action.tweentarget
 		 */
 		function reset():void;
 		
-		/** Create a copy of the tweenable object */
+		/** Create a copy of the tweenTarget object */
 		function clone():ITweenTarget;
 	}
 }
