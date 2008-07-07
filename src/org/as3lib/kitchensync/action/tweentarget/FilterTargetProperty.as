@@ -118,7 +118,7 @@ package org.as3lib.kitchensync.action.tweentarget
 			currentValue = startValue;
 		}
 		
-		public function clone():ITweenable
+		public function clone():ITweenTarget
 		{
 			return new FilterTargetProperty(_target, _filterType, _property, _startValue, _endValue);
 			

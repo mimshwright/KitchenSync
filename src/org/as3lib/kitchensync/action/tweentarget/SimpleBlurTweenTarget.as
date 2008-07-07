@@ -5,7 +5,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	
 	// todo documentation
 	// todo make a target property tweenable for a blur filter.
-	public class SimpleBlurTweenable implements IFilterTweenTarget
+	public class SimpleBlurTweenTarget implements IFilterTweenTarget
 	{
 		public function get currentValue():Number { return _blurXTweenable.currentValue; }
 		public function set currentValue(currentValue:Number):void { 
@@ -27,7 +27,7 @@ package org.as3lib.kitchensync.action.tweentarget
 		
 		public function get filterType():Class { return BlurFilter; }
 		
-		public function SimpleBlurTweenable(target:DisplayObject, startValue:Number, endValue:Number = 0) {
+		public function SimpleBlurTweenTarget(target:DisplayObject, startValue:Number, endValue:Number = 0) {
 			_target = target;
 			_startValue = startValue;
 			_endValue = endValue;
@@ -55,8 +55,8 @@ package org.as3lib.kitchensync.action.tweentarget
 			currentValue = _startValue;
 		}
 		
-		public function clone():ITweenable {
-			return new SimpleBlurTweenable(_target, _startValue, _endValue);
+		public function clone():ITweenTarget {
+			return new SimpleBlurTweenTarget(_target, _startValue, _endValue);
 		}
 		
 	}

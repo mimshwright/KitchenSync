@@ -3,7 +3,7 @@ package org.as3lib.kitchensync.action
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
-	import org.as3lib.kitchensync.action.tweentarget.ITweenable;
+	import org.as3lib.kitchensync.action.tweentarget.ITweenTarget;
 	import org.as3lib.kitchensync.action.tweentarget.TargetProperty;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.easing.EasingUtil;
@@ -44,9 +44,9 @@ package org.as3lib.kitchensync.action
 		 * @see org.as3lib.kitchensync.action.tweentarget.ITweenable
 		 * @see org.as3lib.kitchensync.action.tweentarget.TargetProperty
 		 */
-		protected var _tweenable:ITweenable;
-		public function get tweenable():ITweenable { return _tweenable; }
-		public function set tweenable(tweenable:ITweenable):void { _tweenable = tweenable; }
+		protected var _tweenable:ITweenTarget;
+		public function get tweenable():ITweenTarget { return _tweenable; }
+		public function set tweenable(tweenable:ITweenTarget):void { _tweenable = tweenable; }
 		
 		
 		/**
@@ -105,13 +105,13 @@ package org.as3lib.kitchensync.action
 		public function KSTween(target:Object = null, property:String = "", startValue:Number = EXISTING_FROM_VALUE, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null)
 		{
 			super();
-			var tweenable:ITweenable;
+			var tweenable:ITweenTarget;
 			
 			// If target is a tweenable...
-			if (target is ITweenable) {
+			if (target is ITweenTarget) {
 				// use the tweenable and ignore the first four params.
 				// (it's recommended that you use newWithTweenable() instead)
-				tweenable = ITweenable(target);
+				tweenable = ITweenTarget(target);
 			} else {
 				// otherwise, create a TargetProperty object.
 				tweenable = new TargetProperty(target, property, startValue, endValue);
@@ -140,7 +140,7 @@ package org.as3lib.kitchensync.action
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 * @return A new KSTween object.
 		 */
-		public static function newWithTweenable(tweenable:ITweenable, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+		public static function newWithTweenable(tweenable:ITweenTarget, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
 			return new KSTween(tweenable, "", NaN, NaN, duration, delay, easingFunction);
 		} 
 		
@@ -301,7 +301,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function clone():AbstractAction {
-			var tweenableClone:ITweenable = _tweenable.clone();
+			var tweenableClone:ITweenTarget = _tweenable.clone();
 			var clone:KSTween = newWithTweenable(tweenableClone, _duration, _delay, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
@@ -373,7 +373,7 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Clones the tween with a new tweenable.
 		 */
-		public function cloneWithTweenable(tweenable:ITweenable):KSTween {
+		public function cloneWithTweenable(tweenable:ITweenTarget):KSTween {
 			var clone:KSTween = KSTween(this.clone());
 			clone.tweenable = tweenable;
 			return clone;
