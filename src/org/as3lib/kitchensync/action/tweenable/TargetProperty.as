@@ -19,7 +19,7 @@ package org.as3lib.kitchensync.action.tweenable
 	 * @since 1.3
 	 * @author Mims H. Wright
 	 */
-	public class TargetProperty implements ITweenTarget
+	public class TargetProperty implements ITweenable
 	{
 		/**
 		 * The object containing the property you want to tween.
@@ -121,7 +121,7 @@ package org.as3lib.kitchensync.action.tweenable
 		}
 		
 		/** Create a copy of the tweenable object */
-		public function clone():ITweenTarget {
+		public function clone():ITweenable {
 			var clone:TargetProperty = new TargetProperty(_target, _property, _startValue, _endValue);
 			return clone;
 		}

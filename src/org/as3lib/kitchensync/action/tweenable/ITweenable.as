@@ -6,10 +6,10 @@ package org.as3lib.kitchensync.action.tweenable
 	 * handles the values of the tween.
 	 * 
 	 * @author Mims Wright
-	 * @since 1.4
+	 * @since 1.3
 	 * @see org.as3lib.kitchensync.action.KSTween
 	 */
-	public interface ITweenTarget
+	public interface ITweenable
 	{
 		/**
 		 * The main function that the Tween uses to update the Tweenable. 
@@ -50,6 +50,6 @@ package org.as3lib.kitchensync.action.tweenable
 		function reset():void;
 		
 		/** Create a copy of the tweenable object */
-		function clone():ITweenTarget;
+		function clone():ITweenable;
 	}
 }

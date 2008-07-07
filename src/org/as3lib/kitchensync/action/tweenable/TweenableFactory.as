@@ -25,7 +25,7 @@ package org.as3lib.kitchensync.action.tweenable
 		}
 		public function TweenableFactory (singletonEnforcer:SingletonEnforcer) {}
 		
-		public function getTweenable(target:Object, property:String):ITweenTarget {
+		public function getTweenable(target:Object, property:String):ITweenable {
 			/*	
 			if (target is DisplayObject) {
 				switch ( property ) {
