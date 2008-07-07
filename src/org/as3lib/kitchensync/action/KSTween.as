@@ -82,11 +82,11 @@ package org.as3lib.kitchensync.action
 		 * rounded to the nearest integer.
 		 * 
 		 * @see org.as3lib.kitchensync.ActionDefaults
-		 */
 		 // todo rename to snapToInteger 
 		public function get snapToWholeNumber():Boolean { return _snapToWholeNumber; }
 		public function set snapToWholeNumber(snapToWholeNumber:Boolean):void { _snapToWholeNumber = snapToWholeNumber; }
 		protected var _snapToWholeNumber:Boolean;
+		 */
 		
 		
 		/**
@@ -120,7 +120,7 @@ package org.as3lib.kitchensync.action
 			
 			
 			snapToValueOnComplete = KitchenSyncDefaults.snapToValueOnComplete;
-			snapToWholeNumber = KitchenSyncDefaults.snapToWholeNumber;
+			//snapToWholeNumber = KitchenSyncDefaults.snapToWholeNumber;
 			
 			this.duration = duration;
 			this.delay = delay;
@@ -198,19 +198,15 @@ package org.as3lib.kitchensync.action
 				// invoke the easing function.
 				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2); 
 				
-				
 				// set the tweenTarget's value.
 				_tweenTarget.updateTween(result);
-				
-				// if snapToWholeNumber is true, round to the nearest integer.
-				if (_snapToWholeNumber) { _tweenTarget.currentValue = Math.round(_tweenTarget.currentValue); }
 				
 				// if the tween's duration is complete.
 				if (durationHasElapsed) {
 					
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
-					if (_snapToValueOnComplete) { _tweenTarget.currentValue = _tweenTarget.endValue; }
+					if (_snapToValueOnComplete) { _tweenTarget.updateTween(1.0); }
 					
 					// end the tween.
 					complete();
@@ -307,7 +303,7 @@ package org.as3lib.kitchensync.action
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
 			clone.snapToValueOnComplete = _snapToValueOnComplete;
-			clone.snapToWholeNumber = _snapToWholeNumber;
+			//clone.snapToWholeNumber = _snapToWholeNumber;
 			return clone;
 		}
 		

@@ -13,6 +13,6 @@ package org.as3lib.kitchensync
 		
 		// TWEENS
 		public static var snapToValueOnComplete:Boolean = true;
-		public static var snapToWholeNumber:Boolean = false;
+		public static var snapToInteger:Boolean = false;
 	}
 }

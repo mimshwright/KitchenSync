@@ -1,5 +1,7 @@
 package org.as3lib.kitchensync.action.tweentarget
 {
+	import org.as3lib.kitchensync.KitchenSyncDefaults;
+	
 	/**
 	 * A TweenTarget used to tween numeric properties of an object.
 	 * 
@@ -90,6 +92,18 @@ package org.as3lib.kitchensync.action.tweentarget
 		public function get differenceInValues():Number { return _endValue - _startValue; }
 		
 		/**
+		 * Indicates whether tweened values should snap to whole value numbers or use decimals.
+		 * If set to true, the results of the easing functions on the target property will be 
+		 * rounded to the nearest integer.
+		 * 
+		 * @see org.as3lib.kitchensync.ActionDefaults
+		 */
+		 // todo rename to snapToInteger 
+		public function get snapToInteger():Boolean { return _snapToInteger; }
+		public function set snapToInteger(snapToInteger:Boolean):void { _snapToInteger = snapToInteger; }
+		protected var _snapToInteger:Boolean;
+		
+		/**
 		 * Constructor.
 		 * 
 		 * @param target the object whose property you want to tween
@@ -101,6 +115,7 @@ package org.as3lib.kitchensync.action.tweentarget
 			setTargetPropterty(target, property);
 			_startValue = (isNaN(startValue)) ? currentValue : startValue;
 			_endValue   = (isNaN(endValue))   ? currentValue : endValue;
+			_snapToInteger = KitchenSyncDefaults.snapToInteger;
 		}
 		
 		/**
@@ -112,7 +127,9 @@ package org.as3lib.kitchensync.action.tweentarget
 		 * @return Number the new current value of the tween.
 		 */
 		public function updateTween(percentComplete:Number):Number {
-			return currentValue = percentComplete * differenceInValues + startValue;
+			currentValue = percentComplete * differenceInValues + startValue;
+			if (_snapToInteger) { currentValue = Math.round(currentValue); }
+			return Number(currentValue);
 		}
 		
 		/** Returns the tweenTarget to its pre-tweened state */
@@ -123,6 +140,7 @@ package org.as3lib.kitchensync.action.tweentarget
 		/** Create a copy of the tweenTarget object */
 		public function clone():ITweenTarget {
 			var clone:TargetProperty = new TargetProperty(_target, _property, _startValue, _endValue);
+			clone.snapToInteger = _snapToInteger;
 			return clone;
 		}
 	}
