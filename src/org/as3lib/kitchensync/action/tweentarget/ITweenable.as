@@ -9,7 +9,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	 * @since 1.3
 	 * @see org.as3lib.kitchensync.action.KSTween
 	 */
-	public interface ITweenable
+	public interface ITweenable extends INumericController
 	{
 		/**
 		 * The main function that the Tween uses to update the Tweenable. 
@@ -45,8 +45,11 @@ package org.as3lib.kitchensync.action.tweentarget
 		 */
 		function get endValue():Number;
 		function set endValue(endValue:Number):void;
-
-		/** Returns the tweenable to its pre-tweened state */
+		
+		/** 
+		 * Reset the value to it's pre-tweened state.
+		 * (typically, sets the currentValue equal to the startValue) 
+		 */
 		function reset():void;
 		
 		/** Create a copy of the tweenable object */
