@@ -15,6 +15,7 @@ FIXED a bug where actions get fired multiple times in sync mode. (needs verifica
 CHANGED KSTween's fromValue and toValue to startValue and endValue and are actually stored in the ITweenable.
 *CHANGED* 'util' to 'utils' to match Adobe's and AS3lib's naming conventions.
 CHANGED 'offset' to 'delay' (kept legacy accessors for offset)
+CHANGED KSSoundController now uses the time string parser on the soundOffset.
 CHANGED the core of the Synchronizer to a timer based system thus improving speed.
 CHANGED default policy for snapToValueOnComplete to true.
 CHANGED default frequency for oscillating funcitons

@@ -12,22 +12,46 @@ package org.as3lib.kitchensync.action
 	 */
 	public class KSSoundController extends AbstractAction
 	{
-		protected var _sound:Sound;
+		/**
+		 * A pointer to the sound object passed into the constructor or created based on the URL.
+		 */
 		public function get sound():Sound { return _sound; } 
 		public function set sound(sound:Sound):void { _sound = sound; }
+		protected var _sound:Sound;
 		
-		protected var _channel:SoundChannel;
+		/**
+		 * A pointer to the sound channel created by the sound object when it is played.
+		 */
 		public function get channel():SoundChannel { return _channel; }
 		public function set channel(channel:SoundChannel):void { _channel = channel; }
+		protected var _channel:SoundChannel;
 		
-		protected var _soundOffset:int = 0;
+		/**
+		 * The offset of the sound object when it is played. For example,
+		 * if this is 1000, the sound will play 1 second from the beginning of the audio file.
+		 * Uses the time parser so string values are okay too.
+		 * 
+		 * @see org.as3lib.kitchensync.util.ITimeStringParser
+		 * @see #delay
+		 */
 		public function get soundOffset():int { return _soundOffset; }
-		public function set soundOffset(soundOffset:int):void { _soundOffset = soundOffset; }
+		public function set soundOffset(soundOffset:*):void {
+			if (!isNaN(soundOffset)) {
+				_soundOffset = soundOffset;
+			} else {
+				var timeString:String = soundOffset.toString();
+				_soundOffset = timeStringParser.parseTimeString(timeString);
+			}
+			// if < 0, make it equal to 0. 
+			_soundOffset = Math.max(0, _soundOffset);
+		}
+		protected var _soundOffset:int = 0;
 		
+		/** Used internally to track the paused time of the audio. */
 		protected var _soundPauseTime:int = 0;
 		
 		override public function set duration(duration:*):void {
-			throw new Error("duration is ignored for SynchronizedSounds");
+			throw new Error("duration is ignored for this type of action");
 		}
 		
 		/**
@@ -39,7 +63,7 @@ package org.as3lib.kitchensync.action
 		 * @param delay - The delay before starting the sound.
 		 * @param soundOffset - The point at which to begin playing the sound in milliseconds.
 		 */
-		public function KSSoundController(sound:*, delay:* = 0, soundOffset:int = 0) {
+		public function KSSoundController(sound:*, delay:* = 0, soundOffset:* = 0) {
 			super();
 			if (sound is Sound) {
 				_sound = Sound(sound);
@@ -51,7 +75,7 @@ package org.as3lib.kitchensync.action
 				throw new TypeError("The sound parameter must be of type Sound, URLRequest or String.");
 			}
 			this.delay = delay;
-			_soundOffset = soundOffset;
+			this.soundOffset = soundOffset;
 			_soundPauseTime = _soundOffset;
 			
 			_duration = 0;
