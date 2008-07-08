@@ -7,7 +7,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	/**
 	 * A TweenTarget that controls a timeline animation in a MovieClip.
 	 * 
-	 * @since 1.3
+	 * @since 1.5
 	 * @author Mims Wright
 	 */
 	public class TimelineController implements ITweenTarget

@@ -18,7 +18,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	 *		var tweeen:KSTween = KSTween.newWithTweenTarget(tweenTargetProperty, duration, delay);
 	 * 		</code>
 	 * 
-	 * @since 1.3
+	 * @since 1.5
 	 * @author Mims H. Wright
 	 */
 	public class TargetProperty implements ITweenTarget

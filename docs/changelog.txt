@@ -3,7 +3,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 * = Contains syntax changes that may require refactoring of legacy code.
 
-===== v1.3* (in progress) =====
+===== v1.5* (2008.07.08) =====
 REFACTORED to optimize performance. Saw an improvement of about 50%
 ADDED TargetProperty and ITweenTarget (formerly ITweenable) to KSTweens (actually, these have been in there for a while, but now they're working)
 ADDED IFilterTweenTarget and implementations for tweening filter properties and simple blurs. 

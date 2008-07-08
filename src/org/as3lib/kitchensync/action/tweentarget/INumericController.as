@@ -5,7 +5,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	 * numeric interface.
 	 * 
 	 * @author Mims Wright
-	 * @since 1.3
+	 * @since 1.5
 	 */
 	public interface INumericController
 	{

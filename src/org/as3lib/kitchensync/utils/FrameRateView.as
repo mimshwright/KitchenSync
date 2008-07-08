@@ -17,7 +17,7 @@ package org.as3lib.kitchensync.utils
 	 * 		</code>
 	 * @see org.as3lib.kitchensync.core.Synchronizer
 	 * @author Mims H. Wright
-	 * @since 1.3
+	 * @since 1.5
 	 */
 	public class FrameRateView extends TextField
 	{
