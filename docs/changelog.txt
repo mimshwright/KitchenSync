@@ -9,6 +9,7 @@ ADDED TargetProperty and ITweenTarget (formerly ITweenable) to KSTweens (actuall
 ADDED IFilterTweenTarget and implementations for tweening filter properties and simple blurs. 
 ADDED INumericController as a base class for ITweenTarget
 ADDED KSTween.newWithTweenable() and KSTween.cloneWithTweenable() methods for creating tweens with custom tweenables.
+ADDED KSAsynchronousFunction for firing asyncrhonous functions in a sequence. Good for queues.
 ADDED FrameRateView utility which displays the framerate of the Synchronizer.
 ADDED message accessor to KSTrace
 FIXED a bug where children of a group are not cloned when the group is cloned.
