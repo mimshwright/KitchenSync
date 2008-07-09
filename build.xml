@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="asdoc" default="main" basedir=".">
+	<!-- The Title of the Application -->
+	<property name="App.title"  value="KitchenSync"/>
+	
+	<!-- The Location of Flex on your Computer -->
+	<property name="Flex.dir" location="/Applications/Adobe Flex Builder 3 Plug-in"/>
+	
+	<!-- The Location of FlexSDK on your Computer -->
+	<property name="FlexSDK.dir" location="${Flex.dir}/sdks/3.0.0"/>
+		
+	<!-- The Location of ASDocs on your Computer -->
+	<property name="AsDocs.dir" location="${FlexSDK.dir}/bin/asdoc"/>
+	
+	<!--
+	The Location of your Application Classes on your Computer
+	NOTE: This Path should be reletive to the build.xml file.
+	NOTE: ${basedir} is an ant property that represents the directory holding the build.xml file
+	NOTE: I have encountered issues with this folder containing Spaces
+	-->
+	<property name="AppClasses.dir" location="${basedir}/src"/>
+	<property name="AS3Lib.dir" location="${basedir}/../../as3lib/src"/>
+		
+	<!--
+	The Location you wish to output to on your Computer
+	NOTE: I have encountered issues with this folder containing Spaces
+	NOTE: This location gets DELETED and re-generated each time the build is run
+	-->
+	<property name="Output.dir" location="${basedir}/docs/api"/>
+	 
+	<!-- Execute the ASDoc Compile -->
+	<target name="main" depends="docs" description="full build of asdocs"/>
+	
+	<!--
+	Run the ASDoc executable and generate the ASDocs to the new output folder
+	-->
+	<target name="docs">
+		<exec executable="${AsDocs.dir}" failonerror="true">
+			<arg line="-doc-sources ${AS3Lib.dir}"/>
+			<arg line="-doc-sources ${AppClasses.dir}"/>
+			<arg line="-window-title &quot;${App.title}&quot;"/>
+			<arg line="-output ${Output.dir}"/>
+		</exec>
+		<exec executable="open">
+			<arg line="${Output.dir}/index.html" />
+		</exec>
+	</target>
+	
+</project>
