@@ -20,7 +20,7 @@ package org.as3lib.kitchensync.action
 	 */ 
 	 // todo - add a settings object
 	 // todo - better implementation of ids
-	public class AbstractAction extends EventDispatcher
+	public class AbstractAction extends EventDispatcher implements IAction
 	{	
 		
 		/** 
@@ -80,7 +80,7 @@ package org.as3lib.kitchensync.action
 		
 		
 		/**
-		 * autoDelete is a flag that indicates whether the action should be deleted 
+		 * autoDelete is a flag that indicates whether the action should be killed 
 		 * when it is done executing. The default is set to false so the actions must 
 		 * be deleted manually.
 		 */
