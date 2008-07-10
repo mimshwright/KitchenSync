@@ -161,7 +161,7 @@ package org.as3lib.kitchensync.action
 			for each (var child:AbstractAction in _childActions) {
 				child.kill();
 			}
-			_childActions = null;
+			_childActions = [];
 			super.kill();
 		}
 
