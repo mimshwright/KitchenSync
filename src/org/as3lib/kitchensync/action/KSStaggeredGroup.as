@@ -59,8 +59,8 @@ package org.as3lib.kitchensync.action
 		}
 		
 		
-		override public function start():AbstractAction {
-			var action:AbstractAction = super.start();
+		override public function start():IAction {
+			var action:IAction = super.start();
 			_lastStartIndex = -1;
 			return action;
 		}

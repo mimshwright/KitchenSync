@@ -149,7 +149,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @returns A reference to this tween.
 		 */
-		override public function start():AbstractAction {
+		override public function start():IAction {
 			if (_tweenTarget == null) { 
 				throw new Error("'tweenTarget' must not be null. Cannot start tween without a TweenTarget target.");
 				return null;

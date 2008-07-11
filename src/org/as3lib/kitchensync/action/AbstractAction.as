@@ -54,12 +54,10 @@ package org.as3lib.kitchensync.action
 		
 		/**
 		 * delay is the time that will pass after the start() method is called
-		 * before the action begins. Also known as delay.
+		 * before the action begins.
 		 * Will accept an integer or a parsable string.
 		 * 
 		 * @see org.as3lib.kitchensync.ITimeStringParser
-		 * 
-		 * @see #timeUnit
 		 */
 		public function get delay():int { return _delay; }
 		public function set delay(delay:*):void { 
@@ -175,7 +173,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @throws flash.errors.IllegalOperationError - if the method is called while the action is already running.
 		 */
-		public function start():AbstractAction {
+		public function start():IAction {
 			if (_paused) {
 				unpause();				
 			} else {

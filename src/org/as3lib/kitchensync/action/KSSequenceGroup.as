@@ -111,7 +111,7 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Override start to automatically quit if there are no children.
 		 */
-		override public function start():AbstractAction {
+		override public function start():IAction {
 			super.start();
 			if (childActions && childActions.length < 1) { complete(); }
 			return this;
