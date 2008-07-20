@@ -3,9 +3,10 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 * = Contains syntax changes that may require refactoring of legacy code.
 
-===== v1.5.1 (In progress) =====
-FIXED a non-bug where using addAction() can cause a null pointer exception after using kill() on a group.
+===== v1.6 (In progress) =====
+ADDED KSSimultaneousEndGroup
 ADDED IAction and ISynchronizerClient interfaces.
+FIXED a non-bug where using addAction() can cause a null pointer exception after using kill() on a group.
 
 ===== v1.5* (2008.07.08) =====
 REFACTORED to optimize performance. Saw an improvement of about 50%

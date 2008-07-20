@@ -4,16 +4,15 @@ package org.as3lib.kitchensync.action
 	
 	/**
 	 * Does nothing except wait. Used to delay a sequence.
+	 * 
+	 * @since 0.2
+	 * @author Mims Wright
 	 */
 	public class KSWait extends AbstractAction
 	{
 		override public function set duration(duration:*):void {
-			throw new Error("duration is ignored for Wait");
+			throw new Error("duration is ignored for KSWait");
 		}
-		
-		/** Time that the action will wait. Synonym for delay. */
-		public function get waitTime():int { return this.delay;}
-		public function set waitTime(waitTime:*):void { this.delay = waitTime; }
 		
 		/**
 		 * Constructor.

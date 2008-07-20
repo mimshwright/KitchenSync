@@ -28,7 +28,7 @@ package org.as3lib.kitchensync.action
 					var action:AbstractAction = AbstractAction(children[i]);
 					addAction(action); 
 				} else {
-					throw new TypeError ("All children must be of type AbstractSynchronizedAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractSynchronizedAction was expected.");
+					throw new TypeError ("All children must be of type AbstractAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractAction was expected.");
 				}
 			}
 		}
