@@ -80,7 +80,7 @@ package org.as3lib.kitchensync.action
 			super.onChildFinished(event);
 			_currentAction.removeEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
 			_currentAction.removeEventListener(KitchenSyncEvent.START, onChildStart);
-			_currentAction = null;
+			//_currentAction = null;
 			if (!checkForComplete()) {
 				startNextAction();
 			} else {

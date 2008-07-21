@@ -14,5 +14,8 @@ package org.as3lib.kitchensync
 		// TWEENS
 		public static var snapToValueOnComplete:Boolean = true;
 		public static var snapToInteger:Boolean = false;
+		
+		// GROUPS
+		public static var resetChildrenAtStart:Boolean = true;
 	}
 }

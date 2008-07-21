@@ -132,5 +132,9 @@ package org.as3lib.kitchensync.action.tweentarget
 		public function clone():ITweenTarget {
 			return new TimelineController(_target, _startValue, _endValue);
 		}
+		
+		public function toString():String {
+			return "TimelineController for " + target + " from frame " + startValue + " to frame " + endValue;
+		}
 	}
 }

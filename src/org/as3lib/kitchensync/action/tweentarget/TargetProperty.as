@@ -143,5 +143,9 @@ package org.as3lib.kitchensync.action.tweentarget
 			clone.snapToInteger = _snapToInteger;
 			return clone;
 		}
+		
+		public function toString():String {
+			return target + "." + property + " from " + startValue + " to " + endValue;
+		}
 	}
 }
