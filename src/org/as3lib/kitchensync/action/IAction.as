@@ -6,7 +6,7 @@ package org.as3lib.kitchensync.action
 	 * An action is a type that represents any kind of happening that takes place at
 	 * a certain time. 
 	 * 
-	 * @since 1.5.1
+	 * @since 1.6
 	 * @author Mims Wright
 	 */
 	public interface IAction extends ISynchronizerClient

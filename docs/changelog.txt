@@ -7,6 +7,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 ADDED KSSimultaneousEndGroup which causes all children to end simultaneously.
 ADDED KSSteppedSequenceGroup for sequencing powerpoint-like applications.
 ADDED IAction and ISynchronizerClient interfaces.
+ADDED isInstantaneous property to AbstractActions
 ADDED toString() methods to some ITweenTarget classes.
 FIXED a non-bug where using addAction() can cause a null pointer exception after using kill() on a group.
 

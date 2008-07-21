@@ -5,7 +5,7 @@ package org.as3lib.kitchensync.core
 	 * with time data.
 	 *
 	 * @author Mims Wright
-	 * @since 1.5.1
+	 * @since 1.6
 	 */
 	public interface ISynchronizerClient
 	{

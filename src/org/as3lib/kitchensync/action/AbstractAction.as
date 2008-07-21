@@ -18,7 +18,6 @@ package org.as3lib.kitchensync.action
 	 * timing. 
 	 *
 	 */ 
-	 // todo - add a settings object
 	 // todo - better implementation of ids
 	public class AbstractAction extends EventDispatcher implements IAction
 	{	
@@ -69,6 +68,11 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		protected var _delay:int = 0;
+		
+		/** Returns true if the action will occur instantaneously when started */
+		public function get isInstantaneous():Boolean {
+			return ( _delay <= 0 && _duration <= 0 );
+		}
 		
 		/** 
 		 * legacy accessors. synonomous with delay.
