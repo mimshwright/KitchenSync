@@ -3,8 +3,10 @@ package org.as3lib.kitchensync.utils
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	
+	import org.as3lib.kitchensync.core.ISynchronizerClient;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	import org.as3lib.kitchensync.core.Synchronizer;
+	import org.as3lib.kitchensync.core.Timestamp;
 
 
 	/**
@@ -19,7 +21,7 @@ package org.as3lib.kitchensync.utils
 	 * @author Mims H. Wright
 	 * @since 1.5
 	 */
-	public class FrameRateView extends TextField
+	public class FrameRateView extends TextField implements ISynchronizerClient
 	{
 		/** Number of frames between each update */
 		public var updateFrequency:int = 5;
@@ -55,20 +57,20 @@ package org.as3lib.kitchensync.utils
 			super();
 			this.autoSize = TextFieldAutoSize.LEFT;
 			
-			Synchronizer.getInstance().addEventListener(KitchenSyncEvent.UPDATE, onUpdate, false, 0, true);
+			Synchronizer.getInstance().registerClient(this);
 		}
 		
 		/**
 		 * Display is updated by the synchronizer pulses.
 		 */
-		public function onUpdate(event:KitchenSyncEvent):void {	
-			_frameRateHistory.unshift(event.timestamp.currentTime - _previousTime);
+		public function update(currentTimestamp:Timestamp):void {	
+			_frameRateHistory.unshift(currentTimestamp.currentTime - _previousTime);
 			if (_frameRateHistory.length > _frameRateHistoryDepth) {
 				_frameRateHistory.pop();
 			}
-			_previousTime = event.timestamp.currentTime;
+			_previousTime = currentTimestamp.currentTime;
 			
-			if (event.timestamp.currentFrame %5 == 0) {
+			if (currentTimestamp.currentFrame %5 == 0) {
 				this.text = formattingFunction(actualFrameRate);
 			}
 		}

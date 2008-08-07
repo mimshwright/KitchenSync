@@ -154,10 +154,9 @@ package org.as3lib.kitchensync.action
 		
 		/**
 		 * Adds the action as a listener to the Synchronizer's update event.
-		 * 
 		 */
 		internal function register():void {
-			Synchronizer.getInstance().addEventListener(KitchenSyncEvent.UPDATE, onUpdate);
+			Synchronizer.getInstance().registerClient(this);
 			
 			// since the first update won't occur until the next frame, force one here to make it
 			// happen right away.
@@ -168,7 +167,7 @@ package org.as3lib.kitchensync.action
 		 * Removes the action as a listener to the Synchronizer's update event.
 		 */
 		internal function unregister():void {
-			Synchronizer.getInstance().removeEventListener(KitchenSyncEvent.UPDATE, onUpdate);
+			Synchronizer.getInstance().unregisterClient(this);
 		}
 		
 		/**
@@ -298,7 +297,6 @@ package org.as3lib.kitchensync.action
 		}
 		
 		
-		
 		/**
 		 * This function will be registered by the register method to respond to update events from the synchronizer.
 		 * Code that performs the action associated with this object should go in this function.
@@ -307,19 +305,19 @@ package org.as3lib.kitchensync.action
 		 * of its children.
 		 * 
 		 * @abstract
-		 * @param event - A SychronizerEvent with a timestamp from the Synchronizer.
+		 * @param currentTimestamp The current timestamp from the Synchronizer.
 		 */
-		protected function onUpdate(event:KitchenSyncEvent):void {
+		public function update(currentTimestamp:Timestamp):void {
 			AbstractEnforcer.enforceMethod();
 		}
 		
 		/**
-		 * Foreces the onUpdate() method to fire without being triggered by Synchronizer.
+		 * Foreces the update() method to fire without being triggered by Synchronizer.
 		 * 
-		 * @see #onUpdate()
+		 * @see #update()
 		 */
 		protected function forceUpdate():void {
-			onUpdate(new KitchenSyncEvent(KitchenSyncEvent.UPDATE, Synchronizer.getInstance().currentTimestamp));
+			update(Synchronizer.getInstance().currentTimestamp);
 		}
 		
 		/**

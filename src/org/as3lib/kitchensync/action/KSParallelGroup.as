@@ -36,8 +36,7 @@ package org.as3lib.kitchensync.action
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
 		 */
-		override protected function onUpdate(event:KitchenSyncEvent):void {
-			var time:Timestamp = event.timestamp;
+		override public function update(currentTimestamp:Timestamp):void {
 			if (startTimeHasElapsed && !childrenAreRunning) {
 				// reset the number of running children.
 				_runningChildren = 0;				

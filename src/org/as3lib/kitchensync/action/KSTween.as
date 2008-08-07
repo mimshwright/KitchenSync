@@ -169,8 +169,7 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Executes the tween.
 		 */
-		override protected function onUpdate(event:KitchenSyncEvent):void {
-			var time:Timestamp = event.timestamp;
+		override public function update(currentTimestamp:Timestamp):void {
 			var timeElapsed:int;
 			var convertedDuration:int;
 			
@@ -179,11 +178,11 @@ package org.as3lib.kitchensync.action
 				// if sync is true... 
 				if (_sync) {
 					// use the actual time elapsed... 
-			 		timeElapsed = time.currentTime - _startTime.currentTime - _delay;
+			 		timeElapsed = currentTimestamp.currentTime - _startTime.currentTime - _delay;
 			 		convertedDuration = duration;		 				 		
 			 	} else {
 			 		// rather than the number of cycles that have passed since the tween began.
-			 		timeElapsed = time.currentFrame - _startTime.currentFrame - TimestampUtil.millisecondsToFrames(_delay);
+			 		timeElapsed = currentTimestamp.currentFrame - _startTime.currentFrame - TimestampUtil.millisecondsToFrames(_delay);
 			 		convertedDuration = TimestampUtil.millisecondsToFrames(duration);
 			 	}
 				

@@ -31,8 +31,7 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
-		override protected function onUpdate(event:KitchenSyncEvent):void {
-			var time:Timestamp = event.timestamp;
+		override public function update(currentTimestamp:Timestamp):void {
 			if (startTimeHasElapsed) {
 				var childAction:AbstractAction;
 				// if the group isn't already running...
@@ -64,7 +63,7 @@ package org.as3lib.kitchensync.action
 				// Once it's running, for all child actions
 				for each (childAction in childActions) {
 					// check to see if start time has elapsed for the child.
-					if (isChildStartTimeElapsed(childAction, time)) {
+					if (isChildStartTimeElapsed(childAction, currentTimestamp)) {
 						// if so, start the child.
 						childAction.start();
 						// add one running child.

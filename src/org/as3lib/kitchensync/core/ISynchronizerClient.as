@@ -9,6 +9,11 @@ package org.as3lib.kitchensync.core
 	 */
 	public interface ISynchronizerClient
 	{
-		
+		/**
+		 * Update will allow the synchronizer to update the action with the current time.
+		 * 
+		 * @param currentTimestamp The current time from the synchronizer. 
+		 */
+		function update(currentTimestamp:Timestamp):void;
 	}
 }

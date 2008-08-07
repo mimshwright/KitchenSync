@@ -68,15 +68,14 @@ package org.as3lib.kitchensync.action
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
 		 */
-		override protected function onUpdate(event:KitchenSyncEvent):void {
-			var time:Timestamp = event.timestamp;
+		override public function update(currentTimestamp:Timestamp):void { 
 			if (startTimeHasElapsed) {
 				if (!_lastStartTime) {
 					_runningChildren = _childActions.length;
 				}
-				if (!_lastStartTime || time.currentFrame - _lastStartTime.currentFrame > TimestampUtil.millisecondsToFrames(_stagger)) {
-					_lastStartTime = time;
-					var currentTime:int = time.currentFrame - TimestampUtil.millisecondsToFrames(delay) - _startTime.currentFrame;
+				if (!_lastStartTime || currentTimestamp.currentFrame - _lastStartTime.currentFrame > TimestampUtil.millisecondsToFrames(_stagger)) {
+					_lastStartTime = currentTimestamp;
+					var currentTime:int = currentTimestamp.currentFrame - TimestampUtil.millisecondsToFrames(delay) - _startTime.currentFrame;
 					var currentStartIndex:int = Math.floor(currentTime / TimestampUtil.millisecondsToFrames(_stagger));
 					
 					// for all of the indexes since the last index.

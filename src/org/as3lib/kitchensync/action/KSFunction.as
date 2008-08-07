@@ -62,8 +62,7 @@ package org.as3lib.kitchensync.action
 		 * Executes the function when the delay has elapsed.
 		 * If the duration is > 0, it will repeat until the duration has elapsed.
 		 */
-		override protected function onUpdate(event:KitchenSyncEvent):void {
-			var time:Timestamp = event.timestamp;
+		override public function update(currentTimestamp:Timestamp):void {
 			if (startTimeHasElapsed) {
 				invoke();
 				if (durationHasElapsed) {

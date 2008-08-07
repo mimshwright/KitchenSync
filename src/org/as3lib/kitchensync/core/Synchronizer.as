@@ -33,6 +33,9 @@ package org.as3lib.kitchensync.core
 		//public function get active ():Boolean { return _active; }
 		//public function set active (active:Boolean):void { _active = active; }
 		
+		/** A list of clients that are registered to listen for updates. */
+		private var _clients:Array = [];
+		
 		/** The frameRate (as defined in the stage) */
 		public function get frameRate():int {return _stage.frameRate; }
 		
@@ -79,6 +82,32 @@ package org.as3lib.kitchensync.core
 		}
 		
 		/**
+		 * Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.
+		 * 
+		 * @param client The client that will receive the update.
+		 */ 
+		public function registerClient(client:ISynchronizerClient):void {
+			if (_clients.indexOf(client) < 0) {
+				_clients.push(client);
+			}
+		}
+		
+		/**
+		 * Removes a Syncrhonizer client from the list.
+		 * 
+		 * @param client The client that will be unregistered.
+		 * @return the removed client.
+		 */ 
+		public function unregisterClient(client:ISynchronizerClient):ISynchronizerClient {
+			var index:int = _clients.indexOf(client);
+			if (index >= 0) {
+				return _clients.splice(index, 1)[0];
+			}
+			return null;
+		}
+		
+		
+		/**
 		 * Triggered by every passing frame of the Stage. Rebroadcasts the event with additional
 		 * information about the time at which it occurred. 
 		 */
@@ -96,7 +125,18 @@ package org.as3lib.kitchensync.core
 		 */
 		private function dispatchUpdate():void {
 			_currentTime = getTimer();
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UPDATE, currentTimestamp));
+			
+			// cache the timestamp so that it's only generated once. 
+			var currentTimestampCache:Timestamp = currentTimestamp; 
+			
+			// update registered clients.
+			for each (var client:ISynchronizerClient in _clients) {
+				client.update(currentTimestampCache);
+			}
+			
+			// dispatch event to event listeners.
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UPDATE, currentTimestampCache));
+			
 			//trace(currentTimestamp);			
 		}
 		

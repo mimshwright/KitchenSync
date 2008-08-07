@@ -86,7 +86,7 @@ package org.as3lib.kitchensync.action
 		 * If so, it starts playing the song from the soundOffset and unregisters itself.
 		 * If the sound hasn't loaded yet, it continues to check each frame until it is loaded, then it plays.
 		 */
-		override protected function onUpdate(event:KitchenSyncEvent):void {
+		override public function update(currentTimestamp:Timestamp):void {
 			if (startTimeHasElapsed) {
 				if (_sound.bytesLoaded == _sound.bytesTotal && _channel == null) {
 					_channel = _sound.play(_soundOffset);
