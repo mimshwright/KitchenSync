@@ -10,7 +10,7 @@ package org.as3lib.kitchensync.action
 	public class AbstractActionGroup extends AbstractAction
 	{
 		/** If true, the group's KSTween children will reset to their default positions when the group is started. */
-		public var resetChildrenAtStart:Boolean = false;
+		public var resetChildrenAtStart:Boolean = true;
 		
 		/**
 		 * An array containing all of the child actions of the group.
@@ -142,6 +142,7 @@ package org.as3lib.kitchensync.action
 				for (var i:int = 0; i < _childActions.length; i++ ) {
 					var tween:KSTween = _childActions[i] as KSTween;
 					if (tween != null) { tween.reset(); }
+					
 				}
 			}
 			return super.start();

@@ -239,10 +239,12 @@ package org.as3lib.kitchensync.action
 		 * Stops the action from running and resets the timer.
 		 */
 		public function stop():void {
-			_paused = false;
-			_running = false;
-			_startTime = null;
-			unregister();
+			if (_running) { 
+				_paused = false;
+				_running = false;
+				_startTime = null;
+				unregister();
+			}
 		}
 		
 		/**

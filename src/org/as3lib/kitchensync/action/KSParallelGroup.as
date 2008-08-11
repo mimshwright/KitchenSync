@@ -76,6 +76,11 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		override public function stop():void {
+			super.stop();
+			_runningChildren = 0;
+		}
+		
 		override public function clone():AbstractAction {
 			var clone:KSParallelGroup = new KSParallelGroup();
 			for (var i:int = 0; i < _childActions.length; i++) {
