@@ -5,6 +5,7 @@ package org.as3lib.kitchensync.core
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.TimerEvent;
+	import flash.utils.Dictionary;
 	import flash.utils.Timer;
 	import flash.utils.getTimer;
 	
@@ -34,7 +35,7 @@ package org.as3lib.kitchensync.core
 		//public function set active (active:Boolean):void { _active = active; }
 		
 		/** A list of clients that are registered to listen for updates. */
-		private var _clients:Array = [];
+		private var _clients:Dictionary = new Dictionary(false);
 		
 		/** The frameRate (as defined in the stage) */
 		public function get frameRate():int {return _stage.frameRate; }
@@ -87,23 +88,16 @@ package org.as3lib.kitchensync.core
 		 * @param client The client that will receive the update.
 		 */ 
 		public function registerClient(client:ISynchronizerClient):void {
-			if (_clients.indexOf(client) < 0) {
-				_clients.push(client);
-			}
+			_clients[client] = client;
 		}
 		
 		/**
 		 * Removes a Syncrhonizer client from the list.
 		 * 
 		 * @param client The client that will be unregistered.
-		 * @return the removed client.
 		 */ 
-		public function unregisterClient(client:ISynchronizerClient):ISynchronizerClient {
-			var index:int = _clients.indexOf(client);
-			if (index >= 0) {
-				return _clients.splice(index, 1)[0];
-			}
-			return null;
+		public function unregisterClient(client:ISynchronizerClient):void {
+			delete _clients[client];
 		}
 		
 		
