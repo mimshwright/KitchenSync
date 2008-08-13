@@ -9,9 +9,11 @@ ADDED KSSteppedSequenceGroup for sequencing powerpoint-like applications.
 ADDED IAction and ISynchronizerClient interfaces.
 ADDED isInstantaneous property to AbstractActions
 ADDED toString() methods to some ITweenTarget classes.
+ADDED finished modifying INumericController
 CHANGED Synchronizer to utilize ISynchronizer client. (virtually no performance increase) :-(
 FIXED a bug in KSParallelGroup.stop()
 FIXED a non-bug where using addAction() can cause a null pointer exception after using kill() on a group.
+REMOVED commented out unused 'name' property of AbstractAction
 UPDATED wiki to reflect 1.5 syntax.
 
 ===== v1.5* (2008.07.08) =====

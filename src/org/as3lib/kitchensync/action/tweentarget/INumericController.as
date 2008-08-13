@@ -1,18 +1,19 @@
 package org.as3lib.kitchensync.action.tweentarget
 {
 	/**
-	 * Allows control over numeric values or non-numeric or non-linear values using a 
-	 * numeric interface.
+	 * Allows a control interface for translating values to and from numeric values. 
+	 * e.g. setting a base-n number with a decimal number
 	 * 
 	 * @author Mims Wright
 	 * @since 1.5
 	 */
 	public interface INumericController
 	{
-		// todo build out.
-		// startValue
-		// endValue
-		// currentValue
-		// setWithPercentage()
+		/**
+		 * This is the current value of the number.
+		 */
+		function get currentValue():Number;
+		function set currentValue(currentValue:Number):void;
+		
 	}
 }

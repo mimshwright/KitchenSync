@@ -29,12 +29,6 @@ package org.as3lib.kitchensync.action.tweentarget
 		function updateTween (percentComplete:Number):Number;
 		
 		/**
-		 * This is the current value of the tweenTarget.
-		 */
-		function get currentValue():Number;
-		function set currentValue(currentValue:Number):void;
-		
-		/**
 		 * The value that the tweenTarget will begin from.
 		 */
 		function get startValue():Number;

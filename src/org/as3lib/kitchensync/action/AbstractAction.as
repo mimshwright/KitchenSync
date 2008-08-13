@@ -100,12 +100,13 @@ package org.as3lib.kitchensync.action
 		protected var _sync:Boolean;
 		
 		
+		// removed for now.
 		/**
 		 * The human-readable name of this action. 
-		 */
 		public function get name():String { return _name; }
 		public function set name(name:String):void { _name = name; }
 		protected var _name:String;
+		 */
 		
 		
 		/**
@@ -128,13 +129,13 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The time at which the action was last started.
 		 */
-		public function get startTime():Timestamp { return _startTime; } // DEBUG
+		public function get startTime():Timestamp { return _startTime; }
 		protected var _startTime:Timestamp;
 		
 		/**
 		 * The time at which the action was last paused.
 		 */
-		public function get pauseTime():Timestamp { return _pauseTime; } // DEBUG
+		public function get pauseTime():Timestamp { return _pauseTime; }
 		protected var _pauseTime:Timestamp;
 		
 		
