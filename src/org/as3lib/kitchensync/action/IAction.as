@@ -1,5 +1,7 @@
 package org.as3lib.kitchensync.action
 {
+	import flash.events.IEventDispatcher;
+	
 	import org.as3lib.kitchensync.core.ISynchronizerClient;
 	
 	/**
@@ -9,7 +11,7 @@ package org.as3lib.kitchensync.action
 	 * @since 1.6
 	 * @author Mims Wright
 	 */
-	public interface IAction extends ISynchronizerClient
+	public interface IAction extends ISynchronizerClient, IEventDispatcher
 	{
 		/**
 		 * duration is the length of time that the action will run.

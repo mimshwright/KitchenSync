@@ -96,10 +96,10 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param target - the object whose property will be changed (or an ITweenTarget, but it would be better to use newWithTweenTarget)
 		 * @param property - the name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
-		 * @param toValue - the value to tween the property to. After the tween is done, this will be the value of the property.
-		 * @param fromValue - the starting value of the tween. By default, this is the value of the property before the tween begins.
-		 * @param duration - the time in frames that this tween will take to execute.
-		 * @param delay - the time to wait before starting the tween.
+		 * @param startValue - the value to tween the property to. After the tween is done, this will be the value of the property.
+		 * @param endValue - the starting value of the tween. By default, this is the value of the property before the tween begins.
+		 * @param duration - the time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
 		public function KSTween(target:Object = null, property:String = "", startValue:Number = EXISTING_FROM_VALUE, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null)
