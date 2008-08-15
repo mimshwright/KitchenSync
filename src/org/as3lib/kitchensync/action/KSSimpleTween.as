@@ -125,6 +125,8 @@ package org.as3lib.kitchensync.action
 			Synchronizer.getInstance().registerClient(this);
 			// force the first update.
 			update(currentTimestamp);
+			
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, currentTimestamp));
 			return this;
 		}
 		
