@@ -7,7 +7,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 ADDED KSSimultaneousEndGroup which causes all children to end simultaneously.
 ADDED KSSteppedSequenceGroup for sequencing powerpoint-like applications.
 ADDED IAction and ISynchronizerClient interfaces.
-ADDED an optimized implementation of IAction, SimpleTween.
+ADDED an optimized implementation of IAction, KSSimpleTween. Saw a 25% performance increase over KSTween!
 ADDED isInstantaneous property to AbstractActions
 ADDED toString() methods to some ITweenTarget classes.
 ADDED finished modifying INumericController

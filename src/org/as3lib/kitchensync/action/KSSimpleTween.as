@@ -8,7 +8,6 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.easing.EasingUtil;
 	import org.as3lib.kitchensync.easing.Linear;
 
-// todo test
 	
 	/**
 	 * A simplified version of the KSTween class with NO bells or whistles. Designed for optimized performance,
@@ -32,7 +31,7 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
-	public class SimpleTween extends EventDispatcher implements IAction
+	public class KSSimpleTween extends EventDispatcher implements IAction
 	{
 		/** duration of tween, not including delay, in milliseconds. */ 
 		public function get duration():int { return _duration; }
@@ -76,7 +75,7 @@ package org.as3lib.kitchensync.action
 		 * @param delay - the time to wait in milliseconds before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		public function SimpleTween(target:Object, property:String, startValue:Number, endValue:Number, duration:int, delay:int, easingFunction:Function = null) {
+		public function KSSimpleTween(target:Object, property:String, startValue:Number, endValue:Number, duration:int, delay:int, easingFunction:Function = null) {
 			this.target = target;
 			this.property = property;
 			this.startValue = startValue;
@@ -101,7 +100,7 @@ package org.as3lib.kitchensync.action
 				// invoke the easing function.
 				var result:Number =  EasingUtil.call(easingFunction, timeElapsed, _duration); 
 				
-				target[property] = result;
+				target[property] = result * (endValue - startValue) + startValue;
 				
 				// if the tween's duration is complete.
 				if (timeElapsed >= _duration) {
@@ -143,5 +142,8 @@ package org.as3lib.kitchensync.action
 			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));
 		}
 		
+		override public function toString():String {
+			return "SimpleTween :" + this.target.toString() + "[" + this.property + "]";
+		}
 	}
 }
