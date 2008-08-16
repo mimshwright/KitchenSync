@@ -40,15 +40,24 @@ package org.as3lib.kitchensync.action
 		
 		
 		/**
-		 * Represents the values that will be tweened by the tween. KSTween will use a TargetProperty by default.
+		 * A list of tween targets used by this tween.
 		 * 
 		 * @see org.as3lib.kitchensync.action.tweentarget.ITweenTarget
 		 * @see org.as3lib.kitchensync.action.tweentarget.TargetProperty
 		 */
-		protected var _tweenTarget:ITweenTarget;
-		public function get tweenTarget():ITweenTarget { return _tweenTarget; }
-		public function set tweenTarget(tweenTarget:ITweenTarget):void { _tweenTarget = tweenTarget; }
+		protected var _tweenTargets:Array;
+		public function get tweenTargets():Array { return _tweenTargets; }
 		
+		public function addTweenTarget(tweenTarget:ITweenTarget):void { _tweenTargets.push(tweenTarget); }
+		public function removeTweenTarget(tweenTarget:ITweenTarget):void { 
+			var index:int = _tweenTargets.indexOf(tweenTarget);
+			if (index >= 0) {
+				_tweenTargets.splice(index, 1);
+			}
+		}
+		public function removeAllTweenTargets():void {
+			_tweenTargets = new Array();
+		}
 		
 		/**
 		 * Used to modify the results of the easing function. 
@@ -106,21 +115,27 @@ package org.as3lib.kitchensync.action
 		public function KSTween(target:Object = null, property:String = "", startValue:Number = EXISTING_FROM_VALUE, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null)
 		{
 			super();
-			var tweenTarget:ITweenTarget;
+			_tweenTargets = new Array();
 			
 			// If target is a tweenTarget...
 			if (target is ITweenTarget) {
 				// use the tweenTarget and ignore the first four params.
 				// (it's recommended that you use newWithTweenTarget() instead)
-				tweenTarget = ITweenTarget(target);
+				addTweenTarget(ITweenTarget(target));
+			} else if (target is Array) {
+				// add the items in the array to the tweenTargets list and ignore the rest of the params.
+				var tweenTargetArray:Array = target as Array;
+				for each (var tweenTarget:ITweenTarget in tweenTargetArray) {
+					addTweenTarget(tweenTarget);
+				}
 			} else {
 				// otherwise, create a TargetProperty object.
-				tweenTarget = new TargetProperty(target, property, startValue, endValue);
+				addTweenTarget(new TargetProperty(target, property, startValue, endValue));
 			}
-			_tweenTarget = tweenTarget;
-			
 			
 			snapToValueOnComplete = KitchenSyncDefaults.snapToValueOnComplete;
+			
+			//note: moved to ITweenTarget
 			//snapToWholeNumber = KitchenSyncDefaults.snapToWholeNumber;
 			
 			this.duration = duration;
@@ -135,14 +150,18 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Alternative constructor: creates a new KSTween using an ITweenTarget that you pass into it.
 		 * 
-		 * @param tweenTarget An explicitly defined tweenTarget object that contains the values you want to tween.
+		 * @param tweenTarget An explicitly defined tweenTarget object (or an array of tweentargets) that contains the values you want to tween.
 		 * @param duration - the time in frames that this tween will take to execute.
 		 * @param delay - the time to wait before starting the tween.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 * @return A new KSTween object.
 		 */
-		public static function newWithTweenTarget(tweenTarget:ITweenTarget, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
-			return new KSTween(tweenTarget, "", NaN, NaN, duration, delay, easingFunction);
+		public static function newWithTweenTarget(tweenTarget:*, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+			if (tweenTarget is Array || tweenTarget is ITweenTarget)  {
+				return new KSTween(tweenTarget, "", NaN, NaN, duration, delay, easingFunction);
+			}
+			// else
+			throw new TypeError("'tweenTarget' parameter must be of type ITweenTarget or of type Array (containting ITweenTarget).");
 		} 
 		
 		/**
@@ -151,11 +170,12 @@ package org.as3lib.kitchensync.action
 		 * @returns A reference to this tween.
 		 */
 		override public function start():IAction {
-			if (_tweenTarget == null) { 
-				throw new Error("'tweenTarget' must not be null. Cannot start tween without a TweenTarget target.");
-				return null;
+			if (_tweenTargets && _tweenTargets.length >= 0) { 
+				return super.start();
 			}
-			return super.start();
+			// else 
+			throw new Error("Tween must have at least one tween target. use addTweenTarget().");
+			return null;
 		}
 		
 		
@@ -164,7 +184,9 @@ package org.as3lib.kitchensync.action
 		 */
 		public function reset():void {
 			stop();
-			_tweenTarget.reset();
+			for each (var target:ITweenTarget in _tweenTargets) {
+				target.reset();
+			}
 		}
 		
 		/**
@@ -187,26 +209,40 @@ package org.as3lib.kitchensync.action
 			 		convertedDuration = TimestampUtil.millisecondsToFrames(duration);
 			 	}
 				
-				// if using the 'existing from value' set the start value at the time that the tween begins.
-				if (_tweenTarget.startValue == EXISTING_FROM_VALUE && timeElapsed <= 1) { 
-					_tweenTarget.startValue = _tweenTarget.currentValue; 
-				}
+				var target:ITweenTarget
 				
-				// total change in values for the tween.
-				var delta:Number = _tweenTarget.endValue - _tweenTarget.startValue; 
+				// if this is the start of the tween.
+				if (timeElapsed <= 1) {
+					for each (target in _tweenTargets) {
+						// if using the 'existing from value' set the start value at the time that the tween begins.
+						if (target.startValue == EXISTING_FROM_VALUE) { 
+							target.startValue = target.currentValue; 
+						}
+					}
+				}
 				
 				// invoke the easing function.
 				var result:Number =  EasingUtil.call(_easingFunction, timeElapsed, convertedDuration, _easingMod1, _easingMod2); 
 				
-				// set the tweenTarget's value.
-				_tweenTarget.updateTween(result);
+				// apply the result to each tween target				
+				for each (target in _tweenTargets) {
+					// total change in values for the tween.
+					//var delta:Number = target.endValue - target.startValue; 
+					
+					// set the tweenTarget's value.
+					target.updateTween(result);
+				}
 				
 				// if the tween's duration is complete.
 				if (durationHasElapsed) {
 					
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.
-					if (_snapToValueOnComplete) { _tweenTarget.updateTween(1.0); }
+					if (_snapToValueOnComplete) { 
+						for each (target in _tweenTargets) {
+							target.updateTween(1.0); 
+						}
+					}
 					
 					// end the tween.
 					complete();
@@ -291,14 +327,21 @@ package org.as3lib.kitchensync.action
 		 * @see #cloneReversed()
 		 */
 		public function reverse():void {
-			var temp:Number = _tweenTarget.startValue;
-			_tweenTarget.startValue = _tweenTarget.endValue;
-			_tweenTarget.endValue = temp;						
+			for each (var target:ITweenTarget in _tweenTargets) {
+				var temp:Number = target.startValue;
+				target.startValue = target.endValue;
+				target.endValue = temp;
+			}						
 		}
 		
 		override public function clone():IAction {
-			var tweenTargetClone:ITweenTarget = _tweenTarget.clone();
-			var clone:KSTween = newWithTweenTarget(tweenTargetClone, _duration, _delay, _easingFunction);
+			var clonedTargets:Array = new Array();
+			for each (var target:ITweenTarget in _tweenTargets) {
+				var tweenTargetClone:ITweenTarget = target.clone();
+				clonedTargets.push(tweenTargetClone);
+			}
+			
+			var clone:KSTween = newWithTweenTarget(clonedTargets, _duration, _delay, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
@@ -310,12 +353,12 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Creates a copy of this Tween which targets a different object and / or property.
 		 * This is mostly used as a convenient way to reuse a tween, e.g. in a sequence.
+		 * NOTE: If there are multiple target properties, this will only copy the first one in the array.
 		 * 
 		 * @use <code>
 		 *		var tween:Tween = new Tween(foo, "x", 100, 200);
 		 *		var sequence:Sequence = new Sequence(
 		 *			tween,							// tweens foo's x property from 100 to 200
-		 *			tween.cloneWithTarget(bar),		// tweens bar's x property from 100 to 200
 		 *			tween.cloneWithTarget(foo, y)	// tweens foo's y property from 100 to 200
 		 *			tween.cloneWithTarget(bar, y)	// tweens bar's y property from 100 to 200
 		 *		);
@@ -323,14 +366,19 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @see #clone()
 		 * 
+		 * @deprecated - use multiple targetProperties instead.
+		 * @see #addTweenTarget()
+		 * 
 		 * @param target - The new object to target. Defaults to the same target as this.
-		 * @param property - The new target object's property to target. Defaults to the same property as this.
+		 * @param property - The new target object's property to target. 
 		 * @return Tween - a copy of this tween with a new target/property.
 		 */
 		public function cloneWithTarget(target:Object, property:String):KSTween {
-			var clone:KSTween = KSTween(this.clone());
-			var targetProperty:TargetProperty = new TargetProperty(target, property, clone._tweenTarget.startValue, clone._tweenTarget.endValue);
-			clone._tweenTarget = targetProperty;
+			// get the first target from the list.
+			var tweenTarget:ITweenTarget = ITweenTarget(_tweenTargets[0]);
+			// create a target property with the new target and property. 
+			var newTargetProperty:TargetProperty = new TargetProperty(target, property, tweenTarget.startValue, tweenTarget.endValue);
+			var clone:KSTween = KSTween(this.cloneWithTweenTarget(newTargetProperty));
 			return clone;
 		}
 		
@@ -367,10 +415,22 @@ package org.as3lib.kitchensync.action
 		
 		/**
 		 * Clones the tween with a new tweenTarget.
+		 * 
+		 * @deprecated - Use multiple target properties insread.
+		 * @see #addTweenTarget()
 		 */
-		public function cloneWithTweenTarget(tweenTarget:ITweenTarget):KSTween {
+		public function cloneWithTweenTarget(tweenTarget:*):KSTween {
 			var clone:KSTween = KSTween(this.clone());
-			clone.tweenTarget = tweenTarget;
+			clone.removeAllTweenTargets();
+			if (tweenTarget is ITweenTarget) {
+				clone.addTweenTarget(tweenTarget);
+			} else if (tweenTarget is Array) {
+				for each (var target:ITweenTarget in tweenTarget) {
+					clone.addTweenTarget(target);
+				}
+			} else {
+				throw new TypeError("'tweenTarget' param must be of type Array or of type ITweenTarget");
+			}
 			return clone;
 		}
 		
@@ -380,14 +440,19 @@ package org.as3lib.kitchensync.action
 		 */
 		override public function kill():void {
 			super.kill();
-			_tweenTarget = null;
+			removeAllTweenTargets();
 		}
 		
 		/**
 		 * Returns either the _id or a description of the tween.
 		 */
 		override public function toString():String {
-			return "KSTween :" + Object(_tweenTarget).toString();
+			var string:String = "KSTween[";
+			for each (var target:ITweenTarget in _tweenTargets) {
+				string += Object(target).toString() + ", ";
+			} 
+			string += "]";
+			return string;
 		}
 	}
 }

@@ -40,7 +40,6 @@ package org.as3lib.kitchensync.action.tweentarget
 		function get endValue():Number;
 		function set endValue(endValue:Number):void;
 		
-				
 		/** 
 		 * Reset the value to it's pre-tweened state.
 		 * (typically, sets the currentValue equal to the startValue) 

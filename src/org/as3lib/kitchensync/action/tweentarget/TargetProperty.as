@@ -23,6 +23,8 @@ package org.as3lib.kitchensync.action.tweentarget
 	 */
 	public class TargetProperty implements ITweenTarget
 	{
+		protected const NON_NUMERIC_PROPERTY_ERROR:String = "The 'property' of the object 'target' must be a Number, int, or uint.";
+		
 		/**
 		 * The object containing the property you want to tween.
 		 */
@@ -43,12 +45,16 @@ package org.as3lib.kitchensync.action.tweentarget
 		 * @param property the name of the numeric property to tween.
 		 */
 		public function setTargetPropterty(target:Object, property:String):void {
-			if (target[property] is Number) {
+			if (isPropertyValid(target, property)) {
 				_target = target;
 				_property = property;
 			} else {
-				throw new Error ("The 'property' of the object 'target' must be a Number, int, or uint.");
+				throw new Error (NON_NUMERIC_PROPERTY_ERROR);
 			}
+		}
+		
+		protected function isPropertyValid(target:Object, property:String):Boolean {
+			return (target[property] is Number);
 		}
 		
 		/**

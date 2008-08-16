@@ -14,6 +14,7 @@ ADDED IAction and ISynchronizerClient interfaces.
 ADDED an optimized implementation of IAction, KSSimpleTween. Saw a 25% performance increase over KSTween!
 CHANGED all static types that reference AbstractAction to IAction. Now IActions can be added to groups. (needs testing)
 CHANGED Synchronizer to utilize ISynchronizer client. (virtually no performance increase) :-(
+*CHANGED* Altered KSTween to use multiple tween targets. Now includes methods like addTweenTarget(). some clone methods are deprecated.
 FIXED a bug in KSParallelGroup.stop()
 FIXED a non-bug where using addAction() can cause a null pointer exception after using kill() on a group.
 REMOVED commented out unused 'name' property of AbstractAction
