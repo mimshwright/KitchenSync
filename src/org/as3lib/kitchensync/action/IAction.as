@@ -28,6 +28,12 @@ package org.as3lib.kitchensync.action
 		function get delay():int;
 		function set delay(delay:*):void; 
 		
+		/** Should return true if the action is running (or paused). */
+		function get isRunning():Boolean;
+		
+		/** Should return true if the action is paused. */
+		function get isPaused():Boolean;
+		
 		/**
 		 * Starts the timer for this action.
 		 * 
@@ -39,5 +45,27 @@ package org.as3lib.kitchensync.action
 		 * Stops the action from running and resets the timer.
 		 */
 		function stop():void;
+		
+		
+		/**
+		 * Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
+		 * and the onUpdate() handler will not be called. When unpause() is called,
+		 * the action will continue at the point where it was paused.
+		 * The pause() method affects the start time even if the delay time hasn't expired yet. 
+		 */
+		function pause():void;
+		
+		/**
+		 * Resumes the action at the point where it was paused.
+		 */
+		function unpause():void;
+		
+		/** Returns an exact copy of the action. */
+		function clone():IAction;
+		
+		/**
+		 * Unregisters the action and removes any refrerences to objects that it may be holding onto.
+		 */
+		 function kill():void;
 	}
 }

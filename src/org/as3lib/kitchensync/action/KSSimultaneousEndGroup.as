@@ -22,18 +22,18 @@ package org.as3lib.kitchensync.action
 		public function KSSimultaneousEndGroup (... children) {
 			super();
 			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is AbstractAction) {
-					var action:AbstractAction = AbstractAction(children[i]);
+				if (children[i] is IAction) {
+					var action:IAction = IAction(children[i]);
 					addAction(action); 
 				} else {
-					throw new TypeError ("All children must be of type AbstractAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractAction was expected.");
+					throw new TypeError ("All children must be of type IAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where IAction was expected.");
 				}
 			}
 		}
 		
 		override public function update(currentTimestamp:Timestamp):void {
 			if (startTimeHasElapsed) {
-				var childAction:AbstractAction;
+				var childAction:IAction;
 				// if the group isn't already running...
 				if (!childrenAreRunning) {
 					// reset the number of running children.
@@ -78,7 +78,7 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Determines if the child should start yet.
 		 */
-		 private function isChildStartTimeElapsed(childAction:AbstractAction, currentTimestamp:Timestamp):Boolean {
+		 private function isChildStartTimeElapsed(childAction:IAction, currentTimestamp:Timestamp):Boolean {
 		 	if (childAction.isRunning) { return false; }
 		 	var startTime:int = _childStartTimes[childAction];
 		 	//trace(startTime, "<=", currentTimestamp.currentTime);
@@ -102,7 +102,7 @@ package org.as3lib.kitchensync.action
 		 * @param action The action to get the start time for.
 		 * @param longestItemsTotalDuration The delay + duration of the longest item.
 		 */
-		 private function calculateStartTime(action:AbstractAction, longestItemsTotalDuration:int):int {
+		 private function calculateStartTime(action:IAction, longestItemsTotalDuration:int):int {
 		 	return _startTime.currentTime + longestItemsTotalDuration - action.delay - action.duration;
 		 }
 		
@@ -115,7 +115,7 @@ package org.as3lib.kitchensync.action
 			var longestTime:int = 0;
 			var currentTime:int = 0;
 			if (childActions.length > 0) {
-				for each (var action:AbstractAction in childActions) {
+				for each (var action:IAction in childActions) {
 					// get combined delay and duration.
 					currentTime = action.delay + action.duration;
 					// if it's the longest, save the value. 

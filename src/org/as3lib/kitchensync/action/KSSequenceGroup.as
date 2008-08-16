@@ -12,11 +12,11 @@ package org.as3lib.kitchensync.action
 	{
 		protected const NO_CURRENT_ACTION_INDEX:int = -1;
 		
-		protected var _currentAction:AbstractAction = null;
+		protected var _currentAction:IAction = null;
 		protected var _currentActionIndex:int = NO_CURRENT_ACTION_INDEX;
 		
 		public function get childrenAreRunning():Boolean { return _currentActionIndex != NO_CURRENT_ACTION_INDEX; }
-		public function get currentAction():AbstractAction { return _currentAction; }
+		public function get currentAction():IAction { return _currentAction; }
 		
 		/**
 		 * Constructor.
@@ -28,11 +28,11 @@ package org.as3lib.kitchensync.action
 		public function KSSequenceGroup (... children) {
 			super();
 			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is AbstractAction) {
-					var action:AbstractAction = AbstractAction(children[i]);
+				if (children[i] is IAction) {
+					var action:IAction = IAction(children[i]);
 					addAction(action); 
 				} else {
-					throw new TypeError ("All children must be of type AbstractAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractAction was expected.");
+					throw new TypeError ("All children must be of type IAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where IAction was expected.");
 				}
 			}
 		}
@@ -58,7 +58,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @return The currently playing action.
 		 */
-		protected function startNextAction():AbstractAction {
+		protected function startNextAction():IAction {
 			_currentActionIndex++;
 			_currentAction = getChildAtIndex(_currentActionIndex);
 			_currentAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
@@ -116,10 +116,10 @@ package org.as3lib.kitchensync.action
 			return this;
 		}
 		
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var clone:KSSequenceGroup = new KSSequenceGroup();
 			for (var i:int = 0; i < _childActions.length; i++) {
-				var action:AbstractAction = getChildAtIndex(i).clone();
+				var action:IAction = getChildAtIndex(i).clone();
 				clone.addActionAtIndex(action, i);
 			}
 			clone.delay = _delay;
@@ -128,7 +128,12 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function toString():String {
-			return "KSSequenceGroup";// containing " + _childActions.length + " children";
+			var string:String = "KSSequenceGroup[";
+			for each (var action:IAction in _childActions) {
+				string += Object(action).toString() + ", ";
+			}  
+			string += "]";
+			return  string;
 		}
 	}
 }

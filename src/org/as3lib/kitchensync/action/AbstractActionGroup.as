@@ -38,7 +38,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param action - One or more actions to add to the group. Don't start this action. That will be handled by the group.
 		 */
-		public function addAction(action:AbstractAction, ... additionalActions):void {
+		public function addAction(action:IAction, ... additionalActions):void {
 			_childActions.push(action);
 			if (additionalActions.length > 0) {
 				for each (action in additionalActions) {
@@ -53,7 +53,7 @@ package org.as3lib.kitchensync.action
 		 * @param action - The action to add. Don't start this action. That will be handled by the group.
 		 * @param index - The location at which to add the action. Defaults to the end of the Array
 		 */
-		public function addActionAtIndex(action:AbstractAction, index:int = -1):void {
+		public function addActionAtIndex(action:IAction, index:int = -1):void {
 			if (index < 0) {
 				_childActions.push(action);
 			} else {
@@ -68,7 +68,7 @@ package org.as3lib.kitchensync.action
 		 * @param action - The action to remove.
 		 * @return The removed action.
 		 */
-		public function removeAction(action:AbstractAction):AbstractAction {
+		public function removeAction(action:IAction):IAction {
 			var index:int = _childActions.indexOf(action);
 			if (index != -1) {
 				return _childActions.splice(index, 1)[0];
@@ -84,7 +84,7 @@ package org.as3lib.kitchensync.action
 		 * @param index - The index in the array of the action to remove.
 		 * @return The removed action.
 		 */
-		 public function removeActionAtIndex(index:int):AbstractAction {
+		 public function removeActionAtIndex(index:int):IAction {
 			if (index < 0 || index >= _childActions.length) {
 				throw new Error("Specified child action does not exist");
 			} else {
@@ -99,7 +99,7 @@ package org.as3lib.kitchensync.action
 		 * @param index - The index in the array of the action to return.
 		 * @return The specified action.
 		 */ 
-		 public function getChildAtIndex(index:int):AbstractAction {
+		 public function getChildAtIndex(index:int):IAction {
 		 	if (index < 0 || index >= _childActions.length) {
 				throw new Error("Specified child action does not exist");
 			} else {
@@ -151,7 +151,7 @@ package org.as3lib.kitchensync.action
 		override public function pause():void {
 			super.pause();
 			//_paused = true;
-			for each (var child:AbstractAction in childActions) {
+			for each (var child:IAction in childActions) {
 				child.pause();
 			}
 		}
@@ -159,21 +159,21 @@ package org.as3lib.kitchensync.action
 		override public function unpause():void {
 			super.unpause();
 			//_paused = false;
-			for each (var child:AbstractAction in childActions) {
+			for each (var child:IAction in childActions) {
 				child.unpause();
 			}
 		}
 		
 		override public function stop():void {
 			super.stop();
-			for each (var child:AbstractAction in childActions) {
+			for each (var child:IAction in childActions) {
 				child.stop();
 			}
 		}
 		
 		override public function kill():void {
 			// Kill child actions to avoid zombie actions.
-			for each (var child:AbstractAction in _childActions) {
+			for each (var child:IAction in _childActions) {
 				child.kill();
 			}
 			_childActions = [];

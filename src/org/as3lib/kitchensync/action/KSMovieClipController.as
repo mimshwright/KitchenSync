@@ -32,9 +32,8 @@ package org.as3lib.kitchensync.action
 			super(delay, target.gotoAndPlay, frameIdentifier);
 		}
 		
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var clone:KSMovieClipController = new KSMovieClipController(delay, target, frameIdentifier);
-			//clone.timeUnit = _timeUnit; 
 			clone._args = _args;
 			clone._result = _result;
 			clone.duration = _duration;

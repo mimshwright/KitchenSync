@@ -48,11 +48,11 @@ package org.as3lib.kitchensync.action
 		public function KSStaggeredGroup (stagger:*, ... children) {
 			super();
 			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is AbstractAction) {
-					var action:AbstractAction = AbstractAction(children[i]);
+				if (children[i] is IAction) {
+					var action:IAction = IAction(children[i]);
 					addAction(action); 
 				} else {
-					throw new TypeError ("All children must be of type AbstractAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractAction was expected.");
+					throw new TypeError ("All children must be of type IAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where IAction was expected.");
 				}
 			}
 			this.stagger = stagger;
@@ -81,7 +81,7 @@ package org.as3lib.kitchensync.action
 					// for all of the indexes since the last index.
 					for (var i:int = _lastStartIndex + 1; i <= currentStartIndex; i++) {
 						if (i < childActions.length) {
-							var childAction:AbstractAction = AbstractAction(_childActions[i]);
+							var childAction:IAction = IAction(_childActions[i]);
 							// add a listener to each action so that the completion of the entire group can be tracked.
 							childAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
 							childAction.addEventListener(KitchenSyncEvent.START, onChildStart);
@@ -101,10 +101,10 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var clone:KSStaggeredGroup = new KSStaggeredGroup(_stagger);
 			for (var i:int = 0; i < _childActions.length; i++) {
-				var action:AbstractAction = getChildAtIndex(i).clone();
+				var action:IAction = getChildAtIndex(i).clone();
 				clone.addActionAtIndex(action, i);
 			}
 			clone.delay = _delay;

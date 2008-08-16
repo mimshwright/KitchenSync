@@ -4,13 +4,15 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 * = Contains syntax changes that may require refactoring of legacy code.
 
 ===== v1.6 (In progress) =====
+NEW CONTRIBUTOR Brett Forsyth - welcome!
 ADDED KSSimultaneousEndGroup which causes all children to end simultaneously.
 ADDED KSSteppedSequenceGroup for sequencing powerpoint-like applications.
+ADDED finished coding INumericController
+ADDED isInstantaneous property to AbstractActions
+ADDED toString() methods to some ITweenTarget classes. Modified toString() for some groups.
 ADDED IAction and ISynchronizerClient interfaces.
 ADDED an optimized implementation of IAction, KSSimpleTween. Saw a 25% performance increase over KSTween!
-ADDED isInstantaneous property to AbstractActions
-ADDED toString() methods to some ITweenTarget classes.
-ADDED finished modifying INumericController
+CHANGED all static types that reference AbstractAction to IAction. Now IActions can be added to groups. (needs testing)
 CHANGED Synchronizer to utilize ISynchronizer client. (virtually no performance increase) :-(
 FIXED a bug in KSParallelGroup.stop()
 FIXED a non-bug where using addAction() can cause a null pointer exception after using kill() on a group.
@@ -41,6 +43,7 @@ CHANGED default policy for 'snapToValueOnComplete' to true which should fix some
 CHANGED default frequency for oscillating functions. 
 
 ===== v1.2* (2008.05.2) =====
+NEW CONTRIBUTOR Aral Balkan - welcome!
 *RENAMED* Nearly the entire library
 *MOVED* All classes into new packages
 *ADDED* KitchenSync as the entry point to the library. Use KitchenSync.initialize(this, "1.2"); to start the app.

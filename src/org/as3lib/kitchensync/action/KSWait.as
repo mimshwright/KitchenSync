@@ -31,9 +31,8 @@ package org.as3lib.kitchensync.action
 				}
 			}
 		}
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var clone:KSWait = new KSWait(_delay);
-			//clone.timeUnit = _timeUnit;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

@@ -11,9 +11,9 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The action that the ActionController will send commands to.
 		 */
-		protected var _target:AbstractAction;
-		public function set target (target:AbstractAction):void { _target = target; }
-		public function get target ():AbstractAction { return _target; }
+		protected var _target:IAction;
+		public function set target (target:IAction):void { _target = target; }
+		public function get target ():IAction { return _target; }
 		
 		/**
 		 * Constructor.
@@ -22,7 +22,7 @@ package org.as3lib.kitchensync.action
 		 * @param command - the function that the SynchronizedAction will perform when the ActionController executes.
 		 * @param delay - the number of frames to delay the action.
 		 */ 
-		public function KSActionController (target:AbstractAction, command:ActionControllerCommand = null, delay:* = 0) {
+		public function KSActionController (target:IAction, command:ActionControllerCommand = null, delay:* = 0) {
 			super(delay, null);
 			if (target) {
 				_target = target;

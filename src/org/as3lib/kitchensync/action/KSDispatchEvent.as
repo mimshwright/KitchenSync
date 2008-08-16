@@ -124,7 +124,7 @@ package org.as3lib.kitchensync.action
 			_event = null;
 		}
 		
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var clone:KSDispatchEvent = new KSDispatchEvent(_event, _target, _delay);
 			//clone.timeUnit = _timeUnit;
 			clone.duration = _duration;

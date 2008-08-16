@@ -64,6 +64,20 @@ package org.as3lib.kitchensync.action
 		/** The time at which the tween was started. */
 		protected var _startTime:int;
 		
+		/** The time at which the tween was last paused. */
+		protected var _pauseTime:int;
+		
+		/** Set to true internally if when the start() method is called (false when stopped). */
+		protected var _running:Boolean = false;
+		/** Set to true internally when the puase() mehtod is called (false when unpaused) */
+		protected var _paused:Boolean = false;
+		
+		/** True when the action is running (or paused) */
+		public function get isRunning():Boolean { return _running; }
+		
+		/** True when the action is paused */ 
+		public function get isPaused():Boolean { return _paused; }
+		
 		/**
 		 * Constuctor.
 		 * 
@@ -115,18 +129,21 @@ package org.as3lib.kitchensync.action
 		 * @return IAction - returns self (for convenience)
 		 */
 		public function start():IAction {
-			// get the current timestamp
-			var currentTimestamp:Timestamp = Synchronizer.getInstance().currentTimestamp;
-			// cache the delta
-			_delta = endValue - startValue;
-			// record the start time
-			_startTime = currentTimestamp.currentTime + _delay;
-			// register the class.
-			Synchronizer.getInstance().registerClient(this);
-			// force the first update.
-			update(currentTimestamp);
-			
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, currentTimestamp));
+			if (!_running) {
+				// get the current timestamp
+				var currentTimestamp:Timestamp = Synchronizer.getInstance().currentTimestamp;
+				// cache the delta
+				_delta = endValue - startValue;
+				// record the start time
+				_startTime = currentTimestamp.currentTime + _delay;
+				// register the class.
+				Synchronizer.getInstance().registerClient(this);
+				_running = true;
+				// force the first update.
+				update(currentTimestamp);
+				
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, currentTimestamp));
+			}
 			return this;
 		}
 		
@@ -142,6 +159,41 @@ package org.as3lib.kitchensync.action
 		protected function complete():void {
 			stop();
 			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));
+		}
+		
+		
+		public function pause():void {
+			if (!_running && !_paused) {
+				var currentTimestamp:Timestamp = Synchronizer.getInstance().currentTimestamp;
+				_pauseTime = currentTimestamp.currentTime;
+				_paused = true;
+				Synchronizer.getInstance().unregisterClient(this);
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.PAUSE, currentTimestamp));
+			}
+		}
+		
+		/**
+		 * Resumes the action at the point where it was paused.
+		 */
+		public function unpause():void {
+			if (_running && _paused) {
+				Synchronizer.getInstance().registerClient(this);
+				_paused = false;
+				var currentTimestamp:Timestamp = Synchronizer.getInstance().currentTimestamp;
+				var timeSincePause:int = currentTimestamp.currentTime - _pauseTime;
+				_startTime = _startTime + timeSincePause; 
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UNPAUSE, currentTimestamp));
+			}
+		}
+		
+		
+		public function kill():void {
+			target = null;
+			easingFunction = null;
+		}
+		
+		public function clone():IAction {
+			return new KSSimpleTween(target, property, startValue, endValue, duration, delay, easingFunction);
 		}
 		
 		override public function toString():String {

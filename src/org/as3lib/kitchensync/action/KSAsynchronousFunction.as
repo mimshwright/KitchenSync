@@ -57,7 +57,7 @@ package org.as3lib.kitchensync.action
 			complete();
 		}
 		
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var clone:KSAsynchronousFunction = new KSAsynchronousFunction(_delay, _func, _completeEventDispatcher, _completeEventType);
 			clone._args = _args;
 			clone.duration = _duration;

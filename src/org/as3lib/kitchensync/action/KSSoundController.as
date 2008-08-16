@@ -146,9 +146,8 @@ package org.as3lib.kitchensync.action
 			_sound = null;
 		}
 		
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var clone:KSSoundController = new KSSoundController(_sound, _delay, _soundOffset);
-			//clone.timeUnit = _timeUnit;
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

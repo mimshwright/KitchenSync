@@ -16,16 +16,16 @@ package org.as3lib.kitchensync.action
 		public function KSRandomGroup(... children)
 		{
 			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is AbstractAction) {
-					var action:AbstractAction = AbstractAction(children[i]);
+				if (children[i] is IAction) {
+					var action:IAction = IAction(children[i]);
 					addAction(action); 
 				} else {
-					throw new TypeError ("All children must be of type AbstractAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where AbstractAction was expected.");
+					throw new TypeError ("All children must be of type IAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where IAction was expected.");
 				}
 			}
 		}
 		
-		override protected function startNextAction():AbstractAction {
+		override protected function startNextAction():IAction {
 			_currentAction = getNextRandomAction();
 			_currentAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
 			_currentAction.addEventListener(KitchenSyncEvent.START, onChildStart);
@@ -33,7 +33,7 @@ package org.as3lib.kitchensync.action
 			return _currentAction;
 		}
 		
-		protected function getNextRandomAction():AbstractAction {
+		protected function getNextRandomAction():IAction {
 			// TODO make random
 			return getChildAtIndex(_currentActionIndex++);
 		}

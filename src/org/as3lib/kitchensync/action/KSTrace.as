@@ -19,7 +19,7 @@ package org.as3lib.kitchensync.action
 			super(delay, trace, message.toString());
 		}
 		
-		override public function clone():AbstractAction { 
+		override public function clone():IAction { 
 			var clone:KSTrace = new KSTrace(message, _delay);
 			clone.autoDelete = _autoDelete;
 			return clone;

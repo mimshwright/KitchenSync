@@ -254,7 +254,7 @@ package org.as3lib.kitchensync.action
 		 * @param trigger Another action that will trigger the start of this action.
 		 * @throws flash.errors.Error If the trigger action is the same as this action.
 		 */
-		public function addTrigger(trigger:AbstractAction):void {
+		public function addTrigger(trigger:IAction):void {
 		 	if (trigger == this) { throw new Error("An action cannot be triggered by itself."); }
 			trigger.addEventListener(KitchenSyncEvent.COMPLETE, onTrigger);
 		}
@@ -264,7 +264,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param trigger Another action that triggers the start of this action.
 		 */
-		public function removeTrigger(trigger:AbstractAction):void {
+		public function removeTrigger(trigger:IAction):void {
 		 	trigger.removeEventListener(KitchenSyncEvent.COMPLETE, onTrigger);
 		}
 		
@@ -361,7 +361,7 @@ package org.as3lib.kitchensync.action
 		 * @abstract
 		 * @returns AbstractSyncrhonizedAction - A copy of the original object. Type casting may be necessary.
 		 */
-		public function clone():AbstractAction {
+		public function clone():IAction {
 			AbstractEnforcer.enforceMethod();
 			return this;
 		}

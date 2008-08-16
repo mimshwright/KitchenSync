@@ -296,14 +296,13 @@ package org.as3lib.kitchensync.action
 			_tweenTarget.endValue = temp;						
 		}
 		
-		override public function clone():AbstractAction {
+		override public function clone():IAction {
 			var tweenTargetClone:ITweenTarget = _tweenTarget.clone();
 			var clone:KSTween = newWithTweenTarget(tweenTargetClone, _duration, _delay, _easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
 			clone.snapToValueOnComplete = _snapToValueOnComplete;
-			//clone.snapToWholeNumber = _snapToWholeNumber;
 			return clone;
 		}
 		
