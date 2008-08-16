@@ -17,6 +17,7 @@ package org.as3lib.kitchensync.action
 	 * the tween while ITweenTargets control the values of the tween.
 	 * 
 	 * @see org.as3lib.kitchensync.action.tweentarget.ITweenTarget
+	 * @see org.as3lib.kitchensync.action.KSSimpleAction
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
