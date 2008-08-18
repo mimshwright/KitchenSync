@@ -27,7 +27,7 @@ package org.as3lib.kitchensync.action
 		 * Use this property to cause the tween to start from whatever the targetProperty is 
 		 * set to at the time the tween executes.
 		 */
-		public static const EXISTING_FROM_VALUE:Number = Number.NEGATIVE_INFINITY;
+		public static const VALUE_AT_START_OF_TWEEN:Number = NaN;
 		
 		/**
 		 * The function used to interpolated the values between the start and end points.
@@ -112,7 +112,7 @@ package org.as3lib.kitchensync.action
 		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		public function KSTween(target:Object = null, property:String = "", startValue:Number = EXISTING_FROM_VALUE, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null)
+		public function KSTween(target:Object = null, property:String = "", startValue:Number = VALUE_AT_START_OF_TWEEN, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null)
 		{
 			super();
 			_tweenTargets = new Array();
@@ -128,7 +128,7 @@ package org.as3lib.kitchensync.action
 				for each (var tweenTarget:ITweenTarget in tweenTargetArray) {
 					addTweenTarget(tweenTarget);
 				}
-			} else {
+			} else if (target != null) {
 				// otherwise, create a TargetProperty object.
 				addTweenTarget(new TargetProperty(target, property, startValue, endValue));
 			}
@@ -215,7 +215,7 @@ package org.as3lib.kitchensync.action
 				if (timeElapsed <= 1) {
 					for each (target in _tweenTargets) {
 						// if using the 'existing from value' set the start value at the time that the tween begins.
-						if (target.startValue == EXISTING_FROM_VALUE) { 
+						if (target.startValue == VALUE_AT_START_OF_TWEEN) { 
 							target.startValue = target.currentValue; 
 						}
 					}
