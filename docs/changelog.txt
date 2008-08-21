@@ -5,6 +5,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 ===== v1.6 (In progress) =====
 NEW CONTRIBUTOR Brett Forsyth - welcome!
+ADDED TweenFactory which provides an easy to use interface for creating new tweens.
 ADDED KSSimultaneousEndGroup which causes all children to end simultaneously.
 ADDED KSSteppedSequenceGroup for sequencing powerpoint-like applications.
 ADDED finished coding INumericController
@@ -15,6 +16,7 @@ ADDED an optimized implementation of IAction, KSSimpleTween. Saw a 25% performan
 CHANGED all static types that reference AbstractAction to IAction. Now IActions can be added to groups. (needs testing)
 CHANGED Synchronizer to utilize ISynchronizer client. (virtually no performance increase) :-(
 *CHANGED* Altered KSTween to use multiple tween targets. Now includes methods like addTweenTarget(). some clone methods are deprecated.
+CHANGED KSTween's EXISTING_FROM_VALUE to VALUE_AT_START_OF_TWEEN
 FIXED a bug in KSParallelGroup.stop()
 FIXED a non-bug where using addAction() can cause a null pointer exception after using kill() on a group.
 REMOVED commented out unused 'name' property of AbstractAction

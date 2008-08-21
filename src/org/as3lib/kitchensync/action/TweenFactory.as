@@ -13,7 +13,9 @@ package org.as3lib.kitchensync.action
 	{
 		
 		public static function newTween(parameters:Object):KSTween {
-			var tween:KSTween = new KSTween(null, "", NaN, NaN, 2000, 1000, parseEasingFunction(parameters));
+			// set up initial tween.
+			var tween:KSTween = new KSTween(null, "", NaN, NaN, parseDuration(parameters), parseDelay(parameters), parseEasingFunction(parameters));
+			
 			// parse target
 			var i:int, j:int;
 			var target:Object = parameters.target;
@@ -70,7 +72,13 @@ package org.as3lib.kitchensync.action
 					}
 				}
 				
-			}
+			} // else require target?
+			
+			var mod1:* = parseMod1(parameters);
+			var mod2:* = parseMod2(parameters);
+
+			if (mod1) { tween.easingMod1 = mod1; }
+			if (mod2) { tween.easingMod2 = mod2; }
 			
 			return tween;
 		}
@@ -81,6 +89,22 @@ package org.as3lib.kitchensync.action
 				return easingFunction;
 			}
 			return null;
+		}
+		
+		private static function parseDuration(parameters:Object):* {
+			var duration:* = getFirstDefinedValue(parameters, "duration");
+			if (isNaN(duration)) {
+				if (duration == null) {
+					// default to 1 second
+					return 1000;
+				}
+			} 
+			return duration;
+		}
+
+		private static function parseDelay(parameters:Object):* {
+			var delay:* = getFirstDefinedValue(parameters, "delay", "offset");
+			return delay;
 		}
 		
 		private static function parseStartValue(parameters:Object):Number {
@@ -97,28 +121,87 @@ package org.as3lib.kitchensync.action
 		
 		private static function parseProperties(paramerters:Object):Array {
 			var resultsArray:Array = new Array();
+			var results:Object;
+			var property:String;
+			var startValue:Number;
+			var endValue:Number;
+			
 			for (var key:String in paramerters) {
-				var results:Object;
+				
+				// check for ~ notation 
 				var string:String = paramerters[key].toString();				
 				if (string.search("~") >= 0) {
 					var values:Array = string.split("~");
-					results = {property:key, start: values[0], end: values[1]};
-					resultsArray.push(results);
-					continue;
+					property = key;
+					startValue = values[0];
+					endValue = values[1];
+				} else {
+					// check for _start / _end notation.
+					var startStringIndex:int = key.search(/(_start|Start)/);
+					if (startStringIndex >= 0) {
+						property = key.slice(0, startStringIndex);
+						startValue = paramerters[key] as Number; 
+						endValue = getFirstDefinedValue(paramerters, property + "_end", property + "End") as Number;
+						
+						results = {property: property, start: startValue, end: endValue};
+						resultsArray.push(results);
+						continue;
+					} else {
+						// ignore it.
+					}
+				} 
+				
+				results = {start: startValue, end: endValue};
+				// check results for keywords.
+				switch (property) {
+					case "scale":
+						resultsArray.push({property:"scaleX", start:startValue, end:endValue});
+						resultsArray.push({property:"scaleY", start:startValue, end:endValue});
+					break;
+					
+					default:
+						// push results onto array to later be converted into tween targets.
+						results.property = property;
+						resultsArray.push(results);
 				}
 				
-				var startStringIndex:int = key.search(/(_start|Start)/);
-				if (startStringIndex >= 0) {
-					var property:String = key.slice(0, startStringIndex);
-					var startValue:Number = paramerters[key] as Number; 
-					var endValue:Number = getFirstDefinedValue(paramerters, property + "_end", property + "End") as Number;
-					
-					results = {property: property, start: startValue, end: endValue};
-					resultsArray.push(results);
-					continue;
-				}
 			}
 			return resultsArray;
+		}
+		
+		private static function parsePropertiesString(string:String):Array {
+			var resultsArray:Array = [];
+			var results:Object;
+			var property:String;
+			var values:String;
+			var startValue:Number;
+			var endValue:Number;
+			
+			var props:Array = string.split(",");
+			var prop:String;
+			for each (prop in props) {
+				property = prop.split(":")[0];
+				values = prop.split(":")[1]; 
+				if (values.search("~") >=0) {
+					startValue = Number(values.split("~")[0]);
+					endValue = Number(values.split("~")[1]);
+				} else {
+					startValue = KSTween.VALUE_AT_START_OF_TWEEN;
+					endValue = Number(values);
+				}
+				results = {property: property, start: startValue, end: endValue};
+				resultsArray.push(results);
+			}
+			return resultsArray;
+		}
+		
+		private static function parseMod1(parameters:Object):Number {
+			var mod1:Number = getFirstDefinedValue(parameters, "easingMod1", "mod1") as Number;
+			 return mod1;
+		}
+		private static function parseMod2(parameters:Object):Number {
+			var mod2:Number = getFirstDefinedValue(parameters, "easingMod2", "mod2") as Number;
+			 return mod2;
 		}
 		
 		/** 
