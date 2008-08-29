@@ -5,6 +5,8 @@ package org.as3lib.kitchensync
 	
 	public class KitchenSyncDefaults
 	{
+		public static var syncrhonizerUsesWeakReferences:Boolean = false;
+		
 		// ALL ACTIONS
 		public static var autoDelete:Boolean = false;
 		public static var sync:Boolean = true;

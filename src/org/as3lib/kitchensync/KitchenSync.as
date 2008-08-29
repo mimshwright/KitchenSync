@@ -34,6 +34,7 @@ package org.as3lib.kitchensync
 		{	
 			
 			if (_initialized) {
+				// todo make this error optional.
 				throw new IllegalOperationError("KitchenSync has already been initialized.");
 			}
 			if (versionCheck != VERSION) {

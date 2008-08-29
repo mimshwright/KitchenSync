@@ -9,6 +9,8 @@ package org.as3lib.kitchensync.core
 	import flash.utils.Timer;
 	import flash.utils.getTimer;
 	
+	import org.as3lib.kitchensync.KitchenSyncDefaults;
+	
 	
 	[Event(name="synchronizerUpdate", type="org.as3lib.kitchensync.KitchenSyncEvent")]
 	
@@ -35,7 +37,7 @@ package org.as3lib.kitchensync.core
 		//public function set active (active:Boolean):void { _active = active; }
 		
 		/** A list of clients that are registered to listen for updates. */
-		private var _clients:Dictionary = new Dictionary(false);
+		private var _clients:Dictionary = new Dictionary(KitchenSyncDefaults.syncrhonizerUsesWeakReferences);
 		
 		/** The frameRate (as defined in the stage) */
 		public function get frameRate():int {return _stage.frameRate; }
