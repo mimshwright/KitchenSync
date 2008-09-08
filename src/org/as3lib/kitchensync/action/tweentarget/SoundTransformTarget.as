@@ -3,11 +3,17 @@ package org.as3lib.kitchensync.action.tweentarget
 	import flash.media.SoundChannel;
 	import flash.media.SoundTransform;
 	
+	
 	/** 
 	 * A tween target for setting sound transform (volume and panning).
+	 * 
+	 * known issue: high speed transitions, such as oscicators with high frequencies,
+	 * can cause clicks and distortion in the sound.
 	 */
+	// TODO add properties for left to right, right to right, etc.
 	public class SoundTransformTarget implements ITweenTarget
 	{
+	
 		/** Use PAN as the property to control panning. */
 		public static const PAN:String = "pan";
 		/** Use VOLUME as the property to control volume. */
