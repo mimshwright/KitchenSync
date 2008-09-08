@@ -6,6 +6,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 ===== v1.6 (In progress) =====
 NEW CONTRIBUTOR Brett Forsyth - welcome!
 ADDED TweenFactory which provides an easy to use interface for creating new tweens.
+ADDED SoundTransformTarget for changing volume or panning of a sound.
 ADDED KSSimultaneousEndGroup which causes all children to end simultaneously.
 ADDED KSSteppedSequenceGroup for sequencing powerpoint-like applications.
 ADDED finished coding INumericController
