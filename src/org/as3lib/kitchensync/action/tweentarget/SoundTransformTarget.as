@@ -101,10 +101,10 @@ package org.as3lib.kitchensync.action.tweentarget
 			var transform:SoundTransform = _channel.soundTransform;
 			
 			if (_property == PAN) {
-				transform.pan = differenceInValues * currentValue + _startValue;
+				transform.pan = currentValue;
 			}
 			if (_property == VOLUME) {
-				transform.volume = differenceInValues * currentValue + _startValue; 
+				transform.volume = currentValue; 
 			}
 			
 			_channel.soundTransform = transform;
