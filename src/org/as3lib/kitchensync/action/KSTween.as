@@ -21,7 +21,7 @@ package org.as3lib.kitchensync.action
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
-	public class KSTween extends AbstractAction
+	public class KSTween extends AbstractAction implements ITween
 	{
 		/**
 		 * Use this property to cause the tween to start from whatever the targetProperty is 

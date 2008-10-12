@@ -1,5 +1,7 @@
 package org.as3lib.kitchensync
 {
+	import org.as3lib.kitchensync.action.ITweenObjectParser;
+	import org.as3lib.kitchensync.action.KitchenSyncObjectParser;
 	import org.as3lib.kitchensync.easing.Linear;
 	import org.as3lib.kitchensync.utils.*;
 	
@@ -16,6 +18,7 @@ package org.as3lib.kitchensync
 		// TWEENS
 		public static var snapToValueOnComplete:Boolean = true;
 		public static var snapToInteger:Boolean = false;
+		public static var tweenObjectParser:ITweenObjectParser = new KitchenSyncObjectParser();
 		
 		// GROUPS
 		public static var resetChildrenAtStart:Boolean = true;

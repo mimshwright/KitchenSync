@@ -35,6 +35,7 @@ package org.as3lib.kitchensync.action
 		
 		protected function getNextRandomAction():IAction {
 			// TODO make random
+			throw new Error("Sorry, this class isn't fully functional yet.");
 			return getChildAtIndex(_currentActionIndex++);
 		}
 		
