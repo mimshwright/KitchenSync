@@ -157,7 +157,13 @@ package org.as3lib.kitchensync.action
 					if (startStringIndex >= 0) {
 						data.propertyName = key.slice(0, startStringIndex);
 						data.startValue = paramerters[key] as Number; 
-						data.endValue = getFirstDefinedValue(paramerters, property + "_end", property + "End") as Number;
+						data.endValue = getFirstDefinedValue(paramerters, 	data.propertyName + "_end", 
+																			data.propertyName + "End",
+																			data.propertyName + "_to",
+																			data.propertyName + "To") as Number;
+						if (isNaN(data.endValue)) {
+							data.endValue = KSTween.VALUE_AT_START_OF_TWEEN;
+						}
 						
 						resultsArray.push(data);
 						continue;
