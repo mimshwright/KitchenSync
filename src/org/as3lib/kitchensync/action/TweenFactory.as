@@ -12,6 +12,15 @@ package org.as3lib.kitchensync.action
 	{
 		public static var objectParser:ITweenObjectParser = KitchenSyncDefaults.tweenObjectParser;
 		
+		/** 
+		 * Uses a generic object to define parameters for a new tween. See ITweenParser and KitchenSyncObjectParser for more details.
+		 *
+		 * @see ITweenObjectParser
+		 * @see KitchenSyncObjectParser
+		 * 
+		 * @param parameters An object that contains properties that define the new tween
+		 * @return A new tween.
+		 */ 
 		public static function newTween(parameters:Object):ITween {
 			return objectParser.parseObject(parameters);
 		}
