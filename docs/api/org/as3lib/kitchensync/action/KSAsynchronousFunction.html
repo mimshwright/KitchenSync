@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="KSAsynchronousFunction,org.as3lib.kitchensync.action.KSAsynchronousFunction,_completeEventDispatcher,_completeEventType,clone,kill,onFunctionComplete,onUpdate" name="keywords">
+<meta content="KSAsynchronousFunction,org.as3lib.kitchensync.action.KSAsynchronousFunction,_completeEventDispatcher,_completeEventType,clone,kill,onFunctionComplete,update" name="keywords">
 <title>org.as3lib.kitchensync.action.KSAsynchronousFunction</title>
 </head>
 <body>
@@ -42,7 +42,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  An action for calling an asynchronous function that is expected to dipatch an event when
+  it completes.
+  
+  <p></p>
 <br>
 <hr>
 </div>
@@ -63,7 +66,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription">
-   autoDelete is a flag that indicates whether the action should be deleted 
+   autoDelete is a flag that indicates whether the action should be killed 
    when it is done executing.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
@@ -88,17 +91,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="KSFunction.html">KSFunction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#isInstantaneous">isInstantaneous</a> : Boolean<div class="summaryTableDescription"> Returns true if the action will occur instantaneously when started </div>
+</td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription">
    Will return true if the action is paused (after pause() has been called).</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">
-   Will return true when the action is running (after start() has been called).</div>
-</td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#name">name</a> : String<div class="summaryTableDescription">
    The human-readable name of this action.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
@@ -169,11 +171,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_completeEventDispatcher">_completeEventDispatcher</a> : IEventDispatcher<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_completeEventDispatcher">_completeEventDispatcher</a> : IEventDispatcher<div class="summaryTableDescription"> a reference to the event dispatcher </div>
 </td><td class="summaryTableOwnerCol">KSAsynchronousFunction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_completeEventType">_completeEventType</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_completeEventType">_completeEventType</a> : String<div class="summaryTableDescription"> the type of event to listen for </div>
 </td><td class="summaryTableOwnerCol">KSAsynchronousFunction</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -187,10 +189,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSFunction.html#_func">_func</a> : Function<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="KSFunction.html">KSFunction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_name">_name</a> : String<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractAction.html#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
@@ -239,7 +237,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#KSAsynchronousFunction()">KSAsynchronousFunction</a>(delay:*, func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ... args)</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Constructor.</div>
 </td><td class="summaryTableOwnerCol">KSAsynchronousFunction</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -253,7 +252,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="AbstractAction.html#addTrigger()">addTrigger</a>(trigger:<a href="../action/AbstractAction.html">AbstractAction</a>):void</div>
+<a class="signatureLink" href="AbstractAction.html#addTrigger()">addTrigger</a>(trigger:<a href="../action/IAction.html">IAction</a>):void</div>
 <div class="summaryTableDescription">
    Causes the action to start playing when another event completes.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
@@ -261,7 +260,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#clone()">clone</a>():<a href="../action/AbstractAction.html">AbstractAction</a>
+<a class="signatureLink" href="#clone()">clone</a>():<a href="../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">KSAsynchronousFunction</td>
@@ -308,7 +307,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="AbstractAction.html#removeTrigger()">removeTrigger</a>(trigger:<a href="../action/AbstractAction.html">AbstractAction</a>):void</div>
+<a class="signatureLink" href="AbstractAction.html#removeTrigger()">removeTrigger</a>(trigger:<a href="../action/IAction.html">IAction</a>):void</div>
 <div class="summaryTableDescription">
    Removes a trigger added with addTrigger().</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
@@ -316,7 +315,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="AbstractAction.html#start()">start</a>():<a href="../action/AbstractAction.html">AbstractAction</a>
+<a class="signatureLink" href="AbstractAction.html#start()">start</a>():<a href="../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription">
    Starts the timer for this action.</div>
@@ -345,6 +344,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription">
    Removes the action as a listener to the Synchronizer's update event.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#update()">update</a>(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</div>
+<div class="summaryTableDescription">
+   Executes the function when the delay has elapsed.</div>
+</td><td class="summaryTableOwnerCol">KSAsynchronousFunction</td>
 </tr>
 </table>
 </div>
@@ -376,7 +383,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="AbstractAction.html#forceUpdate()">forceUpdate</a>():void</div>
 <div class="summaryTableDescription">
-   Foreces the onUpdate() method to fire without being triggered by Synchronizer.</div>
+   Foreces the update() method to fire without being triggered by Synchronizer.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="">
@@ -394,14 +401,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription">
    Handler that starts playing the action that is called by a trigger event.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#onUpdate()">onUpdate</a>(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
-<div class="summaryTableDescription">
-   Executes the function when the delay has elapsed.</div>
-</td><td class="summaryTableOwnerCol">KSAsynchronousFunction</td>
 </tr>
 </table>
 </div>
@@ -464,8 +463,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _completeEventDispatcher:IEventDispatcher</code>
-</div>
+<code>protected var _completeEventDispatcher:IEventDispatcher</code><p> a reference to the event dispatcher </p></div>
 <a name="_completeEventType"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -473,8 +471,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _completeEventType:String</code>
-</div>
+<code>protected var _completeEventType:String</code><p> the type of event to listen for </p></div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
 <a name="KSAsynchronousFunction()"></a>
@@ -484,34 +481,43 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function KSAsynchronousFunction(delay:*, func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ... args)</code><span class="label">Parameters</span>
+<code>public function KSAsynchronousFunction(delay:*, func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ... args)</code><p>
+   Constructor.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:*</code></td>
+<td width="20px"></td><td><code><span class="label">delay</span>:*</code> &mdash; The time to wait before calling the function.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">func</span>:Function</code></td>
+<td width="20px"></td><td><code><span class="label">func</span>:Function</code> &mdash; The function to call
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">completeEventDispatcher</span>:IEventDispatcher</code></td>
+<td width="20px"></td><td><code><span class="label">completeEventDispatcher</span>:IEventDispatcher</code> &mdash; The IEventDispatcher that will fire the event signaling that the 
+             function is complete.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">completeEventType</span>:String</code></td>
+<td width="20px"></td><td><code><span class="label">completeEventType</span>:String</code> &mdash; The type (name) of the event that will be fired when complete.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code>... <span class="label">args</span></code></td>
+<td width="20px"></td><td><code>... <span class="label">args</span></code> &mdash; All additional parameters will be passed as arguments to the function when it is called. 
+   </td>
 </tr>
 </table>
 </div>
@@ -524,12 +530,12 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function clone():<a href="../action/AbstractAction.html">AbstractAction</a></code>
+<code>public override function clone():<a href="../action/IAction.html">IAction</a></code>
 <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../action/AbstractAction.html">AbstractAction</a></code></td>
+<td width="20"></td><td><code><a href="../action/IAction.html">IAction</a></code></td>
 </tr>
 </table>
 </div>
@@ -558,19 +564,19 @@ showHideInherited();
 </tr>
 </table>
 </div>
-<a name="onUpdate()"></a>
+<a name="update()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">onUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>protected override function onUpdate(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</code><p>
+<code>public override function update(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</code><p>
    Executes the function when the delay has elapsed.
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">event</span>:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a></code></td>
+<td width="20px"></td><td><code><span class="label">currentTimestamp</span>:<a href="../core/Timestamp.html">Timestamp</a></code></td>
 </tr>
 </table>
 </div>

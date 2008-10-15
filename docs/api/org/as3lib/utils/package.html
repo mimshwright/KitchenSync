@@ -39,41 +39,37 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#strictIs()">strictIs</a>(instance:Object, compareClass:Class):Boolean</div>
+<a class="signatureLink" href="#isPrimitive()">isPrimitive</a>(instance:*):Boolean</div>
 <div class="summaryTableDescription">
-  Checks the class of <code>instance</code> against the <code>compareClass</code> for strict
-  equality.</div>
+  Checks to see if the class of <code>instance</code> is a primitive which will be referenced by value
+  rather than by pointer.</div>
 </td><td class="summaryTableOwnerCol">org.as3lib.utils</td>
 </tr>
 </table>
 </div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Function detail</div>
-<a name="strictIs()"></a>
+<a name="isPrimitive()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">strictIs</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">function</td>
+<td class="detailHeaderName">isPrimitive</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">function</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public function strictIs(instance:Object, compareClass:Class):Boolean</code><p>
-  Checks the class of <code>instance</code> against the <code>compareClass</code> for strict
-  equality. If the classes are exactly the same, returns true. If
-  the classes are different even if the <code>instance</code>'s class is a subclass
-  of <code>compareClass</code>, it returns false.
-  Does not work with interfaces. The compareClass must be a class.
+<code>public function isPrimitive(instance:*):Boolean</code><p>
+  Checks to see if the class of <code>instance</code> is a primitive which will be referenced by value
+  rather than by pointer.
+  The primitive types checked for are :
+  Number
+  int
+  uint
+  String
+  Boolean
   
   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">instance</span>:Object</code> &mdash; - the object whos class you want to check.
-  </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">compareClass</span>:Class</code> &mdash; - the class to compare your object against.
+<td width="20px"></td><td><code><span class="label">instance</span>:*</code> &mdash; - the object whos class you want to check.
   </td>
 </tr>
 </table>
@@ -81,21 +77,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Boolean</code> &mdash; true if instance is strictly of type compareClass.
+<td width="20"></td><td><code>Boolean</code> &mdash; true if instance is is a primitive value.
   </td>
 </tr>
 </table>
-<br>
-<span class="label">Example</span>
-<br><div class='listing'><pre>
-     var myBase:BaseClass = new BaseClass();
-     var mySub:SubClass = new SubClass();
-     trace(strictIs(myBase, BaseClass)); // true
-     trace(strictIs(mySub, SubClass));  // true
-     trace(strictIs(mySub, BaseClass));  // false
-     </pre></div>
-  
-  <p></p>
 </div>
 <p></p>
 <center class="copyright"> 

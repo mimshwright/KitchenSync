@@ -49,7 +49,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("RÂ
    Adds the action as a listener to the Synchronizer's update event.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html#removeAction()">removeAction</a>(action:<a href="org/as3lib/kitchensync/action/AbstractAction.html" onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action./class-list.html');">org.as3lib.kitchensync.action:AbstractAction</a>) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html">AbstractActionGroup</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/Synchronizer.html#registerClient()">registerClient</a>(client:<a href="org/as3lib/kitchensync/core/ISynchronizerClient.html" onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core./class-list.html');">org.as3lib.kitchensync.core:ISynchronizerClient</a>) &mdash; Method in class org.as3lib.kitchensync.core.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/Synchronizer.html">Synchronizer</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html#removeAction()">removeAction</a>(action:<a href="org/as3lib/kitchensync/action/IAction.html" onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action./class-list.html');">org.as3lib.kitchensync.action:IAction</a>) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -61,6 +68,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("RÂ
 <tr>
 <td width="20"></td><td>
    Removes an action at the specified index.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html#removeAllTweenTargets()">removeAllTweenTargets</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html">KSTween</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSDispatchEvent.html#removeEventListenerFromTarget()">removeEventListenerFromTarget</a>(listener, useCapture) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSDispatchEvent.html">KSDispatchEvent</a></td>
@@ -77,11 +90,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("RÂ
    Removes an event trigger added by addEventTrigger().</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#removeTrigger()">removeTrigger</a>(trigger:<a href="org/as3lib/kitchensync/action/AbstractAction.html" onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action./class-list.html');">org.as3lib.kitchensync.action:AbstractAction</a>) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#removeTrigger()">removeTrigger</a>(trigger:<a href="org/as3lib/kitchensync/action/IAction.html" onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action./class-list.html');">org.as3lib.kitchensync.action:IAction</a>) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Removes a trigger added with addTrigger().</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html#removeTweenTarget()">removeTweenTarget</a>(tweenTarget:<a href="org/as3lib/kitchensync/action/tweentarget/ITweenTarget.html" onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget./class-list.html');">org.as3lib.kitchensync.action.tweentarget:ITweenTarget</a>) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html">KSTween</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html#reset()">reset</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html">KSTween</a></td>
@@ -110,6 +129,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("RÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/SoundTransformTarget.html#reset()">reset</a>() &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/SoundTransformTarget.html">SoundTransformTarget</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Returns the current value to the start value.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TargetProperty.html#reset()">reset</a>() &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TargetProperty.html">TargetProperty</a></td>
 </tr>
 <tr>
@@ -126,6 +152,18 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("RÂ
 </tr>
 <tr>
 <td width="20"></td><td> reset() command.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/class-list.html');" href="org/as3lib/kitchensync/KitchenSyncDefaults.html#resetChildrenAtStart">resetChildrenAtStart</a> &mdash; Static property in class org.as3lib.kitchensync.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/class-list.html');" href="org/as3lib/kitchensync/KitchenSyncDefaults.html">KitchenSyncDefaults</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html#resetChildrenAtStart">resetChildrenAtStart</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</tr>
+<tr>
+<td width="20"></td><td> If true, the group's KSTween children will reset to their default positions when the group is started.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSFunction.html#_result">_result</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSFunction.html">KSFunction</a></td>
@@ -159,6 +197,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("RÂ
 </tr>
 <tr>
 <td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html#_running">_running</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html">KSSimpleTween</a></td>
+</tr>
+<tr>
+<td width="20"></td><td> Set to true internally if when the start() method is called (false when stopped).</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSParallelGroup.html#_runningChildren">_runningChildren</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSParallelGroup.html">KSParallelGroup</a></td>

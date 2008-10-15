@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="FrameRateView,org.as3lib.kitchensync.utils.FrameRateView,formattingFunction,updateFrequency,actualFrameRate,onUpdate" name="keywords">
+<meta content="FrameRateView,org.as3lib.kitchensync.utils.FrameRateView,formattingFunction,updateFrequency,actualFrameRate,update" name="keywords">
 <title>org.as3lib.kitchensync.utils.FrameRateView</title>
 </head>
 <body>
@@ -39,6 +39,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">FrameRateView <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.text.TextField</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../core/ISynchronizerClient.html">ISynchronizerClient</a></td>
 </tr>
 </table>
 <p></p>
@@ -94,7 +97,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#onUpdate()">onUpdate</a>(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
+<a class="signatureLink" href="#update()">update</a>(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</div>
 <div class="summaryTableDescription">
    Display is updated by the synchronizer pulses.</div>
 </td><td class="summaryTableOwnerCol">FrameRateView</td>
@@ -151,19 +154,19 @@ showHideInherited();
 <code>public function FrameRateView()</code><p> Constructor </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
-<a name="onUpdate()"></a>
+<a name="update()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">onUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public function onUpdate(event:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</code><p>
+<code>public function update(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</code><p>
    Display is updated by the synchronizer pulses.
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">event</span>:<a href="../core/KitchenSyncEvent.html">KitchenSyncEvent</a></code></td>
+<td width="20px"></td><td><code><span class="label">currentTimestamp</span>:<a href="../core/Timestamp.html">Timestamp</a></code></td>
 </tr>
 </table>
 </div>

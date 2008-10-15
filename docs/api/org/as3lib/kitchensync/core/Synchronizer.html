@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="Synchronizer,org.as3lib.kitchensync.core.Synchronizer,currentTimestamp,frameRate,timerDelay,frameRateSeed,getInstance" name="keywords">
+<meta content="Synchronizer,org.as3lib.kitchensync.core.Synchronizer,currentTimestamp,frameRate,timerDelay,frameRateSeed,getInstance,registerClient,unregisterClient" name="keywords">
 <title>org.as3lib.kitchensync.core.Synchronizer</title>
 </head>
 <body>
@@ -98,6 +98,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </div>
 <div class="summaryTableDescription">[static]
    Returns an instance to the single instance of the class.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerClient()">registerClient</a>(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</div>
+<div class="summaryTableDescription">
+   Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unregisterClient()">unregisterClient</a>(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</div>
+<div class="summaryTableDescription">
+   Removes a Syncrhonizer client from the list.</div>
 </td><td class="summaryTableOwnerCol">Synchronizer</td>
 </tr>
 </table>
@@ -219,6 +235,42 @@ showHideInherited();
    
                         
                      </td>
+</tr>
+</table>
+</div>
+<a name="registerClient()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerClient</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerClient(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</code><p>
+   Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">client</span>:<a href="ISynchronizerClient.html">ISynchronizerClient</a></code> &mdash; The client that will receive the update.
+   </td>
+</tr>
+</table>
+</div>
+<a name="unregisterClient()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unregisterClient</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unregisterClient(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</code><p>
+   Removes a Syncrhonizer client from the list.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">client</span>:<a href="ISynchronizerClient.html">ISynchronizerClient</a></code> &mdash; The client that will be unregistered.
+   </td>
 </tr>
 </table>
 </div>
