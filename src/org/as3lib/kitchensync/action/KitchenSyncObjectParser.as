@@ -141,47 +141,48 @@ package org.as3lib.kitchensync.action
 			var endValue:Number;
 			
 			for (var key:String in paramerters) {
-				var data:PropertyData = new PropertyData();
-				
-				// check for ~ notation 
-				var string:String = paramerters[key].toString();				
-				if (string.search("~") >= 0) {
-					var values:Array = string.split("~");
-					data.propertyName = key;
-					data.startValue = values[0];
-					data.endValue = values[1];
-				} else {
-					// check for _start / _end notation.
-					var startStringIndex:int = key.search(START_VALUE_MARKER);
-					var endStringIndex:int = key.search(END_VALUE_MARKER);
-					if (startStringIndex >= 0) {
-						data.propertyName = key.slice(0, startStringIndex);
-						data.startValue = paramerters[key] as Number; 
-						data.endValue = getFirstDefinedValue(paramerters, 	data.propertyName + "_end", 
-																			data.propertyName + "End",
-																			data.propertyName + "_to",
-																			data.propertyName + "To") as Number;
-						if (isNaN(data.endValue)) {
-							data.endValue = KSTween.VALUE_AT_START_OF_TWEEN;
-						}
-						
-						resultsArray.push(data);
-						continue;
+				if (keywords.indexOf(key) < 0) {
+					var data:PropertyData = new PropertyData();
+					// check for ~ notation 
+					var string:String = paramerters[key].toString();				
+					if (string.search("~") >= 0) {
+						var values:Array = string.split("~");
+						data.propertyName = key;
+						data.startValue = values[0];
+						data.endValue = values[1];
 					} else {
-						// ignore it.
-						continue;
+						// check for _start / _end notation.
+						var startStringIndex:int = key.search(START_VALUE_MARKER);
+						var endStringIndex:int = key.search(END_VALUE_MARKER);
+						if (startStringIndex >= 0) {
+							data.propertyName = key.slice(0, startStringIndex);
+							data.startValue = paramerters[key] as Number; 
+							data.endValue = getFirstDefinedValue(paramerters, 	data.propertyName + "_end", 
+																				data.propertyName + "End",
+																				data.propertyName + "_to",
+																				data.propertyName + "To") as Number;
+							if (isNaN(data.endValue)) {
+								data.endValue = KSTween.VALUE_AT_START_OF_TWEEN;
+							}
+							
+							resultsArray.push(data);
+							continue;
+						} else {
+							// ignore it.
+							continue;
+						}
+					} 
+					// check results for keywords.
+					switch (data.propertyName) {
+						case "scale":
+							resultsArray.push(new PropertyData("scaleX", data.startValue, data.endValue));
+							resultsArray.push(new PropertyData("scaleY", data.startValue, data.endValue));
+						break;
+						
+						default:
+							// push results onto array to later be converted into tween targets.
+							resultsArray.push(data);
 					}
-				} 
-				// check results for keywords.
-				switch (data.propertyName) {
-					case "scale":
-						resultsArray.push(new PropertyData("scaleX", data.startValue, data.endValue));
-						resultsArray.push(new PropertyData("scaleY", data.startValue, data.endValue));
-					break;
-					
-					default:
-						// push results onto array to later be converted into tween targets.
-						resultsArray.push(data);
 				}
 			}
 			return resultsArray;
