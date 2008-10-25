@@ -60,8 +60,8 @@ package org.as3lib.kitchensync.action
 		
 		
 		override public function start():IAction {
-			var action:IAction = super.start();
 			_lastStartIndex = -1;
+			var action:IAction = super.start();
 			return action;
 		}
 		
@@ -73,10 +73,10 @@ package org.as3lib.kitchensync.action
 				if (!_lastStartTime) {
 					_runningChildren = _childActions.length;
 				}
-				if (!_lastStartTime || currentTimestamp.currentFrame - _lastStartTime.currentFrame > TimestampUtil.millisecondsToFrames(_stagger)) {
+				if (!_lastStartTime || currentTimestamp.currentTime - _lastStartTime.currentTime > _stagger) {
 					_lastStartTime = currentTimestamp;
-					var currentTime:int = currentTimestamp.currentFrame - TimestampUtil.millisecondsToFrames(delay) - _startTime.currentFrame;
-					var currentStartIndex:int = Math.floor(currentTime / TimestampUtil.millisecondsToFrames(_stagger));
+					var currentTime:int = currentTimestamp.currentTime - delay - _startTime.currentTime;
+					var currentStartIndex:int = Math.floor(currentTime / _stagger);
 					
 					// for all of the indexes since the last index.
 					for (var i:int = _lastStartIndex + 1; i <= currentStartIndex; i++) {
