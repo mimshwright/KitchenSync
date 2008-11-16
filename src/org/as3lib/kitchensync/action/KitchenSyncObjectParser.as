@@ -57,7 +57,7 @@ package org.as3lib.kitchensync.action
 			var explicitProperties:Array = parseProperties(parameters);
 			var stringProperties:Array = parsePropertiesString(parameters);
 			properties = properties.concat(explicitProperties, stringProperties);
-			trace("properties (" + properties.length + "):",properties);
+			//trace("properties (" + properties.length + "):",properties);
 			
 			var i:int, j:int;
 			var target:Object;

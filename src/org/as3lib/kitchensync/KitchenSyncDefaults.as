@@ -21,6 +21,6 @@ package org.as3lib.kitchensync
 		public static var tweenObjectParser:ITweenObjectParser = new KitchenSyncObjectParser();
 		
 		// GROUPS
-		public static var resetChildrenAtStart:Boolean = true;
+		//public static var resetChildrenAtStart:Boolean = true;
 	}
 }
