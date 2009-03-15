@@ -36,7 +36,7 @@ package org.as3lib.kitchensync.action
 			_completeEventDispatcher = completeEventDispatcher;
 			_completeEventType = completeEventType;
 			
-			_completeEventDispatcher.addEventListener(_completeEventType, onFunctionComplete, false, 0, true);
+			_completeEventDispatcher.addEventListener(_completeEventType, onFunctionComplete, false, 0, false);
 		}
 		
 		/**
