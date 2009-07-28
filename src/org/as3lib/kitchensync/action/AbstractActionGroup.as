@@ -30,7 +30,7 @@ package org.as3lib.kitchensync.action
 		public function AbstractActionGroup() {
 			super();
 			//resetChildrenAtStart = KitchenSyncDefaults.resetChildrenAtStart;
-			AbstractEnforcer.enforceConstructor(this, AbstractActionGroup);
+			//AbstractEnforcer.enforceConstructor(this, AbstractActionGroup);
 		}
 		
 		/**

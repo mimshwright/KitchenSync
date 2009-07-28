@@ -20,8 +20,10 @@ package org.as3lib.kitchensync
 		 * The current version of the library. Use this to verify that the library is the
 		 * version that your software expects. 
 		 */ 
-		public static const VERSION:String = "1.6"
-		private static var _initialized:Boolean = false;
+		public static const VERSION:String = "1.7"
+		
+		public static function get isInitialized():Boolean { return _isInitialized; }
+		private static var _isInitialized:Boolean = false;
 		
 		/**
 		 * Initializes the timing core for KitchenSync. Must be called before using any actions.
@@ -33,7 +35,7 @@ package org.as3lib.kitchensync
 		public static function initialize(frameRateSeed:DisplayObject, versionCheck:String = VERSION):void
 		{	
 			
-			if (_initialized) {
+			if (_isInitialized) {
 				// todo make this error optional.
 				throw new IllegalOperationError("KitchenSync has already been initialized.");
 			}
@@ -43,7 +45,7 @@ package org.as3lib.kitchensync
 			var synchronizer:Synchronizer;
 			synchronizer = Synchronizer.getInstance();
 			synchronizer.frameRateSeed = frameRateSeed;
-			_initialized = true;
+			_isInitialized = true;
 		}
 		
 		public function KitchenSync () {

@@ -150,7 +150,7 @@ package org.as3lib.kitchensync.action
 			autoDelete = KitchenSyncDefaults.autoDelete;
 			sync = KitchenSyncDefaults.sync;
 			
-			AbstractEnforcer.enforceConstructor(this, AbstractAction);
+			//AbstractEnforcer.enforceConstructor(this, AbstractAction);
 		}
 		
 		/**

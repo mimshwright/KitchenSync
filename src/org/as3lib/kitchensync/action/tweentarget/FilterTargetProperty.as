@@ -73,7 +73,7 @@ package org.as3lib.kitchensync.action.tweentarget
 			var newFilters:Array = [];
 			
 			// if the previous filter array contains any filters
-			if (filters.length > 0) {
+			if (filters && filters.length > 0) {
 				// pull in all the old filters except the one added previously.
 				for each (var filter:BitmapFilter in filters) {
 					if (filter is _filterType) {
