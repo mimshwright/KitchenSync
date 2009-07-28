@@ -3,7 +3,16 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 * = Contains syntax changes that may require refactoring of legacy code.
 
-===== v1.6 (In progress) =====
+===== v1.7 =====
+ADDED Grant Skinner's ColorMatrix class for some color tweens
+ADDED Saturation tween target for animating saturation changes (using ColorMatrix)
+ADDED Brightness tween target for animating brightness changes (using ColorMatrix)
+ADDED Contrast tween target for animating contrast changes (using ColorMatrix)
+ADDED TintTweenTarget for animating ColorTransorms
+ADDED KSURLLoader and KSXMLLoader for easier load queues
+CHANGED KSAsyncrhonousFunction to use strong references
+
+===== v1.6 (2008.10.15) =====
 NEW CONTRIBUTOR Brett Forsyth - welcome!
 ADDED TweenFactory which provides an easy to use interface for creating new tweens including an object parser similar to FuseKit's interface.
 ADDED SoundTransformTarget for changing volume or panning of a sound.
