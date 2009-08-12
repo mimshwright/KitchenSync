@@ -18,7 +18,7 @@ package org.as3lib.kitchensync.action.loading
 			loader.addEventListener(Event.COMPLETE, onLoadSuccess, false, 0, true);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, onLoadFail, false, 0, true);
 			
-			super(0, loader.load, loader, Event.COMPLETE, url);
+			super(loader.load, loader, Event.COMPLETE, url);
 		}
 
 		protected function onLoadSuccess(event:Event):void {

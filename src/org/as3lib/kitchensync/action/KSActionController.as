@@ -23,7 +23,9 @@ package org.as3lib.kitchensync.action
 		 * @param delay - the number of frames to delay the action.
 		 */ 
 		public function KSActionController (target:IAction, command:ActionControllerCommand = null, delay:* = 0) {
-			super(delay, null);
+			super(null);
+			this.delay = delay;
+			
 			if (target) {
 				_target = target;
 			} else {

@@ -27,13 +27,14 @@ package org.as3lib.kitchensync.action
 		 * @param target - the MovieClip whose frames you are going to
 		 * @param frameIdentifier - a String or uint to go to
 		 */
-		public function KSMovieClipController(delay:*, target:MovieClip, frameIdentifier:*)
+		public function KSMovieClipController(target:MovieClip, frameIdentifier:*)
 		{
-			super(delay, target.gotoAndPlay, frameIdentifier);
+			super(target.gotoAndPlay, frameIdentifier);
 		}
 		
 		override public function clone():IAction {
-			var clone:KSMovieClipController = new KSMovieClipController(delay, target, frameIdentifier);
+			var clone:KSMovieClipController = new KSMovieClipController(target, frameIdentifier);
+			clone._delay = _delay;
 			clone._args = _args;
 			clone._result = _result;
 			clone.duration = _duration;

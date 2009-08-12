@@ -13,12 +13,15 @@ package org.as3lib.kitchensync.action
 		 */ 
 		public function KSSetProperty(target:Object, key:String, value:*, delay:* = 0)
 		{
-			super(delay, setProperty, target, key, value);
+			super(setProperty, target, key, value);
+			this.delay = delay;
 		}
 		
 		/** This is the function that will be called to set the property. */
 		protected function setProperty(target:Object, key:String, value:*):void {
 			target[key] = value;	
 		}
+		
+		// todo: add clone?
 	}
 }

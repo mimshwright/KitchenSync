@@ -34,14 +34,12 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Constructor.
 		 * 
-		 * @param delay - the number of frames to delay the action
 		 * @param func - the function or method to call at the specified time
 		 * @param args - the rest of the parameters become arguments passed to the function at the time it's called.
 		 */
-		public function KSFunction(delay:*, func:Function, ... args)
+		public function KSFunction(func:Function, ... args)
 		{
 			super();
-			this.delay = delay;
 			_duration = 0;
 			_func = func;
 			_args = args;
@@ -72,7 +70,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function clone():IAction {
-			var clone:KSFunction = new KSFunction(_delay, _func);
+			var clone:KSFunction = new KSFunction(_func);
 			clone._args = _args;
 			clone._result = _result;
 			clone.autoDelete = _autoDelete;

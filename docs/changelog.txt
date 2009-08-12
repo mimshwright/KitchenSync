@@ -3,6 +3,10 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 * = Contains syntax changes that may require refactoring of legacy code.
 
+===== v2.0 =====
+REMOVED delay from the KSFunction constructor.
+BRANCHED a copy of 1.7 as a backup and to maintain the version 1 line. From this point, version 2.0 may not maintain backwards compatibility.
+
 ===== v1.7 =====
 ADDED Grant Skinner's ColorMatrix class for some color tweens
 ADDED Saturation tween target for animating saturation changes (using ColorMatrix)

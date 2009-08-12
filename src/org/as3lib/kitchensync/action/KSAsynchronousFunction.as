@@ -28,9 +28,9 @@ package org.as3lib.kitchensync.action
 		 * @param completeEventType The type (name) of the event that will be fired when complete.
 		 * @param args All additional parameters will be passed as arguments to the function when it is called. 
 		 */
-		public function KSAsynchronousFunction(delay:*, func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ...args)
+		public function KSAsynchronousFunction(func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ...args)
 		{
-			super(delay, func);
+			super(func);
 			this._args = args;
 			
 			_completeEventDispatcher = completeEventDispatcher;
@@ -58,8 +58,9 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function clone():IAction {
-			var clone:KSAsynchronousFunction = new KSAsynchronousFunction(_delay, _func, _completeEventDispatcher, _completeEventType);
+			var clone:KSAsynchronousFunction = new KSAsynchronousFunction(_func, _completeEventDispatcher, _completeEventType);
 			clone._args = _args;
+			clone.delay = _delay;
 			clone.duration = _duration;
 			clone.autoDelete = _autoDelete;
 			return clone;
