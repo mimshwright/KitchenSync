@@ -22,11 +22,11 @@ package org.as3lib.kitchensync.action.tweentarget
 		public static const BAD_PROPERTY_ERROR:String = "Property must be either 'pan' or 'volume'. Use SoundTransformTarget.PAN or SoundTransformTarget.VOLUME";
 		
 		/**
-		 * The object containing the sound channel to apply the transform. 
+		 * The target object to which to apply the SoundTransform. 
 		 */
-		public function get channel():SoundChannel { return _channel; }
-		public function set channel(channel:SoundChannel):void { _channel = channel; }
-		protected var _channel:SoundChannel;
+		public function get targetSound():Object { return _targetSound; }
+		public function set targetSound(channel:Object):void { _targetSound = channel; }
+		protected var _targetSound:Object;
 		
 		/**
 		 * The property to tween. Either 'pan' or 'volume'
@@ -62,13 +62,20 @@ package org.as3lib.kitchensync.action.tweentarget
 		/**
 		 * Constructor.
 		 *
-		 * @param channel The SoundChannel to apply the transform to. 
+		 * @param targetSound The object to which to apply the transform (Usually a SoundChannel or NetStream). 
+		 * 					  Note that there is no type checking on this parameter and you should use an object that
+		 * 					  has a soundTransform property.
 		 * @param property The property of the sound channel. either pan or volume.
 		 * @param startValue the value to start from when tweening
 		 * @param endValue the value to end on when tweening 
 		 */
-		public function SoundTransformTarget (channel:SoundChannel, property:String, startValue:Number = NaN, endValue:Number = NaN) {
-			_channel = channel;
+		public function SoundTransformTarget (targetSound:Object, property:String, startValue:Number = NaN, endValue:Number = NaN) {
+			_targetSound = targetSound;
+			
+			if (_targetSound.soundTransform == null) {
+				_targetSound.soundTransform = new SoundTransform();
+			}
+			
 			this.property = property.toLowerCase();
 			_startValue = (isNaN(startValue)) ? currentValue : startValue;
 			_endValue   = (isNaN(endValue))   ? currentValue : endValue;
@@ -90,15 +97,15 @@ package org.as3lib.kitchensync.action.tweentarget
 		 * The current value of the property you specified. 
 		 */
 		public function get currentValue():Number { 
-			if (_property == PAN) { return _channel.soundTransform.pan; }
-			if (_property == VOLUME) { return _channel.soundTransform.volume; }
+			if (_property == PAN) { return _targetSound.soundTransform.pan; }
+			if (_property == VOLUME) { return _targetSound.soundTransform.volume; }
 			throw new Error(BAD_PROPERTY_ERROR);
 		}
 		public function set currentValue(currentValue:Number):void { 
-			if (_channel.soundTransform == null) {
-				_channel.soundTransform = new SoundTransform();
+			if (_targetSound.soundTransform == null) {
+				_targetSound.soundTransform = new SoundTransform();
 			}
-			var transform:SoundTransform = _channel.soundTransform;
+			var transform:SoundTransform = _targetSound.soundTransform;
 			
 			if (_property == PAN) {
 				transform.pan = currentValue;
@@ -107,7 +114,7 @@ package org.as3lib.kitchensync.action.tweentarget
 				transform.volume = currentValue; 
 			}
 			
-			_channel.soundTransform = transform;
+			_targetSound.soundTransform = transform;
 		}
 		
 		/**
@@ -120,7 +127,7 @@ package org.as3lib.kitchensync.action.tweentarget
 		
 		public function clone():ITweenTarget
 		{ 
-			return new SoundTransformTarget(_channel, _property, _startValue, _endValue);
+			return new SoundTransformTarget(_targetSound, _property, _startValue, _endValue);
 			
 		}
 	}
