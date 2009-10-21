@@ -119,7 +119,7 @@ package org.as3lib.kitchensync.core
 		/**
 		 * Dispatches events to children for them to update.
 		 */
-		private function dispatchUpdate():void {
+		internal function dispatchUpdate():void {
 			_currentTime = getTimer();
 			
 			// cache the timestamp so that it's only generated once. 
