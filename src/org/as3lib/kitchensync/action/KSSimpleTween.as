@@ -4,7 +4,7 @@ package org.as3lib.kitchensync.action
 	
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	import org.as3lib.kitchensync.core.Synchronizer;
-	import org.as3lib.kitchensync.core.Timestamp;
+	
 	import org.as3lib.kitchensync.easing.EasingUtil;
 	import org.as3lib.kitchensync.easing.Linear;
 
@@ -101,8 +101,8 @@ package org.as3lib.kitchensync.action
 		}
 
 		/** Called when a pulse is sent from the Synchronizer */
-		public function update(currentTimestamp:Timestamp):void {
-			var currentTime:int = currentTimestamp.currentTime;
+		public function update(currentTime:int):void {
+			var currentTime:int = currentTime;
 			var timeElapsed:int = currentTime - _startTime;
 			
 			// timeElapsed shouldn't exceed the duration.
@@ -131,18 +131,18 @@ package org.as3lib.kitchensync.action
 		public function start():IAction {
 			if (!_running) {
 				// get the current timestamp
-				var currentTimestamp:Timestamp = Synchronizer.getInstance().currentTimestamp;
+				var currentTime:int = Synchronizer.getInstance().currentTime;
 				// cache the delta
 				_delta = endValue - startValue;
 				// record the start time
-				_startTime = currentTimestamp.currentTime + _delay;
+				_startTime = currentTime + _delay;
 				// register the class.
 				Synchronizer.getInstance().registerClient(this);
 				_running = true;
 				// force the first update.
-				update(currentTimestamp);
+				update(currentTime);
 				
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, currentTimestamp));
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, currentTime));
 			}
 			return this;
 		}
@@ -158,17 +158,17 @@ package org.as3lib.kitchensync.action
 		/** Called internally when the tween is completed. */
 		protected function complete():void {
 			stop();
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTime));
 		}
 		
 		
 		public function pause():void {
 			if (!_running && !_paused) {
-				var currentTimestamp:Timestamp = Synchronizer.getInstance().currentTimestamp;
-				_pauseTime = currentTimestamp.currentTime;
+				var currentTime:int = Synchronizer.getInstance().currentTime;
+				_pauseTime = currentTime;
 				_paused = true;
 				Synchronizer.getInstance().unregisterClient(this);
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.PAUSE, currentTimestamp));
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.PAUSE, currentTime));
 			}
 		}
 		
@@ -179,10 +179,10 @@ package org.as3lib.kitchensync.action
 			if (_running && _paused) {
 				Synchronizer.getInstance().registerClient(this);
 				_paused = false;
-				var currentTimestamp:Timestamp = Synchronizer.getInstance().currentTimestamp;
-				var timeSincePause:int = currentTimestamp.currentTime - _pauseTime;
+				var currentTime:int = Synchronizer.getInstance().currentTime;
+				var timeSincePause:int = currentTime - _pauseTime;
 				_startTime = _startTime + timeSincePause; 
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UNPAUSE, currentTimestamp));
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UNPAUSE, currentTime));
 			}
 		}
 		

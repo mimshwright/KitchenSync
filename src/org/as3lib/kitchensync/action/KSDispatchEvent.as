@@ -106,7 +106,7 @@ package org.as3lib.kitchensync.action
 		 * When the delay is reached, the event will be fired from the target.
 		 * Note that if duration is > 0, this will continue to fire for every frame until duration is elapsed.
 		 */
-		override public function update(currentTimestamp:Timestamp):void {
+		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed) {
 				_target.dispatchEvent(_event);
 				if (durationHasElapsed) {

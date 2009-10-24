@@ -15,8 +15,9 @@ package org.as3lib.kitchensync.utils
 		protected static const NUMBER_UNIT_PAIR_SEARCH:RegExp = /(\d+(\.\d+)?)\s*[a-z]+\s*,?\s*/g;
 		protected static const NUMBER_SEARCH:RegExp = /\d+(\.\d+)?/g;
 		protected static const LETTER_SEARCH:RegExp = /[a-z]+/;
+		protected static const NEGATIVE_SEARCH:RegExp = /^-.+/;
 		
-		protected static const FRAMES_SEARCH:RegExp = /([^a-z]|^)(f|fr|frames?)/;
+//		protected static const FRAMES_SEARCH:RegExp = /([^a-z]|^)(f|fr|frames?)/;
 		protected static const MILLISECONDS_SEARCH:RegExp = /([^a-z]|^)(ms|msecs?|milliseconds?)/;
 		protected static const SECONDS_SEARCH:RegExp = /([^a-z]|^)(s|secs?|seconds?)/;
 		protected static const MINUTES_SEARCH:RegExp = /([^a-z]|^)(m|mins?|minutes?)/;
@@ -42,10 +43,10 @@ package org.as3lib.kitchensync.utils
 		 * These are all valid options:
 		 * "1 hour, 2 minutes, 3 seconds, 4 milliseconds"
 		 * "1h2m3s4ms"
-		 * "5sec,12fr"
-		 * "01:23:45;15" (1h, 23m, 45s, 15f - frames are based on stage's framerate)
+//		 * "5sec,12fr"
+//		 * "01:23:45;15" (1h, 23m, 45s, 15f - frames are based on stage's framerate)
 		 * ":03" (3s)
-		 * "300 frames"
+//		 * "300 frames"
 		 * "1.25s"
 		 * "5 milliseconds, 15mins, 6 hrs"
 		 * "0.25 days"
@@ -67,64 +68,74 @@ package org.as3lib.kitchensync.utils
 				return result;
 			}
 			
+			// if the first character is a negative sign, make the entire number negative.
+			var negate:Boolean = false;
+			if (timeString.match(NEGATIVE_SEARCH)) {
+				timeString = timeString.substr(1);
+				negate = true;
+			}			
+			
 			// make time string not case sensitive
 			timeString = timeString.toLocaleLowerCase();
 			
-			// Process timecode from time string if it extists.
-			if (timeString.search(TIMECODE_FORMAT_SEARCH) >= 0) {
-				var ms:int = 0;
-				
-				//trace("Converting timecode -", timeString, ".......");
-				
-				// Extract the times from the timecode if there are any.
-				var timeMatch:Array = timeString.match(TIMECODE_SEGMENT_SEARCH);
-				if (timeMatch && timeMatch.length >= 1) {
-					timeMatch = timeMatch.reverse();
-
-					// Timecodes with more than 4 segments aren't supported
-					if (timeMatch.length > 4) {
-						throw new SyntaxError("The timecode wasn't formatted correctly. It has too many segments.");
-					}
-					
-					
-					// check for seconds
-					if (timeMatch[0]) {
-						
-						ms = timeMatch[0].toString().match(TIMECODE_DIGIT_SEARCH)[0] * SECONDS_VALUE;
-						result += ms;
-						//trace("s +" + ms);
-					}
-					// check for minutes
-					if (timeMatch[1]) {
-						ms = timeMatch[1].toString().match(TIMECODE_DIGIT_SEARCH)[0] * MINUTES_VALUE;
-						result += ms;
-						//trace("m +" + ms);
-					}
-					// check for hours
-					if (timeMatch[2]) {
-						ms = timeMatch[2].toString().match(TIMECODE_DIGIT_SEARCH)[0] * HOURS_VALUE;
-						result += ms;
-						//trace("h +" + ms);
-					}
-					// check for days
-					if (timeMatch[3]) {
-						ms = timeMatch[3].toString().match(TIMECODE_DIGIT_SEARCH)[0] * DAYS_VALUE;
-						result += ms;
-						//trace("d +" + ms);
-					}
-				}
-				
-				// Extract the frames from the timecode if there are any.
-				var frameMatch:Array = timeString.match(TIMECODE_FRAME_SEARCH);
-				if (frameMatch && frameMatch.length >= 1) {
-					ms = TimestampUtil.framesToMilliseconds(frameMatch[0].toString().match(TIMECODE_DIGIT_SEARCH)[0]);
-					result += ms;
-					//trace ("f +" + ms);
-				}
-				
-				//trace ("  = " + result + "ms");
-				return result;
-			}
+			//todo: replace timecode
+//			// Process timecode from time string if it extists.
+//			if (timeString.search(TIMECODE_FORMAT_SEARCH) >= 0) {
+//				var ms:int = 0;
+//				
+//				//trace("Converting timecode -", timeString, ".......");
+//				
+//				// Extract the times from the timecode if there are any.
+//				var timeMatch:Array = timeString.match(TIMECODE_SEGMENT_SEARCH);
+//				if (timeMatch && timeMatch.length >= 1) {
+//					timeMatch = timeMatch.reverse();
+//
+//					// Timecodes with more than 4 segments aren't supported
+//					if (timeMatch.length > 4) {
+//						throw new SyntaxError("The timecode wasn't formatted correctly. It has too many segments.");
+//					}
+//					
+//					
+//					// check for seconds
+//					if (timeMatch[0]) {
+//						
+//						ms = timeMatch[0].toString().match(TIMECODE_DIGIT_SEARCH)[0] * SECONDS_VALUE;
+//						result += ms;
+//						//trace("s +" + ms);
+//					}
+//					// check for minutes
+//					if (timeMatch[1]) {
+//						ms = timeMatch[1].toString().match(TIMECODE_DIGIT_SEARCH)[0] * MINUTES_VALUE;
+//						result += ms;
+//						//trace("m +" + ms);
+//					}
+//					// check for hours
+//					if (timeMatch[2]) {
+//						ms = timeMatch[2].toString().match(TIMECODE_DIGIT_SEARCH)[0] * HOURS_VALUE;
+//						result += ms;
+//						//trace("h +" + ms);
+//					}
+//					// check for days
+//					if (timeMatch[3]) {
+//						ms = timeMatch[3].toString().match(TIMECODE_DIGIT_SEARCH)[0] * DAYS_VALUE;
+//						result += ms;
+//						//trace("d +" + ms);
+//					}
+//				}
+//				
+//				// Extract the frames from the timecode if there are any.
+//				var frameMatch:Array = timeString.match(TIMECODE_FRAME_SEARCH);
+//				if (frameMatch && frameMatch.length >= 1) {
+//					ms = TimestampUtil.framesToMilliseconds(frameMatch[0].toString().match(TIMECODE_DIGIT_SEARCH)[0]);
+//					result += ms;
+//					//trace ("f +" + ms);
+//				}
+//				
+//				//trace ("  = " + result + "ms");
+//				return result;
+//			
+//			} // end timecode parsing
+			
 			
 			// separate by number / unit pairs separated by spaces or commas.
 			var unitValuePairs:Array = timeString.match(NUMBER_UNIT_PAIR_SEARCH);
@@ -141,11 +152,12 @@ package org.as3lib.kitchensync.utils
 				var time:Number = Number(pair.match(NUMBER_SEARCH)[0]);
 				var timeUnit:String = pair.match(LETTER_SEARCH)[0];
 				
-				//based on the time unit, convert the time value to milliseconds
-				if (timeUnit.search(FRAMES_SEARCH) >= 0) {
-					// Convert frames to milliseconds
-					time = TimestampUtil.framesToMilliseconds(time);
-				} else {
+				// todo: fix this
+//				//based on the time unit, convert the time value to milliseconds
+//				if (timeUnit.search(FRAMES_SEARCH) >= 0) {
+//					// Convert frames to milliseconds
+//					time = TimestampUtil.framesToMilliseconds(time);
+//				} else {
 					if (timeUnit.search(MILLISECONDS_SEARCH) >= 0) {
 						time *= MILLISECONDS_VALUE;
 					} else if (timeUnit.search(SECONDS_SEARCH) >= 0) {
@@ -161,10 +173,14 @@ package org.as3lib.kitchensync.utils
 						throw new SyntaxError("The input object contains malformed data.");
 						continue;
 					}
-				}
+//				}
 				time = Math.round(time);
 				result += time;
 			} 
+			
+			// apply the negation if necessary.
+			if (negate) result *= -1;
+			
 			// return the result as an integer
 			return int(result);
 		}

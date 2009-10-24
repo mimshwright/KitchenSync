@@ -30,7 +30,7 @@ package org.as3lib.kitchensync.action
 		}
 		protected var _stagger:int;
 		
-		protected var _lastStartTime:Timestamp;
+		protected var _lastStartTime:int;
 		protected var _lastStartIndex:int;
 		
 		
@@ -68,14 +68,14 @@ package org.as3lib.kitchensync.action
 		/**
 		 * When the first update occurs, all of the child actions are started simultaniously.
 		 */
-		override public function update(currentTimestamp:Timestamp):void { 
+		override public function update(currentTime:int):void { 
 			if (startTimeHasElapsed) {
 				if (!_lastStartTime) {
 					_runningChildren = _childActions.length;
 				}
-				if (!_lastStartTime || currentTimestamp.currentTime - _lastStartTime.currentTime > _stagger) {
-					_lastStartTime = currentTimestamp;
-					var currentTime:int = currentTimestamp.currentTime - delay - _startTime.currentTime;
+				if (!_lastStartTime || currentTime - _lastStartTime > _stagger) {
+					_lastStartTime = currentTime;
+					var currentTime:int = currentTime - delay - _startTime;
 					var currentStartIndex:int = Math.floor(currentTime / _stagger);
 					
 					// for all of the indexes since the last index.

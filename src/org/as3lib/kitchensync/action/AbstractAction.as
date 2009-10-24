@@ -94,10 +94,12 @@ package org.as3lib.kitchensync.action
 		/** 
 		 * Setting sync to true will cause the action to sync up with real time
 		 * even if framerate drops. Otherwise, the action will be synced to frames.
+		 *
+		 * @deprecated since v2.0
 		 */ 
-		public function get sync():Boolean { return _sync; }
-		public function set sync(sync:Boolean):void { _sync = sync; }
-		protected var _sync:Boolean;
+//		public function get sync():Boolean { return _sync; }
+//		public function set sync(sync:Boolean):void { _sync = sync; }
+//		protected var _sync:Boolean;
 		
 		
 		// removed for now.
@@ -129,15 +131,29 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The time at which the action was last started.
 		 */
-		public function get startTime():Timestamp { return _startTime; }
-		protected var _startTime:Timestamp;
+		public function get startTime():int { return _startTime; }
+		protected var _startTime:int;
 		
 		/**
 		 * The time at which the action was last paused.
 		 */
-		public function get pauseTime():Timestamp { return _pauseTime; }
-		protected var _pauseTime:Timestamp;
+		public function get pauseTime():int { return _pauseTime; }
+		protected var _pauseTime:int;
 		
+		
+		/**
+		 * The time in ms since the start of the action or 0 if the action isn't running.
+		 * If the action is paused, the result will be the running time at which it was paused.
+		 */ 
+		public function get runningTime():int { 
+			if (!_running) { return 0; }
+			// If the action is paused, factor that into your jump (resluts wont appear until it's restarted)
+			if (isPaused) {
+				return  (_pauseTime - _startTime);
+			} else {
+				return (Synchronizer.getInstance().currentTime - _startTime); 
+			}
+		}
 		
 		/**
 		 * Constructor.
@@ -148,7 +164,7 @@ package org.as3lib.kitchensync.action
 			super();
 			timeStringParser = KitchenSyncDefaults.timeStringParser;
 			autoDelete = KitchenSyncDefaults.autoDelete;
-			sync = KitchenSyncDefaults.sync;
+//			sync = KitchenSyncDefaults.sync;
 			
 			//AbstractEnforcer.enforceConstructor(this, AbstractAction);
 		}
@@ -183,7 +199,7 @@ package org.as3lib.kitchensync.action
 			} else {
 				if (!_running) {
 					_running = true;
-					_startTime = Synchronizer.getInstance().currentTimestamp;
+					_startTime = Synchronizer.getInstance().currentTime;
 					register();
 					dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, _startTime));
 				} else {
@@ -207,7 +223,7 @@ package org.as3lib.kitchensync.action
 			} else if (_paused) {
 				//throw new IllegalOperationError("The pause() method cannot be called when the action is already paused. Use the unpause() method first.");
 			} else {
-				_pauseTime = Synchronizer.getInstance().currentTimestamp;
+				_pauseTime = Synchronizer.getInstance().currentTime;
 				_paused = true;
 				unregister();
 				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.PAUSE, _pauseTime));
@@ -225,8 +241,8 @@ package org.as3lib.kitchensync.action
 			} else {
 				register();
 				_paused = false;
-				var timeSincePause:Timestamp = TimestampUtil.subtract(Synchronizer.getInstance().currentTimestamp, _pauseTime);
-				_startTime = TimestampUtil.add(_startTime, timeSincePause); 
+				var timeSincePause:int = Synchronizer.getInstance().currentTime - _pauseTime;
+				_startTime = _startTime + timeSincePause; 
 				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UNPAUSE, _startTime));
 				//trace("_pauseTime:", _pauseTime);
 				//trace("_startTime:", _startTime);
@@ -243,11 +259,84 @@ package org.as3lib.kitchensync.action
 			if (_running) { 
 				_paused = false;
 				_running = false;
-				_startTime = null;
+				_startTime = -1;
 				unregister();
 			}
 		}
 		
+		
+		/**
+		 * Moves the playhead to a specified time in the action. If this method is called while the 
+		 * action is paused, it will not appear to jump until after the action is unpaused.
+		 * This function won't work for instantaneous actions.
+		 * 
+		 * @param time The time parameter can either be a number or a parsable time string. If the 
+		 * time to jump to is greater than the total duration of the action, it will throw an IllegalOperationError.
+		 * @param ignoreDelay If set to true, the delay will be ignored and the action will jump to
+		 * the specified time in relation to the duration.
+		 * 
+		 * @throws flash.errors.IllegalOperationError If the time to jump to is longer than the total time for the action.
+		 */
+		public function jumpToTime(time:*, ignoreDelay:Boolean = false):void {
+			// jumpToTime will fail if the action isn't running.
+			if (!isRunning || isInstantaneous) { 
+				// todo: make this error optional.
+				throw new IllegalOperationError("Can't jump to time if the action isn't running or if duration is 0.");
+				return; 
+			}
+			
+			// parse time strings if this is a string.
+			var jumpTime:int;
+			//if time is a number
+			if (!isNaN(time)) {
+				jumpTime = int(time);
+			} else {
+				var timeString:String = time.toString();
+				jumpTime = timeStringParser.parseTimeString(timeString);
+			}
+			
+			// Ignore the delay in this equation if ignoreDelay is true.
+			var totalDuration:int = ignoreDelay ? duration : duration + delay;
+			
+			var currentTime:int = Synchronizer.getInstance().currentTime;
+			
+			// check that the jump time is valid
+			if (jumpTime > totalDuration || jumpTime < 0) {
+				// you can't jump to a time that is past the end of the action's total time.
+				// todo: make this error optional.
+				throw new IllegalOperationError("'time' must be less than the total time of the action and greater than 0.");
+			} else {
+				// adjust the startTime to make it appear that the playhead should be at 
+				// a different point in time on the next update.
+				_startTime = -1 * (jumpTime - currentTime); //_startTime - jumpTime - runningTime;
+				
+				// if ignoring the delay, also move the playhead forward by the delay amount.
+				if (ignoreDelay) { 
+					_startTime = _startTime - delay; 
+				} 
+			}
+		}
+		
+		/**
+		 * Moves the playhead forward or backward by a specified time. If this method is called while the 
+		 * action is paused, it will not appear to jump until after the action is unpaused.
+		 * 
+		 * @param time The time parameter can either be a number or a parsable time string.
+		 */
+		public function jumpByTime(time:*):void {
+			// parse time strings if this is a string.
+			var jumpTime:int;
+			//if time is a number
+			if (!isNaN(time)) {
+				jumpTime = int(time);
+			} else {
+				var timeString:String = time.toString();
+				jumpTime = timeStringParser.parseTimeString(timeString);
+			}
+			
+			jumpToTime(runningTime + jumpTime);
+		}
+				
 		/**
 		 * Causes the action to start playing when another event completes.
 		 * 
@@ -310,7 +399,7 @@ package org.as3lib.kitchensync.action
 		 * @abstract
 		 * @param currentTimestamp The current timestamp from the Synchronizer.
 		 */
-		public function update(currentTimestamp:Timestamp):void {
+		public function update(currentTime:int):void {
 			AbstractEnforcer.enforceMethod();
 		}
 		
@@ -320,7 +409,7 @@ package org.as3lib.kitchensync.action
 		 * @see #update()
 		 */
 		protected function forceUpdate():void {
-			update(Synchronizer.getInstance().currentTimestamp);
+			update(Synchronizer.getInstance().currentTime);
 		}
 		
 		/**
@@ -328,13 +417,10 @@ package org.as3lib.kitchensync.action
 		 * checks to see whether the action is ready to execute. Duration is handled seperately.
 		 * @return false if _startTime is null, true if the delay has elapsed.
 		 */
+		 // todo: make this function use a parameter for currentTime instead of asking synchronizer
 		 public function get startTimeHasElapsed():Boolean {
-		 	if (!_startTime || !_running || _paused) { return false; }
-			if (_sync) {
-				if (_startTime.currentTime + _delay <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }
-			} else {
-				if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_delay) <= Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
-			}
+		 	if (isNaN(_startTime) || !_running || _paused) { return false; }
+			if (_startTime + _delay <= Synchronizer.getInstance().currentTime) { return true; }
 		 	return false;
 		 }
 		
@@ -343,13 +429,10 @@ package org.as3lib.kitchensync.action
 		 * checks to see whether the action is finished executing. 
 		 * @return false if _startTime is null, true if the duration has elapsed.
 		 */
+		 // todo: make this function use a parameter for currentTime instead of asking synchronizer
 		 public function get durationHasElapsed():Boolean {
-		 	if (!_startTime || !_running || _paused) { return false; }
-		 	if (_sync) {
-		 		if (_startTime.currentTime + _delay + _duration <= Synchronizer.getInstance().currentTimestamp.currentTime) { return true; }		 		
-		 	} else {
-		 		if (_startTime.currentFrame + TimestampUtil.millisecondsToFrames(_delay) + TimestampUtil.millisecondsToFrames(_duration)-1 < Synchronizer.getInstance().currentTimestamp.currentFrame) { return true; }
-		 	}
+		 	if (isNaN(_startTime) || !_running || _paused) { return false; }
+	 		if (_startTime + _delay + _duration <= Synchronizer.getInstance().currentTime) { return true; }		 		
 		 	return false;
 		 }
 		 
@@ -369,10 +452,11 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Call this when the action has completed.
 		 */
+		 // todo: make this function use a parameter for currentTime instead of asking synchronizer
 		protected function complete():void {
 			_running = false;
 			unregister();
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTimestamp));
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTime));
 			if (_autoDelete) { kill(); }
 		}		
 		

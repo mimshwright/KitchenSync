@@ -4,8 +4,6 @@ package org.as3lib.kitchensync.action
 	import flash.utils.getQualifiedClassName;
 	
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
-	import org.as3lib.kitchensync.core.Timestamp;
-	import org.as3lib.kitchensync.utils.TimestampUtil;
 	
 	/**
 	 * A parallel group where all children END at the same time instead of starting
@@ -31,7 +29,7 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
-		override public function update(currentTimestamp:Timestamp):void {
+		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed) {
 				var childAction:IAction;
 				// if the group isn't already running...
@@ -63,7 +61,7 @@ package org.as3lib.kitchensync.action
 				// Once it's running, for all child actions
 				for each (childAction in childActions) {
 					// check to see if start time has elapsed for the child.
-					if (isChildStartTimeElapsed(childAction, currentTimestamp)) {
+					if (isChildStartTimeElapsed(childAction, currentTime)) {
 						// if so, start the child.
 						childAction.start();
 						// add one running child.
@@ -78,15 +76,11 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Determines if the child should start yet.
 		 */
-		 private function isChildStartTimeElapsed(childAction:IAction, currentTimestamp:Timestamp):Boolean {
+		 private function isChildStartTimeElapsed(childAction:IAction, currentTime:int):Boolean {
 		 	if (childAction.isRunning) { return false; }
 		 	var startTime:int = _childStartTimes[childAction];
-		 	//trace(startTime, "<=", currentTimestamp.currentTime);
-			if (sync) {
-				if (startTime <= currentTimestamp.currentTime) { return true; }
-			} else {
-				if (TimestampUtil.millisecondsToFrames(startTime) <= currentTimestamp.currentFrame) { return true; }
-			}
+		 	
+			if (startTime <= currentTime) { return true; }
 			return false;
 		 }
 		
@@ -103,7 +97,7 @@ package org.as3lib.kitchensync.action
 		 * @param longestItemsTotalDuration The delay + duration of the longest item.
 		 */
 		 private function calculateStartTime(action:IAction, longestItemsTotalDuration:int):int {
-		 	return _startTime.currentTime + longestItemsTotalDuration - action.delay - action.duration;
+		 	return _startTime + longestItemsTotalDuration - action.delay - action.duration;
 		 }
 		
 		/**

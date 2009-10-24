@@ -24,7 +24,7 @@ package org.as3lib.kitchensync.action
 			this.delay = waitTime;
 		}
 		
-		override public function update(currentTimestamp:Timestamp):void {
+		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed) {
 				if (durationHasElapsed) {
 					complete();

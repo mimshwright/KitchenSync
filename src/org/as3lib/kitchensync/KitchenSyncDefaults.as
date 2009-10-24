@@ -11,7 +11,7 @@ package org.as3lib.kitchensync
 		
 		// ALL ACTIONS
 		public static var autoDelete:Boolean = false;
-		public static var sync:Boolean = true;
+//		public static var sync:Boolean = true;
 		public static var timeStringParser:ITimeStringParser = new TimeStringParser_en();
 		public static var easingFunction:Function = Linear.ease;
 		

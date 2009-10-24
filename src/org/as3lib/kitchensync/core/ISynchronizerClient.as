@@ -12,8 +12,8 @@ package org.as3lib.kitchensync.core
 		/**
 		 * Update will allow the synchronizer to update the action with the current time.
 		 * 
-		 * @param currentTimestamp The current time from the synchronizer. 
+		 * @param currentTime The current time from the synchronizer. 
 		 */
-		function update(currentTimestamp:Timestamp):void;
+		function update(currentTime:int):void;
 	}
 }

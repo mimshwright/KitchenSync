@@ -42,7 +42,7 @@ package org.as3lib.kitchensync.action
 		 * The first action in the sequence is called by using the startNextAction() method.
 		 * After the Sequence starts running, it no longer needs to listen to updates so it unregisters.
 		 */
-		override public function update(currentTimestamp:Timestamp):void {
+		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed && !childrenAreRunning) {
 				startNextAction();
 				// Sequence no longer needs to listen for events from Synchronizer

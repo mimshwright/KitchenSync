@@ -3,7 +3,9 @@ package org.as3lib.kitchensync
 	import flash.display.DisplayObject;
 	import flash.errors.IllegalOperationError;
 	
+	import org.as3lib.kitchensync.core.ISynchronizerCore;
 	import org.as3lib.kitchensync.core.Synchronizer;
+	import org.as3lib.kitchensync.core.TimerCore;
 	
 
 	/**
@@ -28,13 +30,33 @@ package org.as3lib.kitchensync
 		/**
 		 * Initializes the timing core for KitchenSync. Must be called before using any actions.
 		 * 
-		 * @param frameRateSeed must be a DisplayObject that is added to the display list.
+		 * @param frameRate Is an optional parameter that allows you to set the rate of the dispatches.
+		 * 					This can be different than the SWF's framerate but for best results, use the framerate of the swf.
+		 * 					The system may not perform well over 60.
 		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended
 		 * 					   but not required. It will throw an error if you're using the wrong version of KS. 
 		 */
-		public static function initialize(frameRateSeed:DisplayObject, versionCheck:String = VERSION):void
+		 // todo: make the library auto-initializing
+		public static function initialize(frameRate:int = 30, versionCheck:String = VERSION):void
 		{	
-			
+			var core:TimerCore = new TimerCore();
+			core.interpolateIntervalFromFrameRate(frameRate);
+			initializeWithCore(core, versionCheck);
+		}
+		
+		/**
+		 * Allows you to specify a synchronizer core when you initialize the system.
+		 * This can be any of the ISynchronizerCores and will allow you to use enterframes, timers, or other mehtods
+		 * to drive the dispatches of your synchronizer. If this sounds too complicated, you can use
+		 * the default settings by calling <code>KitchenSync.initialize()</code>
+		 *
+		 * @see #initialize()
+		 *  
+		 * @param synchronizerCore The synchronizer core to use to drive updates.
+		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended
+		 * 					   but not required. It will throw an error if you're using the wrong version of KS. 
+		 */
+		public static function initializeWithCore(synchronizerCore:ISynchronizerCore, versionCheck:String = VERSION):void {
 			if (_isInitialized) {
 				// todo make this error optional.
 				throw new IllegalOperationError("KitchenSync has already been initialized.");
@@ -44,12 +66,16 @@ package org.as3lib.kitchensync
 			}
 			var synchronizer:Synchronizer;
 			synchronizer = Synchronizer.getInstance();
-			synchronizer.frameRateSeed = frameRateSeed;
+			synchronizer.core = synchronizerCore;
+			
 			_isInitialized = true;
 		}
 		
+		/**
+		 * Constructor. Not used.
+		 */
 		public function KitchenSync () {
-			throw Error ("There is no need to instantiate this class. use KitchenSync.initialize() instead");
+			throw new IllegalOperationError ("There is no need to instantiate this class. use KitchenSync.initialize() instead");
 		}
 	}
 }

@@ -42,7 +42,7 @@ package org.as3lib.kitchensync.action
 			tween.duration = parseDuration(parameters);
 			tween.delay = parseDelay(parameters);
 			tween.easingFunction = parseEasingFunction(parameters);
-			tween.sync = parseSync(parameters);
+//			tween.sync = parseSync(parameters);
 			
 			
 			var mod1:* = parseMod1(parameters);
@@ -101,13 +101,13 @@ package org.as3lib.kitchensync.action
 			throw new SyntaxError("At least one target must be defined");
 		}
 		
-		private function parseSync(parameters:Object):Boolean {
-			var sync:Object = getFirstDefinedValue(parameters, "sync") as Boolean;
-			if (sync != null) {
-				return sync as Boolean;
-			}
-			return KitchenSyncDefaults.sync;
-		}
+//		private function parseSync(parameters:Object):Boolean {
+//			var sync:Object = getFirstDefinedValue(parameters, "sync") as Boolean;
+//			if (sync != null) {
+//				return sync as Boolean;
+//			}
+//			return KitchenSyncDefaults.sync;
+//		}
 		
 		private function parseEasingFunction(parameters:Object):Function {
 			var easingFunction:Function = getFirstDefinedValue(parameters, "easingFunction", "easing", "ease") as Function;

@@ -34,14 +34,16 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Constructor.
 		 * 
-		 * @param func - the function or method to call at the specified time
-		 * @param args - the rest of the parameters become arguments passed to the function at the time it's called.
+		 * @param func The function or method to call at the specified time
+		 * @param delay The duration to wait before invoking the function after start() is called.
+		 * @param args The rest of the parameters become arguments passed to the function at the time it's called.
 		 */
-		public function KSFunction(func:Function, ... args)
+		public function KSFunction(func:Function, delay:Object = 0, ... args)
 		{
 			super();
 			_duration = 0;
 			_func = func;
+			this.delay = delay;
 			_args = args;
 		}
 		
@@ -60,7 +62,7 @@ package org.as3lib.kitchensync.action
 		 * Executes the function when the delay has elapsed.
 		 * If the duration is > 0, it will repeat until the duration has elapsed.
 		 */
-		override public function update(currentTimestamp:Timestamp):void {
+		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed) {
 				invoke();
 				if (durationHasElapsed) {

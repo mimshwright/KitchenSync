@@ -14,7 +14,10 @@ package org.as3lib.kitchensync.core
 	 */
 	public class TimerCore implements ISynchronizerCore
 	{
-		protected var _timer:Timer;
+		/** 
+		 * The actual timer object 
+		 */
+		private var _timer:Timer;
 		
 		public function TimerCore(interval:int = 33)
 		{

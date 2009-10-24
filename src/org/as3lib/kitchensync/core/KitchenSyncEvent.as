@@ -15,10 +15,10 @@ package org.as3lib.kitchensync.core
 		public static const CHILD_START:String = "childActionStart";
 		public static const CHILD_COMPLETE:String = "childActionComplete";
 		
-		private var _timestamp:Timestamp;
-		public function get timestamp():Timestamp { return _timestamp }
+		private var _timestamp:int;
+		public function get timestamp():int { return _timestamp }
 		
-		public function KitchenSyncEvent(type:String, timestamp:Timestamp = null) {
+		public function KitchenSyncEvent(type:String, timestamp:int) {
 			super(type, false, false);
 			_timestamp = timestamp;
 		}

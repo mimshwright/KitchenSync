@@ -6,8 +6,6 @@ package org.as3lib.kitchensync.utils
 	import org.as3lib.kitchensync.core.ISynchronizerClient;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	import org.as3lib.kitchensync.core.Synchronizer;
-	import org.as3lib.kitchensync.core.Timestamp;
-
 
 	/**
 	 * A text field that displays the approximate buffered framerate of the synchronizer.
@@ -63,16 +61,16 @@ package org.as3lib.kitchensync.utils
 		/**
 		 * Display is updated by the synchronizer pulses.
 		 */
-		public function update(currentTimestamp:Timestamp):void {	
-			_frameRateHistory.unshift(currentTimestamp.currentTime - _previousTime);
+		public function update(currentTime:int):void {	
+			_frameRateHistory.unshift(currentTime - _previousTime);
 			if (_frameRateHistory.length > _frameRateHistoryDepth) {
 				_frameRateHistory.pop();
 			}
-			_previousTime = currentTimestamp.currentTime;
+			_previousTime = currentTime;
 			
-			if (currentTimestamp.currentFrame %5 == 0) {
-				this.text = formattingFunction(actualFrameRate);
-			}
+//			if (currentTimestamp.currentFrame %5 == 0) {
+			this.text = formattingFunction(actualFrameRate);
+//			}
 		}
 	}
 }

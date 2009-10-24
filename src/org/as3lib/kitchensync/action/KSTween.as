@@ -192,22 +192,14 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Executes the tween.
 		 */
-		override public function update(currentTimestamp:Timestamp):void {
+		override public function update(currentTime:int):void {
 			var timeElapsed:int;
 			var convertedDuration:int;
 			
 			// if the tween is running and the delay time has elapsed, perform tweening.
 			if (startTimeHasElapsed) {
-				// if sync is true... 
-				if (_sync) {
-					// use the actual time elapsed... 
-			 		timeElapsed = currentTimestamp.currentTime - _startTime.currentTime - _delay;
-			 		convertedDuration = duration;		 				 		
-			 	} else {
-			 		// rather than the number of cycles that have passed since the tween began.
-			 		timeElapsed = currentTimestamp.currentFrame - _startTime.currentFrame - TimestampUtil.millisecondsToFrames(_delay);
-			 		convertedDuration = TimestampUtil.millisecondsToFrames(duration);
-			 	}
+		 		timeElapsed = currentTime - _startTime - _delay;
+		 		convertedDuration = duration;		 				 		
 				
 				var target:ITweenTarget
 				
@@ -249,76 +241,6 @@ package org.as3lib.kitchensync.action
 				}
 			}
 		}
-		
-		
-		
-		/**
-		 * Moves the playhead to a specified time in the action. If this method is called while the 
-		 * action is paused, it will not appear to jump until after the action is unpaused.
-		 * 
-		 * @param time The time parameter can either be a number or a parsable time string. If the 
-		 * time to jump to is greater than the total duration of the action, it will throw an IllegalOperationError.
-		 * @param ignoreDelay If set to true, the delay will be ignored and the action will jump to
-		 * the specified time in relation to the duration.
-		 * 
-		 * @throws flash.errors.IllegalOperationError If the time to jump to is longer than the total time for the action.
-		 */
-		public function jumpToTime(time:*, ignoreDelay:Boolean = false):void {
-			// jumpToTime will fail if the action isn't running.
-			if (!isRunning) { 
-				throw new IllegalOperationError("Can't jump to time if the action isn't running.");
-				return; 
-			}
-			
-			// parse time strings if this is a string.
-			var jumpTimeNumber:int;
-			//if time is a number
-			if (!isNaN(time)) {
-				jumpTimeNumber = int(time);
-			} else {
-				var timeString:String = time.toString();
-				jumpTimeNumber = timeStringParser.parseTimeString(timeString);
-			}
-			
-			// Convert the jump time into a timestamp
-			var jumpTime:Timestamp =TimestampUtil.getTimestampFromMilliseconds(jumpTimeNumber);
-			
-			// Ignore the delay in this equation if ignoreDelay is true.
-			var totalDuration:int = ignoreDelay ? duration : duration + delay;
-			
-			// extract the jump time based on the action's timeUnit
-			var offsetTimestamp:Timestamp;
-			offsetTimestamp = TimestampUtil.getTimestampFromMilliseconds(delay);
-			
-			// check that the jump time is valid
-			jumpTimeNumber = jumpTime.currentTime;
-			if (jumpTimeNumber > totalDuration) {
-				// you can't jump to a time that is past the end of the action's total time.
-				throw new IllegalOperationError("'time' must be less than the total time of the action.");
-			} else {
-				// If the action is paused, factor that into your jump (resluts wont appear until it's restarted)
-				var runningTime:Timestamp
-				if (isPaused) {
-					runningTime = TimestampUtil.subtract(_pauseTime, _startTime);
-				} else {
-					runningTime = TimestampUtil.subtract(Synchronizer.getInstance().currentTimestamp, _startTime); 
-				} 
-				
-				// adjust the startTime to make it appear that the playhead should be at 
-				// a different point in time on the next update.
-				_startTime = TimestampUtil.subtract(_startTime, TimestampUtil.subtract(jumpTime, runningTime));
-				
-				// if ignoring the delay, also move the playhead forward by the delay amount.
-				if (ignoreDelay) { 
-					_startTime = TimestampUtil.subtract(_startTime, offsetTimestamp); 
-				} 
-			}
-		}
-		
-		// TODO add jumpByTime() method
-		
-		
-		
 		
 		
 		/**
