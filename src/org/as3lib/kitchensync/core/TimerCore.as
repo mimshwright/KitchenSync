@@ -1,6 +1,5 @@
 package org.as3lib.kitchensync.core
 {
-	import flash.events.EventDispatcher;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
@@ -10,11 +9,10 @@ package org.as3lib.kitchensync.core
 	 * It allows the user to specify a timer interval or 
 	 * automatically set it based on the framerate.
 	 * 
-	 * //Todo: add notes on performance. 
-	 * 
 	 * @since 2.0
 	 * @author Mims Wright
 	 */
+	 // Todo: add notes on performance. 
 	public class TimerCore implements ISynchronizerCore
 	{
 		/** 
@@ -48,9 +46,14 @@ package org.as3lib.kitchensync.core
 		 */
 		public function interpolateIntervalFromFrameRate(frameRate:int):void {
 			var interval:int = Math.floor(1/frameRate*1000);
-			_timer.stop();
-			_timer = new Timer(interval);
-			_timer.start();
+			if (_timer.running) {
+				_timer.stop();
+				_timer = new Timer(interval);
+				_timer.start();
+			}
+			else {
+				_timer = new Timer(interval);
+			}
 		}
 	}
 }
