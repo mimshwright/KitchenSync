@@ -14,6 +14,7 @@ REMOVED Timestamp class. From now on, the synchronizer will dispatch an int repr
 REFACTORED Constructors throughout the system for more consistency and ease of use.
 REMOVED delay from the KSFunction constructor.
 
+ADDED a method to track the number of active actions.
 ADDED jumpToTime and jumpByTime to all actions.
 
 ===== v1.7 =====
