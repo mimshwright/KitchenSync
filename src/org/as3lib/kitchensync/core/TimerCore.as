@@ -11,6 +11,9 @@ package org.as3lib.kitchensync.core
 	 * automatically set it based on the framerate.
 	 * 
 	 * //Todo: add notes on performance. 
+	 * 
+	 * @since 2.0
+	 * @author Mims Wright
 	 */
 	public class TimerCore implements ISynchronizerCore
 	{

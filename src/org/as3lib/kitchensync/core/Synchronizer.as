@@ -11,6 +11,7 @@ package org.as3lib.kitchensync.core
 	
 	/**
 	 * Synchronizer acts as the main time keeper for the animation engine. 
+	 * Normally, this class will not be used directly except by advanced users.
 	 * 
 	 * @author Mims H. Wright
 	 * @since 0.1
@@ -52,6 +53,12 @@ package org.as3lib.kitchensync.core
 		/** A list of clients that are registered to listen for updates. */
 		private var _clients:Dictionary = new Dictionary(KitchenSyncDefaults.syncrhonizerUsesWeakReferences);
 		
+		/** Returns the number of active actions. */
+		public function get activeClients():int { 
+			var count:int = 0;
+			for each (var client:* in _clients) count++;
+			return count;
+		}
 		
 		/**
 		 * Constructor. SingletonEnforcer prevents this class from being instantiated without
@@ -94,6 +101,7 @@ package org.as3lib.kitchensync.core
 		public function unregisterClient(client:ISynchronizerClient):void {
 			delete _clients[client];
 		}
+		
 	
 		/**
 		 * Dispatches events to children for them to update.
