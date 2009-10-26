@@ -4,7 +4,6 @@ package org.as3lib.kitchensync.utils
 	import flash.text.TextFieldAutoSize;
 	
 	import org.as3lib.kitchensync.core.ISynchronizerClient;
-	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	import org.as3lib.kitchensync.core.Synchronizer;
 
 	/**
@@ -25,6 +24,11 @@ package org.as3lib.kitchensync.utils
 		public var updateFrequency:int = 5;
 		
 		private var _previousTime:int = 0;
+		
+		public function get value():int {
+			return _value;
+		}
+		private var _value:int = 0;
 		
 		/** 
 		 * The function used to format the text displayed in the textfield. 
@@ -67,10 +71,11 @@ package org.as3lib.kitchensync.utils
 				_frameRateHistory.pop();
 			}
 			_previousTime = currentTime;
+			_value = actualFrameRate;
 			
-//			if (currentTimestamp.currentFrame %5 == 0) {
-			this.text = formattingFunction(actualFrameRate);
-//			}
+			if (Synchronizer.getInstance().cycles % 5 == 0) {
+				this.text = formattingFunction(actualFrameRate);
+			}
 		}
 	}
 }

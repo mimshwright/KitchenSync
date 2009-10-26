@@ -8,6 +8,7 @@ package org.as3lib.kitchensync.action
 	/**
 	 * A group of actions that executes in sequence seperated by a specified gap.
 	 */
+	 //TODO: make sure all children execute as expected when framerate is too low to keep up.
 	public class KSStaggeredGroup extends KSParallelGroup
 	{	
 		/**
