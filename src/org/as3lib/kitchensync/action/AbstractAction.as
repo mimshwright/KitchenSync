@@ -22,16 +22,6 @@ package org.as3lib.kitchensync.action
 	public class AbstractAction extends EventDispatcher implements IAction
 	{	
 		
-		/** 
-		 * The timeStringParser will determine how strings are parsed into valid 
-		 * time values.
-		 * 
-		 * @see org.as3lib.kitchensync.ITimeStringParser
-		 * @see org.as3lib.kitchensync.TimeStringParser_en
-		 */
-		public static var timeStringParser:ITimeStringParser;
-		
-		
 		/**
 		 * duration is the length of time that the action will run.
 		 * Will accept an integer or a parsable string.
@@ -45,7 +35,7 @@ package org.as3lib.kitchensync.action
 				_duration = duration;
 			} else {
 				var timeString:String = duration.toString();
-				_duration = timeStringParser.parseTimeString(timeString);
+				_duration = KitchenSync.timeStringParser.parseTimeString(timeString);
 			}
 		}
 		protected var _duration:int = 0;
@@ -64,7 +54,7 @@ package org.as3lib.kitchensync.action
 				_delay = delay;
 			} else {
 				var timeString:String = delay.toString();
-				_delay = timeStringParser.parseTimeString(timeString);
+				_delay = KitchenSync.timeStringParser.parseTimeString(timeString);
 			}
 		}
 		protected var _delay:int = 0;
@@ -162,7 +152,6 @@ package org.as3lib.kitchensync.action
 		public function AbstractAction()
 		{
 			super();
-			timeStringParser = KitchenSyncDefaults.timeStringParser;
 			autoDelete = KitchenSyncDefaults.autoDelete;
 //			sync = KitchenSyncDefaults.sync;
 			
@@ -292,7 +281,7 @@ package org.as3lib.kitchensync.action
 				jumpTime = int(time);
 			} else {
 				var timeString:String = time.toString();
-				jumpTime = timeStringParser.parseTimeString(timeString);
+				jumpTime = KitchenSync.timeStringParser.parseTimeString(timeString);
 			}
 			
 			// Ignore the delay in this equation if ignoreDelay is true.
@@ -331,7 +320,7 @@ package org.as3lib.kitchensync.action
 				jumpTime = int(time);
 			} else {
 				var timeString:String = time.toString();
-				jumpTime = timeStringParser.parseTimeString(timeString);
+				jumpTime = KitchenSync.timeStringParser.parseTimeString(timeString);
 			}
 			
 			jumpToTime(runningTime + jumpTime);

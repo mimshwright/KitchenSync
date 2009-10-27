@@ -6,11 +6,12 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 ===== v2.0 =====
 Note: Version 2.0 represents a major overhaul to the entire system for greater simplicity and practical functionality. This version will have no guarantees of backwards compatability. Version 1.x development will continue under a separate branch starting with 1.7.
 
-
-REFACTORED The way time is handled throughout. Working with frames is no longer possible. The sync mode option is deprecated and will always be active. 
+REFACTORED The way time is handled throughout. The sync mode option is deprecated and will always be active.
 ADDED ISynchronizerCore and example core classes. This allows advanced users to switch between different methods of timing (e.g. enterframe or timer based)
-ADDED cyles to replace frames in Synchronizer. Every update counts as a cycle.
+ADDED cycles to replace frames in Synchronizer. Every update counts as a cycle.
+ADDED FrameRateUtil for getting instantaneous and averaged framerates of the system. The FrameRateView now makes use of this class and has more options.
 REMOVED Timestamp class. From now on, the synchronizer will dispatch an int representing the system time since the SWF initialized. Also removed TimestampUtil
+CHANGED Using TimeStringParser_en to work with frames is now not recommended but a frameRate property has been added to support it. timeStringParser is now a property of KitchenSync instead of being defined in AbstractAction. 
 
 REFACTORED Constructors throughout the system for more consistency and ease of use.
 REMOVED delay from the KSFunction constructor.

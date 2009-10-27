@@ -2,6 +2,7 @@ package org.as3lib.kitchensync.action
 {
 	import flash.utils.getQualifiedClassName;
 	
+	import org.as3lib.kitchensync.KitchenSync;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.utils.*;
 	
@@ -23,7 +24,7 @@ package org.as3lib.kitchensync.action
 				_stagger = stagger; 
 			} else {
 				var timeString:String = stagger.toString();
-				_stagger = timeStringParser.parseTimeString(timeString);
+				_stagger = KitchenSync.timeStringParser.parseTimeString(timeString);
 			}
 			if (_stagger <= 0) {
 				throw new RangeError("Stagger amount must be an integer greater than 0.");

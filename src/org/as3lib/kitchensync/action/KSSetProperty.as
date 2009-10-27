@@ -13,8 +13,7 @@ package org.as3lib.kitchensync.action
 		 */ 
 		public function KSSetProperty(target:Object, key:String, value:*, delay:* = 0)
 		{
-			super(setProperty, target, key, value);
-			this.delay = delay;
+			super(setProperty, delay, target, key, value);
 		}
 		
 		/** This is the function that will be called to set the property. */

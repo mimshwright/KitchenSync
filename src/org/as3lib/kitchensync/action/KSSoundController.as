@@ -5,6 +5,7 @@ package org.as3lib.kitchensync.action
 	import flash.media.SoundChannel;
 	import flash.net.URLRequest;
 	
+	import org.as3lib.kitchensync.KitchenSync;
 	import org.as3lib.kitchensync.core.*;
 	
 	/**
@@ -40,7 +41,7 @@ package org.as3lib.kitchensync.action
 				_soundOffset = soundOffset;
 			} else {
 				var timeString:String = soundOffset.toString();
-				_soundOffset = timeStringParser.parseTimeString(timeString);
+				_soundOffset = KitchenSync.timeStringParser.parseTimeString(timeString);
 			}
 			// if < 0, make it equal to 0. 
 			_soundOffset = Math.max(0, _soundOffset);

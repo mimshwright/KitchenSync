@@ -1,11 +1,11 @@
 package org.as3lib.kitchensync
 {
-	import flash.display.DisplayObject;
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.core.ISynchronizerCore;
 	import org.as3lib.kitchensync.core.Synchronizer;
 	import org.as3lib.kitchensync.core.TimerCore;
+	import org.as3lib.kitchensync.utils.ITimeStringParser;
 	
 
 	/**
@@ -24,8 +24,21 @@ package org.as3lib.kitchensync
 		 */ 
 		public static const VERSION:String = "2.0"
 		
+		/**
+		 * Will return true once the initialize function has been called.
+		 */
 		public static function get isInitialized():Boolean { return _isInitialized; }
 		private static var _isInitialized:Boolean = false;
+		
+		/**
+		 * A reference to the time string parser used in KitchenSync.
+		 * The default is defined in KitchenSyncDefaults.
+		 * 
+		 * @see org.as3lib.kitchensync.utils.ITimeStringParser
+		 */
+		public static function get timeStringParser():ITimeStringParser { return _timeStringParser; }
+		public static function set timeStringParser(timeStringParser:ITimeStringParser):void { _timeStringParser = timeStringParser; }
+		private static var _timeStringParser:ITimeStringParser;
 		
 		/**
 		 * Initializes the timing core for KitchenSync. Must be called before using any actions.
@@ -69,6 +82,7 @@ package org.as3lib.kitchensync
 			synchronizer = Synchronizer.getInstance();
 			synchronizer.core = synchronizerCore;
 			
+			timeStringParser = KitchenSyncDefaults.timeStringParser;
 			_isInitialized = true;
 		}
 		

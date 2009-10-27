@@ -1,7 +1,11 @@
 package org.as3lib.kitchensync.utils
 {
 	/**
-	 * Takes a string containing.
+	 * Converts a string representation of time and converts it into milliseconds. 
+	 * For example, "2.65 seconds" would become the integer 2650.
+	 * 
+	 * @author Mims Wright
+	 * @since 0.4.2
 	 */
 	public interface ITimeStringParser
 	{
