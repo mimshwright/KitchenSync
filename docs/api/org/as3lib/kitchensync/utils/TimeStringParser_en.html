@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="TimeStringParser_en,org.as3lib.kitchensync.utils.TimeStringParser_en,DAYS_SEARCH,DAYS_VALUE,FRAMES_SEARCH,HOURS_SEARCH,HOURS_VALUE,LETTER_SEARCH,MILLISECONDS_SEARCH,MILLISECONDS_VALUE,MINUTES_SEARCH,MINUTES_VALUE,NUMBER_SEARCH,NUMBER_UNIT_PAIR_SEARCH,SECONDS_SEARCH,SECONDS_VALUE,TIMECODE_DIGIT_SEARCH,TIMECODE_FORMAT_SEARCH,TIMECODE_FRAME_SEARCH,TIMECODE_SEGMENT_SEARCH,parseTimeString" name="keywords">
+<meta content="TimeStringParser_en,org.as3lib.kitchensync.utils.TimeStringParser_en,DAYS_SEARCH,DAYS_VALUE,HOURS_SEARCH,HOURS_VALUE,LETTER_SEARCH,MILLISECONDS_SEARCH,MILLISECONDS_VALUE,MINUTES_SEARCH,MINUTES_VALUE,NEGATIVE_SEARCH,NUMBER_SEARCH,NUMBER_UNIT_PAIR_SEARCH,SECONDS_SEARCH,SECONDS_VALUE,TIMECODE_DIGIT_SEARCH,TIMECODE_FORMAT_SEARCH,TIMECODE_FRAME_SEARCH,TIMECODE_SEGMENT_SEARCH,parseTimeString" name="keywords">
 <title>org.as3lib.kitchensync.utils.TimeStringParser_en</title>
 </head>
 <body>
@@ -112,10 +112,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">TimeStringParser_en</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#FRAMES_SEARCH">FRAMES_SEARCH</a> : RegExp<div class="summaryTableDescription">[static]</div>
-</td><td class="summaryTableOwnerCol">TimeStringParser_en</td>
-</tr>
-<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#HOURS_SEARCH">HOURS_SEARCH</a> : RegExp<div class="summaryTableDescription">[static]</div>
 </td><td class="summaryTableOwnerCol">TimeStringParser_en</td>
 </tr>
@@ -129,6 +125,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#MINUTES_SEARCH">MINUTES_SEARCH</a> : RegExp<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">TimeStringParser_en</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#NEGATIVE_SEARCH">NEGATIVE_SEARCH</a> : RegExp<div class="summaryTableDescription">[static]</div>
 </td><td class="summaryTableOwnerCol">TimeStringParser_en</td>
 </tr>
 <tr class="">
@@ -196,10 +196,10 @@ showHideInherited();
    These are all valid options:
    "1 hour, 2 minutes, 3 seconds, 4 milliseconds"
    "1h2m3s4ms"
-   "5sec,12fr"
-   "01:23:45;15" (1h, 23m, 45s, 15f - frames are based on stage's framerate)
+//   "5sec,12fr"
+//   "01:23:45;15" (1h, 23m, 45s, 15f - frames are based on stage's framerate)
    ":03" (3s)
-   "300 frames"
+//   "300 frames"
    "1.25s"
    "5 milliseconds, 15mins, 6 hrs"
    "0.25 days"
@@ -239,15 +239,6 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public static const DAYS_VALUE:Number = 86400000</code>
-</div>
-<a name="FRAMES_SEARCH"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">FRAMES_SEARCH</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected static const FRAMES_SEARCH:RegExp</code>
 </div>
 <a name="HOURS_SEARCH"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -311,6 +302,15 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public static const MINUTES_VALUE:Number = 60000</code>
+</div>
+<a name="NEGATIVE_SEARCH"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">NEGATIVE_SEARCH</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected static const NEGATIVE_SEARCH:RegExp</code>
 </div>
 <a name="NUMBER_SEARCH"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

@@ -38,7 +38,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IAction extends <a href="../core/ISynchronizerClient.html">ISynchronizerClient</a>, <a href="none">flash.events.IEventDispatcher</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Subinterfaces</td><td><a href="../action/ITween.html">ITween</a></td>
+<td class="classHeaderTableLabel">Subinterfaces</td><td><a href="loading/ILoaderAction.html">ILoaderAction</a>, <a href="../action/ITween.html">ITween</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Implementors</td><td><a href="../action/AbstractAction.html">AbstractAction</a>, <a href="../action/KSSimpleTween.html">KSSimpleTween</a></td>
@@ -46,7 +46,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </table>
 <p></p>
   An action is a type that represents any kind of happening that takes place at
-  a certain time. 
+  a certain time. All actions use this interface including function-based actions
+  and tweens. Actions can be played, stopped, paused and unpaused. Actions have 
+  a duration and a delay that specify for how long it will play and how long after
+  the start it will begin (although some actions will execute instantaneously).
   
   <p></p>
 <br>
@@ -147,7 +150,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../core/ISynchronizerClient.html#update()">update</a>(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</div>
+<a class="signatureLink" href="../core/ISynchronizerClient.html#update()">update</a>(currentTime:int):void</div>
 <div class="summaryTableDescription">
    Update will allow the synchronizer to update the action with the current time.</div>
 </td><td class="summaryTableOwnerCol"><a href="../core/ISynchronizerClient.html">ISynchronizerClient</a></td>
@@ -269,6 +272,8 @@ showHideInherited();
 <div class="detailBody">
 <code>public function start():<a href="../action/IAction.html">IAction</a></code><p>
    Starts the timer for this action.
+   This method returns a reference to the action that was started. 
+   This allows for an action to be constructed and started in a single line of code.
    
    </p><p></p>
 <span class="label">Returns</span>

@@ -51,6 +51,7 @@ package org.as3lib.kitchensync
 		 * the default settings by calling <code>KitchenSync.initialize()</code>
 		 *
 		 * @see #initialize()
+		 * @see org.as3lib.kitchensync.core.ISynchronizerCore
 		 *  
 		 * @param synchronizerCore The synchronizer core to use to drive updates.
 		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended

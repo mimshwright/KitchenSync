@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="AbstractAction,org.as3lib.kitchensync.action.AbstractAction,_autoDelete,_delay,_duration,_pauseTime,_paused,_running,_startTime,_sync,timeStringParser,autoDelete,delay,duration,durationHasElapsed,isInstantaneous,isPaused,isRunning,offset,pauseTime,startTime,startTimeHasElapsed,sync,addEventTrigger,addTrigger,clone,complete,forceUpdate,kill,onTrigger,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister,update" name="keywords">
+<meta content="AbstractAction,org.as3lib.kitchensync.action.AbstractAction,_autoDelete,_delay,_duration,_pauseTime,_paused,_running,_startTime,timeStringParser,autoDelete,delay,duration,durationHasElapsed,isInstantaneous,isPaused,isRunning,offset,pauseTime,runningTime,startTime,startTimeHasElapsed,addEventTrigger,addTrigger,clone,complete,forceUpdate,jumpByTime,jumpToTime,kill,onTrigger,pause,register,removeEventTrigger,removeTrigger,start,stop,unpause,unregister,update" name="keywords">
 <title>org.as3lib.kitchensync.action.AbstractAction</title>
 </head>
 <body>
@@ -93,8 +93,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only]
-   The human-readable name of this action.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only] 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -103,26 +104,23 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pauseTime">pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">[read-only]
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pauseTime">pauseTime</a> : int<div class="summaryTableDescription">[read-only]
    The time at which the action was last paused.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTime">startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription">[read-only]
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#runningTime">runningTime</a> : int<div class="summaryTableDescription">[read-only]
+   The time in ms since the start of the action or 0 if the action isn't running.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTime">startTime</a> : int<div class="summaryTableDescription">[read-only]
    The time at which the action was last started.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTimeHasElapsed">startTimeHasElapsed</a> : Boolean<div class="summaryTableDescription">[read-only]
    Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
-</td><td class="summaryTableOwnerCol">AbstractAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sync">sync</a> : Boolean<div class="summaryTableDescription"> 
-   Setting sync to true will cause the action to sync up with real time
-   even if framerate drops.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -158,8 +156,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_pauseTime">_pauseTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_pauseTime">_pauseTime</a> : int<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -167,12 +164,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTime">_startTime</a> : <a href="../core/Timestamp.html">Timestamp</a>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">AbstractAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_sync">_sync</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTime">_startTime</a> : int<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 </table>
@@ -215,6 +207,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </div>
 <div class="summaryTableDescription">
    Creates a copy of the object with all the property values of the original and returns it.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#jumpByTime()">jumpByTime</a>(time:*):void</div>
+<div class="summaryTableDescription">
+   Moves the playhead forward or backward by a specified time.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#jumpToTime()">jumpToTime</a>(time:*, ignoreDelay:Boolean = false):void</div>
+<div class="summaryTableDescription">
+   Moves the playhead to a specified time in the action.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
@@ -293,7 +301,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#update()">update</a>(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</div>
+<a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
 <div class="summaryTableDescription">
    This function will be registered by the register method to respond to update events from the synchronizer.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
@@ -518,12 +526,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>isRunning:Boolean</code>&nbsp;&nbsp;[read-only]<p>
-   The human-readable name of this action. 
-  public function get name():String { return _name; }
-  public function set name(name:String):void { _name = name; }
-  protected var _name:String;
-   </p><span class="label">Implementation</span>
+<code>isRunning:Boolean</code>&nbsp;&nbsp;[read-only]<p> 
+   Setting sync to true will cause the action to sync up with real time
+   even if framerate drops. Otherwise, the action will be synced to frames.
+      </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isRunning():Boolean</code>
 <br>
@@ -560,7 +566,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code>
+<code>protected var _pauseTime:int</code>
 </div>
 <a name="pauseTime"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -569,11 +575,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>pauseTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<p>
+<code>pauseTime:int</code>&nbsp;&nbsp;[read-only]<p>
    The time at which the action was last paused.
    </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pauseTime():<a href="../core/Timestamp.html">Timestamp</a></code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pauseTime():int</code>
 <br>
 </div>
 <a name="_running"></a>
@@ -585,6 +591,21 @@ showHideInherited();
 <div class="detailBody">
 <code>protected var _running:Boolean = false</code>
 </div>
+<a name="runningTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">runningTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>runningTime:int</code>&nbsp;&nbsp;[read-only]<p>
+   The time in ms since the start of the action or 0 if the action isn't running.
+   If the action is paused, the result will be the running time at which it was paused.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get runningTime():int</code>
+<br>
+</div>
 <a name="_startTime"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -592,7 +613,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _startTime:<a href="../core/Timestamp.html">Timestamp</a></code>
+<code>protected var _startTime:int</code>
 </div>
 <a name="startTime"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -601,11 +622,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>startTime:<a href="../core/Timestamp.html">Timestamp</a></code>&nbsp;&nbsp;[read-only]<p>
+<code>startTime:int</code>&nbsp;&nbsp;[read-only]<p>
    The time at which the action was last started.
    </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTime():<a href="../core/Timestamp.html">Timestamp</a></code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTime():int</code>
 <br>
 </div>
 <a name="startTimeHasElapsed"></a>
@@ -621,32 +642,6 @@ showHideInherited();
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTimeHasElapsed():Boolean</code>
-<br>
-</div>
-<a name="_sync"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_sync</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _sync:Boolean</code>
-</div>
-<a name="sync"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">sync</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>sync:Boolean</code>&nbsp;&nbsp;[read-write]<p> 
-   Setting sync to true will cause the action to sync up with real time
-   even if framerate drops. Otherwise, the action will be synced to frames.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get sync():Boolean</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set sync(value:Boolean):void</code>
 <br>
 </div>
 <a name="timeStringParser"></a>
@@ -775,6 +770,63 @@ showHideInherited();
 <div class="seeAlso">
 <a href="../action/AbstractAction.html#update()" target="">update()</a>
 </div>
+</div>
+<a name="jumpByTime()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">jumpByTime</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function jumpByTime(time:*):void</code><p>
+   Moves the playhead forward or backward by a specified time. If this method is called while the 
+   action is paused, it will not appear to jump until after the action is unpaused.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:*</code> &mdash; The time parameter can either be a number or a parsable time string.
+   </td>
+</tr>
+</table>
+</div>
+<a name="jumpToTime()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">jumpToTime</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function jumpToTime(time:*, ignoreDelay:Boolean = false):void</code><p>
+   Moves the playhead to a specified time in the action. If this method is called while the 
+   action is paused, it will not appear to jump until after the action is unpaused.
+   This function won't work for instantaneous actions.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:*</code> &mdash; The time parameter can either be a number or a parsable time string. If the 
+   time to jump to is greater than the total duration of the action, it will throw an IllegalOperationError.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">ignoreDelay</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; If set to true, the delay will be ignored and the action will jump to
+   the specified time in relation to the duration.
+   
+   </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code></code> &mdash; If the time to jump to is longer than the total time for the action.
+   </td>
+</tr>
+</table>
 </div>
 <a name="kill()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -941,7 +993,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function update(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</code><p>
+<code>public function update(currentTime:int):void</code><p>
    This function will be registered by the register method to respond to update events from the synchronizer.
    Code that performs the action associated with this object should go in this function.
    This function must be implemented by the subclass.
@@ -951,7 +1003,7 @@ showHideInherited();
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">currentTimestamp</span>:<a href="../core/Timestamp.html">Timestamp</a></code> &mdash; The current timestamp from the Synchronizer.
+<td width="20px"></td><td><code><span class="label">currentTime</span>:int</code> &mdash; The current timestamp from the Synchronizer.
    </td>
 </tr>
 </table>

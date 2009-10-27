@@ -12,17 +12,24 @@ package org.as3lib.kitchensync.action
 	/**
 	 * A simplified version of the KSTween class with NO bells or whistles. Designed for optimized performance,
 	 * file size, and minimal memory use. 
+	 * The behaviour of a simple tween is similar to that of the KSTween class with a TargetProperty tween target. 
 	 * 
 	 * @use
 	 * <code>
-	 * var target:Object = targetObject; // this is the object whose property you want to control.
-	 * var property:String = "x"; // A string representing the name of the property to control. 
-	 * var tween:IAction = new SimpleTween(target, property, 0, 500, 3000, 1000, Cubic.easeOut);
+	 * // This example will tween the 'x' property of a sprite from 0 to 500 px over the course of
+	 * // 3 seconds with a 1 second delay.
+	 * 
+	 * var sprite:Sprite = new Sprite(); // this is the object whose property you want to control.
+	 * var property:String = "x"; // A string representing the name of the property to control.
+	 * var startValue:int = 0, endValue:int = 500;
+	 * var duration:int = 3000, delay:int = 1000;  
+	 * var easingProperty:Funciton = Cubic.easeOut;
+	 * var tween:IAction = new SimpleTween(target, property, startValue, endValue, duration, delay, easingFunction);
 	 * tween.start();
 	 * 
 	 * //Note, this class has 0 references to other classes except when running so it will be garbage collected
-	 * //when it is finished playing if there are no other references to it. To create an auto-deleting version,
-	 * //use the following syntax:
+	 * //when it is finished playing if there are no other references to it. To create an auto-deleting, anonymouse 
+	 * // version, use the following syntax:
 	 * new SimpleTween(target, property, 0, 500, 3000, 1000, Cubic.easeOut).start();
 	 * </code>
 	 * 

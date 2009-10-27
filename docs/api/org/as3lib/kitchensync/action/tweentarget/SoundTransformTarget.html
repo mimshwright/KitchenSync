@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="SoundTransformTarget,org.as3lib.kitchensync.action.tweentarget.SoundTransformTarget,BAD_PROPERTY_ERROR,PAN,VOLUME,_channel,_endValue,_property,_startValue,channel,currentValue,differenceInValues,endValue,property,startValue,clone,reset,updateTween" name="keywords">
+<meta content="SoundTransformTarget,org.as3lib.kitchensync.action.tweentarget.SoundTransformTarget,BAD_PROPERTY_ERROR,PAN,VOLUME,_endValue,_property,_startValue,_targetSound,currentValue,differenceInValues,endValue,property,startValue,targetSound,clone,reset,updateTween" name="keywords">
 <title>org.as3lib.kitchensync.action.tweentarget.SoundTransformTarget</title>
 </head>
 <body>
@@ -58,11 +58,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#channel">channel</a> : SoundChannel<div class="summaryTableDescription">
-   The object containing the sound channel to apply the transform.</div>
-</td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
-</tr>
-<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentValue">currentValue</a> : Number<div class="summaryTableDescription">
    The current value of the property you specified.</div>
 </td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
@@ -87,6 +82,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    The value to start from when tweening.</div>
 </td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
 </tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#targetSound">targetSound</a> : Object<div class="summaryTableDescription">
+   The target object to which to apply the SoundTransform.</div>
+</td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
+</tr>
 </table>
 </div>
 <a name="protectedPropertySummary"></a>
@@ -95,10 +95,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
 <tr>
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_channel">_channel</a> : SoundChannel<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_endValue">_endValue</a> : Number<div class="summaryTableDescription"></div>
@@ -110,6 +106,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startValue">_startValue</a> : Number<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_targetSound">_targetSound</a> : Object<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
 </tr>
 </table>
@@ -124,7 +124,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#SoundTransformTarget()">SoundTransformTarget</a>(channel:SoundChannel, property:String, startValue:Number, endValue:Number)</div>
+<a class="signatureLink" href="#SoundTransformTarget()">SoundTransformTarget</a>(targetSound:Object, property:String, startValue:Number, endValue:Number)</div>
 <div class="summaryTableDescription">
    Constructor.</div>
 </td><td class="summaryTableOwnerCol">SoundTransformTarget</td>
@@ -183,35 +183,10 @@ showHideInherited();
 <div class="MainContent">
 <a name="propertyDetail"></a>
 <div class="detailSectionHeader">Property detail</div>
-<a name="_channel"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_channel</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _channel:SoundChannel</code>
-</div>
-<a name="channel"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">channel</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>channel:SoundChannel</code>&nbsp;&nbsp;[read-write]<p>
-   The object containing the sound channel to apply the transform. 
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get channel():SoundChannel</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set channel(value:SoundChannel):void</code>
-<br>
-</div>
 <a name="currentValue"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">currentValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">currentValue</td><td class="detailHeaderType">property</td>
 </tr>
 </table>
 <div class="detailBody">
@@ -313,6 +288,31 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set startValue(value:Number):void</code>
 <br>
 </div>
+<a name="_targetSound"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_targetSound</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _targetSound:Object</code>
+</div>
+<a name="targetSound"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">targetSound</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>targetSound:Object</code>&nbsp;&nbsp;[read-write]<p>
+   The target object to which to apply the SoundTransform. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get targetSound():Object</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set targetSound(value:Object):void</code>
+<br>
+</div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
 <a name="SoundTransformTarget()"></a>
@@ -322,12 +322,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function SoundTransformTarget(channel:SoundChannel, property:String, startValue:Number, endValue:Number)</code><p>
+<code>public function SoundTransformTarget(targetSound:Object, property:String, startValue:Number, endValue:Number)</code><p>
    Constructor.
       </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">channel</span>:SoundChannel</code> &mdash; The SoundChannel to apply the transform to. 
+<td width="20px"></td><td><code><span class="label">targetSound</span>:Object</code> &mdash; The object to which to apply the transform (Usually a SoundChannel or NetStream). 
+          Note that there is no type checking on this parameter and you should use an object that
+          has a soundTransform property.
    </td>
 </tr>
 <tr>

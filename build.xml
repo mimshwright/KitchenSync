@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="asdoc" default="main" basedir=".">
+<project name="kitchensynclib" default="compilelib" basedir=".">
+	<property file="build.properties" />
+	
 	<!-- The Title of the Application -->
 	<property name="App.title"  value="KitchenSync"/>
-	
-	<!-- The Location of Flex on your Computer -->
-	<property name="Flex.dir" location="/Applications/Adobe Flex Builder 3 Plug-in"/>
-	
+
 	<!-- The Location of FlexSDK on your Computer -->
-	<property name="FlexSDK.dir" location="${Flex.dir}/sdks/3.0.0"/>
-		
-	<!-- The Location of ASDocs on your Computer -->
-	<property name="AsDocs.dir" location="${FlexSDK.dir}/bin/asdoc"/>
+	<property name="flex.sdkPath" location="${flex.path}/sdks/${flex.sdkVersion}"/>
+	<!-- The Location of flex compilers on your Computer -->
+	<property name="flex.binaryPath" location="${flex.sdkPath}/bin"/>
 	
 	<!--
 	The Location of your Application Classes on your Computer
@@ -18,32 +16,66 @@
 	NOTE: ${basedir} is an ant property that represents the directory holding the build.xml file
 	NOTE: I have encountered issues with this folder containing Spaces
 	-->
-	<property name="AppClasses.dir" location="${basedir}/src"/>
-	<property name="AS3Lib.dir" location="${basedir}/../../as3lib/src"/>
+	<property name="project.sourcePath" location="${basedir}/src"/>
+	<property name="project.libraryPath" location="${basedir}/libs"/>
 		
 	<!--
 	The Location you wish to output to on your Computer
 	NOTE: I have encountered issues with this folder containing Spaces
 	NOTE: This location gets DELETED and re-generated each time the build is run
 	-->
-	<property name="Output.dir" location="${basedir}/docs/api"/>
-	 
-	<!-- Execute the ASDoc Compile -->
-	<target name="main" depends="docs" description="full build of asdocs"/>
+	<property name="project.output.docsPath" location="${basedir}/docs/api"/>
+	<property name="project.output.binaryPath" location="${basedir}/bin"/>
+	
+	<property name="project.version" value="2.0" />
+	
+	
+	<!--taskdef resource="flexTasks.tasks" classpath="${flex.sdkPath}/lib/flexTasks.jar" /--> 
+	<property name="FLEX_HOME" location="${flex.path}" />
+	
+	<target name="compilelib" description="Compiles the kitchensynclib into a SWC library file">
+		<exec executable="${flex.binaryPath}/compc" failonerror="true">
+			<arg line="-source-path ${project.sourcePath}" />
+			<arg line="-library-path ${project.libraryPath}" />
+			<arg line="-include-sources ${project.sourcePath}" />
+			<arg line="-output ${project.output.binaryPath}/kitcheynsynclib.swc"/>
+		</exec>
+		<!--compc output="${project.output.binaryPath}/kitchensynclib.swc"
+			   include-classes="${project.sourcePath}">  
+			<source-path path-element="${project.sourcePath}" />
+		</compc-->
+	</target>
+	
+	<target name="cleanupdocs" description="Deletes old document files before generating asdocs">
+		<delete dir="${project.docsPath}" />
+		<mkdir dir="${project.docsPath}" />
+	</target>
 	
 	<!--
 	Run the ASDoc executable and generate the ASDocs to the new output folder
 	-->
-	<target name="docs">
-		<exec executable="${AsDocs.dir}" failonerror="true">
-			<arg line="-doc-sources ${AS3Lib.dir}"/>
-			<arg line="-doc-sources ${AppClasses.dir}"/>
+	<target name="docs" description="Compiles the asdocs in the source code into HTML.">
+		<exec executable="${flex.binaryPath}/asdoc" failonerror="true" description="Compiles the asdocs">
+			<arg line="-source-path ${project.sourcePath}"/>
+			<arg line="-library-path ${project.libraryPath}"/>
+			<arg line="-doc-sources ${project.sourcePath}"/>
 			<arg line="-window-title &quot;${App.title}&quot;"/>
-			<arg line="-output ${Output.dir}"/>
+			<arg line="-output ${project.output.docsPath}"/>
 		</exec>
-		<exec executable="open">
-			<arg line="${Output.dir}/index.html" />
+		<exec executable="open" description="Opens the completed file for viewing">
+			<arg line="${project.output.docsPath}/index.html" />
 		</exec>
+	</target>
+	
+	<target name="exportsource" description="Creates a zip file of the source files for the library">
+		<zip 
+			destfile="${project.output.binaryPath}/KitchenSyncLib.${project.version}.src.zip" 
+			update="true" whenempty="fail"
+			>
+			<zipfileset dir="src" prefix="src" />
+			<zipfileset dir="docs" prefix="docs" />
+		</zip>
+		<echo message="Created a zip of the source file in the /bin directory." />
 	</target>
 	
 </project>

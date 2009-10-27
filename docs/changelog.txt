@@ -5,7 +5,8 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 ===== v2.0 =====
 Note: Version 2.0 represents a major overhaul to the entire system for greater simplicity and practical functionality. This version will have no guarantees of backwards compatability. Version 1.x development will continue under a separate branch starting with 1.7.
-   
+
+
 REFACTORED The way time is handled throughout. Working with frames is no longer possible. The sync mode option is deprecated and will always be active. 
 ADDED ISynchronizerCore and example core classes. This allows advanced users to switch between different methods of timing (e.g. enterframe or timer based)
 ADDED cyles to replace frames in Synchronizer. Every update counts as a cycle.
@@ -16,6 +17,8 @@ REMOVED delay from the KSFunction constructor.
 
 ADDED a method to track the number of active actions.
 ADDED jumpToTime and jumpByTime to all actions.
+
+IMPROVED build.xml to include more targets for building the library.
 
 ===== v1.7 =====
 ADDED Grant Skinner's ColorMatrix class for some color tweens

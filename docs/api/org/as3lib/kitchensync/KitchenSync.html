@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="KitchenSync,org.as3lib.kitchensync.KitchenSync,VERSION,initialize" name="keywords">
+<meta content="KitchenSync,org.as3lib.kitchensync.KitchenSync,VERSION,isInitialized,initialize,initializeWithCore" name="keywords">
 <title>org.as3lib.kitchensync.KitchenSync</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 <td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/as3lib/kitchensync/KitchenSync.html&amp;org/as3lib/kitchensync/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
 </tr>
 <tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;KitchenSync</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;KitchenSync</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
 </tr>
 <tr class="titleTableRow3">
 <td colspan="2">&nbsp;</td>
@@ -27,7 +27,7 @@
 </table>
 <script type="text/javascript" language="javascript">
 <!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class KitchenSync"); titleBar_setSubNav(true,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class KitchenSync"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
 --></script>
 <div class="MainContent">
 <table cellspacing="0" cellpadding="0" class="classHeaderTable">
@@ -51,6 +51,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <br>
 <hr>
 </div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInitialized">isInitialized</a> : Boolean<div class="summaryTableDescription">[static][read-only]</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+</table>
+</div>
 <a name="methodSummary"></a>
 <div class="summarySection">
 <div class="summaryTableTitle">Public Methods</div>
@@ -62,15 +75,24 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#KitchenSync()">KitchenSync</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Constructor.</div>
 </td><td class="summaryTableOwnerCol">KitchenSync</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#initialize()">initialize</a>(frameRateSeed:DisplayObject, versionCheck:String):void</div>
+<a class="signatureLink" href="#initialize()">initialize</a>(frameRate:int = 30, versionCheck:String):void</div>
 <div class="summaryTableDescription">[static]
    Initializes the timing core for KitchenSync.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeWithCore()">initializeWithCore</a>(synchronizerCore:<a href="core/ISynchronizerCore.html">ISynchronizerCore</a>, versionCheck:String):void</div>
+<div class="summaryTableDescription">[static]
+   Allows you to specify a synchronizer core when you initialize the system.</div>
 </td><td class="summaryTableOwnerCol">KitchenSync</td>
 </tr>
 </table>
@@ -83,7 +105,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#VERSION">VERSION</a> : String = "1.6"<div class="summaryTableDescription">[static] 
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#VERSION">VERSION</a> : String = "2.0"<div class="summaryTableDescription">[static] 
    The current version of the library.</div>
 </td><td class="summaryTableOwnerCol">KitchenSync</td>
 </tr>
@@ -94,6 +116,20 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 showHideInherited();
 --></script>
 <div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="isInitialized"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isInitialized</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>isInitialized:Boolean</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get isInitialized():Boolean</code>
+<br>
+</div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
 <a name="KitchenSync()"></a>
@@ -103,8 +139,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function KitchenSync()</code>
-</div>
+<code>public function KitchenSync()</code><p>
+   Constructor. Not used.
+   </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
 <a name="initialize()"></a>
@@ -114,13 +151,15 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public static function initialize(frameRateSeed:DisplayObject, versionCheck:String):void</code><p>
+<code>public static function initialize(frameRate:int = 30, versionCheck:String):void</code><p>
    Initializes the timing core for KitchenSync. Must be called before using any actions.
    
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">frameRateSeed</span>:DisplayObject</code> &mdash; must be a DisplayObject that is added to the display list.
+<td width="20px"></td><td><code><span class="label">frameRate</span>:int</code> (default = <code>30</code>)<code></code> &mdash; Is an optional parameter that allows you to set the rate of the dispatches.
+        This can be different than the SWF's framerate but for best results, use the framerate of the swf.
+        The system may not perform well over 60.
    </td>
 </tr>
 <tr>
@@ -133,6 +172,42 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="initializeWithCore()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeWithCore</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function initializeWithCore(synchronizerCore:<a href="core/ISynchronizerCore.html">ISynchronizerCore</a>, versionCheck:String):void</code><p>
+   Allows you to specify a synchronizer core when you initialize the system.
+   This can be any of the ISynchronizerCores and will allow you to use enterframes, timers, or other mehtods
+   to drive the dispatches of your synchronizer. If this sounds too complicated, you can use
+   the default settings by calling <code>KitchenSync.initialize()</code>
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">synchronizerCore</span>:<a href="core/ISynchronizerCore.html">ISynchronizerCore</a></code> &mdash; The synchronizer core to use to drive updates.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">versionCheck</span>:String</code> &mdash; a string for the version you think you're using. e.g. 1.2 This is recommended
+           but not required. It will throw an error if you're using the wrong version of KS. 
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../kitchensync/KitchenSync.html#initialize()" target="">initialize()</a>
+<br>
+<a href="core/ISynchronizerCore.html" target="">org.as3lib.kitchensync.core.ISynchronizerCore</a>
+</div>
+</div>
 <a name="constantDetail"></a>
 <div class="detailSectionHeader">Constant detail</div>
 <a name="VERSION"></a>
@@ -142,7 +217,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public static const VERSION:String = "1.6"</code><p> 
+<code>public static const VERSION:String = "2.0"</code><p> 
    The current version of the library. Use this to verify that the library is the
    version that your software expects. 
    </p></div>

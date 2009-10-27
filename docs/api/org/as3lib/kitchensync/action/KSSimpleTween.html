@@ -47,6 +47,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <p></p>
   A simplified version of the KSTween class with NO bells or whistles. Designed for optimized performance,
   file size, and minimal memory use. 
+  The behaviour of a simple tween is similar to that of the KSTween class with a TargetProperty tween target. 
   
   <p></p>
 <p>
@@ -210,7 +211,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#update()">update</a>(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</div>
+<a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
 <div class="summaryTableDescription"> Called when a pulse is sent from the Synchronizer </div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
@@ -560,10 +561,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function update(currentTimestamp:<a href="../core/Timestamp.html">Timestamp</a>):void</code><p> Called when a pulse is sent from the Synchronizer </p><span class="label">Parameters</span>
+<code>public function update(currentTime:int):void</code><p> Called when a pulse is sent from the Synchronizer </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">currentTimestamp</span>:<a href="../core/Timestamp.html">Timestamp</a></code></td>
+<td width="20px"></td><td><code><span class="label">currentTime</span>:int</code></td>
 </tr>
 </table>
 </div>

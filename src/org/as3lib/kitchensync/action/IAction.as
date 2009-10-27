@@ -6,7 +6,10 @@ package org.as3lib.kitchensync.action
 	
 	/**
 	 * An action is a type that represents any kind of happening that takes place at
-	 * a certain time. 
+	 * a certain time. All actions use this interface including function-based actions
+	 * and tweens. Actions can be played, stopped, paused and unpaused. Actions have 
+	 * a duration and a delay that specify for how long it will play and how long after
+	 * the start it will begin (although some actions will execute instantaneously).
 	 * 
 	 * @since 1.6
 	 * @author Mims Wright
@@ -36,6 +39,13 @@ package org.as3lib.kitchensync.action
 		
 		/**
 		 * Starts the timer for this action.
+		 * This method returns a reference to the action that was started. 
+		 * This allows for an action to be constructed and started in a single line of code.
+		 * 
+		 * @use <code>
+		 *		// Initialize and start an action in a single line of code.
+		 * 		var action:IAction = new SomeAction().start();
+		 * 		</code>
 		 * 
 		 * @return The action that was just started for convenience.
 		 */
