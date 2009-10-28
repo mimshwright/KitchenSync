@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.tween
 {
 	/**
 	 * Represents a reserved word used in a tween object parser.

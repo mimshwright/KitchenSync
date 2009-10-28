@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.tween
 {
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	

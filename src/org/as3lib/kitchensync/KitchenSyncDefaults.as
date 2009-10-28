@@ -1,8 +1,8 @@
 package org.as3lib.kitchensync
 {
-	import org.as3lib.kitchensync.action.ITweenObjectParser;
-	import org.as3lib.kitchensync.action.KitchenSyncObjectParser;
-	import org.as3lib.kitchensync.easing.Linear;
+	import org.as3lib.kitchensync.action.tween.*;
+	import org.as3lib.kitchensync.action.*;
+	import org.as3lib.kitchensync.easing.*;
 	import org.as3lib.kitchensync.utils.*;
 	
 	//TODO: add docs

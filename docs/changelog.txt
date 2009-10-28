@@ -3,8 +3,8 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 * = Contains syntax changes that may require refactoring of legacy code.
 
-===== v2.0 =====
-Note: Version 2.0 represents a major overhaul to the entire system for greater simplicity and practical functionality. This version will have no guarantees of backwards compatability. Version 1.x development will continue under a separate branch starting with 1.7.
+===== v2.0* =====
+Note: Version 2.0 represents a major overhaul to the entire system for greater simplicity and practical functionality. This version will not be backwards compatible. Version 1.x development will continue under a separate branch starting with 1.7.
 
 REFACTORED The way time is handled throughout. The sync mode option is deprecated and will always be active.
 ADDED ISynchronizerCore and example core classes. This allows advanced users to switch between different methods of timing (e.g. enterframe or timer based)
@@ -18,6 +18,8 @@ REMOVED delay from the KSFunction constructor.
 
 ADDED a method to track the number of active actions.
 ADDED jumpToTime and jumpByTime to all actions.
+
+MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
 
 IMPROVED build.xml to include more targets for building the library.
 

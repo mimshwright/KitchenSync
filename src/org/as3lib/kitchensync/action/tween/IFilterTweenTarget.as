@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.action.tweentarget
+package org.as3lib.kitchensync.action.tween
 {
 	// todo document
 	// todo add more?

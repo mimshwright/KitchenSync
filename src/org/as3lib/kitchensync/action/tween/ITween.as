@@ -1,5 +1,7 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.tween
 {
+	import org.as3lib.kitchensync.action.IAction;
+	
 	/**
 	 * A special type of action that changes a numeric value
 	 * (such as the x position of a Sprite) over time. 

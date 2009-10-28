@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.action.tweentarget
+package org.as3lib.kitchensync.action.tween
 {
 	/**
 	 * A bundle that wraps up a property or other value that can be tweened by a KSTween.

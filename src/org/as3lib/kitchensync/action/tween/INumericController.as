@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.action.tweentarget
+package org.as3lib.kitchensync.action.tween
 {
 	/**
 	 * Allows a control interface for translating values to and from numeric values. 

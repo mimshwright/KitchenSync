@@ -1,10 +1,10 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.tween
 {
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
-	import org.as3lib.kitchensync.action.tweentarget.ITweenTarget;
-	import org.as3lib.kitchensync.action.tweentarget.TargetProperty;
+	import org.as3lib.kitchensync.action.*;
+	import org.as3lib.kitchensync.action.tween.*;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.easing.EasingUtil;
 	import org.as3lib.kitchensync.utils.*;
@@ -16,7 +16,7 @@ package org.as3lib.kitchensync.action
 	 * Rule of thumb: KSTween is the action that handles the timing and starting and stopping
 	 * the tween while ITweenTargets control the values of the tween.
 	 * 
-	 * @see org.as3lib.kitchensync.action.tweentarget.ITweenTarget
+	 * @see org.as3lib.kitchensync.action.tween.ITweenTarget
 	 * @see org.as3lib.kitchensync.action.KSSimpleAction
 	 * @since 0.1
 	 * @author Mims Wright
@@ -42,8 +42,8 @@ package org.as3lib.kitchensync.action
 		/**
 		 * A list of tween targets used by this tween.
 		 * 
-		 * @see org.as3lib.kitchensync.action.tweentarget.ITweenTarget
-		 * @see org.as3lib.kitchensync.action.tweentarget.TargetProperty
+		 * @see org.as3lib.kitchensync.action.tween.ITweenTarget
+		 * @see org.as3lib.kitchensync.action.tween.TargetProperty
 		 */
 		protected var _tweenTargets:Array;
 		public function get tweenTargets():Array { return _tweenTargets; }

@@ -1,5 +1,7 @@
 package org.as3lib.kitchensync.action
 {
+	import org.as3lib.kitchensync.action.tween.KSTween;
+	
 	/**
 	 * Executes a function within another AbstractSynchronizedAction when executed. This allows you to easily
 	 * control other actions within a sequence. The accepted commands can be found in ActionControllerCommands.

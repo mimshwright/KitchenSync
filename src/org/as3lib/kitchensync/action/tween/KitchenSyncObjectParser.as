@@ -1,7 +1,7 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.tween
 {
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
-	import org.as3lib.kitchensync.action.tweentarget.*;
+	import org.as3lib.kitchensync.action.tween.*;
 	
 	public class KitchenSyncObjectParser implements ITweenObjectParser {
 		

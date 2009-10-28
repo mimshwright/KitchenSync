@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.tween
 {	
 	import flash.events.EventDispatcher;
 	
@@ -7,6 +7,8 @@ package org.as3lib.kitchensync.action
 	
 	import org.as3lib.kitchensync.easing.EasingUtil;
 	import org.as3lib.kitchensync.easing.Linear;
+	
+	import org.as3lib.kitchensync.action.IAction;
 
 	
 	/**

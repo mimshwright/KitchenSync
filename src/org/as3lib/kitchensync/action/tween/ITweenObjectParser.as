@@ -1,4 +1,4 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.tween
 {
 	/**
 	 * An algorithm that parses data from an object into tween data.

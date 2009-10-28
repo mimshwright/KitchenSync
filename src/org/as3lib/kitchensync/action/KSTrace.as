@@ -16,8 +16,7 @@ package org.as3lib.kitchensync.action
 		 */
 		public function KSTrace(message:*, delay:* = 0)
 		{
-			super(trace, message.toString());
-			this.delay = delay;
+			super(trace, delay, message.toString());
 		}
 		
 		override public function clone():IAction { 
