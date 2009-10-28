@@ -11,6 +11,8 @@ package org.as3lib.kitchensync.action
 	/**
 	 * A sound that will be played back at the specified delay.
 	 */
+	 // todo: add example
+	 // todo: review
 	public class KSSoundController extends AbstractAction
 	{
 		/**

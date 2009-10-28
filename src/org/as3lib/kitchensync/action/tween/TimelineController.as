@@ -3,13 +3,16 @@ package org.as3lib.kitchensync.action.tween
 	import flash.display.FrameLabel;
 	import flash.display.MovieClip;
 	
-	// TODO add option for gotoAndPlay?
 	/**
 	 * A TweenTarget that controls a timeline animation in a MovieClip.
 	 * 
 	 * @since 1.5
 	 * @author Mims Wright
 	 */
+	// TODO add option for gotoAndPlay?
+	// todo: add example
+	// todo: review
+	// todo: add a way to use the natural number of frames between the two endpoints as the duration!!!
 	public class TimelineController implements ITweenTarget
 	{
 		

@@ -9,6 +9,7 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
+	 // todo think of what methods should be in here.
 	public interface ITween extends IAction
 	{
 		// So far, this is only a marker interface.

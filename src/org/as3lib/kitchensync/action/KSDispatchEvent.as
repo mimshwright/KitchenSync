@@ -12,7 +12,12 @@ package org.as3lib.kitchensync.action
 	 * SynchronizedDispatchEvent itself or from any other IEventDispatcher. The constructor can 
 	 * be passed either an Event object or a string for the event type.
 	 * Uses weak references by default.
+	 * 
+	 * @author Mims H. Wright
 	 */
+	 // todo: add example
+	 // todo: review
+	 // todo: cleanup docs
 	public class KSDispatchEvent extends AbstractAction
 	{
 		public static const SELF:IEventDispatcher = null;

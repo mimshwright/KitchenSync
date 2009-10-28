@@ -11,6 +11,8 @@ package org.as3lib.kitchensync.action.tween
 	 * can cause clicks and distortion in the sound.
 	 */
 	// TODO add properties for left to right, right to right, etc.
+	// todo: review
+	// todo : example
 	public class SoundTransformTarget implements ITweenTarget
 	{
 	

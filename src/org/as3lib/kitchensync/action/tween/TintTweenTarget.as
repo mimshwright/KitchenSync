@@ -11,6 +11,8 @@ package org.as3lib.kitchensync.action.tween
 	 * @since 1.7
 	 * @author Mims Wright
 	 */ 
+	 // todo: review
+	 // todo: add example
 	public class TintTweenTarget implements ITweenTarget
 	{
 		/**

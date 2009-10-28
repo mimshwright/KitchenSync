@@ -1,10 +1,11 @@
 package org.as3lib.kitchensync.action
-{	
+{
 	/**
 	 * A set of commands to be used in conjunction with the ActionController class.
 	 * 
 	 * @see ActionController
 	 */
+	 // todo: blog about this method for doing enumerations
 	public class ActionControllerCommand
 	{
 		/** start() command. */
@@ -28,13 +29,19 @@ package org.as3lib.kitchensync.action
 		/** The default command will be used if nothing is specified. */
 		public static var DEFAULT:ActionControllerCommand = START;
 		
-		// The string equivelant of the Command
+		/** The stored string equivelant of the Command */
 		private var _string:String;
 		
+		/**
+		 * Constructor. This should not be used outside of this class.
+		 * 
+		 * @param string The string representation of the command. 
+		 */
 		public function ActionControllerCommand(string:String = "") {
 			_string = string;
 		} 
 		
+		/** Returns the value of the command string */
 		public function toString():String {
 			if (!_string) { return super.toString(); }
 			return _string;

@@ -2,7 +2,11 @@ package org.as3lib.kitchensync.action
 {
 	/**
 	 * Traces a message at the specified time.
+	 * 
+	 * @author Mims Wright
+	 * @since 0.1
 	 */
+	 // todo: add example
 	public class KSTrace extends KSFunction
 	{
 		/** The message to trace */

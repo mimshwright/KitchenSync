@@ -16,6 +16,7 @@ package org.as3lib.kitchensync.action.tween
 	 * @see TweenTargetType
 	 * @see Tween
 	 */
+	 // todo: review. what is this class? is it being used?
 	public class TweenTargetFactory
 	{
 		private static var _instance:TweenTargetFactory;

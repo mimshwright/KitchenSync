@@ -4,6 +4,7 @@ package org.as3lib.kitchensync.action.tween
 	import flash.filters.BitmapFilter;
 	
 	// todo add docs
+	// todo review
 	public class FilterTargetProperty implements IFilterTweenTarget
 	{
 		/**

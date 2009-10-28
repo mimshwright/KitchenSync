@@ -4,6 +4,7 @@ package org.as3lib.kitchensync.action.tween
 	
 	import flash.display.DisplayObject;
 	
+	// todo: add docs
 	public class SaturationTweenTarget extends AbstractColorMatrixTweenTarget
 	{
 		

@@ -8,13 +8,16 @@ package org.as3lib.kitchensync.action.tween
 	
 	import org.as3lib.utils.AbstractEnforcer;
 	
+	// todo: add docs
 	public class AbstractColorMatrixTweenTarget implements IFilterTweenTarget
 	{
 
+		// todo: add docs
 		public function get filterType():Class {
 			return ColorMatrixFilter;
 		}
 		
+		// todo: add docs
 		public function get currentValue():Number { return _currentValue; }
 		public function set currentValue(currentValue:Number):void {
 			var newFilters:Array = [];

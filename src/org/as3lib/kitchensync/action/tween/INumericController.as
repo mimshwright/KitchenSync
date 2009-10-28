@@ -7,6 +7,9 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.5
 	 */
+	 
+	 // todo: move to a more appropriate package
+	 // todo: better docs
 	public interface INumericController
 	{
 		/**

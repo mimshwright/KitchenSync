@@ -16,6 +16,7 @@ package org.as3lib.kitchensync.core
 	 * @author Mims H. Wright
 	 * @since 0.1
 	 */
+	 // todo: add more notes about cores and kitchensync class
 	public final class Synchronizer extends EventDispatcher
 	{
 		

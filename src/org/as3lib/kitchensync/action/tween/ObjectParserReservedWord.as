@@ -3,6 +3,7 @@ package org.as3lib.kitchensync.action.tween
 	/**
 	 * Represents a reserved word used in a tween object parser.
 	 */
+	 // todo: delete this class? is it being used?
 	public class ObjectParserReservedWord
 	{
 		public function get term():String { return _term; }

@@ -11,6 +11,9 @@ package org.as3lib.kitchensync.action
 	 * @uthor Mims Wright
 	 * @since 1.6
 	 */
+	 // todo: add example
+	 // todo: review
+	 // todo: consider removing this class altogether
 	public class KSStepedSequenceGroup extends KSSequenceGroup
 	{
 		/**

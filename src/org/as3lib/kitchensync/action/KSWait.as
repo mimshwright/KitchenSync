@@ -3,11 +3,13 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.core.*;
 	
 	/**
-	 * Does nothing except wait. Used to delay a sequence.
+	 * Does nothing except wait. Can be used to delay a sequence.
 	 * 
 	 * @since 0.2
 	 * @author Mims Wright
 	 */
+	 // todo: add example
+	 // todo: review
 	public class KSWait extends AbstractAction
 	{
 		override public function set duration(duration:*):void {

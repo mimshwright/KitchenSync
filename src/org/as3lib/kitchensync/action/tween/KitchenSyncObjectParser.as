@@ -3,6 +3,10 @@ package org.as3lib.kitchensync.action.tween
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	import org.as3lib.kitchensync.action.tween.*;
 	
+	// todo : add docs
+	// todo : review
+	// todo : add more functionality
+	// todo : rename this class
 	public class KitchenSyncObjectParser implements ITweenObjectParser {
 		
 		public static const TARGET:String 			= "target";

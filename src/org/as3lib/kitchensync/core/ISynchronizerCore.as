@@ -8,6 +8,9 @@ package org.as3lib.kitchensync.core
 	 * the Synchronizer.
 	 * 
 	 * @see org.as3lib.kitchensync.core.Synchronizer 
+	 * 
+	 * @since 2.0
+	 * @author Mims H. Wright
 	 */
 	public interface ISynchronizerCore
 	{

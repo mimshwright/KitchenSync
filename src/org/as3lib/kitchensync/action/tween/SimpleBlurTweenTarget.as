@@ -5,6 +5,7 @@ package org.as3lib.kitchensync.action.tween
 	
 	// todo documentation
 	// todo make a target property tweenTarget for a blur filter.
+	// todo: add example
 	public class SimpleBlurTweenTarget implements IFilterTweenTarget
 	{
 		public function get currentValue():Number { return _blurXTweenTarget.currentValue; }

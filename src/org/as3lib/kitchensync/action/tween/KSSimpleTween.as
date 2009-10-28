@@ -40,6 +40,7 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
+	 // todo: review
 	public class KSSimpleTween extends EventDispatcher implements IAction, ITween
 	{
 		/** duration of tween, not including delay, in milliseconds. */ 

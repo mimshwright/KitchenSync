@@ -7,6 +7,9 @@ package org.as3lib.kitchensync.action
 	[Event(name="childActionStart", type="org.as3lib.kitchensync.KitchenSyncEvent")]
 	[Event(name="childActionComplete", type="org.as3lib.kitchensync.KitchenSyncEvent")]
 	
+	// todo: add docs
+	// todo: thoroughly review this class for errors, kruft, improvements
+	// todo: add the ability to reset child tweens at the start of the group
 	public class AbstractActionGroup extends AbstractAction
 	{
 		/** If true, the group's KSTween children will reset to their default positions when the group is started. */

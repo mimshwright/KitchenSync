@@ -2,7 +2,12 @@ package org.as3lib.kitchensync.action
 {	
 	/**
 	 * SynchronizedAction to set a property for any object to a specified value.
+	 * 
+	 * @author Mims Wright
+	 * @since 0.4
 	 */
+	 // todo: add example
+	 // todo: review
 	public class KSSetProperty extends KSFunction
 	{
 		/**

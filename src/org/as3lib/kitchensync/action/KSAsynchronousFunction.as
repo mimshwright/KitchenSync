@@ -11,6 +11,8 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 * @since 1.5
 	 */
+	 // todo: add example
+	 // todo: review
 	public class KSAsynchronousFunction extends KSFunction
 	{
 		/** a reference to the event dispatcher */

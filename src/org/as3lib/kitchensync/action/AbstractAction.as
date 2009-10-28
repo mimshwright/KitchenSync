@@ -17,7 +17,8 @@ package org.as3lib.kitchensync.action
 	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
 	 * timing. 
 	 *
-	 */ 
+	 */
+	 // todo - review this class in detail. Update docs, make sure everything is correct.
 	 // todo - better implementation of ids
 	public class AbstractAction extends EventDispatcher implements IAction
 	{	

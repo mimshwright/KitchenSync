@@ -14,6 +14,7 @@ package org.as3lib.kitchensync.action
 	 * @since 1.6
 	 * @author Mims Wright
 	 */
+	 // todo: consider moving the reset method here instead of in the tweens
 	public interface IAction extends ISynchronizerClient, IEventDispatcher
 	{
 		/**

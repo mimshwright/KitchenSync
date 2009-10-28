@@ -7,7 +7,11 @@ package org.as3lib.kitchensync.action
 	/**
 	 * Packages up a function to be run at a specified time or as part of a sequence.
 	 * Setting _duration to anything but zero will cause the function to repeat every frame until the duration is reached.
+	 * 
+	 * @author Mims Wright
+	 * @since 0.1
 	 */
+	// todo: review
 	public class KSFunction extends AbstractAction
 	{
 		/**

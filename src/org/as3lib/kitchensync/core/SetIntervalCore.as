@@ -10,7 +10,6 @@ package org.as3lib.kitchensync.core
 	 * @since 2.0
 	 * @author Mims Wright
 	 */
-	 // todo: test
 	 // Todo: add notes on performance.
 	public class SetIntervalCore implements ISynchronizerCore
 	{

@@ -7,9 +7,14 @@ package org.as3lib.kitchensync.action
 	/**
 	 * A group of actions that execute one at a time in the order that they were added to the group.
 	 * 
-	 * */
+	 * @author Mims Wright
+	 * @since 0.1
+	 */
+	 // todo: add example
+	 // todo: review
 	public class KSSequenceGroup extends AbstractActionGroup
 	{
+		// todo: add docs
 		protected const NO_CURRENT_ACTION_INDEX:int = -1;
 		
 		protected var _currentAction:IAction = null;

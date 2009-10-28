@@ -2,8 +2,8 @@ package org.as3lib.kitchensync.action.tween
 {
 	/**
 	 * A bundle that wraps up a property or other value that can be tweened by a KSTween.
-	 * Generally speaking, a KSTween will handle the timing of the tween while the ITweenTarget
-	 * handles the values of the tween.
+	 * Generally speaking, a KSTween will handle anything related to the timing of the tween
+	 * while the ITweenTarget handles anything related to the values of the tween.
 	 * 
 	 * @author Mims Wright
 	 * @since 1.5

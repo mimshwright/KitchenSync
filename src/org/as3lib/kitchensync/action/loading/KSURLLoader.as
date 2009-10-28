@@ -8,6 +8,8 @@ package org.as3lib.kitchensync.action.loading
 
 	import org.as3lib.kitchensync.action.*;
 	
+	// todo: add docs
+	// todo: make it easier to access the loaded data.
 	public class KSURLLoader extends KSAsynchronousFunction implements ILoaderAction
 	{
 		public function KSURLLoader(url:URLRequest, throwErrorOnFail:Boolean = true)

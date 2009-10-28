@@ -5,6 +5,9 @@ package org.as3lib.kitchensync.core
 	/**
 	 * Event type that is dispatched by the Synchronizer and AbstractSynchronizedActions. 
 	 */
+	 // todo: review this class
+	 // todo: make sure the stings and the constant names match.
+	 // todo: rename timestamp
 	public class KitchenSyncEvent extends Event
 	{
 		public static const START:String = "actionStart";

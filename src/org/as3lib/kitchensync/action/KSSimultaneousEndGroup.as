@@ -12,6 +12,9 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
+	 // todo: add example
+	 // todo: review
+	 // todo: add docs
 	public class KSSimultaneousEndGroup extends KSParallelGroup {
 		private var _longestItemsTotalDuration:int;
 		private var _childStartTimes:Dictionary;

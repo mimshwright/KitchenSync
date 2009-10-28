@@ -7,6 +7,8 @@ package org.as3lib.kitchensync.action
 	 *
 	 */
 	 // todo test
+	 // todo review
+	 // todo add example
 	public class KSMovieClipController extends KSFunction
 	{
 		protected var _target:MovieClip;

@@ -21,12 +21,15 @@ package org.as3lib.kitchensync.action.tween
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
+	 // todo: review
+	 // todo: add example
 	public class KSTween extends AbstractAction implements ITween
 	{
 		/**
 		 * Use this property to cause the tween to start from whatever the targetProperty is 
 		 * set to at the time the tween executes.
 		 */
+		 // todo: move this to a more appropriate place
 		public static const VALUE_AT_START_OF_TWEEN:Number = NaN;
 		
 		/**

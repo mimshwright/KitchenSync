@@ -21,6 +21,7 @@ package org.as3lib.kitchensync.action.tween
 	 * @since 1.5
 	 * @author Mims H. Wright
 	 */
+	 // todo: review
 	public class TargetProperty implements ITweenTarget
 	{
 		protected const NON_NUMERIC_PROPERTY_ERROR:String = "The 'property' of the object 'target' must be a Number, int, or uint.";

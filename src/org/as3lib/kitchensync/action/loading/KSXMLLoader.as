@@ -3,6 +3,7 @@ package org.as3lib.kitchensync.action.loading
 	import flash.events.Event;
 	import flash.net.URLRequest;
 
+	// todo: add docs
 	public class KSXMLLoader extends KSURLLoader
 	{
 		public function get xml():XML {

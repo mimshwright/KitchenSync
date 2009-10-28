@@ -8,6 +8,7 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
+	 // todo: review
 	final public class TweenFactory
 	{
 		public static var objectParser:ITweenObjectParser = KitchenSyncDefaults.tweenObjectParser;
