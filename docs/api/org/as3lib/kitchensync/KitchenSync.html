@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="KitchenSync,org.as3lib.kitchensync.KitchenSync,VERSION,isInitialized,initialize,initializeWithCore" name="keywords">
+<meta content="KitchenSync,org.as3lib.kitchensync.KitchenSync,VERSION,isInitialized,timeStringParser,initialize,initializeWithCore" name="keywords">
 <title>org.as3lib.kitchensync.KitchenSync</title>
 </head>
 <body>
@@ -42,6 +42,20 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
   Gateway to the library. Initializes the entire system.
   
   <p></p>
+<br>
+<span class="label">Example</span>
+<br>
+   Initialize with default settings.
+   <div class='listing'><pre>
+   KitchenSync.initialize();
+   </pre></div>
+  
+   Initialize with a specific core and version checking.
+   <div class='listing'><pre>
+   KitchenSync.initializeWitCore(new EnterFrameCore(this), "2.0");
+   </pre></div>
+  
+  <p></p>
 <p>
 <span class="classHeaderTableLabel">See also</span>
 </p>
@@ -59,7 +73,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInitialized">isInitialized</a> : Boolean<div class="summaryTableDescription">[static][read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInitialized">isInitialized</a> : Boolean<div class="summaryTableDescription">[static][read-only]
+   Will return true once the initialize function has been called.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeStringParser">timeStringParser</a> : <a href="utils/ITimeStringParser.html">ITimeStringParser</a>
+<div class="summaryTableDescription">[static]
+   A reference to the time string parser used in KitchenSync.</div>
 </td><td class="summaryTableOwnerCol">KitchenSync</td>
 </tr>
 </table>
@@ -125,10 +146,36 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>isInitialized:Boolean</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>isInitialized:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Will return true once the initialize function has been called.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get isInitialized():Boolean</code>
 <br>
+</div>
+<a name="timeStringParser"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeStringParser</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>timeStringParser:<a href="utils/ITimeStringParser.html">ITimeStringParser</a></code>&nbsp;&nbsp;[read-write]<p>
+   A reference to the time string parser used in KitchenSync.
+   The default is defined in KitchenSyncDefaults.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get timeStringParser():<a href="utils/ITimeStringParser.html">ITimeStringParser</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set timeStringParser(value:<a href="utils/ITimeStringParser.html">ITimeStringParser</a>):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="utils/ITimeStringParser.html" target="">org.as3lib.kitchensync.utils.ITimeStringParser</a>
+</div>
 </div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>

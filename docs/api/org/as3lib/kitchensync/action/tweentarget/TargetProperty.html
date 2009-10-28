@@ -46,6 +46,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
   
   <p></p>
 <br>
+<span class="label">Example</span>
+<br>Generally used internally by KSTween but can be explicitly created thusly...
+    <div class='listing'><pre>
+    var target:Sprite = new Sprite();
+    var property:String = "x";
+    var startValue:Number = 0;
+    var endValue:Number = 250;
+   var tweenTargetProperty:ITweenTarget = new TargetProperty(target, property, startValue, endValue);
+  
+    var duration:int = 2000;
+   var delay:int = 500;
+   var tweeen:KSTween = KSTween.newWithTweenTarget(tweenTargetProperty, duration, delay);
+    </pre></div>
+  
+  <p></p>
+<br>
 <hr>
 </div>
 <a name="propertySummary"></a>

@@ -19,27 +19,27 @@ package org.as3lib.kitchensync.utils
 		protected var _frameRate:int;
 		
 		// These contstant values are used for conversions and for matching patterns in the algorithm.
-		protected static const MILLISECONDS_VALUE:Number = 1;
-		protected static const SECONDS_VALUE:Number = 1000;
-		protected static const MINUTES_VALUE:Number = 60000;
-		protected static const HOURS_VALUE:Number = 3600000;
-		protected static const DAYS_VALUE:Number = 86400000;
+		private static const MILLISECONDS_VALUE:Number = 1;
+		private static const SECONDS_VALUE:Number = 1000;
+		private static const MINUTES_VALUE:Number = 60000;
+		private static const HOURS_VALUE:Number = 3600000;
+		private static const DAYS_VALUE:Number = 86400000;
 		
-		protected static const NUMBER_UNIT_PAIR_SEARCH:RegExp = /(\d+(\.\d+)?)\s*[a-z]+\s*,?\s*/g;
-		protected static const NUMBER_SEARCH:RegExp = /\d+(\.\d+)?/g;
-		protected static const LETTER_SEARCH:RegExp = /[a-z]+/;
-		protected static const NEGATIVE_SEARCH:RegExp = /^-.+/;
+		private static const NUMBER_UNIT_PAIR_SEARCH:RegExp = /(\d+(\.\d+)?)\s*[a-z]+\s*,?\s*/g;
+		private static const NUMBER_SEARCH:RegExp = /\d+(\.\d+)?/g;
+		private static const LETTER_SEARCH:RegExp = /[a-z]+/;
+		private static const NEGATIVE_SEARCH:RegExp = /^-.+/;
 		
-		protected static const FRAMES_SEARCH:RegExp = /([^a-z]|^)(f|fr|frames?)/;
-		protected static const MILLISECONDS_SEARCH:RegExp = /([^a-z]|^)(ms|msecs?|milliseconds?)/;
-		protected static const SECONDS_SEARCH:RegExp = /([^a-z]|^)(s|secs?|seconds?)/;
-		protected static const MINUTES_SEARCH:RegExp = /([^a-z]|^)(m|mins?|minutes?)/;
-		protected static const HOURS_SEARCH:RegExp = /(h|hrs?|hours?)/;
-		protected static const DAYS_SEARCH:RegExp = /(d|days?)/;
-		protected static const TIMECODE_FORMAT_SEARCH:RegExp = /(\d\d?)?(:\d\d)+(;\d\d)?/;
-		protected static const TIMECODE_SEGMENT_SEARCH:RegExp = /(^\d\d?)|(:\d\d)/g;
-		protected static const TIMECODE_FRAME_SEARCH:RegExp = /;(\d\d)/;
-		protected static const TIMECODE_DIGIT_SEARCH:RegExp = /(\d\d?)/;
+		private static const FRAMES_SEARCH:RegExp = /([^a-z]|^)(f|fr|frames?)/;
+		private static const MILLISECONDS_SEARCH:RegExp = /([^a-z]|^)(ms|msecs?|milliseconds?)/;
+		private static const SECONDS_SEARCH:RegExp = /([^a-z]|^)(s|secs?|seconds?)/;
+		private static const MINUTES_SEARCH:RegExp = /([^a-z]|^)(m|mins?|minutes?)/;
+		private static const HOURS_SEARCH:RegExp = /(h|hrs?|hours?)/;
+		private static const DAYS_SEARCH:RegExp = /(d|days?)/;
+		private static const TIMECODE_FORMAT_SEARCH:RegExp = /(\d\d?)?(:\d\d)+(;\d\d)?/;
+		private static const TIMECODE_SEGMENT_SEARCH:RegExp = /(^\d\d?)|(:\d\d)/g;
+		private static const TIMECODE_FRAME_SEARCH:RegExp = /;(\d\d)/;
+		private static const TIMECODE_DIGIT_SEARCH:RegExp = /(\d\d?)/;
 		
 		
 		/**
@@ -48,10 +48,10 @@ package org.as3lib.kitchensync.utils
 		 * @param frameRate The framerate in fps to use when converting frames to milliseconds.
 		 * 					The default value is 30fps. The use of frames in general is deprecated.
 		 * 
-		 * @use 
-		 *  <code>
+		 * @example 
+		 *  <listing version="3.0">
 		 * 	KitchenSync.timeStringParser = new TimeStringParser(stage.frameRate);
-		 * 	</code>
+		 * 	</listing>
 		 */
 		public function TimeStringParser_en(frameRate:int = 30) {
 			super();
@@ -66,23 +66,27 @@ package org.as3lib.kitchensync.utils
 		 * If no time unit is specified, the result will use null for the time unit and
 		 * the synchronized action will use its default.
 	     *
-	     * @use
-		 * These are all valid options:
-		 * "1 hour, 2 minutes, 3 seconds, 4 milliseconds"
-		 * "1h2m3s4ms"
-		 * "5sec,12fr"†
-		 * "01:23:45;15"† (1h, 23m, 45s, 15f - frames are based on the parser's framerate which defaults to 30fps)
-		 * ":03" (3s)
-		 * "300 frames"†
-		 * "1.25s"
-		 * "5 milliseconds, 15mins, 6 hrs"
-		 * "0.25 days"
+	     * @example
+	     * <p>
+		 * These are all valid options: <br />
+		 * "1 hour, 2 minutes, 3 seconds, 4 milliseconds" <br />
+		 * "1h2m3s4ms"  <br />
+		 * "5sec,12fr"†  <br />
+		 * "01:23:45;15"† (1h, 23m, 45s, 15f - frames are based on the parser's framerate which defaults to 30fps)  <br />
+		 * ":03" (3s)  <br />
+		 * "300 frames"†  <br />
+		 * "1.25s"  <br />
+		 * "5 milliseconds, 15mins, 6 hrs"  <br />
+		 * "0.25 days"  <br />
+		 * </p>
 		 * 
+		 * <p><em>
 		 * †: Frames are interpereted based on the framerate of the parser. They are not recommended 
 		 * 	  because of their inaccuracy and should be considered deprecated. If you must use the frames 
 		 *    option, please make sure you have set the frameRate to match the actual frame rate of 
 		 *    the swf in the constuctor. 
-		 *
+		 * </em></p>
+		 * 
 		 * @see #frameRate
 		 * 
 		 * @param timeString - a string representing some ammount of time.

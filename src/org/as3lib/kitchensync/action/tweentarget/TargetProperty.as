@@ -5,8 +5,8 @@ package org.as3lib.kitchensync.action.tweentarget
 	/**
 	 * A TweenTarget used to tween numeric properties of an object.
 	 * 
-	 * @use Generally used internally by KSTween but can be explicitly created thusly...
-	 * 		<code>
+	 * @example Generally used internally by KSTween but can be explicitly created thusly...
+	 * 		<listing version="3.0">
 	 * 		var target:Sprite = new Sprite();
 	 * 		var property:String = "x";
 	 * 		var startValue:Number = 0;
@@ -16,7 +16,7 @@ package org.as3lib.kitchensync.action.tweentarget
 	 * 		var duration:int = 2000;
 	 *		var delay:int = 500;
 	 *		var tweeen:KSTween = KSTween.newWithTweenTarget(tweenTargetProperty, duration, delay);
-	 * 		</code>
+	 * 		</listing>
 	 * 
 	 * @since 1.5
 	 * @author Mims H. Wright

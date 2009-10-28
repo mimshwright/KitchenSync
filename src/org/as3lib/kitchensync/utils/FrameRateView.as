@@ -14,7 +14,8 @@ package org.as3lib.kitchensync.utils
 	 * This class extends TextField so you can add it to the display list, apply 
 	 * text formatting and use it as you would a TextField.
 	 * 
-	 * @use <code>
+	 * @example 
+	 * 		<listing version="3.0">
 	 * 			// create the view.
 	 * 			public var frameRateView:TextField = new SynchronizerFrameRateView();
 	 * 			// set the display to the average frame rate. (optional)
@@ -25,7 +26,7 @@ package org.as3lib.kitchensync.utils
 	 * 			frameRateView.textFormat = myTextFormat;
 	 * 			// add the view to the displayList
 	 * 			addChild(frameRateView);  
-	 * 		</code>
+	 * 		</listing>
 	 * 
 	 * @see org.as3lib.kitchensync.core.Synchronizer
 	 * @see org.as3lib.kitchensync.utils.FrameRateUtil

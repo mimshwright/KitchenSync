@@ -277,14 +277,15 @@ package org.as3lib.kitchensync.action
 		 * This is mostly used as a convenient way to reuse a tween, e.g. in a sequence.
 		 * NOTE: If there are multiple target properties, this will only copy the first one in the array.
 		 * 
-		 * @use <code>
+		 * @example 
+		 * <listing version="3.0">
 		 *		var tween:Tween = new Tween(foo, "x", 100, 200);
 		 *		var sequence:Sequence = new Sequence(
 		 *			tween,							// tweens foo's x property from 100 to 200
 		 *			tween.cloneWithTarget(foo, y)	// tweens foo's y property from 100 to 200
 		 *			tween.cloneWithTarget(bar, y)	// tweens bar's y property from 100 to 200
 		 *		);
-		 *	</code>
+		 *	</listing>
 		 * 
 		 * @see #clone()
 		 * 
@@ -307,7 +308,8 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Creates a new Tween and reverses the start and end values of the target property.
 		 * 
-		 * @use <code>
+		 * @example 
+		 * 		<listing version="3.0">
 		 * 			var tween:Tween = new Tween(foo, "x", 100, 200);
 		 * 			var sequence:Sequence = new Sequence(
 		 * 				tween,							// tweens foo's x from 100 to 200
@@ -315,7 +317,7 @@ package org.as3lib.kitchensync.action
 		 * 				tween.cloneReversed(bar)		// tweens bar's x from 200 to 100
 		 * 				tween.cloneReversed(foo, y)		// tweens foo's y from 200 to 100
 		 * 			);
-		 * 		</code>
+		 * 		</listing>
 		 * 
 		 * @see #cloneWithTarget()
 		 * @see #reverse()

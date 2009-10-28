@@ -14,8 +14,8 @@ package org.as3lib.kitchensync.action
 	 * file size, and minimal memory use. 
 	 * The behaviour of a simple tween is similar to that of the KSTween class with a TargetProperty tween target. 
 	 * 
-	 * @use
-	 * <code>
+	 * @example
+	 * <listing version="3.0">
 	 * // This example will tween the 'x' property of a sprite from 0 to 500 px over the course of
 	 * // 3 seconds with a 1 second delay.
 	 * 
@@ -31,7 +31,7 @@ package org.as3lib.kitchensync.action
 	 * //when it is finished playing if there are no other references to it. To create an auto-deleting, anonymouse 
 	 * // version, use the following syntax:
 	 * new SimpleTween(target, property, 0, 500, 3000, 1000, Cubic.easeOut).start();
-	 * </code>
+	 * </listing>
 	 * 
 	 * @see org.as3lib.kitchensync.action.KSTween;
 	 * @see org.as3lib.kitchensync.easing;

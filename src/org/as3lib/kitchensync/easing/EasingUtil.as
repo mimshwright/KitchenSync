@@ -4,20 +4,21 @@ package org.as3lib.kitchensync.easing
 	 * A package of handy methods for working with Easing functions and classes.
 	 * 
 	 * @author Mims Wright
+	 * @since 0.2
 	 */
 	public class EasingUtil
 	{
 		/**
-		 * Provides a way to call an easing function with code-hinting and type checking (sorta).
+		 * Provides a way to call an easing function with code-hinting and type checking (sorta). Used internally.
 		 *
-		 * @throws ArgumentError - If the easing function is passed modifiers that it can't handle. (Don't use them unless they're handled by the function)
-		 * @throws Error - You may get unexpected results if you use a function that isn't an easing function.
+		 * @throws ArgumentError If the easing function is passed modifiers that it can't handle. (Don't use them unless they're handled by the function)
+		 * @throws Error You may get unexpected results if you use a function that isn't an easing function.
 		 * 
-		 * @param func - The function to call - Must be an Easing function.
-		 * @param timeElapsed - The time since the tween began in milliseconds or frames.
-	     * @param duration - The duration of the tween, in milliseconds or frames.
-	     * @param mod1 - An optional modifier for the function. Used for tweens such as Back and Elastic.
-	     * @param mod2 - An optional modifier for the function. Used for tweens such as Elastic.
+		 * @param func The function to call - Must be an Easing function.
+		 * @param timeElapsed The time since the tween began in milliseconds or frames.
+	     * @param duration The duration of the tween, in milliseconds or frames.
+	     * @param mod1 An optional modifier for the function. Used for tweens such as Back and Elastic.
+	     * @param mod2 An optional modifier for the function. Used for tweens such as Elastic.
 	     * @return Number - the result of the easing function.
 	     */
 		public static function call(func:Function, timeElapsed:Number, duration:Number, mod1:Number = NaN, mod2:Number = NaN):Number {
@@ -47,11 +48,11 @@ package org.as3lib.kitchensync.easing
 		 * 
 		 * @see #call()
 		 * 
-		 * @param func - The function to call - Must be an Easing function.
-		 * @param steps - The number of results desired for the array.
-	     * @param mod1 - An optional modifier for the function. Used for tweens such as Back and Elastic.
-	     * @param mod2 - An optional modifier for the function. Used for tweens such as Elastic.
-		 * @return Array - An array with the results from the easing function over 'steps' iterations.
+		 * @param func The function to call - Must be an Easing function.
+		 * @param steps The number of results desired for the array.
+	     * @param mod1 An optional modifier for the function. Used for tweens such as Back and Elastic.
+	     * @param mod2 An optional modifier for the function. Used for tweens such as Elastic.
+		 * @return Array An array with the results from the easing function over 'steps' iterations.
 		 */ 
 		public static function generateArray(func:Function, steps:int, mod1:Number = NaN, mod2:Number = NaN):Array {
 			var results:Array = new Array();

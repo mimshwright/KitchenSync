@@ -46,7 +46,7 @@
 		</compc-->
 	</target>
 	
-	<target name="cleanupdocs" description="Deletes old document files before generating asdocs">
+	<target name="cleandocs" description="Deletes old document files before generating asdocs">
 		<delete dir="${project.docsPath}" />
 		<mkdir dir="${project.docsPath}" />
 	</target>

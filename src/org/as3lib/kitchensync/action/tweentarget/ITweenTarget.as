@@ -15,12 +15,12 @@ package org.as3lib.kitchensync.action.tweentarget
 		 * The main function that the Tween uses to update the TweenTarget. 
 		 * Sets the percentage complete.
 		 * 
-		 * @use Typically this is implemented as such: 
-		 * <code>	
+		 * @example Typically this is implemented as such: 
+		 * <listing version="3.0">	
 		 * 	public function updateTween(percentComplete:Number):Number {
 		 * 		return currentValue = percentComplete * (endValue - startValue) + startValue;
 		 *	}
-		 * </code>
+		 * </listing>
 		 * 
 		 * @param percentComplete a number between 0 and 1 (but sometimes more or less) that represents
 		 * 		  the percentage of the tween that has been completed. This should update

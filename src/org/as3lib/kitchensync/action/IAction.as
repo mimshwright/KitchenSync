@@ -42,10 +42,11 @@ package org.as3lib.kitchensync.action
 		 * This method returns a reference to the action that was started. 
 		 * This allows for an action to be constructed and started in a single line of code.
 		 * 
-		 * @use <code>
+		 * @example 
+		 * 		<listing version="3.0">
 		 *		// Initialize and start an action in a single line of code.
 		 * 		var action:IAction = new SomeAction().start();
-		 * 		</code>
+		 * 		</listing>
 		 * 
 		 * @return The action that was just started for convenience.
 		 */

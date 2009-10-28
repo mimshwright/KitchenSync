@@ -6,20 +6,21 @@ package org.as3lib.kitchensync.utils
 	/**
 	 * A singleton class that can track the current and average framerate of the
 	 * KitchenSync system (when using EnterFrameCore, this is the framerate of 
-	 * the movie itself). The number of frames included in teh average framerate can
+	 * the movie itself). The number of frames included in the average framerate can
 	 * be set as well. For a quick visual display of the framerate, 
 	 * use <code>FrameRateView</code>.
 	 * 
 	 * @see org.as3lib.kitchensync.utils.FrameRateView
 	 * 
-	 * @use <code>
+	 * @example 
+	 *  <listing version="3.0">
 	 *  // get the average framerate
 	 *  FrameRateUtil.getInstance().averageFrameRate;
 	 *  // set the number of frames to average for the averageFrameRate to 3
 	 *  FrameRateUtil.getInstance().averageFrameRateDepth = 3;
 	 * 	// get the framerate since the last frame
 	 * 	FrameRateUtil.getInstance().instantaneousFrameRate; 
-	 *  </code>
+	 *  </listing>
 	 * 
 	 * @author Mims Wright
 	 * @since 2.0

@@ -11,10 +11,21 @@ package org.as3lib.kitchensync
 	/**
 	 * Gateway to the library. Initializes the entire system.
 	 * 
-	 * @use KitchenSync.initialize(this, versionNumber);
+	 * @example 
+	 *  Initialize with default settings.
+	 * 	<listing version="3.0">
+	 * 	KitchenSync.initialize();
+	 * 	</listing>
+	 * 
+	 *  Initialize with a specific core and version checking.
+	 * 	<listing version="3.0">
+	 * 	KitchenSync.initializeWitCore(new EnterFrameCore(this), "2.0");
+	 * 	</listing>
+	 * 
+	 * @see org.as3lib.kitchensync.core.Synchronizer
+	 * 
 	 * @since 1.2
 	 * @author Mims H. Wright
-	 * @see org.as3lib.kitchensync.core.Synchronizer
 	 */ 
 	public final class KitchenSync
 	{
