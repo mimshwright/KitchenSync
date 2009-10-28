@@ -6,21 +6,20 @@ package org.as3lib.kitchensync.utils
 	/**
 	 * A singleton class that can track the current and average framerate of the
 	 * KitchenSync system (when using EnterFrameCore, this is the framerate of 
-	 * the movie itself). The number of frames included in the average framerate can
+	 * the movie itself). The number of frames included in teh average framerate can
 	 * be set as well. For a quick visual display of the framerate, 
 	 * use <code>FrameRateView</code>.
 	 * 
 	 * @see org.as3lib.kitchensync.utils.FrameRateView
 	 * 
-	 * @example 
-	 *  <listing version="3.0">
+	 * @use <code>
 	 *  // get the average framerate
 	 *  FrameRateUtil.getInstance().averageFrameRate;
 	 *  // set the number of frames to average for the averageFrameRate to 3
 	 *  FrameRateUtil.getInstance().averageFrameRateDepth = 3;
 	 * 	// get the framerate since the last frame
 	 * 	FrameRateUtil.getInstance().instantaneousFrameRate; 
-	 *  </listing>
+	 *  </code>
 	 * 
 	 * @author Mims Wright
 	 * @since 2.0
@@ -35,8 +34,7 @@ package org.as3lib.kitchensync.utils
 		 * Returns the average framerate over the last n frames.
 		 */
 		public function get averageFrameRate():Number {
-			var avgDelta:Number = _cachedDeltaSum / _frameRateHistory.length;
-			return Math.round(1000 / avgDelta);	
+			return Math.round(1000 / _cachedAverageDelta / _frameRateHistory.length);	
 		}
 		
 		/** 
@@ -45,7 +43,7 @@ package org.as3lib.kitchensync.utils
 		 */ 
 		public function get instantaneousFrameRate():int {
 			var delta:int =  _currentTime - _previousTime;
-			return Math.round(1000 / delta);
+			return Math.round(1000/delta);
 		}
 
 		
@@ -64,7 +62,7 @@ package org.as3lib.kitchensync.utils
 		 * This is a more optimized way to find the average framerate than
 		 * using a for loop over the history array.
 		 */
-		private var _cachedDeltaSum:int = 0;
+		private var _cachedAverageDelta:int;
 		
 		
 		/**
@@ -92,16 +90,16 @@ package org.as3lib.kitchensync.utils
 		 * Framerate is updated by the synchronizer pulses.
 		 */
 		public function update(currentTime:int):void {	
-			this._previousTime = this._currentTime;
-			this._currentTime = currentTime;
+			_previousTime = _currentTime;
+			_currentTime = currentTime;
 			
 			// add the time to the queue to be averaged.
-			var delta:int = _currentTime - _previousTime;
+			var delta:int = currentTime - _previousTime;
 			_frameRateHistory.unshift(delta);
-			_cachedDeltaSum += delta;
+			_cachedAverageDelta += delta;
 			// if the queue is too long, remove the last one. 
 			if (_frameRateHistory.length > averageFrameRateDepth) {
-				_cachedDeltaSum -= _frameRateHistory.pop();
+				_cachedAverageDelta -= _frameRateHistory.pop();
 			}
 		}
 	}

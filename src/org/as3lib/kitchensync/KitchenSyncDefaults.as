@@ -5,6 +5,7 @@ package org.as3lib.kitchensync
 	import org.as3lib.kitchensync.easing.Linear;
 	import org.as3lib.kitchensync.utils.*;
 	
+	//TODO: add docs
 	public class KitchenSyncDefaults
 	{
 		public static var syncrhonizerUsesWeakReferences:Boolean = false;
