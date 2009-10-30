@@ -1,18 +1,28 @@
 package org.as3lib.kitchensync.action.loading
 {
-	import flash.events.Event;
 	import flash.net.URLRequest;
 
-	// todo: add docs
+	/**
+	 * A KitchenSync aciton to load an XML file. Essentially the same as KSURLLoader
+	 * but with a built-in option to return the results as an XML object.
+	 * 
+	 * @see KSURLLoader
+	 */
 	public class KSXMLLoader extends KSURLLoader
 	{
+		/**
+		 * Returns the results of the loader as an XML object.
+		 */
 		public function get xml():XML {
 			return new XML(_data);
 		}
 		
-		public function KSXMLLoader(url:URLRequest, throwErrorOnFail:Boolean=true)
+		/**
+		 * @copy KSURLLoader.KSURLLoader()
+		 */
+		public function KSXMLLoader(url:URLRequest, resultList:Array = null, throwErrorOnFail:Boolean=true)
 		{
-			super(url, throwErrorOnFail);
+			super(url, resultList, throwErrorOnFail);
 		}
 	}
 }

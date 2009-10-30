@@ -1,4 +1,3 @@
-// TODO: update as3lib SWC
 package org.as3lib.kitchensync
 {
 	import flash.errors.IllegalOperationError;

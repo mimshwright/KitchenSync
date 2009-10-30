@@ -55,13 +55,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("UÂ
    Resumes the action at the point where it was paused.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html#unpause()">unpause</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html">KSSimpleTween</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
-   Resumes the action at the point where it was paused.</td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSoundController.html#unpause()">unpause</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSoundController.html">KSSoundController</a></td>
 </tr>
 <tr>
@@ -74,6 +67,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("UÂ
 <tr>
 <td width="20"></td><td>
    Override unpause to see if the sequence was paused internally or externally.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#unpause()">unpause</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Resumes the action at the point where it was paused.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/ActionControllerCommand.html#UNPAUSE">UNPAUSE</a> &mdash; Constant static property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/ActionControllerCommand.html">ActionControllerCommand</a></td>
@@ -144,12 +144,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("UÂ
    Listens for updates to synchronize the start time of the sequence.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html">KSSimpleTween</a></td>
-</tr>
-<tr>
-<td width="20"></td><td> Called when a pulse is sent from the Synchronizer </td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimultaneousEndGroup.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimultaneousEndGroup.html">KSSimultaneousEndGroup</a></td>
 </tr>
 <tr>
@@ -170,17 +164,23 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("UÂ
    When the first update occurs, all of the child actions are started simultaniously.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSTween.html">KSTween</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
-   Executes the tween.</td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSWait.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSWait.html">KSWait</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
+</tr>
+<tr>
+<td width="20"></td><td> Called when a pulse is sent from the Synchronizer </td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Executes the tween.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/ISynchronizerClient.html#update()">update</a>(currentTime) &mdash; Method in interface org.as3lib.kitchensync.core.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a></td>
@@ -217,62 +217,62 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("UÂ
    Number of frames between each update.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TintTweenTarget.html#updateTarget()">updateTarget</a>() &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TintTweenTarget.html">TintTweenTarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TintTweenTarget.html#updateTarget()">updateTarget</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TintTweenTarget.html">TintTweenTarget</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Sets the ColorTransform on the target to the _currentTransform value.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/AbstractColorMatrixTweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/AbstractColorMatrixTweenTarget.html">AbstractColorMatrixTweenTarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/AbstractColorMatrixTweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/AbstractColorMatrixTweenTarget.html">AbstractColorMatrixTweenTarget</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    The main function that the Tween uses to update the TweenTarget.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/FilterTargetProperty.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/FilterTargetProperty.html">FilterTargetProperty</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/FilterTargetProperty.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/FilterTargetProperty.html">FilterTargetProperty</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    The main function that the Tween uses to update the TweenTarget.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/ITweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in interface org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/ITweenTarget.html">ITweenTarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/ITweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in interface org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    The main function that the Tween uses to update the TweenTarget.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/SimpleBlurTweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/SimpleBlurTweenTarget.html">SimpleBlurTweenTarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/SimpleBlurTweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/SimpleBlurTweenTarget.html">SimpleBlurTweenTarget</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    The main function that the Tween uses to update the TweenTarget.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/SoundTransformTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/SoundTransformTarget.html">SoundTransformTarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/SoundTransformTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/SoundTransformTarget.html">SoundTransformTarget</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    The main function that the Tween uses to update the TweenTarget.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TargetProperty.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TargetProperty.html">TargetProperty</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TargetProperty.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TargetProperty.html">TargetProperty</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    The main function that the Tween uses to update the TweenTarget.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TimelineController.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TimelineController.html">TimelineController</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TimelineController.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TimelineController.html">TimelineController</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TintTweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TintTweenTarget.html">TintTweenTarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TintTweenTarget.html#updateTween()">updateTween</a>(percentComplete) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TintTweenTarget.html">TintTweenTarget</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>

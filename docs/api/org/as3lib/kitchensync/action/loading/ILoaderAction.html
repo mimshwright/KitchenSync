@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="ILoaderAction,org.as3lib.kitchensync.action.loading.ILoaderAction,data,throwErrorOnFail" name="keywords">
+<meta content="ILoaderAction,org.as3lib.kitchensync.action.loading.ILoaderAction,data,resultList,throwErrorOnFail" name="keywords">
 <title>org.as3lib.kitchensync.action.loading.ILoaderAction</title>
 </head>
 <body>
@@ -42,7 +42,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </tr>
 </table>
 <p></p>
-<p></p>
+  A type of action that loads data from some external source when the start() mehtod is called
+  and is considered finished when the transfer of data is complete. The loaded data can be accessed
+  in the data property.This is typically implemented in a subclass of KSAsynchronousFunction.
+  
+  These types of actions are useful if you wish to queue up several loaders using a 
+  KSSequenceGroup and be notified when they're all finished.
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../action/KSAsynchronousFunction.html" target="">org.as3lib.kitchensync.action.KSAsynchronousFunction</a>
+<br>
+<a href="../../action/KSSequenceGroup.html" target="">org.as3lib.kitchensync.action.KSSequenceGroup</a>
+</div>
 <br>
 <hr>
 </div>
@@ -62,7 +77,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#data">data</a> : *<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#data">data</a> : *<div class="summaryTableDescription">[read-only]
+   Whatever data is loaded by the loader action can be accessed
+   through this property.</div>
 </td><td class="summaryTableOwnerCol">ILoaderAction</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -85,7 +102,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#throwErrorOnFail">throwErrorOnFail</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#resultList">resultList</a> : Array<div class="summaryTableDescription">
+   Optional property allows you to provide an array that the 
+   results of the loader will automatically be pushed onto when the
+   loading is finished.</div>
+</td><td class="summaryTableOwnerCol">ILoaderAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#throwErrorOnFail">throwErrorOnFail</a> : Boolean<div class="summaryTableDescription">
+   When set to true, an error will be thrown when there is
+   a problem with the loading.</div>
 </td><td class="summaryTableOwnerCol">ILoaderAction</td>
 </tr>
 </table>
@@ -178,9 +204,34 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>data:*</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>data:*</code>&nbsp;&nbsp;[read-only]<p>
+   Whatever data is loaded by the loader action can be accessed
+   through this property.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get data():*</code>
+<br>
+</div>
+<a name="resultList"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resultList</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>resultList:Array</code>&nbsp;&nbsp;[read-write]<p>
+   Optional property allows you to provide an array that the 
+   results of the loader will automatically be pushed onto when the
+   loading is finished. This is convenient when using a KSSequenceGroup
+   and ILoaderActions to load several files because you can access
+   the results easily.
+   If the value is left null, then nothing should happen on complete.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get resultList():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set resultList(value:Array):void</code>
 <br>
 </div>
 <a name="throwErrorOnFail"></a>
@@ -190,7 +241,12 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>throwErrorOnFail:Boolean</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>throwErrorOnFail:Boolean</code>&nbsp;&nbsp;[read-write]<p>
+   When set to true, an error will be thrown when there is
+   a problem with the loading.
+   If set to false, the loader will fail silently and dispatch
+   a complete event.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get throwErrorOnFail():Boolean</code>
 <br>

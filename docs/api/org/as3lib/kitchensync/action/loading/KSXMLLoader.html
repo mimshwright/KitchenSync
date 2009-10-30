@@ -42,7 +42,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  A KitchenSync aciton to load an XML file. Essentially the same as KSURLLoader
+  but with a built-in option to return the results as an XML object.
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="KSURLLoader.html" target="">KSURLLoader</a>
+</div>
 <br>
 <hr>
 </div>
@@ -68,7 +77,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSURLLoader.html#data">data</a> : *<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSURLLoader.html#data">data</a> : *<div class="summaryTableDescription">
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="KSURLLoader.html">KSURLLoader</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -122,6 +132,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../KSFunction.html">KSFunction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSURLLoader.html#resultList">resultList</a> : Array<div class="summaryTableDescription">
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="KSURLLoader.html">KSURLLoader</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#runningTime">runningTime</a> : int<div class="summaryTableDescription">
    The time in ms since the start of the action or 0 if the action isn't running.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
@@ -137,11 +152,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSURLLoader.html#throwErrorOnFail">throwErrorOnFail</a> : Boolean<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSURLLoader.html#throwErrorOnFail">throwErrorOnFail</a> : Boolean<div class="summaryTableDescription">
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="KSURLLoader.html">KSURLLoader</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#xml">xml</a> : XML<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#xml">xml</a> : XML<div class="summaryTableDescription">[read-only]
+   Returns the results of the loader as an XML object.</div>
 </td><td class="summaryTableOwnerCol">KSXMLLoader</td>
 </tr>
 </table>
@@ -207,6 +224,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../KSFunction.html">KSFunction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSURLLoader.html#_resultList">_resultList</a> : Array<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="KSURLLoader.html">KSURLLoader</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_running">_running</a> : Boolean = false<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
@@ -238,8 +259,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#KSXMLLoader()">KSXMLLoader</a>(url:URLRequest, throwErrorOnFail:Boolean = true)</div>
-<div class="summaryTableDescription"></div>
+<a class="signatureLink" href="#KSXMLLoader()">KSXMLLoader</a>(url:URLRequest, resultList:Array = null, throwErrorOnFail:Boolean = true)</div>
+<div class="summaryTableDescription">
+   </div>
 </td><td class="summaryTableOwnerCol">KSXMLLoader</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -294,7 +316,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="KSURLLoader.html#kill()">kill</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="KSURLLoader.html">KSURLLoader</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -415,14 +438,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="KSURLLoader.html#onLoadFail()">onLoadFail</a>(event:IOErrorEvent):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Called when the load fails.</div>
 </td><td class="summaryTableOwnerCol"><a href="KSURLLoader.html">KSURLLoader</a></td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="KSURLLoader.html#onLoadSuccess()">onLoadSuccess</a>(event:Event):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Called when the load is successful.</div>
 </td><td class="summaryTableOwnerCol"><a href="KSURLLoader.html">KSURLLoader</a></td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
@@ -494,7 +519,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>xml:XML</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>xml:XML</code>&nbsp;&nbsp;[read-only]<p>
+   Returns the results of the loader as an XML object.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get xml():XML</code>
 <br>
@@ -508,10 +535,17 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function KSXMLLoader(url:URLRequest, throwErrorOnFail:Boolean = true)</code><span class="label">Parameters</span>
+<code>public function KSXMLLoader(url:URLRequest, resultList:Array = null, throwErrorOnFail:Boolean = true)</code><p>
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">url</span>:URLRequest</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resultList</span>:Array</code> (default = <code>null</code>)<code></code></td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>

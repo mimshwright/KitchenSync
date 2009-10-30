@@ -13,6 +13,7 @@ package org.as3lib.kitchensync.action
 	 */
 	 // todo: add example
 	 // todo: review
+	 // todo: what about pausing?
 	public class KSAsynchronousFunction extends KSFunction
 	{
 		/** a reference to the event dispatcher */

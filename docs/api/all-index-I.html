@@ -43,7 +43,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   a certain time.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/IFilterTweenTarget.html"><i>IFilterTweenTarget</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/package-detail.html">org.as3lib.kitchensync.action.tweentarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/IFilterTweenTarget.html"><i>IFilterTweenTarget</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -52,7 +52,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/loading/class-list.html');" href="org/as3lib/kitchensync/action/loading/ILoaderAction.html"><i>ILoaderAction</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/loading/class-list.html');" href="org/as3lib/kitchensync/action/loading/package-detail.html">org.as3lib.kitchensync.action.loading</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  A type of action that loads data from some external source when the start() mehtod is called
+  and is considered finished when the transfer of data is complete.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/class-list.html');" href="org/as3lib/kitchensync/KitchenSync.html#initialize()">initialize</a>(frameRate, versionCheck) &mdash; Static method in class org.as3lib.kitchensync.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/class-list.html');" href="org/as3lib/kitchensync/KitchenSync.html">KitchenSync</a></td>
@@ -69,7 +71,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
    Allows you to specify a synchronizer core when you initialize the system.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TweenTargetFactory.html#instance">instance</a> &mdash; Static property in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TweenTargetFactory.html">TweenTargetFactory</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TweenTargetFactory.html#instance">instance</a> &mdash; Static property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TweenTargetFactory.html">TweenTargetFactory</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -90,7 +92,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
    Determines a Timer interval based on the frame rate.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/INumericController.html"><i>INumericController</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/package-detail.html">org.as3lib.kitchensync.action.tweentarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/INumericController.html"><i>INumericController</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -130,13 +132,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td width="20"></td><td> Should return true if the action is paused.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html#isPaused">isPaused</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html">KSSimpleTween</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#isPaused">isPaused</a> &mdash; Property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td> True when the action is paused </td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TargetProperty.html#isPropertyValid()">isPropertyValid</a>(target, property) &mdash; Method in class org.as3lib.kitchensync.action.tweentarget.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/TargetProperty.html">TargetProperty</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TargetProperty.html#isPropertyValid()">isPropertyValid</a>(target, property) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/TargetProperty.html">TargetProperty</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -156,7 +158,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td width="20"></td><td> Should return true if the action is running (or paused).</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html#isRunning">isRunning</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSimpleTween.html">KSSimpleTween</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#isRunning">isRunning</a> &mdash; Property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td> True when the action is running (or paused) </td>
@@ -183,7 +185,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   Converts a string representation of time and converts it into milliseconds.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/ITween.html"><i>ITween</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/ITween.html"><i>ITween</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -191,14 +193,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   (such as the x position of a Sprite) over time.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/ITweenObjectParser.html"><i>ITweenObjectParser</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/ITweenObjectParser.html"><i>ITweenObjectParser</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
   An algorithm that parses data from an object into tween data.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/ITweenTarget.html"><i>ITweenTarget</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tweentarget/class-list.html');" href="org/as3lib/kitchensync/action/tweentarget/package-detail.html">org.as3lib.kitchensync.action.tweentarget</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/ITweenTarget.html"><i>ITweenTarget</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
