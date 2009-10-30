@@ -1,0 +1,580 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
+<meta content="TintTweenTarget,org.as3lib.kitchensync.action.tween.TintTweenTarget,CURRENT_TINT,NO_TINT,_currentTransform,_endOnCurrentTint,_endTransform,_startOnCurrentTint,_startTransform,_target,_tintOpacity,currentTransform,currentValue,endTransform,endValue,startTransform,startValue,target,applyTintOpacity,clone,reset,updateTarget,updateTween" name="keywords">
+<title>org.as3lib.kitchensync.action.tween.TintTweenTarget</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'TintTweenTarget - KitchenSync';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/as3lib/kitchensync/action/tween/TintTweenTarget.html&amp;org/as3lib/kitchensync/action/tween/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;TintTweenTarget</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class TintTweenTarget"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class TintTweenTarget</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="ITweenTarget.html">ITweenTarget</a></td>
+</tr>
+</table>
+<p></p>
+  Tween target for adjusting the color of a DisplayObject using a ColorTransform.
+  
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentTransform">currentTransform</a> : ColorTransform<div class="summaryTableDescription">
+   This is the current ColorTransform object.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentValue">currentValue</a> : Number<div class="summaryTableDescription">
+   This is the current value of the tint as a hex color (uint).</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#endTransform">endTransform</a> : ColorTransform<div class="summaryTableDescription">
+   The value that the tweenTarget will tween to
+   See constructor for information about acceptable values for endTransform.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#endValue">endValue</a> : Number<div class="summaryTableDescription">
+   The value that the tweenTarget will tween to represented as a
+   hex color.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTransform">startTransform</a> : ColorTransform<div class="summaryTableDescription">
+   The value that the tweenTarget will begin from.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startValue">startValue</a> : Number<div class="summaryTableDescription">
+   The value that the tweenTarget will begin from represented as a
+   hex color.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#target">target</a> : DisplayObject<div class="summaryTableDescription">[read-only]
+   The target DisplayObject on which the ColorTransform is applied.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_currentTransform">_currentTransform</a> : ColorTransform<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_endOnCurrentTint">_endOnCurrentTint</a> : Boolean = false<div class="summaryTableDescription"> Used internally when using the CURRENT_TINT value.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_endTransform">_endTransform</a> : ColorTransform<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startOnCurrentTint">_startOnCurrentTint</a> : Boolean = false<div class="summaryTableDescription"> Used internally when using the CURRENT_TINT value.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTransform">_startTransform</a> : ColorTransform<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_target">_target</a> : DisplayObject<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_tintOpacity">_tintOpacity</a> : Number = 1.0<div class="summaryTableDescription">
+   A modifier (between 0 and 1) to the tint color that affects its intensity.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#TintTweenTarget()">TintTweenTarget</a>(target:DisplayObject, startValue:Number, endValue:*, tintOpacity:* = 1)</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clone()">clone</a>():<a href="../tween/ITweenTarget.html">ITweenTarget</a>
+</div>
+<div class="summaryTableDescription"> Create a copy of the tweenTarget object </div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#reset()">reset</a>():void</div>
+<div class="summaryTableDescription"> 
+   Reset the value to it's pre-tweened state.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateTween()">updateTween</a>(percentComplete:Number):Number</div>
+<div class="summaryTableDescription">
+   The main function that the Tween uses to update the TweenTarget.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#applyTintOpacity()">applyTintOpacity</a>():void</div>
+<div class="summaryTableDescription">
+   Applies the tintOpacity value to the endTransform.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateTarget()">updateTarget</a>():void</div>
+<div class="summaryTableDescription">
+   Sets the ColorTransform on the target to the _currentTransform value.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#CURRENT_TINT">CURRENT_TINT</a> : String = "currentTint"<div class="summaryTableDescription">[static]
+   A special value that when used as either the start or end values will
+   take the current ColorTransform of the target object at the time that 
+   the tween begins.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#NO_TINT">NO_TINT</a> : String = "noTint"<div class="summaryTableDescription">[static]
+   A special value that when used as either the start or end values will
+   remove any colorTransform from the object.</div>
+</td><td class="summaryTableOwnerCol">TintTweenTarget</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="_currentTransform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_currentTransform</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _currentTransform:ColorTransform</code>
+</div>
+<a name="currentTransform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">currentTransform</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>currentTransform:ColorTransform</code>&nbsp;&nbsp;[read-write]<p>
+   This is the current ColorTransform object.
+   The setter for this property should not normally be used but will update the target DisplayObject.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentTransform():ColorTransform</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentTransform(value:ColorTransform):void</code>
+<br>
+</div>
+<a name="currentValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">currentValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>currentValue:Number</code>&nbsp;&nbsp;[read-write]<p>
+   This is the current value of the tint as a hex color (uint).
+   Derived from the currentTransform.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentValue():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentValue(value:Number):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../tween/TintTweenTarget.html#currentTransform" target="">currentTransform</a>
+</div>
+</div>
+<a name="_endOnCurrentTint"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_endOnCurrentTint</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _endOnCurrentTint:Boolean = false</code><p> Used internally when using the CURRENT_TINT value. </p></div>
+<a name="_endTransform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_endTransform</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _endTransform:ColorTransform</code>
+</div>
+<a name="endTransform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">endTransform</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>endTransform:ColorTransform</code>&nbsp;&nbsp;[read-write]<p>
+   The value that the tweenTarget will tween to
+   See constructor for information about acceptable values for endTransform.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endTransform():ColorTransform</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set endTransform(value:ColorTransform):void</code>
+<br>
+</div>
+<a name="endValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>endValue:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The value that the tweenTarget will tween to represented as a
+   hex color. Derived from the endTransform. 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endValue():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set endValue(value:Number):void</code>
+<br>
+</div>
+<a name="_startOnCurrentTint"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_startOnCurrentTint</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _startOnCurrentTint:Boolean = false</code><p> Used internally when using the CURRENT_TINT value. </p></div>
+<a name="_startTransform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_startTransform</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _startTransform:ColorTransform</code>
+</div>
+<a name="startTransform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">startTransform</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>startTransform:ColorTransform</code>&nbsp;&nbsp;[read-write]<p>
+   The value that the tweenTarget will begin from.
+   See constructor for information about acceptable values for startTransform.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startTransform():ColorTransform</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set startTransform(value:ColorTransform):void</code>
+<br>
+</div>
+<a name="startValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>startValue:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The value that the tweenTarget will begin from represented as a
+   hex color. Derived from the startTransform.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startValue():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set startValue(value:Number):void</code>
+<br>
+</div>
+<a name="_target"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _target:DisplayObject</code>
+</div>
+<a name="target"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>target:DisplayObject</code>&nbsp;&nbsp;[read-only]<p>
+   The target DisplayObject on which the ColorTransform is applied.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get target():DisplayObject</code>
+<br>
+</div>
+<a name="_tintOpacity"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_tintOpacity</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _tintOpacity:Number = 1.0</code><p>
+   A modifier (between 0 and 1) to the tint color that affects its intensity. For example, 
+   a tint of 0xFF0000 and a tintAmount of 0.5 would appear as a red tint with 50% opacity.
+   This only affects the endValue.
+   The default value is 1.0 or 100% opacity.
+   </p></div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="TintTweenTarget()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">TintTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function TintTweenTarget(target:DisplayObject, startValue:Number, endValue:*, tintOpacity:* = 1)</code><p>
+   Constructor.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The display object to affect.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> &mdash; The color to begin on. This can be a color hex value (uint), a ColorTransform object, or one of the 
+         special values CURRENT_TINT or NO_TINT. null values will also be interpreted as CURRENT_TINT.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">endValue</span>:*</code> &mdash; The color to tint to. See notes for startValue. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">tintOpacity</span>:*</code> (default = <code>1</code>)<code></code> &mdash; A modifier for the opacity of the endValue tint color. Ignored if endValue is a ColorTransform.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../tween/TintTweenTarget.html#CURRENT_TINT" target="">CURRENT_TINT</a>
+<br>
+<a href="../tween/TintTweenTarget.html#NO_TINT" target="">NO_TINT</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="applyTintOpacity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">applyTintOpacity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function applyTintOpacity():void</code><p>
+   Applies the tintOpacity value to the endTransform. Used internally only.
+   </p></div>
+<a name="clone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function clone():<a href="../tween/ITweenTarget.html">ITweenTarget</a></code><p> Create a copy of the tweenTarget object </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../tween/ITweenTarget.html">ITweenTarget</a></code></td>
+</tr>
+</table>
+</div>
+<a name="reset()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function reset():void</code><p> 
+   Reset the value to it's pre-tweened state.
+   </p></div>
+<a name="updateTarget()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function updateTarget():void</code><p>
+   Sets the ColorTransform on the target to the _currentTransform value.
+   </p></div>
+<a name="updateTween()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function updateTween(percentComplete:Number):Number</code><p>
+   The main function that the Tween uses to update the TweenTarget. 
+   Sets the percentage complete.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">percentComplete</span>:Number</code> &mdash; a number between 0 and 1 (but sometimes more or less) that represents
+       the percentage of the tween that has been completed. This should update
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; Number the new current value of the tween.
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="CURRENT_TINT"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">CURRENT_TINT</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const CURRENT_TINT:String = "currentTint"</code><p>
+   A special value that when used as either the start or end values will
+   take the current ColorTransform of the target object at the time that 
+   the tween begins.
+   </p></div>
+<a name="NO_TINT"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">NO_TINT</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const NO_TINT:String = "noTint"</code><p>
+   A special value that when used as either the start or end values will
+   remove any colorTransform from the object.
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

@@ -48,8 +48,8 @@
 	</target>
 	
 	<target name="cleandocs" description="Deletes old document files before generating asdocs">
-		<delete dir="${project.docsPath}" />
-		<mkdir dir="${project.docsPath}" />
+		<delete dir="${project.output.docsPath}" />
+		<mkdir dir="${project.output.docsPath}" />
 	</target>
 	
 	<!--

@@ -27,7 +27,7 @@ ADDED jumpToTime and jumpByTime to all actions.
 
 MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
 
-IMPROVED build.xml to include more targets for building the library.
+IMPROVED build.xml to include more targets for building the library. Using SDK 3.4 now.
 
 ===== v1.7 =====
 ADDED Grant Skinner's ColorMatrix class for some color tweens
