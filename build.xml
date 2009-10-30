@@ -27,6 +27,7 @@
 	<property name="project.output.docsPath" location="${basedir}/docs/api"/>
 	<property name="project.output.binaryPath" location="${basedir}/bin"/>
 	
+	<!-- Change this to match the current version of KitchenSyncLib -->
 	<property name="project.version" value="2.0" />
 	
 	
