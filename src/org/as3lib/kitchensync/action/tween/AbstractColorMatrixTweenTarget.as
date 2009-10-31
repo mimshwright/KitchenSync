@@ -9,6 +9,7 @@ package org.as3lib.kitchensync.action.tween
 	import org.as3lib.utils.AbstractEnforcer;
 	
 	// todo: add docs
+	// todo: consider switching to http://www.quasimondo.com/archives/000671.php
 	public class AbstractColorMatrixTweenTarget implements IFilterTweenTarget
 	{
 
