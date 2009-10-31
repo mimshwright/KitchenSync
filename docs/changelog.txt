@@ -25,6 +25,8 @@ FIXED some minor bugs
 ADDED a method to track the number of active actions.
 ADDED jumpToTime and jumpByTime to all actions.
 
+REMOVED eventType and useWeakReferences class properties of KSEventDispatcher. Modified other methods for garbage collection.
+
 MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
 
 IMPROVED build.xml to include more targets for building the library. Using SDK 3.4 now.

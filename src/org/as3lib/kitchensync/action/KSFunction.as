@@ -6,12 +6,10 @@ package org.as3lib.kitchensync.action
 	
 	/**
 	 * Packages up a function to be run at a specified time or as part of a sequence.
-	 * Setting _duration to anything but zero will cause the function to repeat every frame until the duration is reached.
 	 * 
 	 * @author Mims Wright
 	 * @since 0.1
 	 */
-	// todo: review
 	public class KSFunction extends AbstractAction
 	{
 		/**
@@ -20,6 +18,11 @@ package org.as3lib.kitchensync.action
 		public function set func(func:Function):void { _func = func; }
 		protected var _func:Function;
 		
+	 	/** 
+	 	 * Duration cannot be set. Setting _duration to anything 
+	 	 * but zero will cause the function 
+	 	 * to repeat every frame until the duration is reached.
+	 	 */
 		override public function set duration(duration:*):void { 
 			throw new IllegalOperationError("Duration cannot be set for KSFunction"); 
 		}
@@ -34,6 +37,7 @@ package org.as3lib.kitchensync.action
 		 */		
 		public function get result():* { return _result; }
 		protected var _result:*;
+		
 		
 		/**
 		 * Constructor.
@@ -51,6 +55,7 @@ package org.as3lib.kitchensync.action
 			_args = args;
 		}
 		
+		
 		/**
 		 * Calls the function with the arguments specified. The result of the function is stored in the 
 		 * results property of the SynchronizedFunction object.
@@ -61,6 +66,7 @@ package org.as3lib.kitchensync.action
 			_result = _func.apply(this, _args);
 			return _result;
 		}
+		
 		
 		/**
 		 * Executes the function when the delay has elapsed.
@@ -75,6 +81,8 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		
+		/** @inheritDocs */
 		override public function clone():IAction {
 			var clone:KSFunction = new KSFunction(_func);
 			clone._args = _args;
@@ -83,6 +91,8 @@ package org.as3lib.kitchensync.action
 			return clone;
 		}
 		
+		
+		/** @inheritDocs */
 		override public function kill():void {
 			super.kill();
 			_func = null;

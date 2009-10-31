@@ -27,6 +27,8 @@ package org.as3lib.kitchensync
 	 * @since 1.2
 	 * @author Mims H. Wright
 	 */ 
+	 
+	 // TODO: go through this list of optimizations http://www.insideria.com/2009/04/51-actionscript-30-and-flex-op.html
 	public final class KitchenSync
 	{
 		/** 
