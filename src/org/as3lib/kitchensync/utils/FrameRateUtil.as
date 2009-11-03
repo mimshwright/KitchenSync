@@ -5,8 +5,8 @@ package org.as3lib.kitchensync.utils
 
 	/**
 	 * A singleton class that can track the current and average framerate of the
-	 * KitchenSync system (when using EnterFrameCore, this is the framerate of 
-	 * the movie itself). The number of frames included in teh average framerate can
+	 * KitchenSync system (but not necessarily the framerate of the SWF itself). 
+	 * The number of frames included in teh average framerate can
 	 * be set as well. For a quick visual display of the framerate, 
 	 * use <code>FrameRateView</code>.
 	 * 

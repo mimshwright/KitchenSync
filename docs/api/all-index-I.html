@@ -43,10 +43,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   a certain time.</td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IActionGroup.html"><i>IActionGroup</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+  A group of other actions that is itself an action.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/IFilterTweenTarget.html"><i>IFilterTweenTarget</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IJumpableAction.html"><i>IJumpableAction</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+  An interface that adds methods to IAction for jumping to a certain time
+  or by a certain time.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/loading/class-list.html');" href="org/as3lib/kitchensync/action/loading/ILoaderAction.html"><i>ILoaderAction</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/loading/class-list.html');" href="org/as3lib/kitchensync/action/loading/package-detail.html">org.as3lib.kitchensync.action.loading</a></td>
@@ -116,14 +131,28 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#isInstantaneous">isInstantaneous</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr>
-<td width="20"></td><td> Returns true if the action will occur instantaneously when started </td>
+<td width="20"></td><td>  
+   Should true if the action will occur instantaneously (if duration is 0).</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html#isInstantaneous">isInstantaneous</a> &mdash; Property in interface org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html">IAction</a></td>
+</tr>
+<tr>
+<td width="20"></td><td> 
+   Should true if the action will occur instantaneously (if duration is 0).</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#isInstantaneous">isInstantaneous</a> &mdash; Property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
+</tr>
+<tr>
+<td width="20"></td><td> Returns false since this has a duration.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#isPaused">isPaused</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
-   Will return true if the action is paused (after pause() has been called).</td>
+    Should return true if the action is paused.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html#isPaused">isPaused</a> &mdash; Property in interface org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html">IAction</a></td>
@@ -147,9 +176,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#isRunning">isRunning</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr>
-<td width="20"></td><td> 
-   Setting sync to true will cause the action to sync up with real time
-   even if framerate drops.</td>
+<td width="20"></td><td>
+   The human-readable name of this action.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html#isRunning">isRunning</a> &mdash; Property in interface org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html">IAction</a></td>
@@ -168,7 +196,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 </tr>
 <tr>
 <td width="20"></td><td>
-  A consumer or the Synchronizer class.</td>
+  A consumer of the Synchronizer class.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/ISynchronizerCore.html"><i>ISynchronizerCore</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/package-detail.html">org.as3lib.kitchensync.core</a></td>

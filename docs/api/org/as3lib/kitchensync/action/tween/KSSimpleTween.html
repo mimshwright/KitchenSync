@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="KSSimpleTween,org.as3lib.kitchensync.action.tween.KSSimpleTween,_delay,_delta,_duration,_pauseTime,_paused,_running,_startTime,easingFunction,endValue,property,startValue,target,delay,duration,isPaused,isRunning,clone,complete,kill,pause,start,stop,toString,unpause,update" name="keywords">
+<meta content="KSSimpleTween,org.as3lib.kitchensync.action.tween.KSSimpleTween,_delay,_delta,_duration,_pauseTime,_paused,_running,_startTime,easingFunction,endValue,property,startValue,target,delay,duration,isInstantaneous,isPaused,isRunning,runningTime,clone,complete,kill,pause,reset,start,stop,toString,unpause,update" name="keywords">
 <title>org.as3lib.kitchensync.action.tween.KSSimpleTween</title>
 </head>
 <body>
@@ -86,11 +86,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#delay">delay</a> : int<div class="summaryTableDescription"> delay before the animation begins in milliseconds.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#delay">delay</a> : int<div class="summaryTableDescription"> 
+   delay before the animation begins in milliseconds.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : int<div class="summaryTableDescription"> duration of tween, not including delay, in milliseconds.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : int<div class="summaryTableDescription"> 
+   Duration of tween, not including delay, in milliseconds.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
@@ -99,6 +101,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#endValue">endValue</a> : Number<div class="summaryTableDescription"> the ending value of the tween.</div>
+</td><td class="summaryTableOwnerCol">KSSimpleTween</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInstantaneous">isInstantaneous</a> : Boolean<div class="summaryTableDescription">[read-only] Returns false since this has a duration.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
@@ -111,6 +117,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#property">property</a> : String<div class="summaryTableDescription"> property of the target object to affect as a string.</div>
+</td><td class="summaryTableOwnerCol">KSSimpleTween</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#runningTime">runningTime</a> : int<div class="summaryTableDescription">[read-only] 
+   The time in ms since the start of the action or 0 if the action isn't running.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
@@ -180,21 +191,33 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription"> 
+   Creates a clone which is a deep copy of the action.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#kill()">kill</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription"> 
+   Unregisters the action and removes any refrerences to objects that it may be holding onto.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#pause()">pause</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription"> 
+   Causes the action to be paused.</div>
+</td><td class="summaryTableOwnerCol">KSSimpleTween</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#reset()">reset</a>():void</div>
+<div class="summaryTableDescription"> 
+   Resets the action and returns it to its original state it was in
+   before being started.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
@@ -202,8 +225,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#start()">start</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
-<div class="summaryTableDescription">
-   Starts the tween.</div>
+<div class="summaryTableDescription"> 
+   Begins the action running.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
 <tr class="">
@@ -225,7 +248,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#unpause()">unpause</a>():void</div>
-<div class="summaryTableDescription">
+<div class="summaryTableDescription"> 
    Resumes the action at the point where it was paused.</div>
 </td><td class="summaryTableOwnerCol">KSSimpleTween</td>
 </tr>
@@ -277,7 +300,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>delay:int</code>&nbsp;&nbsp;[read-write]<p> delay before the animation begins in milliseconds. </p><span class="label">Implementation</span>
+<code>delay:int</code>&nbsp;&nbsp;[read-write]<p> 
+   delay before the animation begins in milliseconds. 
+   Note: despite the type (required by the IAction interface), this setter will
+   only accept numeric values. 
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get delay():int</code>
 <br>
@@ -308,7 +335,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>duration:int</code>&nbsp;&nbsp;[read-write]<p> duration of tween, not including delay, in milliseconds. </p><span class="label">Implementation</span>
+<code>duration:int</code>&nbsp;&nbsp;[read-write]<p> 
+   Duration of tween, not including delay, in milliseconds.
+   Note: despite the type (required by the IAction interface), this setter will
+   only accept numeric values. 
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get duration():int</code>
 <br>
@@ -331,6 +362,18 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public var endValue:Number</code><p> the ending value of the tween. </p></div>
+<a name="isInstantaneous"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isInstantaneous</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>isInstantaneous:Boolean</code>&nbsp;&nbsp;[read-only]<p> Returns false since this has a duration. </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isInstantaneous():Boolean</code>
+<br>
+</div>
 <a name="isPaused"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -387,6 +430,22 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>protected var _running:Boolean = false</code><p> Set to true internally if when the start() method is called (false when stopped). </p></div>
+<a name="runningTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">runningTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>runningTime:int</code>&nbsp;&nbsp;[read-only]<p> 
+   The time in ms since the start of the action or 0 if the action isn't running.
+   If the action is paused, the result will be the running time at which it was paused.
+   Typically, the current real time minus the action's start time.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get runningTime():int</code>
+<br>
+</div>
 <a name="_startTime"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -482,12 +541,19 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clone():<a href="../../action/IAction.html">IAction</a></code>
-<p></p>
+<code>public function clone():<a href="../../action/IAction.html">IAction</a></code><p> 
+   Creates a clone which is a deep copy of the action.
+   States (e.g. isRunning will not be copied)
+    
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code></td>
+<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code> &mdash; 
+                        An exact copy of the action. 
+   
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -506,8 +572,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function kill():void</code>
-</div>
+<code>public function kill():void</code><p> 
+   Unregisters the action and removes any refrerences to objects that it may be holding onto.
+   This is done in an attempt to remove the object from memory. 
+   </p></div>
 <a name="pause()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -515,8 +583,26 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function pause():void</code>
-</div>
+<code>public function pause():void</code><p> 
+   Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
+   and the onUpdate() handler will not be called. When unpause() is called,
+   the action will continue at the point where it was paused.
+   The pause() method affects the start time even if the delay time hasn't expired yet.
+   
+   </p></div>
+<a name="reset()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function reset():void</code><p> 
+   Resets the action and returns it to its original state it was in
+   before being started. In some cases, like with tweens, this 
+   will reset the values of the tween target. In most other cases,
+   this will act similarly to the stop() method.
+   </p></div>
 <a name="start()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -524,14 +610,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function start():<a href="../../action/IAction.html">IAction</a></code><p>
-   Starts the tween.
-   </p><p></p>
+<code>public function start():<a href="../../action/IAction.html">IAction</a></code><p> 
+   Begins the action running. The action will execute whatever it is
+   meant to do when the <code>start()</code> method is called (and after the 
+   <code>delay</code> time has elapsed).
+   <code>start()</code> should also cause the action to unpause if it is
+   paused.
+   
+   </p><p>This method returns a reference to the action that was started. 
+   This allows for an action to be constructed and started in a single line of code.</p>
+   
+   <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code> &mdash; 
-                        IAction - returns self (for convenience)
+                        The action that was just started. For convenience.
    
                         
                      </td>
@@ -572,8 +666,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function unpause():void</code><p>
+<code>public function unpause():void</code><p> 
    Resumes the action at the point where it was paused.
+   
    </p></div>
 <a name="update()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

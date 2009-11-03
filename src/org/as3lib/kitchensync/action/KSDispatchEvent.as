@@ -112,12 +112,12 @@ package org.as3lib.kitchensync.action
 		 * Note that if duration is > 0, this will continue to fire for every frame until duration is elapsed.
 		 */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed) {
+			if (startTimeHasElapsed(currentTime)) {
 				// If target is null, use this as the dispatcher.
 				if (_target == null || _target == SELF) { _target = this; }
 				_target.dispatchEvent(_event);
 				
-				if (durationHasElapsed) {
+				if (durationHasElapsed(currentTime)) {
 					complete();
 				}
 			}

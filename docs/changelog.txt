@@ -12,6 +12,7 @@ ADDED cycles to replace frames in Synchronizer. Every update counts as a cycle.
 ADDED FrameRateUtil for getting instantaneous and averaged framerates of the system. The FrameRateView now makes use of this class and has more options.
 REMOVED Timestamp class. From now on, the synchronizer will dispatch an int representing the system time since the SWF initialized. Also removed TimestampUtil
 CHANGED Using TimeStringParser_en to work with frames is now not recommended but a frameRate property has been added to support it. timeStringParser is now a property of KitchenSync instead of being defined in AbstractAction. 
+ADDED a method to track the number of active actions.
 
 REFACTORED Constructors throughout the system for more consistency and ease of use.
 REMOVED delay from the KSFunction constructor.
@@ -22,8 +23,17 @@ ADDED KSLoadQueue for quickly creating a class to load files from the network in
 ADDED the resultList property to the ILoaderAction interface so that you can quickly access the loaded files in a batch.
 FIXED some minor bugs
 
-ADDED a method to track the number of active actions.
-ADDED jumpToTime and jumpByTime to all actions.
+REFACTORED IAction and AbstractAction.
+MOVED some important methods from AbstractAction-only to IAction. 
+ADDED an IJumpableAction to specify jumpToTime and jumpByTime separate from IAction.
+ADDED jumpToTime and jumpByTime to AbstractAction so (almost) all actions have this functionality.
+OPTIMIZED startTimeHasElapsed and durationHasElapsed in AbstractAction
+
+ADDED an interface for groups, IActionGroup. 
+ADDED totalDuration to groups.
+
+ADDED Better docs to KitchenSyncEvent class. 
+RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong event type appear in the auto-complete if the constant name and string don't match.
 
 REMOVED eventType and useWeakReferences class properties of KSEventDispatcher. Modified other methods for garbage collection.
 

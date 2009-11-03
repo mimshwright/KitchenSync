@@ -185,7 +185,7 @@ package org.as3lib.kitchensync.action.tween
 		/**
 		 * Stops the tween and sets the target property to the start value.
 		 */
-		public function reset():void {
+		override public function reset():void {
 			stop();
 			for each (var target:ITweenTarget in _tweenTargets) {
 				target.reset();
@@ -200,7 +200,7 @@ package org.as3lib.kitchensync.action.tween
 			var convertedDuration:int;
 			
 			// if the tween is running and the delay time has elapsed, perform tweening.
-			if (startTimeHasElapsed) {
+			if ( startTimeHasElapsed(currentTime) ) {
 		 		timeElapsed = currentTime - _startTime - _delay;
 		 		convertedDuration = duration;		 				 		
 				
@@ -229,7 +229,7 @@ package org.as3lib.kitchensync.action.tween
 				}
 				
 				// if the tween's duration is complete.
-				if (durationHasElapsed) {
+				if (durationHasElapsed(currentTime)) {
 					
 					// if snapToValue is set to true, the target property will be set to the target value 
 					// regardless of the results of the easing function.

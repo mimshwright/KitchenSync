@@ -6,8 +6,10 @@ package org.as3lib.kitchensync.core
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	
-	
-	[Event(name="synchronizerUpdate", type="org.as3lib.kitchensync.KitchenSyncEvent")]
+	/**
+	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.SYNCHRONIZER_UPDATE
+	 */
+	[Event(name="synchronizerUpdate", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
 	
 	/**
 	 * Synchronizer acts as the main time keeper for the animation engine. 
@@ -17,6 +19,7 @@ package org.as3lib.kitchensync.core
 	 * @since 0.1
 	 */
 	 // todo: add more notes about cores and kitchensync class
+	 // todo: make the enterframe core be the default but make it self initializing too.
 	public final class Synchronizer extends EventDispatcher
 	{
 		
@@ -117,7 +120,7 @@ package org.as3lib.kitchensync.core
 			}
 			
 			// dispatch event to event listeners.
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UPDATE, currentTime));
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.SYNCHRONIZER_UPDATE, currentTime));
 			
 			//trace(currentTime);			
 		}

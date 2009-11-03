@@ -73,16 +73,16 @@ package org.as3lib.kitchensync.action
 		 * If the duration is > 0, it will repeat until the duration has elapsed.
 		 */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed) {
+			if (startTimeHasElapsed(currentTime)) {
 				invoke();
-				if (durationHasElapsed) {
+				if (durationHasElapsed(currentTime)) {
 					complete();
 				}
 			}
 		}
 		
 		
-		/** @inheritDocs */
+		/** @inheritDoc */
 		override public function clone():IAction {
 			var clone:KSFunction = new KSFunction(_func);
 			clone._args = _args;
@@ -92,7 +92,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		
-		/** @inheritDocs */
+		/** @inheritDoc */
 		override public function kill():void {
 			super.kill();
 			_func = null;

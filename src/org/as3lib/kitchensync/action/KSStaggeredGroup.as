@@ -73,7 +73,7 @@ package org.as3lib.kitchensync.action
 		 * When the first update occurs, all of the child actions are started simultaniously.
 		 */
 		override public function update(currentTime:int):void { 
-			if (startTimeHasElapsed) {
+			if ( startTimeHasElapsed(currentTime) ) {
 				if (!_lastStartTime) {
 					_runningChildren = _childActions.length;
 				}
@@ -87,8 +87,8 @@ package org.as3lib.kitchensync.action
 						if (i < childActions.length) {
 							var childAction:IAction = IAction(_childActions[i]);
 							// add a listener to each action so that the completion of the entire group can be tracked.
-							childAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
-							childAction.addEventListener(KitchenSyncEvent.START, onChildStart);
+							childAction.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
+							childAction.addEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
 							// start the child action
 							childAction.start();
 						}

@@ -79,11 +79,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../IAction.html#isInstantaneous">isInstantaneous</a> : Boolean<div class="summaryTableDescription"> 
+   Should true if the action will occur instantaneously (if duration is 0).</div>
+</td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../IAction.html#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription"> Should return true if the action is paused.</div>
 </td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../IAction.html#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription"> Should return true if the action is running (or paused).</div>
+</td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../IAction.html#runningTime">runningTime</a> : int<div class="summaryTableDescription">
+   The time in ms since the start of the action or 0 if the action isn't running.</div>
 </td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
 </tr>
 </table>
@@ -108,7 +118,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <div class="summarySignature">
 <a class="signatureLink" href="../IAction.html#clone()">clone</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
-<div class="summaryTableDescription"> Returns an exact copy of the action.</div>
+<div class="summaryTableDescription">
+   Creates a clone which is a deep copy of the action.</div>
 </td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -130,10 +141,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="../IAction.html#reset()">reset</a>():void</div>
+<div class="summaryTableDescription">
+   Resets the action and returns it to its original state it was in
+   before being started.</div>
+</td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="../IAction.html#start()">start</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription">
-   Starts the timer for this action.</div>
+   Begins the action running.</div>
 </td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
 </tr>
 <tr class="hideInheritedMethod">

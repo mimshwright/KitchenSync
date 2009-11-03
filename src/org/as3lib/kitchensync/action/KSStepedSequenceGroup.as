@@ -44,8 +44,8 @@ package org.as3lib.kitchensync.action
 		 */
 		override protected function onChildFinished(event:KitchenSyncEvent):void {
 			//super.onChildFinished(event);
-			_currentAction.removeEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
-			_currentAction.removeEventListener(KitchenSyncEvent.START, onChildStart);
+			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
+			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
 			//_currentAction = null;
 			if (!checkForComplete()) {
 				_waitingForInput = true;

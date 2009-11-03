@@ -2,13 +2,11 @@ package org.as3lib.kitchensync.action.tween
 {	
 	import flash.events.EventDispatcher;
 	
+	import org.as3lib.kitchensync.action.IAction;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	import org.as3lib.kitchensync.core.Synchronizer;
-	
 	import org.as3lib.kitchensync.easing.EasingUtil;
 	import org.as3lib.kitchensync.easing.Linear;
-	
-	import org.as3lib.kitchensync.action.IAction;
 
 	
 	/**
@@ -43,15 +41,34 @@ package org.as3lib.kitchensync.action.tween
 	 // todo: review
 	public class KSSimpleTween extends EventDispatcher implements IAction, ITween
 	{
-		/** duration of tween, not including delay, in milliseconds. */ 
+		/** 
+		 * Duration of tween, not including delay, in milliseconds.
+		 * Note: despite the * type (required by the IAction interface), this setter will
+		 * only accept numeric values. 
+		 */ 
 		public function get duration():int { return _duration; }
 		public function set duration(duration:*):void { _duration = int(duration); }
 		protected var _duration:int = 0;
 		
-		/** delay before the animation begins in milliseconds. */
+		/** 
+		 * delay before the animation begins in milliseconds. 
+		 * Note: despite the * type (required by the IAction interface), this setter will
+		 * only accept numeric values. 
+		 */
 		public function get delay():int { return _delay; }
 		public function set delay(delay:*):void { _delay = int(delay); }
 		protected var _delay:int = 0;
+		
+		/** @inheritDoc */
+		public function get runningTime():int { 
+			if (!_running) { return 0; }
+			// If the action is paused, factor that into the results
+			if (isPaused) {
+				return  (_pauseTime - _startTime);
+			} else {
+				return (Synchronizer.getInstance().currentTime - _startTime); 
+			}
+		}
 		
 		/** target object whose properties will be affected. */
 		public var target:Object;
@@ -64,6 +81,16 @@ package org.as3lib.kitchensync.action.tween
 		
 		/** the ending value of the tween. */
 		public var endValue:Number;
+		
+		/** Returns false since this has a duration. */
+		public function get isInstantaneous():Boolean { return false; } 
+		
+		/** True when the action is running (or paused) */
+		public function get isRunning():Boolean { return _running; }
+		
+		/** True when the action is paused */ 
+		public function get isPaused():Boolean { return _paused; }
+		
 		
 		/** a cached value for the difference between the start and end. */
 		protected var _delta:Number;
@@ -81,12 +108,6 @@ package org.as3lib.kitchensync.action.tween
 		protected var _running:Boolean = false;
 		/** Set to true internally when the puase() mehtod is called (false when unpaused) */
 		protected var _paused:Boolean = false;
-		
-		/** True when the action is running (or paused) */
-		public function get isRunning():Boolean { return _running; }
-		
-		/** True when the action is paused */ 
-		public function get isPaused():Boolean { return _paused; }
 		
 		/**
 		 * Constuctor.
@@ -134,10 +155,7 @@ package org.as3lib.kitchensync.action.tween
 			}
 		}
 		
-		/**
-		 * Starts the tween.
-		 * @return IAction - returns self (for convenience)
-		 */
+		/** @inheritDoc */
 		public function start():IAction {
 			if (!_running) {
 				// get the current timestamp
@@ -152,7 +170,7 @@ package org.as3lib.kitchensync.action.tween
 				// force the first update.
 				update(currentTime);
 				
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, currentTime));
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_START, currentTime));
 			}
 			return this;
 		}
@@ -165,26 +183,31 @@ package org.as3lib.kitchensync.action.tween
 			Synchronizer.getInstance().unregisterClient(this);
 		}
 		
+		/** @inheritDoc */
+		public function reset():void {
+			stop();
+			
+		}
+		
 		/** Called internally when the tween is completed. */
 		protected function complete():void {
 			stop();
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTime));
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_COMPLETE, Synchronizer.getInstance().currentTime));
 		}
 		
 		
+		/** @inheritDoc */
 		public function pause():void {
 			if (!_running && !_paused) {
 				var currentTime:int = Synchronizer.getInstance().currentTime;
 				_pauseTime = currentTime;
 				_paused = true;
 				Synchronizer.getInstance().unregisterClient(this);
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.PAUSE, currentTime));
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_PAUSE, currentTime));
 			}
 		}
 		
-		/**
-		 * Resumes the action at the point where it was paused.
-		 */
+		/** @inheritDoc */
 		public function unpause():void {
 			if (_running && _paused) {
 				Synchronizer.getInstance().registerClient(this);
@@ -192,22 +215,23 @@ package org.as3lib.kitchensync.action.tween
 				var currentTime:int = Synchronizer.getInstance().currentTime;
 				var timeSincePause:int = currentTime - _pauseTime;
 				_startTime = _startTime + timeSincePause; 
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UNPAUSE, currentTime));
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_UNPAUSE, currentTime));
 			}
 		}
 		
-		
+		/** @inheritDoc */
 		public function kill():void {
 			target = null;
 			easingFunction = null;
 		}
 		
+		/** @inheritDoc */
 		public function clone():IAction {
 			return new KSSimpleTween(target, property, startValue, endValue, duration, delay, easingFunction);
 		}
 		
 		override public function toString():String {
-			return "SimpleTween :" + this.target.toString() + "[" + this.property + "]";
+			return "KSSimpleTween :" + this.target.toString() + "[" + this.property + "]";
 		}
 	}
 }

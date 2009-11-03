@@ -36,16 +36,16 @@ package org.as3lib.kitchensync.action
 			this.delay = waitTime;
 		}
 		
-		/** @inheritDocs */
+		/** @inheritDoc */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed) {
-				if (durationHasElapsed) {
+			if ( startTimeHasElapsed(currentTime) ) {
+				if (durationHasElapsed(currentTime)) {
 					complete();
 				}
 			}
 		}
 		
-		/** @inheritDocs */
+		/** @inheritDoc */
 		override public function clone():IAction {
 			var clone:KSWait = new KSWait(_delay);
 			clone.autoDelete = _autoDelete;

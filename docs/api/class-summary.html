@@ -40,13 +40,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a>
 <br>
 </td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td><td class="summaryTableLastCol">
-  This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
-  timing.</td>
+  A default implementation of IAction.</td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/AbstractActionGroup.html">AbstractActionGroup</a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td><td class="summaryTableLastCol">
+  A default implementation of IActionGroup.</td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/tween/AbstractColorMatrixTweenTarget.html">AbstractColorMatrixTweenTarget</a>
@@ -131,8 +131,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <br>
 </td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/utils/class-list.html');" href="org/as3lib/kitchensync/utils/package-detail.html">org.as3lib.kitchensync.utils</a></td><td class="summaryTableLastCol">
   A singleton class that can track the current and average framerate of the
-  KitchenSync system (when using EnterFrameCore, this is the framerate of 
-  the movie itself).</td>
+  KitchenSync system (but not necessarily the framerate of the SWF itself).</td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/utils/FrameRateView.html">FrameRateView</a>
@@ -148,9 +147,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
   a certain time.</td>
 </tr>
 <tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/IActionGroup.html"><i>IActionGroup</i></a>
+<br>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td><td class="summaryTableLastCol">
+  A group of other actions that is itself an action.</td>
+</tr>
+<tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/tween/IFilterTweenTarget.html"><i>IFilterTweenTarget</i></a>
 <br>
 </td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/package-detail.html">org.as3lib.kitchensync.action.tween</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/IJumpableAction.html"><i>IJumpableAction</i></a>
+<br>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td><td class="summaryTableLastCol">
+  An interface that adds methods to IAction for jumping to a certain time
+  or by a certain time.</td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/loading/ILoaderAction.html"><i>ILoaderAction</i></a>
@@ -169,7 +181,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/core/ISynchronizerClient.html"><i>ISynchronizerClient</i></a>
 <br>
 </td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/package-detail.html">org.as3lib.kitchensync.core</a></td><td class="summaryTableLastCol">
-  A consumer or the Synchronizer class.</td>
+  A consumer of the Synchronizer class.</td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/core/ISynchronizerCore.html"><i>ISynchronizerCore</i></a>
@@ -217,7 +229,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/core/KitchenSyncEvent.html">KitchenSyncEvent</a>
 <br>
 </td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/package-detail.html">org.as3lib.kitchensync.core</a></td><td class="summaryTableLastCol">
-  Event type that is dispatched by the Synchronizer and AbstractSynchronizedActions.</td>
+  Event type that is dispatched by the Synchronizer and actions.</td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/tween/KitchenSyncObjectParser.html">KitchenSyncObjectParser</a>
@@ -345,7 +357,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/KSWait.html">KSWait</a>
 <br>
 </td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/package-detail.html">org.as3lib.kitchensync.action</a></td><td class="summaryTableLastCol">
-  Does nothing except wait.</td>
+  Does nothing except wait for the delay to pass.</td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="org/as3lib/kitchensync/action/loading/KSXMLLoader.html">KSXMLLoader</a>

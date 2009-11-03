@@ -33,7 +33,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed) {
+			if (startTimeHasElapsed(currentTime) ) {
 				var childAction:IAction;
 				// if the group isn't already running...
 				if (!childrenAreRunning) {
@@ -51,8 +51,8 @@ package org.as3lib.kitchensync.action
 						_childStartTimes[childAction] = calculateStartTime(childAction, _longestItemsTotalDuration);
 						
 						// add a listener to each action so that the completion of the entire group can be tracked.
-						childAction.addEventListener(KitchenSyncEvent.START, onChildStart);
-						childAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
+						childAction.addEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
+						childAction.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
 						
 						//trace("final start time: " + _childStartTimes[childAction]);
 					}

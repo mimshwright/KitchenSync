@@ -252,7 +252,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 </tr>
 <tr>
 <td width="20"></td><td>
-   Starts the timer for this action.</td>
+   
+   Begins the action running.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html">AbstractActionGroup</a></td>
@@ -265,7 +266,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 </tr>
 <tr>
 <td width="20"></td><td>
-   Starts the timer for this action.</td>
+   Begins the action running.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSequenceGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSequenceGroup.html">KSSequenceGroup</a></td>
@@ -284,8 +285,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
 </tr>
 <tr>
-<td width="20"></td><td>
-   Starts the tween.</td>
+<td width="20"></td><td> 
+   Begins the action running.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></td>
@@ -323,12 +324,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 </tr>
 <tr>
 <td width="20"></td><td> start() command.</td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/KitchenSyncEvent.html#START">START</a> &mdash; Constant static property in class org.as3lib.kitchensync.core.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/KitchenSyncEvent.html">KitchenSyncEvent</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSRandomGroup.html#startNextAction()">startNextAction</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSRandomGroup.html">KSRandomGroup</a></td>
@@ -497,7 +492,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#stop()">stop</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr>
-<td width="20"></td><td>
+<td width="20"></td><td> 
    Stops the action from running and resets the timer.</td>
 </tr>
 <tr>
@@ -587,7 +582,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/Synchronizer.html#event:synchronizerUpdate">synchronizerUpdate</a> &mdash; Event in class org.as3lib.kitchensync.core.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/Synchronizer.html">Synchronizer</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Dispatched by the Synchronizer class at regular intervals.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/KitchenSyncEvent.html#SYNCHRONIZER_UPDATE">SYNCHRONIZER_UPDATE</a> &mdash; Constant static property in class org.as3lib.kitchensync.core.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/KitchenSyncEvent.html">KitchenSyncEvent</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Dispatched by the Synchronizer class at regular intervals.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/class-list.html');" href="org/as3lib/kitchensync/KitchenSyncDefaults.html#syncrhonizerUsesWeakReferences">syncrhonizerUsesWeakReferences</a> &mdash; Static property in class org.as3lib.kitchensync.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/class-list.html');" href="org/as3lib/kitchensync/KitchenSyncDefaults.html">KitchenSyncDefaults</a></td>

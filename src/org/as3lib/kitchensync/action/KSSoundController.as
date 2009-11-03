@@ -90,7 +90,7 @@ package org.as3lib.kitchensync.action
 		 * If the sound hasn't loaded yet, it continues to check each frame until it is loaded, then it plays.
 		 */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed) {
+			if (startTimeHasElapsed(currentTime) ) {
 				if (_sound.bytesLoaded == _sound.bytesTotal && _channel == null) {
 					_channel = _sound.play(_soundOffset);
 					_channel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);

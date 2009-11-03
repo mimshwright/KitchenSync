@@ -60,7 +60,7 @@ package org.as3lib.kitchensync.action.loading
 	public class KSURLLoader extends KSAsynchronousFunction implements ILoaderAction
 	{
 		/**
-		 * @inheritDocs
+		 * @inheritDoc
 		 */  
 		public function get resultList():Array { return _resultList; }
 		public function set resultList(resultList:Array):void { _resultList = resultList; }
@@ -78,13 +78,13 @@ package org.as3lib.kitchensync.action.loading
 		
 		
 		/**
-		 * @inheritDocs
+		 * @inheritDoc
 		 */
 		public function get data():* { return _data; } 
 		protected var _data:* = null;
 		
 		/**
-		 * @inheritDocs
+		 * @inheritDoc
 		 */
 		public function get throwErrorOnFail():Boolean { return _throwErrorOnFail; }
 		public function set throwErrorOnFail(throwError:Boolean):void { _throwErrorOnFail = throwError; }
@@ -135,7 +135,7 @@ package org.as3lib.kitchensync.action.loading
 		}
 		
 		/**
-		 * @inheritDocs
+		 * @inheritDoc
 		 */
 		override public function kill():void {
 			super.kill();

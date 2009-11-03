@@ -43,6 +43,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
   An action is a type that represents any kind of happening that takes place at
   a certain time.</td>
 </tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="IActionGroup.html">IActionGroup</a></i></td><td class="summaryTableLastCol">
+  A group of other actions that is itself an action.</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="IJumpableAction.html">IJumpableAction</a></i></td><td class="summaryTableLastCol">
+  An interface that adds methods to IAction for jumping to a certain time
+  or by a certain time.</td>
+</tr>
 </table>
 <a name="classSummary"></a>
 <div class="summaryTableTitle">Classes</div>
@@ -52,11 +61,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="AbstractAction.html">AbstractAction</a></td><td class="summaryTableLastCol">
-  This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
-  timing.</td>
+  A default implementation of IAction.</td>
 </tr>
 <tr class="prow0">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td><td class="summaryTableLastCol">
+  A default implementation of IActionGroup.</td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="ActionControllerCommand.html">ActionControllerCommand</a></td><td class="summaryTableLastCol">
@@ -122,7 +131,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="KSWait.html">KSWait</a></td><td class="summaryTableLastCol">
-  Does nothing except wait.</td>
+  Does nothing except wait for the delay to pass.</td>
 </tr>
 </table>
 <p></p>

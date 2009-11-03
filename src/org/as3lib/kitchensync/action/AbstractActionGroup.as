@@ -1,17 +1,33 @@
 package org.as3lib.kitchensync.action
 {
-	import org.as3lib.kitchensync.KitchenSyncDefaults;
+	import flash.errors.IllegalOperationError;
+	
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.utils.AbstractEnforcer;
 	
-	[Event(name="childActionStart", type="org.as3lib.kitchensync.KitchenSyncEvent")]
-	[Event(name="childActionComplete", type="org.as3lib.kitchensync.KitchenSyncEvent")]
+	/**
+	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.CHILD_ACTION_START
+	 */
+	[Event(name="childActionStart", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
+
+	/**
+	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.CHILD_COMPLETE
+	 */
+	[Event(name="childActionComplete", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
 	
 	// todo: add docs
 	// todo: thoroughly review this class for errors, kruft, improvements
 	// todo: add the ability to reset child tweens at the start of the group
-	// todo: make an interface for this.
-	public class AbstractActionGroup extends AbstractAction
+	// todo: add skipCurrentAction()
+	/**
+	 * A default implementation of IActionGroup. Provides the basic functionality
+	 * for dealing with child actions within a group.
+	 * 
+	 * @abstract
+	 * @author Mims H. Wright
+	 * @since 0.1
+	 */
+	public class AbstractActionGroup extends AbstractAction implements IActionGroup
 	{
 		/** If true, the group's KSTween children will reset to their default positions when the group is started. */
 		//public var resetChildrenAtStart:Boolean = true;
@@ -22,9 +38,24 @@ package org.as3lib.kitchensync.action
 		public function get childActions():Array { return _childActions; }
 		protected var _childActions:Array = new Array();
 		
+		/**
+		 * Setting duration is overridden on groups and will always be 0.
+		 * @see totalDuration.
+		 */
 		override public function set duration(duration:*):void {
-			throw new Error("duration is ignored for SynchronizedActionGroups");
+			throw new Error("duration is ignored for IActionGroups");
 		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get totalDuration():int {
+			var totalDuration:int = duration;
+			for each (var action:IAction in childActions) {
+				totalDuration += action.delay + action.duration;
+			}
+			return totalDuration;
+		} 
 		
 		/**
 		 * Constructor.
@@ -33,8 +64,8 @@ package org.as3lib.kitchensync.action
 		 */
 		public function AbstractActionGroup() {
 			super();
+			AbstractEnforcer.enforceConstructor(this, AbstractActionGroup);
 			//resetChildrenAtStart = KitchenSyncDefaults.resetChildrenAtStart;
-			//AbstractEnforcer.enforceConstructor(this, AbstractActionGroup);
 		}
 		
 		/**
@@ -52,10 +83,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Adds an action to the group at the specified index.
-		 * 
-		 * @param action - The action to add. Don't start this action. That will be handled by the group.
-		 * @param index - The location at which to add the action. Defaults to the end of the Array
+		 * @inheritDoc
 		 */
 		public function addActionAtIndex(action:IAction, index:int = -1):void {
 			if (index < 0) {
@@ -66,11 +94,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Removes an action from the group.
-		 * 
-		 * @throws Error if the action cannot be found.
-		 * @param action - The action to remove.
-		 * @return The removed action.
+		 * @inheritDoc
 		 */
 		public function removeAction(action:IAction):IAction {
 			var index:int = _childActions.indexOf(action);
@@ -82,40 +106,32 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Removes an action at the specified index. 
-		 * 
-		 * @throws Error if the action cannot be found.
-		 * @param index - The index in the array of the action to remove.
-		 * @return The removed action.
+		 * @inheritDoc
 		 */
 		 public function removeActionAtIndex(index:int):IAction {
 			if (index < 0 || index >= _childActions.length) {
-				throw new Error("Specified child action does not exist");
+				throw new RangeError("Specified index does not exist");
 			} else {
 				return _childActions.splice(index, 1)[0];
 			}
 		 }
 		
 		/**
-		 * Returns the action at the specified index. 
-		 * 
-		 * @throws Error if the action cannot be found.
-		 * @param index - The index in the array of the action to return.
-		 * @return The specified action.
+		 * @inheritDoc
 		 */ 
 		 public function getChildAtIndex(index:int):IAction {
 		 	if (index < 0 || index >= _childActions.length) {
-				throw new Error("Specified child action does not exist");
+				throw new RangeError("Specified index does not exist");
 			} else {
-				return _childActions[index];
+				return IAction(_childActions[index]);
 			}
 		 }
 		 
 		 /**
-		 * Reverse the order that the children play back in. Essentially, this just reverses the child array.
+		 * @inheritDoc
 		 */
-		 // todo - test this
 		 public function reverseChildOrder():void {
+		 	if (isRunning) { throw new IllegalOperationError("reverseChildOrder cannot be called while the group is running."); }
 		 	_childActions = _childActions.reverse();
 		 }
 		 
@@ -123,11 +139,10 @@ package org.as3lib.kitchensync.action
 		 * Dispatches a CHILD_START event when the child begins.
 		 * 
 		 * @param event - The SynchronizerEvent.START from the child action
-		 * @event SynchronizerEvent.CHILD_START
 		 */
 		 // todo - Add a reference to the started child to the event.
 		 protected function onChildStart(event:KitchenSyncEvent):void {
-		 	dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_START, event.timestamp));
+		 	dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_ACTION_START, event.timestamp));
 		 }
 		 
 		 /**
@@ -138,7 +153,7 @@ package org.as3lib.kitchensync.action
 		 */
 		 // todo - Add a reference to the completed child to the event.
 		protected function onChildFinished (event:KitchenSyncEvent):void {
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_COMPLETE, event.timestamp));
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_ACTION_COMPLETE, event.timestamp));
 		}
 		
 		override public function start():IAction {

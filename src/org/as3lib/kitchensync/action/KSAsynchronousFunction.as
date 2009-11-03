@@ -46,7 +46,7 @@ package org.as3lib.kitchensync.action
 		 * Executes the function when the delay has elapsed.
 		 */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed) {
+			if (startTimeHasElapsed(currentTime)) {
 				invoke();
 				unregister();
 			}

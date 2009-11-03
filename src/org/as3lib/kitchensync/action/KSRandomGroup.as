@@ -27,8 +27,8 @@ package org.as3lib.kitchensync.action
 		
 		override protected function startNextAction():IAction {
 			_currentAction = getNextRandomAction();
-			_currentAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
-			_currentAction.addEventListener(KitchenSyncEvent.START, onChildStart);
+			_currentAction.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
+			_currentAction.addEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
 			_currentAction.start();
 			return _currentAction;
 		}

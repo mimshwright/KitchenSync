@@ -8,19 +8,29 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.utils.*;
 	import org.as3lib.utils.AbstractEnforcer;
 	
-	[Event(name="actionStart", type="org.as3lib.kitchensync.KitchenSyncEvent")]
-	[Event(name="actionPause", type="org.as3lib.kitchensync.KitchenSyncEvent")]
-	[Event(name="actionUnpause", type="org.as3lib.kitchensync.KitchenSyncEvent")]
-	[Event(name="actionComplete", type="org.as3lib.kitchensync.KitchenSyncEvent")]
+	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_START */
+	[Event(name="actionStart", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
+	
+	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_PAUSE */
+	[Event(name="actionPause", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
+	
+	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_UNPAUSE */
+	[Event(name="actionUnpause", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
+
+	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_COMPLETE */
+	[Event(name="actionComplete", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
 	
 	/**
-	 * This can be any action that takes place at a specifity time and uses the Synchronizer class to coordinate
-	 * timing. 
+	 * A default implementation of IAction. 
 	 *
+	 * @see IAction
+	 * 
+	 * @author Mims Wright
+	 * @since 0.1
 	 */
 	 // todo - review this class in detail. Update docs, make sure everything is correct.
 	 // todo - better implementation of ids
-	public class AbstractAction extends EventDispatcher implements IAction
+	public class AbstractAction extends EventDispatcher implements IJumpableAction
 	{	
 		
 		/**
@@ -28,7 +38,6 @@ package org.as3lib.kitchensync.action
 		 * Will accept an integer or a parsable string.
 		 * 
 		 * @see org.as3lib.kitchensync.ITimeStringParser
-		 * @see #timeUnit
 		 */
 		public function get duration():int { return _duration; }
 		public function set duration(duration:*):void { 
@@ -60,39 +69,25 @@ package org.as3lib.kitchensync.action
 		}
 		protected var _delay:int = 0;
 		
-		/** Returns true if the action will occur instantaneously when started */
+		
+		/** @inheritDoc */
 		public function get isInstantaneous():Boolean {
 			return ( _delay <= 0 && _duration <= 0 );
 		}
 		
-		/** 
-		 * legacy accessors. synonomous with delay.
-		 */
-		public function get offset():int { return offset; }
-		public function set offset(offset:*):void { this.offset = offset; }
-		
 		
 		/**
 		 * autoDelete is a flag that indicates whether the action should be killed 
-		 * when it is done executing. The default is set to false so the actions must 
-		 * be deleted manually.
+		 * when it is done executing. The default is set in KitchenSyncDefaults
+		 * 
+		 * @see org.as3lib.kitchensync.KitchenSyncDefaults
 		 */
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }
 		protected var _autoDelete:Boolean;
 		
 		
-		/** 
-		 * Setting sync to true will cause the action to sync up with real time
-		 * even if framerate drops. Otherwise, the action will be synced to frames.
-		 *
-		 * @deprecated since v2.0
-		 */ 
-//		public function get sync():Boolean { return _sync; }
-//		public function set sync(sync:Boolean):void { _sync = sync; }
-//		protected var _sync:Boolean;
-		
-		
+		// todo: what's this about?
 		// removed for now.
 		/**
 		 * The human-readable name of this action. 
@@ -103,17 +98,14 @@ package org.as3lib.kitchensync.action
 		
 		
 		/**
-		 * Will return true when the action is running (after start() has been called).
-		 * Will continue running until stop() is called or until the action is completed.
-		 * Pausing does not change the value of isRunning.
+		 * @inheritDoc
 		 */
 		public function get isRunning ():Boolean { return _running; }
 		protected var _running:Boolean = false;
 		
 		
 		/**
-		 * Will return true if the action is paused (after pause() has been called).
-		 * Calling unpause() or stop() will return the value to false.
+		 * @inheritDoc
 		 */ 
 		public function get isPaused ():Boolean { return _paused; }
 		protected var _paused:Boolean = false;
@@ -122,29 +114,29 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The time at which the action was last started.
 		 */
-		public function get startTime():int { return _startTime; }
+		internal function get startTime():int { return _startTime; }
 		protected var _startTime:int;
 		
 		/**
 		 * The time at which the action was last paused.
 		 */
-		public function get pauseTime():int { return _pauseTime; }
+		internal function get pauseTime():int { return _pauseTime; }
 		protected var _pauseTime:int;
 		
 		
 		/**
-		 * The time in ms since the start of the action or 0 if the action isn't running.
-		 * If the action is paused, the result will be the running time at which it was paused.
+		 * @inheritDoc
 		 */ 
 		public function get runningTime():int { 
 			if (!_running) { return 0; }
-			// If the action is paused, factor that into your jump (resluts wont appear until it's restarted)
+			// If the action is paused, factor that into the results
 			if (isPaused) {
 				return  (_pauseTime - _startTime);
 			} else {
 				return (Synchronizer.getInstance().currentTime - _startTime); 
 			}
 		}
+		
 		
 		/**
 		 * Constructor.
@@ -154,13 +146,13 @@ package org.as3lib.kitchensync.action
 		{
 			super();
 			autoDelete = KitchenSyncDefaults.autoDelete;
-//			sync = KitchenSyncDefaults.sync;
 			
-			//AbstractEnforcer.enforceConstructor(this, AbstractAction);
+			AbstractEnforcer.enforceConstructor(this, AbstractAction);
 		}
 		
 		/**
 		 * Adds the action as a listener to the Synchronizer's update event.
+		 * Used internally.
 		 */
 		internal function register():void {
 			Synchronizer.getInstance().registerClient(this);
@@ -172,16 +164,14 @@ package org.as3lib.kitchensync.action
 		
 		/**
 		 * Removes the action as a listener to the Synchronizer's update event.
+		 * Used internally.
 		 */
 		internal function unregister():void {
 			Synchronizer.getInstance().unregisterClient(this);
 		}
 		
 		/**
-		 * Starts the timer for this action.
-		 * Registers the action with the synchronizer.
-		 * 
-		 * @throws flash.errors.IllegalOperationError - if the method is called while the action is already running.
+		 * @inheritDoc 
 		 */
 		public function start():IAction {
 			if (_paused) {
@@ -191,7 +181,7 @@ package org.as3lib.kitchensync.action
 					_running = true;
 					_startTime = Synchronizer.getInstance().currentTime;
 					register();
-					dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.START, _startTime));
+					dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_START, _startTime));
 				} else {
 					throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
 				}
@@ -199,52 +189,33 @@ package org.as3lib.kitchensync.action
 			return this;
 		}
 		
-		/**
-		 * Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
-		 * and the onUpdate() handler will not be called. When unpause() is called,
-		 * the action will continue at the point where it was paused.
-		 * If the pause() method affects the start time even if the delay time hasn't expired yet. 
+		/** 
+		 * @inheritDoc 
 		 */
 		public function pause():void {
-			if (!_running) {
-				// Do nothing
-				
-				//throw new IllegalOperationError("The pause() method cannot be called when the action is not already running or after it has finished running. Use the start() method first.");
-			} else if (_paused) {
-				//throw new IllegalOperationError("The pause() method cannot be called when the action is already paused. Use the unpause() method first.");
-			} else {
-				_pauseTime = Synchronizer.getInstance().currentTime;
+			if (_running && !_paused) {
+				var currentTime:int = Synchronizer.getInstance().currentTime;
+				_pauseTime = currentTime;
 				_paused = true;
 				unregister();
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.PAUSE, _pauseTime));
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_PAUSE, currentTime));
 			}
 		}
 		
-		/**
-		 * Resumes the action at the point where it was paused.
-		 */
+		/** @inheritDoc */
 		public function unpause():void {
-			if (!_running) {
-				//throw new IllegalOperationError("The unpause() method cannot be called when the action is not already running or after it has finished running. Use the start() method first.");
-			} else if (!_paused) {
-				//throw new IllegalOperationError("The unpause() method cannot be called when the action is not already paused. Use the pause() method first.");
-			} else {
-				register();
+			if (!_running && !_paused) {
 				_paused = false;
-				var timeSincePause:int = Synchronizer.getInstance().currentTime - _pauseTime;
+				var currentTime:int = Synchronizer.getInstance().currentTime;
+				var timeSincePause:int = currentTime - _pauseTime;
 				_startTime = _startTime + timeSincePause; 
-				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.UNPAUSE, _startTime));
-				//trace("_pauseTime:", _pauseTime);
-				//trace("_startTime:", _startTime);
-				//trace("timeSincePause:", timeSincePause);
-				
+				register();
+				dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_UNPAUSE, currentTime));
 			}
 		}
 		
 		
-		/**
-		 * Stops the action from running and resets the timer.
-		 */
+		/** @inheritDoc */
 		public function stop():void {
 			if (_running) { 
 				_paused = false;
@@ -254,19 +225,12 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		/** @inheritDoc */
+		public function reset():void {
+			stop();
+		}
 		
-		/**
-		 * Moves the playhead to a specified time in the action. If this method is called while the 
-		 * action is paused, it will not appear to jump until after the action is unpaused.
-		 * This function won't work for instantaneous actions.
-		 * 
-		 * @param time The time parameter can either be a number or a parsable time string. If the 
-		 * time to jump to is greater than the total duration of the action, it will throw an IllegalOperationError.
-		 * @param ignoreDelay If set to true, the delay will be ignored and the action will jump to
-		 * the specified time in relation to the duration.
-		 * 
-		 * @throws flash.errors.IllegalOperationError If the time to jump to is longer than the total time for the action.
-		 */
+		/** @inheritDoc */
 		public function jumpToTime(time:*, ignoreDelay:Boolean = false):void {
 			// jumpToTime will fail if the action isn't running.
 			if (!isRunning || isInstantaneous) { 
@@ -294,7 +258,7 @@ package org.as3lib.kitchensync.action
 			if (jumpTime > totalDuration || jumpTime < 0) {
 				// you can't jump to a time that is past the end of the action's total time.
 				// todo: make this error optional.
-				throw new IllegalOperationError("'time' must be less than the total time of the action and greater than 0.");
+				throw new RangeError("'time' must be less than the total time of the action and greater than 0.");
 			} else {
 				// adjust the startTime to make it appear that the playhead should be at 
 				// a different point in time on the next update.
@@ -308,10 +272,7 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Moves the playhead forward or backward by a specified time. If this method is called while the 
-		 * action is paused, it will not appear to jump until after the action is unpaused.
-		 * 
-		 * @param time The time parameter can either be a number or a parsable time string.
+		 * @inheritDoc
 		 */
 		public function jumpByTime(time:*):void {
 			// parse time strings if this is a string.
@@ -335,8 +296,10 @@ package org.as3lib.kitchensync.action
 		 */
 		public function addTrigger(trigger:IAction):void {
 		 	if (trigger == this) { throw new Error("An action cannot be triggered by itself."); }
-			trigger.addEventListener(KitchenSyncEvent.COMPLETE, onTrigger);
+			trigger.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onTrigger);
 		}
+
+// TODO: Consider removing the trigger system from KS.
 
 		/**
 		 * Removes a trigger added with addTrigger().
@@ -344,7 +307,7 @@ package org.as3lib.kitchensync.action
 		 * @param trigger Another action that triggers the start of this action.
 		 */
 		public function removeTrigger(trigger:IAction):void {
-		 	trigger.removeEventListener(KitchenSyncEvent.COMPLETE, onTrigger);
+		 	trigger.removeEventListener(KitchenSyncEvent.ACTION_COMPLETE, onTrigger);
 		}
 		
 		/**
@@ -383,8 +346,6 @@ package org.as3lib.kitchensync.action
 		 * This function will be registered by the register method to respond to update events from the synchronizer.
 		 * Code that performs the action associated with this object should go in this function.
 		 * This function must be implemented by the subclass.
-		 * The internal allows certain other classes such as the AbstractSynchronizedGroup to force an update 
-		 * of its children.
 		 * 
 		 * @abstract
 		 * @param currentTimestamp The current timestamp from the Synchronizer.
@@ -405,24 +366,25 @@ package org.as3lib.kitchensync.action
 		/**
 		 * Checks to see whether the start time delay has elapsed and if the _startTime is defined. In other words, 
 		 * checks to see whether the action is ready to execute. Duration is handled seperately.
+		 * 
+		 * @param currentTime The current time according to the Synchronizer. 
 		 * @return false if _startTime is null, true if the delay has elapsed.
 		 */
-		 // todo: make this function use a parameter for currentTime instead of asking synchronizer
-		 public function get startTimeHasElapsed():Boolean {
+		 public function startTimeHasElapsed(currentTime:int):Boolean {
 		 	if (isNaN(_startTime) || !_running || _paused) { return false; }
-			if (_startTime + _delay <= Synchronizer.getInstance().currentTime) { return true; }
+			if (_startTime + _delay <= currentTime) { return true; }
 		 	return false;
 		 }
 		
 		/**
 		 * Checks to see whether the duration of the action has elapsed and if the _startTime is defined. In other words, 
 		 * checks to see whether the action is finished executing. 
+		 * 
 		 * @return false if _startTime is null, true if the duration has elapsed.
 		 */
-		 // todo: make this function use a parameter for currentTime instead of asking synchronizer
-		 public function get durationHasElapsed():Boolean {
+		 public function durationHasElapsed(currentTime:int):Boolean {
 		 	if (isNaN(_startTime) || !_running || _paused) { return false; }
-	 		if (_startTime + _delay + _duration <= Synchronizer.getInstance().currentTime) { return true; }		 		
+	 		if (_startTime + _delay + _duration <= currentTime) { return true; }		 		
 		 	return false;
 		 }
 		 
@@ -432,7 +394,7 @@ package org.as3lib.kitchensync.action
 		 * This method should be overrided by child classes to ensure that all properties are copied.
 		 * 
 		 * @abstract
-		 * @returns AbstractSyncrhonizedAction - A copy of the original object. Type casting may be necessary.
+		 * @returns IAction A copy of the original object. Type casting may be necessary.
 		 */
 		public function clone():IAction {
 			AbstractEnforcer.enforceMethod();
@@ -440,13 +402,14 @@ package org.as3lib.kitchensync.action
 		}
 				
 		/**
-		 * Call this when the action has completed.
+		 * Internal function that completes the action by cleaning up any running processes
+		 * and unregistering it from the synchronizer. Called when the action has completed.
 		 */
 		 // todo: make this function use a parameter for currentTime instead of asking synchronizer
 		protected function complete():void {
 			_running = false;
 			unregister();
-			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.COMPLETE, Synchronizer.getInstance().currentTime));
+			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_COMPLETE, Synchronizer.getInstance().currentTime));
 			if (_autoDelete) { kill(); }
 		}		
 		

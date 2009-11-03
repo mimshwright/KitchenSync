@@ -48,7 +48,7 @@ package org.as3lib.kitchensync.action
 		 * After the Sequence starts running, it no longer needs to listen to updates so it unregisters.
 		 */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed && !childrenAreRunning) {
+			if (startTimeHasElapsed(currentTime) && !childrenAreRunning) {
 				startNextAction();
 				// Sequence no longer needs to listen for events from Synchronizer
 				// since it now receives all cues from its children.
@@ -66,8 +66,8 @@ package org.as3lib.kitchensync.action
 		protected function startNextAction():IAction {
 			_currentActionIndex++;
 			_currentAction = getChildAtIndex(_currentActionIndex);
-			_currentAction.addEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
-			_currentAction.addEventListener(KitchenSyncEvent.START, onChildStart);
+			_currentAction.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
+			_currentAction.addEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
 			_currentAction.start();
 			return _currentAction;
 		}
@@ -82,8 +82,8 @@ package org.as3lib.kitchensync.action
 		 // todo - Add a reference to the completed child to the CHILD_COMPLETE event.
 		override protected function onChildFinished (event:KitchenSyncEvent):void {
 			super.onChildFinished(event);
-			_currentAction.removeEventListener(KitchenSyncEvent.COMPLETE, onChildFinished);
-			_currentAction.removeEventListener(KitchenSyncEvent.START, onChildStart);
+			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
+			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
 			//_currentAction = null;
 			if (!checkForComplete()) {
 				startNextAction();
