@@ -61,13 +61,12 @@ package org.as3lib.kitchensync.action.tween
 		
 		/** @inheritDoc */
 		public function get runningTime():int { 
+			// If not running, return 0
 			if (!_running) { return 0; }
 			// If the action is paused, factor that into the results
-			if (isPaused) {
-				return  (_pauseTime - _startTime);
-			} else {
-				return (Synchronizer.getInstance().currentTime - _startTime); 
-			}
+			if (isPaused) { return  (_pauseTime - _startTime); }
+			// else 
+			return (Synchronizer.getInstance().currentTime - _startTime); 
 		}
 		
 		/** target object whose properties will be affected. */
@@ -91,12 +90,25 @@ package org.as3lib.kitchensync.action.tween
 		/** True when the action is paused */ 
 		public function get isPaused():Boolean { return _paused; }
 		
+		/** @inheritDoc */
+		public function get easingFunction():Function { return _easingFunction; }
+		public function set easingFunction(easingFunction:Function):void{ _easingFunction = easingFunction;}
+		protected var _easingFunction:Function;
+		
+		/** @inheritDoc */
+		public function get easingMod1():Number { return _easingMod1; }
+		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
+		protected var _easingMod1:Number;
+
+		/** @inheritDoc */
+		public function get easingMod2():Number { return _easingMod2; }
+		public function set easingMod2(easingMod2:Number):void { _easingMod2 = easingMod2; }
+		protected var _easingMod2:Number;
 		
 		/** a cached value for the difference between the start and end. */
 		protected var _delta:Number;
 		
-		/** the easing function to use with the tween */
-		public var easingFunction:Function;
+		/** @inheritDoc */
 		
 		/** The time at which the tween was started. */
 		protected var _startTime:int;
@@ -112,15 +124,17 @@ package org.as3lib.kitchensync.action.tween
 		/**
 		 * Constuctor.
 		 * 
-		 * @param target - the object whose property will be changed.
-		 * @param property - the name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
-		 * @param startValue - the value to tween the property to. After the tween is done, this will be the value of the property.
-		 * @param endValue - the starting value of the tween.
-		 * @param duration - the time in milliseconds that this tween will take to execute.
-		 * @param delay - the time to wait in milliseconds before starting the tween.
-		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
+		 * @param target The object whose property will be changed.
+		 * @param property The name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
+		 * @param startValue The value to tween the property to. After the tween is done, this will be the value of the property.
+		 * @param endValue The starting value of the tween.
+		 * @param duration The time in milliseconds that this tween will take to execute.
+		 * @param delay The time to wait in milliseconds before starting the tween.
+		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 Optional modifier for the easing function
+		 * @param easingMod2 Optional modifier for the easing function
 		 */
-		public function KSSimpleTween(target:Object, property:String, startValue:Number, endValue:Number, duration:int, delay:int, easingFunction:Function = null) {
+		public function KSSimpleTween(target:Object, property:String, startValue:Number, endValue:Number, duration:int, delay:int, easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN) {
 			this.target = target;
 			this.property = property;
 			this.startValue = startValue;
@@ -129,6 +143,8 @@ package org.as3lib.kitchensync.action.tween
 			_delay = delay;
 			if (easingFunction == null) { easingFunction = Linear.ease; }
 			this.easingFunction = easingFunction;
+			this.easingMod1 = easingMod1;
+			this.easingMod2 = easingMod2;
 		}
 
 		/** Called when a pulse is sent from the Synchronizer */
@@ -143,7 +159,9 @@ package org.as3lib.kitchensync.action.tween
 			if (timeElapsed >= 0) {
 				
 				// invoke the easing function.
-				var result:Number =  EasingUtil.call(easingFunction, timeElapsed, _duration); 
+				// todo: see if calling the function directly improves performace.
+				// todo: TEST easing mod options.
+				var result:Number =  EasingUtil.call(easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2); 
 				
 				target[property] = result * (endValue - startValue) + startValue;
 				
@@ -227,7 +245,7 @@ package org.as3lib.kitchensync.action.tween
 		
 		/** @inheritDoc */
 		public function clone():IAction {
-			return new KSSimpleTween(target, property, startValue, endValue, duration, delay, easingFunction);
+			return new KSSimpleTween(target, property, startValue, endValue, duration, delay, easingFunction, easingMod1, easingMod2);
 		}
 		
 		override public function toString():String {

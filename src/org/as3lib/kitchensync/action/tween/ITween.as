@@ -9,9 +9,32 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
-	 // todo think of what methods should be in here.
 	public interface ITween extends IAction
 	{
-		// So far, this is only a marker interface.
+		/**
+		 * The function used to interpolated the values between the start and end points.
+		 * 
+		 * @see org.as3lib.kitchensync.easing
+		 */
+		function get easingFunction():Function;
+		function set easingFunction(easingFunction:Function):void;
+		
+		/**
+		 * Used to modify the results of the easing function. 
+		 * This is only used on some functions such as Elastic.
+		 * 
+		 * @see org.as3lib.kitchenSync.easing.Elastic
+		 */
+		function get easingMod1():Number;
+		function set easingMod1(easingMod1:Number):void;
+
+		/**
+		 * Used to modify the results of the easing function. 
+		 * This is only used on some functions such as Elastic.
+		 * 
+		 * @see org.as3lib.kitchenSync.easing.Elastic
+		 */
+		function get easingMod2():Number;
+		function set easingMod2(easingMod2:Number):void;
 	}
 }

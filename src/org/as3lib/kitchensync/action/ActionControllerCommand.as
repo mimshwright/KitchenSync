@@ -23,7 +23,7 @@ package org.as3lib.kitchensync.action
 		/** kill() command. */
 		public static const KILL:ActionControllerCommand = new ActionControllerCommand("kill");
 
-		/** reset() command. For Tween objects only. */
+		/** reset() command. */
 		public static const RESET:ActionControllerCommand = new ActionControllerCommand("reset");
 		
 		/** The default command will be used if nothing is specified. */

@@ -3,28 +3,37 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.action.tween.KSTween;
 	
 	/**
-	 * Executes a function within another AbstractSynchronizedAction when executed. This allows you to easily
-	 * control other actions within a sequence. The accepted commands can be found in ActionControllerCommands.
+	 * An action that controls another action when executed. 
+	 * The accepted commands can be found in ActionControllerCommands.
 	 * 
-	 * @see ActionControllerCommands
+	 * @see ActionControllerCommand
+	 * 
+	 * @example <listing version="3.0">
+	 * // start playing a song.
+	 * var song:IAction = new KSSoundController("song.mp3").start();
+	 * 
+	 * // stop the song after 10 seconds.
+	 * new KSActionController(song, ActionControllerCommand.STOP, "10s").start(); 
+	 * </listing>
+	 * 
+	 * @since 0.4
+	 * @author Mims Wright
 	 */
-	 // todo: add example
-	 // todo: review
 	public class KSActionController extends KSFunction
 	{
 		/**
 		 * The action that the ActionController will send commands to.
 		 */
-		protected var _target:IAction;
-		public function set target (target:IAction):void { _target = target; }
 		public function get target ():IAction { return _target; }
+		public function set target (target:IAction):void { _target = target; }
+		protected var _target:IAction;
 		
 		/**
 		 * Constructor.
 		 * 
-		 * @param target - the AbstractSynchronizedAction that will receive the commands from the controller.
-		 * @param command - the function that the SynchronizedAction will perform when the ActionController executes.
-		 * @param delay - the number of frames to delay the action.
+		 * @param target The action that will receive the commands from the controller.
+		 * @param command The function that the action will perform when the controller executes.
+		 * @param delay The time to delay this action.
 		 */ 
 		public function KSActionController (target:IAction, command:ActionControllerCommand = null, delay:* = 0) {
 			super(null);
@@ -53,14 +62,7 @@ package org.as3lib.kitchensync.action
 					_func = function ():void { _target.kill(); this.kill(); };
 				break;
 				case ActionControllerCommand.RESET:
-					// RESET only appllies to Tweens so use stop() if the object isn't a Tween.
-					_func = function ():void { 
-						if (_target is KSTween) { 
-							KSTween(_target).reset();
-						} else { 
-							_target.stop(); 
-						} 
-					};
+					_func = function ():void { _target.reset(); };
 				break;
 				
 				default:
@@ -70,6 +72,7 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		/** @inheritDoc */
 		override public function kill():void {
 			super.kill();
 			_target = null;

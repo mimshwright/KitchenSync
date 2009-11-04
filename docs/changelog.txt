@@ -30,6 +30,7 @@ ADDED an IJumpableAction to specify jumpToTime and jumpByTime separate from IAct
 ADDED jumpToTime and jumpByTime to AbstractAction so (almost) all actions have this functionality.
 OPTIMIZED startTimeHasElapsed and durationHasElapsed in AbstractAction
 
+
 ADDED an interface for groups, IActionGroup. 
 ADDED totalDuration to groups.
 
@@ -38,6 +39,8 @@ RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong ev
 
 REMOVED eventType and useWeakReferences class properties of KSEventDispatcher. Modified other methods for garbage collection.
 
+REFACTORED tweens.
+ADDED easing related accessors to ITween.
 MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
 
 IMPROVED build.xml to include more targets for building the library. Using SDK 3.4 now.

@@ -28,7 +28,7 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 * @since 0.1
 	 */
-	 // todo - better implementation of ids
+	 // todo: add looping
 	public class AbstractAction extends EventDispatcher implements IJumpableAction
 	{	
 		

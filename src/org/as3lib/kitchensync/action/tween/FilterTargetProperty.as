@@ -3,7 +3,13 @@ package org.as3lib.kitchensync.action.tween
 	import flash.display.DisplayObject;
 	import flash.filters.BitmapFilter;
 	
+	/**
+	 * A tween target that targets a property of a BitmapFilter object. 
+	 * For example, you may target the blurX property of a BlurFilter on a 
+	 * particular movieClip. 
+	 */ 
 	// todo add docs
+	// todo change this to accept either a class or an instance of a filter.
 	// todo review
 	public class FilterTargetProperty implements IFilterTweenTarget
 	{

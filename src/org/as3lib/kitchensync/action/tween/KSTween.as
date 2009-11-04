@@ -32,11 +32,7 @@ package org.as3lib.kitchensync.action.tween
 		 // todo: move this to a more appropriate place
 		public static const VALUE_AT_START_OF_TWEEN:Number = NaN;
 		
-		/**
-		 * The function used to interpolated the values between the start and end points.
-		 * 
-		 * @see org.as3lib.kitchensync.easing
-		 */
+		/** @inheritDoc */
 		public function get easingFunction():Function { return _easingFunction; }
 		public function set easingFunction(easingFunction:Function):void{ _easingFunction = easingFunction;}
 		protected var _easingFunction:Function;
@@ -62,18 +58,12 @@ package org.as3lib.kitchensync.action.tween
 			_tweenTargets = new Array();
 		}
 		
-		/**
-		 * Used to modify the results of the easing function. 
-		 * This is only used on some functions such as Elastic.
-		 */
+		/** @inheritDoc */
 		public function get easingMod1():Number { return _easingMod1; }
 		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
 		protected var _easingMod1:Number;
 
-		/**
-		 * Used to modify the results of the easing function. 
-		 * This is only used on some functions such as Elastic.
-		 */
+		/** @inheritDoc */
 		public function get easingMod2():Number { return _easingMod2; }
 		public function set easingMod2(easingMod2:Number):void { _easingMod2 = easingMod2; }
 		protected var _easingMod2:Number;
@@ -193,7 +183,9 @@ package org.as3lib.kitchensync.action.tween
 		}
 		
 		/**
-		 * Executes the tween.
+		 * @inheritDoc
+		 * 
+		 * Executes the tween when start time has elapsed.
 		 */
 		override public function update(currentTime:int):void {
 			var timeElapsed:int;
@@ -259,6 +251,7 @@ package org.as3lib.kitchensync.action.tween
 			}						
 		}
 		
+		/** @inheritDoc */
 		override public function clone():IAction {
 			var clonedTargets:Array = new Array();
 			for each (var target:ITweenTarget in _tweenTargets) {
@@ -362,16 +355,14 @@ package org.as3lib.kitchensync.action.tween
 		}
 		
 		
-		/**
-		 * Clean up references to target
-		 */
+		/** @inheritDoc */
 		override public function kill():void {
 			super.kill();
 			removeAllTweenTargets();
 		}
 		
 		/**
-		 * Returns either the _id or a description of the tween.
+		 * Returns a description of the tween.
 		 */
 		override public function toString():String {
 			var string:String = "KSTween[";
