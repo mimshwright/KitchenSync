@@ -28,7 +28,6 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 * @since 0.1
 	 */
-	 // todo - review this class in detail. Update docs, make sure everything is correct.
 	 // todo - better implementation of ids
 	public class AbstractAction extends EventDispatcher implements IJumpableAction
 	{	
@@ -87,16 +86,6 @@ package org.as3lib.kitchensync.action
 		protected var _autoDelete:Boolean;
 		
 		
-		// todo: what's this about?
-		// removed for now.
-		/**
-		 * The human-readable name of this action. 
-		public function get name():String { return _name; }
-		public function set name(name:String):void { _name = name; }
-		protected var _name:String;
-		 */
-		
-		
 		/**
 		 * @inheritDoc
 		 */
@@ -148,26 +137,6 @@ package org.as3lib.kitchensync.action
 			autoDelete = KitchenSyncDefaults.autoDelete;
 			
 			AbstractEnforcer.enforceConstructor(this, AbstractAction);
-		}
-		
-		/**
-		 * Adds the action as a listener to the Synchronizer's update event.
-		 * Used internally.
-		 */
-		internal function register():void {
-			Synchronizer.getInstance().registerClient(this);
-			
-			// since the first update won't occur until the next frame, force one here to make it
-			// happen right away.
-			forceUpdate();
-		}
-		
-		/**
-		 * Removes the action as a listener to the Synchronizer's update event.
-		 * Used internally.
-		 */
-		internal function unregister():void {
-			Synchronizer.getInstance().unregisterClient(this);
 		}
 		
 		/**
@@ -288,60 +257,29 @@ package org.as3lib.kitchensync.action
 			jumpToTime(runningTime + jumpTime);
 		}
 				
-		/**
-		 * Causes the action to start playing when another event completes.
-		 * 
-		 * @param trigger Another action that will trigger the start of this action.
-		 * @throws flash.errors.Error If the trigger action is the same as this action.
-		 */
-		public function addTrigger(trigger:IAction):void {
-		 	if (trigger == this) { throw new Error("An action cannot be triggered by itself."); }
-			trigger.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onTrigger);
-		}
-
-// TODO: Consider removing the trigger system from KS.
+		
+		 
 
 		/**
-		 * Removes a trigger added with addTrigger().
+		 * Creates a copy of the object with all the property values of the original and returns it.
+		 * This method should be overrided by child classes to ensure that all properties are copied.
 		 * 
-		 * @param trigger Another action that triggers the start of this action.
+		 * @abstract
+		 * @returns IAction A copy of the original object. Type casting may be necessary.
 		 */
-		public function removeTrigger(trigger:IAction):void {
-		 	trigger.removeEventListener(KitchenSyncEvent.ACTION_COMPLETE, onTrigger);
+		public function clone():IAction {
+			AbstractEnforcer.enforceMethod();
+			return this;
 		}
 		
 		/**
-		 * Causes the action to start playing when a specified event is fired.
-		 * 
-		 * @param dispatcher The object that will dispatch the event.
-		 * @param eventType The event type to listen for.
+		 * Unregisters the function and removes any refrerences to objects that it may be holding onto.
+		 * Subclass this function to remove references to objects used by the action.
 		 */
-		public function addEventTrigger(dispatcher:IEventDispatcher, eventType:String):void {
-			dispatcher.addEventListener(eventType, onTrigger);
-		}
-
-		/**
-		 * Removes an event trigger added by addEventTrigger().
-		 * 
-		 * @param dispatcher The event dispatcher to remove.
-		 * @param eventType The event type to listen for.
-		 */
-		public function removeEventTrigger(dispatcher:IEventDispatcher, eventType:String):void {
-			dispatcher.removeEventListener(eventType, onTrigger);
-		}
-		
-		/**
-		 * Handler that starts playing the action that is called by a trigger event.
-		 * @see #addTrigger()
-		 * @see #addEventTrigger()
-		 * 
-		 */
-		 // todo - make sure this doesn't screw up if there are multiple triggers or if the thing isn't meant to repeat.
-		protected function onTrigger(event:Event):void {
-			if (!_running) { start(); }
-		}
-		
-		
+		 public function kill():void {
+		 	if (_running) { complete(); }
+		 }
+		 
 		/**
 		 * This function will be registered by the register method to respond to update events from the synchronizer.
 		 * Code that performs the action associated with this object should go in this function.
@@ -370,7 +308,7 @@ package org.as3lib.kitchensync.action
 		 * @param currentTime The current time according to the Synchronizer. 
 		 * @return false if _startTime is null, true if the delay has elapsed.
 		 */
-		 public function startTimeHasElapsed(currentTime:int):Boolean {
+		 protected function startTimeHasElapsed(currentTime:int):Boolean {
 		 	if (isNaN(_startTime) || !_running || _paused) { return false; }
 			if (_startTime + _delay <= currentTime) { return true; }
 		 	return false;
@@ -382,30 +320,16 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @return false if _startTime is null, true if the duration has elapsed.
 		 */
-		 public function durationHasElapsed(currentTime:int):Boolean {
+		 protected function durationHasElapsed(currentTime:int):Boolean {
 		 	if (isNaN(_startTime) || !_running || _paused) { return false; }
 	 		if (_startTime + _delay + _duration <= currentTime) { return true; }		 		
 		 	return false;
 		 }
-		 
-
-		/**
-		 * Creates a copy of the object with all the property values of the original and returns it.
-		 * This method should be overrided by child classes to ensure that all properties are copied.
-		 * 
-		 * @abstract
-		 * @returns IAction A copy of the original object. Type casting may be necessary.
-		 */
-		public function clone():IAction {
-			AbstractEnforcer.enforceMethod();
-			return this;
-		}
 				
 		/**
 		 * Internal function that completes the action by cleaning up any running processes
 		 * and unregistering it from the synchronizer. Called when the action has completed.
 		 */
-		 // todo: make this function use a parameter for currentTime instead of asking synchronizer
 		protected function complete():void {
 			_running = false;
 			unregister();
@@ -414,11 +338,23 @@ package org.as3lib.kitchensync.action
 		}		
 		
 		/**
-		 * Unregisters the function and removes any refrerences to objects that it may be holding onto.
-		 * Subclass this function to remove references to objects used by the action.
+		 * Adds the action as a listener to the Synchronizer's update event.
+		 * Used internally.
 		 */
-		 public function kill():void {
-		 	if (_running) { complete(); }
-		 }
+		internal function register():void {
+			Synchronizer.getInstance().registerClient(this);
+			
+			// since the first update won't occur until the next frame, force one here to make it
+			// happen right away.
+			forceUpdate();
+		}
+		
+		/**
+		 * Removes the action as a listener to the Synchronizer's update event.
+		 * Used internally.
+		 */
+		internal function unregister():void {
+			Synchronizer.getInstance().unregisterClient(this);
+		}
 	}
 }

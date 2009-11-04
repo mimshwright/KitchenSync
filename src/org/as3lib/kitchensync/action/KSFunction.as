@@ -7,6 +7,15 @@ package org.as3lib.kitchensync.action
 	/**
 	 * Packages up a function to be run at a specified time or as part of a sequence.
 	 * 
+	 * @example
+	 * <listing version="3.0">
+	 * function doSomething():void {
+	 * 	// function body
+	 * }
+	 * 
+	 * new KSFunction(doSomething, "5sec").start(); // function will be run after 5 seconds
+	 * </listing>
+	 * 
 	 * @author Mims Wright
 	 * @since 0.1
 	 */
@@ -15,6 +24,7 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The function that will be called by the action.
 		 */
+		public function get func():Function { return _func; } 
 		public function set func(func:Function):void { _func = func; }
 		protected var _func:Function;
 		
@@ -28,15 +38,15 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Arguments that will be passed into the function.
-		 */
-		protected var _args:Array;
-		
-		/**
 		 * The result of the function (if the function generates one.
 		 */		
 		public function get result():* { return _result; }
 		protected var _result:*;
+		
+		/**
+		 * Arguments that will be passed into the function.
+		 */
+		protected var _args:Array;
 		
 		
 		/**
@@ -50,7 +60,7 @@ package org.as3lib.kitchensync.action
 		{
 			super();
 			_duration = 0;
-			_func = func;
+			this.func = func;
 			this.delay = delay;
 			_args = args;
 		}
@@ -60,7 +70,9 @@ package org.as3lib.kitchensync.action
 		 * Calls the function with the arguments specified. The result of the function is stored in the 
 		 * results property of the SynchronizedFunction object.
 		 * 
-		 * @returns the results from the function call.
+		 * @see #result
+		 * 
+		 * @returns the results from the function call which are stored in the <code>result</code> property.
 		 */
 		public function invoke():* {
 			_result = _func.apply(this, _args);
@@ -69,8 +81,8 @@ package org.as3lib.kitchensync.action
 		
 		
 		/**
+		 * @inheritDoc
 		 * Executes the function when the delay has elapsed.
-		 * If the duration is > 0, it will repeat until the duration has elapsed.
 		 */
 		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed(currentTime)) {
