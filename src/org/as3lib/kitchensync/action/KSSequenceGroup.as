@@ -5,22 +5,52 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.core.*;
 	
 	/**
-	 * A group of actions that execute one at a time in the order that they were added to the group.
+	 * A group of actions that execute one at a time in the order that 
+	 * they were added to the group. This is probably the most useful 
+	 * action group. It allows you to queue up several actions and have 
+	 * them execute in order as a single unit. This type of group can 
+	 * be used for transitions between pages in a site or for queueing
+	 * up several functions to be executed in order.
+	 * 
+	 * @example <listing version="3.0">
+	 * var transitionOut:KSTween = new KSTween(...) // some transition-OUT tween
+	 * var transitionIn:KSTween = new KSTween(...) // some transition-IN tween
+	 * var myFunction:KSFunction = new KSFunction (...) // some function
+	 * 
+	 * // play the transition out, then some function, then the transition in.
+	 * var sequence:KSSequenceGroup = new KSSequenceGroup (
+	 * 	transitionOut,
+	 * 	myFunction,
+	 * 	transitionIn
+	 * );
+	 * sequence.start();
+	 * </version>
 	 * 
 	 * @author Mims Wright
 	 * @since 0.1
 	 */
 	 // todo: add example
-	 // todo: review
 	public class KSSequenceGroup extends AbstractActionGroup
 	{
-		// todo: add docs
+		/**
+		 * Used internally with the currentAciton property to denote that there is 
+		 * no action currently executing.
+		 * 
+		 * @see #_currentActionIndex
+		 */ 
 		protected const NO_CURRENT_ACTION_INDEX:int = -1;
 		
+		/**
+		 * The action currently executing.
+		 */
 		protected var _currentAction:IAction = null;
+		
+		/**
+		 * The index of the action currently executing.
+		 * @see #_currentAction
+		 */
 		protected var _currentActionIndex:int = NO_CURRENT_ACTION_INDEX;
 		
-		public function get childrenAreRunning():Boolean { return _currentActionIndex != NO_CURRENT_ACTION_INDEX; }
 		public function get currentAction():IAction { return _currentAction; }
 		
 		/**
@@ -48,7 +78,7 @@ package org.as3lib.kitchensync.action
 		 * After the Sequence starts running, it no longer needs to listen to updates so it unregisters.
 		 */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed(currentTime) && !childrenAreRunning) {
+			if (startTimeHasElapsed(currentTime)) {
 				startNextAction();
 				// Sequence no longer needs to listen for events from Synchronizer
 				// since it now receives all cues from its children.
@@ -79,12 +109,10 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @param event - The SynchronizerEvent.COMPLETE from the _currentAction
 		 */
-		 // todo - Add a reference to the completed child to the CHILD_COMPLETE event.
 		override protected function onChildFinished (event:KitchenSyncEvent):void {
 			super.onChildFinished(event);
 			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
 			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
-			//_currentAction = null;
 			if (!checkForComplete()) {
 				startNextAction();
 			} else {
@@ -109,6 +137,7 @@ package org.as3lib.kitchensync.action
 		 */
 		override protected function complete():void {
 			_currentActionIndex = NO_CURRENT_ACTION_INDEX;
+			_currentAction = null;
 			super.complete();
 		}
 		

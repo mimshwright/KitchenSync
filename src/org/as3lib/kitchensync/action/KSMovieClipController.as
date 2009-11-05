@@ -3,20 +3,22 @@ package org.as3lib.kitchensync.action
 	import flash.display.MovieClip;
 	
 	/**
-	 * Tells a target MovieClip to play a specified frame.
-	 *
+	 * An action to control the playback of a movie clip. Allows you to 
+	 * call <code>gotoAndPlay()</code> on a MovieClip.
+	 * 
+	 * @author Mims Wright
 	 */
 	 // todo test
-	 // todo review
-	 // todo add example
 	public class KSMovieClipController extends KSFunction
 	{
-		protected var _target:MovieClip;
+		/** The movie clip that will be targeted by the action. */
 		public function get target ():MovieClip { return _target; }
 		public function set target (target:MovieClip):void { _target = target; }
+		protected var _target:MovieClip;
 		
 		/**
-		 * A frame identifier could be a string or a frame number to play
+		 * The frame identifier to jump to in the movieclip. 
+		 * Could be a string or a frame number to play
 		 */
 		protected var _frameIdentifier:*;
 		public function get frameIdentifier ():* { return _frameIdentifier; }
@@ -34,6 +36,9 @@ package org.as3lib.kitchensync.action
 			super(target.gotoAndPlay, frameIdentifier);
 		}
 		
+		/**
+		 * @inheritDoc 
+		 */
 		override public function clone():IAction {
 			var clone:KSMovieClipController = new KSMovieClipController(target, frameIdentifier);
 			clone._delay = _delay;

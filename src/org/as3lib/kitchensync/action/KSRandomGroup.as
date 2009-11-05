@@ -5,14 +5,22 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	
 	/**
-	 * A sequence of actions that plays back in a random order.
+	 * A group of actions based on the sequence group that plays 
+	 * the child actions back in a random order.
 	 * 
 	 * @author Mims Wright
-	 * @since 1.6
+	 * @since 2.0
 	 */
-	// Todo implement.
+	// Todo Docs
 	public class KSRandomGroup extends KSSequenceGroup
 	{
+		protected var _remainingActions:Array;
+		
+		/** 
+		 * Constructor.
+		 * 
+		 * @param children Any parameters to this function will be added as children of the group.
+		 */
 		public function KSRandomGroup(... children)
 		{
 			for (var i:int = 0; i < children.length; i++) {
@@ -25,6 +33,25 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		override public function start():IAction {
+			// get a copy of the childAcitons array.
+			_remainingActions = childActions.concat();
+			return super.start();
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override protected function checkForComplete():Boolean{
+			if (_remainingActions && _remainingActions.length <= 0) { 
+				return true;
+			}
+			return false;
+		}
+		
+		/**
+		 * Start the actions in a random order. 
+		 */
 		override protected function startNextAction():IAction {
 			_currentAction = getNextRandomAction();
 			_currentAction.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
@@ -33,10 +60,17 @@ package org.as3lib.kitchensync.action
 			return _currentAction;
 		}
 		
+		/** Get the next action by random selection of the remaining actions. */ 
 		protected function getNextRandomAction():IAction {
-			// TODO make random
-			throw new Error("Sorry, this class isn't fully functional yet.");
-			return getChildAtIndex(_currentActionIndex++);
+			var nextIndex:int = Math.floor(Math.random() * _remainingActions.length);
+			var nextChild:IAction = IAction(_remainingActions[nextIndex]);
+			_remainingActions.splice(nextIndex, 1);
+			return nextChild;
+		}
+		
+		override public function kill():void {
+			super.kill();
+			_remainingActions = null;
 		}
 		
 	}

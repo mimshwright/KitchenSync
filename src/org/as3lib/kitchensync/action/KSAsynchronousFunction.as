@@ -6,7 +6,8 @@ package org.as3lib.kitchensync.action
 	
 	/**
 	 * An action for calling an asynchronous function that is expected to dipatch an event when
-	 * it completes.
+	 * it completes. This could be, for example, a server-side operation such as loading
+	 * a file from a remote system. 
 	 * 
 	 * @author Mims Wright
 	 * @since 1.5

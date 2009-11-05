@@ -1,16 +1,24 @@
 package org.as3lib.kitchensync.action
 {	
 	/**
-	 * SynchronizedAction to set a property for any object to a specified value.
+	 * An action for setting a property for an object. 
+	 * This is similar to a tween but it happens instantaneously instead
+	 * of over a set duration. Useful for setting non-numeric properties
+	 * such as 'visible' on a DisplayObject.
+	 * 
+	 * @example <listing version="3.0">
+	 * // hide 'mySprite' after 5 seconds.
+	 * new KSSetProperty(mySprite, "visible", false, 5000).start();
+	 * </listing>
 	 * 
 	 * @author Mims Wright
 	 * @since 0.4
 	 */
-	 // todo: add example
-	 // todo: review
 	public class KSSetProperty extends KSFunction
 	{
 		/**
+		 * Constructor.
+		 * 
 		 * @param target - The object whose property you want to modify.
 		 * @param key - The name of the property to modify.
 		 * @param value - The new value of the property.
@@ -25,7 +33,5 @@ package org.as3lib.kitchensync.action
 		protected function setProperty(target:Object, key:String, value:*):void {
 			target[key] = value;	
 		}
-		
-		// todo: add clone?
 	}
 }

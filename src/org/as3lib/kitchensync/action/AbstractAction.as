@@ -308,6 +308,7 @@ package org.as3lib.kitchensync.action
 		 * @param currentTime The current time according to the Synchronizer. 
 		 * @return false if _startTime is null, true if the delay has elapsed.
 		 */
+		 // todo: cache the value for this.
 		 protected function startTimeHasElapsed(currentTime:int):Boolean {
 		 	if (isNaN(_startTime) || !_running || _paused) { return false; }
 			if (_startTime + _delay <= currentTime) { return true; }
