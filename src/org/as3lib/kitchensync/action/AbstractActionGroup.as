@@ -2,6 +2,7 @@ package org.as3lib.kitchensync.action
 {
 	import flash.errors.IllegalOperationError;
 	
+	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.utils.AbstractEnforcer;
 	
@@ -15,10 +16,6 @@ package org.as3lib.kitchensync.action
 	 */
 	[Event(name="childActionComplete", type="org.as3lib.kitchensync.core.KitchenSyncEvent")]
 	
-	// todo: add docs
-	// todo: thoroughly review this class for errors, kruft, improvements
-	// todo: add the ability to reset child tweens at the start of the group
-	// todo: add skipCurrentAction()
 	/**
 	 * A default implementation of IActionGroup. Provides the basic functionality
 	 * for dealing with child actions within a group.
@@ -29,12 +26,21 @@ package org.as3lib.kitchensync.action
 	 */
 	public class AbstractActionGroup extends AbstractAction implements IActionGroup
 	{
-		/** If true, the group's KSTween children will reset to their default positions when the group is started. */
-		//public var resetChildrenAtStart:Boolean = true;
-		
-		/**
-		 * An array containing all of the child actions of the group.
+		/** 
+		 * If true, the group's KSTween children will reset to their 
+		 * default positions when the group is started.
+		 * For example, when a sequence group begins, this will call the
+		 * reset() method on all the children when the start() method is
+		 * called on the group.
+		 * 
+		 * @see #reset()
+		 * @see org.as3lib.kitchensync.KitchenSyncDefaults
 		 */
+		public function get resetChildrenAtStart():Boolean { return _resetChildrenAtStart; }
+		public function set resetChildrenAtStart(resetChildrenAtStart:Boolean):void { _resetChildrenAtStart = resetChildrenAtStart;}
+		protected var _resetChildrenAtStart:Boolean;
+		
+		/** @inheritDoc */
 		public function get childActions():Array { return _childActions; }
 		protected var _childActions:Array = new Array();
 		
@@ -46,9 +52,7 @@ package org.as3lib.kitchensync.action
 			throw new Error("duration is ignored for IActionGroups");
 		}
 		
-		/**
-		 * @inheritDoc
-		 */
+		/** @inheritDoc */
 		public function get totalDuration():int {
 			var totalDuration:int = duration;
 			for each (var action:IAction in childActions) {
@@ -65,14 +69,10 @@ package org.as3lib.kitchensync.action
 		public function AbstractActionGroup() {
 			super();
 			AbstractEnforcer.enforceConstructor(this, AbstractActionGroup);
-			//resetChildrenAtStart = KitchenSyncDefaults.resetChildrenAtStart;
+			resetChildrenAtStart = KitchenSyncDefaults.resetChildrenAtStart;
 		}
 		
-		/**
-		 * Adds an action to the group.
-		 * 
-		 * @param action - One or more actions to add to the group. Don't start this action. That will be handled by the group.
-		 */
+		/** @inheritDoc */
 		public function addAction(action:IAction, ... additionalActions):void {
 			_childActions.push(action);
 			if (additionalActions.length > 0) {
@@ -138,9 +138,8 @@ package org.as3lib.kitchensync.action
 		 /**
 		 * Dispatches a CHILD_START event when the child begins.
 		 * 
-		 * @param event - The SynchronizerEvent.START from the child action
+		 * @param event The SynchronizerEvent.START from the child action
 		 */
-		 // todo - Add a reference to the started child to the event.
 		 protected function onChildStart(event:KitchenSyncEvent):void {
 		 	dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_ACTION_START, event.timestamp));
 		 }
@@ -148,41 +147,41 @@ package org.as3lib.kitchensync.action
 		 /**
 		 * Called when child actions are completed.
 		 * 
-		 * @param event - The SynchronizerEvent.COMPLETE from the child action
-		 * @event SynchronizerEvent.CHILD_COMPLETE
+		 * @param event The SynchronizerEvent.COMPLETE from the child action
 		 */
-		 // todo - Add a reference to the completed child to the event.
 		protected function onChildFinished (event:KitchenSyncEvent):void {
 			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_ACTION_COMPLETE, event.timestamp));
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function start():IAction {
-			/* if (resetChildrenAtStart && !_running && !_paused) {
-				for (var i:int = 0; i < _childActions.length; i++ ) {
-					var tween:KSTween = _childActions[i] as KSTween;
-					if (tween != null) { tween.reset(); }
-					
+			if (resetChildrenAtStart && !_running && !_paused) {
+				for each (var action:IAction in _childActions) {
+					action.reset();
 				}
-			} */
+			}
 			return super.start();
 		}
 		
+		/** Pauses the group and all its children. */
 		override public function pause():void {
 			super.pause();
-			//_paused = true;
 			for each (var child:IAction in childActions) {
 				child.pause();
 			}
 		}
 		
+		/** Unpauses the group and all its children. */
 		override public function unpause():void {
 			super.unpause();
-			//_paused = false;
 			for each (var child:IAction in childActions) {
 				child.unpause();
 			}
 		}
 		
+		/** Stops the group and all its children. */
 		override public function stop():void {
 			super.stop();
 			for each (var child:IAction in childActions) {
@@ -190,6 +189,7 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		/** Kills the group and all its children. */
 		override public function kill():void {
 			// Kill child actions to avoid zombie actions.
 			for each (var child:IAction in _childActions) {
@@ -200,7 +200,7 @@ package org.as3lib.kitchensync.action
 		}
 
 		override public function toString():String {
-			return "SynchronizedActionGroup containing " + _childActions.length + " children";
+			return "ActionGroup [" + _childActions.toString() + "]";
 		}
 	}
 }

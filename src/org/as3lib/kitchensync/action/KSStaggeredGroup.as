@@ -37,6 +37,11 @@ package org.as3lib.kitchensync.action
 		protected var _lastStartTime:int;
 		protected var _lastStartIndex:int;
 		
+		override public function get totalDuration():int {
+			// add the stagger ammount to the total duration.
+			return super.totalDuration + _stagger * childActions.length;
+		}
+		
 		
 		/**
 		 * Constructor.
@@ -62,7 +67,7 @@ package org.as3lib.kitchensync.action
 			this.stagger = stagger;
 		}
 		
-		
+		/** @inheritDoc */
 		override public function start():IAction {
 			_lastStartIndex = -1;
 			var action:IAction = super.start();
