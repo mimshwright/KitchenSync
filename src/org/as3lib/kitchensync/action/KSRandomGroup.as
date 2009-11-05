@@ -11,9 +11,9 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 * @since 2.0
 	 */
-	// Todo Docs
 	public class KSRandomGroup extends KSSequenceGroup
 	{
+		/** An internal reference to the remaining child actions that haven't been started. */
 		protected var _remainingActions:Array;
 		
 		/** 
@@ -33,6 +33,7 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		/** @inheritDoc */
 		override public function start():IAction {
 			// get a copy of the childAcitons array.
 			_remainingActions = childActions.concat();
@@ -43,6 +44,7 @@ package org.as3lib.kitchensync.action
 		 * @inheritDoc
 		 */
 		override protected function checkForComplete():Boolean{
+			// this group is complete when there are no remaining actions to start.
 			if (_remainingActions && _remainingActions.length <= 0) { 
 				return true;
 			}
@@ -60,7 +62,7 @@ package org.as3lib.kitchensync.action
 			return _currentAction;
 		}
 		
-		/** Get the next action by random selection of the remaining actions. */ 
+		/** Get the next action by random selection of the remaining actions array. */ 
 		protected function getNextRandomAction():IAction {
 			var nextIndex:int = Math.floor(Math.random() * _remainingActions.length);
 			var nextChild:IAction = IAction(_remainingActions[nextIndex]);
@@ -68,6 +70,7 @@ package org.as3lib.kitchensync.action
 			return nextChild;
 		}
 		
+		/** @inheritDoc */
 		override public function kill():void {
 			super.kill();
 			_remainingActions = null;
