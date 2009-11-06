@@ -4,22 +4,22 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="KSLoadQueue,org.as3lib.kitchensync.action.loading.KSLoadQueue,_resultList,resultList,addURL,kill" name="keywords">
-<title>org.as3lib.kitchensync.action.loading.KSLoadQueue</title>
+<meta content="KSSequenceGroup,org.as3lib.kitchensync.action.group.KSSequenceGroup,NO_CURRENT_ACTION_INDEX,_currentAction,_currentActionIndex,currentAction,checkForComplete,clone,complete,onChildFinished,start,startNextAction,toString,update" name="keywords">
+<title>org.as3lib.kitchensync.action.group.KSSequenceGroup</title>
 </head>
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'KSLoadQueue - KitchenSync';
+				asdocTitle = 'KSSequenceGroup - KitchenSync';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
 <table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
 <tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/as3lib/kitchensync/action/loading/KSLoadQueue.html&amp;org/as3lib/kitchensync/action/loading/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/as3lib/kitchensync/action/group/KSSequenceGroup.html&amp;org/as3lib/kitchensync/action/group/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
 </tr>
 <tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;KSLoadQueue</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;KSSequenceGroup</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
 </tr>
 <tr class="titleTableRow3">
 <td colspan="2">&nbsp;</td>
@@ -27,49 +27,35 @@
 </table>
 <script type="text/javascript" language="javascript">
 <!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class KSLoadQueue"); titleBar_setSubNav(true,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class KSSequenceGroup"); titleBar_setSubNav(true,true,false,false,true,false,true,false,false,false,false,false,false,false);}
 --></script>
 <div class="MainContent">
 <table cellspacing="0" cellpadding="0" class="classHeaderTable">
 <tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.loading</a></td>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.group</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class KSLoadQueue</td>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class KSSequenceGroup</td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">KSLoadQueue <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="../group/KSSequenceGroup.html">KSSequenceGroup</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="../group/AbstractActionGroup.html">AbstractActionGroup</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="../AbstractAction.html">AbstractAction</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">KSSequenceGroup <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="AbstractActionGroup.html">AbstractActionGroup</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="../AbstractAction.html">AbstractAction</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../loading/KSLoadQueue.html">KSLoadQueue</a>, <a href="../group/KSRandomGroup.html">KSRandomGroup</a></td>
 </tr>
 </table>
 <p></p>
-  Allows you to very quickly create a loading queue to load 
-  multiple files in a batch. The loaded files will be stored in the
-  resultList property. 
-  The KSLoadQueue will be a sequence group containing ILoaderAcitons.
-  By default, KSURLLoaders will be used but you can specify which class
-  you would like to use for the loaders. 
+  A group of actions that execute one at a time in the order that 
+  they were added to the group. This is probably the most useful 
+  action group. It allows you to queue up several actions and have 
+  them execute in order as a single unit. This type of group can 
+  be used for transitions between pages in a site or for queueing
+  up several functions to be executed in order.
   
   <p></p>
 <br>
 <span class="label">Example</span>
-<br><div class='listing'><pre>
-  var urls:Array = ["img1.jpg","img2.jpg","img3.jpg"];
-  var queue:KSLoadQueue = new KSLoadQueue(urls, KSLoader);
-  queue.addEventListener(KitchenSyncEvent.COMPLETE, onComplete);
-  queue.start();
-  </pre></div>
-  
-  <p></p>
-<p>
-<span class="classHeaderTableLabel">See also</span>
-</p>
-<div class="seeAlso">
-<a href="ILoaderAction.html" target="">ILoaderAction</a>
-<br>
-<a href="KSURLLoader.html" target="">KSURLLoader</a>
-<br>
-<a href="KSLoader.html" target="">KSLoader</a>
-</div>
+<br><div class='listing'><pre></pre></div><p></p>
 <br>
 <hr>
 </div>
@@ -95,15 +81,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/AbstractActionGroup.html#childActions">childActions</a> : Array<div class="summaryTableDescription"> 
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#childActions">childActions</a> : Array<div class="summaryTableDescription"> 
    Provides access to a list of all the child actions 
    contained within the group.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/KSSequenceGroup.html#currentAction">currentAction</a> : <a href="../../action/IAction.html">IAction</a>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentAction">currentAction</a> : <a href="../../action/IAction.html">IAction</a>
+<div class="summaryTableDescription">[read-only]</div>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#delay">delay</a> : int<div class="summaryTableDescription">
@@ -112,9 +98,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/AbstractActionGroup.html#duration">duration</a> : *<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#duration">duration</a> : *<div class="summaryTableDescription">
    Setting duration is overridden on groups and will always be 0.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#isInstantaneous">isInstantaneous</a> : Boolean<div class="summaryTableDescription">  
@@ -132,15 +118,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/AbstractActionGroup.html#resetChildrenAtStart">resetChildrenAtStart</a> : Boolean<div class="summaryTableDescription"> 
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#resetChildrenAtStart">resetChildrenAtStart</a> : Boolean<div class="summaryTableDescription"> 
    If true, the group's KSTween children will reset to their 
    default positions when the group is started.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#resultList">resultList</a> : Array<div class="summaryTableDescription">
-   Stores the results of all the loader actions as they complete.</div>
-</td><td class="summaryTableOwnerCol">KSLoadQueue</td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#runningTime">runningTime</a> : int<div class="summaryTableDescription">
@@ -149,10 +130,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/AbstractActionGroup.html#totalDuration">totalDuration</a> : int<div class="summaryTableDescription"> 
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#totalDuration">totalDuration</a> : int<div class="summaryTableDescription"> 
    Returns the total duration of all the children within
    the group.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 </table>
 </div>
@@ -176,18 +157,18 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/AbstractActionGroup.html#_childActions">_childActions</a> : Array<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#_childActions">_childActions</a> : Array<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/KSSequenceGroup.html#_currentAction">_currentAction</a> : <a href="../../action/IAction.html">IAction</a> = null<div class="summaryTableDescription">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_currentAction">_currentAction</a> : <a href="../../action/IAction.html">IAction</a> = null<div class="summaryTableDescription">
    The action currently executing.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/KSSequenceGroup.html#_currentActionIndex">_currentActionIndex</a> : int = -1<div class="summaryTableDescription">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_currentActionIndex">_currentActionIndex</a> : int = -1<div class="summaryTableDescription">
    The index of the action currently executing.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_delay">_delay</a> : int = 0<div class="summaryTableDescription"></div>
@@ -206,12 +187,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/AbstractActionGroup.html#_resetChildrenAtStart">_resetChildrenAtStart</a> : Boolean<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_resultList">_resultList</a> : Array<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSLoadQueue</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#_resetChildrenAtStart">_resetChildrenAtStart</a> : Boolean<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_running">_running</a> : Boolean = false<div class="summaryTableDescription"></div>
@@ -241,54 +218,45 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#KSLoadQueue()">KSLoadQueue</a>(urlList:Array = null, loaderClass:Class = null)</div>
+<a class="signatureLink" href="#KSSequenceGroup()">KSSequenceGroup</a>(... children)</div>
 <div class="summaryTableDescription">
    Constructor.</div>
-</td><td class="summaryTableOwnerCol">KSLoadQueue</td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#addAction()">addAction</a>(action:<a href="../../action/IAction.html">IAction</a>, ... additionalActions):void</div>
+<a class="signatureLink" href="AbstractActionGroup.html#addAction()">addAction</a>(action:<a href="../../action/IAction.html">IAction</a>, ... additionalActions):void</div>
 <div class="summaryTableDescription"> 
    Adds an action to the end of the group.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#addActionAtIndex()">addActionAtIndex</a>(action:<a href="../../action/IAction.html">IAction</a>, index:int = -1):void</div>
+<a class="signatureLink" href="AbstractActionGroup.html#addActionAtIndex()">addActionAtIndex</a>(action:<a href="../../action/IAction.html">IAction</a>, index:int = -1):void</div>
 <div class="summaryTableDescription">
    
    Adds an action to the group at the specified index.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#addURL()">addURL</a>(url:*, loaderClass:Class = null):<a href="../loading/ILoaderAction.html">ILoaderAction</a>
-</div>
-<div class="summaryTableDescription">
-   Add a url to the end of the queue.</div>
-</td><td class="summaryTableOwnerCol">KSLoadQueue</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#clone()">clone</a>():<a href="../../action/IAction.html">IAction</a>
+<a class="signatureLink" href="#clone()">clone</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#getChildAtIndex()">getChildAtIndex</a>(index:int):<a href="../../action/IAction.html">IAction</a>
+<a class="signatureLink" href="AbstractActionGroup.html#getChildAtIndex()">getChildAtIndex</a>(index:int):<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription">
    
    Returns the action at the specified index.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -307,39 +275,39 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    Moves the playhead to a specified time in the action.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#kill()">kill</a>():void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSLoadQueue</td>
+<a class="signatureLink" href="AbstractActionGroup.html#kill()">kill</a>():void</div>
+<div class="summaryTableDescription"> Kills the group and all its children.</div>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#pause()">pause</a>():void</div>
+<a class="signatureLink" href="AbstractActionGroup.html#pause()">pause</a>():void</div>
 <div class="summaryTableDescription"> Pauses the group and all its children.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#removeAction()">removeAction</a>(action:<a href="../../action/IAction.html">IAction</a>):<a href="../../action/IAction.html">IAction</a>
+<a class="signatureLink" href="AbstractActionGroup.html#removeAction()">removeAction</a>(action:<a href="../../action/IAction.html">IAction</a>):<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription">
    
    Removes an action from the group if it is a child of the group.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#removeActionAtIndex()">removeActionAtIndex</a>(index:int):<a href="../../action/IAction.html">IAction</a>
+<a class="signatureLink" href="AbstractActionGroup.html#removeActionAtIndex()">removeActionAtIndex</a>(index:int):<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription">
    
    Removes an action at the specified index if it is a child of the group.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -353,49 +321,49 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#reverseChildOrder()">reverseChildOrder</a>():void</div>
+<a class="signatureLink" href="AbstractActionGroup.html#reverseChildOrder()">reverseChildOrder</a>():void</div>
 <div class="summaryTableDescription">
    
    Reverse the order that the children play back in.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#start()">start</a>():<a href="../../action/IAction.html">IAction</a>
+<a class="signatureLink" href="#start()">start</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription">
    Override start to automatically quit if there are no children.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#stop()">stop</a>():void</div>
+<a class="signatureLink" href="AbstractActionGroup.html#stop()">stop</a>():void</div>
 <div class="summaryTableDescription"> Stops the group and all its children.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#toString()">toString</a>():String</div>
+<a class="signatureLink" href="#toString()">toString</a>():String</div>
 <div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#unpause()">unpause</a>():void</div>
+<a class="signatureLink" href="AbstractActionGroup.html#unpause()">unpause</a>():void</div>
 <div class="summaryTableDescription"> Unpauses the group and all its children.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#update()">update</a>(currentTime:int):void</div>
+<a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
 <div class="summaryTableDescription">
    Listens for updates to synchronize the start time of the sequence.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 </table>
 </div>
@@ -410,25 +378,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
 </div>
 </div>
-<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
 <tr>
 <th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#checkForComplete()">checkForComplete</a>():Boolean</div>
+<a class="signatureLink" href="#checkForComplete()">checkForComplete</a>():Boolean</div>
 <div class="summaryTableDescription">
    Checks to see if all of the children have completed.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#complete()">complete</a>():void</div>
+<a class="signatureLink" href="#complete()">complete</a>():void</div>
 <div class="summaryTableDescription">
    override to reset the _currentActionIndex.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -438,30 +406,30 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    Checks to see whether the duration of the action has elapsed and if the _startTime is defined.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#onChildFinished()">onChildFinished</a>(event:<a href="../../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
+<a class="signatureLink" href="#onChildFinished()">onChildFinished</a>(event:<a href="../../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
 <div class="summaryTableDescription">
    Called when child actions are completed.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#onChildStart()">onChildStart</a>(event:<a href="../../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
+<a class="signatureLink" href="AbstractActionGroup.html#onChildStart()">onChildStart</a>(event:<a href="../../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
 <div class="summaryTableDescription">
    Dispatches a CHILD_START event when the child begins.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/KSSequenceGroup.html#startNextAction()">startNextAction</a>():<a href="../../action/IAction.html">IAction</a>
+<a class="signatureLink" href="#startNextAction()">startNextAction</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription">
    Starts playing the next action in the sequence.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -524,40 +492,32 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedEvent">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#event:childActionComplete">childActionComplete</a>
+<a class="signatureLink" href="AbstractActionGroup.html#event:childActionComplete">childActionComplete</a>
 </div>
-</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedEvent">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../group/AbstractActionGroup.html#event:childActionStart">childActionStart</a>
+<a class="signatureLink" href="AbstractActionGroup.html#event:childActionStart">childActionStart</a>
 </div>
 </td><td class="summaryTableDescription summaryTableCol"> 
-   Dispatched by an action group when one of its children is started.</td><td class="summaryTableOwnerCol"><a href="../group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+   Dispatched by an action group when one of its children is started.</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 </table>
 </div>
 <a name="constantSummary"></a><a name="protectedConstantSummary"></a>
 <div class="summarySection">
 <div class="summaryTableTitle">Protected Constants</div>
-<div class="showHideLinks">
-<div class="hideInheritedProtectedConstant" id="hideInheritedProtectedConstant">
-<a onclick="javascript:setInheritedVisible(false,'ProtectedConstant');" href="#protectedConstantSummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Constants</a>
-</div>
-<div class="showInheritedProtectedConstant" id="showInheritedProtectedConstant">
-<a onclick="javascript:setInheritedVisible(true,'ProtectedConstant');" href="#protectedConstantSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Constants</a>
-</div>
-</div>
-<table id="summaryTableProtectedConstant" class="summaryTable hideInheritedProtectedConstant" cellpadding="3" cellspacing="0">
+<table id="summaryTableProtectedConstant" class="summaryTable " cellpadding="3" cellspacing="0">
 <tr>
 <th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
-<tr class="hideInheritedProtectedConstant">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../group/KSSequenceGroup.html#NO_CURRENT_ACTION_INDEX">NO_CURRENT_ACTION_INDEX</a> : int = -1<div class="summaryTableDescription">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#NO_CURRENT_ACTION_INDEX">NO_CURRENT_ACTION_INDEX</a> : int = -1<div class="summaryTableDescription">
    Used internally with the currentAciton property to denote that there is 
    no action currently executing.</div>
-</td><td class="summaryTableOwnerCol"><a href="../group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</td><td class="summaryTableOwnerCol">KSSequenceGroup</td>
 </tr>
 </table>
 </div>
@@ -568,122 +528,233 @@ showHideInherited();
 <div class="MainContent">
 <a name="propertyDetail"></a>
 <div class="detailSectionHeader">Property detail</div>
-<a name="_resultList"></a>
+<a name="_currentAction"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">_resultList</td><td class="detailHeaderType">property</td>
+<td class="detailHeaderName">_currentAction</td><td class="detailHeaderType">property</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _resultList:Array</code>
+<code>protected var _currentAction:<a href="../../action/IAction.html">IAction</a> = null</code><p>
+   The action currently executing.
+   </p></div>
+<a name="currentAction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">currentAction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>currentAction:<a href="../../action/IAction.html">IAction</a></code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentAction():<a href="../../action/IAction.html">IAction</a></code>
+<br>
 </div>
-<a name="resultList"></a>
+<a name="_currentActionIndex"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">resultList</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">_currentActionIndex</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>resultList:Array</code>&nbsp;&nbsp;[read-write]<p>
-   Stores the results of all the loader actions as they complete.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get resultList():Array</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set resultList(value:Array):void</code>
-<br>
+<code>protected var _currentActionIndex:int = -1</code><p>
+   The index of the action currently executing.
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../group/KSSequenceGroup.html#_currentAction" target="">_currentAction</a>
+</div>
 </div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
-<a name="KSLoadQueue()"></a>
+<a name="KSSequenceGroup()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">KSLoadQueue</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+<td class="detailHeaderName">KSSequenceGroup</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public function KSLoadQueue(urlList:Array = null, loaderClass:Class = null)</code><p>
+<code>public function KSSequenceGroup(... children)</code><p>
    Constructor.
    
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">urlList</span>:Array</code> (default = <code>null</code>)<code></code> &mdash; An array containing all the URLRequest objects to add to the queue.
-         More can be added later using the <code>addURL()</code> method.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">loaderClass</span>:Class</code> (default = <code>null</code>)<code></code> &mdash; The type of ILoaderAction to instantiate. See addURL() for more details.
-   </td>
-</tr>
-</table>
-</div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="addURL()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">addURL</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function addURL(url:*, loaderClass:Class = null):<a href="../loading/ILoaderAction.html">ILoaderAction</a></code><p>
-   Add a url to the end of the queue.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">url</span>:*</code> &mdash; The URL string or URLRequest object to load the data from.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">loaderClass</span>:Class</code> (default = <code>null</code>)<code></code> &mdash; Allows you to specify which type of ILoaderAction to use to load this url.
-          The default will use KSURLLoader but you may want to use KSLoader or something else.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../loading/ILoaderAction.html">ILoaderAction</a></code> &mdash; 
-                        A reference to the loaderAction that was created in the queue.
-   
-   
-                        
-                     </td>
+<td width="20px"></td><td><code>... <span class="label">children</span></code></td>
 </tr>
 </table>
 <br>
 <span class="label">Throws</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code></code> &mdash; if the url parameter is not either a string or a URLRequest 
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20"></td><td><code></code> &mdash; if the loaderClass doesn't implement ILoaderAction 
+<td width="20"></td><td><code></code> &mdash; - if any children are not of type AbstractSynchronizedAction.
+   
    </td>
 </tr>
 </table>
 </div>
-<a name="kill()"></a>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="checkForComplete()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">kill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">checkForComplete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function kill():void</code>
+<code>protected function checkForComplete():Boolean</code><p>
+   Checks to see if all of the children have completed. If so, calls the complete method.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if complete, otherwise false.
+   </td>
+</tr>
+</table>
+</div>
+<a name="clone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function clone():<a href="../../action/IAction.html">IAction</a></code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code></td>
+</tr>
+</table>
+</div>
+<a name="complete()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">complete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function complete():void</code><p>
+   override to reset the _currentActionIndex.
+   </p></div>
+<a name="onChildFinished()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onChildFinished</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function onChildFinished(event:<a href="../../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</code><p>
+   Called when child actions are completed. After each is finished, checks to see if the sequence is 
+   complete. If not, it starts the next child.
+   Also remove reference to child action so it can be garbage collected.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:<a href="../../core/KitchenSyncEvent.html">KitchenSyncEvent</a></code> &mdash; - The SynchronizerEvent.COMPLETE from the _currentAction
+   </td>
+</tr>
+</table>
+</div>
+<a name="start()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function start():<a href="../../action/IAction.html">IAction</a></code><p>
+   Override start to automatically quit if there are no children.
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code></td>
+</tr>
+</table>
+</div>
+<a name="startNextAction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">startNextAction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function startNextAction():<a href="../../action/IAction.html">IAction</a></code><p>
+   Starts playing the next action in the sequence. Listens for the COMPLETE event for each child
+   and runs onChildFinished() when each child completes. The action that is currently playing
+   will be stored in _currentAction which is publicly accessible. 
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code> &mdash; 
+                        The currently playing action.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function toString():String</code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<a name="update()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function update(currentTime:int):void</code><p>
+   Listens for updates to synchronize the start time of the sequence.
+   The first action in the sequence is called by using the startNextAction() method.
+   After the Sequence starts running, it no longer needs to listen to updates so it unregisters.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">currentTime</span>:int</code></td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="NO_CURRENT_ACTION_INDEX"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">NO_CURRENT_ACTION_INDEX</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected const NO_CURRENT_ACTION_INDEX:int = -1</code><p>
+   Used internally with the currentAciton property to denote that there is 
+   no action currently executing.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../group/KSSequenceGroup.html#_currentActionIndex" target="">_currentActionIndex</a>
+</div>
 </div>
 <br>
 <br>

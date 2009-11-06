@@ -38,6 +38,7 @@ package org.as3lib.kitchensync.action.group
 		protected var _lastStartTime:int;
 		protected var _lastStartIndex:int;
 		
+		/** @inheritDoc */
 		override public function get totalDuration():int {
 			// add the stagger ammount to the total duration.
 			return super.totalDuration + _stagger * childActions.length;
@@ -111,6 +112,7 @@ package org.as3lib.kitchensync.action.group
 			}
 		}
 		
+		/** @inheritDoc */
 		override public function clone():IAction {
 			var clone:KSStaggeredGroup = new KSStaggeredGroup(_stagger);
 			for (var i:int = 0; i < _childActions.length; i++) {

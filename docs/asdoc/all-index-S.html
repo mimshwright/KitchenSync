@@ -235,13 +235,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
    Constructor.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSStaggeredGroup.html#_stagger">_stagger</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSStaggeredGroup.html">KSStaggeredGroup</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html#_stagger">_stagger</a> &mdash; Property in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html">KSStaggeredGroup</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSStaggeredGroup.html#stagger">stagger</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSStaggeredGroup.html">KSStaggeredGroup</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html#stagger">stagger</a> &mdash; Property in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html">KSStaggeredGroup</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -256,12 +256,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
    Begins the action running.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html">AbstractActionGroup</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html#start()">start</a>() &mdash; Method in interface org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html">IAction</a></td>
 </tr>
 <tr>
@@ -269,17 +263,36 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
    Begins the action running.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSequenceGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSequenceGroup.html">KSSequenceGroup</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/AbstractActionGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   
+   Begins the action running.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSRandomGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSRandomGroup.html">KSRandomGroup</a></td>
+</tr>
+<tr>
+<td width="20"></td><td> 
+   Override start to automatically quit if there are no children.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html">KSSequenceGroup</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Override start to automatically quit if there are no children.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSStaggeredGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSStaggeredGroup.html">KSStaggeredGroup</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html">KSStaggeredGroup</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td> 
+   
+   
+   Begins the action running.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#start()">start</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
@@ -326,13 +339,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td> start() command.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSRandomGroup.html#startNextAction()">startNextAction</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSRandomGroup.html">KSRandomGroup</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSRandomGroup.html#startNextAction()">startNextAction</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSRandomGroup.html">KSRandomGroup</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Start the actions in a random order.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSequenceGroup.html#startNextAction()">startNextAction</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSequenceGroup.html">KSSequenceGroup</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html#startNextAction()">startNextAction</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html">KSSequenceGroup</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -361,10 +375,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#_startTime">_startTime</a> &mdash; Property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
 </tr>
 <tr>
-<td width="20"></td><td> The time at which the tween was started.</td>
+<td width="20"></td><td> </td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#startTimeHasElapsed">startTimeHasElapsed</a> &mdash; Property in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html#startTimeHasElapsed()">startTimeHasElapsed</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -496,12 +510,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
    Stops the action from running and resets the timer.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html#stop()">stop</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/AbstractActionGroup.html">AbstractActionGroup</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html#stop()">stop</a>() &mdash; Method in interface org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/IAction.html">IAction</a></td>
 </tr>
 <tr>
@@ -509,17 +517,23 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
    Stops the action from running and resets the timer.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSParallelGroup.html#stop()">stop</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSParallelGroup.html">KSParallelGroup</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSoundController.html#stop()">stop</a>() &mdash; Method in class org.as3lib.kitchensync.action.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/class-list.html');" href="org/as3lib/kitchensync/action/KSSoundController.html">KSSoundController</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Override the pause functions to pause the actual sound as well as the action.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/AbstractActionGroup.html#stop()">stop</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/AbstractActionGroup.html">AbstractActionGroup</a></td>
+</tr>
+<tr>
+<td width="20"></td><td> Stops the group and all its children.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSParallelGroup.html#stop()">stop</a>() &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSParallelGroup.html">KSParallelGroup</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>  Stops the group and all its children.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#stop()">stop</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>

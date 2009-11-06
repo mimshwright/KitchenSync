@@ -38,10 +38,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IAction extends <a href="../core/ISynchronizerClient.html">ISynchronizerClient</a>, <a href="none">flash.events.IEventDispatcher</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Subinterfaces</td><td><a href="../action/IActionGroup.html">IActionGroup</a>, <a href="../action/IJumpableAction.html">IJumpableAction</a>, <a href="loading/ILoaderAction.html">ILoaderAction</a>, <a href="tween/ITween.html">ITween</a></td>
+<td class="classHeaderTableLabel">Subinterfaces</td><td><a href="group/IActionGroup.html">IActionGroup</a>, <a href="../action/IJumpableAction.html">IJumpableAction</a>, <a href="loading/ILoaderAction.html">ILoaderAction</a>, <a href="tween/ITween.html">ITween</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Implementors</td><td><a href="../action/AbstractActionGroup.html">AbstractActionGroup</a>, <a href="tween/KSSimpleTween.html">KSSimpleTween</a></td>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="tween/KSSimpleTween.html">KSSimpleTween</a></td>
 </tr>
 </table>
 <p></p>
@@ -284,6 +284,7 @@ showHideInherited();
    The time in ms since the start of the action or 0 if the action isn't running.
    If the action is paused, the result will be the running time at which it was paused.
    Typically, the current real time minus the action's start time.
+   Actions with 0 duration will always return 0.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get runningTime():int</code>
@@ -337,7 +338,6 @@ showHideInherited();
    and the onUpdate() handler will not be called. When unpause() is called,
    the action will continue at the point where it was paused.
    The pause() method affects the start time even if the delay time hasn't expired yet.
-   
    </p></div>
 <a name="reset()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

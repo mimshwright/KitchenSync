@@ -93,9 +93,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <p>
 <span class="classHeaderTableLabel">See also</span>
 </p>
-<div class="seeAlso">
-<a href="../../action/KSSequenceGroup.html" target="">org.as3lib.kitchensync.action.KSSequenceGroup</a>
-</div>
+<div class="seeAlso">org.as3lib.kitchensync.action.KSSequenceGroup</div>
 <br>
 <hr>
 </div>
@@ -139,11 +137,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../KSFunction.html">KSFunction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#durationHasElapsed">durationHasElapsed</a> : Boolean<div class="summaryTableDescription">
-   Checks to see whether the duration of the action has elapsed and if the _startTime is defined.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../KSFunction.html#func">func</a> : Function<div class="summaryTableDescription">
    The function that will be called by the action.</div>
 </td><td class="summaryTableOwnerCol"><a href="../KSFunction.html">KSFunction</a></td>
@@ -160,18 +153,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">
-   The human-readable name of this action.</div>
+    Should return true if the action is running (or paused).</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#loader">loader</a> : URLLoader<div class="summaryTableDescription">
    A reference to the actual URLLoader object.</div>
 </td><td class="summaryTableOwnerCol">KSURLLoader</td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#pauseTime">pauseTime</a> : int<div class="summaryTableDescription">
-   The time at which the action was last paused.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../KSFunction.html#result">result</a> : *<div class="summaryTableDescription">
@@ -190,16 +178,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#runningTime">runningTime</a> : int<div class="summaryTableDescription">
    
    The time in ms since the start of the action or 0 if the action isn't running.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#startTime">startTime</a> : int<div class="summaryTableDescription">
-   The time at which the action was last started.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#startTimeHasElapsed">startTimeHasElapsed</a> : Boolean<div class="summaryTableDescription">
-   Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="">
@@ -319,22 +297,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#addEventTrigger()">addEventTrigger</a>(dispatcher:IEventDispatcher, eventType:String):void</div>
-<div class="summaryTableDescription">
-   Causes the action to start playing when a specified event is fired.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#addTrigger()">addTrigger</a>(trigger:<a href="../../action/IAction.html">IAction</a>):void</div>
-<div class="summaryTableDescription">
-   Causes the action to start playing when another event completes.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
 <a class="signatureLink" href="../KSAsynchronousFunction.html#clone()">clone</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription"></div>
@@ -361,8 +323,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="../AbstractAction.html#jumpToTime()">jumpToTime</a>(time:*, ignoreDelay:Boolean = false):void</div>
-<div class="summaryTableDescription">
-   
+<div class="summaryTableDescription"> 
    Moves the playhead to a specified time in the action.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
@@ -381,30 +342,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription"> 
    
    Causes the action to be paused.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#register()">register</a>():void</div>
-<div class="summaryTableDescription">
-   Adds the action as a listener to the Synchronizer's update event.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#removeEventTrigger()">removeEventTrigger</a>(dispatcher:IEventDispatcher, eventType:String):void</div>
-<div class="summaryTableDescription">
-   Removes an event trigger added by addEventTrigger().</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#removeTrigger()">removeTrigger</a>(trigger:<a href="../../action/IAction.html">IAction</a>):void</div>
-<div class="summaryTableDescription">
-   Removes a trigger added with addTrigger().</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -438,16 +375,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="../AbstractAction.html#unpause()">unpause</a>():void</div>
-<div class="summaryTableDescription">
+<div class="summaryTableDescription"> 
    Resumes the action at the point where it was paused.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#unregister()">unregister</a>():void</div>
-<div class="summaryTableDescription">
-   Removes the action as a listener to the Synchronizer's update event.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -480,15 +409,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="../AbstractAction.html#complete()">complete</a>():void</div>
 <div class="summaryTableDescription">
-   Call this when the action has completed.</div>
+   Internal function that completes the action by cleaning up any running processes
+   and unregistering it from the synchronizer.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#forceUpdate()">forceUpdate</a>():void</div>
+<a class="signatureLink" href="../AbstractAction.html#durationHasElapsed()">durationHasElapsed</a>(currentTime:int):Boolean</div>
 <div class="summaryTableDescription">
-   Foreces the update() method to fire without being triggered by Synchronizer.</div>
+   Checks to see whether the duration of the action has elapsed and if the _startTime is defined.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
@@ -518,9 +448,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#onTrigger()">onTrigger</a>(event:Event):void</div>
+<a class="signatureLink" href="../AbstractAction.html#startTimeHasElapsed()">startTimeHasElapsed</a>(currentTime:int):Boolean</div>
 <div class="summaryTableDescription">
-   Handler that starts playing the action that is called by a trigger event.</div>
+   Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 </table>
