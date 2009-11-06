@@ -1,5 +1,5 @@
 package org.as3lib.kitchensync.action
-{
+{	
 	import flash.errors.*;
 	import flash.events.*;
 	
@@ -103,13 +103,13 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The time at which the action was last started.
 		 */
-		internal function get startTime():int { return _startTime; }
+		actionNS function get startTime():int { return _startTime; }
 		protected var _startTime:int;
 		
 		/**
 		 * The time at which the action was last paused.
 		 */
-		internal function get pauseTime():int { return _pauseTime; }
+		actionNS function get pauseTime():int { return _pauseTime; }
 		protected var _pauseTime:int;
 		
 		
@@ -293,15 +293,6 @@ package org.as3lib.kitchensync.action
 		}
 		
 		/**
-		 * Foreces the update() method to fire without being triggered by Synchronizer.
-		 * 
-		 * @see #update()
-		 */
-		protected function forceUpdate():void {
-			update(Synchronizer.getInstance().currentTime);
-		}
-		
-		/**
 		 * Checks to see whether the start time delay has elapsed and if the _startTime is defined. In other words, 
 		 * checks to see whether the action is ready to execute. Duration is handled seperately.
 		 * 
@@ -339,10 +330,19 @@ package org.as3lib.kitchensync.action
 		}		
 		
 		/**
+		 * Foreces the update() method to fire without being triggered by Synchronizer.
+		 * 
+		 * @see #update()
+		 */
+		actionNS function forceUpdate():void {
+			update(Synchronizer.getInstance().currentTime);
+		}
+		
+		/**
 		 * Adds the action as a listener to the Synchronizer's update event.
 		 * Used internally.
 		 */
-		internal function register():void {
+		actionNS function register():void {
 			Synchronizer.getInstance().registerClient(this);
 			
 			// since the first update won't occur until the next frame, force one here to make it
@@ -354,7 +354,7 @@ package org.as3lib.kitchensync.action
 		 * Removes the action as a listener to the Synchronizer's update event.
 		 * Used internally.
 		 */
-		internal function unregister():void {
+		actionNS function unregister():void {
 			Synchronizer.getInstance().unregisterClient(this);
 		}
 	}

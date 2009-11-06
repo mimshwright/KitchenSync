@@ -1,10 +1,11 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.group
 {
 	import flash.utils.getQualifiedClassName;
 	
 	import org.as3lib.kitchensync.KitchenSync;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.utils.*;
+	import org.as3lib.kitchensync.action.*;
 	
 	/**
 	 * A group of actions that executes in sequence seperated by a specified gap.

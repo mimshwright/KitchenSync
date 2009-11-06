@@ -1,10 +1,12 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.group
 {
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.utils.AbstractEnforcer;
+	import org.as3lib.kitchensync.action.IAction;
+	import org.as3lib.kitchensync.action.AbstractAction;
 	
 	/**
 	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.CHILD_ACTION_START

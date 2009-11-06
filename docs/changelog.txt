@@ -28,12 +28,16 @@ MOVED some important methods from AbstractAction-only to IAction.
 REMOVED action triggers from AbstractAction. Use KSSequenceGroups instead. 
 ADDED an IJumpableAction to specify jumpToTime and jumpByTime separate from IAction.
 ADDED jumpToTime and jumpByTime to AbstractAction so (almost) all actions have this functionality.
+ADDED actionNS namespace for accessing certain methods of action classes.
 OPTIMIZED startTimeHasElapsed and durationHasElapsed in AbstractAction
 
 
+REFACTORED groups
+MOVED action group related files to org.as3lib.kitchensync.action.group package
 ADDED an interface for groups, IActionGroup. 
 ADDED totalDuration to groups.
-ADDED KSRandomGroup
+ADDED KSRandomGroup.
+REMOVED KSSteppedSequenceGroup because it seemed kinda useless.
 
 ADDED Better docs to KitchenSyncEvent class. 
 RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong event type appear in the auto-complete if the constant name and string don't match.

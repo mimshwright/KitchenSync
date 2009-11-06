@@ -2,7 +2,7 @@ package org.as3lib.kitchensync.action.loading
 {
 	import flash.net.URLRequest;
 	
-	import org.as3lib.kitchensync.action.KSSequenceGroup;
+	import org.as3lib.kitchensync.action.group.*;
 
 	/**
 	 * Allows you to very quickly create a loading queue to load 

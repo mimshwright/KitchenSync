@@ -1,7 +1,8 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.group
 {
 	import flash.utils.getQualifiedClassName;
 	
+	import org.as3lib.kitchensync.action.*;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	
 	/**

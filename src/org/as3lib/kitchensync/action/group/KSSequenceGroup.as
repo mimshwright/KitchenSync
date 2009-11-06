@@ -1,8 +1,9 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.group
 {
 	import flash.utils.getQualifiedClassName;
 	
 	import org.as3lib.kitchensync.core.*;
+	import org.as3lib.kitchensync.action.*;
 	
 	/**
 	 * A group of actions that execute one at a time in the order that 

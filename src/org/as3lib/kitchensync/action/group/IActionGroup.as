@@ -1,5 +1,7 @@
-package org.as3lib.kitchensync.action
+package org.as3lib.kitchensync.action.group
 {
+	import org.as3lib.kitchensync.action.*;
+	
 	/**
 	 * A group of other actions that is itself an action. 
 	 * An action group allows several child actions to execute
