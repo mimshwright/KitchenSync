@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="KSStaggeredGroup,org.as3lib.kitchensync.action.group.KSStaggeredGroup,_lastStartIndex,_lastStartTime,_stagger,stagger,totalDuration,clone,start,toString,update" name="keywords">
+<meta content="KSStaggeredGroup,org.as3lib.kitchensync.action.group.KSStaggeredGroup,_previousChildIndex,_previousChildStartTime,_previousUpdate,_stagger,stagger,totalDuration,clone,start,toString,update" name="keywords">
 <title>org.as3lib.kitchensync.action.group.KSStaggeredGroup</title>
 </head>
 <body>
@@ -43,6 +43,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </table>
 <p></p>
   A group of actions that executes in sequence seperated by a specified gap.
+  
+  Note that this class extends KSParallelGroup while it behaves more like a 
+  KSSequenceGroup. This is because internally, the staggered group is more 
+  similar structurally to the parallel group than the sequence. 
+  
   <p></p>
 <br>
 <hr>
@@ -161,14 +166,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_lastStartIndex">_lastStartIndex</a> : int<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSStaggeredGroup</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_lastStartTime">_lastStartTime</a> : int<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSStaggeredGroup</td>
-</tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
@@ -176,6 +173,26 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_pauseTime">_pauseTime</a> : int<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#pauseTime">pauseTime</a> : int<div class="summaryTableDescription">
+   The time at which the action was last paused.</div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_previousChildIndex">_previousChildIndex</a> : int<div class="summaryTableDescription">
+   The index of the last child action that was started.</div>
+</td><td class="summaryTableOwnerCol">KSStaggeredGroup</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_previousChildStartTime">_previousChildStartTime</a> : int<div class="summaryTableDescription">
+   A reference to the last time that <code>update()</code>
+   was called.</div>
+</td><td class="summaryTableOwnerCol">KSStaggeredGroup</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_previousUpdate">_previousUpdate</a> : int<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">KSStaggeredGroup</td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#_resetChildrenAtStart">_resetChildrenAtStart</a> : Boolean<div class="summaryTableDescription"></div>
@@ -196,6 +213,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_startTime">_startTime</a> : int<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#startTime">startTime</a> : int<div class="summaryTableDescription">
+   The time at which the action was last started.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 </table>
@@ -365,6 +387,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
 <div class="summaryTableDescription">
+   
    When the first update occurs, all of the child actions are started simultaniously.</div>
 </td><td class="summaryTableOwnerCol">KSStaggeredGroup</td>
 </tr>
@@ -405,6 +428,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="../AbstractAction.html#forceUpdate()">forceUpdate</a>():void</div>
+<div class="summaryTableDescription">
+   Foreces the update() method to fire without being triggered by Synchronizer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="KSParallelGroup.html#onChildFinished()">onChildFinished</a>(event:<a href="../../core/KitchenSyncEvent.html">KitchenSyncEvent</a>):void</div>
 <div class="summaryTableDescription">
    Called when child actions are completed.</div>
@@ -421,9 +452,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="../AbstractAction.html#register()">register</a>():void</div>
+<div class="summaryTableDescription">
+   Adds the action as a listener to the Synchronizer's update event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="../AbstractAction.html#startTimeHasElapsed()">startTimeHasElapsed</a>(currentTime:int):Boolean</div>
 <div class="summaryTableDescription">
    Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../AbstractAction.html#unregister()">unregister</a>():void</div>
+<div class="summaryTableDescription">
+   Removes the action as a listener to the Synchronizer's update event.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 </table>
@@ -500,23 +547,48 @@ showHideInherited();
 <div class="MainContent">
 <a name="propertyDetail"></a>
 <div class="detailSectionHeader">Property detail</div>
-<a name="_lastStartIndex"></a>
+<a name="_previousChildIndex"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">_lastStartIndex</td><td class="detailHeaderType">property</td>
+<td class="detailHeaderName">_previousChildIndex</td><td class="detailHeaderType">property</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _lastStartIndex:int</code>
+<code>protected var _previousChildIndex:int</code><p>
+   The index of the last child action that was started.
+   Used internally.
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../group/KSStaggeredGroup.html#update()" target="">update()</a>
 </div>
-<a name="_lastStartTime"></a>
+</div>
+<a name="_previousChildStartTime"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">_lastStartTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">_previousChildStartTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var _lastStartTime:int</code>
+<code>protected var _previousChildStartTime:int</code><p>
+   A reference to the last time that <code>update()</code>
+   was called. Used internally. 
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../group/KSStaggeredGroup.html#update()" target="">update()</a>
+</div>
+</div>
+<a name="_previousUpdate"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_previousUpdate</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _previousUpdate:int</code>
 </div>
 <a name="_stagger"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -587,14 +659,6 @@ showHideInherited();
 </tr>
 <tr>
 <td width="20px"></td><td><code>... <span class="label">children</span></code></td>
-</tr>
-</table>
-<br>
-<span class="label">Throws</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code></code> &mdash; - if any children are not of type AbstractSynchronizedAction.
-   </td>
 </tr>
 </table>
 </div>
@@ -674,6 +738,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public override function update(currentTime:int):void</code><p>
+   
    When the first update occurs, all of the child actions are started simultaniously.
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">

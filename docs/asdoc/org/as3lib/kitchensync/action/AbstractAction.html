@@ -134,11 +134,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pauseTime">pauseTime</a> : int<div class="summaryTableDescription">[read-only]
+   The time at which the action was last paused.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_running">_running</a> : Boolean = false<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startTime">_startTime</a> : int<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTime">startTime</a> : int<div class="summaryTableDescription">[read-only]
+   The time at which the action was last started.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 </table>
@@ -273,9 +283,33 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#forceUpdate()">forceUpdate</a>():void</div>
+<div class="summaryTableDescription">
+   Foreces the update() method to fire without being triggered by Synchronizer.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#register()">register</a>():void</div>
+<div class="summaryTableDescription">
+   Adds the action as a listener to the Synchronizer's update event.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#startTimeHasElapsed()">startTimeHasElapsed</a>(currentTime:int):Boolean</div>
 <div class="summaryTableDescription">
    Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
+</td><td class="summaryTableOwnerCol">AbstractAction</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unregister()">unregister</a>():void</div>
+<div class="summaryTableDescription">
+   Removes the action as a listener to the Synchronizer's update event.</div>
 </td><td class="summaryTableOwnerCol">AbstractAction</td>
 </tr>
 </table>
@@ -495,7 +529,7 @@ showHideInherited();
    The time at which the action was last paused.
    </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;actionNS function get pauseTime():int</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get pauseTime():int</code>
 <br>
 </div>
 <a name="_running"></a>
@@ -545,7 +579,7 @@ showHideInherited();
    The time at which the action was last started.
    </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;actionNS function get startTime():int</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get startTime():int</code>
 <br>
 </div>
 <a name="constructorDetail"></a>
@@ -625,7 +659,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>actionNS function forceUpdate():void</code><p>
+<code>protected function forceUpdate():void</code><p>
    Foreces the update() method to fire without being triggered by Synchronizer.
    
    </p><p>
@@ -718,7 +752,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>actionNS function register():void</code><p>
+<code>protected function register():void</code><p>
    Adds the action as a listener to the Synchronizer's update event.
    Used internally.
    </p></div>
@@ -820,7 +854,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>actionNS function unregister():void</code><p>
+<code>protected function unregister():void</code><p>
    Removes the action as a listener to the Synchronizer's update event.
    Used internally.
    </p></div>
