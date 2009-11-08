@@ -1,6 +1,6 @@
 package org.as3lib.kitchensync.action.tween
 {
-	import org.as3lib.kitchensync.action.IAction;
+	import org.as3lib.kitchensync.action.IPrecisionAction;
 	
 	/**
 	 * A special type of action that changes a numeric value
@@ -9,7 +9,7 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
-	public interface ITween extends IAction
+	public interface ITween extends IPrecisionAction
 	{
 		/**
 		 * The function used to interpolated the values between the start and end points.

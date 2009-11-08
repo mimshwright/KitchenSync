@@ -3,8 +3,8 @@ package org.as3lib.kitchensync.action.group
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	
-	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	import org.as3lib.kitchensync.action.*;
+	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	
 	/**
 	 * A parallel group where all children END at the same time instead of starting

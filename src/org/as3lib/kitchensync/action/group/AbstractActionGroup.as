@@ -76,10 +76,15 @@ package org.as3lib.kitchensync.action.group
 		
 		/** @inheritDoc */
 		public function addAction(action:IAction, ... additionalActions):void {
-			_childActions.push(action);
-			if (additionalActions.length > 0) {
-				for each (action in additionalActions) {
-					_childActions.push(action);
+			// add the first action
+			if (action != null) { 
+				_childActions.push(action);
+			}
+			
+			// add additional actions
+			for each (action in additionalActions) {
+				if (action != null) { 
+					_childActions.push(action); 
 				}
 			}
 		}

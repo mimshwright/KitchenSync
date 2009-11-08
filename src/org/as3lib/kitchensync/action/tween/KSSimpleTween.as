@@ -3,6 +3,7 @@ package org.as3lib.kitchensync.action.tween
 	import flash.events.EventDispatcher;
 	
 	import org.as3lib.kitchensync.action.IAction;
+	import org.as3lib.kitchensync.action.IPrecisionAction;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	import org.as3lib.kitchensync.core.Synchronizer;
 	import org.as3lib.kitchensync.easing.EasingUtil;
@@ -39,7 +40,7 @@ package org.as3lib.kitchensync.action.tween
 	 * @since 1.6
 	 */
 	 // todo: review
-	public class KSSimpleTween extends EventDispatcher implements IAction, ITween
+	public class KSSimpleTween extends EventDispatcher implements ITween
 	{
 		/** 
 		 * Duration of tween, not including delay, in milliseconds.
@@ -175,13 +176,22 @@ package org.as3lib.kitchensync.action.tween
 		
 		/** @inheritDoc */
 		public function start():IAction {
+			// get the current timestamp
+			var currentTime:int = Synchronizer.getInstance().currentTime;
+			// record the start time
+			var startTime:int = currentTime + _delay;
+			
+			return startAtTime(startTime);
+		}
+		
+		public function startAtTime(startTime:int):IAction {
 			if (!_running) {
 				// get the current timestamp
 				var currentTime:int = Synchronizer.getInstance().currentTime;
 				// cache the delta
 				_delta = endValue - startValue;
 				// record the start time
-				_startTime = currentTime + _delay;
+				_startTime = startTime
 				// register the class.
 				Synchronizer.getInstance().registerClient(this);
 				_running = true;

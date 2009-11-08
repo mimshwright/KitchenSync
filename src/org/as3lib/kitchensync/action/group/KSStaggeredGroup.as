@@ -1,14 +1,19 @@
 package org.as3lib.kitchensync.action.group
 {
-	import flash.utils.getQualifiedClassName;
-	
 	import org.as3lib.kitchensync.KitchenSync;
+	import org.as3lib.kitchensync.action.*;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.utils.*;
-	import org.as3lib.kitchensync.action.*;
 	
 	/**
 	 * A group of actions that executes in sequence seperated by a specified gap.
+	 * 
+	 * Note that this class extends KSParallelGroup while it behaves more like a 
+	 * KSSequenceGroup. This is because internally, the staggered group is more 
+	 * similar structurally to the parallel group than the sequence. 
+	 * 
+	 * @author Mims Wright
+	 * @since 0.2
 	 */
 	 //TODO: make sure all children execute as expected when framerate is too low to keep up.
 	 // todo: add example
@@ -31,17 +36,34 @@ package org.as3lib.kitchensync.action.group
 			}
 			if (_stagger <= 0) {
 				throw new RangeError("Stagger amount must be an integer greater than 0.");
+				_stagger = 1;
 			}
 		}
 		protected var _stagger:int;
 		
-		protected var _lastStartTime:int;
-		protected var _lastStartIndex:int;
+		
+		/**
+		 * A reference to the last time that <code>update()</code>
+		 * was called. Used internally. 
+		 * @see #update()
+		 */
+		protected var _previousChildStartTime:int;
+		
+		/**
+		 * The index of the last child action that was started.
+		 * Used internally.
+		 * @see #update()
+		 */
+		protected var _previousChildIndex:int;
+		
+		protected var _previousUpdate:int; 
+		
+		
 		
 		/** @inheritDoc */
 		override public function get totalDuration():int {
 			// add the stagger ammount to the total duration.
-			return super.totalDuration + _stagger * childActions.length;
+			return super.totalDuration + _stagger * (childActions.length - 1);
 		}
 		
 		
@@ -53,56 +75,68 @@ package org.as3lib.kitchensync.action.group
 		 *					 The first one will not stagger (but will use the delay for the Staggered object)
 		 * 					 Accepts an integer or a parseable string.
 		 * @params children - a list of AbstractSynchronizedActions that will be added as children of the group.
-		 * 
-		 * @throws TypeError - if any children are not of type AbstractSynchronizedAction.
 		 */
 		public function KSStaggeredGroup (stagger:*, ... children) {
 			super();
-			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is IAction) {
-					var action:IAction = IAction(children[i]);
-					addAction(action); 
-				} else {
-					throw new TypeError ("All children must be of type IAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where IAction was expected.");
-				}
+
+			var l:int = children.length;
+			for (var i:int=0; i < l; i++) {
+				addAction(IAction(children[i]));
 			}
 			this.stagger = stagger;
 		}
 		
 		/** @inheritDoc */
 		override public function start():IAction {
-			_lastStartIndex = -1;
+			_previousChildStartTime = -1;
+			_previousChildIndex = -1;
 			var action:IAction = super.start();
 			return action;
 		}
 		
 		/**
-		 * When the first update occurs, all of the child actions are started simultaniously.
+		 * @inheritDoc 
+		 * 
+		 * When the update happens, if the stagger time sicne the 
+		 * last child started has elapsed, a new child is started.
 		 */
 		override public function update(currentTime:int):void { 
 			if ( startTimeHasElapsed(currentTime) ) {
-				if (!_lastStartTime) {
+				
+				// if this is the first time the group is started, 
+				// reset the number of running children.
+				if (_previousChildStartTime < 0) {
 					_runningChildren = _childActions.length;
 				}
-				if (!_lastStartTime || currentTime - _lastStartTime > _stagger) {
-					_lastStartTime = currentTime;
-					var currentTime:int = currentTime - delay - _startTime;
-					var currentStartIndex:int = Math.floor(currentTime / _stagger);
+				
+				// if this is the first update or 
+				// if the time since the last child started is longer than the stagger time.
+				if ((_previousChildStartTime < 0) || (currentTime - _previousChildStartTime > _stagger)) {
+					// store the currentTime as the last time a child was started.
+					_previousChildStartTime = currentTime;
+					var adjustedCurrentTime:int = currentTime - delay - _startTime;
+					var currentStartIndex:int = Math.floor(adjustedCurrentTime / _stagger);
 					
 					// for all of the indexes since the last index.
-					for (var i:int = _lastStartIndex + 1; i <= currentStartIndex; i++) {
+					for (var i:int = _previousChildIndex + 1; i <= currentStartIndex; i++) {
 						if (i < childActions.length) {
 							var childAction:IAction = IAction(_childActions[i]);
 							// add a listener to each action so that the completion of the entire group can be tracked.
 							childAction.addEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
 							childAction.addEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
 							// start the child action
-							childAction.start();
+							if (childAction is IPrecisionAction) {
+								// offset the start time by the stagger ammount.
+								IPrecisionAction(childAction).startAtTime(_startTime + delay + i * _stagger);
+							} else {
+								childAction.start();
+							}
 						}
 					} 
 					
-					_lastStartIndex = currentStartIndex;
+					_previousChildIndex = currentStartIndex;
 					
+					_previousUpdate = currentTime;
 					
 					// if this is the last child, unregister
 					if (currentStartIndex == _childActions.length - 1) {

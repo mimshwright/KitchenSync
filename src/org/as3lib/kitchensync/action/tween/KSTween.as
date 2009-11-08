@@ -1,10 +1,7 @@
 package org.as3lib.kitchensync.action.tween
 {
-	import flash.errors.IllegalOperationError;
-	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	import org.as3lib.kitchensync.action.*;
-	import org.as3lib.kitchensync.action.tween.*;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.easing.EasingUtil;
 	import org.as3lib.kitchensync.utils.*;
@@ -23,7 +20,7 @@ package org.as3lib.kitchensync.action.tween
 	 */
 	 // todo: review
 	 // todo: add example
-	public class KSTween extends AbstractAction implements ITween
+	public class KSTween extends AbstractAction implements ITween, IPrecisionAction
 	{
 		/**
 		 * Use this property to cause the tween to start from whatever the targetProperty is 
@@ -157,14 +154,20 @@ package org.as3lib.kitchensync.action.tween
 			throw new TypeError("'tweenTarget' parameter must be of type ITweenTarget or of type Array (containting ITweenTarget).");
 		} 
 		
-		/**
-		 * Starts the Tween. 
-		 * 
-		 * @returns A reference to this tween.
-		 */
+		/** @inheritDoc */
 		override public function start():IAction {
+			// use startAtTime with the default start time.
+			return startAtTime(-1);
+		}
+		
+		/** @inheritDoc */
+		public function startAtTime(startTime:int):IAction {
 			if (_tweenTargets && _tweenTargets.length >= 0) { 
-				return super.start();
+				super.start();
+				if (startTime > 0) {
+					_startTime = startTime;
+				}
+				return this;
 			}
 			// else 
 			throw new Error("Tween must have at least one tween target. use addTweenTarget().");

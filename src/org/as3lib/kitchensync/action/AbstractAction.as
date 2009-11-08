@@ -29,6 +29,7 @@ package org.as3lib.kitchensync.action
 	 * @since 0.1
 	 */
 	 // todo: add looping
+	 // todo : optimize by caching the value for startTimeHasElapsed and durationHasElapsed
 	public class AbstractAction extends EventDispatcher implements IJumpableAction
 	{	
 		
@@ -103,13 +104,13 @@ package org.as3lib.kitchensync.action
 		/**
 		 * The time at which the action was last started.
 		 */
-		actionNS function get startTime():int { return _startTime; }
+		protected function get startTime():int { return _startTime; }
 		protected var _startTime:int;
 		
 		/**
 		 * The time at which the action was last paused.
 		 */
-		actionNS function get pauseTime():int { return _pauseTime; }
+		protected function get pauseTime():int { return _pauseTime; }
 		protected var _pauseTime:int;
 		
 		
@@ -334,7 +335,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * @see #update()
 		 */
-		actionNS function forceUpdate():void {
+		protected function forceUpdate():void {
 			update(Synchronizer.getInstance().currentTime);
 		}
 		
@@ -342,7 +343,7 @@ package org.as3lib.kitchensync.action
 		 * Adds the action as a listener to the Synchronizer's update event.
 		 * Used internally.
 		 */
-		actionNS function register():void {
+		protected function register():void {
 			Synchronizer.getInstance().registerClient(this);
 			
 			// since the first update won't occur until the next frame, force one here to make it
@@ -354,7 +355,7 @@ package org.as3lib.kitchensync.action
 		 * Removes the action as a listener to the Synchronizer's update event.
 		 * Used internally.
 		 */
-		actionNS function unregister():void {
+		protected function unregister():void {
 			Synchronizer.getInstance().unregisterClient(this);
 		}
 	}

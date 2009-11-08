@@ -1,7 +1,5 @@
 package org.as3lib.kitchensync.action.group
 {
-	import flash.utils.getQualifiedClassName;
-	
 	import org.as3lib.kitchensync.action.*;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	
@@ -17,20 +15,17 @@ package org.as3lib.kitchensync.action.group
 		/** An internal reference to the remaining child actions that haven't been started. */
 		protected var _remainingActions:Array;
 		
-		/** 
+		/**
 		 * Constructor.
 		 * 
-		 * @param children Any parameters to this function will be added as children of the group.
+		 * @params children - a list of actions that will be added as children of the group.
 		 */
-		public function KSRandomGroup(... children)
-		{
-			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is IAction) {
-					var action:IAction = IAction(children[i]);
-					addAction(action); 
-				} else {
-					throw new TypeError ("All children must be of type IAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where IAction was expected.");
-				}
+		public function KSRandomGroup (... children) {
+			super();
+			
+			var l:int = children.length;
+			for (var i:int=0; i < l; i++) {
+				addAction(IAction(children[i]));
 			}
 		}
 		
