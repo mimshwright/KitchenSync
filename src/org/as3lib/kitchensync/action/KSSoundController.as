@@ -13,7 +13,8 @@ package org.as3lib.kitchensync.action
 	 */
 	 // todo: add example
 	 // todo: review
-	public class KSSoundController extends AbstractAction
+	 // todo: does it make sense to have this be a precision action?
+	public class KSSoundController extends AbstractAction implements IPrecisionAction
 	{
 		/**
 		 * A pointer to the sound object passed into the constructor or created based on the URL.
@@ -92,7 +93,10 @@ package org.as3lib.kitchensync.action
 		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed(currentTime) ) {
 				if (_sound.bytesLoaded == _sound.bytesTotal && _channel == null) {
-					_channel = _sound.play(_soundOffset);
+					// todo: test
+					// adds some precision to the start time of this sound
+					var adjustedSoundOffset:int = _soundOffset + (currentTime - _startTime - _delay)
+					_channel = _sound.play(adjustedSoundOffset);
 					_channel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);
 					unregister();
 				}
@@ -127,6 +131,14 @@ package org.as3lib.kitchensync.action
 		 		_soundPauseTime = _soundOffset;
 		 	}
 		 } 
+
+		/** @inheritDoc */
+		// todo test
+		public function startAtTime(startTime:int):IPrecisionAction {
+			start();
+			_startTime = startTime;
+			return this;
+		}
 
 		/**
 		 * Override the pause functions to pause the actual sound as well as the action.

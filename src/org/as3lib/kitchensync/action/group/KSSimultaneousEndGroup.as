@@ -17,7 +17,16 @@ package org.as3lib.kitchensync.action.group
 	 // todo: review
 	 // todo: add docs
 	public class KSSimultaneousEndGroup extends KSParallelGroup {
+		
+		/**
+		 * The duration of the longest item in the group. 
+		 */
 		private var _longestItemsTotalDuration:int;
+		
+		/**
+		 * Dictionary for tracking the start times of all the children
+		 * in the group. 
+		 */
 		private var _childStartTimes:Dictionary;
 		
 		/** Constructor. */
@@ -33,6 +42,7 @@ package org.as3lib.kitchensync.action.group
 			}
 		}
 		
+		/** @inheritDoc */
 		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed(currentTime) ) {
 				var childAction:IAction;

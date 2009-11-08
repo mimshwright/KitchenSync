@@ -30,7 +30,6 @@ package org.as3lib.kitchensync.action.group
 	 * @author Mims Wright
 	 * @since 0.1
 	 */
-	 // todo: add example
 	public class KSSequenceGroup extends AbstractActionGroup
 	{
 		/**

@@ -9,6 +9,7 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 */
 	 // todo test
+	 // todo : consider deleting this class
 	public class KSMovieClipController extends KSFunction
 	{
 		/** The movie clip that will be targeted by the action. */

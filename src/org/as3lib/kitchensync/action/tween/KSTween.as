@@ -161,7 +161,7 @@ package org.as3lib.kitchensync.action.tween
 		}
 		
 		/** @inheritDoc */
-		public function startAtTime(startTime:int):IAction {
+		public function startAtTime(startTime:int):IPrecisionAction {
 			if (_tweenTargets && _tweenTargets.length >= 0) { 
 				super.start();
 				if (startTime > 0) {

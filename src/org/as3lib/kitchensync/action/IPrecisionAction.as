@@ -23,7 +23,7 @@ package org.as3lib.kitchensync.action
 		 * 
 		 * 
 		 */
-		function startAtTime(startTime:int):IAction;
+		function startAtTime(startTime:int):IPrecisionAction;
 		
 		// todo: make the start time equivelant to the Synchronizer.currentTime at the time of the start() method.
 

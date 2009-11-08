@@ -184,7 +184,7 @@ package org.as3lib.kitchensync.action.tween
 			return startAtTime(startTime);
 		}
 		
-		public function startAtTime(startTime:int):IAction {
+		public function startAtTime(startTime:int):IPrecisionAction {
 			if (!_running) {
 				// get the current timestamp
 				var currentTime:int = Synchronizer.getInstance().currentTime;
