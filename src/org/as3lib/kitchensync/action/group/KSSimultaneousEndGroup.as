@@ -1,21 +1,35 @@
 package org.as3lib.kitchensync.action.group
 {
 	import flash.utils.Dictionary;
-	import flash.utils.getQualifiedClassName;
 	
 	import org.as3lib.kitchensync.action.*;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	
 	/**
-	 * A parallel group where all children END at the same time instead of starting
-	 * at the same time. Instantaneous items will play at the end. 
+	 * A simultaneous-end-group or reverse-parallel-group where where all children 
+	 * END at the same time instead of starting at the same time. Instantaneous items 
+	 * such as KSFunctions will play at the end. 
+	 * 
+	 * @example <listing version="3.0">
+	 * var sprite:Sprite = new Sprite();
+	 * sprite.graphics.beginFill(0);
+	 * sprite.graphics.drawCircle(50,50,20);
+	 * addChild(sprite);
+	 * 
+	 * // In this group, the circle will move from left to right over the course of 5 seconds
+	 * // then 3 seconds in to the animation, the circle will move down as well. 
+	 * // The X and Y animations will end at precicely the same time. 
+	 * 
+	 * var longTween:IAction = new KSSimpleTween(sprite, "x", 0, 200, 5000, 0, Cubic.easeInOut);
+	 * var shortTween:IAction = new KSSimpleTween(sprite, "y", 0, 200, 2000, 0, Cubic.easeInOut);
+	 * 
+	 * var simultaneousEndGroup:IActionGroup = new KSSimultaneousEndGroup(longTween, shortTween);
+	 * simultaneousEndGroup.start(); 
+	 * </listing>
 	 * 
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
-	 // todo: add example
-	 // todo: review
-	 // todo: add docs
 	public class KSSimultaneousEndGroup extends KSParallelGroup {
 		
 		/**
@@ -32,13 +46,9 @@ package org.as3lib.kitchensync.action.group
 		/** Constructor. */
 		public function KSSimultaneousEndGroup (... children) {
 			super();
-			for (var i:int = 0; i < children.length; i++) {
-				if (children[i] is IAction) {
-					var action:IAction = IAction(children[i]);
-					addAction(action); 
-				} else {
-					throw new TypeError ("All children must be of type IAction. Make sure you are not calling start() on the objects you've added to the group. Found " + getQualifiedClassName(children[i]) + " where IAction was expected.");
-				}
+			var l:int = children.length;
+			for (var i:int = 0; i < l; i++) {
+				addAction(IAction(children[i])); 
 			}
 		}
 		
@@ -67,8 +77,6 @@ package org.as3lib.kitchensync.action.group
 						
 						//trace("final start time: " + _childStartTimes[childAction]);
 					}
-					// once this has started, it doesn't need updates anymore.
-					//unregister();
 				}
 				
 				childAction = null;

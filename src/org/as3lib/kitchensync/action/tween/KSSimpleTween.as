@@ -161,7 +161,6 @@ package org.as3lib.kitchensync.action.tween
 				
 				// invoke the easing function.
 				// todo: see if calling the function directly improves performace.
-				// todo: TEST easing mod options.
 				var result:Number =  EasingUtil.call(easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2); 
 				
 				target[property] = result * (endValue - startValue) + startValue;

@@ -7,17 +7,46 @@ package org.as3lib.kitchensync.action.group
 	
 	/**
 	 * A group of actions that executes in sequence seperated by a specified gap.
+	 * This is excellent for creating cascading animations that execute one after
+	 * the other with a slight delay between each. This is functionally equivalent
+	 * to creating a parallel group and adding a delay to each child that gets slightly
+	 * longer for each one. 
 	 * 
 	 * Note that this class extends KSParallelGroup while it behaves more like a 
 	 * KSSequenceGroup. This is because internally, the staggered group is more 
 	 * similar structurally to the parallel group than the sequence. 
 	 * 
+	 * @example <listing version="3.0">
+	 *  
+	 	 var sprite1:Sprite = new Sprite();
+		 sprite1.graphics.beginFill(0);
+		 sprite1.graphics.drawCircle(0,0,20);
+		 addChild(sprite1);
+		 
+		 var sprite2:Sprite = new Sprite();
+		 sprite2.graphics.beginFill(0);
+		 sprite2.graphics.drawCircle(0,0,20);
+		 sprite2.y = 100;
+		 addChild(sprite2);
+
+		 var sprite3:Sprite = new Sprite();
+		 sprite3.graphics.beginFill(0);
+		 sprite3.graphics.drawCircle(0,0,20);
+		 sprite3.y = 200;
+		 addChild(sprite3);
+		 
+		 // animates three circles in a cascading sequence (separated by 200ms).
+		new KSStaggeredGroup(200,
+			new KSSimpleTween(sprite1, "x", 0, 300, 1000, 0, Cubic.easeInOut),
+			new KSSimpleTween(sprite2, "x", 0, 300, 1000, 0, Cubic.easeInOut),
+			new KSSimpleTween(sprite3, "x", 0, 300, 1000, 0, Cubic.easeInOut)
+		).start();
+	 * </listing>
+	 * 
+	 * 
 	 * @author Mims Wright
 	 * @since 0.2
 	 */
-	 //TODO: make sure all children execute as expected when framerate is too low to keep up.
-	 // todo: add example
-	 // todo: review
 	public class KSStaggeredGroup extends KSParallelGroup
 	{	
 		/**
@@ -55,9 +84,6 @@ package org.as3lib.kitchensync.action.group
 		 * @see #update()
 		 */
 		protected var _previousChildIndex:int;
-		
-		protected var _previousUpdate:int; 
-		
 		
 		
 		/** @inheritDoc */
@@ -134,9 +160,8 @@ package org.as3lib.kitchensync.action.group
 						}
 					} 
 					
+					// store the last started child index
 					_previousChildIndex = currentStartIndex;
-					
-					_previousUpdate = currentTime;
 					
 					// if this is the last child, unregister
 					if (currentStartIndex == _childActions.length - 1) {
@@ -159,7 +184,7 @@ package org.as3lib.kitchensync.action.group
 		}
 		
 		override public function toString():String {
-			return "Staggered Group containing " + _childActions.length + " children";
+			return "KSStaggeredGroup [" + _childActions.toString() + "]";
 		}
 	}
 }
