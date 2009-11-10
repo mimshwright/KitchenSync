@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="asdoc.js"></script><script type="text/javascript" language="javascript" src="cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'U Index - KitchenSync';
+				asdocTitle = 'U Index - KitchenSync v2.0';
 				var baseRef = '';
 				window.onload = configPage;
 			--></script>
@@ -149,7 +149,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("UÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSimultaneousEndGroup.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSimultaneousEndGroup.html">KSSimultaneousEndGroup</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td> 
+   When the first update occurs, all of the child actions are started simultaniously.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html#update()">update</a>(currentTime) &mdash; Method in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSStaggeredGroup.html">KSStaggeredGroup</a></td>
@@ -171,7 +172,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("UÂ
 <tr>
 <td width="20"></td><td>
    
-   Update will allow the synchronizer to update the action with the current time.</td>
+   This function will be registered by the register method to respond to update events from the synchronizer.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/ISynchronizerClient.html#update()">update</a>(currentTime) &mdash; Method in interface org.as3lib.kitchensync.core.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a></td>

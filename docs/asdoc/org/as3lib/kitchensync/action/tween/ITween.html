@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'ITween - KitchenSync';
+				asdocTitle = 'ITween - KitchenSync v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
@@ -35,7 +35,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface ITween extends <a href="../IAction.html">IAction</a>, <a href="../../core/ISynchronizerClient.html">ISynchronizerClient</a>, <a href="none">flash.events.IEventDispatcher</a></td>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface ITween extends <a href="../IPrecisionAction.html">IPrecisionAction</a>, <a href="../IAction.html">IAction</a>, <a href="../../core/ISynchronizerClient.html">ISynchronizerClient</a>, <a href="none">flash.events.IEventDispatcher</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Subinterfaces</td><td><a href="../tween/IFilterTweenTarget.html">IFilterTweenTarget</a></td>
@@ -170,6 +170,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <div class="summaryTableDescription">
    Begins the action running.</div>
 </td><td class="summaryTableOwnerCol"><a href="../IAction.html">IAction</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../IPrecisionAction.html#startAtTime()">startAtTime</a>(startTime:int):<a href="../../action/IPrecisionAction.html">IPrecisionAction</a>
+</div>
+<div class="summaryTableDescription">
+   This is used by some groups and by advanced users to start the
+   action at a very specific time down to the millisecond.</div>
+</td><td class="summaryTableOwnerCol"><a href="../IPrecisionAction.html">IPrecisionAction</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">

@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'KSLoader - KitchenSync';
+				asdocTitle = 'KSLoader - KitchenSync v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
@@ -300,7 +300,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#kill()">kill</a>():void</div>
 <div class="summaryTableDescription">
-   </div>
+   
+   Unregisters the action and removes any refrerences to objects that it may be holding onto.</div>
 </td><td class="summaryTableOwnerCol">KSLoader</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -667,6 +668,9 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public override function kill():void</code><p>
+   
+   Unregisters the action and removes any refrerences to objects that it may be holding onto.
+   This is done in an attempt to remove the object from memory. 
    </p></div>
 <a name="onLoadFail()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

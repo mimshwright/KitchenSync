@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'KSSimultaneousEndGroup - KitchenSync';
+				asdocTitle = 'KSSimultaneousEndGroup - KitchenSync v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
@@ -42,8 +42,29 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-  A parallel group where all children END at the same time instead of starting
-  at the same time. Instantaneous items will play at the end. 
+  A simultaneous-end-group or reverse-parallel-group where where all children 
+  END at the same time instead of starting at the same time. Instantaneous items 
+  such as KSFunctions will play at the end. 
+  
+  <p></p>
+<br>
+<span class="label">Example</span>
+<br><div class='listing'><pre>
+  var sprite:Sprite = new Sprite();
+  sprite.graphics.beginFill(0);
+  sprite.graphics.drawCircle(50,50,20);
+  addChild(sprite);
+  
+  // In this group, the circle will move from left to right over the course of 5 seconds
+  // then 3 seconds in to the animation, the circle will move down as well. 
+  // The X and Y animations will end at precicely the same time. 
+  
+  var longTween:IAction = new KSSimpleTween(sprite, "x", 0, 200, 5000, 0, Cubic.easeInOut);
+  var shortTween:IAction = new KSSimpleTween(sprite, "y", 0, 200, 2000, 0, Cubic.easeInOut);
+  
+  var simultaneousEndGroup:IActionGroup = new KSSimultaneousEndGroup(longTween, shortTween);
+  simultaneousEndGroup.start(); 
+  </pre></div>
   
   <p></p>
 <br>
@@ -358,7 +379,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription"> 
+   When the first update occurs, all of the child actions are started simultaniously.</div>
 </td><td class="summaryTableOwnerCol">KSSimultaneousEndGroup</td>
 </tr>
 </table>
@@ -540,7 +562,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function update(currentTime:int):void</code><span class="label">Parameters</span>
+<code>public override function update(currentTime:int):void</code><p> 
+   When the first update occurs, all of the child actions are started simultaniously.
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">currentTime</span>:int</code></td>
