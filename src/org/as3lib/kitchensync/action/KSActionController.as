@@ -1,6 +1,6 @@
 package org.as3lib.kitchensync.action
 {
-	import org.as3lib.kitchensync.action.tween.KSTween;
+	import org.as3lib.kitchensync.action.tween.*;
 	
 	/**
 	 * An action that controls another action when executed. 
