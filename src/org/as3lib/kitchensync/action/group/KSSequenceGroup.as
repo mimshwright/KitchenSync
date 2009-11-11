@@ -25,7 +25,7 @@ package org.as3lib.kitchensync.action.group
 	 * 	transitionIn
 	 * );
 	 * sequence.start();
-	 * </version>
+	 * </listing>
 	 * 
 	 * @author Mims Wright
 	 * @since 0.1
