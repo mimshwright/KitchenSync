@@ -6,7 +6,7 @@ package org.as3lib.kitchensync.easing
 	 * @author Mims Wright
 	 * @since 0.2
 	 */
-	public class EasingUtil
+	public class EasingUtil 
 	{
 		/**
 		 * Provides a way to call an easing function with code-hinting and type checking (sorta). Used internally.
@@ -14,7 +14,7 @@ package org.as3lib.kitchensync.easing
 		 * @throws ArgumentError If the easing function is passed modifiers that it can't handle. (Don't use them unless they're handled by the function)
 		 * @throws Error You may get unexpected results if you use a function that isn't an easing function.
 		 * 
-		 * @param func The function to call - Must be an Easing function.
+		 * @param func The function to call - Must be an Easing function. 
 		 * @param timeElapsed The time since the tween began in milliseconds or frames.
 	     * @param duration The duration of the tween, in milliseconds or frames.
 	     * @param mod1 An optional modifier for the function. Used for tweens such as Back and Elastic.
@@ -23,7 +23,7 @@ package org.as3lib.kitchensync.easing
 	     */
 		public static function call(func:Function, timeElapsed:Number, duration:Number, mod1:Number = NaN, mod2:Number = NaN):Number {
 			var result:Number;
-			try {
+			try { 
 				if (!isNaN(mod1)) {
 					if (!isNaN(mod2)) {
 						result = func.apply(func, [timeElapsed, duration, mod1, mod2]);			

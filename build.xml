@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="kitchensynclib" default="compilelib" basedir=".">
-
+<project name="kitchensynclib" default="build" basedir=".">
 	<!-- Check for the build.properties file and force the user to create one before compiling. -->
 	<available file="build.properties" filePath="." property="customBuildPropertiesExist" />
 	<fail unless="customBuildPropertiesExist" message="You must create a file called 'build.properties' with your local settings in order to use ant with this project." />
@@ -8,12 +7,14 @@
 	<echo message="Successfully loaded properties." />
 	
 	<!-- The Title and version of the Application -->
-	<property name="app.title"  value="KitchenSync"/>
+	<property name="app.title"  value="KitchenSyncLib"/>
 	<property name="app.version" value="2.0" /> <!-- Change this to match the current version of KitchenSyncLib -->
+	<property name="outputName" value="${app.title}-${app.version}" />
 	<echo>${app.title} ${app.version}</echo>
 
 	<!-- The Location of FlexSDK on your Computer -->
 	<property name="flex.sdkPath" location="${flex.path}/sdks/${flex.sdkVersion}"/>
+	<property name="FLEX_HOME" location="${flex.sdkPath}" description="Required by flex ant tasks" />
 	<!-- The Location of flex compilers on your Computer -->
 	<property name="flex.binaryPath" location="${flex.sdkPath}/bin"/>
 	
@@ -35,20 +36,108 @@
 	<property name="project.output.binaryPath" location="${basedir}/bin"/>
 	
 	
-	<target name="compilelib" description="Compiles the kitchensynclib into a SWC library file">
-		<exec executable="${flex.binaryPath}/compc" failonerror="true">
-			<arg line="-source-path ${project.sourcePath}" />
-			<arg line="-library-path ${project.libraryPath}" />
-			<arg line="-include-sources ${project.sourcePath}" />
-			<arg line="-output ${project.output.binaryPath}/kitcheynsynclib.swc"/>
-		</exec>
+	<!-- Define addtional tasks -->
+	
+	<!-- path to the svnant libraries. -->
+	<path id="svnant.classpath">
+		<fileset dir="${project.libraryPath}/ant/svnant">
+			<include name="*.jar"/>
+		</fileset>
+	</path>  
+	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath" />
+	
+	<!-- path to the flex task libraries. -->
+	<path id="flextasks.classpath">
+		<fileset dir="${flex.sdkPath}/ant/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>  
+	<typedef resource="flexTasks.tasks" classpathref="flextasks.classpath" />
+	
+	
+	<!-- Update to the latest version of the source -->
+	<target name="svnUpdate">
+		<echo>Updating to the latest version from SVN</echo>
+		<svn><update dir="." /></svn>
 	</target>
 	
-	<target name="cleandocs" description="Deletes old document files before generating asdocs">
-		<delete dir="${project.output.docsPath}" />
-		<mkdir dir="${project.output.docsPath}" />
+	
+	<target name="buildAll" description="Runs all compile targets">
+		<antcall target="svnUpdate" /> 
+		<antcall target="releaseBuild" />
+		<antcall target="buildEasing" />
+		<antcall target="docs" />
+	</target>
+	  
+	<target name="incrementalBuild">
+		<property name="incremental" value="true" />
+		<antcall target="build" /> 
 	</target>
 	
+	<target name="build" description="Compiles the kitchensynclib into a SWC library file.">
+		<echo>Compiling library. Incremental build = ${incremental}</echo>
+		<compc o="${project.output.binaryPath}/${outputName}.swc" incremental="${incremental}">
+			<sp path-element="${project.sourcePath}" />
+			<library-path dir="${project.libraryPath}" includes="*" />
+			<is dir="${project.sourcePath}" includes="*" />
+		</compc>
+		<echo>Success! Created ${outputName}.swc</echo> 
+	</target>
+	
+	<target name="releaseBuild" description="Compiles the kitchensynclib into a SWC library file and creates a zip of the source.">
+		<antcall target="build" />
+		
+		<echo>Creating temp files.</echo>
+		<property name="tempPath" location="${project.output.binaryPath}/compileTemp" />
+		
+		<delete dir="${tempPath}" description="delete any old temp files." />
+		<mkdir dir="${tempPath}" />
+		
+		<echo>Exporting source code to temp path</echo>
+		<svn>
+			<export srcpath="${project.sourcePath}" destpath="${tempPath}/src" />
+		</svn>
+		
+		<echo>Zipping files</echo>
+		<copy file="${project.output.binaryPath}/${outputName}.swc" toDir="${tempPath}" description="make a copy of the swc in the temp path." />
+		<zip destfile="${project.output.binaryPath}/${outputName}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
+			<zipfileset dir="${tempPath}" />
+		</zip>
+		<delete dir="${tempPath}" description="delete the temp files." />
+		<echo>Created zip file ${outputName}.zip</echo>
+	</target>
+	
+	
+	<target name="buildEasing" description="Compiles the easing functions into a SWC and packages the code and swc into a folder.">
+		
+		<echo>Creating temp files.</echo>
+		<property name="easingName" value="KSEasing" />
+		<property name="tempPath" location="${project.output.binaryPath}/easingTemp" />
+		<property name="tempSrcPath" location="${tempPath}/src" />
+		<property name="easingSrcPath" value="org/as3lib/kitchensync/easing" />
+		<property name="easingBinaryPath" value="${tempPath}/${easingName}.swc" />
+		
+		<delete dir="${tempPath}" description="delete any old temp files." />
+		<mkdir dir="${tempSrcPath}/org/as3lib/kitchensync"/>
+		<svn>
+			<export srcpath="${project.sourcePath}/${easingSrcPath}" destpath="${tempSrcPath}/${easingSrcPath}" />
+		</svn>
+		
+		<echo>Compiling easing code</echo>
+		<compc o="${easingBinaryPath}">
+			<sp path-element="${tempSrcPath}" />
+			<is dir="${tempSrcPath}" includes="*" />
+		</compc>
+		
+		<echo>Success! Created ${easingName}.swc</echo> 
+		<echo>Zipping files</echo>
+		<zip destfile="${project.output.binaryPath}/${easingName}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
+			<zipfileset dir="${tempPath}" />
+		</zip>
+		<delete dir="${tempPath}" description="delete the temp files." />
+		<echo>Created zip file at ${project.output.binaryPath}/${easingName}.zip</echo>
+	</target>
+		
 	<!--
 	Run the ASDoc executable and generate the ASDocs to the new output folder
 	-->
@@ -64,17 +153,6 @@
 		<exec executable="open" description="Opens the completed file for viewing">
 			<arg line="${project.output.docsPath}/index.html" />
 		</exec>
-	</target>
-	
-	<target name="exportsource" description="Creates a zip file of the source files for the library">
-		<zip 
-			destfile="${project.output.binaryPath}/KitchenSyncLib.${app.version}.src.zip" 
-			update="true" whenempty="fail"
-			>
-			<zipfileset dir="src" prefix="src" />
-			<zipfileset dir="docs" prefix="docs" />
-		</zip>
-		<echo message="Created a zip of the source file in the /bin directory." />
 	</target>
 	
 </project>
