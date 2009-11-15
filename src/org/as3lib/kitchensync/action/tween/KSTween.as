@@ -153,7 +153,7 @@ package org.as3lib.kitchensync.action.tween
 			// else
 			throw new TypeError("'tweenTarget' parameter must be of type ITweenTarget or of type Array (containting ITweenTarget).");
 		} 
-		
+
 		/** @inheritDoc */
 		override public function start():IAction {
 			// use startAtTime with the default start time.

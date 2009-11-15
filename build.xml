@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="kitchensynclib" default="build" basedir=".">
-	<!-- Check for the build.properties file and force the user to create one before compiling. -->
-	<available file="build.properties" filePath="." property="customBuildPropertiesExist" />
-	<fail unless="customBuildPropertiesExist" message="You must create a file called 'build.properties' with your local settings in order to use ant with this project." />
-	<property file="build.properties" />
-	<echo message="Successfully loaded properties." />
-	
 	<!-- The Title and version of the Application -->
 	<property name="app.title"  value="KitchenSyncLib"/>
 	<property name="app.version" value="2.0" /> <!-- Change this to match the current version of KitchenSyncLib -->
-	<property name="outputName" value="${app.title}-${app.version}" />
 	<echo>${app.title} ${app.version}</echo>
-
+	
+	<!-- Check for the build.properties file and force the user to create one before compiling. -->
+	<available file="build.properties" filePath="." property="build.propsExist" />
+	<fail unless="build.propsExist" message="You must create a file called 'build.properties' with your local settings in order to use ant with this project." />
+	<property file="build.properties" />
+	<echo message="Successfully loaded properties." />
+	
 	<!-- The Location of FlexSDK on your Computer -->
 	<property name="flex.sdkPath" location="${flex.path}/sdks/${flex.sdkVersion}"/>
 	<property name="FLEX_HOME" location="${flex.sdkPath}" description="Required by flex ant tasks" />
@@ -22,7 +21,6 @@
 	The Location of your Application Classes on your Computer
 	NOTE: This Path should be reletive to the build.xml file.
 	NOTE: ${basedir} is an ant property that represents the directory holding the build.xml file
-	NOTE: I have encountered issues with this folder containing Spaces
 	-->
 	<property name="project.sourcePath" location="${basedir}/src"/>
 	<property name="project.libraryPath" location="${basedir}/libs"/>
@@ -30,10 +28,10 @@
 	<!--
 	The Location you wish to output to on your Computer
 	NOTE: I have encountered issues with this folder containing Spaces
-	NOTE: This location gets DELETED and re-generated each time the build is run
 	-->
 	<property name="project.output.docsPath" location="${basedir}/docs/asdoc"/>
 	<property name="project.output.binaryPath" location="${basedir}/bin"/>
+	<property name="outputName" value="${app.title}-${app.version}" />
 	
 	
 	<!-- Define addtional tasks -->
@@ -148,10 +146,6 @@
 			<arg line="-doc-sources ${project.sourcePath}"/>
 			<arg line="-window-title &quot;${app.title} v${app.version}&quot;"/>
 			<arg line="-output ${project.output.docsPath}"/>
-		</exec>
-		
-		<exec executable="open" description="Opens the completed file for viewing">
-			<arg line="${project.output.docsPath}/index.html" />
 		</exec>
 	</target>
 	
