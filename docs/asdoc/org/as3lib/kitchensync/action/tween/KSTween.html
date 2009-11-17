@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'KSTween - KitchenSync v2.0';
+				asdocTitle = 'KSTween - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
@@ -253,7 +253,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <a class="signatureLink" href="#clone()">clone</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription"> 
-   Creates a copy of the object with all the property values of the original and returns it.</div>
+   Creates a clone which is a deep copy of the action.</div>
 </td><td class="summaryTableOwnerCol">KSTween</td>
 </tr>
 <tr class="">
@@ -305,7 +305,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#kill()">kill</a>():void</div>
 <div class="summaryTableDescription"> 
-   Unregisters the function and removes any refrerences to objects that it may be holding onto.</div>
+   Unregisters the action and removes any refrerences to objects that it may be holding onto.</div>
 </td><td class="summaryTableOwnerCol">KSTween</td>
 </tr>
 <tr class="">
@@ -362,7 +362,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <a class="signatureLink" href="#start()">start</a>():<a href="../../action/IAction.html">IAction</a>
 </div>
 <div class="summaryTableDescription"> 
-   
    Begins the action running.</div>
 </td><td class="summaryTableOwnerCol">KSTween</td>
 </tr>
@@ -406,7 +405,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
 <div class="summaryTableDescription">
    
-   This function will be registered by the register method to respond to update events from the synchronizer.</div>
+   Update will allow the synchronizer to update the action with the current time.</div>
 </td><td class="summaryTableOwnerCol">KSTween</td>
 </tr>
 </table>
@@ -774,14 +773,18 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public override function clone():<a href="../../action/IAction.html">IAction</a></code><p> 
-   Creates a copy of the object with all the property values of the original and returns it.
-   This method should be overrided by child classes to ensure that all properties are copied.
-   
+   Creates a clone which is a deep copy of the action.
+   States (e.g. isRunning will not be copied)
+    
    </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code></td>
+<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code> &mdash; 
+                        An exact copy of the action. 
+   
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -936,8 +939,8 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public override function kill():void</code><p> 
-   Unregisters the function and removes any refrerences to objects that it may be holding onto.
-   Subclass this function to remove references to objects used by the action.
+   Unregisters the action and removes any refrerences to objects that it may be holding onto.
+   This is done in an attempt to remove the object from memory. 
    </p></div>
 <a name="newWithTweenTarget()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -1047,7 +1050,6 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public override function start():<a href="../../action/IAction.html">IAction</a></code><p> 
-   
    Begins the action running. The action will execute whatever it is
    meant to do when the <code>start()</code> method is called (and after the 
    <code>delay</code> time has elapsed).
@@ -1126,14 +1128,12 @@ showHideInherited();
 <div class="detailBody">
 <code>public override function update(currentTime:int):void</code><p>
    
-   This function will be registered by the register method to respond to update events from the synchronizer.
-   Code that performs the action associated with this object should go in this function.
-   This function must be implemented by the subclass.
+   Update will allow the synchronizer to update the action with the current time.
    
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">currentTime</span>:int</code> &mdash; The current timestamp from the Synchronizer.
+<td width="20px"></td><td><code><span class="label">currentTime</span>:int</code> &mdash; The current time from the synchronizer. 
    </td>
 </tr>
 </table>

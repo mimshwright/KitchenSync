@@ -7,15 +7,12 @@
 	
 	<!-- Check for the build.properties file and force the user to create one before compiling. -->
 	<available file="build.properties" filePath="." property="build.propsExist" />
-	<fail unless="build.propsExist" message="You must create a file called 'build.properties' with your local settings in order to use ant with this project." />
+	<fail unless="build.propsExist" message="You must create a file called 'build.properties' with your local settings in order to use ant with this project. You can use the build.properties.template file as a starting point." />
 	<property file="build.properties" />
 	<echo message="Successfully loaded properties." />
 	
-	<!-- The Location of FlexSDK on your Computer -->
-	<property name="flex.sdkPath" location="${flex.path}/sdks/${flex.sdkVersion}"/>
+	<!-- The Location of FlexSDK on your Computer. Required by Flex ant tasks -->
 	<property name="FLEX_HOME" location="${flex.sdkPath}" description="Required by flex ant tasks" />
-	<!-- The Location of flex compilers on your Computer -->
-	<property name="flex.binaryPath" location="${flex.sdkPath}/bin"/>
 	
 	<!--
 	The Location of your Application Classes on your Computer
@@ -24,6 +21,7 @@
 	-->
 	<property name="project.sourcePath" location="${basedir}/src"/>
 	<property name="project.libraryPath" location="${basedir}/libs"/>
+	<property name="ant.libsPath" location="${project.libraryPath}/ant" />
 		
 	<!--
 	The Location you wish to output to on your Computer
@@ -31,26 +29,26 @@
 	-->
 	<property name="project.output.docsPath" location="${basedir}/docs/asdoc"/>
 	<property name="project.output.binaryPath" location="${basedir}/bin"/>
-	<property name="outputName" value="${app.title}-${app.version}" />
+	<property name="project.output.name" value="${app.title}-${app.version}" />
 	
 	
 	<!-- Define addtional tasks -->
 	
 	<!-- path to the svnant libraries. -->
 	<path id="svnant.classpath">
-		<fileset dir="${project.libraryPath}/ant/svnant">
+		<fileset dir="${ant.libsPath}/svnant">
 			<include name="*.jar"/>
 		</fileset>
 	</path>  
 	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath" />
 	
 	<!-- path to the flex task libraries. -->
-	<path id="flextasks.classpath">
-		<fileset dir="${flex.sdkPath}/ant/lib">
+	<path id="flex.tasksClasspath">
+		<fileset dir="${flex.antLibsPath}">
 			<include name="*.jar"/>
 		</fileset>
 	</path>  
-	<typedef resource="flexTasks.tasks" classpathref="flextasks.classpath" />
+	<typedef resource="flexTasks.tasks" classpathref="flex.tasksClasspath" />
 	
 	
 	<!-- Update to the latest version of the source -->
@@ -74,12 +72,12 @@
 	
 	<target name="build" description="Compiles the kitchensynclib into a SWC library file.">
 		<echo>Compiling library. Incremental build = ${incremental}</echo>
-		<compc o="${project.output.binaryPath}/${outputName}.swc" incremental="${incremental}">
+		<compc o="${project.output.binaryPath}/${project.output.name}.swc" incremental="${incremental}">
 			<sp path-element="${project.sourcePath}" />
 			<library-path dir="${project.libraryPath}" includes="*" />
 			<is dir="${project.sourcePath}" includes="*" />
 		</compc>
-		<echo>Success! Created ${outputName}.swc</echo> 
+		<echo>Success! Created ${project.output.name}.swc</echo> 
 	</target>
 	
 	<target name="releaseBuild" description="Compiles the kitchensynclib into a SWC library file and creates a zip of the source.">
@@ -97,12 +95,12 @@
 		</svn>
 		
 		<echo>Zipping files</echo>
-		<copy file="${project.output.binaryPath}/${outputName}.swc" toDir="${tempPath}" description="make a copy of the swc in the temp path." />
-		<zip destfile="${project.output.binaryPath}/${outputName}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
+		<copy file="${project.output.binaryPath}/${project.output.name}.swc" toDir="${tempPath}" description="make a copy of the swc in the temp path." />
+		<zip destfile="${project.output.binaryPath}/${project.output.name}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
 			<zipfileset dir="${tempPath}" />
 		</zip>
 		<delete dir="${tempPath}" description="delete the temp files." />
-		<echo>Created zip file ${outputName}.zip</echo>
+		<echo>Created zip file ${project.output.name}.zip</echo>
 	</target>
 	
 	

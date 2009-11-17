@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'IFilterTweenTarget - KitchenSync v2.0';
+				asdocTitle = 'IFilterTweenTarget - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
@@ -35,7 +35,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IFilterTweenTarget extends <a href="ITweenTarget.html">ITweenTarget</a>, <a href="INumericController.html">INumericController</a></td>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IFilterTweenTarget extends <a href="ITweenTarget.html">ITweenTarget</a>, <a href="none">org.as3lib.math.INumericController</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Implementors</td><td><a href="../tween/AbstractColorMatrixTweenTarget.html">AbstractColorMatrixTweenTarget</a>, <a href="../tween/FilterTargetProperty.html">FilterTargetProperty</a>, <a href="../tween/SimpleBlurTweenTarget.html">SimpleBlurTweenTarget</a></td>
@@ -71,13 +71,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="INumericController.html#currentValue">currentValue</a> : Number<div class="summaryTableDescription">
-   This is the current value of the number.</div>
-</td><td class="summaryTableOwnerCol"><a href="INumericController.html">INumericController</a></td>
-</tr>
-<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="ITweenTarget.html#endValue">endValue</a> : Number<div class="summaryTableDescription">
-   The value that the tweenTarget will end on.</div>
+   The value that the tweenTarget will tween to.</div>
 </td><td class="summaryTableOwnerCol"><a href="ITweenTarget.html">ITweenTarget</a></td>
 </tr>
 <tr class="">
@@ -111,7 +106,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <div class="summarySignature">
 <a class="signatureLink" href="ITweenTarget.html#clone()">clone</a>():<a href="../tween/ITweenTarget.html">ITweenTarget</a>
 </div>
-<div class="summaryTableDescription"> Create a copy of the tweenTarget object </div>
+<div class="summaryTableDescription"> 
+   Creates a deep copy of the tweenTarget object.</div>
 </td><td class="summaryTableOwnerCol"><a href="ITweenTarget.html">ITweenTarget</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -119,7 +115,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <div class="summarySignature">
 <a class="signatureLink" href="ITweenTarget.html#reset()">reset</a>():void</div>
 <div class="summaryTableDescription"> 
-   Reset the value to it's pre-tweened state.</div>
+   Resets the current value to it's initial pre-tweened state.</div>
 </td><td class="summaryTableOwnerCol"><a href="ITweenTarget.html">ITweenTarget</a></td>
 </tr>
 <tr class="hideInheritedMethod">

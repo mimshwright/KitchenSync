@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'KSSequenceGroup - KitchenSync v2.0';
+				asdocTitle = 'KSSequenceGroup - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
@@ -55,7 +55,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
   <p></p>
 <br>
 <span class="label">Example</span>
-<br><div class='listing'><pre></pre></div><p></p>
+<br><div class='listing'><pre>
+  var transitionOut:KSTween = new KSTween(...) // some transition-OUT tween
+  var transitionIn:KSTween = new KSTween(...) // some transition-IN tween
+  var myFunction:KSFunction = new KSFunction (...) // some function
+  
+  // play the transition out, then some function, then the transition in.
+  var sequence:KSSequenceGroup = new KSSequenceGroup (
+   transitionOut,
+   myFunction,
+   transitionIn
+  );
+  sequence.start();
+  </pre></div>
+  
+  <p></p>
 <br>
 <hr>
 </div>

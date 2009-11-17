@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
 <!--
-				asdocTitle = 'ITweenTarget - KitchenSync v2.0';
+				asdocTitle = 'ITweenTarget - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
@@ -35,7 +35,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface ITweenTarget extends <a href="INumericController.html">INumericController</a></td>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface ITweenTarget extends <a href="none">org.as3lib.math.INumericController</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Subinterfaces</td><td><a href="../tween/IFilterTweenTarget.html">IFilterTweenTarget</a></td>
@@ -45,41 +45,49 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </tr>
 </table>
 <p></p>
-  A bundle that wraps up a property or other value that can be tweened by a KSTween.
-  Generally speaking, a KSTween will handle anything related to the timing of the tween
-  while the ITweenTarget handles anything related to the values of the tween.
+  A <em>tween target</em> is a bundle that wraps up a property or other value that can be 
+  tweened by a KSTween object.
+  In most cases, this will be a property of an object (see TargetProperty class) but it 
+  could also be something more complex like a tween target that sets the scaleX and scaleY
+  of a sprite simultaneously or a property of a filter (which can't be set directly). 
   
+  Tween targets are useful because they allow the value-setting portion of a tween to be
+  abstracted away and seperated from the timing and easing. This allows a variety of differnt
+  types of values, such as filter properties, colors, and sound panning, to be set without 
+  subclassing KSTween for every instance. It also allows for a single KSTween object to 
+  control multiple tween targets.  
+  
+  The tween target bundle will have a start and end value as well as providing an accessor
+  to the current value of the target (via INumericController). 
+  
+  Generally speaking, a KSTween will handle anything related to the timing of the tween
+  while the ITweenTarget handles anything related to the values of the tween. For example,
+  KSTween holds the duration of the tween and the controls for starting, stopping and pausing
+  while the tween target has the start and end values and holds a reference to the object
+  to be tweened.
+    
   <p></p>
 <p>
 <span class="classHeaderTableLabel">See also</span>
 </p>
-<div class="seeAlso">org.as3lib.kitchensync.action.KSTween</div>
+<div class="seeAlso">
+<a href="KSTween.html" target="">KSTween</a>
+<br>
+<a href="TargetProperty.html" target="">TargetProperty</a>
+</div>
 <br>
 <hr>
 </div>
 <a name="propertySummary"></a>
 <div class="summarySection">
 <div class="summaryTableTitle">Public Properties</div>
-<div class="showHideLinks">
-<div class="hideInheritedProperty" id="hideInheritedProperty">
-<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
-</div>
-<div class="showInheritedProperty" id="showInheritedProperty">
-<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
-</div>
-</div>
 <table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
 <tr>
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="INumericController.html#currentValue">currentValue</a> : Number<div class="summaryTableDescription">
-   This is the current value of the number.</div>
-</td><td class="summaryTableOwnerCol"><a href="INumericController.html">INumericController</a></td>
-</tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#endValue">endValue</a> : Number<div class="summaryTableDescription">
-   The value that the tweenTarget will end on.</div>
+   The value that the tweenTarget will tween to.</div>
 </td><td class="summaryTableOwnerCol">ITweenTarget</td>
 </tr>
 <tr class="">
@@ -101,7 +109,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():<a href="../tween/ITweenTarget.html">ITweenTarget</a>
 </div>
-<div class="summaryTableDescription"> Create a copy of the tweenTarget object </div>
+<div class="summaryTableDescription"> 
+   Creates a deep copy of the tweenTarget object.</div>
 </td><td class="summaryTableOwnerCol">ITweenTarget</td>
 </tr>
 <tr class="">
@@ -109,7 +118,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <div class="summarySignature">
 <a class="signatureLink" href="#reset()">reset</a>():void</div>
 <div class="summaryTableDescription"> 
-   Reset the value to it's pre-tweened state.</div>
+   Resets the current value to it's initial pre-tweened state.</div>
 </td><td class="summaryTableOwnerCol">ITweenTarget</td>
 </tr>
 <tr class="">
@@ -137,7 +146,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>endValue:Number</code>&nbsp;&nbsp;[read-write]<p>
-   The value that the tweenTarget will end on.
+   The value that the tweenTarget will tween to.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endValue():Number</code>
@@ -170,13 +179,28 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clone():<a href="../tween/ITweenTarget.html">ITweenTarget</a></code><p> Create a copy of the tweenTarget object </p><p></p>
+<code>public function clone():<a href="../tween/ITweenTarget.html">ITweenTarget</a></code><p> 
+   Creates a deep copy of the tweenTarget object.
+   Does not copy the state of the object (such as 
+   its current progress in the tween).
+   
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../tween/ITweenTarget.html">ITweenTarget</a></code></td>
+<td width="20"></td><td><code><a href="../tween/ITweenTarget.html">ITweenTarget</a></code> &mdash; 
+                        ITweenTarget a clone of the tween target object 
+   
+                        
+                     </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="KSTween.html#clone()" target="">KSTween.clone()</a>
+</div>
 </div>
 <a name="reset()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -186,9 +210,17 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public function reset():void</code><p> 
-   Reset the value to it's pre-tweened state.
-   (typically, sets the currentValue equal to the startValue) 
-   </p></div>
+   Resets the current value to it's initial pre-tweened state.
+   (typically, sets the currentValue equal to the startValue).
+   This is usually called by the reset() method of the KSTween class.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="KSTween.html#reset()" target="">KSTween.reset()</a>
+</div>
+</div>
 <a name="updateTween()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -204,7 +236,7 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">percentComplete</span>:Number</code> &mdash; a number between 0 and 1 (but sometimes more or less) that represents
-       the percentage of the tween that has been completed. This should update
+       the percentage of the tween that has been completed. This should update the currentValue.
    </td>
 </tr>
 </table>
@@ -213,9 +245,14 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20"></td><td><code>Number</code> &mdash; Number the new current value of the tween.
+   
    </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">KSTween.update()</div>
 <br>
 <span class="label">Example</span>
 <br>Typically this is implemented as such: 
