@@ -6,3 +6,12 @@ flex.sdkVersion=3.4.0
 
 # The home directory for flex on your computer.
 flex.path=/Applications/Adobe Flex Builder 3 Plug-in
+
+# The directory containing your flex SDK files.
+flex.sdkPath=${flex.path}/sdks/${flex.sdkVersion}
+
+# The Location of flex compilers on your Computer.
+flex.binaryPath=${flex.sdkPath}/bin
+
+# The location of the flex ant tasks on your computer.
+flex.antLibsPath=${flex.sdkPath}/ant/lib
