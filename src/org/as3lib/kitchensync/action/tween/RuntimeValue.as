@@ -21,14 +21,32 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims H. Wright
 	 */
 	// todo: check syntax in the example
-	// todo: implement
 	// todo: make TweenTargets use this class behind the scenes.
 	public class RuntimeValue
 	{
+		/** The object from which to pull the value. */
+		private var _target:Object;
 		
+		/** The property name to get from <code>target</code>. */
+		private var _property:String;
 		
-		public function RuntimeValue()
+		/** 
+		 * Returns the value. 
+		 */
+		public function get value():Number {
+			return Number(_target[_property]);
+		}
+		
+		/**
+		 * Constructor.
+		 * 
+		 * @param target The object from which to pull the value.
+		 * @param property The property name to get from <code>target</code>.
+		 */
+		public function RuntimeValue(target:Object, property:String)
 		{
+			_target = target;
+			_property = property;
 		}
 	}
 }

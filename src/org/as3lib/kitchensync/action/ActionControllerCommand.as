@@ -6,7 +6,7 @@ package org.as3lib.kitchensync.action
 	 * @see ActionController
 	 */
 	 // todo: blog about this method for doing enumerations
-	public class ActionControllerCommand
+	final public class ActionControllerCommand
 	{
 		/** start() command. */
 		public static const START:ActionControllerCommand = new ActionControllerCommand("start");

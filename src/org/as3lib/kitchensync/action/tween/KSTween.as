@@ -123,10 +123,8 @@ package org.as3lib.kitchensync.action.tween
 				addTweenTarget(new TargetProperty(target, property, startValue, endValue));
 			}
 			
+			// todo: move to ITweenTarget?
 			snapToValueOnComplete = KitchenSyncDefaults.snapToValueOnComplete;
-			
-			//note: moved to ITweenTarget
-			//snapToWholeNumber = KitchenSyncDefaults.snapToWholeNumber;
 			
 			this.duration = duration;
 			this.delay = delay;
