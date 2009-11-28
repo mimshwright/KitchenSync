@@ -46,6 +46,8 @@ RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong ev
 
 REMOVED eventType and useWeakReferences class properties of KSEventDispatcher. Modified other methods for garbage collection.
 
+REMOVED KSMovieClipController since it didn't seem to add much and could be confused easily with TimelineController.
+
 REFACTORED tweens.
 ADDED easing related accessors to ITween.
 MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
