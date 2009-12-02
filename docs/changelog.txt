@@ -50,6 +50,7 @@ REMOVED KSMovieClipController since it didn't seem to add much and could be conf
 
 REFACTORED tweens.
 ADDED easing related accessors to ITween.
+RENAMED methods in TweenFactory.
 MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
 ADDED SoundTransformProperties and refactored SoundTransformTarget
 

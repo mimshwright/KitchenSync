@@ -1,5 +1,8 @@
 package org.as3lib.kitchensync.action.tween
 {
+	import flash.display.DisplayObject;
+	import flash.geom.Point;
+	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	
 	/**
@@ -11,6 +14,18 @@ package org.as3lib.kitchensync.action.tween
 	 // todo: review
 	final public class TweenFactory
 	{
+		
+		/**
+		 * When set to true, functions generate a simpler version of tweens when possible.
+		 * 
+		 * @see KSSimpleTween
+		 */
+		public static var useSimpleTweens:Boolean = true;
+		
+		/** 
+		 * An instance of the object parser to use when parsing objects.
+		 * @see #newTweenFromObject() 
+		 */
 		public static var objectParser:ITweenObjectParser = KitchenSyncDefaults.tweenObjectParser;
 		
 		/** 
@@ -22,7 +37,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @param parameters An object that contains properties that define the new tween
 		 * @return A new tween.
 		 */ 
-		public static function newTween(parameters:Object):ITween {
+		public static function newTweenFromObject(parameters:Object):ITween {
 			return objectParser.parseObject(parameters);
 		}
 		
@@ -39,10 +54,24 @@ package org.as3lib.kitchensync.action.tween
 		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 */
-		public static function newWithTargetProperty(target:Object = null, property:String = "", startValue:Number = 0, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+		public static function newTween(target:Object = null, property:String = "", startValue:Number = 0, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
 			return new KSTween(target, property, startValue, endValue, duration, delay, easingFunction);
 		}
 
+		
+		public static function newPositionTween(target:Object, startValue:Point, endValue:Point, duration:* = 0, delay:* = 0, easingFunciton:Function = null):KSTween {
+			var x:ITweenTarget = new TargetProperty(target, "x", startValue.x, endValue.x);
+			var y:ITweenTarget = new TargetProperty(target, "y", startValue.y, endValue.y);
+			return newWithTargets([x,y], duration, delay, easingFunciton);
+		} 
+		
+		// Todo: see if there's a point3d class. 
+		public static function newPositionTween3D(target:Object, startValue:Array, endValue:Array, duration:* = 0, delay:* = 0, easingFunciton:Function = null):KSTween {
+			var x:ITweenTarget = new TargetProperty(target, "x", Number(startValue[0]), Number(endValue[0]));
+			var y:ITweenTarget = new TargetProperty(target, "y", Number(startValue[1]), Number(endValue[1]));
+			var z:ITweenTarget = new TargetProperty(target, "z", Number(startValue[2]), Number(endValue[2]));
+			return newWithTargets([x,y,z], duration, delay, easingFunciton);
+		} 
 
 		/**
 		 * Creates a new KSTween using an ITweenTarget that you pass into it.
@@ -53,9 +82,28 @@ package org.as3lib.kitchensync.action.tween
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
 		 * @return A new KSTween object.
 		 */
-		public static function newWithTweenTarget(tweenTarget:*, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+		public static function newWithTargets(tweenTarget:*, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
 			return KSTween.newWithTweenTarget(tweenTarget, duration, delay, easingFunction);
 		} 
 
+		
+		/**
+		 * Creates a tween to control a filter property.
+		 * 
+		 * @see FilterTweenTarget
+		 * 
+		 * @param target The target object of the tween. 
+		 * @param the filter of the target to tween.
+		 * @param targetProperty The property of the filter to tween.
+		 * @param startValue - the value to tween the property to. After the tween is done, this will be the value of the property.
+		 * @param endValue - the starting value of the tween. By default, this is the value of the property before the tween begins.
+		 * @param duration - the time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
+		 * @return A new KSTween object.
+		 */
+		public static function newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:*, delay:* = 0, easingFunction:Function = null):KSTween {
+			return KSTween.newWithTweenTarget(new FilterTargetProperty(target, filter, filterProperty, startValue, endValue), duration, delay, easingFunction);
+		}
 	}
 }

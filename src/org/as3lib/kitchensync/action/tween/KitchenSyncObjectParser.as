@@ -1,25 +1,14 @@
 package org.as3lib.kitchensync.action.tween
 {
-	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	import org.as3lib.kitchensync.action.tween.*;
 	
-	// todo : add docs
-	// todo : review
-	// todo : add more functionality
-	// todo : rename this class
-	public class KitchenSyncObjectParser implements ITweenObjectParser {
+	public final class KitchenSyncObjectParser implements ITweenObjectParser {
 		
-		public static const TARGET:String 			= "target";
-		public static const TARGETS:String 			= "targets";
-		public static const DURATION:String			= "duration";
-		public static const DELAY:String 			= "delay";
-		public static const EASING_FUNCTION:String	= "easingFunction";
-		public static const EASING_MOD1:String		= "easingMod1";
-		public static const EASING_MOD2:String		= "easingMod2";
-		public static const PROPERTIES:String		= "properties";
-		public static const SYNC:String				= "sync";
-		public static const SNAP_TO_WHOLE:String	= "snapToWholeNumbers"; 
-		public static const SNAP_TO_VALUE:String	= "snapToValueOnComplete";
+		// Stores some special case keywords.
+		private static var TARGET_KEYWORD:Keyword;
+		private static var SCALE_KEYWORD:Keyword;
+		private static var MOVE_KEYWORD:Keyword;
+		private static var FILTER_KEYWORD:Keyword;
 		
 		private static const PROP_DELIMITER:RegExp = /\s*,\s*/;
 		private static const PROP_VALUE_DELIMITER:RegExp = /\s*(=|:)\s*/;
@@ -27,232 +16,84 @@ package org.as3lib.kitchensync.action.tween
 		private static const START_VALUE_MARKER:RegExp = /(_start|Start|_from|From)/;
 		private static const END_VALUE_MARKER:RegExp = /(_end|End|_to|To)/;
 		
-		public function get keywords():Array
-		{
-			return _keywords;
+		/** A collection of all keyword objects. */
+		private var _keywords:Array = [];
+		
+		/** An array of every string defined as a keyword in a single array of strings. */
+		private var _allKeywords:Array = [];
+		
+		/** Adds a keyword to the list of reserved words. */
+		private function addKeyword(keyword:Keyword):void { 
+			_keywords.push(keyword);
+			_allKeywords.concat(keyword.allKeywords);
 		}
 		
-		protected var _keywords:Array = [
-			TARGET, TARGETS, PROPERTIES,
-			DURATION, DELAY,
-			EASING_FUNCTION, EASING_MOD1, EASING_MOD2,
-			SYNC, SNAP_TO_VALUE, SNAP_TO_WHOLE
-		];
-		
-		public function parseObject(parameters:Object):ITween {
-			// set up initial tween.
-			var tween:KSTween = new KSTween();
-			
-			tween.duration = parseDuration(parameters);
-			tween.delay = parseDelay(parameters);
-			tween.easingFunction = parseEasingFunction(parameters);
-//			tween.sync = parseSync(parameters);
-			
-			
-			var mod1:* = parseMod1(parameters);
-			var mod2:* = parseMod2(parameters);
-
-			if (mod1) { tween.easingMod1 = mod1; }
-			if (mod2) { tween.easingMod2 = mod2; }
-			
-			var targets:Array = parseTargets(parameters);
-			//trace("targets:",targets);
-			var properties:Array = [];
-			var explicitProperties:Array = parseProperties(parameters);
-			var stringProperties:Array = parsePropertiesString(parameters);
-			properties = properties.concat(explicitProperties, stringProperties);
-			//trace("properties (" + properties.length + "):",properties);
-			
-			var i:int, j:int;
-			var target:Object;
-			var propertyData:PropertyData;
-			var tweenTarget:ITweenTarget;
-			
-			for (i = 0; i < targets.length; i ++) {
-				target = targets[i];
-				for (j = 0; j < properties.length; j++) {
-					propertyData = properties[j] as PropertyData;
-					if (propertyData != null) {
-						tweenTarget = new TargetProperty(
-										target, 
-										propertyData.propertyName,
-										propertyData.startValue,
-										propertyData.endValue
-									  );
-														
-						tween.addTweenTarget(tweenTarget);
-					}
-				}
-			} 
-			
-			return tween;
-		}
-		
-		private function parseTargets(parameters:Object):Array {
-			// extract raw data.
-			var targets:Array, target:Object;
-			
-			targets = getFirstDefinedValue(parameters, "targets") as Array;
-			// determine which value to use.
-			if (targets != null && targets.length > 0) {
-				return targets;
-			} 
-			
-			target = getFirstDefinedValue(parameters, "target") as Object;
-			if (target != null) {
-				return [target];
+		/** Traces a description of the keywords available. */
+		public function describeKeywords():void {
+			for each (var keyword:Keyword in _keywords) {
+				trace(keyword.toString());
 			}
-			throw new SyntaxError("At least one target must be defined");
 		}
 		
-//		private function parseSync(parameters:Object):Boolean {
-//			var sync:Object = getFirstDefinedValue(parameters, "sync") as Boolean;
-//			if (sync != null) {
-//				return sync as Boolean;
-//			}
-//			return KitchenSyncDefaults.sync;
-//		}
-		
-		private function parseEasingFunction(parameters:Object):Function {
-			var easingFunction:Function = getFirstDefinedValue(parameters, "easingFunction", "easing", "ease") as Function;
-			if (easingFunction != null) {
-				return easingFunction;
-			}
-			return null;
-		}
-		
-		private function parseDuration(parameters:Object):* {
-			var duration:* = getFirstDefinedValue(parameters, "duration");
-			if (isNaN(duration)) {
-				if (duration == null) {
-					// default to 1 second
-					return 1000;
-				}
-			} 
-			return duration;
-		}
-
-		private function parseDelay(parameters:Object):* {
-			var delay:* = getFirstDefinedValue(parameters, "delay", "offset");
-			return delay;
-		}
-		
-		
-		private function parseProperties(paramerters:Object):Array {
-			var resultsArray:Array = new Array();
-			var property:String;
-			var startValue:Number;
-			var endValue:Number;
+		public function KitchenSyncObjectParser() {
+			addKeyword(new Keyword("duration", Object, true, "An integer or a parsable time string for the duration of the tween.", 1000, "time", "dur", "d"));
+			addKeyword(new Keyword("delay", Object, true, "An integer or a parsable time string for the delay of the tween.", 0, "offset", "del"));
+			addKeyword(new Keyword("easingFunction", Function, true, "The easing function for this tween." , null, "easing", "ease", "e"));
+			addKeyword(new Keyword("easingMod1", Number, true, "An optional modifier for the easing function.", NaN, "mod1", "mod"));
+			addKeyword(new Keyword("easingMod2", Number, true, "An optional modifier for the easing function.", NaN, "mod2"));
+			addKeyword(new Keyword("autoDelete", Boolean, true, "When true, the tween will attempt to delete itself upon completion.", false));
+			addKeyword(new Keyword("snapToValueOnComplete", Boolean, true, "A boolean for whether to snap to the endValue on the completion of the tween (regardless of the easingFunciton results).", true));
+			addKeyword(new Keyword("description", String, true, "A description of the tween.", "Tween generated by KitchenSyncObjectParser"));
 			
-			for (var key:String in paramerters) {
-				if (keywords.indexOf(key) < 0) {
-					var data:PropertyData = new PropertyData();
-					// check for ~ notation 
-					var string:String = paramerters[key].toString();				
-					if (string.search("~") >= 0) {
-						var values:Array = string.split("~");
-						data.propertyName = key;
-						data.startValue = values[0];
-						data.endValue = values[1];
-					} else {
-						// check for _start / _end notation.
-						var startStringIndex:int = key.search(START_VALUE_MARKER);
-						var endStringIndex:int = key.search(END_VALUE_MARKER);
-						if (startStringIndex >= 0) {
-							data.propertyName = key.slice(0, startStringIndex);
-							data.startValue = paramerters[key] as Number; 
-							data.endValue = getFirstDefinedValue(paramerters, 	data.propertyName + "_end", 
-																				data.propertyName + "End",
-																				data.propertyName + "_to",
-																				data.propertyName + "To") as Number;
-							if (isNaN(data.endValue)) {
-								data.endValue = KSTween.VALUE_AT_START_OF_TWEEN;
-							}
-							
-							resultsArray.push(data);
-							continue;
-						} else {
-							// ignore it.
-							continue;
-						}
-					} 
-					// check results for keywords.
-					switch (data.propertyName) {
-						case "scale":
-							resultsArray.push(new PropertyData("scaleX", data.startValue, data.endValue));
-							resultsArray.push(new PropertyData("scaleY", data.startValue, data.endValue));
-						break;
-						
-						default:
-							// push results onto array to later be converted into tween targets.
-							resultsArray.push(data);
-					}
-				}
-			}
-			return resultsArray;
+			// keywords ignored by automatic parsing that need special handling.
+			TARGET_KEYWORD = new Keyword("target", Object, false, "A single target or an array of targets of the tween.", null, "targets", "t");
+			SCALE_KEYWORD = new Keyword("scale", Number, false, "A shortcut property for scaling x and y at once.");
+			FILTER_KEYWORD = new Keyword("filterType", Class, false, "A reference to the filter type whose properties you want to control with this tween. NOTE: If this is defined, all the properties will affect the filter, not the target.", null, "filter");
+//			MOVE_KEYWORD = new Keyword("move", Number, false, "A shortcut property for moving x and y at once. There are three ways to use this: 1. move:'(x,y)~(x,y)', 2. moveFrom:'x,y', moveTo:'x,y', 3. moveFrom: newPoint(x,y), moveTo: new Point(x,y).", null, "position");
+			
+			addKeyword(TARGET_KEYWORD);
+			addKeyword(SCALE_KEYWORD);
+			addKeyword(FILTER_KEYWORD);
+//			addKeyword(MOVE_KEYWORD);
 		}
 		
-		private function parsePropertiesString(parameters:Object):Array {
-			var property:PropertyData;
-			var resultsArray:Array = [];
-			
-			var allPropsString:String = getFirstDefinedValue(parameters, "properties", "property") as String;
-			if (allPropsString == null) { return null; }
-			
-			var properties:Array = allPropsString.split(PROP_DELIMITER);
-			var singleProperty:String;
-			var values:String;
-			/* 
-			for (var key:String in parameters) {
-				if (keywords.indexOf(key) < 0) {
-					// if key isn't a keyword
-					var startStringIndex:int = key.search(START_VALUE_MARKER);
-					if (startStringIndex >= 0) {
-						var propertyName:String = key.slice(0, startStringIndex);
-						var startValue:Number = parameters[key] as Number; 
-						var endValue:Number = getFirstDefinedValue(parameters, propertyName + "_end", propertyName + "End") as Number;
-						resultsArray.push(new PropertyData(propertyName, startValue, endValue));
-					} else {
-						var propertyName:String = key;
-						var values:String = parameters[key].toString();
-						var startValue:Number = values.split(VALUE_RANGE_DELIMITER)[0];
-						var endValue:Number = values.split(VALUE_RANGE_DELIMITER)[1];
-					}
-				}
-			} */
-			
-			for each (singleProperty in properties) {
-				property = new PropertyData();
-				property.propertyName = singleProperty.split(PROP_VALUE_DELIMITER)[0];
-				values = singleProperty.split(PROP_VALUE_DELIMITER)[2]; 
-				if (values.search(VALUE_RANGE_DELIMITER) < 0) {
-					property.startValue = KSTween.VALUE_AT_START_OF_TWEEN;
-					property.endValue = Number(values);
-				} else {
-					property.startValue = Number(values.split(VALUE_RANGE_DELIMITER)[0]);
-					property.endValue = Number(values.split(VALUE_RANGE_DELIMITER)[1]);
-				}
-				
-				switch (property.propertyName) {
-					case "scale":
-						resultsArray.push(new PropertyData("scaleX", property.startValue, property.endValue));
-						resultsArray.push(new PropertyData("scaleY", property.startValue, property.endValue));
-					break;
+		private function isPropertyAKeyword(property:String):Boolean {
+			if (_allKeywords.indexOf(property) >= 0) { return true; }
+			return false;
+		}
+		
+		/** 
+		 * Parses a keyword, checks its value for type, and returns the result.
+		 * A successfully parsed property will be removed from the list of parameters for 
+		 * optimization. 
+		 */
+		private function parseKeyword(parameters:Object, keyword:Keyword):* {
+			// for each keyword
+			for each (var alias:String in keyword.allKeywords) {
+				var value:* = parameters[alias] as keyword.type;
+				if (value != undefined) {
+					// do an explicit cast to the keyword type (to raise errors if it's wrong) and store the value. 
+					if (value == null) { throw new TypeError("The value provided for " + alias + " must be of type " + keyword.type); }
 					
-					default:
-						resultsArray.push(property);
+					// delete the value from teh list of parameters so it isn't checked again.
+					parameters[alias] = null;
+					delete parameters[alias];
+					return value;
 				}
 			}
-			return resultsArray;
+			return keyword.defaultValue;
 		}
 		
-		private static function parseMod1(parameters:Object):Number {
-			var mod1:Number = getFirstDefinedValue(parameters, "easingMod1", "mod1") as Number;
-			 return mod1;
-		}
-		private static function parseMod2(parameters:Object):Number {
-			var mod2:Number = getFirstDefinedValue(parameters, "easingMod2", "mod2") as Number;
-			 return mod2;
+		
+		/**
+		 * Automatically parses all values in the _keywords array (that are parseable).
+		 */
+		private function parseAllKeywords(parameters:Object, tween:KSTween):void {
+			for each (var keyword:Keyword in _keywords) {
+				if (keyword.includeInParsing) {
+					tween[keyword.term] = parseKeyword(parameters, keyword);
+				}
+			}
 		}
 		
 		/** 
@@ -261,10 +102,10 @@ package org.as3lib.kitchensync.action.tween
 		 * The values will be checked in order that they are entered.
 		 * 
 		 * @param object The object to check for values.
-		 * @param keys The remaining parameters will be strings of property names to check for valid values.
+		 * @param keys The remaining parameters will be strings of property names to check in order for valid values.
 		 * @return the value of the first defined property or null if all were undefined.
 		 */
-		private static function getFirstDefinedValue(object:Object, ... keys):* {
+		private function getFirstDefinedValue(object:Object, ... keys):* {
 			var key:String, value:*, i:int;
 			for (i = 0; i < keys.length; i++) {
 				key = keys[i];
@@ -275,9 +116,215 @@ package org.as3lib.kitchensync.action.tween
 			}
 			return null;
 		}
+		
+		public function parseObject(parameters:Object):ITween {
+			// set up initial tween.
+			var tween:KSTween = new KSTween();
+			var targets:Array = parseTargets(parameters);
+			
+			parseAllKeywords(parameters, tween);
+			
+			// Check to see if the filter class is defined. 
+			// if it is, all the properties will be applied to the filter.
+			var filterType:Class = parseKeyword(parameters, FILTER_KEYWORD);
+			
+			var properties:Array = parseProperties(parameters);
+			//trace("properties (" + properties.length + "):",properties);
+			
+			var i:int = 0, j:int = 0;
+			var tl:int = targets.length, pl:int = properties.length;
+			var target:Object;
+			var propertyData:PropertyData;
+			var tweenTarget:ITweenTarget;
+			
+			for (; i < tl; i += 1) {
+				target = targets[i] as Object;
+				
+				
+				for (; j < pl; j += 1) {
+					propertyData = properties[j] as PropertyData;
+					
+					if (filterType != FILTER_KEYWORD.defaultValue) {
+						tweenTarget = createFilterTargetProperty(target, filterType, propertyData);
+					} else {
+						tweenTarget = createTargetProperty(target, propertyData);
+					}
+														
+					tween.addTweenTarget(tweenTarget);
+				}
+			} 
+			return tween;
+			
+			function createTargetProperty(target:*, propertyData:PropertyData):ITweenTarget {
+				return new TargetProperty(
+					target, 
+					propertyData.propertyName, 
+					propertyData.startValue, propertyData.endValue
+				);
+			}
+			
+			function createFilterTargetProperty(target:*, filterType:Class, propertyData:PropertyData):ITweenTarget {
+				return new FilterTargetProperty(
+					target, filterType, 
+					propertyData.propertyName, 
+					propertyData.startValue, propertyData.endValue
+				);
+			}
+		}
+		
+		/** 
+		 * Parses out the targets parameter from the object.
+		 */
+		private function parseTargets(parameters:Object):Array {
+			// extract targets
+			var target:* = parseKeyword(parameters, TARGET_KEYWORD);
+			if (target is Array) {
+				return target;
+			} if (target == null) {
+				throw new SyntaxError("At least one target must be defined.");
+			} else {
+				return [target];
+			}
+		}
+
+		
+		private function parseProperties(parameters:Object):Array {
+			var resultsArray:Array = new Array();
+			var property:String;
+			var startValue:Number;
+			var endValue:Number;
+			var key:String;
+			
+			
+			for (key in parameters) {
+				var data:PropertyData = new PropertyData();
+				
+				// check for ~ notation 
+				var string:String = parameters[key].toString();				
+				if (string.search("~") >= 0) {
+					var values:Array = string.split("~");
+					data.propertyName = key;
+					data.startValue = values[0];
+					data.endValue = values[1];
+				} 
+				
+
+				// check for _start / _end notation.
+				else {
+					var startStringIndex:int = key.search(START_VALUE_MARKER);
+					var endStringIndex:int = key.search(END_VALUE_MARKER);
+					
+					// if property name contains "_start" or "_from"
+					if (startStringIndex >= 0) {
+						// extract the property name
+						data.propertyName = key.slice(0, startStringIndex);
+						// store the start value.
+						data.startValue = parameters[key] as Number;
+						// extract the end value.
+						data.endValue = getFirstDefinedValue(parameters, 	data.propertyName + "_end", 
+																			data.propertyName + "End",
+																			data.propertyName + "_to",
+																			data.propertyName + "To") as Number;
+						
+						// if no end value was found, use the value at start of tween.
+						if (isNaN(data.endValue)) {
+							data.endValue = KSTween.VALUE_AT_START_OF_TWEEN;
+						}
+						
+						// Add the property to the results list.
+						resultsArray.push(data);
+						continue;
+					} else {
+						// ignore it.
+						continue;
+					}
+				} 
+				
+				// check results for keywords.
+				switch (data.propertyName) {
+					case "scale":
+						resultsArray.push(new PropertyData("scaleX", data.startValue, data.endValue));
+						resultsArray.push(new PropertyData("scaleY", data.startValue, data.endValue));
+					break;
+
+//					case "move":
+//						resultsArray.push(new PropertyData("x", data.startValue, data.endValue));
+//						resultsArray.push(new PropertyData("y", data.startValue, data.endValue));
+//					break;
+					
+					default:
+						// push results onto array to later be converted into tween targets.
+						resultsArray.push(data);
+				}
+				
+				// delete the parameter
+				parameters[key] = null;
+				delete parameters[key];
+			}
+			return resultsArray;
+		}		
+		
 	}
 }
+
+
+import flash.utils.getQualifiedClassName;
+
+/**
+ * Represents a reserved word used in a tween object parser.
+ */
+internal class Keyword
+{
+	public function get term():String { return _term; }
+	private var _term:String;
 	
+	public function get type():Class { return _type; }
+	private var _type:Class;
+	
+	public function get includeInParsing():Boolean { return _includeInParsing; }
+	private var _includeInParsing:Boolean;
+	
+	public function get description():String { return _description; }
+	private var _description:String;
+	
+	public function get aliases():Array { return _aliases }
+	private var _aliases:Array;
+	
+	public function get hasAliases():Boolean { return _aliases.length > 0 }
+	
+	public function get allKeywords():Array { return _aliases.concat(_term); }
+	
+	public function get defaultValue():* { return _defaultValue; }
+	private var _defaultValue:*;
+	
+	public function Keyword(term:String, type:Class, includeInParsing:Boolean = true, description:String = "", defaultValue:* = null, ... aliases)
+	{
+		_term = term;
+		_type = type;
+		_includeInParsing = includeInParsing;
+		_description = description;
+		_defaultValue = defaultValue; 
+		_aliases = new Array();
+		
+		for each (var alias:String in aliases) {
+			_aliases.push(alias);
+		}
+	}
+	
+	public function toString():String {
+		var string:String;
+		string = term + ":" + getQualifiedClassName(type) + "\n";
+		if (hasAliases) string += "\tAliases: " + allKeywords.join(', ') + "\n";
+		string += "\tDefault value: " + defaultValue + "\n";
+		string += "\t" + description + "\n";
+		return string;
+	}
+}
+
+
+/** 
+ * Helper class for storing the start and end points of a property during the parsing of an object. 
+ */
 internal class PropertyData {
 	public var propertyName:String;
 	public var startValue:Number;

@@ -70,6 +70,16 @@ package org.as3lib.kitchensync.action
 		protected var _delay:int = 0;
 		
 		
+		/**
+		 * An optional human-readable description of the action.
+		 * 
+		 * @since 2.0 
+		 */
+		public function get description():String { return _description; }
+		public function set description(description:String):void { _description = description; }
+		protected var _description:String;
+		
+		
 		/** @inheritDoc */
 		public function get isInstantaneous():Boolean {
 			return ( _delay <= 0 && _duration <= 0 );

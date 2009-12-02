@@ -55,7 +55,7 @@ package org.as3lib.kitchensync.action.tween
 		}
 		
 		protected function isPropertyValid(target:Object, property:String):Boolean {
-			return (target[property] is Number);
+			return (target[property] != undefined && target[property] is Number);
 		}
 		
 		/**

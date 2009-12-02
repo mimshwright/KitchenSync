@@ -1,7 +1,7 @@
 package org.as3lib.kitchensync
 {
-	import org.as3lib.kitchensync.action.tween.*;
 	import org.as3lib.kitchensync.action.*;
+	import org.as3lib.kitchensync.action.tween.*;
 	import org.as3lib.kitchensync.easing.*;
 	import org.as3lib.kitchensync.utils.*;
 	
@@ -54,6 +54,9 @@ package org.as3lib.kitchensync
 		 * @see org.as3lib.kitchensync.easing
 		 */
 		public static var easingFunction:Function = Linear.ease;
+		
+		/** The default duration when using object parser. */
+		public static var duration:int = 1000;
 		
 		
 		

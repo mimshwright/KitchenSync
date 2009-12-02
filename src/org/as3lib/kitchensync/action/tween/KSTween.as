@@ -7,19 +7,27 @@ package org.as3lib.kitchensync.action.tween
 	import org.as3lib.kitchensync.utils.*;
 	
 	/**
+	 * Used for animating an object's properties, such as position or scale, over time. 
 	 * A tween will change an object's numeric value over time.
-	 * Uses a TweenTarget object to determine what to tween. This can be handled automatically
-	 * or declared explicitly.
-	 * Rule of thumb: KSTween is the action that handles the timing and starting and stopping
-	 * the tween while ITweenTargets control the values of the tween.
+	 * It makes use of one or more TweenTarget objects to determine what to tween. 
+	 * This can be handled automatically or declared explicitly.
 	 * 
+	 * Rule of thumb: KSTween is the action that handles the timing and starting and stopping
+	 * the tween while ITweenTargets control the values of the tween. This allows you to tween
+	 * all types of values, including complex ones like filter properties, with a single tween class. 
+	 * 
+	 * It's recommended that you use TweenFactory to create the tweens. 
+	 * 
+	 * @see org.as3lib.kitchensync.action.tween.TweenFactory
 	 * @see org.as3lib.kitchensync.action.tween.ITweenTarget
-	 * @see org.as3lib.kitchensync.action.KSSimpleAction
+	 * @see org.as3lib.kitchensync.action.tween.KSSimpleTween
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
 	 // todo: review
 	 // todo: add example
+	 // todo: rename this to KSAdvancedTween and KSSimpleTween to KSTween
+	 // todo: Add a TweenTarget consumer interface?
 	public class KSTween extends AbstractAction implements ITween, IPrecisionAction
 	{
 		/**
@@ -31,7 +39,10 @@ package org.as3lib.kitchensync.action.tween
 		
 		/** @inheritDoc */
 		public function get easingFunction():Function { return _easingFunction; }
-		public function set easingFunction(easingFunction:Function):void{ _easingFunction = easingFunction;}
+		public function set easingFunction(easingFunction:Function):void{ 
+			if (easingFunction == null) { easingFunction = KitchenSyncDefaults.easingFunction; }
+			_easingFunction = easingFunction;
+		}
 		protected var _easingFunction:Function;
 		
 		
@@ -44,13 +55,22 @@ package org.as3lib.kitchensync.action.tween
 		protected var _tweenTargets:Array;
 		public function get tweenTargets():Array { return _tweenTargets; }
 		
+		/** 
+		 * Adds a target to the tween. 
+		 */
 		public function addTweenTarget(tweenTarget:ITweenTarget):void { _tweenTargets.push(tweenTarget); }
+		
+		/**
+		 * Removes a target from the tween.
+		 */
 		public function removeTweenTarget(tweenTarget:ITweenTarget):void { 
 			var index:int = _tweenTargets.indexOf(tweenTarget);
 			if (index >= 0) {
 				_tweenTargets.splice(index, 1);
 			}
 		}
+		
+		/** Removes all tween targets from the tween. */
 		public function removeAllTweenTargets():void {
 			_tweenTargets = new Array();
 		}
@@ -268,71 +288,72 @@ package org.as3lib.kitchensync.action.tween
 			return clone;
 		}
 		
+		// todo: consider removing this.
+//		/**
+//		 * Creates a copy of this Tween which targets a different object and / or property.
+//		 * This is mostly used as a convenient way to reuse a tween, e.g. in a sequence.
+//		 * NOTE: If there are multiple target properties, this will only copy the first one in the array.
+//		 * 
+//		 * @example 
+//		 * <listing version="3.0">
+//		 *		var tween:Tween = new Tween(foo, "x", 100, 200);
+//		 *		var sequence:Sequence = new Sequence(
+//		 *			tween,							// tweens foo's x property from 100 to 200
+//		 *			tween.cloneWithTarget(foo, y)	// tweens foo's y property from 100 to 200
+//		 *			tween.cloneWithTarget(bar, y)	// tweens bar's y property from 100 to 200
+//		 *		);
+//		 *	</listing>
+//		 * 
+//		 * @see #clone()
+//		 * 
+//		 * @deprecated - use multiple targetProperties instead.
+//		 * @see #addTweenTarget()
+//		 * 
+//		 * @param target - The new object to target. Defaults to the same target as this.
+//		 * @param property - The new target object's property to target. 
+//		 * @return Tween - a copy of this tween with a new target/property.
+//		 */
+//		public function cloneWithTarget(target:Object, property:String):KSTween {
+//			// get the first target from the list.
+//			var tweenTarget:ITweenTarget = ITweenTarget(_tweenTargets[0]);
+//			// create a target property with the new target and property. 
+//			var newTargetProperty:TargetProperty = new TargetProperty(target, property, tweenTarget.startValue, tweenTarget.endValue);
+//			var clone:KSTween = KSTween(this.cloneWithTweenTarget(newTargetProperty));
+//			return clone;
+//		}
 		
-		/**
-		 * Creates a copy of this Tween which targets a different object and / or property.
-		 * This is mostly used as a convenient way to reuse a tween, e.g. in a sequence.
-		 * NOTE: If there are multiple target properties, this will only copy the first one in the array.
-		 * 
-		 * @example 
-		 * <listing version="3.0">
-		 *		var tween:Tween = new Tween(foo, "x", 100, 200);
-		 *		var sequence:Sequence = new Sequence(
-		 *			tween,							// tweens foo's x property from 100 to 200
-		 *			tween.cloneWithTarget(foo, y)	// tweens foo's y property from 100 to 200
-		 *			tween.cloneWithTarget(bar, y)	// tweens bar's y property from 100 to 200
-		 *		);
-		 *	</listing>
-		 * 
-		 * @see #clone()
-		 * 
-		 * @deprecated - use multiple targetProperties instead.
-		 * @see #addTweenTarget()
-		 * 
-		 * @param target - The new object to target. Defaults to the same target as this.
-		 * @param property - The new target object's property to target. 
-		 * @return Tween - a copy of this tween with a new target/property.
-		 */
-		public function cloneWithTarget(target:Object, property:String):KSTween {
-			// get the first target from the list.
-			var tweenTarget:ITweenTarget = ITweenTarget(_tweenTargets[0]);
-			// create a target property with the new target and property. 
-			var newTargetProperty:TargetProperty = new TargetProperty(target, property, tweenTarget.startValue, tweenTarget.endValue);
-			var clone:KSTween = KSTween(this.cloneWithTweenTarget(newTargetProperty));
-			return clone;
-		}
-		
-		/**
-		 * Creates a new Tween and reverses the start and end values of the target property.
-		 * 
-		 * @example 
-		 * 		<listing version="3.0">
-		 * 			var tween:Tween = new Tween(foo, "x", 100, 200);
-		 * 			var sequence:Sequence = new Sequence(
-		 * 				tween,							// tweens foo's x from 100 to 200
-		 * 				tween.cloneReversed()			// tweens foo's x from 200 to 100
-		 * 				tween.cloneReversed(bar)		// tweens bar's x from 200 to 100
-		 * 				tween.cloneReversed(foo, y)		// tweens foo's y from 200 to 100
-		 * 			);
-		 * 		</listing>
-		 * 
-		 * @see #cloneWithTarget()
-		 * @see #reverse()
-		 * 
-		 * @param target - The optional target object of the new Tween
-		 * @param property - The optional property to tween with the new Tween. 
-		 * @returns Tween - A new Tween identical to this but with start and end reversed.
-		 */
-		public function cloneReversed(target:Object = null, property:String = null):KSTween {
-			var clone:KSTween;
-			if (target != null && property != null) {
-			 	clone = KSTween(cloneWithTarget(target, property));
-			} else {
-				clone = KSTween(this.clone());
-			}
-			clone.reverse();
-			return clone;
-		}
+		// remove this and add the method to the tween target instead.
+//		/**
+//		 * Creates a new Tween and reverses the start and end values of the target property.
+//		 * 
+//		 * @example 
+//		 * 		<listing version="3.0">
+//		 * 			var tween:Tween = new Tween(foo, "x", 100, 200);
+//		 * 			var sequence:Sequence = new Sequence(
+//		 * 				tween,							// tweens foo's x from 100 to 200
+//		 * 				tween.cloneReversed()			// tweens foo's x from 200 to 100
+//		 * 				tween.cloneReversed(bar)		// tweens bar's x from 200 to 100
+//		 * 				tween.cloneReversed(foo, y)		// tweens foo's y from 200 to 100
+//		 * 			);
+//		 * 		</listing>
+//		 * 
+//		 * @see #cloneWithTarget()
+//		 * @see #reverse()
+//		 * 
+//		 * @param target - The optional target object of the new Tween
+//		 * @param property - The optional property to tween with the new Tween. 
+//		 * @returns Tween - A new Tween identical to this but with start and end reversed.
+//		 */
+//		public function cloneReversed(target:Object = null, property:String = null):KSTween {
+//			var clone:KSTween;
+//			if (target != null && property != null) {
+//			 	clone = KSTween(cloneWithTarget(target, property));
+//			} else {
+//				clone = KSTween(this.clone());
+//			}
+//			clone.reverse();
+//			return clone;
+//		}
 		
 		/**
 		 * Clones the tween with a new tweenTarget.
