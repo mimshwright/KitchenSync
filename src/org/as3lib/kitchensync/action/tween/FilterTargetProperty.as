@@ -5,10 +5,16 @@ package org.as3lib.kitchensync.action.tween
 	
 	/**
 	 * A tween target that targets a property of a BitmapFilter object. 
-	 * For example, you may target the blurX property of a BlurFilter on a 
-	 * particular movieClip. 
+	 * For example, you may target the "blurX" property of a BlurFilter on a 
+	 * particular movieClip.
+	 * 
+	 * Tweens will be applied to the filter class rather than the individual filter
+	 * objects because in order for the filter to be applied to the display object, 
+	 * the array of filters must be rewritten on each update.
+	 * 
+	 * @author Mims H. Wright
+	 * @since 1.5 
 	 */ 
-	// todo add docs
 	// todo change this to accept either a class or an instance of a filter.
 	// todo review
 	public class FilterTargetProperty implements IFilterTweenTarget
@@ -19,6 +25,9 @@ package org.as3lib.kitchensync.action.tween
 		public function get target():DisplayObject { return _target; }
 		protected var _target:DisplayObject;
 		
+		/** 
+		 * The class for the filter to target. 
+		 */
 		public function get filterType():Class { return _filterType; }
 		protected var _filterType:Class;
 		
@@ -29,14 +38,14 @@ package org.as3lib.kitchensync.action.tween
 		protected var _property:String;
 		
 		/**
-		 * The value to start from when tweening.
+		 * @inheritDoc
 		 */ 
 		public function get startValue():Number	{ return _startValue; }
 		public function set startValue(startValue:Number):void { _startValue = startValue; }
 		protected var _startValue:Number;
 		
 		/**
-		 * The value to end on when tweening.
+		 * @inheritDoc
 		 */		
 		public function get endValue():Number {	return _endValue; }
 		public function set endValue(endValue:Number):void	{ _endValue = endValue; }
@@ -50,10 +59,11 @@ package org.as3lib.kitchensync.action.tween
 		/**
 		 * Constructor.
 		 * 
-		 * @param target the object whose property you want to tween
-		 * @param property the name of the numeric property to tween
-		 * @param startValue the value to start from when tweening
-		 * @param endValue the value to end on when tweening 
+		 * @param target The display object that will receive the filter.
+		 * @param filterType The Class of the filter you're targeting.
+		 * @param property The name of the numeric property to tween.
+		 * @param startValue The value to start from when tweening.
+		 * @param endValue The value to end on when tweening.
 		 */
 		public function FilterTargetProperty (target:DisplayObject, filterType:Class, property:String, startValue:Number = NaN, endValue:Number = NaN) {
 			_target = target;
@@ -74,7 +84,8 @@ package org.as3lib.kitchensync.action.tween
 		public function updateTween(percentComplete:Number):Number {
 			return currentValue = percentComplete * differenceInValues + startValue;
 		}
-				
+		
+		/** @inheritDoc */
 		public function get currentValue():Number { return Number(_previousFilter[property]); }
 		public function set currentValue(currentValue:Number):void { 
 			var newFilters:Array = [];
@@ -104,6 +115,10 @@ package org.as3lib.kitchensync.action.tween
 		}
 		protected var _previousFilter:BitmapFilter = null;
 		
+		
+		/** 
+		 * The array of filters currently being applied to the target.
+		 */ 
 		protected function get filters ():Array {
 			if (_target != null) { return _target.filters; }
 			return null;
@@ -113,18 +128,25 @@ package org.as3lib.kitchensync.action.tween
 			else { throw new Error("The target must be defined before setting filters"); }
 		}
 		
+		
 		/**
+		 * Returns a default instance of the filterType.
+		 * 
+		 * @param filterType The class of the filter to get.
+		 * @return BitmapFilter The default instance of a new filter (of type filterType).
 		 */		
 		protected function getDefaultFilter(filterType:Class):BitmapFilter { 
-			var emptyFilter:BitmapFilter = new filterType();
+			var emptyFilter:BitmapFilter = BitmapFilter(new filterType());
 			return emptyFilter;
 		}
 		
+		/** @inheritDoc */
 		public function reset():void
 		{
 			currentValue = startValue;
 		}
 		
+		/** @inheritDoc */
 		public function clone():ITweenTarget
 		{
 			return new FilterTargetProperty(_target, _filterType, _property, _startValue, _endValue);
