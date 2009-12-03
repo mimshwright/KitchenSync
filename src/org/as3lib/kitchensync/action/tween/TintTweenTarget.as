@@ -8,11 +8,27 @@ package org.as3lib.kitchensync.action.tween
 	/**
 	 * Tween target for adjusting the color of a DisplayObject using a ColorTransform.
 	 * 
+	 * @example <listing version="3.0">
+	 * var sprite:Sprite;
+	 * sprite.graphics.beginFill(0);
+	 * sprite.graphics.drawRect(0,0,100,100);
+	 * addChild(sprite);
+	 * 
+	 * // tween tint from black to red over 5 seconds.
+	 * var tintRed:TintTweenTarget = new TintTweenTarget(sprite, TintTweenTarget.CURRENT_TINT, 0xFF0000);
+	 * TweenFactory.newTweenWithTargets(tintRed, "5s").start();
+	 * 
+	 * // Clear the tween 2 seconds after the first tween.
+	 * var clearTint:TintTweenTarget = new TintTweenTarget(sprite, TintTweenTarget.CURRENT_TINT, TintTweenTarget.NO_TINT);
+	 * TweenFactory.newTweenWithTargets(clearTint, "5s", "7s").start();
+	 * 
+	 * </listing>
+	 * 
+	 * @see org.as3lib.kitchensync.action.tween.TweenFactory#newTintTween()
+	 * 
 	 * @since 1.7
 	 * @author Mims Wright
 	 */ 
-	 // todo: review
-	 // todo: add example
 	public class TintTweenTarget implements ITweenTarget
 	{
 		/**

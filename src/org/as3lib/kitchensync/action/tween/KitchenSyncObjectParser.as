@@ -119,7 +119,7 @@ package org.as3lib.kitchensync.action.tween
 		
 		public function parseObject(parameters:Object):ITween {
 			// set up initial tween.
-			var tween:KSTween = new KSTween();
+			var tween:KSTween = new KSTween([]);
 			var targets:Array = parseTargets(parameters);
 			
 			parseAllKeywords(parameters, tween);

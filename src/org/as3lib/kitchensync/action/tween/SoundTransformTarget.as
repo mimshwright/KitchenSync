@@ -10,11 +10,21 @@ package org.as3lib.kitchensync.action.tween
 	 * known issue: high speed transitions, such as oscicators with high frequencies,
 	 * can cause clicks and distortion in the sound.
 	 * 
+	 * @example <listing version="3.0">
+	 * 
+	 * var sound:Sound;
+	 * // load your sound here...
+	 * 
+	 * // fade up over 5 seconds
+	 * var fadeUp:ITweenTarget = new SoundTransformTarget(sound, SoundTransformProperty.VOLUME, 0, 1);
+	 * var tween:KSTween = TweenFactory.newTweenWithTargets(fadeUp, "5s");
+	 * tween.start(); 
+	 * </listing>
+	 * 
 	 * @author Mims Wright
 	 * @since 1.6
 	 * @see org.as3lib.kitchensync.action.tween.SoundTransformProperty
 	 */
-	// todo : example
 	public class SoundTransformTarget implements ITweenTarget
 	{
 	
@@ -63,11 +73,15 @@ package org.as3lib.kitchensync.action.tween
 		 * @param startValue the value to start from when tweening
 		 * @param endValue the value to end on when tweening 
 		 */
-		public function SoundTransformTarget (targetSound:Object, property:SoundTransformProperty, startValue:Number = NaN, endValue:Number = NaN) {
+		public function SoundTransformTarget (targetSound:Object, property:SoundTransformProperty = null, startValue:Number = NaN, endValue:Number = NaN) {
 			_targetSound = targetSound;
 			
 			if (_targetSound.soundTransform == null) {
 				_targetSound.soundTransform = new SoundTransform();
+			}
+			
+			if (property == null) {
+				property = SoundTransformProperty.VOLUME;
 			}
 			
 			this.property = property;

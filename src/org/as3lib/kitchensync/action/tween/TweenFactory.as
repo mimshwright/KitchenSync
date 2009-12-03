@@ -37,19 +37,38 @@ package org.as3lib.kitchensync.action.tween
 		/**
 		 * Creates a property tween with one or more targets. 
 		 * 
-		 * @see #newWithTweenTarget()
+		 * @see #newTweenWithTargets()
 		 * 
-		 * @param target - the object whose property will be changed
-		 * @param property - the name of the property to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
-		 * @param startValue - the starting value of the tween. By default, this is the value of the property before the tween begins.
+		 * @param targets The object whose property will be changed or an array of targets.
+		 * @param properties The name of the property to change or an array of properties to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
+		 * @param startValue The starting value of the tween. By default, this is the value of the property before the tween begins.
 		 * @param endValue The value to tween the property to. After the tween is done, this will be the value of the property.
-		 * @param duration - the time in milliseconds that this tween will take to execute. String values are acceptable too.
-		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
-		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
+		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
 		 * @return A new ITween instance
 		 */
-		public static function newTween(target:Object = null, property:String = "", startValue:Number = 0, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null):ITween {
-			return new KSTween(target, property, startValue, endValue, duration, delay, easingFunction);
+		// todo: check constructors to make sure start values are RuntimeValues
+		public static function newTween(targets:*, properties:*, startValue:Number = 0, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null):ITween {
+			var targetsArray:Array, propertiesArray:Array;
+			
+			if ( targets == null) { throw new ArgumentError("'targets' cannot be null"); }
+			if ( targets is Array) { targetsArray = targets; } 
+			else { targetsArray = [targets]; }
+			
+			if (properties == null && properties == "") { throw new ArgumentError("'properties' cannot be null"); }
+			if (properties is Array) { propertiesArray = properties; }
+			if (properties is String) { propertiesArray = [String(properties)] }
+			else { throw new TypeError("'properties' must be either a String or an Array of strings"); }
+			
+			var tweenTargets:Array = [];
+			for each (var target:Object in targetsArray) {
+				for each (var property:String in propertiesArray) {
+					tweenTargets.push(new TargetProperty(target, property, startValue, endValue));
+				}
+			}
+				
+			return new KSTween(tweenTargets, duration, delay, easingFunction);
 		}
 
 		/**
@@ -135,7 +154,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @return A new KSTween object.
 		 */
 		public static function newTweenWithTargets(tweenTargets:*, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
-			return KSTween.newWithTweenTarget(tweenTargets, duration, delay, easingFunction);
+			return new KSTween(tweenTargets, duration, delay, easingFunction);
 		} 
 
 		
@@ -156,7 +175,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @return A new KSTween object.
 		 */
 		public static function newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:*, delay:* = 0, easingFunction:Function = null):KSTween {
-			return KSTween.newWithTweenTarget(new FilterTargetProperty(target, filter, filterProperty, startValue, endValue), duration, delay, easingFunction);
+			return newTweenWithTargets (new FilterTargetProperty(target, filter, filterProperty, startValue, endValue), duration, delay, easingFunction);
 		}
 	}
 }

@@ -21,7 +21,6 @@ package org.as3lib.kitchensync.action.tween
 	 * @since 1.5
 	 * @author Mims H. Wright
 	 */
-	 // todo: review
 	public class TargetProperty implements ITweenTarget
 	{
 		protected const NON_NUMERIC_PROPERTY_ERROR:String = "The 'property' of the object 'target' must be a Number, int, or uint.";
@@ -54,6 +53,9 @@ package org.as3lib.kitchensync.action.tween
 			}
 		}
 		
+		/**
+		 * Checks to see if the target/property exists and is a number.
+		 */
 		protected function isPropertyValid(target:Object, property:String):Boolean {
 			return (target[property] != undefined && target[property] is Number);
 		}
@@ -105,7 +107,6 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @see org.as3lib.kitchensync.ActionDefaults
 		 */
-		 // todo rename to snapToInteger 
 		public function get snapToInteger():Boolean { return _snapToInteger; }
 		public function set snapToInteger(snapToInteger:Boolean):void { _snapToInteger = snapToInteger; }
 		protected var _snapToInteger:Boolean;
