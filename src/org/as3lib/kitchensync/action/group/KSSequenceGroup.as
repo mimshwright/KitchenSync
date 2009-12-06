@@ -1,9 +1,7 @@
 package org.as3lib.kitchensync.action.group
 {
-	import flash.utils.getQualifiedClassName;
-	
-	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.kitchensync.action.*;
+	import org.as3lib.kitchensync.core.*;
 	
 	/**
 	 * A group of actions that execute one at a time in the order that 
@@ -56,15 +54,65 @@ package org.as3lib.kitchensync.action.group
 		/**
 		 * Constructor.
 		 * 
-		 * @params children - a list of actions that will be added as children of the group.
+		 * @params children A list of actions that will be added as children of the group. 
+		 * 					If any of the children are arrays, they will be parsed into
+		 * 					KSParallelGroups.  
+		 * 
+		 * @example <listing version="3.0">
+		 * var sequence:KSSequenceGroup;
+		 * 
+		 * // new group with no children.
+		 * sequence = new KSSequenceGroup();
+		 * 
+		 * // new group with 3 children. each child will execute after the previous one completes.
+		 * sequence = new KSSequenceGroup( myAction, myAction2, myAction3);
+		 * 
+		 * // new group with styntactic sugar for creating a parallel group on the fly. 
+		 * // myAction will execute followed by myAction2 and 3 executing simultaneously, then myAction4 will 
+		 * // execute after 2 and 3 both finish. 
+		 * // this is identical to using:
+		 * // sequence = new KSSequenceGroup( myAction, new KSParallelGroup(myAction2, myAction3), myAction4);
+		 * sequence = new KSSequenceGroup( mAction, [myAction2, myAction3], myAction4);
+		 * </listing>
 		 */
+		// todo: test this on other group classes.
 		public function KSSequenceGroup (... children) {
 			super();
 			
 			var l:int = children.length;
 			for (var i:int=0; i < l; i++) {
-				addAction(IAction(children[i]));
+				addActionOrParallel(children[i] as Object);
 			}
+		}
+		
+		
+		/**
+		 * An internal function used by the constructor and by addActionOrSequence() that will
+		 * check the input for arrays and convert them to parallel groups.
+		 * 
+		 * Notice that the groups can be nested. If an array contains an array, that array will be
+		 * parsed into a sequence group by addActionOrSequence(). 
+		 * 
+		 * @see org.as3lib.kitchensync.action.group.KSParallelGroup#KSParallelGroup()
+		 * @see org.as3lib.kitchensync.action.group.KSParallelGroup#addActionOrSequence()
+		 * 
+		 * @param actionOrParallel Either an IAction or an array. Arrays will be added to the group 
+		 * 						   as a KSParallelGroup. 
+		 */ 
+		internal function addActionOrParallel(actionOrParallel:Object):void {
+			if (actionOrParallel is IAction) {
+				addAction(IAction(actionOrParallel));
+				return;
+			}
+			if (actionOrParallel is Array) {
+				var parallel:KSParallelGroup = new KSParallelGroup();
+				for each (var item:Object in (actionOrParallel as Array)) {
+					parallel.addActionOrSequence(item);
+				}
+				addAction(parallel);
+				return;
+			}
+			throw new TypeError("The action added must be either an action or an array.");
 		}
 		
 		/**
