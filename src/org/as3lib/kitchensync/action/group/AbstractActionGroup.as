@@ -3,10 +3,10 @@ package org.as3lib.kitchensync.action.group
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
+	import org.as3lib.kitchensync.action.AbstractAction;
+	import org.as3lib.kitchensync.action.IAction;
 	import org.as3lib.kitchensync.core.*;
 	import org.as3lib.utils.AbstractEnforcer;
-	import org.as3lib.kitchensync.action.IAction;
-	import org.as3lib.kitchensync.action.AbstractAction;
 	
 	/**
 	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.CHILD_ACTION_START
@@ -194,6 +194,17 @@ package org.as3lib.kitchensync.action.group
 			for each (var child:IAction in childActions) {
 				child.stop();
 			}
+		}
+		
+		/**
+		 * @inheritDoc
+		 * Reset child actions before resetting group.
+		 */
+		override public function reset():void {
+			for each (var child:IAction in _childActions) {
+				child.reset();
+			}
+			super.reset();
 		}
 		
 		/** Kills the group and all its children. */

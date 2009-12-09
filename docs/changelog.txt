@@ -37,6 +37,7 @@ REFACTORED groups
 MOVED action group related files to org.as3lib.kitchensync.action.group package
 ADDED an interface for groups, IActionGroup. 
 ADDED Syntactic sugar to the group constructors. using an array in the constructor for a parallel group adds a sequence and vice versa.
+ADDED Looping via a new group called KSLooper.
 FIXED a timing issue in KSStaggeredGroup. Now the animations from this group are much smoother. 
 ADDED totalDuration to groups.
 ADDED KSRandomGroup.

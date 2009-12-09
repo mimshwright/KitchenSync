@@ -45,9 +45,13 @@ package org.as3lib.kitchensync.action.group
 		
 		/**
 		 * The index of the action currently executing.
+		 * Returns -1 if not running.
+		 * 
 		 * @see #_currentAction
 		 */
+		public function get currentActionIndex():int { return _currentActionIndex; }
 		protected var _currentActionIndex:int = NO_CURRENT_ACTION_INDEX;
+		
 		
 		public function get currentAction():IAction { return _currentAction; }
 		
@@ -72,7 +76,11 @@ package org.as3lib.kitchensync.action.group
 		 * // execute after 2 and 3 both finish. 
 		 * // this is identical to using:
 		 * // sequence = new KSSequenceGroup( myAction, new KSParallelGroup(myAction2, myAction3), myAction4);
-		 * sequence = new KSSequenceGroup( mAction, [myAction2, myAction3], myAction4);
+		 * sequence = new KSSequenceGroup( 
+		 * 					mAction, 
+		 * 					[myAction2, myAction3], 
+		 * 					myAction4
+		 * 			  );
 		 * </listing>
 		 */
 		// todo: test this on other group classes.
@@ -98,6 +106,8 @@ package org.as3lib.kitchensync.action.group
 		 * 
 		 * @param actionOrParallel Either an IAction or an array. Arrays will be added to the group 
 		 * 						   as a KSParallelGroup. 
+		 * 
+		 * @private
 		 */ 
 		internal function addActionOrParallel(actionOrParallel:Object):void {
 			if (actionOrParallel is IAction) {
@@ -176,6 +186,8 @@ package org.as3lib.kitchensync.action.group
 		}
 		
 		/**
+		 * @inheritDoc
+		 * 
 		 * override to reset the _currentActionIndex.
 		 */
 		override protected function complete():void {

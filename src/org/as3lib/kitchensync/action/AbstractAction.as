@@ -28,7 +28,6 @@ package org.as3lib.kitchensync.action
 	 * @author Mims Wright
 	 * @since 0.1
 	 */
-	 // todo: add looping
 	 // todo : optimize by caching the value for startTimeHasElapsed and durationHasElapsed
 	public class AbstractAction extends EventDispatcher implements IJumpableAction
 	{	
