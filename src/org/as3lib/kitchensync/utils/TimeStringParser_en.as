@@ -25,8 +25,8 @@ package org.as3lib.kitchensync.utils
 		private static const HOURS_VALUE:Number = 3600000;
 		private static const DAYS_VALUE:Number = 86400000;
 		
-		private static const NUMBER_UNIT_PAIR_SEARCH:RegExp = /(\d+(\.\d+)?)\s*[a-z]+\s*,?\s*/g;
-		private static const NUMBER_SEARCH:RegExp = /\d+(\.\d+)?/g;
+		private static const NUMBER_UNIT_PAIR_SEARCH:RegExp = /(\d*\.?\d+)\s*[a-z]+\s*,?\s*/g;
+		private static const NUMBER_SEARCH:RegExp = /\d*\.?\d+/g;
 		private static const LETTER_SEARCH:RegExp = /[a-z]+/;
 		private static const NEGATIVE_SEARCH:RegExp = /^-.+/;
 		

@@ -57,8 +57,8 @@ package org.as3lib.kitchensync.action.tween
 			else { targetsArray = [targets]; }
 			
 			if (properties == null && properties == "") { throw new ArgumentError("'properties' cannot be null"); }
-			if (properties is Array) { propertiesArray = properties; }
-			if (properties is String) { propertiesArray = [String(properties)] }
+			else if (properties is Array) { propertiesArray = properties; }
+			else if (properties is String) { propertiesArray = [String(properties)] }
 			else { throw new TypeError("'properties' must be either a String or an Array of strings"); }
 			
 			var tweenTargets:Array = [];
