@@ -92,6 +92,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#description">description</a> : String<div class="summaryTableDescription">
+   An optional human-readable description of the action.</div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="AbstractActionGroup.html#duration">duration</a> : *<div class="summaryTableDescription">
    Setting duration is overridden on groups and will always be 0.</div>
 </td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
@@ -156,6 +161,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_delay">_delay</a> : int = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_description">_description</a> : String<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -312,11 +321,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#reset()">reset</a>():void</div>
-<div class="summaryTableDescription"> 
+<a class="signatureLink" href="AbstractActionGroup.html#reset()">reset</a>():void</div>
+<div class="summaryTableDescription">
+    
    Resets the action and returns it to its original state it was in
    before being started.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -582,6 +592,29 @@ showHideInherited();
 <td width="20px"></td><td><code>... <span class="label">children</span></code></td>
 </tr>
 </table>
+<br>
+<span class="label">Example</span>
+<br><div class='listing'><pre>
+   var parallel:KSParallelGroup;
+   
+   // new group with no children.
+   parallel = new KSParallelGroup();
+   
+   // new group with 3 children. all three will execute simultaneously.
+   parallel = new KSParallelGroup( myAction, myAction2, myAction3);
+   
+   // new group with styntactic sugar for creating a sequence on the fly. 
+   // All acitons will start simultaneously except for myAction3 will execute after 
+   // myAction2 completes. 
+   // this is identical to using:
+   // parallel = new KSParallelGroup( myAction, new KSSequenceGroup(myAction2, myAction3), myAction4);
+   parallel = new KSParallelGroup( 
+        mAction, 
+        [myAction2, myAction3], 
+        myAction4
+        );
+   </pre></div>
+   <p></p>
 </div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>

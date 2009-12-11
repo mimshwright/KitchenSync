@@ -229,7 +229,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/FilterTargetProperty.html#clone()">clone</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/FilterTargetProperty.html">FilterTargetProperty</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>  
+   Creates a deep copy of the tweenTarget object.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/ITweenTarget.html#clone()">clone</a>() &mdash; Method in interface org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></td>
@@ -289,25 +290,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
 <td width="20"></td><td> Create a copy of the tweenTarget object </td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html#cloneReversed()">cloneReversed</a>(target, property) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html#cloneReversed()">cloneReversed</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Creates a new Tween and reverses the start and end values of the target property.</td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html#cloneWithTarget()">cloneWithTarget</a>(target, property) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
-   Creates a copy of this Tween which targets a different object and / or property.</td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html#cloneWithTweenTarget()">cloneWithTweenTarget</a>(tweenTarget) &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
-   Clones the tween with a new tweenTarget.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/AbstractColorMatrixTweenTarget.html#_colorMatrix">_colorMatrix</a> &mdash; Property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/AbstractColorMatrixTweenTarget.html">AbstractColorMatrixTweenTarget</a></td>
@@ -328,7 +315,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
 </tr>
 <tr>
 <td width="20"></td><td>
-   override to reset the _currentActionIndex.</td>
+   
+   Internal function that completes the action by cleaning up any running processes
+   and unregistering it from the synchronizer.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html#complete()">complete</a>() &mdash; Method in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/KSSimpleTween.html">KSSimpleTween</a></td>
@@ -393,8 +382,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html#_currentActionIndex">_currentActionIndex</a> &mdash; Property in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html">KSSequenceGroup</a></td>
 </tr>
 <tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html#currentActionIndex">currentActionIndex</a> &mdash; Property in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSSequenceGroup.html">KSSequenceGroup</a></td>
+</tr>
+<tr>
 <td width="20"></td><td>
    The index of the action currently executing.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSLooper.html#currentLoop">currentLoop</a> &mdash; Property in class org.as3lib.kitchensync.action.group.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/group/class-list.html');" href="org/as3lib/kitchensync/action/group/KSLooper.html">KSLooper</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Returns the current loop starting with 1.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/Synchronizer.html#currentTime">currentTime</a> &mdash; Property in class org.as3lib.kitchensync.core.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/core/class-list.html');" href="org/as3lib/kitchensync/core/Synchronizer.html">Synchronizer</a></td>
@@ -441,7 +443,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/FilterTargetProperty.html#currentValue">currentValue</a> &mdash; Property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/FilterTargetProperty.html">FilterTargetProperty</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td> </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/SimpleBlurTweenTarget.html#currentValue">currentValue</a> &mdash; Property in class org.as3lib.kitchensync.action.tween.<a onclick="javascript:loadClassListFrame('org/as3lib/kitchensync/action/tween/class-list.html');" href="org/as3lib/kitchensync/action/tween/SimpleBlurTweenTarget.html">SimpleBlurTweenTarget</a></td>

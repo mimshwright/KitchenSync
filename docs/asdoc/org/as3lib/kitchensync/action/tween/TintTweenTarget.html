@@ -46,6 +46,31 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
   
   <p></p>
 <br>
+<span class="label">Example</span>
+<br><div class='listing'><pre>
+  var sprite:Sprite;
+  sprite.graphics.beginFill(0);
+  sprite.graphics.drawRect(0,0,100,100);
+  addChild(sprite);
+  
+  // tween tint from black to red over 5 seconds.
+  var tintRed:TintTweenTarget = new TintTweenTarget(sprite, TintTweenTarget.CURRENT_TINT, 0xFF0000);
+  TweenFactory.newTweenWithTargets(tintRed, "5s").start();
+  
+  // Clear the tween 2 seconds after the first tween.
+  var clearTint:TintTweenTarget = new TintTweenTarget(sprite, TintTweenTarget.CURRENT_TINT, TintTweenTarget.NO_TINT);
+  TweenFactory.newTweenWithTargets(clearTint, "5s", "7s").start();
+  
+  </pre></div>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../tween/TweenFactory.html#newTintTween()" target="">org.as3lib.kitchensync.action.tween.TweenFactory.newTintTween()</a>
+</div>
+<br>
 <hr>
 </div>
 <a name="propertySummary"></a>

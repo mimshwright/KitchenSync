@@ -43,8 +43,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </table>
 <p></p>
   A tween target that targets a property of a BitmapFilter object. 
-  For example, you may target the blurX property of a BlurFilter on a 
-  particular movieClip. 
+  For example, you may target the "blurX" property of a BlurFilter on a 
+  particular movieClip.
+  
+  Tweens will be applied to the filter class rather than the individual filter
+  objects because in order for the filter to be applied to the display object, 
+  the array of filters must be rewritten on each update.
+  
   <p></p>
 <br>
 <hr>
@@ -57,7 +62,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentValue">currentValue</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentValue">currentValue</a> : Number<div class="summaryTableDescription"> </div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
@@ -67,11 +72,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#endValue">endValue</a> : Number<div class="summaryTableDescription">
-   The value to end on when tweening.</div>
+   
+   The value that the tweenTarget will tween to.</div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#filterType">filterType</a> : Class<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#filterType">filterType</a> : Class<div class="summaryTableDescription">[read-only] 
+   The class for the filter to target.</div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
@@ -81,7 +88,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startValue">startValue</a> : Number<div class="summaryTableDescription">
-   The value to start from when tweening.</div>
+   
+   The value that the tweenTarget will begin from.</div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
@@ -103,7 +111,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#filters">filters</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#filters">filters</a> : Array<div class="summaryTableDescription"> 
+   The array of filters currently being applied to the target.</div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
@@ -148,14 +157,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():<a href="../tween/ITweenTarget.html">ITweenTarget</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">  
+   Creates a deep copy of the tweenTarget object.</div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#reset()">reset</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">  
+   Resets the current value to it's initial pre-tweened state.</div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 <tr class="">
@@ -180,7 +191,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#getDefaultFilter()">getDefaultFilter</a>(filterType:Class):BitmapFilter</div>
 <div class="summaryTableDescription">
-   </div>
+   Returns a default instance of the filterType.</div>
 </td><td class="summaryTableOwnerCol">FilterTargetProperty</td>
 </tr>
 </table>
@@ -199,7 +210,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>currentValue:Number</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>currentValue:Number</code>&nbsp;&nbsp;[read-write]<p> </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentValue():Number</code>
 <br>
@@ -237,7 +248,8 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>endValue:Number</code>&nbsp;&nbsp;[read-write]<p>
-   The value to end on when tweening.
+   
+   The value that the tweenTarget will tween to.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endValue():Number</code>
@@ -252,7 +264,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>filters:Array</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>filters:Array</code>&nbsp;&nbsp;[read-write]<p> 
+   The array of filters currently being applied to the target.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get filters():Array</code>
 <br>
@@ -275,7 +289,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>filterType:Class</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>filterType:Class</code>&nbsp;&nbsp;[read-only]<p> 
+   The class for the filter to target. 
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get filterType():Class</code>
 <br>
@@ -329,7 +345,8 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>startValue:Number</code>&nbsp;&nbsp;[read-write]<p>
-   The value to start from when tweening.
+   
+   The value that the tweenTarget will begin from.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startValue():Number</code>
@@ -375,35 +392,36 @@ showHideInherited();
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; the object whose property you want to tween
+<td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The display object that will receive the filter.
    </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">filterType</span>:Class</code> &mdash; the name of the numeric property to tween
+<td width="20px"></td><td><code><span class="label">filterType</span>:Class</code> &mdash; The Class of the filter you're targeting.
    </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">property</span>:String</code> &mdash; the value to start from when tweening
+<td width="20px"></td><td><code><span class="label">property</span>:String</code> &mdash; The name of the numeric property to tween.
    </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> &mdash; the value to end on when tweening 
+<td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> &mdash; The value to start from when tweening.
    </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">endValue</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">endValue</span>:Number</code> &mdash; The value to end on when tweening.
+   </td>
 </tr>
 </table>
 </div>
@@ -416,12 +434,20 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clone():<a href="../tween/ITweenTarget.html">ITweenTarget</a></code>
-<p></p>
+<code>public function clone():<a href="../tween/ITweenTarget.html">ITweenTarget</a></code><p>  
+   Creates a deep copy of the tweenTarget object.
+   Does not copy the state of the object (such as 
+   its current progress in the tween).
+   
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../tween/ITweenTarget.html">ITweenTarget</a></code></td>
+<td width="20"></td><td><code><a href="../tween/ITweenTarget.html">ITweenTarget</a></code> &mdash; 
+                        ITweenTarget a clone of the tween target object 
+   
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -433,17 +459,21 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>protected function getDefaultFilter(filterType:Class):BitmapFilter</code><p>
+   Returns a default instance of the filterType.
+   
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">filterType</span>:Class</code></td>
+<td width="20px"></td><td><code><span class="label">filterType</span>:Class</code> &mdash; The class of the filter to get.
+   </td>
 </tr>
 </table>
 <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>BitmapFilter</code></td>
+<td width="20"></td><td><code>BitmapFilter</code> &mdash; BitmapFilter The default instance of a new filter (of type filterType).
+   </td>
 </tr>
 </table>
 </div>
@@ -454,8 +484,12 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function reset():void</code>
-</div>
+<code>public function reset():void</code><p>  
+   Resets the current value to it's initial pre-tweened state.
+   (typically, sets the currentValue equal to the startValue).
+   This is usually called by the reset() method of the KSTween class.
+   
+   </p></div>
 <a name="updateTween()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>

@@ -82,9 +82,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="KSSequenceGroup.html">KSSequenceGroup</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSSequenceGroup.html#currentActionIndex">currentActionIndex</a> : int<div class="summaryTableDescription">
+   The index of the action currently executing.</div>
+</td><td class="summaryTableOwnerCol"><a href="KSSequenceGroup.html">KSSequenceGroup</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#delay">delay</a> : int<div class="summaryTableDescription">
    delay is the time that will pass after the start() method is called
    before the action begins.</div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#description">description</a> : String<div class="summaryTableDescription">
+   An optional human-readable description of the action.</div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -156,12 +166,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="KSSequenceGroup.html">KSSequenceGroup</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSSequenceGroup.html#_currentActionIndex">_currentActionIndex</a> : int = -1<div class="summaryTableDescription">
-   The index of the action currently executing.</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="KSSequenceGroup.html#_currentActionIndex">_currentActionIndex</a> : int = -1<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="KSSequenceGroup.html">KSSequenceGroup</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_delay">_delay</a> : int = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_description">_description</a> : String<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -316,11 +329,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#reset()">reset</a>():void</div>
-<div class="summaryTableDescription"> 
+<a class="signatureLink" href="AbstractActionGroup.html#reset()">reset</a>():void</div>
+<div class="summaryTableDescription">
+    
    Resets the action and returns it to its original state it was in
    before being started.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
+</td><td class="summaryTableOwnerCol"><a href="AbstractActionGroup.html">AbstractActionGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -400,7 +414,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="KSSequenceGroup.html#complete()">complete</a>():void</div>
 <div class="summaryTableDescription">
-   override to reset the _currentActionIndex.</div>
+   
+   Internal function that completes the action by cleaning up any running processes
+   and unregistering it from the synchronizer.</div>
 </td><td class="summaryTableOwnerCol"><a href="KSSequenceGroup.html">KSSequenceGroup</a></td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
