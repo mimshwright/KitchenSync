@@ -49,7 +49,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @return A new ITween instance
 		 */
 		// todo: check constructors to make sure start values are RuntimeValues
-		public static function newTween(targets:*, properties:*, startValue:Number = 0, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null):ITween {
+		public static function newTween(targets:*, properties:*, startValue:Number = 0, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
 			var targetsArray:Array, propertiesArray:Array;
 			
 			if ( targets == null) { throw new ArgumentError("'targets' cannot be null"); }

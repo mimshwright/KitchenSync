@@ -4,6 +4,7 @@ package org.as3lib.kitchensync.core
 	import flash.utils.Dictionary;
 	import flash.utils.getTimer;
 	
+	import org.as3lib.kitchensync.KitchenSync;
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	
 	/**
@@ -94,7 +95,11 @@ package org.as3lib.kitchensync.core
 		 * @param client The client that will receive the update.
 		 */ 
 		public function registerClient(client:ISynchronizerClient):void {
-			_clients[client] = client;
+			if (_core && KitchenSync.isInitialized) {
+				_clients[client] = client;
+			} else {
+				throw new Error("KitchenSync has not been initialized yet and actions will not receive updates. Please run KitchenSync.initialize() in the main function of your program (or in the first frame).");
+			}
 		}
 		
 		/**

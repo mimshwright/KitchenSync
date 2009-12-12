@@ -1,10 +1,11 @@
 package org.as3lib.kitchensync
 {
+	import flash.display.DisplayObject;
 	import flash.errors.IllegalOperationError;
 	
+	import org.as3lib.kitchensync.core.EnterFrameCore;
 	import org.as3lib.kitchensync.core.ISynchronizerCore;
 	import org.as3lib.kitchensync.core.Synchronizer;
-	import org.as3lib.kitchensync.core.TimerCore;
 	import org.as3lib.kitchensync.utils.ITimeStringParser;
 	
 
@@ -14,7 +15,7 @@ package org.as3lib.kitchensync
 	 * @example 
 	 *  Initialize with default settings.
 	 * 	<listing version="3.0">
-	 * 	KitchenSync.initialize();
+	 * 	KitchenSync.initialize(this);
 	 * 	</listing>
 	 * 
 	 *  Initialize with a specific core and version checking.
@@ -55,18 +56,25 @@ package org.as3lib.kitchensync
 		
 		/**
 		 * Initializes the timing core for KitchenSync. Must be called before using any actions.
+		 * By default, the system uses EnterFrameCore as the core but other cores can be specified by
+		 * calling initializeWithCore() instead. 
 		 * 
-		 * @param frameRate Is an optional parameter that allows you to set the rate of the dispatches.
-		 * 					This can be different than the SWF's framerate but for best results, use the framerate of the swf.
-		 * 					The system may not perform well over 60.
+		 * @example <listing version="3.0">
+		 * // In most circumstances you can initialize KS by adding this line to  
+		 * // the main funciton of your program (or in the first frame)
+		 * KitchenSync.initialize(this);
+		 * </listing>
+		 * 
+		 * @see #initializeWithCore()
+		 * 
+		 * @param enterFrameSeed A display object whose ENTER_FRAME event will trigger updates to the synchronizer. 
+		 * 						 Usually, you can use <code>this</code> in your document class / application root. 
 		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended
 		 * 					   but not required. It will throw an error if you're using the wrong version of KS. 
 		 */
-		 // todo: make the library auto-initializing
-		public static function initialize(frameRate:int = 30, versionCheck:String = VERSION):void
+		public static function initialize(enterFrameSeed:DisplayObject, versionCheck:String = VERSION):void
 		{	
-			var core:TimerCore = new TimerCore();
-			core.interpolateIntervalFromFrameRate(frameRate);
+			var core:ISynchronizerCore = new EnterFrameCore(enterFrameSeed);
 			initializeWithCore(core, versionCheck);
 		}
 		
@@ -89,7 +97,7 @@ package org.as3lib.kitchensync
 				throw new IllegalOperationError("KitchenSync has already been initialized.");
 			}
 			if (versionCheck != VERSION) {
-				throw new Error ("Version check failed. Please update to the correct version or to continue using this version (at your own risk) put the initialize() method inside a try{} block.");
+				throw new Error ("Version check failed. You tested for version " + versionCheck + " but it's actually version " + VERSION + ". Some syntax may have changed in this version.");
 			}
 			var synchronizer:Synchronizer;
 			synchronizer = Synchronizer.getInstance();

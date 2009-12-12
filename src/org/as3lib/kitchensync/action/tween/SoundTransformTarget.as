@@ -40,6 +40,7 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @see org.as3lib.kitchensync.action.tween.SoundTransformProperty
 		 */
+		// todo: consider making this string based.
 		public function get property():SoundTransformProperty { return _property; }
 		public function set property(property:SoundTransformProperty):void { _property = property; }
 		protected var _property:SoundTransformProperty;

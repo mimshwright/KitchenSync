@@ -12,23 +12,28 @@ package org.as3lib.kitchensync.core
 	 //Todo: add notes on performance.
 	public class EnterFrameCore implements ISynchronizerCore
 	{
+		/** The seed for the enterframe event. */
 		private var _displayObject:DisplayObject;
 		
 		/**
 		 * Constructor.
 		 * 
 		 * @param displayObject The displayObject to use for enterFrame updates.
+		 * 						Note: this no longer needs to be added to stage (as it was in older versions.)
 		 */
 		public function EnterFrameCore(displayObject:DisplayObject)
 		{
 			_displayObject = displayObject;
 		}
-
+		
+		/** @inheritDoc */
+		// TODO: test, does this need to be on the stage to work?
 		public function start():void
 		{
 			_displayObject.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
 		
+		/** @inheritDoc */
 		public function stop():void
 		{
 			_displayObject.removeEventListener(Event.ENTER_FRAME, onEnterFrame);
