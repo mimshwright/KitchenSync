@@ -77,6 +77,7 @@ package org.as3lib.kitchensync.action.loading
 		 */
 		protected function onLoadSuccess(event:Event):void {
 			_data = _loader;
+			_result = _loader; 
 			if (_resultList) {
 				_resultList.push(_data);
 			}

@@ -8,21 +8,39 @@ package org.as3lib.kitchensync.action.tween
 	
 	import org.as3lib.utils.AbstractEnforcer;
 	
-	// todo: add docs
 	// todo: consider switching to http://www.quasimondo.com/archives/000671.php
+	
+	/**
+	 * A type of tween target that uses a ColorMatrixFilter (using the ColorMatrix
+	 * object from Grant Skinner). This class is used as a base for other tween targets
+	 * that adjust individual properties such as saturation or brightness.   
+	 * 
+	 * @abstract
+	 * 
+	 * @see http://www.gskinner.com/blog/archives/2007/12/colormatrix_upd.html
+	 * 
+	 * @author Mims Wright
+	 * @since 1.6
+	 */
 	public class AbstractColorMatrixTweenTarget implements IFilterTweenTarget
 	{
 
-		// todo: add docs
+		/**
+		 * @inheritDoc
+		 * The filter type for all of the ColorMatrix TweenTargets is ColorMatrixFilter.
+		 */
 		public function get filterType():Class {
 			return ColorMatrixFilter;
 		}
 		
-		// todo: add docs
+		/** @inheritDoc */
 		public function get currentValue():Number { return _currentValue; }
 		public function set currentValue(currentValue:Number):void {
 			var newFilters:Array = [];
 			_colorMatrix = new ColorMatrix();
+			
+			// apply the transformation to the matrix. this method will 
+			// be defined in the subclasses.
 			adjustMatrixValue(_colorMatrix, currentValue);
 			
 			// if the previous filter array contains any filters
@@ -43,7 +61,12 @@ package org.as3lib.kitchensync.action.tween
 			
 			_currentValue = currentValue;
 		}
+		
+		
 		/** 
+		 * This is the function that applies the transformation to the matrix by
+		 * calling the proper adjust method on the ColorMatrix class. 
+		 * 
 		 * This funciton is defined in child classes. 
 		 */ 
 		protected function adjustMatrixValue(colorMatrix:ColorMatrix, value:Number):void {
@@ -54,6 +77,7 @@ package org.as3lib.kitchensync.action.tween
 		protected var _target:DisplayObject;
 		protected var _colorMatrix:ColorMatrix;
 		
+		/** Shortcut to the list of display object filters. */
 		protected function get filters ():Array {
 			if (_target != null) { return _target.filters; }
 			return null;
@@ -65,23 +89,24 @@ package org.as3lib.kitchensync.action.tween
 		
 		
 		
-		/**
-		 * The value to start from when tweening.
-		 */ 
+		/** @inheritDoc */		
 		public function get startValue():Number	{ return _startValue; }
 		public function set startValue(startValue:Number):void { _startValue = startValue; }
 		protected var _startValue:Number;
 		
-		/**
-		 * The value to end on when tweening.
-		 */		
+		/** @inheritDoc */		
 		public function get endValue():Number {	return _endValue; }
 		public function set endValue(endValue:Number):void	{ _endValue = endValue; }
 		protected var _endValue:Number;
 		
 		
+		/** 
+		 * Constructor. 
+		 * @abstract
+		 */
 		public function AbstractColorMatrixTweenTarget()
 		{
+			AbstractEnforcer.enforceConstructor(this, AbstractColorMatrixTweenTarget);
 		}
 		
 		
@@ -97,11 +122,15 @@ package org.as3lib.kitchensync.action.tween
 			return currentValue = percentComplete * (endValue - startValue) + startValue;
 		}
 		
-		
+		/** @inheritDoc */
 		public function reset():void {
 			currentValue = startValue;
 		}
 		
+		/** 
+		 * @inheritDoc 
+		 * @abstract 
+		 */
 		public function clone():ITweenTarget
 		{
 			AbstractEnforcer.enforceMethod();
