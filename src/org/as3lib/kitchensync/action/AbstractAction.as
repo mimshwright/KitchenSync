@@ -183,7 +183,7 @@ package org.as3lib.kitchensync.action
 		
 		/** @inheritDoc */
 		public function unpause():void {
-			if (!_running && !_paused) {
+			if (!_running && !_paused) { // FIXME: this line looks wonky. test it.
 				_paused = false;
 				var currentTime:int = Synchronizer.getInstance().currentTime;
 				var timeSincePause:int = currentTime - _pauseTime;

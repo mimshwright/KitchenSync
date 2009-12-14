@@ -9,10 +9,23 @@ package org.as3lib.kitchensync.action
 	import org.as3lib.kitchensync.core.*;
 	
 	/**
-	 * A sound that will be played back at the specified delay.
+	 * A sound that will be played when the action executes.
+	 * The sound passed to the action should be a Sound object although
+	 * you can send a string or URLRequest as well (but it will be loaded
+	 * when the action is created). When the sound finishes playing, the
+	 * action will be completed. Meanwhile, you can access the sound
+	 * object and the soundChannel object if you need more control and
+	 * you can set the offset when the sound begins playing. 
+	 * 
+	 * @example <listing version="3.0">
+	 * var sound:Sound = new Sound("mySound.mp3");
+	 * 
+	 * new KSSoundController(sound).start();
+	 * </listing>
+	 * 
+	 * @author Mims Wright
+	 * @since 0.2
 	 */
-	 // todo: add example
-	 // todo: review
 	 // todo: does it make sense to have this be a precision action?
 	public class KSSoundController extends AbstractAction implements IPrecisionAction
 	{
@@ -62,8 +75,10 @@ package org.as3lib.kitchensync.action
 		 * Constructor.
 		 * 
 		 * @throws TypeError - If the sound parameter is not the correct data type.
+		 * 
 		 * @param sound - The sound to be played.
 		 * 				  Can be an object of type Sound, URLRequest, or the URL of the sound as a String.
+		 * 				  For best performance, use a preloaded sound.
 		 * @param delay - The delay before starting the sound.
 		 * @param soundOffset - The point at which to begin playing the sound in milliseconds.
 		 */
@@ -161,6 +176,7 @@ package org.as3lib.kitchensync.action
 			_sound = null;
 		}
 		
+		/** @inheritDoc */
 		override public function clone():IAction {
 			var clone:KSSoundController = new KSSoundController(_sound, _delay, _soundOffset);
 			clone.autoDelete = _autoDelete;

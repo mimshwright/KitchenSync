@@ -39,7 +39,6 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
-	 // todo: review
 	public class KSSimpleTween extends EventDispatcher implements ITween
 	{
 		/** 
@@ -109,8 +108,6 @@ package org.as3lib.kitchensync.action.tween
 		/** a cached value for the difference between the start and end. */
 		protected var _delta:Number;
 		
-		/** @inheritDoc */
-		
 		/** The time at which the tween was started. */
 		protected var _startTime:int;
 		
@@ -140,8 +137,8 @@ package org.as3lib.kitchensync.action.tween
 			this.property = property;
 			this.startValue = startValue;
 			this.endValue = endValue;
-			_duration = duration;
-			_delay = delay;
+			this.duration = duration;
+			this.delay = delay;
 			if (easingFunction == null) { easingFunction = Linear.ease; }
 			this.easingFunction = easingFunction;
 			this.easingMod1 = easingMod1;
@@ -160,7 +157,6 @@ package org.as3lib.kitchensync.action.tween
 			if (timeElapsed >= 0) {
 				
 				// invoke the easing function.
-				// todo: see if calling the function directly improves performace.
 				var result:Number =  EasingUtil.call(easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2); 
 				
 				target[property] = result * (endValue - startValue) + startValue;
@@ -183,6 +179,7 @@ package org.as3lib.kitchensync.action.tween
 			return startAtTime(startTime);
 		}
 		
+		/** @inheritDoc */
 		public function startAtTime(startTime:int):IPrecisionAction {
 			if (!_running) {
 				// get the current timestamp
@@ -221,7 +218,6 @@ package org.as3lib.kitchensync.action.tween
 			stop();
 			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_COMPLETE, Synchronizer.getInstance().currentTime));
 		}
-		
 		
 		/** @inheritDoc */
 		public function pause():void {

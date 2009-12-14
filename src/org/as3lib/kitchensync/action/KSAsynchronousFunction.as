@@ -13,14 +13,24 @@ package org.as3lib.kitchensync.action
 	 * @since 1.5
 	 */
 	 // todo: add example
-	 // todo: review
-	 // todo: what about pausing?
 	public class KSAsynchronousFunction extends KSFunction
 	{
 		/** a reference to the event dispatcher */
 		protected var _completeEventDispatcher:IEventDispatcher;
 		/** the type of event to listen for */
 		protected var _completeEventType:String;
+		
+		protected var _isComplete:Boolean = false;
+		
+		/** 
+		 * @inheritDoc
+		 * 
+		 * This class isn't instantaneous even though the duration can only be 
+		 * set to 0.
+		 */
+		override public function get isInstantaneous() : Boolean {
+			return false;
+		}
 		
 		/**
 		 * Constructor.
@@ -53,14 +63,60 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
+		
+		/**
+		 * @inheritDoc
+		 * 
+		 * NOTE: Pausing this doesn't actually pause the asynchronous function, however, 
+		 * it does pause the action from completing.  
+		 */
+		override public function pause() : void {
+			super.pause();
+			trace("Warning: Pausing a KSAsynchronousFunction will not stop the funciton from executing.");
+		}
+		
+		override public function unpause() : void {
+			_paused = false;
+			if (_isComplete) {
+				complete();
+			}
+		}
+
+		/**
+		 * @inheritDoc
+		 * 
+		 * NOTE: Stopping this doesn't actually stop the asynchronous function, however, 
+		 * it does stop the action from completing.  
+		 */
+		override public function stop() : void {
+			trace("Warning: Pausing a KSAsynchronousFunction will not stop the funciton from executing.");
+		}
+	
+		
+		/** @inheritDoc */
+		override public function start() : IAction {
+			_isComplete = false;
+			return super.start();
+		}
+		
+		/** @inheritDoc */
+		override public function reset() : void {
+			super.reset();
+			_isComplete = false;
+		}
+		
 		/**
 		 * Event listener that is called when the asyncronous function is completed.
 		 */
 		protected function onFunctionComplete(event:Event):void {
 			_completeEventDispatcher.removeEventListener(_completeEventType, onFunctionComplete);
-			complete();
+			_isComplete = true;
+			if (!_paused) {
+				complete();
+			}
 		}
 		
+		/** @inheritDoc */
 		override public function clone():IAction {
 			var clone:KSAsynchronousFunction = new KSAsynchronousFunction(_func, _completeEventDispatcher, _completeEventType);
 			clone._args = _args;
@@ -70,6 +126,7 @@ package org.as3lib.kitchensync.action
 			return clone;
 		}
 		
+		/** @inheritDoc */
 		override public function kill():void {
 			super.kill();
 			_completeEventDispatcher = null;

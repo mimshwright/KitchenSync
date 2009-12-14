@@ -13,6 +13,7 @@ package org.as3lib.kitchensync.action.tween
 	// todo: add example
 	// todo: review
 	// todo: add a way to use the natural number of frames between the two endpoints as the duration!!!
+	//		 But how? the duration isn't set in this class. 
 	public class TimelineController implements ITweenTarget
 	{
 		
@@ -117,7 +118,8 @@ package org.as3lib.kitchensync.action.tween
 			}
 			throw new Error("Invalid label name. The target MovieClip does not contain this label.");
 		}
-
+		
+		/** @inheritDoc */
 		public function updateTween(percentComplete:Number):Number {
 			return currentValue = percentComplete * differenceInValues + _startValue;
 		}
@@ -128,10 +130,12 @@ package org.as3lib.kitchensync.action.tween
 		public function get differenceInValues():Number { return _endValue - _startValue; }
 		
 		
+		/** @inheritDoc */
 		public function reset():void {
 			currentValue = _startValue;
 		}
 		
+		/** @inheritDoc */
 		public function clone():ITweenTarget {
 			return new TimelineController(_target, _startValue, _endValue);
 		}

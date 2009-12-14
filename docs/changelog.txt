@@ -50,6 +50,8 @@ REMOVED eventType and useWeakReferences class properties of KSEventDispatcher. M
 
 REMOVED KSMovieClipController since it didn't seem to add much and could be confused easily with TimelineController.
 
+FIXED pausing in KSAsynchronousEvent
+
 REFACTORED tweens.
 ADDED easing related accessors to ITween.
 ADDED methods in TweenFactory and renamed some.
@@ -70,7 +72,6 @@ ADDED KSURLLoader and KSXMLLoader for easier load queues
 CHANGED KSAsyncrhonousFunction to use strong references
 
 ===== v1.6 (2008.10.15) =====
-NEW CONTRIBUTOR Brett Forsyth - welcome!
 ADDED TweenFactory which provides an easy to use interface for creating new tweens including an object parser similar to FuseKit's interface.
 ADDED SoundTransformTarget for changing volume or panning of a sound.
 ADDED KSSimultaneousEndGroup which causes all children to end simultaneously.
@@ -115,7 +116,6 @@ CHANGED default policy for 'snapToValueOnComplete' to true which should fix some
 CHANGED default frequency for oscillating functions. 
 
 ===== v1.2* (2008.05.2) =====
-NEW CONTRIBUTOR Aral Balkan - welcome!
 *RENAMED* Nearly the entire library
 *MOVED* All classes into new packages
 *ADDED* KitchenSync as the entry point to the library. Use KitchenSync.initialize(this, "1.2"); to start the app.
