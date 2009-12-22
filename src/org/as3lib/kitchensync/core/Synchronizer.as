@@ -15,12 +15,14 @@ package org.as3lib.kitchensync.core
 	/**
 	 * Synchronizer acts as the main time keeper for the animation engine. 
 	 * Normally, this class will not be used directly except by advanced users.
+	 * The SynchronizerCore isolates the function that times the dispatches. 
+	 * To initialize the class, use KitchenSync.initialize() or initializeWithCore().
+	 * 
+	 * @see org.as3lib.kitchensync.KitchenSync#initialize()
 	 * 
 	 * @author Mims H. Wright
 	 * @since 0.1
 	 */
-	 // todo: add more notes about cores and kitchensync class
-	 // todo: make the enterframe core be the default but make it self initializing too.
 	public final class Synchronizer extends EventDispatcher
 	{
 		

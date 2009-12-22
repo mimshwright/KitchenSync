@@ -20,14 +20,14 @@ package org.as3lib.kitchensync.action
 	 * @example <listing version="3.0">
 	 * var sound:Sound = new Sound("mySound.mp3");
 	 * 
-	 * new KSSoundController(sound).start();
+	 * new KSSound(sound).start();
 	 * </listing>
 	 * 
 	 * @author Mims Wright
 	 * @since 0.2
 	 */
 	 // todo: does it make sense to have this be a precision action?
-	public class KSSoundController extends AbstractAction implements IPrecisionAction
+	public class KSSound extends AbstractAction implements IPrecisionAction
 	{
 		/**
 		 * A pointer to the sound object passed into the constructor or created based on the URL.
@@ -82,7 +82,7 @@ package org.as3lib.kitchensync.action
 		 * @param delay - The delay before starting the sound.
 		 * @param soundOffset - The point at which to begin playing the sound in milliseconds.
 		 */
-		public function KSSoundController(sound:*, delay:* = 0, soundOffset:* = 0) {
+		public function KSSound(sound:*, delay:* = 0, soundOffset:* = 0) {
 			super();
 			if (sound is Sound) {
 				_sound = Sound(sound);
@@ -178,7 +178,7 @@ package org.as3lib.kitchensync.action
 		
 		/** @inheritDoc */
 		override public function clone():IAction {
-			var clone:KSSoundController = new KSSoundController(_sound, _delay, _soundOffset);
+			var clone:KSSound = new KSSound(_sound, _delay, _soundOffset);
 			clone.autoDelete = _autoDelete;
 			return clone;
 		}

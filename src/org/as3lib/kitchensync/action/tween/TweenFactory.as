@@ -1,9 +1,11 @@
 package org.as3lib.kitchensync.action.tween
 {
 	import flash.display.DisplayObject;
+	import flash.display.MovieClip;
 	import flash.geom.Point;
 	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
+	import org.as3lib.kitchensync.easing.Linear;
 	
 	/**
 	 * Provides a convenient interface for creating all types of tweens.
@@ -97,6 +99,37 @@ package org.as3lib.kitchensync.action.tween
 				duration, delay, easingFunction);
 		}
 
+		
+		/**
+		 * Creates a timeline tween.
+		 * 
+		 * @see org.as3lib.kitchensync.action.tween.TimelineController
+		 * 
+		 * @param target The movieClip that will be animated
+		 * @param startFrame The starting frame. Can be a frame label or integer. Default is 1.
+		 * @param endFrame The ending frame. Can be a frame label or integer. Default is the last frame in the clip.
+		 * @param duration The time in milliseconds that this tween will take to execute. Default is the natural duration on the timeline.
+		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue. Default is linear.
+		 * @return A new KSTween instance
+		 * 
+		 * @since 2.0
+		 */
+		public static function newTimelineTween(target:MovieClip,
+												startFrame:Object = null,
+												endFrame:Object = null,
+												duration:* = -1,
+												easingFunction:Function = null):ITween {
+			
+			var timelineController:TimelineController = new TimelineController(target, startFrame, endFrame);
+			if (duration == TimelineController.AUTO) {
+				duration = timelineController.getNaturalDuration(duration);
+			}
+			if (easingFunction == null) {
+				easingFunction = Linear.ease;
+			}
+			return newTweenWithTargets(timelineController, duration, 0, easingFunction);
+		}
+												
 		
 		/**
 		 * Creates a tween that moves a display object between two points.

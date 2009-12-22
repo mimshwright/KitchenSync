@@ -3,8 +3,13 @@ package org.as3lib.kitchensync.action.tween
 	import flash.display.FrameLabel;
 	import flash.display.MovieClip;
 	
+	import org.as3lib.utils.FrameUtil;
+	
 	/**
 	 * A TweenTarget that controls a timeline animation in a MovieClip.
+	 * It allows you to animate between two frames in a MovieClip using a KSTween so that
+	 * you can go forwards, backwards, change the duration and use easing functions 
+	 * on a timeline animation. 
 	 * 
 	 * @since 1.5
 	 * @author Mims Wright
@@ -12,8 +17,6 @@ package org.as3lib.kitchensync.action.tween
 	// TODO add option for gotoAndPlay?
 	// todo: add example
 	// todo: review
-	// todo: add a way to use the natural number of frames between the two endpoints as the duration!!!
-	//		 But how? the duration isn't set in this class. 
 	public class TimelineController implements ITweenTarget
 	{
 		
@@ -52,10 +55,31 @@ package org.as3lib.kitchensync.action.tween
 		public function get target():MovieClip { return _target; }
 		public function set target(target:MovieClip):void { 
 			_target = target; 
-			// TODO make this optional.
 			_target.stop();
 		} 
 		protected var _target:MovieClip;
+		
+		/** 
+		 * Used by getNaturalDuration()
+		 */
+		public static const AUTO:int = -1;
+		
+		/**
+		 * Use this to get the natural duration between the frames of the tween target.
+		 * 
+		 * @param frameRate The frameRate to use to evaluate the duration. 
+		 * 					Default is AUTO which uses the target MovieClip's frameRate
+		 * 					(note: the movieclip must be on the stage for this to work)
+		 * @return int The duration in Milliseconds
+		 */
+		public function getNaturalDuration(frameRate:int = AUTO):int {
+			if (frameRate == AUTO) {
+				if (_target.stage) { frameRate = _target.stage.frameRate; }
+				else { throw new Error("Cannot autodetect frame rate. Either add your target MC to the stage or use an explicit frame rate."); }
+			}
+			var durationInFrames:int = Math.abs(endValue - startValue);
+			return durationInFrames / frameRate * 1000;
+		}
 		
 		/**
 		 * Constructor.
@@ -92,32 +116,13 @@ package org.as3lib.kitchensync.action.tween
 			if (frameLabel is FrameLabel) {
 				return FrameLabel(frameLabel).frame;
 			} else if (frameLabel is String) {
-				return getFrameNumberFromString(String(frameLabel));
+				return FrameUtil.getFrameNumberFromString(target, String(frameLabel));
 			} else if (frameLabel is Number || frameLabel is int || frameLabel is uint) {
 				return int(frameLabel);
 			}
 			throw new ArgumentError("The 'frameLabel' parameter must be one of the following types: int, uint, Number, FrameLabel, String");
 		}
 
-		// todo Move this to a utility class.
-		/**
-		 * Returns a frame number based on a string label.
-		 * 
-		 * @param the frame label you're looking for as a string.
-		 * @return int number of the frame or throws an error.
-		 */
-		protected function getFrameNumberFromString(matchLabel:String):int {
-			var labelList:Array = _target.currentLabels;
-			var l:int = labelList.length;
-			var label:FrameLabel;
-			for (var i:int = 0; i < l; i++) {
-				label = FrameLabel(labelList[i]);
-				if (label.name == matchLabel) {
-					return label.frame;
-				}
-			}
-			throw new Error("Invalid label name. The target MovieClip does not contain this label.");
-		}
 		
 		/** @inheritDoc */
 		public function updateTween(percentComplete:Number):Number {

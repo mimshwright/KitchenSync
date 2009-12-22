@@ -27,7 +27,6 @@ package org.as3lib.kitchensync.core
 		}
 		
 		/** @inheritDoc */
-		// TODO: test, does this need to be on the stage to work?
 		public function start():void
 		{
 			_displayObject.addEventListener(Event.ENTER_FRAME, onEnterFrame);

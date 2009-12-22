@@ -93,8 +93,8 @@ package org.as3lib.kitchensync
 		 */
 		public static function initializeWithCore(synchronizerCore:ISynchronizerCore, versionCheck:String = VERSION):void {
 			if (_isInitialized) {
-				// todo make this error optional.
-				throw new IllegalOperationError("KitchenSync has already been initialized.");
+				trace("Warning: KitchenSync has already been initialized.");
+				return;
 			}
 			if (versionCheck != VERSION) {
 				throw new Error ("Version check failed. You tested for version " + versionCheck + " but it's actually version " + VERSION + ". Some syntax may have changed in this version.");
