@@ -82,14 +82,14 @@ package org.as3lib.kitchensync.action.tween
 		}
 		
 		/**
-		 * The value to start from when tweening.
+		 * @inheritDoc
 		 */ 
 		public function get startValue():Number	{ return _startValue; }
 		public function set startValue(startValue:Number):void { _startValue = startValue; }
 		protected var _startValue:Number;
 		
 		/**
-		 * The value to end on when tweening.
+		 * @inheritDoc
 		 */		
 		public function get endValue():Number {	return _endValue; }
 		public function set endValue(endValue:Number):void	{ _endValue = endValue; }
@@ -140,15 +140,38 @@ package org.as3lib.kitchensync.action.tween
 			return Number(currentValue);
 		}
 		
-		/** Returns the tweenTarget to its pre-tweened state */
+		/** @inheritDoc */
 		public function reset():void {
 			currentValue = startValue;
 		}
 		
-		/** Create a copy of the tweenTarget object */
+		/** @inheritDoc */
 		public function clone():ITweenTarget {
 			var clone:TargetProperty = new TargetProperty(_target, _property, _startValue, _endValue);
 			clone.snapToInteger = _snapToInteger;
+			return clone;
+		}
+		
+		/**
+		 * Returns a copy of the TargetProperty with a new target object and / or
+		 * property name. This is simply for convenience sake to allow you to 
+		 * quickly create a copy that is similar but affects different values.
+		 * 
+		 * @param target The new target object
+		 * @param property The new property on that object (optional)
+		 * @return TargetProperty The cloned tween target.
+		 */
+		// todo update docs to show optional params
+		public function cloneWithTarget (target:Object, property:String = ""):TargetProperty {
+			var clone:TargetProperty = this.clone() as TargetProperty;
+			
+			if ( target is String) {
+				clone.setTargetPropterty(clone.target, target as String);
+			} else if (property == "") {
+				clone.setTargetPropterty(target, clone.property);
+			} else {
+				clone.setTargetPropterty(target, property);
+			}
 			return clone;
 		}
 		

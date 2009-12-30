@@ -26,6 +26,7 @@ package org.as3lib.kitchensync.action.tween
 	 */
 	 // todo: add example
 	 // todo: rename this to KSAdvancedTween and KSSimpleTween to KSTween
+	// todo : fix clone with tween target
 	public class KSTween extends AbstractAction implements ITween, IPrecisionAction, ITweenTargetCollection
 	{
 		/**
@@ -252,6 +253,19 @@ package org.as3lib.kitchensync.action.tween
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
 			clone.snapToValueOnComplete = _snapToValueOnComplete;
+			return clone;
+		}
+		
+		/**
+		 * Duplicates a tween and replaces all the tween targets with the ones provided.
+		 * 
+		 * @param target An ITweenTarget to use in the cloned tween.
+		 * @return KSTween A cloned instance of this tween with the new tween targets.
+		 */
+		public function cloneWithTweenTarget(target:ITweenTarget):KSTween {
+			var clone:KSTween = clone() as KSTween;
+			clone.removeAllTweenTargets();
+			clone.addTweenTarget(target);
 			return clone;
 		}
 		

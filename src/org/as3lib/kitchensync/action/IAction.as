@@ -26,6 +26,7 @@ package org.as3lib.kitchensync.action
 		function get duration():int;
 		function set duration(duration:*):void;
 		
+		
 		/**
 		 * delay is the time that will pass after the start() method is called
 		 * before the action begins.

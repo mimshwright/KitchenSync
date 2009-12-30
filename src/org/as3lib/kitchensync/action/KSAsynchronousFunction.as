@@ -32,6 +32,12 @@ package org.as3lib.kitchensync.action
 			return false;
 		}
 		
+		/** @overrideDoc */
+		override public function get progress ():Number { 
+			if (_isComplete) { return 1; }
+			return 0;
+		}
+		
 		/**
 		 * Constructor.
 		 * 

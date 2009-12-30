@@ -43,6 +43,10 @@ ADDED totalDuration to groups.
 ADDED KSRandomGroup.
 REMOVED KSSteppedSequenceGroup because it seemed kinda useless.
 
+ADDED KSAsynchronousIteration for running processor-intensive for loops spaced out over a period of time so that they are essentially asynchronous.
+ADDED togglePause() method to AbstractAction.
+ADDED progress variable to IAction for getting percentage complete of an action.
+
 ADDED Better docs to KitchenSyncEvent class. 
 RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong event type appear in the auto-complete if the constant name and string don't match.
 

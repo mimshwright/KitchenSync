@@ -69,6 +69,7 @@ package org.as3lib.kitchensync.action.tween
 			return (Synchronizer.getInstance().currentTime - _startTime); 
 		}
 		
+		
 		/** target object whose properties will be affected. */
 		public var target:Object;
 		
