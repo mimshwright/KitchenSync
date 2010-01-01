@@ -13,7 +13,7 @@ package org.as3lib.kitchensync.action
 	 * @since 1.5
 	 */
 	 // todo: add example
-	public class KSAsynchronousFunction extends KSFunction
+	public class KSAsyncFunction extends KSFunction
 	{
 		/** a reference to the event dispatcher */
 		protected var _completeEventDispatcher:IEventDispatcher;
@@ -48,7 +48,7 @@ package org.as3lib.kitchensync.action
 		 * @param completeEventType The type (name) of the event that will be fired when complete.
 		 * @param args All additional parameters will be passed as arguments to the function when it is called. 
 		 */
-		public function KSAsynchronousFunction(func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ...args)
+		public function KSAsyncFunction(func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ...args)
 		{
 			super(func);
 			this._args = args;
@@ -78,7 +78,7 @@ package org.as3lib.kitchensync.action
 		 */
 		override public function pause() : void {
 			super.pause();
-			trace("Warning: Pausing a KSAsynchronousFunction will not stop the funciton from executing.");
+			trace("Warning: Pausing a KSAsyncFunction will not stop the funciton from executing.");
 		}
 		
 		override public function unpause() : void {
@@ -95,7 +95,7 @@ package org.as3lib.kitchensync.action
 		 * it does stop the action from completing.  
 		 */
 		override public function stop() : void {
-			trace("Warning: Pausing a KSAsynchronousFunction will not stop the funciton from executing.");
+			trace("Warning: Pausing a KSAsyncFunction will not stop the funciton from executing.");
 		}
 	
 		
@@ -124,7 +124,7 @@ package org.as3lib.kitchensync.action
 		
 		/** @inheritDoc */
 		override public function clone():IAction {
-			var clone:KSAsynchronousFunction = new KSAsynchronousFunction(_func, _completeEventDispatcher, _completeEventType);
+			var clone:KSAsyncFunction = new KSAsyncFunction(_func, _completeEventDispatcher, _completeEventType);
 			clone._args = _args;
 			clone.delay = _delay;
 			clone.duration = _duration;

@@ -5,12 +5,12 @@ package org.as3lib.kitchensync.action.loading
 	/**
 	 * A type of action that loads data from some external source when the start() mehtod is called
 	 * and is considered finished when the transfer of data is complete. The loaded data can be accessed
-	 * in the data property.This is typically implemented in a subclass of KSAsynchronousFunction.
+	 * in the data property.This is typically implemented in a subclass of KSAsyncFunction.
 	 * 
 	 * These types of actions are useful if you wish to queue up several loaders using a 
 	 * KSSequenceGroup and be notified when they're all finished.
 	 * 
-	 * @see org.as3lib.kitchensync.action.KSAsynchronousFunction
+	 * @see org.as3lib.kitchensync.action.KSAsyncFunction
 	 * @see org.as3lib.kitchensync.action.KSSequenceGroup
 	 * 
 	 * @author Mims Wright

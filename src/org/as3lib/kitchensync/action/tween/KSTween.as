@@ -24,19 +24,8 @@ package org.as3lib.kitchensync.action.tween
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
-	 // todo: add example
-	 // todo: rename this to KSAdvancedTween and KSSimpleTween to KSTween
-	// todo : fix clone with tween target
 	public class KSTween extends AbstractAction implements ITween, IPrecisionAction, ITweenTargetCollection
 	{
-		/**
-		 * Use this property to cause the tween to start from whatever the targetProperty is 
-		 * set to at the time the tween executes.
-		 */
-		 // todo: move this to a more appropriate place
-		// todo : create TweenConstants class for this.
-		public static const VALUE_AT_START_OF_TWEEN:Number = NaN;
-		
 		/** @inheritDoc */
 		public function get easingFunction():Function { return _easingFunction; }
 		public function set easingFunction(easingFunction:Function):void{ 
@@ -194,8 +183,11 @@ package org.as3lib.kitchensync.action.tween
 				if (timeElapsed <= 1) {
 					for each (target in _tweenTargets) {
 						// if using the 'existing from value' set the start value at the time that the tween begins.
-						if (target.startValue == VALUE_AT_START_OF_TWEEN) { 
+						if (isNaN(target.startValue)) { 
 							target.startValue = target.currentValue; 
+						}
+						if (isNaN(target.endValue)) {
+							target.endValue = target.currentValue;
 						}
 					}
 				}
@@ -253,6 +245,35 @@ package org.as3lib.kitchensync.action.tween
 			clone._easingMod2 = _easingMod2;
 			clone.autoDelete = _autoDelete;
 			clone.snapToValueOnComplete = _snapToValueOnComplete;
+			return clone;
+		}
+		
+		/**
+		 * Duplicates a tween and if the first tween target is a TargetProperty, makes 
+		 * a copy of it with a new target and property.
+		 * The first tweenTarget of the KSTween must be a TargetProperty for this to work.
+		 * 
+		 * Personal note: This method is somewhat of a hack. I'm including it for 
+		 * ease of use but a better way to do this would be to create a clone of a 
+		 * TargetProperty object and attach that to a clone of this KSTween.
+		 * 
+		 * @param target The new target object.
+		 * @param property The new property of the target.
+		 * @return KSTween A cloned instance of this tween with the new tween targets.
+		 */
+		public function cloneWithTargetProperty (target:*, property:String = ""):KSTween {
+			var oldTarget:TargetProperty = tweenTargets[0] as TargetProperty;
+			if (!oldTarget) {
+				throw new Error("You can't use this method unless the first tweenTarget is a TargetProperty");
+			}
+			var tweenTarget:TargetProperty = oldTarget.clone() as TargetProperty;
+			if ( property != "") { property = oldTarget.property; }
+			tweenTarget.setTargetPropterty(target, property);
+			
+			var clone:KSTween = clone() as KSTween;
+			clone.removeAllTweenTargets();
+			
+			clone.addTweenTarget(tweenTarget);
 			return clone;
 		}
 		

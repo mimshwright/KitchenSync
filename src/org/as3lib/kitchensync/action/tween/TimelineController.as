@@ -11,12 +11,12 @@ package org.as3lib.kitchensync.action.tween
 	 * you can go forwards, backwards, change the duration and use easing functions 
 	 * on a timeline animation. 
 	 * 
+	 * @see org.as3lib.kitchensync.action.tween.TweenFactory#newTimelineTween()
+	 * 
 	 * @since 1.5
 	 * @author Mims Wright
 	 */
-	// TODO add option for gotoAndPlay?
 	// todo: add example
-	// todo: review
 	public class TimelineController implements ITweenTarget
 	{
 		
@@ -71,6 +71,8 @@ package org.as3lib.kitchensync.action.tween
 		 * 					Default is AUTO which uses the target MovieClip's frameRate
 		 * 					(note: the movieclip must be on the stage for this to work)
 		 * @return int The duration in Milliseconds
+		 * 
+		 * @since 2.0
 		 */
 		public function getNaturalDuration(frameRate:int = AUTO):int {
 			if (frameRate == AUTO) {

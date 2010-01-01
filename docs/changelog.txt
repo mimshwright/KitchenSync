@@ -29,7 +29,6 @@ REMOVED action triggers from AbstractAction. Use KSSequenceGroups instead.
 ADDED an IJumpableAction to specify jumpToTime and jumpByTime separate from IAction.
 ADDED IPrecisionAction that defines a method that can start an action at a specific start time. Used in Staggered group
 ADDED jumpToTime and jumpByTime to AbstractAction so (almost) all actions have this functionality.
-ADDED actionNS namespace for accessing certain methods of action classes.
 OPTIMIZED startTimeHasElapsed and durationHasElapsed in AbstractAction
 
 
@@ -45,7 +44,7 @@ REMOVED KSSteppedSequenceGroup because it seemed kinda useless.
 
 ADDED KSAsynchronousIteration for running processor-intensive for loops spaced out over a period of time so that they are essentially asynchronous.
 ADDED togglePause() method to AbstractAction.
-ADDED progress variable to IAction for getting percentage complete of an action.
+ADDED progress variable to AbstractAction for getting percentage complete of an action.
 
 ADDED Better docs to KitchenSyncEvent class. 
 RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong event type appear in the auto-complete if the constant name and string don't match.
@@ -58,14 +57,19 @@ RENAMED KSSoundController to KSSound
 
 FIXED pausing in KSAsynchronousEvent
 
+RENAMED KSAsynchronousFunction and KSAsynchronousLoop to KSAsyncFunction and KSAsyncLoop
+
 REFACTORED tweens.
 ADDED easing related accessors to ITween.
 ADDED methods in TweenFactory and renamed some.
 CHANGED constructors in KSTween. Emphasis is now on using TweenFactory.
+IMPROVED Object parser in TweenFactory
 MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
+REFACTORED KSTween clone functions. Some are a little hacky but easy to use.
 ADDED ITweenTargetCollection for KSTween. 
 ADDED a method for getting the natural duration of a timeline tweeen in TimelineController.
 ADDED SoundTransformProperties and refactored SoundTransformTarget
+RENAMED VALUE_AT_START_OF_TWEEN to AUTO_TWEEN_VALUE and moved it to a global file. Fixed a bug where this wasn't working.
 
 IMPROVED build.xml to include more targets for building the library. Using SDK 3.4 now.
 

@@ -228,7 +228,7 @@ package org.as3lib.kitchensync.action.tween
 						
 						// if no end value was found, use the value at start of tween.
 						if (isNaN(data.endValue)) {
-							data.endValue = KSTween.VALUE_AT_START_OF_TWEEN;
+							data.endValue = AUTO_TWEEN_VALUE;
 						}
 						
 						// Add the property to the results list.

@@ -121,8 +121,8 @@ package org.as3lib.kitchensync.action.tween
 		 */
 		public function TargetProperty (target:Object, property:String, startValue:Number = NaN, endValue:Number = NaN) {
 			setTargetPropterty(target, property);
-			_startValue = (isNaN(startValue)) ? currentValue : startValue;
-			_endValue   = (isNaN(endValue))   ? currentValue : endValue;
+			_startValue = startValue;
+			_endValue   = endValue;
 			_snapToInteger = KitchenSyncDefaults.snapToInteger;
 		}
 		

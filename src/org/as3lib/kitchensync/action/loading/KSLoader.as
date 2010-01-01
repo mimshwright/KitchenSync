@@ -8,7 +8,7 @@ package org.as3lib.kitchensync.action.loading
 	import flash.net.URLRequest;
 	import flash.system.LoaderContext;
 	
-	import org.as3lib.kitchensync.action.KSAsynchronousFunction;
+	import org.as3lib.kitchensync.action.KSAsyncFunction;
 	
 	/**
 	 * An action for loading swf or image files. Acts as a wrapper for a Loader object.
@@ -18,7 +18,7 @@ package org.as3lib.kitchensync.action.loading
 	 * @author Mims Wright
 	 * @since 1.7
 	 */
-	public class KSLoader extends KSAsynchronousFunction implements ILoaderAction
+	public class KSLoader extends KSAsyncFunction implements ILoaderAction
 	{
 		/**
 		 * @inheritDoc

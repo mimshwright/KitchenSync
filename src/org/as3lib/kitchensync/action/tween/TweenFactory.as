@@ -51,7 +51,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @return A new ITween instance
 		 */
 		// todo: check constructors to make sure start values are RuntimeValues
-		public static function newTween(targets:*, properties:*, startValue:Number = 0, endValue:Number = 0, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+		public static function newTween(targets:*, properties:*, startValue:Number = NaN, endValue:Number = NaN, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
 			var targetsArray:Array, propertiesArray:Array;
 			
 			if ( targets == null) { throw new ArgumentError("'targets' cannot be null"); }
@@ -161,16 +161,16 @@ package org.as3lib.kitchensync.action.tween
 		 * Creates a tween that scales x and y simultaneously.
 		 * 
 		 * @param target The display object whose property will be changed
-		 * @param startValue The starting scale of the target.
-		 * @param endValue The ending scale of the target.
-		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param startValue The starting scale of the target. Default is AUTO_TWEEN_VALUE
+		 * @param endValue The ending scale of the target. Default is AUTO_TWEEN_VALUE
+		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too. 
 		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
 		 * @return A new KSTween instance.
 		 * 
 		 * @since 2.0
 		 */
-		public static function newScaleTween(target:DisplayObject, startValue:Number, endValue:Number, duration:* = 0, delay:* = 0, easingFunciton:Function = null):KSTween {
+		public static function newScaleTween(target:DisplayObject, startValue:Number = NaN, endValue:Number = NaN, duration:* = 0, delay:* = 0, easingFunciton:Function = null):KSTween {
 			var x:ITweenTarget = new TargetProperty(target, "scaleX", startValue, endValue);
 			var y:ITweenTarget = new TargetProperty(target, "scaleY", startValue, endValue);
 			return newTweenWithTargets([x,y], duration, delay, easingFunciton);
@@ -207,7 +207,7 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @return A new KSTween object.
 		 */
-		public static function newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:*, delay:* = 0, easingFunction:Function = null):KSTween {
+		public static function newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number = NaN, endValue:Number = NaN, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
 			return newTweenWithTargets (new FilterTargetProperty(target, filter, filterProperty, startValue, endValue), duration, delay, easingFunction);
 		}
 	}

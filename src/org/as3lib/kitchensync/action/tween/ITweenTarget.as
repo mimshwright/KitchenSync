@@ -55,12 +55,14 @@ package org.as3lib.kitchensync.action.tween
 		
 		/**
 		 * The value that the tweenTarget will begin from.
+		 * You can use NaN or AUTO_TWEEN_VALUE to use the value that exists when the tween runs.
 		 */
 		function get startValue():Number;
 		function set startValue(startValue:Number):void;
 		
 		/**
 		 * The value that the tweenTarget will tween to.
+		 * You can use NaN or AUTO_TWEEN_VALUE to use the value that exists when the tween runs.
 		 */
 		function get endValue():Number;
 		function set endValue(endValue:Number):void;

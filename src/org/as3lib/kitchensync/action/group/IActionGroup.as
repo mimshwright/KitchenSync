@@ -34,7 +34,7 @@ package org.as3lib.kitchensync.action.group
 		 * the group. This is calculated by adding upthe sum of each 
 		 * child's duration and delay (but does not include the 
 		 * delay of the group itself).
-		 * Note, some actions, such as KSAsynchronousFunctions, may not report
+		 * Note, some actions, such as KSAsyncFunctions, may not report
 		 * accurately on their true duration. 
 		 */
 		function get totalDuration():int;

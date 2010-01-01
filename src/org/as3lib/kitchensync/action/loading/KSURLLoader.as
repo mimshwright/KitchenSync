@@ -57,7 +57,7 @@ package org.as3lib.kitchensync.action.loading
 	 * @author Mims Wright
 	 * @since 1.7
 	 */
-	public class KSURLLoader extends KSAsynchronousFunction implements ILoaderAction
+	public class KSURLLoader extends KSAsyncFunction implements ILoaderAction
 	{
 		/**
 		 * @inheritDoc
