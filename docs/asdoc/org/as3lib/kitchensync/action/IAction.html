@@ -1,435 +1,95 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="IAction,org.as3lib.kitchensync.action.IAction,delay,duration,isInstantaneous,isPaused,isRunning,runningTime,clone,kill,pause,reset,start,stop,unpause" name="keywords">
-<title>org.as3lib.kitchensync.action.IAction</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../override.css" type="text/css"><meta name="keywords" content="IAction,org.as3lib.kitchensync.action.IAction,DEFAULT,KILL,PAUSE,RESET,SELF,START,STOP,UNPAUSE,_args,_autoDelete,_channel,_completeEventDispatcher,_completeEventType,_delay,_description,_duration,_event,_func,_isComplete,_pauseTime,_paused,_result,_running,_sound,_soundOffset,_soundPauseTime,_startTime,_target,_target,autoDelete,channel,currentLoop,delay,delay,description,duration,duration,duration,duration,duration,duration,event,func,isInstantaneous,isInstantaneous,isInstantaneous,isInstantaneous,isPaused,isPaused,isRunning,isRunning,maintainFramerate,message,pauseTime,progress,progress,progress,result,runningTime,runningTime,sound,soundOffset,startTime,target,target,totalLoops,addEventListenerToTarget,clone,clone,clone,clone,clone,clone,clone,clone,clone,complete,durationHasElapsed,forceUpdate,invoke,jumpByTime,jumpByTime,jumpToTime,jumpToTime,kill,kill,kill,kill,kill,kill,kill,kill,onFunctionComplete,onSoundComplete,pause,pause,pause,pause,register,removeEventListenerFromTarget,reset,reset,reset,setProperty,start,start,start,startAtTime,startAtTime,startTimeHasElapsed,stop,stop,stop,stop,stop,toString,togglePause,unpause,unpause,unpause,unpause,unregister,update,update,update,update,update,update,update"><title>org.as3lib.kitchensync.action.IAction</title></head><body><script language="javascript" type="text/javascript" src="../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'IAction - KitchenSyncLib v2.0';
 				var baseRef = '../../../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/as3lib/kitchensync/action/IAction.html&amp;org/as3lib/kitchensync/action/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IAction</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IAction"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IAction extends <a href="../core/ISynchronizerClient.html">ISynchronizerClient</a>, <a href="none">flash.events.IEventDispatcher</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Subinterfaces</td><td><a href="group/IActionGroup.html">IActionGroup</a>, <a href="../action/IJumpableAction.html">IJumpableAction</a>, <a href="loading/ILoaderAction.html">ILoaderAction</a>, <a href="../action/IPrecisionAction.html">IPrecisionAction</a></td>
-</tr>
-</table>
-<p></p>
-  An action is a type that represents any kind of happening that takes place at
-  a certain time. All actions use this interface including function-based actions
-  and tweens. Actions are teh nuts and bolts of KitchenSync.
-  Actions can be played, stopped, paused and unpaused. Actions have 
-  a duration and a delay that specify for how long it will play and how long after
-  the start it will begin (although some actions will execute instantaneously).
-  
-  <p></p>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#delay">delay</a> : int<div class="summaryTableDescription">
-   delay is the time that will pass after the start() method is called
-   before the action begins.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#duration">duration</a> : int<div class="summaryTableDescription">
-   duration is the length of time that the action will run.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInstantaneous">isInstantaneous</a> : Boolean<div class="summaryTableDescription">[read-only] 
-   Should true if the action will occur instantaneously (if duration is 0).</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription">[read-only] Should return true if the action is paused.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only] Should return true if the action is running (or paused).</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#runningTime">runningTime</a> : int<div class="summaryTableDescription">[read-only]
-   The time in ms since the start of the action or 0 if the action isn't running.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<div class="showHideLinks">
-<div class="hideInheritedMethod" id="hideInheritedMethod">
-<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
-</div>
-<div class="showInheritedMethod" id="showInheritedMethod">
-<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
-</div>
-</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#clone()">clone</a>():<a href="../action/IAction.html">IAction</a>
-</div>
-<div class="summaryTableDescription">
-   Creates a clone which is a deep copy of the action.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#kill()">kill</a>():void</div>
-<div class="summaryTableDescription">
-   Unregisters the action and removes any refrerences to objects that it may be holding onto.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#pause()">pause</a>():void</div>
-<div class="summaryTableDescription">
-   Causes the action to be paused.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#reset()">reset</a>():void</div>
-<div class="summaryTableDescription">
-   Resets the action and returns it to its original state it was in
-   before being started.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#start()">start</a>():<a href="../action/IAction.html">IAction</a>
-</div>
-<div class="summaryTableDescription">
-   Begins the action running.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#stop()">stop</a>():void</div>
-<div class="summaryTableDescription">
-   Stops the action from running and resets the timer.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#unpause()">unpause</a>():void</div>
-<div class="summaryTableDescription">
-   Resumes the action at the point where it was paused.</div>
-</td><td class="summaryTableOwnerCol">IAction</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../core/ISynchronizerClient.html#update()">update</a>(currentTime:int):void</div>
-<div class="summaryTableDescription">
-   Update will allow the synchronizer to update the action with the current time.</div>
-</td><td class="summaryTableOwnerCol"><a href="../core/ISynchronizerClient.html">ISynchronizerClient</a></td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="delay"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">delay</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>delay:int</code>&nbsp;&nbsp;[read-write]<p>
-   delay is the time that will pass after the start() method is called
-   before the action begins.
-   Uses to allow use of time string parser.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get delay():int</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set delay(value:int):void</code>
-<br>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../utils/ITimeStringParser.html" target="">org.as3lib.kitchensync.utils.ITimeStringParser</a>
-</div>
-</div>
-<a name="duration"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">duration</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>duration:int</code>&nbsp;&nbsp;[read-write]<p>
-   duration is the length of time that the action will run.
-   Uses to allow use of time string parser.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get duration():int</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set duration(value:int):void</code>
-<br>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../utils/ITimeStringParser.html" target="">org.as3lib.kitchensync.utils.ITimeStringParser</a>
-</div>
-</div>
-<a name="isInstantaneous"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">isInstantaneous</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>isInstantaneous:Boolean</code>&nbsp;&nbsp;[read-only]<p> 
-   Should true if the action will occur instantaneously (if duration is 0). 
-   Mostly used internally. 
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isInstantaneous():Boolean</code>
-<br>
-</div>
-<a name="isPaused"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">isPaused</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>isPaused:Boolean</code>&nbsp;&nbsp;[read-only]<p> Should return true if the action is paused. </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isPaused():Boolean</code>
-<br>
-</div>
-<a name="isRunning"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">isRunning</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>isRunning:Boolean</code>&nbsp;&nbsp;[read-only]<p> Should return true if the action is running (or paused). </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isRunning():Boolean</code>
-<br>
-</div>
-<a name="runningTime"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">runningTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>runningTime:int</code>&nbsp;&nbsp;[read-only]<p>
-   The time in ms since the start of the action or 0 if the action isn't running.
-   If the action is paused, the result will be the running time at which it was paused.
-   Typically, the current real time minus the action's start time.
-   Actions with 0 duration will always return 0.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get runningTime():int</code>
-<br>
-</div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="clone()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function clone():<a href="../action/IAction.html">IAction</a></code><p>
-   Creates a clone which is a deep copy of the action.
-   States (e.g. isRunning will not be copied)
-    
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../action/IAction.html">IAction</a></code> &mdash; 
-                        An exact copy of the action. 
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="kill()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">kill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function kill():void</code><p>
-   Unregisters the action and removes any refrerences to objects that it may be holding onto.
-   This is done in an attempt to remove the object from memory. 
-   </p></div>
-<a name="pause()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">pause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function pause():void</code><p>
-   Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
-   and the onUpdate() handler will not be called. When unpause() is called,
-   the action will continue at the point where it was paused.
-   The pause() method affects the start time even if the delay time hasn't expired yet.
-   </p></div>
-<a name="reset()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function reset():void</code><p>
-   Resets the action and returns it to its original state it was in
-   before being started. In some cases, like with tweens, this 
-   will reset the values of the tween target. In most other cases,
-   this will act similarly to the stop() method.
-   </p></div>
-<a name="start()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function start():<a href="../action/IAction.html">IAction</a></code><p>
-   Begins the action running. The action will execute whatever it is
-   meant to do when the <code>start()</code> method is called (and after the 
-   <code>delay</code> time has elapsed).
-   <code>start()</code> should also cause the action to unpause if it is
-   paused.
-   
-   </p><p>This method returns a reference to the action that was started. 
-   This allows for an action to be constructed and started in a single line of code.</p>
-   
-   <p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../action/IAction.html">IAction</a></code> &mdash; 
-                        The action that was just started. For convenience.
-   
-                        
-                     </td>
-</tr>
-</table>
-<br>
-<span class="label">Throws</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code></code> &mdash; If the method is called while the action is already running.
-   </td>
-</tr>
-</table>
-<br>
-<span class="label">Example</span>
-<br>
-     <div class='listing'><pre>
-    // Initialize and start an action in a single line of code.
-     var action:IAction = new SomeAction().start();
-     </pre></div>
-   
-   <p></p>
-</div>
-<a name="stop()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">stop</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function stop():void</code><p>
-   Stops the action from running and resets the timer.
-   </p></div>
-<a name="unpause()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">unpause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function unpause():void</code><p>
-   Resumes the action at the point where it was paused.
-   
-   </p><p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../action/IAction.html#start()" target="">start()</a>
-</div>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../package-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../class-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../all-index-A.html" onclick="loadClassListFrame('../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../index.html?org/as3lib/kitchensync/action/IAction.html&amp;org/as3lib/kitchensync/action/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">IAction</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IAction"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.action</a></td></tr><tr><td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IAction extends  <a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a> ,  <a href="../../../../flash/events/IEventDispatcher.html">IEventDispatcher</a> </td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>1.6</td></tr></table><p></p><p></p><p></p>
+	 An action is a type that represents any kind of happening that takes place at
+	 a certain time. All actions use this interface including function-based actions
+	 and tweens. Actions are teh nuts and bolts of KitchenSync.
+	 Actions can be played, stopped, paused and unpaused. Actions have 
+	 a duration and a delay that specify for how long it will play and how long after
+	 the start it will begin (although some actions will execute instantaneously).
+	 
+	 <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#delay" class="signatureLink">delay</a> : int<div class="summaryTableDescription">
+		 delay is the time that will pass after the start() method is called
+		 before the action begins.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#duration" class="signatureLink">duration</a> : int<div class="summaryTableDescription">
+		 duration is the length of time that the action will run.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isInstantaneous" class="signatureLink">isInstantaneous</a> : Boolean<div class="summaryTableDescription">[read-only]  
+		 Should true if the action will occur instantaneously (if duration is 0).</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isPaused" class="signatureLink">isPaused</a> : Boolean<div class="summaryTableDescription">[read-only]  Should return true if the action is paused.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isRunning" class="signatureLink">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only]  Should return true if the action is running (or paused).</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#runningTime" class="signatureLink">runningTime</a> : int<div class="summaryTableDescription">[read-only] 
+		 The time in ms since the start of the action or 0 if the action isn't running.</div></td><td class="summaryTableOwnerCol">IAction</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><div class="showHideLinks"><div id="hideInheritedMethod" class="hideInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(false,'Method');"><img class="showHideLinkImage" src="../../../../images/expanded.gif"> Hide Inherited Public Methods</a></div><div id="showInheritedMethod" class="showInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(true,'Method');"><img class="showHideLinkImage" src="../../../../images/collapsed.gif"> Show Inherited Public Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#clone()" class="signatureLink">clone</a>():<a href="../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></div><div class="summaryTableDescription">
+		 Creates a clone which is a deep copy of the action.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#kill()" class="signatureLink">kill</a>():void</div><div class="summaryTableDescription">
+		 Unregisters the action and removes any refrerences to objects that it may be holding onto.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#pause()" class="signatureLink">pause</a>():void</div><div class="summaryTableDescription">
+		 Causes the action to be paused.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#reset()" class="signatureLink">reset</a>():void</div><div class="summaryTableDescription">
+		 Resets the action and returns it to its original state it was in
+		 before being started.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#start()" class="signatureLink">start</a>():<a href="../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></div><div class="summaryTableDescription">
+		 Begins the action running.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#stop()" class="signatureLink">stop</a>():void</div><div class="summaryTableDescription">
+		 Stops the action from running and resets the timer.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#unpause()" class="signatureLink">unpause</a>():void</div><div class="summaryTableDescription">
+		 Resumes the action at the point where it was paused.</div></td><td class="summaryTableOwnerCol">IAction</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html#update()" class="signatureLink">update</a>(currentTime:int):void</div><div class="summaryTableDescription">
+		 Update will allow the synchronizer to update the action with the current time.</div></td><td class="summaryTableOwnerCol"><a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a></td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="delay"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">delay</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>delay:int</code><p></p><p></p><p>
+		 delay is the time that will pass after the start() method is called
+		 before the action begins.
+		 Uses to allow use of time string parser.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get delay():int</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set delay(value:int):void</code><br/><p><span class="label">See also</span></p><div class="seeAlso"><a href="../../../../org/as3lib/kitchensync/utils/ITimeStringParser.html" target="">org.as3lib.kitchensync.utils.ITimeStringParser</a></div></div><a name="propertyDetail"></a><a name="duration"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">duration</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>duration:int</code><p></p><p></p><p>
+		 duration is the length of time that the action will run.
+		 Uses to allow use of time string parser.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get duration():int</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set duration(value:int):void</code><br/><p><span class="label">See also</span></p><div class="seeAlso"><a href="../../../../org/as3lib/kitchensync/utils/ITimeStringParser.html" target="">org.as3lib.kitchensync.utils.ITimeStringParser</a></div></div><a name="propertyDetail"></a><a name="isInstantaneous"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isInstantaneous</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>isInstantaneous:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p> 
+		 Should true if the action will occur instantaneously (if duration is 0). 
+		 Mostly used internally. 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isInstantaneous():Boolean</code><br/></div><a name="propertyDetail"></a><a name="isPaused"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isPaused</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>isPaused:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p> Should return true if the action is paused. </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isPaused():Boolean</code><br/></div><a name="propertyDetail"></a><a name="isRunning"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isRunning</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>isRunning:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p> Should return true if the action is running (or paused). </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isRunning():Boolean</code><br/></div><a name="propertyDetail"></a><a name="runningTime"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">runningTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>runningTime:int</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 The time in ms since the start of the action or 0 if the action isn't running.
+		 If the action is paused, the result will be the running time at which it was paused.
+		 Typically, the current real time minus the action's start time.
+		 Actions with 0 duration will always return 0.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get runningTime():int</code><br/></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="clone()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function clone():<a href="../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code><p></p><p></p><p>
+		 Creates a clone which is a deep copy of the action.
+		 States (e.g. isRunning will not be copied)
+		  
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code> &mdash; An exact copy of the action. 
+		 </td></tr></table></div><a name="kill()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">kill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function kill():void</code><p></p><p></p><p>
+		 Unregisters the action and removes any refrerences to objects that it may be holding onto.
+		 This is done in an attempt to remove the object from memory. 
+		 </p></div><a name="pause()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">pause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function pause():void</code><p></p><p></p><p>
+		 Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
+		 and the onUpdate() handler will not be called. When unpause() is called,
+		 the action will continue at the point where it was paused.
+		 The pause() method affects the start time even if the delay time hasn't expired yet.
+		 </p></div><a name="reset()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function reset():void</code><p></p><p></p><p>
+		 Resets the action and returns it to its original state it was in
+		 before being started. In some cases, like with tweens, this 
+		 will reset the values of the tween target. In most other cases,
+		 this will act similarly to the stop() method.
+		 </p></div><a name="start()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function start():<a href="../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code><p></p><p></p><p>
+		 Begins the action running. The action will execute whatever it is
+		 meant to do when the <code>start()</code> method is called (and after the 
+		 <code>delay</code> time has elapsed).
+		 <code>start()</code> should also cause the action to unpause if it is
+		 paused.
+		 
+		 <p>This method returns a reference to the action that was started. 
+		 This allows for an action to be constructed and started in a single line of code.</p>
+		 
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code> &mdash; The action that was just started. For convenience.
+		 </td></tr></table><br/><span class="label">Throws</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>flash.errors:IllegalOperationError </code> &mdash; If the method is called while the action is already running.
+		 </td></tr></table><br/><span class="label"> Example </span><br/><div class="detailBody">
+		 		<div class="listing" version="3.0"><pre>
+             // Initialize and start an action in a single line of code.
+                 var action:IAction = new SomeAction().start();
+                 </pre></div>
+		 
+		 </div></div><a name="stop()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">stop</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function stop():void</code><p></p><p></p><p>
+		 Stops the action from running and resets the timer.
+		 </p></div><a name="unpause()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">unpause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function unpause():void</code><p></p><p></p><p>
+		 Resumes the action at the point where it was paused.
+		 
+		 </p><p><span class="label">See also</span></p><div class="seeAlso"><a href="IAction.html#start()" target="">start()</a></div></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Sat Jan 2 2010, 12:54 AM -08:00  </center></div></body></html><!--<br/>Sat Jan 2 2010, 12:54 AM -08:00  -->

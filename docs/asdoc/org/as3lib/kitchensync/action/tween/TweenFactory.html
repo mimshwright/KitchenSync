@@ -1,624 +1,109 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="TweenFactory,org.as3lib.kitchensync.action.tween.TweenFactory,objectParser,newFilterTween,newPositionTween,newScaleTween,newTintTween,newTween,newTweenFromObject,newTweenWithTargets" name="keywords">
-<title>org.as3lib.kitchensync.action.tween.TweenFactory</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="TweenFactory,org.as3lib.kitchensync.action.tween.TweenFactory,AUTO,AUTO_TWEEN_VALUE,CURRENT_TINT,LEFT_TO_RIGHT,NON_NUMERIC_PROPERTY_ERROR,NO_TINT,PAN,RIGHT_TO_LEFT,VOLUME,_blurXTweenTarget,_blurYTweenTarget,_colorMatrix,_currentTransform,_currentValue,_delay,_delta,_duration,_easingFunction,_easingFunction,_easingMod1,_easingMod1,_easingMod2,_easingMod2,_endOnCurrentTint,_endTransform,_endValue,_endValue,_endValue,_endValue,_endValue,_endValue,_filterType,_pauseTime,_paused,_previousFilter,_property,_property,_property,_running,_snapToInteger,_snapToValueOnComplete,_startOnCurrentTint,_startTime,_startTransform,_startValue,_startValue,_startValue,_startValue,_startValue,_startValue,_target,_target,_target,_target,_target,_target,_targetSound,_tintOpacity,_tweenTargets,currentTransform,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,delay,differenceInValues,differenceInValues,differenceInValues,differenceInValues,duration,easingFunction,easingFunction,easingFunction,easingMod1,easingMod1,easingMod1,easingMod2,easingMod2,easingMod2,endTransform,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,filterType,filterType,filterType,filterType,filters,filters,isInstantaneous,isPaused,isRunning,objectParser,property,property,property,property,runningTime,snapToInteger,snapToValueOnComplete,startTransform,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,target,target,target,target,target,target,targetSound,tweenTargets,value,addTweenTarget,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,applyTintOpacity,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,cloneReversed,cloneWithTarget,cloneWithTargetProperty,cloneWithTweenTarget,clone,complete,describeKeywords,evaluateFrameLabel,getDefaultFilter,getNaturalDuration,isPropertyValid,kill,kill,newFilterTween,newPositionTween,newScaleTween,newTimelineTween,newTintTween,newTween,newTweenFromObject,newTweenWithTargets,parseObject,parseObject,pause,removeAllTweenTargets,removeTweenTarget,reset,reset,reset,reset,reset,reset,reset,reset,reset,reset,reverse,setTargetPropterty,start,start,startAtTime,startAtTime,stop,toString,toString,toString,toString,toString,unpause,update,update,updateTarget,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween"><title>org.as3lib.kitchensync.action.tween.TweenFactory</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'TweenFactory - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/as3lib/kitchensync/action/tween/TweenFactory.html&amp;org/as3lib/kitchensync/action/tween/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;TweenFactory</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class TweenFactory"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public final  class TweenFactory</td>
-</tr>
-</table>
-<p></p>
-  Provides a convenient interface for creating all types of tweens.
-  
-  <p></p>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#objectParser">objectParser</a> : <a href="../tween/ITweenObjectParser.html">ITweenObjectParser</a>
-<div class="summaryTableDescription">[static] 
-   An instance of the object parser to use when parsing objects.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#newFilterTween()">newFilterTween</a>(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:Function, delay:* = 0, easingFunction:* = null):<a href="../tween/KSTween.html">KSTween</a>
-</div>
-<div class="summaryTableDescription">[static]
-   Creates a tween to control a filter property.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#newPositionTween()">newPositionTween</a>(target:DisplayObject, startValue:Point, endValue:Point, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../tween/KSTween.html">KSTween</a>
-</div>
-<div class="summaryTableDescription">[static]
-   Creates a tween that moves a display object between two points.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#newScaleTween()">newScaleTween</a>(target:DisplayObject, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../tween/KSTween.html">KSTween</a>
-</div>
-<div class="summaryTableDescription">[static]
-   Creates a tween that scales x and y simultaneously.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#newTintTween()">newTintTween</a>(target:DisplayObject, startColor:Number = currentTint, endColor:Function = noTint, tintOpacity:* = 1.0, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../tween/ITween.html">ITween</a>
-</div>
-<div class="summaryTableDescription">[static]
-   Creates a tint tween.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#newTween()">newTween</a>(targets:*, properties:Number, startValue:Number = 0, endValue:Function = 0, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../tween/ITween.html">ITween</a>
-</div>
-<div class="summaryTableDescription">[static]
-   Creates a property tween with one or more targets.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#newTweenFromObject()">newTweenFromObject</a>(parameters:Object):<a href="../tween/ITween.html">ITween</a>
-</div>
-<div class="summaryTableDescription">[static] 
-   Uses a generic object to define parameters for a new tween.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#newTweenWithTargets()">newTweenWithTargets</a>(tweenTargets:*, duration:Function = 0, delay:* = 0, easingFunction:* = null):<a href="../tween/KSTween.html">KSTween</a>
-</div>
-<div class="summaryTableDescription">[static]
-   Creates a new KSTween using an ITweenTarget that you pass into it.</div>
-</td><td class="summaryTableOwnerCol">TweenFactory</td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="objectParser"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">objectParser</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static var objectParser:<a href="../tween/ITweenObjectParser.html">ITweenObjectParser</a></code><p> 
-   An instance of the object parser to use when parsing objects.
-   </p><p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../tween/TweenFactory.html#newTweenFromObject()" target="">newTweenFromObject()</a>
-</div>
-</div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="newFilterTween()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">newFilterTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:Function, delay:* = 0, easingFunction:* = null):<a href="../tween/KSTween.html">KSTween</a></code><p>
-   Creates a tween to control a filter property.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The target object of the tween. 
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">filter</span>:Class</code> &mdash; The filter of the target to tween.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">filterProperty</span>:String</code> &mdash; The property of the filter to tween.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> &mdash; The starting value of the tween. By default, this is the value of the property before the tween begins.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">endValue</span>:Number</code> &mdash; The value to tween the property to. After the tween is done, this will be the value of the property.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Function</code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
-   
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/KSTween.html">KSTween</a></code> &mdash; 
-                        A new KSTween object.
-   
-                        
-                     </td>
-</tr>
-</table>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">FilterTweenTarget</div>
-</div>
-<a name="newPositionTween()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">newPositionTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function newPositionTween(target:DisplayObject, startValue:Point, endValue:Point, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../tween/KSTween.html">KSTween</a></code><p>
-   Creates a tween that moves a display object between two points.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; - the display object whose property will be changed
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">startValue</span>:Point</code> &mdash; - the starting point of the target.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">endValue</span>:Point</code> &mdash; - the ending point of the target.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; - the time in milliseconds that this tween will take to execute. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; - the time to wait in milliseconds before starting the tween. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingFunciton</span>:*</code> (default = <code>null</code>)<code></code> &mdash; - the function to use to interpolate the values between fromValue and toValue.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/KSTween.html">KSTween</a></code> &mdash; 
-                        A new KSTween Instance
-   
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="newScaleTween()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">newScaleTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function newScaleTween(target:DisplayObject, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../tween/KSTween.html">KSTween</a></code><p>
-   Creates a tween that scales x and y simultaneously.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The display object whose property will be changed
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> &mdash; The starting scale of the target.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">endValue</span>:Number</code> &mdash; The ending scale of the target.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingFunciton</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/KSTween.html">KSTween</a></code> &mdash; 
-                        A new KSTween instance.
-   
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="newTintTween()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">newTintTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function newTintTween(target:DisplayObject, startColor:Number = currentTint, endColor:Function = noTint, tintOpacity:* = 1.0, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../tween/ITween.html">ITween</a></code><p>
-   Creates a tint tween.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The displayObject whose property will be changed
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">startColor</span>:Number</code> (default = <code>currentTint</code>)<code></code> &mdash; The starting color of the tint. By default, this is the value of the property before the tween begins.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">endColor</span>:Function</code> (default = <code>noTint</code>)<code></code> &mdash; The value to tween the property to. After the tween is done, this will be the value of the property.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">tintOpacity</span>:*</code> (default = <code>1.0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/ITween.html">ITween</a></code> &mdash; 
-                        A new KSTween instance
-   
-   
-                        
-                     </td>
-</tr>
-</table>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../tween/TintTweenTarget.html" target="">org.as3lib.kitchensync.action.tween.TintTweenTarget</a>
-</div>
-</div>
-<a name="newTween()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">newTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function newTween(targets:*, properties:Number, startValue:Number = 0, endValue:Function = 0, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../tween/ITween.html">ITween</a></code><p>
-   Creates a property tween with one or more targets. 
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">targets</span>:*</code> &mdash; The object whose property will be changed or an array of targets.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">properties</span>:Number</code> &mdash; The name of the property to change or an array of properties to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; The starting value of the tween. By default, this is the value of the property before the tween begins.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">endValue</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; The value to tween the property to. After the tween is done, this will be the value of the property.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/ITween.html">ITween</a></code> &mdash; 
-                        A new ITween instance
-   
-                        
-                     </td>
-</tr>
-</table>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../tween/TweenFactory.html#newTweenWithTargets()" target="">newTweenWithTargets()</a>
-</div>
-</div>
-<a name="newTweenFromObject()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">newTweenFromObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function newTweenFromObject(parameters:Object):<a href="../tween/ITween.html">ITween</a></code><p> 
-   Uses a generic object to define parameters for a new tween. See ITweenParser and KitchenSyncObjectParser for more details.
-      </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">parameters</span>:Object</code> &mdash; An object that contains properties that define the new tween
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/ITween.html">ITween</a></code> &mdash; 
-                        A new tween.
-   
-                        
-                     </td>
-</tr>
-</table>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="ITweenObjectParser.html" target="">ITweenObjectParser</a>
-<br>
-<a href="KitchenSyncObjectParser.html" target="">KitchenSyncObjectParser</a>
-</div>
-</div>
-<a name="newTweenWithTargets()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">newTweenWithTargets</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function newTweenWithTargets(tweenTargets:*, duration:Function = 0, delay:* = 0, easingFunction:* = null):<a href="../tween/KSTween.html">KSTween</a></code><p>
-   Creates a new KSTween using an ITweenTarget that you pass into it.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">tweenTargets</span>:*</code> &mdash; A tweenTarget object (or an array of tweenTargets) that contains the values you want to tween.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; The time in frames that this tween will take to execute.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait before starting the tween.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
-   
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/KSTween.html">KSTween</a></code> &mdash; 
-                        A new KSTween object.
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?org/as3lib/kitchensync/action/tween/TweenFactory.html&amp;org/as3lib/kitchensync/action/tween/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">TweenFactory</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("TweenFactory"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.action.tween</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public final   class  TweenFactory</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">TweenFactory  <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>1.6</td></tr></table><p></p><p></p><p></p>
+	 Provides a convenient interface for creating all types of tweens.
+	 
+	 <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#objectParser" class="signatureLink">objectParser</a> : <a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenObjectParser.html">ITweenObjectParser</a><div class="summaryTableDescription">[static]  
+		 An instance of the object parser to use when parsing objects.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newFilterTween()" class="signatureLink">newFilterTween</a>(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">[static] 
+		 Creates a tween to control a filter property.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newPositionTween()" class="signatureLink">newPositionTween</a>(target:DisplayObject, startValue:Point, endValue:Point, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">[static] 
+		 Creates a tween that moves a display object between two points.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newScaleTween()" class="signatureLink">newScaleTween</a>(target:DisplayObject, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">[static] 
+		 Creates a tween that scales x and y simultaneously.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newTimelineTween()" class="signatureLink">newTimelineTween</a>(target:MovieClip, startFrame:Object = null, endFrame:Object = null, duration:Function = -1, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></div><div class="summaryTableDescription">[static] 
+		 Creates a timeline tween.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newTintTween()" class="signatureLink">newTintTween</a>(target:DisplayObject, startColor:Number = currentTint, endColor:Function = noTint, tintOpacity:* = 1.0, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></div><div class="summaryTableDescription">[static] 
+		 Creates a tint tween.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newTween()" class="signatureLink">newTween</a>(targets:*, properties:Number, startValue:Number, endValue:Function, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">[static] 
+		 Creates a property tween with one or more targets.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newTweenFromObject()" class="signatureLink">newTweenFromObject</a>(parameters:Object):<a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></div><div class="summaryTableDescription">[static]  
+		 Uses a generic object to define parameters for a new tween.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#newTweenWithTargets()" class="signatureLink">newTweenWithTargets</a>(tweenTargets:*, duration:Function = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">[static] 
+		 Creates a new KSTween using an ITweenTarget that you pass into it.</div></td><td class="summaryTableOwnerCol">TweenFactory</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="objectParser"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">objectParser</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>public static var objectParser:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenObjectParser.html">ITweenObjectParser</a></code><p></p><p></p><p> 
+		 An instance of the object parser to use when parsing objects.
+		 </p><p><span class="label">See also</span></p><div class="seeAlso"><a href="TweenFactory.html#newTweenFromObject()" target="">newTweenFromObject()</a></div></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="newFilterTween()"></a><a name="newFilterTween(flash.display.DisplayObject,Class,String,Number,Number,Function,,)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newFilterTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><p></p><p>
+		 Creates a tween to control a filter property.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The target object of the tween. 
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">filter</span>:Class</code> &mdash; The filter of the target to tween.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">filterProperty</span>:String</code> &mdash; The property of the filter to tween.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> (default = <code>NaN</code>)<code></code> &mdash; The starting value of the tween. By default, this is the value of the property before the tween begins.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">endValue</span>:Number</code> (default = <code>NaN</code>)<code></code> &mdash; The value to tween the property to. After the tween is done, this will be the value of the property.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
+		 
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code> &mdash; A new KSTween object.
+		 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso">FilterTweenTarget</div></div><a name="newPositionTween()"></a><a name="newPositionTween(flash.display.DisplayObject,flash.geom.Point,flash.geom.Point,Function,,)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newPositionTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function newPositionTween(target:DisplayObject, startValue:Point, endValue:Point, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>2.0</td></tr></table><p></p><p></p><p>
+		 Creates a tween that moves a display object between two points.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; - the display object whose property will be changed
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">startValue</span>:Point</code> &mdash; - the starting point of the target.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">endValue</span>:Point</code> &mdash; - the ending point of the target.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; - the time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; - the time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunciton</span>:*</code> (default = <code>null</code>)<code></code> &mdash; - the function to use to interpolate the values between fromValue and toValue.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code> &mdash; A new KSTween Instance
+		 
+		 </td></tr></table></div><a name="newScaleTween()"></a><a name="newScaleTween(flash.display.DisplayObject,Number,Number,Function,,)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newScaleTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function newScaleTween(target:DisplayObject, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunciton:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>2.0</td></tr></table><p></p><p></p><p>
+		 Creates a tween that scales x and y simultaneously.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The display object whose property will be changed
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> (default = <code>NaN</code>)<code></code> &mdash; The starting scale of the target. Default is AUTO_TWEEN_VALUE
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">endValue</span>:Number</code> (default = <code>NaN</code>)<code></code> &mdash; The ending scale of the target. Default is AUTO_TWEEN_VALUE
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too. 
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunciton</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code> &mdash; A new KSTween instance.
+		 
+		 </td></tr></table></div><a name="newTimelineTween()"></a><a name="newTimelineTween(flash.display.MovieClip,Object,Object,Function,)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newTimelineTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function newTimelineTween(target:MovieClip, startFrame:Object = null, endFrame:Object = null, duration:Function = -1, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></code><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>2.0</td></tr></table><p></p><p></p><p>
+		 Creates a timeline tween.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:MovieClip</code> &mdash; The movieClip that will be animated
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">startFrame</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The starting frame. Can be a frame label or integer. Default is 1.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">endFrame</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The ending frame. Can be a frame label or integer. Default is the last frame in the clip.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>-1</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. Default is the natural duration on the timeline.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue. Default is linear.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></code> &mdash; A new KSTween instance
+		 
+		 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="TimelineController.html" target="">org.as3lib.kitchensync.action.tween.TimelineController</a></div></div><a name="newTintTween()"></a><a name="newTintTween(flash.display.DisplayObject,Number,Function,,,,)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newTintTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function newTintTween(target:DisplayObject, startColor:Number = currentTint, endColor:Function = noTint, tintOpacity:* = 1.0, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></code><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>2.0</td></tr></table><p></p><p></p><p>
+		 Creates a tint tween.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:DisplayObject</code> &mdash; The displayObject whose property will be changed
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">startColor</span>:Number</code> (default = <code>currentTint</code>)<code></code> &mdash; The starting color of the tint. By default, this is the value of the property before the tween begins.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">endColor</span>:Function</code> (default = <code>noTint</code>)<code></code> &mdash; The value to tween the property to. After the tween is done, this will be the value of the property.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">tintOpacity</span>:*</code> (default = <code>1.0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></code> &mdash; A new KSTween instance
+		 
+		 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="TintTweenTarget.html" target="">org.as3lib.kitchensync.action.tween.TintTweenTarget</a></div></div><a name="newTween()"></a><a name="newTween(,Number,Number,Function,,,)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function newTween(targets:*, properties:Number, startValue:Number, endValue:Function, duration:* = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><p></p><p>
+		 Creates a property tween with one or more targets. 
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">targets</span>:*</code> &mdash; The object whose property will be changed or an array of targets.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">properties</span>:Number</code> &mdash; The name of the property to change or an array of properties to change. The property must be a Number, int or uint such as a Sprite object's "alpha"
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">startValue</span>:Number</code> (default = <code>NaN</code>)<code></code> &mdash; The starting value of the tween. By default, this is the value of the property before the tween begins.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">endValue</span>:Function</code> (default = <code>NaN</code>)<code></code> &mdash; The value to tween the property to. After the tween is done, this will be the value of the property.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code> &mdash; A new ITween instance
+		 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="TweenFactory.html#newTweenWithTargets()" target="">newTweenWithTargets()</a></div></div><a name="newTweenFromObject()"></a><a name="newTweenFromObject(Object)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newTweenFromObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function newTweenFromObject(parameters:Object):<a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></code><p></p><p></p><p> 
+		 Uses a generic object to define parameters for a new tween. See ITweenParser and KitchenSyncObjectParser for more details.
+		 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">parameters</span>:Object</code> &mdash; An object that contains properties that define the new tween
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a></code> &mdash; A new tween.
+		 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="ITweenObjectParser.html" target="">ITweenObjectParser</a><br/><a href="KitchenSyncObjectParser.html" target="">KitchenSyncObjectParser</a></div></div><a name="newTweenWithTargets()"></a><a name="newTweenWithTargets(,Function,,)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">newTweenWithTargets</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function newTweenWithTargets(tweenTargets:*, duration:Function = 0, delay:* = 0, easingFunction:* = null):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><p></p><p>
+		 Creates a new KSTween using an ITweenTarget that you pass into it.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">tweenTargets</span>:*</code> &mdash; A tweenTarget object (or an array of tweenTargets) that contains the values you want to tween.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; The time in frames that this tween will take to execute.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait before starting the tween.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunction</span>:*</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between fromValue and toValue.
+		 
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code> &mdash; A new KSTween object.
+		 </td></tr></table></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Sat Jan 2 2010, 12:54 AM -08:00  </center></div></body></html><!--<br/>Sat Jan 2 2010, 12:54 AM -08:00  -->

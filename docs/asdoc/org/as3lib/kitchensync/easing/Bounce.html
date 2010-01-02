@@ -1,260 +1,58 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="Bounce,org.as3lib.kitchensync.easing.Bounce,easeIn,easeInOut,easeOut,easeOutIn" name="keywords">
-<title>org.as3lib.kitchensync.easing.Bounce</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../override.css" type="text/css"><meta name="keywords" content="Bounce,org.as3lib.kitchensync.easing.Bounce,absoluteSine,call,ease,ease,ease,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,generateArray,getAveragedFunction,getSteppedFunction,pulse,sawtooth,sine,triangle"><title>org.as3lib.kitchensync.easing.Bounce</title></head><body><script language="javascript" type="text/javascript" src="../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'Bounce - KitchenSyncLib v2.0';
 				var baseRef = '../../../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/as3lib/kitchensync/easing/Bounce.html&amp;org/as3lib/kitchensync/easing/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Bounce</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Bounce"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.easing</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Bounce</td>
-</tr>
-</table>
-<p></p>
-  <p>Bounce produces values that would cause a moving subject to bounce against the starting or ending 
-  points like a rubber ball.</p>
-  <p>The easing classes provide static methods for interpolating the change between two values over time.
-  Each class handles the interpolation, or easing, differently. Each class typically contains three methods
-   - <code>easeIn()</code>, <code>easeOut()</code> and <code>easeInOut()</code> - which vary the rate of change
-   of the values. Most of the easing functions produce values as a percentage - a number between 0.0 and 1.0</p>
-  
-   <p></p>
-<p>
-<span class="classHeaderTableLabel">See also</span>
-</p>
-<div class="seeAlso">
-<a href="http://www.robertpenner.com/easing_terms_of_use.html" target="mm_external">http://www.robertpenner.com/easing_terms_of_use.html</a>
-<br>
-<a href="http://www.robertpenner.com/easing/" target="mm_external">http://www.robertpenner.com/easing/</a>
-<br>
-<a href="EasingUtil.html" target="">EasingUtil</a>
-</div>
-<br>
-<hr>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#easeIn()">easeIn</a>(timeElapsed:Number, duration:Number):Number</div>
-<div class="summaryTableDescription">[static]
-     easeIn starts out slow and increases in speed towards the end of the duration.</div>
-</td><td class="summaryTableOwnerCol">Bounce</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#easeInOut()">easeInOut</a>(timeElapsed:Number, duration:Number):Number</div>
-<div class="summaryTableDescription">[static]
-     easeInOut combines the motion of easeIn and easeOut by starting out slow and increasing in speed 
-     towards the middle of the duration, then slowing down again towards the end.</div>
-</td><td class="summaryTableOwnerCol">Bounce</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#easeOut()">easeOut</a>(timeElapsed:Number, duration:Number):Number</div>
-<div class="summaryTableDescription">[static]
-     easeOut starts out fast and decreases in speed towards the end of the duration.</div>
-</td><td class="summaryTableOwnerCol">Bounce</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#easeOutIn()">easeOutIn</a>(timeElapsed:Number, duration:Number):Number</div>
-<div class="summaryTableDescription">[static]
-  easeOutIn combines the motion of easeIn and easeOut by starting out decelerating 
-  towards the middle of the duration, then accelerating end.</div>
-</td><td class="summaryTableOwnerCol">Bounce</td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="easeIn()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">easeIn</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function easeIn(timeElapsed:Number, duration:Number):Number</code><p>
-     easeIn starts out slow and increases in speed towards the end of the duration.
-     The bouncing will appear to increase in height.
-     
-     </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; The time since the tween began in milliseconds or frames.
-     </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; The duration of the tween, in milliseconds or frames.
-     </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
-     </td>
-</tr>
-</table>
-</div>
-<a name="easeInOut()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">easeInOut</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function easeInOut(timeElapsed:Number, duration:Number):Number</code><p>
-     easeInOut combines the motion of easeIn and easeOut by starting out slow and increasing in speed 
-     towards the middle of the duration, then slowing down again towards the end.
-  The bouncing will appear to increase then decrease in height.
-   
-     </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; Specifies the time since the tween began in milliseconds or frames.
-     </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; Specifies the duration of the tween, in milliseconds or frames.
-     </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
-     </td>
-</tr>
-</table>
-</div>
-<a name="easeOut()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">easeOut</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function easeOut(timeElapsed:Number, duration:Number):Number</code><p>
-     easeOut starts out fast and decreases in speed towards the end of the duration.
-     The bouncing will appear to decrease in height.
-     
-     </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; Specifies the time since the tween began in milliseconds or frames.
-     </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; Specifies the duration of the tween, in milliseconds or frames.
-     </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
-     </td>
-</tr>
-</table>
-</div>
-<a name="easeOutIn()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">easeOutIn</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function easeOutIn(timeElapsed:Number, duration:Number):Number</code><p>
-  easeOutIn combines the motion of easeIn and easeOut by starting out decelerating 
-  towards the middle of the duration, then accelerating end.
-   
-  </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; Specifies the time since the tween began in milliseconds or frames.
-  </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; Specifies the duration of the tween, in milliseconds or frames.
-  </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
-  </td>
-</tr>
-</table>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../package-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../class-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../all-index-A.html" onclick="loadClassListFrame('../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../index.html?org/as3lib/kitchensync/easing/Bounce.html&amp;org/as3lib/kitchensync/easing/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">Bounce</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Bounce"); titleBar_setSubNav(false,false,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.easing</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  Bounce</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Bounce  <img src="../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><p></p><p></p>
+	              <p>Bounce produces values that would cause a moving subject to bounce against the starting or ending 
+	 points like a rubber ball.</p>
+	              <p>The easing classes provide static methods for interpolating the change between two values over time.
+	 Each class handles the interpolation, or easing, differently. Each class typically contains three methods
+	  - <code>easeIn()</code>, <code>easeOut()</code> and <code>easeInOut()</code> - which vary the rate of change
+	  of the values. Most of the easing functions produce values as a percentage - a number between 0.0 and 1.0</p>
+	 
+ 	          <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="http://www.robertpenner.com/easing_terms_of_use.html" target="mm_external">http://www.robertpenner.com/easing_terms_of_use.html</a><br/><a href="http://www.robertpenner.com/easing/" target="mm_external">http://www.robertpenner.com/easing/</a><br/><a href="EasingUtil.html" target="">EasingUtil</a></div><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#easeIn()" class="signatureLink">easeIn</a>(timeElapsed:Number, duration:Number):Number</div><div class="summaryTableDescription">[static] 
+	    easeIn starts out slow and increases in speed towards the end of the duration.</div></td><td class="summaryTableOwnerCol">Bounce</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#easeInOut()" class="signatureLink">easeInOut</a>(timeElapsed:Number, duration:Number):Number</div><div class="summaryTableDescription">[static] 
+	    easeInOut combines the motion of easeIn and easeOut by starting out slow and increasing in speed 
+	    towards the middle of the duration, then slowing down again towards the end.</div></td><td class="summaryTableOwnerCol">Bounce</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#easeOut()" class="signatureLink">easeOut</a>(timeElapsed:Number, duration:Number):Number</div><div class="summaryTableDescription">[static] 
+	    easeOut starts out fast and decreases in speed towards the end of the duration.</div></td><td class="summaryTableOwnerCol">Bounce</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#easeOutIn()" class="signatureLink">easeOutIn</a>(timeElapsed:Number, duration:Number):Number</div><div class="summaryTableDescription">[static] 
+		easeOutIn combines the motion of easeIn and easeOut by starting out decelerating 
+		towards the middle of the duration, then accelerating end.</div></td><td class="summaryTableOwnerCol">Bounce</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="easeIn()"></a><a name="easeIn(Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">easeIn</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function easeIn(timeElapsed:Number, duration:Number):Number</code><p></p><p></p><p>
+	    easeIn starts out slow and increases in speed towards the end of the duration.
+	    The bouncing will appear to increase in height.
+	    
+	    </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; The time since the tween began in milliseconds or frames.
+	    </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; The duration of the tween, in milliseconds or frames.
+	    </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
+	    </td></tr></table></div><a name="easeInOut()"></a><a name="easeInOut(Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">easeInOut</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function easeInOut(timeElapsed:Number, duration:Number):Number</code><p></p><p></p><p>
+	    easeInOut combines the motion of easeIn and easeOut by starting out slow and increasing in speed 
+	    towards the middle of the duration, then slowing down again towards the end.
+		The bouncing will appear to increase then decrease in height.
+		 
+	    </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; Specifies the time since the tween began in milliseconds or frames.
+	    </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; Specifies the duration of the tween, in milliseconds or frames.
+	    </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
+	    </td></tr></table></div><a name="easeOut()"></a><a name="easeOut(Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">easeOut</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function easeOut(timeElapsed:Number, duration:Number):Number</code><p></p><p></p><p>
+	    easeOut starts out fast and decreases in speed towards the end of the duration.
+	    The bouncing will appear to decrease in height.
+	    
+	    </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; Specifies the time since the tween began in milliseconds or frames.
+	    </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; Specifies the duration of the tween, in milliseconds or frames.
+	    </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
+	    </td></tr></table></div><a name="easeOutIn()"></a><a name="easeOutIn(Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">easeOutIn</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function easeOutIn(timeElapsed:Number, duration:Number):Number</code><p></p><p></p><p>
+		easeOutIn combines the motion of easeIn and easeOut by starting out decelerating 
+		towards the middle of the duration, then accelerating end.
+		 
+		</p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; Specifies the time since the tween began in milliseconds or frames.
+		</td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; Specifies the duration of the tween, in milliseconds or frames.
+		</td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
+		</td></tr></table></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Sat Jan 2 2010, 12:54 AM -08:00  </center></div></body></html><!--<br/>Sat Jan 2 2010, 12:54 AM -08:00  -->
