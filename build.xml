@@ -145,6 +145,5 @@
 			<arg line="-window-title &quot;${app.title} v${app.version}&quot;"/>
 			<arg line="-output ${project.output.docsPath}"/>
 		</exec>
-	</target>
-	
+	</target>	
 </project>
