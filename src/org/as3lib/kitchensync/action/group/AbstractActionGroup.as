@@ -30,17 +30,19 @@ package org.as3lib.kitchensync.action.group
 	{
 		/** 
 		 * If true, the group's KSTween children will reset to their 
-		 * default positions when the group is started.
+		 * default positions when the group is started. 
 		 * For example, when a sequence group begins, this will call the
 		 * reset() method on all the children when the start() method is
 		 * called on the group.
 		 * 
+		 * @default The default is set in each individual class depending on 
+		 * what works best for that class.
+		 * 
 		 * @see #reset()
-		 * @see org.as3lib.kitchensync.KitchenSyncDefaults
 		 */
 		public function get resetChildrenAtStart():Boolean { return _resetChildrenAtStart; }
-		public function set resetChildrenAtStart(resetChildrenAtStart:Boolean):void { _resetChildrenAtStart = resetChildrenAtStart;}
-		protected var _resetChildrenAtStart:Boolean;
+		public function set resetChildrenAtStart(resetChildrenAtStart:Boolean):void { _resetChildrenAtStart = _resetChildrenAtStart;}
+		protected var _resetChildrenAtStart:Boolean = false;
 		
 		/** @inheritDoc */
 		public function get childActions():Array { return _childActions; }
@@ -71,7 +73,6 @@ package org.as3lib.kitchensync.action.group
 		public function AbstractActionGroup() {
 			super();
 			AbstractEnforcer.enforceConstructor(this, AbstractActionGroup);
-			resetChildrenAtStart = KitchenSyncDefaults.resetChildrenAtStart;
 		}
 		
 		/** @inheritDoc */

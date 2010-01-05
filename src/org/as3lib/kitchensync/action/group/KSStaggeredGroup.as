@@ -104,7 +104,9 @@ package org.as3lib.kitchensync.action.group
 		 */
 		public function KSStaggeredGroup (stagger:*, ... children) {
 			super();
-
+			
+			resetChildrenAtStart = true;
+			
 			var l:int = children.length;
 			for (var i:int=0; i < l; i++) {
 				addAction(IAction(children[i]));

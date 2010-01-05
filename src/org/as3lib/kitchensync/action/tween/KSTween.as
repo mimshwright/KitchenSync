@@ -239,7 +239,13 @@ package org.as3lib.kitchensync.action.tween
 		
 		/** @inheritDoc */
 		override public function clone():IAction {
-			var clonedTargets:Array = _tweenTargets.concat();
+			// clone targets
+			var clonedTargets:Array = [];
+			for each (var target:ITweenTarget in tweenTargets) {
+				clonedTargets.push(target.clone());
+			}
+			
+			// clone the rest 
 			var clone:KSTween = new KSTween(clonedTargets, this.duration, this.delay, this.easingFunction);
 			clone._easingMod1 = _easingMod1;
 			clone._easingMod2 = _easingMod2;
@@ -267,7 +273,7 @@ package org.as3lib.kitchensync.action.tween
 				throw new Error("You can't use this method unless the first tweenTarget is a TargetProperty");
 			}
 			var tweenTarget:TargetProperty = oldTarget.clone() as TargetProperty;
-			if ( property != "") { property = oldTarget.property; }
+			if ( property == "") { property = oldTarget.property; }
 			tweenTarget.setTargetPropterty(target, property);
 			
 			var clone:KSTween = clone() as KSTween;

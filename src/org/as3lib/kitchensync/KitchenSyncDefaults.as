@@ -87,17 +87,5 @@ package org.as3lib.kitchensync
 		 * @see org.as3lib.kitchensync.action.tween.ITweenObjectParser
 		 */
 		public static var tweenObjectParser:ITweenObjectParser = new KitchenSyncObjectParser();
-	
-		
-///////// GROUPS
-		/**
-		 * When set to true, this will cause groups to reset it's children when the start()
-		 * method is called (which makes KSStaggeredGroup and some other sequences to look
-		 * nicer in most cases). 
-		 * 
-		 * @see org.as3lib.kitchensync.action.group.AbstractActionGroup
-		 * @default true
-		 */
-		public static var resetChildrenAtStart:Boolean = true;
 	}
 }
