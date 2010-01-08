@@ -200,7 +200,7 @@ package org.as3lib.kitchensync.action
 		
 		/** @inheritDoc */
 		public function unpause():void {
-			if (!_running && !_paused) { // FIXME: this line looks wonky. test it.
+			if (_running && _paused) { // FIXME: this line looks wonky. test it.
 				_paused = false;
 				var currentTime:int = Synchronizer.getInstance().currentTime;
 				var timeSincePause:int = currentTime - _pauseTime;
@@ -210,7 +210,11 @@ package org.as3lib.kitchensync.action
 			}
 		}
 		
-		// todo doc
+		/**
+		 * A convenience method that allows you to toggle the pauseed state.
+		 * in other words, this will call pause() if the action is playing or
+		 * unpause() if it's paused()
+		 */
 		public function togglePause():void {
 			if (_paused) { unpause(); }
 			pause();
