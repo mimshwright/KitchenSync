@@ -67,6 +67,12 @@ package org.as3lib.kitchensync.action.tween
 			_tweenTargets = new Array();
 		}
 		
+		/**
+		 * Set to true for the first time the update is run so that some
+		 * initial things can be set up. 
+		 */
+		protected var _firstUpdate:Boolean = true;
+		
 		/** @inheritDoc */
 		public function get easingMod1():Number { return _easingMod1; }
 		public function set easingMod1(easingMod1:Number):void { _easingMod1 = easingMod1; }
@@ -160,6 +166,7 @@ package org.as3lib.kitchensync.action.tween
 		 */
 		override public function reset():void {
 			stop();
+			_firstUpdate = true;
 			for each (var target:ITweenTarget in _tweenTargets) {
 				target.reset();
 			}
@@ -180,7 +187,8 @@ package org.as3lib.kitchensync.action.tween
 				var target:ITweenTarget
 				
 				// if this is the start of the tween.
-				if (timeElapsed <= 1) {
+				if (_firstUpdate) {
+					_firstUpdate = false;
 					for each (target in _tweenTargets) {
 						// if using the 'existing from value' set the start value at the time that the tween begins.
 						if (isNaN(target.startValue)) { 
@@ -321,6 +329,11 @@ package org.as3lib.kitchensync.action.tween
 			return clone;
 		}
 		
+		/** @inheritDoc */
+		override protected function complete():void { 
+			_firstUpdate = true;
+			super.complete();
+		}
 		
 		/** @inheritDoc */
 		override public function kill():void {
