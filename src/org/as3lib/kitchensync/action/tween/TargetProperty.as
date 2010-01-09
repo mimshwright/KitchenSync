@@ -157,11 +157,12 @@ package org.as3lib.kitchensync.action.tween
 		 * property name. This is simply for convenience sake to allow you to 
 		 * quickly create a copy that is similar but affects different values.
 		 * 
-		 * @param target The new target object
-		 * @param property The new property on that object (optional)
+		 * @param target The new target object. Or, if the target is a string, you can pass a new property as 
+		 * 				 the first variable in which case, the old target will be used.
+		 * @param property The new property on that object (optional). If none is provided, 
+		 * 				   the old property will be used.
 		 * @return TargetProperty The cloned tween target.
 		 */
-		// todo update docs to show optional params
 		public function cloneWithTarget (target:Object, property:String = ""):TargetProperty {
 			var clone:TargetProperty = this.clone() as TargetProperty;
 			

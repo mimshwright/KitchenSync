@@ -10,29 +10,12 @@ package org.as3lib.kitchensync.action.tween
 	final public class SoundTransformProperty
 	{
 		/** Volume property. */
-		public static const VOLUME:SoundTransformProperty = new SoundTransformProperty("volume");
+		public static const VOLUME:String = "volume";
 		/** Pan property. */
-		public static const PAN:SoundTransformProperty = new SoundTransformProperty("pan");
+		public static const PAN:String = "pan";
 		/** Right to Left mixing property. */
-		public static const RIGHT_TO_LEFT:SoundTransformProperty = new SoundTransformProperty("rightToLeft");
+		public static const RIGHT_TO_LEFT:String = "rightToLeft";
 		/** Left to Right Mixing property. */
-		public static const LEFT_TO_RIGHT:SoundTransformProperty = new SoundTransformProperty("leftToRight");
-		
-		private var _string:String;
-		
-		/**
-		 * Constructor. This should not be used outside of this class.
-		 * 
-		 * @param string The string representation of the property. 
-		 */
-		public function SoundTransformProperty(string:String = "") {
-			_string = string;
-		}
-		
-		/** Returns the value of the property string */
-		public function toString():String {
-			if (!_string) { return super.toString(); }
-			return _string;
-		}
+		public static const LEFT_TO_RIGHT:String = "leftToRight";
 	}
 }

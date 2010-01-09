@@ -31,7 +31,6 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims Wright
 	 * @since 1.5
 	 */
-	// todo Make easing function part of tween target instead of KSTween?
 	public interface ITweenTarget extends INumericController
 	{
 		/**

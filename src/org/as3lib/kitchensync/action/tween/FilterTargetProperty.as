@@ -15,8 +15,6 @@ package org.as3lib.kitchensync.action.tween
 	 * @author Mims H. Wright
 	 * @since 1.5 
 	 */ 
-	// todo change this to accept either a class or an instance of a filter.
-	// todo review
 	public class FilterTargetProperty implements IFilterTweenTarget
 	{
 		/**
@@ -94,7 +92,7 @@ package org.as3lib.kitchensync.action.tween
 			if (filters && filters.length > 0) {
 				// pull in all the old filters except the one added previously.
 				for each (var filter:BitmapFilter in filters) {
-					if (filter is _filterType) {
+					if (filter is _filterType) { // note, this should maybe be a strictIs except that none of the filters subclass each other.
 						_previousFilter = filter;
 					} else {
 						newFilters.push(filter);

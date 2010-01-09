@@ -40,10 +40,9 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @see org.as3lib.kitchensync.action.tween.SoundTransformProperty
 		 */
-		// todo: consider making this string based.
-		public function get property():SoundTransformProperty { return _property; }
-		public function set property(property:SoundTransformProperty):void { _property = property; }
-		protected var _property:SoundTransformProperty;
+		public function get property():String { return _property; }
+		public function set property(property:String):void { _property = property; }
+		protected var _property:String;
 		
 		/**
 		 * The value to start from when tweening.
@@ -74,7 +73,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @param startValue the value to start from when tweening
 		 * @param endValue the value to end on when tweening 
 		 */
-		public function SoundTransformTarget (targetSound:Object, property:SoundTransformProperty = null, startValue:Number = NaN, endValue:Number = NaN) {
+		public function SoundTransformTarget (targetSound:Object, property:String = null, startValue:Number = NaN, endValue:Number = NaN) {
 			_targetSound = targetSound;
 			
 			if (_targetSound.soundTransform == null) {
