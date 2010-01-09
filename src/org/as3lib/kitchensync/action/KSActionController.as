@@ -35,7 +35,7 @@ package org.as3lib.kitchensync.action
 		 * @param command The function that the action will perform when the controller executes.
 		 * @param delay The time to delay this action.
 		 */ 
-		public function KSActionController (target:IAction, command:ActionControllerCommand = null, delay:* = 0) {
+		public function KSActionController (target:IAction, command:String = "", delay:* = 0) {
 			super(null);
 			this.delay = delay;
 			
@@ -44,7 +44,7 @@ package org.as3lib.kitchensync.action
 			} else {
 				throw new ArgumentError ("target AbstractSynchronizedAction must not be null.");
 			}
-			if (command == null) {  command = ActionControllerCommand.DEFAULT; }
+			if (command == "") {  command = ActionControllerCommand.DEFAULT; }
 			switch (command) {
 				case ActionControllerCommand.START:
 					_func = function ():void { _target.start(); };
