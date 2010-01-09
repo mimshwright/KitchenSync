@@ -1,5 +1,7 @@
 package org.as3lib.kitchensync.action.group
 {
+	import flash.errors.IllegalOperationError;
+	
 	import org.as3lib.kitchensync.action.*;
 	import org.as3lib.kitchensync.core.KitchenSyncEvent;
 	
@@ -28,6 +30,7 @@ package org.as3lib.kitchensync.action.group
 				addAction(IAction(children[i]));
 			}
 		}
+		
 		
 		/** @inheritDoc */
 		override public function start():IAction {

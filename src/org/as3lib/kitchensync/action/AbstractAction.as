@@ -200,7 +200,7 @@ package org.as3lib.kitchensync.action
 		
 		/** @inheritDoc */
 		public function unpause():void {
-			if (_running && _paused) { // FIXME: this line looks wonky. test it.
+			if (_running && _paused) { 
 				_paused = false;
 				var currentTime:int = Synchronizer.getInstance().currentTime;
 				var timeSincePause:int = currentTime - _pauseTime;
@@ -239,7 +239,6 @@ package org.as3lib.kitchensync.action
 		public function jumpToTime(time:*, ignoreDelay:Boolean = false):void {
 			// jumpToTime will fail if the action isn't running.
 			if (!isRunning || _duration == 0) { 
-				// todo: make this error optional.
 				throw new IllegalOperationError("Can't jump to time if the action isn't running or if duration is 0.");
 				return; 
 			}
@@ -262,7 +261,6 @@ package org.as3lib.kitchensync.action
 			// check that the jump time is valid
 			if (jumpTime > totalDuration || jumpTime < 0) {
 				// you can't jump to a time that is past the end of the action's total time.
-				// todo: make this error optional.
 				throw new RangeError("'time' must be less than the total time of the action and greater than 0.");
 			} else {
 				// adjust the startTime to make it appear that the playhead should be at 

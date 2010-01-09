@@ -83,7 +83,6 @@ package org.as3lib.kitchensync.action.group
 		 * 			  );
 		 * </listing>
 		 */
-		// todo: test this on other group classes.
 		public function KSSequenceGroup (... children) {
 			super();
 			
