@@ -15,7 +15,7 @@ package org.as3lib.kitchensync.action.group
 	 * 
 	 * @see AbstractActionGroup
 	 * @see KSSequenceGroup
-	 * @see IAction
+	 * @see org.as3lib.kitchensync.IAction
 	 * @see http://en.wikipedia.org/wiki/Composite_pattern
 	 * 
 	 * @since 2.0
