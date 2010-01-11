@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>KitchenSyncLib Build Instructions</title>
+	
+</head>
+
+<body>
+<h1>Building KitchenSync</h1>
+<p>This file shows instructions on how to set up a project to build the KitchenSync library.</p>
+<h2>Creating a pre-compiled SWC library</h2>
+<h3>Creating a Flex Library Project in FlexBuilder / FlashBuilder</h3>
+<ol>
+	<li>In FlashBuilder, do File -> New -> Flex Library Project</li>
+	<li>For project name, use 'kitchensynclib'</li>
+	<li>For location, make sure to point to the root folder of the kitchensync project. Click next.</li>
+	<li>In the Build Path settings, keep all default settings and click the "Add SWC Folder" button. Use "libs" as the path. Under classes, make sure all the classes are checked (FB4 users, click the "Include all classes from all source paths").</li>
+	<li>The resulting SWC will appear in the bin folder.</li>
+</ol>
+<h3>Using Apache Ant</h3>
+<p>If you are familiar with the ant build tool and the Flex SDK, this is the best method for creating a SWC. Use the following steps:</p>
+<ol>
+	<li>Create a duplicate of <code>build.properties.template</code> and name it <code>build.properties</code>. In this file, you should adjust the values to point to the location of the Flex SDK on your machine.</li>
+	<li>If you don't have a 'bin' folder in the project, create one now.</li>
+	<li>Run the "build" target of the ant script. <code>ant build</code> The resulting SWC will appear in the bin folder.</li>
+</ol>
+<h3>Other methods</h3>
+<p>If you prefer another method for building library files, you are welcome to add to this document.</p>
+</body>
+</html>
