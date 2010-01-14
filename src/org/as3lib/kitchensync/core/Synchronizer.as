@@ -7,6 +7,8 @@ package org.as3lib.kitchensync.core
 	import org.as3lib.kitchensync.KitchenSync;
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	
+	// todo : implement IPauseable
+	
 	/**
 	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.SYNCHRONIZER_UPDATE
 	 */

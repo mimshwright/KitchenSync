@@ -23,6 +23,8 @@ ADDED KSLoadQueue for quickly creating a class to load files from the network in
 ADDED the resultList property to the ILoaderAction interface so that you can quickly access the loaded files in a batch.
 FIXED some minor bugs
 
+ADDED IPauseable interface extracted from IAction. (wiht intention of making Synchronizer use this)
+
 REFACTORED IAction and AbstractAction.
 MOVED some important methods from AbstractAction-only to IAction.
 REMOVED action triggers from AbstractAction. Use KSSequenceGroups instead. 

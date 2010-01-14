@@ -2,6 +2,7 @@ package org.as3lib.kitchensync.action
 {
 	import flash.events.IEventDispatcher;
 	
+	import org.as3lib.kitchensync.core.IPauseable;
 	import org.as3lib.kitchensync.core.ISynchronizerClient;
 	
 	/**
@@ -15,7 +16,7 @@ package org.as3lib.kitchensync.action
 	 * @since 1.6
 	 * @author Mims Wright
 	 */
-	public interface IAction extends ISynchronizerClient, IEventDispatcher
+	public interface IAction extends ISynchronizerClient, IEventDispatcher, IPauseable
 	{
 		/**
 		 * duration is the length of time that the action will run.
@@ -54,8 +55,6 @@ package org.as3lib.kitchensync.action
 		/** Should return true if the action is running (or paused). */
 		function get isRunning():Boolean;
 		
-		/** Should return true if the action is paused. */
-		function get isPaused():Boolean;
 		
 		/**
 		 * Begins the action running. The action will execute whatever it is
@@ -91,20 +90,6 @@ package org.as3lib.kitchensync.action
 		 */
 		function reset():void;
 		
-		/**
-		 * Causes the action to be paused. The action temporarily ignores update events from the Synchronizer 
-		 * and the onUpdate() handler will not be called. When unpause() is called,
-		 * the action will continue at the point where it was paused.
-		 * The pause() method affects the start time even if the delay time hasn't expired yet.
-		 */
-		function pause():void;
-		
-		/**
-		 * Resumes the action at the point where it was paused.
-		 * 
-		 * @see #start()
-		 */
-		function unpause():void;
 		
 		/**
 		 * Creates a clone which is a deep copy of the action.
