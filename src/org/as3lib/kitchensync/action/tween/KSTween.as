@@ -106,8 +106,10 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in milliseconds that this tween will take to execute. Accepts string values.
 		 * @param delay The time to wait before starting the tween. Accepts string values.
 		 * @param easingFunction The function to use to interpolate the values between the start and end values. Default is set in KitchenSyncDefaults.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 */
-		public function KSTween(tweenTargets:*, duration:* = 0, delay:* = 0, easingFunction:Function = null)
+		public function KSTween(tweenTargets:*, duration:* = 0, delay:* = 0, easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN)
 		{
 			super();
 			_tweenTargets = new Array();
@@ -137,6 +139,9 @@ package org.as3lib.kitchensync.action.tween
 				easingFunction = KitchenSyncDefaults.easingFunction;
 			}
 			_easingFunction = easingFunction;
+			
+			_easingMod1 = easingMod1;
+			_easingMod2 = easingMod2;
 		}
 		
 

@@ -32,8 +32,8 @@ package org.as3lib.kitchensync.action.tween
 		 * @param parameters An object that contains properties that define the new tween
 		 * @return A new tween.
 		 */ 
-		public static function newTweenFromObject(parameters:Object):ITween {
-			return objectParser.parseObject(parameters);
+		public static function newTweenFromObject(parameters:Object):KSTween {
+			return KSTween(objectParser.parseObject(parameters));
 		}
 		
 		/**
@@ -48,10 +48,14 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 * @return A new ITween instance
 		 */
-		// todo: check constructors to make sure start values are RuntimeValues
-		public static function newTween(targets:*, properties:*, startValue:Number = NaN, endValue:Number = NaN, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
+		public static function newTween(targets:*, properties:*, 
+										startValue:Number = NaN, endValue:Number = NaN, 
+										duration:* = 0, delay:* = 0, 
+										easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
 			var targetsArray:Array, propertiesArray:Array;
 			
 			if ( targets == null) { throw new ArgumentError("'targets' cannot be null"); }
@@ -70,7 +74,7 @@ package org.as3lib.kitchensync.action.tween
 				}
 			}
 				
-			return new KSTween(tweenTargets, duration, delay, easingFunction);
+			return new KSTween(tweenTargets, duration, delay, easingFunction, easingMod1, easingMod2);
 		}
 
 		/**
@@ -84,6 +88,8 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 * @return A new KSTween instance
 		 * 
 		 * @since 2.0
@@ -93,10 +99,12 @@ package org.as3lib.kitchensync.action.tween
 											endColor:* = "noTint", 
 											tintOpacity:Number = 1.0,
 											duration:* = 0, delay:* = 0, 
-											easingFunction:Function = null):ITween {
+											easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
 			return newTweenWithTargets(
-				new TintTweenTarget(target, startColor, endColor, tintOpacity), 
-				duration, delay, easingFunction);
+										new TintTweenTarget(target, startColor, endColor, tintOpacity), 
+										duration, delay, 
+										easingFunction, easingMod1, easingMod2
+									  );
 		}
 
 		
@@ -110,6 +118,8 @@ package org.as3lib.kitchensync.action.tween
 		 * @param endFrame The ending frame. Can be a frame label or integer. Default is the last frame in the clip.
 		 * @param duration The time in milliseconds that this tween will take to execute. Default is the natural duration on the timeline.
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue. Default is linear.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 * @return A new KSTween instance
 		 * 
 		 * @since 2.0
@@ -118,7 +128,7 @@ package org.as3lib.kitchensync.action.tween
 												startFrame:Object = null,
 												endFrame:Object = null,
 												duration:* = -1,
-												easingFunction:Function = null):ITween {
+												easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
 			
 			var timelineController:TimelineController = new TimelineController(target, startFrame, endFrame);
 			if (duration == TimelineController.AUTO) {
@@ -127,7 +137,7 @@ package org.as3lib.kitchensync.action.tween
 			if (easingFunction == null) {
 				easingFunction = Linear.ease;
 			}
-			return newTweenWithTargets(timelineController, duration, 0, easingFunction);
+			return newTweenWithTargets(timelineController, duration, 0, easingFunction, easingMod1, easingMod2);
 		}
 												
 		
@@ -140,14 +150,19 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration - the time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 * @return A new KSTween Instance
 		 * 
 		 * @since 2.0
 		 */
-		public static function newPositionTween(target:DisplayObject, startValue:Point, endValue:Point, duration:* = 0, delay:* = 0, easingFunciton:Function = null):KSTween {
+		public static function newPositionTween(target:DisplayObject, 
+												startValue:Point, endValue:Point, 
+												duration:* = 0, delay:* = 0, 
+												easingFunciton:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
 			var x:ITweenTarget = new TargetProperty(target, "x", startValue.x, endValue.x);
 			var y:ITweenTarget = new TargetProperty(target, "y", startValue.y, endValue.y);
-			return newTweenWithTargets([x,y], duration, delay, easingFunciton);
+			return newTweenWithTargets([x,y], duration, delay, easingFunciton, easingMod1, easingMod2);
 		} 
 		
 //		public static function newPositionTween3D(target:Object, startValue:Array, endValue:Array, duration:* = 0, delay:* = 0, easingFunciton:Function = null):KSTween {
@@ -166,14 +181,19 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too. 
 		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 * @return A new KSTween instance.
 		 * 
 		 * @since 2.0
 		 */
-		public static function newScaleTween(target:DisplayObject, startValue:Number = NaN, endValue:Number = NaN, duration:* = 0, delay:* = 0, easingFunciton:Function = null):KSTween {
+		public static function newScaleTween(target:DisplayObject, 
+											 startValue:Number = NaN, endValue:Number = NaN, 
+											 duration:* = 0, delay:* = 0, 
+											 easingFunciton:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
 			var x:ITweenTarget = new TargetProperty(target, "scaleX", startValue, endValue);
 			var y:ITweenTarget = new TargetProperty(target, "scaleY", startValue, endValue);
-			return newTweenWithTargets([x,y], duration, delay, easingFunciton);
+			return newTweenWithTargets([x,y], duration, delay, easingFunciton, easingMod1, easingMod2);
 		} 
 
 		/**
@@ -183,11 +203,15 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in frames that this tween will take to execute.
 		 * @param delay The time to wait before starting the tween.
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 * 
 		 * @return A new KSTween object.
 		 */
-		public static function newTweenWithTargets(tweenTargets:*, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
-			return new KSTween(tweenTargets, duration, delay, easingFunction);
+		public static function newTweenWithTargets(tweenTargets:*, 
+												   duration:* = 0, delay:* = 0, 
+												   easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
+			return new KSTween(tweenTargets, duration, delay, easingFunction, easingMod1, easingMod2);
 		} 
 
 		
@@ -204,11 +228,17 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
 		 * 
 		 * @return A new KSTween object.
 		 */
-		public static function newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number = NaN, endValue:Number = NaN, duration:* = 0, delay:* = 0, easingFunction:Function = null):KSTween {
-			return newTweenWithTargets (new FilterTargetProperty(target, filter, filterProperty, startValue, endValue), duration, delay, easingFunction);
+		public static function newFilterTween(target:DisplayObject, 
+											  filter:Class, filterProperty:String, 
+											  startValue:Number = NaN, endValue:Number = NaN, 
+											  duration:* = 0, delay:* = 0, 
+											  easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
+			return newTweenWithTargets (new FilterTargetProperty(target, filter, filterProperty, startValue, endValue), duration, delay, easingFunction, easingMod1, easingMod2);
 		}
 	}
 }
