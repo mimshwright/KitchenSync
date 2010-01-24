@@ -41,7 +41,7 @@ package org.as3lib.kitchensync.action.group
 		 * @see #reset()
 		 */
 		public function get resetChildrenAtStart():Boolean { return _resetChildrenAtStart; }
-		public function set resetChildrenAtStart(resetChildrenAtStart:Boolean):void { _resetChildrenAtStart = _resetChildrenAtStart;}
+		public function set resetChildrenAtStart(resetChildrenAtStart:Boolean):void { _resetChildrenAtStart = resetChildrenAtStart;}
 		protected var _resetChildrenAtStart:Boolean = false;
 		
 		/** @inheritDoc */
@@ -164,7 +164,6 @@ package org.as3lib.kitchensync.action.group
 		/**
 		 * @inheritDoc
 		 */
-		// FIXME: I don't think this is working.
 		override public function start():IAction {
 			if (resetChildrenAtStart && !_running && !_paused) {
 				for each (var action:IAction in _childActions) {
