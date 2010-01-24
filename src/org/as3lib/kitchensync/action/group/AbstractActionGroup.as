@@ -164,6 +164,7 @@ package org.as3lib.kitchensync.action.group
 		/**
 		 * @inheritDoc
 		 */
+		// FIXME: I don't think this is working.
 		override public function start():IAction {
 			if (resetChildrenAtStart && !_running && !_paused) {
 				for each (var action:IAction in _childActions) {

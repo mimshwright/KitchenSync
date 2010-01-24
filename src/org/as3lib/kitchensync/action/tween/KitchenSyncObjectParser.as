@@ -1,5 +1,7 @@
 package org.as3lib.kitchensync.action.tween
 {
+	import flash.utils.Dictionary;
+	
 	import org.as3lib.kitchensync.action.tween.*;
 	
 	public final class KitchenSyncObjectParser implements ITweenObjectParser {
@@ -194,7 +196,7 @@ package org.as3lib.kitchensync.action.tween
 			var startValue:Number;
 			var endValue:Number;
 			var key:String;
-			
+			var parsedProperties:Dictionary = new Dictionary();
 			
 			for (key in parameters) {
 				var data:PropertyData = new PropertyData();
@@ -218,31 +220,56 @@ package org.as3lib.kitchensync.action.tween
 					if (startStringIndex >= 0) {
 						// extract the property name
 						data.propertyName = key.slice(0, startStringIndex);
-						// store the start value.
-						data.startValue = parameters[key] as Number;
-						// extract the end value.
-						data.endValue = getFirstDefinedValue(parameters, 	data.propertyName + "_end", 
-																			data.propertyName + "End",
-																			data.propertyName + "_to",
-																			data.propertyName + "To") as Number;
 						
-						// if no end value was found, use the value at start of tween.
-						if (isNaN(data.endValue)) {
-							data.endValue = AUTO_TWEEN_VALUE;
+						// if the start value hasn't been parsed yet
+						if (parsedProperties[data.propertyName] != true) {
+							// store the start value.
+							data.startValue = parameters[key] as Number;
+							
+							// extract the end value.
+							var rawEndValue:* =	getFirstDefinedValue(parameters,data.propertyName + "_end", 
+																				data.propertyName + "End",
+																				data.propertyName + "_to",
+																				data.propertyName + "To");
+							
+							// if no end value was found, use the value at start of tween.
+							data.endValue = rawEndValue == null ? AUTO_TWEEN_VALUE : rawEndValue as Number;
+						
+							// Add the property to the results list.
+							resultsArray.push(data);
+							parsedProperties[data.propertyName] = true;
 						}
-						
-						// Add the property to the results list.
-						resultsArray.push(data);
 						continue;
-					} else {
-						// ignore it.
+					} else if (endStringIndex >= 0) {
+						// extract the property name
+						data.propertyName = key.slice(0, endStringIndex);
+						
+						// if the start value hasn't been parsed yet
+						if (parsedProperties[data.propertyName] != true) {
+							// store the start value.
+							data.endValue = parameters[key] as Number;
+						
+							// extract the end value.
+							var rawStartValue:* = getFirstDefinedValue(parameters, 	data.propertyName + "_start", 
+																					data.propertyName + "Start",
+																					data.propertyName + "_from",
+																					data.propertyName + "From") as Number;
+							// if no end value was found, use the value at start of tween.
+							data.startValue = rawStartValue == null ? AUTO_TWEEN_VALUE : rawStartValue as Number;
+						
+						
+							// Add the property to the results list.
+							resultsArray.push(data);
+							parsedProperties[data.propertyName] = true;
+							
+						}
 						continue;
 					}
 				} 
 				
 				// check results for keywords.
 				switch (data.propertyName) {
-					case "scale":
+					case "scale": // FIXME: this isn't working with scaleFrom and scaleTo
 						resultsArray.push(new PropertyData("scaleX", data.startValue, data.endValue));
 						resultsArray.push(new PropertyData("scaleY", data.startValue, data.endValue));
 					break;
