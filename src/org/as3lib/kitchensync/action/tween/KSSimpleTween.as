@@ -157,6 +157,14 @@ package org.as3lib.kitchensync.action.tween
 			// if the delay is passed,
 			if (timeElapsed >= 0) {
 				
+				// check for AUTO_TWEEN_VALUE
+				if (isNaN(startValue)) {
+					startValue = target[property] as Number;
+				}
+				if (isNaN(endValue)) {
+					endValue = target[property] as Number;
+				}
+				
 				// invoke the easing function.
 				var result:Number =  EasingUtil.call(easingFunction, timeElapsed, _duration, _easingMod1, _easingMod2); 
 				

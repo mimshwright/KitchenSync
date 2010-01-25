@@ -71,7 +71,7 @@ REFACTORED KSTween clone functions. Some are a little hacky but easy to use.
 ADDED ITweenTargetCollection for KSTween. 
 ADDED a method for getting the natural duration of a timeline tweeen in TimelineController.
 ADDED SoundTransformProperties and refactored SoundTransformTarget
-RENAMED VALUE_AT_START_OF_TWEEN to AUTO_TWEEN_VALUE and moved it to a global file. Fixed a bug where this wasn't working.
+RENAMED VALUE_AT_START_OF_TWEEN to AUTO_TWEEN_VALUE and moved it to a global file. Fixed a bug where this wasn't working. Also added this to KSSimpleTween.
 
 IMPROVED build.xml to include more targets for building the library. Using SDK 3.4 now.
 
