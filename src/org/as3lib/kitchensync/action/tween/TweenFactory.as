@@ -132,7 +132,7 @@ package org.as3lib.kitchensync.action.tween
 			
 			var timelineController:TimelineController = new TimelineController(target, startFrame, endFrame);
 			if (duration == TimelineController.AUTO) {
-				duration = timelineController.getNaturalDuration(duration);
+				duration = timelineController.getNaturalDuration(TimelineController.AUTO);
 			}
 			if (easingFunction == null) {
 				easingFunction = Linear.ease;

@@ -7,7 +7,7 @@ package org.as3lib.kitchensync.action.tween
 	/**
 	 * A color matrix tween that affects contrast.
 	 * 
-	 * The range of values should be between -100 (low contrasst) and 100 (high contrast)
+	 * The range of values should be between -1 (low contrasst) and 1 (high contrast)
 	 * with a value of 0 being no adjustment to the contrast.
 	 * 
 	 * @author Mims Wright
@@ -33,6 +33,7 @@ package org.as3lib.kitchensync.action.tween
 		 * Applies the contrast to the color matrix.
 		 */
 		override protected function adjustMatrixValue(colorMatrix:ColorMatrix, value:Number):void {
+			value *= 100;
 			colorMatrix.adjustContrast(value);
 		}
 		

@@ -7,7 +7,7 @@ package org.as3lib.kitchensync.action.tween
 	/**
 	 * A color matrix tween that affects brightness.
 	 * 
-	 * The range of values should be between -100 (dark) and 100 (light)
+	 * The range of values should be between -1 (dark) and 1 (light)
 	 * with a value of 0 being no adjustment to the brightness.
 	 * 
 	 * @author Mims Wright
@@ -33,6 +33,7 @@ package org.as3lib.kitchensync.action.tween
 		 * Applies the brightness to the color matrix.
 		 */
 		override protected function adjustMatrixValue(colorMatrix:ColorMatrix, value:Number):void {
+			value *= 100;
 			colorMatrix.adjustBrightness(value);
 		}
 		

@@ -17,6 +17,8 @@ ADDED a method to track the number of active actions.
 REFACTORED Constructors throughout the system for more consistency and ease of use.
 REMOVED delay from the KSFunction constructor.
 
+CHANGED all color matrix tweens to use values between -1 and 1.
+
 REFACTORED Loading classes. Now it's much easier to use and more powerful.
 ADDED KSLoader for queueing up Loaders for loading SWFs and images
 ADDED KSLoadQueue for quickly creating a class to load files from the network in a batch.

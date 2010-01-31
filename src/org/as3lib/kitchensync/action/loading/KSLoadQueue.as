@@ -56,7 +56,7 @@ package org.as3lib.kitchensync.action.loading
 		/**
 		 * Add a url to the end of the queue.
 		 * 
-		 * @param url The URL string or URLRequest object to load the data from.
+		 * @param url The URL string or URLRequest object of these to load the data from.
 		 * @param loaderClass Allows you to specify which type of ILoaderAction to use to load this url.
 		 * 					  The default will use KSURLLoader but you may want to use KSLoader or something else.
 		 * @return A reference to the loaderAction that was created in the queue.
