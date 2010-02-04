@@ -1,0 +1,1194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>
+			KitchenSync v2.0 User Guide
+		</title>
+		<script src="toc.js" type="text/javascript"></script>
+		
+		<base target="_top">
+		<style type="text/css">
+			html, body { 
+				margin:0; padding:0;
+				font-family: Optima, Helvetica, Arial, sans-serif;
+				font-size: 12pt;
+			}
+			body {
+				background: url(images/pattern.gif) fixed;
+				position:relative;
+			}
+			#content { 
+				width: 36em; 
+				margin: 0 auto; padding: 40px;
+				background: #FFF;
+				border: 1px solid #69C;
+				border-top:0; border-bottom:0;
+			}
+			
+			img { border:0; display:block; }
+			a, a:link {color: #930; text-decoration:underline;}
+			a:active, a:hover { color: #993300; font-weight:bold; }
+			a:visited { color: #936;}
+			pre, code {
+				font-family: Monaco, Courier, "Courier New", monospace;
+				font-size:12px;
+				background:#EFEFEF; color: #006;
+			}
+			pre { 
+				width:100%; display:block; 
+				white-space: pre-wrap;       /* css-3 */
+				white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+				white-space: -pre-wrap;      /* Opera 4-6 */
+				white-space: -o-pre-wrap;    /* Opera 7 */
+				word-wrap: break-word;       /* Internet Explorer 5.5+ */
+			}
+			code {
+			}
+			ul { margin-bottom: 1.5em;}
+			li { margin-bottom: 1em;}
+			
+			h1 { font-size: 3em; padding:0; margin-bottom: 0em; }
+			h2 { font-size: 2em; padding:0; margin-bottom: 0em; margin-top:1em;}
+			h3 { font-size: 1.5em; padding:0; margin-bottom: 0em; margin-top:1em;}
+			h4 { font-size: 1.2em; padding:0; margin-bottom: 0em; margin-top:1em;}
+			
+			.meta { font-size: x-small; font-style:italic;}
+			.sidebar {
+				border: 1px solid #666;
+				width:32em;
+				padding:15px; margin: 0 auto 15px;
+				background: #FFE;
+			}
+			.pseudocode {
+				font-style: italic;
+			}
+			.error {
+				color: #FF0000;
+			}
+			
+			div#toc ul {
+			  list-style-type: none;
+			}
+		</style>
+	</head>
+	<body onload="generateTOC(document.getElementById('toc'));">
+		<div id="content">
+			<img src="http://mimswright.com/kitchensync/docs/img/KSLogo.png" alt="KitchenSync">
+			<h1>
+				KitchenSyncLib User Guide
+			</h1>
+			<p class="meta">
+				Last updated on 2010-02-02 for version 2.0 of KitchenSync by Mims H. Wright.
+			</p>
+			<div id="toc"></div>
+			<h2>
+				KitchenSync Basics
+			</h2>
+			<p>
+				This Section of the document will step through some of the portions of KitchenSync that you're most likely to encounter and will get you on your feet with the core functionality before looking more closely at the details.
+			</p>
+			<h3>
+				Key Pieces: Synchronizer &amp; Actions
+			</h3>
+			<p>
+				There are two main elements to KitchenSync - the <em>synchronizer</em> and <em>actions</em>.
+			</p>
+			<h4>
+				Synchronizer
+			</h4>
+			<p>
+				At the heart of KS is a class called <code>Synchronizer</code>. The Synchronizer works like a metronome for the entire system. It dispatches the update events that help the actions decide what to do next. Generally, this update occurs once every frame.
+			</p>
+			<p>
+				It's very unlikely that you will need to access Synchronizer directly from your programs. KitchenSync takes care of everything behind the scenes. For now, all you need to know is that it's there.
+			</p>
+			<p>
+				Running the command <code>KitchenSync.initialize()</code> at the beginning of your program will start the Synchronizer. More on that in a bit.
+			</p>
+			<div class="sidebar">
+				<h4>
+					Why use a special class instead of an ENTER_FRAME listener or a Timer?
+				</h4>
+				<p>
+					Using Synchronizer provides a number of advantages over a generic event dispatcher.
+				</p>
+				<ul>
+					<li>The Synchronizer sends out a timestamp (based on <code>getTimer()</code>) to its clients. That time is standardized for each update so all animations and actions are synchronized using the same current time. If this wasn't used, animations might appear slightly out of time with each other.
+					</li>
+					<li>Having an abstracted Synchronizer means you can swap out the method used to dispatch the events. For example, you could use the <code>ENTER_FRAME</code> event of the stage or use a Timer with a specific interval or possibly even hook it up to a Midi word clock. To learn more about <a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/core/ISynchronizerCore.html">SynchronizerCores</a> check the documentation.
+					</li>
+					<li>The centralized synchronizer allows you to stop and start the entire system from a single point. Synchronizer also tracks the current number of active clients, the number of cycles since it started, and the 'official time' of the system.
+					</li>
+				</ul>
+			</div>
+			<h4>
+				Actions
+			</h4>
+			<p>
+				Almost everything else in KitchenSync is related to actions. An action is a general term for anything that can be sequenced and executed using KitchenSync. Actions can be played, paused, looped, grouped and have a duration and delay (A complete list of ways to use actions will be discussed later in <a href="#actions">Controlling Actions</a>). The most obvious action is a <em>tween</em> but KS comes packed with actions that do all kinds of things including playing sounds, loading files, calling functions, and so forth. Also groups, like the <code>KSSequenceGroup</code>, are also, themselves, actions and have all the properties of actions. Groups are discussed in more detail in <a href="groups">a later section</a>. Most of the different types of actions will be discussed in this document but if you want to learn more about any of them, you can snoop around in the <a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/action/package-detail.html">ASDoc reference</a>.
+			</p>
+			<p>
+				Actions are defined as any class that implements the <code>IAciton</code> interface. Most actions (except notably the <code>KSSimpleTween</code>) also inherit from <code>AbstractAction</code> which defines a default implementation of actions and add a few additional helpful functions.
+			</p>
+			<p>
+				For sake of clarity, KitchenSync uses a special naming convention for actions. For the most part, any class that implements the <code>IAction</code> interface will begin with "KS" such as "KSTween". In other words, any class starting with KS is an action and can be started, stopped, etc.
+			</p><a name="times" id="times"></a>
+			<h5>
+				About Times
+			</h5>
+			<p>
+				All actions have two basic times associated with them, they are <em>duration</em> and <em>delay</em>.
+			</p>
+			<p>
+				Duration is the length of time that an action takes to complete from start to finish. This is a very important property when using tweens because it describes how long the tween should take. However, some other actions that execute instantaneously, like KSFunctions, will always have a duration of 0. Actions have a boolean property, <code>isInstantaneous</code>, that will automatically be set to true if the action doesn't have a duration.
+			</p>
+			<p>
+				Delay is the amount of time that the action waits after the <code>start()</code> command is called before executing. Setting delays can let you space out the execution of several actions started at the same time.
+			</p>
+			<p>
+				This diagram shows how the different phases in an action's life.
+			</p>
+			<p class="error">
+				Diagram coming soon.
+			</p>
+			<p>
+				The action here has a delay of 500ms and a duration of 2000ms.
+			</p>
+			<p>
+				The program begins
+			</p>
+			<p class="pseudocode">
+				currentTime = 0
+			</p>
+			<p>
+				KitchenSync is initialized
+			</p>
+			<p class="pseudocode">
+				currentTime = 100
+			</p>
+			<p>
+				Action's start() method is called. Nothing will happen until the delay time has passed.
+			</p>
+			<p class="pseudocode">
+				currentTime = 500 (start time)
+			</p>
+			<p>
+				Action's delay time has passed and it starts running.
+			</p>
+			<p class="pseudocode">
+				currentTime = 1000 ( start time + delay )
+			</p>
+			<p>
+				Action's duration time has passed. The action stops.
+			</p>
+			<p class="pseudocode">
+				currentTime = 3000 ( start time + delay + duration )
+			</p>
+			<p>
+				Note: All times are measured in milliseconds (1/1000th of a second) but times written as strings, such as <code>"5.5 secs"</code> are also acceptable. See <a href="#timestrings">Appendix A</a> for more information about time strings.
+			</p>
+			<h3>
+				My First Action
+			</h3>
+			<p>
+				This section will walk you through the steps to get set up to run KitchenSync.
+			</p>
+			<h4>
+				Installing KitchenSync
+			</h4>
+			<p>
+				There are two basic ways to use KS. You can use the source code or you can use the pre-compiled SWC file. Both are available from the <a href="http://code.google.com/p/kitchensynclib/">project's website</a> in the <a href="http://code.google.com/p/kitchensynclib/downloads/list">download section</a>.
+			</p>
+			<p>
+				To use the source code, just copy the <code>org</code> folder containing the <code>org.as3lib.kitchensync</code> packages into the source path of your project.
+			</p>
+			<p>
+				To use the SWC file, copy the SWC file into your source library and make sure your FLA file or FlexBuilder project contains a reference to that library path. I recommend creating a folder called "libs" in your project folder and making that your library path.
+			</p>
+			<p>
+				Instructions for setting the source path and library path can be found here:
+			</p>
+			<p>
+				Flash CS4 - <a href="http://help.adobe.com/en_US/Flash/10.0_UsingFlash/WS3e7c64e37a1d85e1e229110db38dec34-7fa4a.html#WSB1F410E6-F7BD-443a-97E7-13DE866CA732" title="Source Path">Source Path</a> | <a href="http://help.adobe.com/en_US/Flash/10.0_UsingFlash/WS3e7c64e37a1d85e1e229110db38dec34-7fa4a.html#WSFE27EB8F-735F-423e-BF7A-56E47357EBD8" title="Library Path">Library Path</a>
+			</p>
+			<p>
+				Flex Builder - Place the files in your "src" folder | For SWCs, look under <a href="http://livedocs.adobe.com/flex/3/html/help.html?content=projects_7.html#157949" title='Using SWC Files in your Projects'>"Using SWC Files in your Projects"</a>
+			</p>
+			<h4>
+				Initializing the System
+			</h4>
+			<p>
+				The first step to using KitchenSync is to initialize the system. Near the beginning (i.e. in the constructor) of your application's main class, document class, or in the first frame of your Flash movie, add the following line.
+			</p>
+			<pre>
+KitchenSync.initialize(this, "2.0");
+</pre>
+			<p>
+				That's it! The system is running.
+			</p>
+			<h5>
+				About the arguments:
+			</h5>
+			<p>
+				The first argument in the call can be any display object that's on the stage. In most cases, using <code>this</code> will suffice but if your program is being loaded from another SWF, you may have to call the initialization function in an <code>Event.ADD_TO_STAGE handler</code>.
+			</p>
+			<p>
+				The second argument is totally optional and refers to the current version of KitchenSync. It will simply serve as a reminder of what version you are using and will throw an error if the version of KS you're using isn't what you're expecting.
+			</p>
+			<div class="sidebar">
+				<h4>
+					Tip:
+				</h4>
+				<p>
+					If you see the following error:
+				</p>
+				<p>
+					<code class="error">Error: KitchenSync has not been initialized yet and actions will not receive updates. Please run KitchenSync.initialize() in the main function of your program (or in the first frame).</code>
+				</p>
+				<p>
+					That means you forgot to call the <code>KitchenSync.initialize()</code> function.
+				</p>
+			</div>
+			<div class="sidebar">
+				<h4>
+					About Synchronizer Cores
+				</h4>
+				<p>
+					It is possible to swap out the method that <code>Synchronizer</code> uses for dispatching updates to its clients. In most cases, this is unnecessary, however, your particular project may have special needs in this department. You can chose the method used by initializing KS using the command <code>KitchenSync.initializeWithCore()</code> (instead of initialize) and passing an instance of type <code>ISynchronizerCore</code>.
+				</p>
+				<p>
+					The library provides sync cores for ENTER_FRAME, Timer, and setInterval and you can create your own by creating a class that implements <code>ISynchronizerCore</code>.
+				</p>
+				<p>
+					By default, KitchenSync uses <code>EnterFrameCore</code> which seems to have the best performance overall.
+				</p>
+			</div>
+			<h3>
+				Running your first action - Hello, world.
+			</h3>
+			<p>
+				What introductory tutorial would be complete without a "Hello, world!" application.
+			</p><a href="http://wonderfl.net/code/5dc7cb4660ddaea82b39036b34c28f38a0b8a88c" title="HelloKitchenSync - wonderfl build flash online">HelloKitchenSync.as</a>
+			<p>
+				This simple program sets up a single <code>KSTrace</code> action which executes after 5000ms. <code>KSTrace</code>, as you probably have guessed, traces text to the output window. When you run it, you should see the text <code>"Hello, world! Sorry I'm late."</code> appear in the output window 5 seconds after the program begins (if you're using FlexBuilder, make sure you use debug rather than run).
+			</p>
+			<p>
+				Congratulations, you're using actions!
+			</p>
+			<div class="sidebar">
+				<h4>
+					Keeping Track of Actions
+				</h4>
+				<p>
+					You don't need to keep a reference to an action for it to continue running, you only need the reference if you want to control the action after it starts (with stop, start, pause, etc.). Therefore, the code:
+				</p>
+				<pre>
+var action:KSTrace = new KSTrace ("Hello, world! Sorry I'm late.", 5000);
+action.start();
+</pre>
+				<p>
+					can be replaced with:
+				</p>
+				<pre>
+new KSTrace ("Hello, world! Sorry I'm late.", 5000).start();
+</pre>
+				<p>
+					It's also possible to combine the constructor and the start method into one line because <code>start()</code> returns a reference to the action. However, <code>start()</code> returns an object typed as <code>IAction</code> so you may need to cast the return value to match the class you're creating.
+				</p>
+				<pre>
+var action:KSTrace = new KSTrace ("Hello, world! Sorry I'm late.", 5000).start() as KSTrace;
+</pre>
+				<p>
+					It should also be noted that actions generally will try to delete themselves when they finish when the <code>autoDelete</code> property is set to true. So you usually won't need to worry about an action continuing to run once it's finished.
+				</p>
+			</div>
+			<h3>
+				My first Tween
+			</h3>
+			<p>
+				You're no doubt eager to see something more exciting happen. Let's make our next action a tween. There are two classes that implement <code>ITween</code> in KitchenSync, <code>KSTween</code> and <code>KSSimpleTween</code>. I'll use the <code>KSSimpleTween</code> action for this demo since it's a bit more straight forward. The most common tween is to move an object from one place to another.
+			</p>
+			<div style="text-align:center;width:465px;">
+				<iframe title="My First Tween - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/3c4df3802f065aa8c37669d7fcc972979da12734" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/3c4df3802f065aa8c37669d7fcc972979da12734" title="My First Tween - wonderfl build flash online">View source code</a>
+			</div>
+			<p>
+				Running this code should animate a black square from the left side of the screen to the right side of the screen. But let's take a closer look at what's happening.
+			</p>
+			<p>
+				First, of course, we initialize the KitchenSync library.
+			</p>
+			<pre>
+KitchenSync.initialize(this);
+</pre>
+			<p>
+				The next block simply creates a new Sprite object and draws a 25px black square and adds it to the stage.
+			</p>
+			<pre>
+var sprite:Sprite = new Sprite();
+sprite.graphics.beginFill(0);
+sprite.graphics.drawRect(10, 10, 25, 25);
+addChild(sprite);
+</pre>
+			<p>
+				In the final piece of code, we're both creating and starting our tween object.
+			</p>
+			<pre>
+new KSSimpleTween (sprite, "x", 0, 400, 3000, 500, Cubic.easeInOut).start();
+</pre>
+			<p>
+				Let's look at the individual parameters.
+			</p>
+			<ul>
+				<li>The first two, <code>sprite</code> and <code>"x"</code>, are collectively the target of the tween. In this case, the x property of the sprite object.
+				</li>
+				<li>The next two parameters, <code>0</code> and <code>400</code>, represent the start and end values of the tween. In this case, the tween will move the x position of the sprite object from 0 to 400 pixels.
+				</li>
+				<li>The next two parameters, <code>3000</code> and <code>500</code>, are the duration and delay times in milliseconds. In other words, this animation will take 3 seconds and will start one-half second after <code>start()</code> is called.
+				</li>
+				<li>The final parameter is the easing function that will be used to interpolate the values between the start and end. In other words, the shape of the motion. More on <a href="#easing">easing functions</a> later on. This parameter should be a function without the parentheses ().
+				</li>
+				<li>If you're using an IDE with code completion, you may notice two additional parameters not shown here, <code>easingMod1</code> and <code>easingMod2</code>. These are arbitrary values that can be passed on to some easing functions such as <code>Elastic</code> or <code>Oscillate</code> to adjust their shape. See the <a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/easing/package-detail.html">easing function documentation</a> for details. For now, they can be ignored.
+				</li>
+			</ul>
+			<p>
+				You can use <code>KSSimpleTween</code> to tween any numeric value and for most cases, this will do the job. However, <code>KSSimpleTween</code> is called "simple" because it lacks some of the bells and whistles that <code>KSTween</code> has like jumping to a specific time in the tween or the ability to tween complex values like filters and sound transforms. On the other hand, sacrificing those features makes it more lightweight and therefore faster. We'll cover different types of tweens in detail in a <a href="tweens">later section</a>.
+			</p>
+			<h3>
+				Other types of actions
+			</h3>
+			<p>
+				Tweening is not the end to what you can do with KitchenSync. Here's a partial list of other actions you can use. Many of them show their worth when thought of in the context of a sequence of actions. Some of them will be discussed in greater detail later in this document.
+			</p>
+			<ul>
+				<li>
+					<code>KSFunction</code> and <code>KSAsyncFunction</code> - Calling functions from actions is a huge part of KitchenSync. This is especially apparent when the actions are grouped together in a sequence. Regular functions and asynchronous functions (like waiting for a response from a server) are supported.
+				</li>
+				<li>
+					<code>KSSound</code> - Loads and plays an MP3 file. It's a very quick way to add sound effects to animations. As a bonus, your sound will have all of the controls of an action like pausing and seeking.
+				</li>
+				<li>
+					<code>KSSetProperty</code> - Some values, like the boolean 'visible', may need to be set as part of a sequence but needn't be tweened. This allows you to set a property instantly.
+				</li>
+				<li>
+					<code>KSLoader</code> - Used for loading files from a server. There is also a KSLoadQueue that makes it easy to load multiple files as a single action.
+				</li>
+				<li>
+					<code>KSDispatchEvent</code> - Dispatches an event of your choosing using an action. Useful to signal the completion of a complex operation.
+				</li>
+				<li>
+					<code>KSActionController</code> - Let's you control another action (ie. stop, start, pause, etc.) using an action. Useful when you might have multiple animations happening simultaneously that could affect each other.
+				</li>
+			</ul><a name="groups" id="groups"></a>
+			<h3>
+				Grouping actions into a sequence
+			</h3>
+			<p>
+				In this portion of the introduction, we will look at groups of actions. There are a few different types of action groups but all of them represent a group of several actions within a single object. An action group is defined by the interface <code>IActionGroup</code> which extends <code>IAction</code>. In other words, groups of actions are themselves actions and have all the same properties. Since an action group contains actions, an action group can contain other action groups. This is an example of the <a href="http://en.wikipedia.org/wiki/Composite_pattern" id="iwak" title="Composite Pattern" name="iwak">Composite Pattern</a>.
+			</p>
+			<p>
+				The two most important types of group are <code>KSSequneceGroup</code> which plays all of its child actions one after the other, and <code>KSParallelGroup</code> which plays all of its children at the same time.
+			</p>
+			<div style="text-align:center;width:465px;">
+				<iframe title="MyFirstGroup - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/734354dba209e7f39f39e23d3aaf5e15d3b90b96" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/734354dba209e7f39f39e23d3aaf5e15d3b90b96" title="MyFirstGroup - wonderfl build flash online">View source code</a>
+			</div>
+			<p>
+				In this example, we define a parallel group to change the scale of the sprite (scaling both x and y simultaneously) then we insert the parallel group in a sequence along with two other tween actions that affect the x position of the sprite.
+			</p>
+			<p>
+				The result is that we see the sprite first move from left to right, then change scale, then move from right to left.
+			</p>
+			<p>
+				As you can see, adding items to a group is as easy as listing them in the group's constructor. However, should you need to add actions after the group is constructed, you can simply call the <code>addAction()</code> method of the group.
+			</p>
+			<p>
+				Action groups will be covered in more detail in a <a href="#groups">later section</a>.
+			</p>
+			<div class="sidebar">
+				<h4>
+					Shortcut for Combining Group Types
+				</h4>
+				<p>
+					Since its common to use parallel and sequenced groups together, there is a shortcut to add them to each other easily. In the constructor for <code>KSSequenceGroup</code> and <code>KSParallel</code> group, parameter actions grouped in an array will be substituted with the other type. For example:
+				</p>
+				<pre>
+var sequence:IActionGroup = new KSSequenceGroup (
+    tweenA,
+    [ tween1, tween2 ],
+    tweenB
+);
+</pre>
+				<p>
+					is identical to writing:
+				</p>
+				<pre>
+var sequence:IActionGroup = new KSSequenceGroup (
+    tweenA,
+    new KSParallelGroup ( tween1, tween2 ),
+    tweenB
+);  
+</pre>
+				<p>
+					and the same would happen in reverse with <code>KSParallelGroup</code>. If an array of actions is passed as an argument to the <code>KSParallelGroup</code>, that array is converted into a <code>KSSequenceGroup</code>.
+				</p>
+			</div>
+			<h2>
+				Digging Deeper
+			</h2>
+			<p>
+				Now you have the barebones basics of KitchenSync, let's look in more detail at what all you can use this library for.
+			</p><a name="actions" id="actions"></a>
+			<h3>
+				Controlling Actions
+			</h3>
+			<p>
+				All actions in KitchenSync implement a common interface that allows loads of control over the action. This section will run through all of the properties and methods associated with actions. Remember, this applies to all types of tweens and action groups as well.
+			</p>
+			<h4>
+				Action methods
+			</h4>
+			<h5>
+				start()
+			</h5>
+			<p>
+				Obviously, this causes the action to start running. If you're wondering why you're action isn't running, there's a good chance you forgot to call this method.
+			</p>
+			<p>
+				Start also returns a reference to the action which makes it easy to use an action's constructor and start it in a single line.
+			</p>
+			<h5>
+				stop() and reset()
+			</h5>
+			<p>
+				Calling <code>stop()</code> stops the action. The <code>reset()</code> method stops the action but also may bring it back to the state it was in before you started it.
+			</p>
+			<h5>
+				pause() and unpause()
+			</h5>
+			<p>
+				Actions can be paused and unpaused. Calling <code>start()</code> has the same effect as <code>unpause()</code>.
+			</p>
+			<h6>
+				togglePause()
+			</h6>
+			<p>
+				<code>AbstractAction</code> adds an additional method, <code>togglePause()</code> that pauses an unpaused action and unpauses a paused action.
+			</p>
+			<h5>
+				Jumping to a specific time in the action
+			</h5>
+			<p>
+				Actions that implement the <code>IJumpableAction</code> interface (most of them), can use these commands to jump to a specific time in the action's timeline.
+			</p>
+			<h6>
+				jumpToTime()
+			</h6>
+			<p>
+				Jumps to a specific time in the action For example, if you have a tween that lasts 3 seconds, <code>jumpToTime(2000)</code> would move to a point 2 seconds into the animation.
+			</p>
+			<h6>
+				jumpByTime()
+			</h6>
+			<p>
+				Jumps ahead in an action by a specified time. For example, if you have a tween that lasts 5 seconds and you call <code>jumpByTime(1000)</code> after it's been playing for 1 second, you will jump to 2 seconds in.
+			</p>
+			<h5>
+				kill() and autoDelete
+			</h5>
+			<p>
+				Using <code>kill()</code> will attempt to delete the action and cleanup references it has to other objects. If <code>autoDelete</code> is set to true for an action, the action will automatically call <code>kill()</code> when it completes.
+			</p>
+			<h5>
+				clone()
+			</h5>
+			<p>
+				Clone produces a reference to a deep copy of the action. That is, you get a brand new action with the same properties. States of the cloned object, like whether it is running or not, will be ignored. The <code>clone()</code> method is typed as an <code>IAction</code> so you may need to cast the result to match the class you're cloning.
+			</p>
+			<p>
+				Tweens have a more rich set of options for cloning. They include <code>cloneWithTweenTarget()</code>, <code>cloneWithTargetProperty()</code>, and <code>cloneReversed()</code>.
+			</p>
+			<div class="sidebar">
+				<h4>
+					Controlling Groups of actions
+				</h4>
+				<p>
+					Most of the time, if a method is called upon an action group, the children of that group will also be affected. For example, if you pause a group, all of the children within it will be paused as well.
+				</p>
+			</div>
+			<h4>
+				Looping actions using KSLooper
+			</h4>
+			<p>
+				While there is no "looping" functionality built into actions, the same effect can be achieved with a special kind of <code>KSSequenceGroup</code> called <code>KSLooper</code>. To loop a tween 5 times, for example, you can use:
+			</p>
+			<pre>
+    
+var tween:ITween = new KSSimpleTween ( sprite, "x", 0, 400, 3000, 0, Cubic.easeInOut );
+var looper:KSLooper = new KSLooper ( tween, 5, true );
+looper.start();
+</pre>
+			<p>
+				The first parameter is the action to loop, the second is the number of loops. The third is optional and it sets whether you want to reuse the same action for each loop (resetting in between) or whether you want to create clones of the action. In most cases, you can leave the last parameter off or set it to true.
+			</p>
+			<h4>
+				Controlling actions with actions using KSActionController
+			</h4>
+			<p>
+				As mentioned briefly before, it's possible to call most of these actions from another action called <code>KSActionController</code>. This is usually only used when sequences of actions need to interact with other sequences of actions. For the available action controls, see the <code><a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/action/ActionControllerCommand.html">ActionControlCommand</a></code> class.
+			</p>
+			<h3>
+				Action properties
+			</h3>These are the properties available to all action classes.
+			<h4>
+				duration and delay
+			</h4>
+			<p>
+				As mentioned <a href="times">before</a>, <code>duration</code> is the length of time it takes for the action to complete and the <code>delay</code> is the time that the action waits after the <code>start()</code> method was called before it executes. Some actions will not allow you to set duration because of their nature like <code>KSFunction</code> which executes in a single frame.
+			</p>
+			<h5>
+				isInstantaneous
+			</h5>
+			<p>
+				Actions that execute immediately when started will have an <code>isInstantaneous</code> value of true. This value is read-only.
+			</p>
+			<h4>
+				isRunning and isPaused
+			</h4>
+			<p>
+				When the action is running, the <code>isRunning</code> value will be true. When the action is paused, the <code>isPaused</code> value will be true. The action is still considered to be running when paused. Both of these values are read-only.
+			</p>
+			<h4>
+				progress and runningTime
+			</h4>
+			<p>
+				Actions that extend <code>AbstractAction</code> add these two read-only properties.
+			</p>
+			<p>
+				<code>progress</code> is an estimate of the percentage complete of an action. For example, one second into a two second tween, it will return 0.5.
+			</p>
+			<p>
+				<code>runningTime</code> is time in ms since the start of the action or 0 if the action isn't running. If the action is paused, the result will be the running time at which it was paused. Actions with 0 duration will always return 0.
+			</p>
+			<p>
+				Both of these values include <code>delay</code> as part of the total time.
+			</p>
+			<h4>
+				description
+			</h4>
+			<p>
+				An optional text description can be set for each action. This makes it easy to identify actions when there are several similar ones running at the same time. Also helpful for debugging purposes.
+			</p>
+			<h4>
+				autoDelete
+			</h4>
+			<p>
+				As mentioned before, when set to true, actions will try to delete themselves when they complete to save memory. Good if you use lots of anonymous actions and bad if you want to use the same action object over and over again. True by default.
+			</p>
+			<h3>
+				Action States
+			</h3>
+			<p>
+				This diagram shows the different states that an action can go through.
+			</p><img src="images/stateDiagram.png" alt="state diagram">
+			<h3>
+				KitchenSync Events
+			</h3>
+			<p>
+				Actions dispatch the following actions. You can add event listeners directly to actions or to groups of actions.
+			</p>
+			<ul>
+				<li>
+					<code>ACTION_START</code> - Dispatched when an action is started
+				</li>
+				<li>
+					<code>ACTION_PAUSE</code> and <code>ACTION_UNPAUSE</code> - Dispatched when an action is paused or unpaused
+				</li>
+				<li>
+					<code>ACTION_COMPLETE</code> - Dispatched when an action is completed
+				</li>
+				<li>Group actions dispatch the following additional actions:
+				</li>
+				<li style="list-style: none">
+					<ul>
+						<li>
+							<code>CHILD_ACTION_START</code> - Dispatched by a group when one of its children is started
+						</li>
+						<li>
+							<code>CHILD_ACTION_COMPLETE</code> - Dispatched by a group when one of its children is completed
+						</li>
+						<li>
+							<code>ACTION_COMPLETE</code> - Dispatched by a group when ALL of its children are completed
+						</li>
+					</ul>
+				</li>
+			</ul><a name="tweens" id="tweens"></a>
+			<h2>
+				Tweening
+			</h2>
+			<p>
+				For most people, the most exciting part of KitchenSync is tweening (for me, it's the sequencing, but that's just one man's opinion). This section will explore KS's tweening abilities in depth.
+			</p>
+			<h3>
+				Core concepts: Tweens, TweenTargets, and Easing
+			</h3>
+			<p>
+				We've already covered the basics of <code>KSSimpleTween</code> but now we'll get into the more complicated, and more sophisticated, <code>KSTween</code>. The first step is to understand the three parts of a tween that work in harmony.
+			</p>
+			<ul>
+				<li>
+					<strong>Tween</strong> - The <code>KSTween</code> object. This piece contains all the timing-related information and is the actual action that you will call <code>start()</code> on. A <code>KSTween</code> object has one or more <em>Tween Targets</em>.
+				</li>
+				<li>
+					<strong>Tween Target</strong> - A tween target is a bundle that wraps up a property or other value that can be tweened by a <code>KSTween</code> object. In most cases, this will be a property of an object (<a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/action/tween/TargetProperty.html">see <code>TargetProperty</code> class</a>) but it could also be something more complex like a tween target that sets a property of a <code>soundTransform</code> object or a property of a filter (which can't be set using a normal tween). The tween target will have a start and end value as well as providing an accessor to the current value of the target. Tween targets implement the <code>ITweenTarget</code> interface.
+				</li>
+				<li>
+					<strong>Easing Function</strong> - An easing function interpolates values between the start and end points of a tween. This determines the "shape" of the animation. Valid functions can be found in the <code><a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/easing/package-detail.html">org.as3lib.kitchensync.easing</a></code> package.
+				</li>
+			</ul>
+			<p>
+				Generally speaking, a <code>KSTween</code> will handle anything related to the timing of the tween while the <code>ITweenTarget</code> handles anything related to the values of the tween (a possible exception to the rule would be the easing function which is a property of <code>KSTween</code>). For example, <code>KSTween</code> holds the duration of the tween and the controls for starting, stopping and pausing while the tween target has the start and end values and holds a reference to the object to be tweened.
+			</p>
+			<p>
+				Tween targets are useful because they allow the value-setting portion of a tween to be abstracted away and separated from the timing and easing. This allows a variety of different types of values, such as filter properties, colors, and sound panning, to be set without subclassing <code>KSTween</code> for every instance. It also allows for a single <code>KSTween</code> object to control multiple tween targets.
+			</p>
+			<p>
+				Example of tweening position with <code>KSTween</code> and <code>TargetProperty</code>:
+			</p>
+			<pre>
+var tweenX:ITweenTarget = new TargetProperty( sprite, "x", 0, 400);
+var tweenY:ITweenTarget = new TargetProperty( sprite, "y", 0, 200);
+var tween:KSTween = new KSTween ( [tweenX, tweenY], "2s", 0, Quartic.easeOut );
+tween.start();
+</pre>
+			<div style="text-align:center;width:465px;">
+				<iframe title="My First Tween - TargetProperty - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/c37747b650ec9655b3c99aa9a84eabaddb16ff9e" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/c37747b650ec9655b3c99aa9a84eabaddb16ff9e" title="My First Tween - TargetProperty - wonderfl build flash online">View Source</a>
+			</div>
+			<p>
+				This tween creates two <code>TargetProperty</code> objects to control the <code>x</code> and <code>y</code> properties of a sprite then adds them to a new <code>KSTween</code>. You should see the sprite slide from (0,0) to (400,200) over two seconds. The <code>Quartic.easeOut</code> easing function gives it a smooth ending to the animation.
+			</p>
+			<p>
+				Notice that you can use several tween targets in a single <code>KSTween</code>.
+			</p>
+			<p>
+				This method for creating tweens can be a little wordy, but fortunately, there's a <code>TweenFactory</code> that can assist you.
+			</p>
+			<h3>
+				Using the TweenFactory
+			</h3>
+			<p>
+				The <em>tween factory</em> is a collection of methods used for creating tweens (<a href="http://en.wikipedia.org/wiki/Factory_method_pattern">Factory Method design pattern</a>). This is the recommended way to create <code>KSTween</code>s. There are several functions, for a complete listing look at the <a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/action/tween/TweenFactory.html" title="documentation for TweenFactory">documentation for TweenFactory</a>. Here are some notable ones:
+			</p>
+			<p>
+				<code>newTween()</code> - Creates a new tween with one or more targets and one or more properties. Works pretty much the same as the <code>KSSimpleTween</code> constructor. The tween targets created will be of type <code>TargetProperty</code>. You can also provide an array of targets or properties if you want to tween more than one target/property at a time.
+			</p>
+			<pre>
+TweenFactory.newTween(targets:*, properties:*, startValue:Number, endValue:Function, duration:* = 0, delay:* = 0, easingFunction:* = null):KSTween
+</pre>
+			<p>
+				<code>newFilterTween</code> - Creates a new tween on a property of a filter (such as the <code>blurX</code> property of a <code>DropShadowFilter</code>).
+			</p>
+			<pre>
+TweenFactory.newFilterTween(target:DisplayObject, filter:Class, filterProperty:String, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunction:* = null):KSTween
+</pre>
+			<p>
+				<code>newScaleTween</code> - Creates a tween that scales x and y simultaneously.
+			</p>
+			<pre>
+TweenFactory.newScaleTween(target:DisplayObject, startValue:Number, endValue:Number, duration:Function = 0, delay:* = 0, easingFunciton:* = null):KSTween
+</pre>
+			<p>
+				<code>newTimelineTween</code> - Creates a tween that uses a <code>TimelineController</code> tween target. This actually tweens between frames in a Movie Clip.
+			</p>
+			<pre>
+TweenFactory.newTimelineTween(target:MovieClip, startFrame:Object = null, endFrame:Object = null, duration:Function = -1, easingFunction:* = null):ITween
+</pre>
+			<p>
+				<code>newTintTween</code> - Creates a tween that changes a display object's color.
+			</p>
+			<pre>
+TweenFactory.newTintTween(target:DisplayObject, startColor:Number = currentTint, endColor:Function = noTint, tintOpacity:* = 1.0, duration:* = 0, delay:* = 0, easingFunction:* = null):ITween
+</pre>
+			<h4>
+				Using the object parser
+			</h4>
+			<p>
+				If you've ever used <a href="http://code.google.com/p/tweener/">Tweener</a>, <a href="http://blog.greensock.com/tweenlite/">TweenLite</a> or <a href="http://www.mosessupposes.com/Fuse/">FuseKit</a>, you've probably used a syntax similar to the KitchenSync object parser. This parser, accessed with the <code>newTweenFromObject()</code> method, allows you to pass an anonymous, arbitrary object as a parameter to create a new tween. This allows you to pick and choose exactly what parameters you wish to define. It also allows you to create tweens on several properties at once very easily.
+			</p>
+			<p>
+				For example, you could create a tween that tweens a sprite from (0,0) to (200, 200) and scales from 100% to 200% over 2.5 seconds using the following line.
+			</p>
+			<pre>
+TweenFactory.newTweenFromObject({target: sprite, x:"0~200", y:"0~200", 
+                                 scaleXFrom:1, scaleXTo:2,
+                                 scaleYStart:1, scaleYEnd:2,
+                                 easingFunction:Cubic.easeInOut,
+                                 duration: "2.5s"
+                                }).start();
+            
+</pre>
+			<p>
+				For a complete list of keywords for the object parser see <a href="objectparser">Appendix B</a>.
+			</p>
+			<div class="sidebar">
+				<h4>
+					Targeting multiple objects
+				</h4>
+				<p>
+					In <code>newTweenFromObject</code>, the target can either be a single object or an array of objects to tween. So you could replace <code>'target: sprite'</code> with <code>'targets: [circle, square, triangle]'</code>.
+				</p>
+			</div>
+			<div class="sidebar">
+				<h4>
+					Value ranges
+				</h4>
+				<p>
+					As you can see from the example, there are three equally valid ways to give property ranges.
+				</p>
+				<ol>
+					<li>Putting the values in quotes and using a tilde (~) allows you to set a range for a property.
+					</li>
+					<li>Using the property name plus From or _from and To or _to
+					</li>
+					<li>Using the property name plus Start or _start and End or _end
+					</li>
+				</ol>
+				<p>
+					Using the latter two, if you omit one of the values (e.g. if you provide the end value with no start value) the value you omitted will be set to the current value of that property at the time of running the tween. Doing this is the same as using <code>AUTO_TWEEN_VALUE</code> (see below) for the omitted number.
+				</p>
+			</div>
+			<h4>
+				Auto tween values
+			</h4>
+			<p>
+				Say you want to tween a sprite along the x-axis from its current position at 100px to 500px. Normally, you would have to figure out the starting point manually which can be tedious under certain circumstances. Instead, you can use a special shortcut value, <code>AUTO_TWEEN_VALUE</code>, which automatically replaces missing values with the current value at the time that the tween starts. You can replace a start or end value with <code>AUTO_TWEEN_VALUE</code>. Here are some examples:
+			</p>
+			<pre>
+// Tween from left to right then from right to left.
+new KSSequenceGroup (
+    TweenFactory.newTween (sprite, "x", 0, 400, "2s", 0, Cubic.easeInOut),
+    TweenFactory.newTween (sprite, "x", AUTO_TWEEN_VALUE, 0, "2s", 0, Cubic.easeInOut)
+).start();
+
+// fade in - alpha from 0 to current value (1)
+TweenFactory.newTween(sprite, "alpha", 0, AUTO_TWEEN_VALUE, "2s").start();
+</pre>
+			<div class="sidebar">
+				<h4>
+					Importing AUTO_TWEEN_VALUE
+				</h4>
+				<p>
+					<code>AUTO_TWEEN_VALUE</code> is actually a static constant (that evaluates to <code>NaN</code>) that is part of the <code>org.as3lib.kitchensync.action.tween</code> package. So if you want to use it, remember to import <code>org.as3lib.kitchensync.action.tween.AUTO_TWEEN_VALUE</code>.
+				</p>
+			</div>
+			<div class="sidebar">
+				<h4>
+					When to use auto tween values
+				</h4>
+				<p>
+					<code>AUTO_TWEEN_VALUE</code> can be used in <code>KSTweens</code> and <code>KSSimpleTweens</code> including all of the constructors in <code>TweenFactory</code>. When using <code>TweenFactory.newTweenFromObject()</code>, you can use <code>AUTO_TWEEN_VALUE</code> or just omit either the start or end value for a property.
+				</p>
+			</div>
+			<h4>
+				Snapping values
+			</h4>
+			<p>
+				In some cases you may want to make sure that tweens stick to whole number values, like if you want to make sure that text doesn't appear blurry. For this purpose there is a property of <code>KSTween</code> called <code>snapToInteger</code>. When true, the values will be rounded to the nearest integer. The default for this is set in <code>KitchenSyncDefaults</code>.
+			</p>
+			<p>
+				You can also make sure that after a tween is complete, it snaps to the end value (which with some easing functions, may not happen naturally) with <code>snapToValueOnComplete</code>. By default this is set to true.
+			</p>
+			<h3>
+				Exploring other types of Tween Targets
+			</h3>
+			<p>
+				One of the nice things about using <code>ITweenTargets</code> is that the targets can be used to set values that can't be set directly. For example, filter properties like blur are especially difficult since you have to replace a <code>DisplayObject</code>'s entire array of filters to update even a single property. So far, we've primarily looked at one type of tween target, the <code>TargetProperty</code>, that sets values on a numeric property of an object. Here are some other commonly used tween targets. Many of these can be accessed using the factory methods in <code>TweenFactory</code>.
+			</p>
+			<h4>
+				Filter tweens
+			</h4>
+			<p>
+				Filter tweens target properties of <code>BitmapFilter</code> objects which manifest as visual effects on DisplayObjects. Filter tweens work a lot like <code>TargetProperty</code> tweens since most of them are built with a tween target called <code>FilterTargetProperty</code>. Instead of providing an object and a property, you provide a target movie clip, the name of the filter class, and one of the properties of that filter class. The constructor looks like this:
+			</p>
+			<pre>FilterTargetProperty(target:DisplayObject, filterType:Class, property:String, startValue:Number, endValue:Number)</pre>
+			</p>
+			<p>
+				Here's an example using tweens on the <code>BlurFilter</code> and the <code>DropShadowFilter</code>:
+			</p>
+			<div style="text-align:center;width:465px;"><iframe title="Filter demo with blur and drop shadow - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/d54ae026806caa3357fe4db017062a90eb50028b" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/d54ae026806caa3357fe4db017062a90eb50028b" title="Filter demo with blur and drop shadow - wonderfl build flash online">View Source</a></div>
+			<p>
+				Notice that with the <code>DropShadowFilter</code> we need a separate tween target for each property of the drop shadow.
+			</p>
+			<h5>
+				Blur Tweens
+			</h5>
+			<p>
+				As you may have noticed in the previous example, there is a shortcut class for <code>BlurFilter</code>s called <code>SimpleBlurTweenTarget</code>. It makes it a little easier to do blur tweens since it tweens the blur filter's x and y properties at the same time.
+			</p>
+			<pre>SimpleBlurTweenTarget(target:DisplayObject, startValue:Number, endValue:Number = 0)</pre>
+			<h4>
+				Color Tweens
+			</h4>
+			<p>
+				There are a few types of tween targets that handle various color effects. They allow you to adjust the brightness, saturation, contrast, and tint of a display object. The first three, brightness, saturation, and contrast, use a color matrix filter to control the color. They all accept values between -1 and 1 where 0 is no adjustments. Unfortunately, you can only tween one of these values at a time (for now anyway). They all have similar constructors:
+			</p>
+			<ul>
+				<li>
+					<code>BrightnessTweenTarget(target:DisplayObject, startValue:Number, endValue:Number)</code>
+				</li>
+				<li>
+					<code>ContrastTweenTarget(target:DisplayObject, startValue:Number, endValue:Number)</code>
+				</li>
+				<li>
+					<code>SaturationTweenTarget(target:DisplayObject, startValue:Number, endValue:Number)</code>
+				</li>
+			</ul>
+			<p>
+				You can also tween tints, that is, tweening the color of a display object, there are a couple more options.
+			</p>
+			<pre>
+TintTweenTarget(target:DisplayObject, startValue:* = CURRENT_TINT, endValue:* = NO_TINT, tintOpacity:Number = 1)
+</pre>
+			<p>
+				You can use a color in hex form (e.g. <code>0xFF3366</code>) for the start and end values here. If you want to tween from the existing tint, use <code>TintTweenTarget.CURRENT_TINT</code> for the startValue. If you want to remove a tint, you can use <code>TintTweenTarget.NO_TINT</code> for the endValue. The last parameter, <code>tintOpacity</code>, adjusts the alpha of the tint.
+			</p>
+			<p>
+				Here's an example that steps through each of these tween targets.
+			</p>
+			<div style="text-align:center;width:465px;">
+				<iframe title="Filter demo for colors" scrolling="no" src="http://wonderfl.net/blogparts/e217af0a0dbaef4550a7a6a3366e517b528329b0" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/e217af0a0dbaef4550a7a6a3366e517b528329b0" title="Filter demo for colors">Filter demo for colors</a>
+			</div>
+			<h4>
+				Timeline tweens
+			</h4>
+			<p>
+				Sometimes it is much simpler to create a complex animation using Flash's timeline than to attempt to reconstruct everything using ActionScript. However, mixing timeline animations and programatic animations can be tricky. That's why KitchenSync includes the awesome ability to run timeline animations using a KSTween object and a TimelineController tween target. Furthermore, you can pick any start or end frame (using frame numbers or labels) and adjust the duration of the tween to whatever you chose. You can even apply a custom easing function.
+			</p>
+			<p>
+				The simplest way to create timeline tweens is to use the TweenFactory.newTimelineTween() factory method.
+			</p>
+			<pre>
+TweenFactory.newTimelineTween(target:MovieClip, startFrame:Object = null, endFrame:Object = null, duration:* = -1, easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween
+</pre>
+			<div class="sidebar">
+				<h4>
+					Tip:
+				</h4>
+				<p>
+					To play an animation backwards simply make the start frame later than the end frame.
+				</p>
+				<pre>
+// tween from frame 100 backwards to frame 0
+newTimelineTween(mc, 100, 0, TweenController.AUTO):KSTween;
+</pre>
+			</div>
+			<h5>
+				Using natural duration
+			</h5>
+			<p>
+				Most of these parameters are pretty straightforward. You provide a movie clip containing the animation, the start and end frame of the animation, and the details of the tween. You may notice that the duration is set to -1 by default. For this particular method, setting the duration to -1 (represented by the constant <code>TimelineController.AUTO</code>) will use the natural duration of the animation instead of a specified duration. For example, if you want to tween from frame 1 to frame 61 of your animation and your framerate is 30fps, setting duration to <code>TimelineController.AUTO</code> will make your tween the natural duration of the animation, in this case 2 seconds. This can be very helpful when you need your tween to sync up with other animations in the timeline.
+			</p>
+			<div class="sidebar">
+				<h4>
+					Making sure you have enough frames
+				</h4>
+				<p>
+					Timeline tweens work by stepping through each frame on the timeline meaning only frames that exist on the timeline will be shown and motion is not interpolated as it is in a regular tween. The result is that timeline tweens that alter the duration or easing function can appear a little bit chunky. For best results, make the animation much longer than you intend it to be then set the duration to your desired time. That way there are more frames for you to work with and it will appear smoother.
+				</p>
+			</div>
+			
+			
+			<h2>
+				Groups
+			</h2>
+			<p>
+				Let's take another look at groups. We've already seen the <code>KSSequenceGroup</code> and <code>KSParallelGroup</code> in action, now let's look in more depth at what you can do with these groups and at the other types of groups.
+			</p>
+			<h3>
+				Adding and removing actions
+			</h3>
+			<p>
+				The following methods are used for adding and removing actions from the group.
+			</p>
+			<ul>
+				<li>
+					<code>addAction()</code>
+				</li>
+				<li>
+					<code>addActionAtIndex()</code>
+				</li>
+				<li>
+					<code>removeAction()</code>
+				</li>
+				<li>
+					<code>removeActionAtIndex()</code>
+				</li>
+			</ul>
+			<p>
+				You can also get an array of the actions in the group with the <code>childActions</code> property.
+			</p>
+			
+			
+			<h3>
+				Getting the total duration of the group
+			</h3>
+			<p>
+				When working with tweens, it can be helpful to know how long a group will take to execute. Using the <code>totalDuration</code> property of a group will give you a fairly accurate estimate of the duration the entire group will take to complete.
+			</p>
+			<h3>
+				Reversing child order
+			</h3>
+			<p>
+				Simple, reverse the order of the child actions with <code>reverseChildOrder()</code>.
+			</p>
+			<h3>
+				Resetting children at the start of a group
+			</h3>
+			<p>
+				Because when you use a group, you are starting several items at once. This can create some unexpected results, especially when using tweens, if the animations suddenly jump into a different place when the group runs. If you want the children of a group to reset when the group starts, you can set <code>resetChildrenAtStart</code> to true.
+			</p>
+			<h3>
+				Using KSWait in sequences
+			</h3>
+			<p>
+				If you need to pause momentarily between actions in a sequence, you can add an action called <code>KSWait</code> to the group. As you may have imagined, the Wait action does nothing except wait for a specified amount of time.
+			</p>
+			<pre>
+// Wait time is the duration to wait.
+var wait:KSWait = new KSWait(waitTime:*)
+var group:IActionGroup = new KSSeuqenceGroup (
+    doSomething(),
+    wait,
+    doSomethingElse()
+);
+            
+</pre>
+			<h3>
+				Other groups
+			</h3>
+			<p>
+				This demo runs through all of the types of groups available in KitchenSync:
+			</p>
+			<div style="text-align:center;width:465px;"><iframe title="All Action Groups Example - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/fa8474894092f5865d584acd2552e1e56423e9f0" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/fa8474894092f5865d584acd2552e1e56423e9f0" title="All Action Groups Example - wonderfl build flash online">View Source Code</a></div>
+			
+			<h4>
+				KSStaggeredGroup
+			</h4>
+			<p>
+				This group runs a sequence of actions separated by a specified amount of time. This can be used to create a cascading animation for example, with buttons in a navigation.
+			</p>
+			<h4>
+				KSRandomGroup
+			</h4>
+			<p>
+				This group plays back the child actions as a sequence but in a random order.
+			</p>
+			<h4>
+				KSSimultaneousEndGroup
+			</h4>
+			<p>
+				This group acts like a backwards parallel group. Instead of everything starting at the same time, all the children start at different times but end at the same time.
+			</p>
+			<h2>
+				Calling Functions using KS
+			</h2>
+			<p>
+				KitchenSync also provides actions for calling functions. These may seem fairly boring at first, but when combined with <code>KSSequenceGroups</code>, they can be quite powerful. For example, you may have a site with multiple pages and when you click on a nav button, a sequence occurs where the current page animates out, the new page is initialized (with a function), and the new page animates in. It also is convenient to call several functions in a series in what's known as a <a href="http://en.wikipedia.org/wiki/Command_queue" title="command queue">command queue</a>.
+			</p>
+			<h3>
+				Types of Function actions
+			</h3>
+			<p>
+				KitchenSync supports both synchronous (normal) and asynchronous functions with the action classes <code>KSFunction</code> and <code>KSAsyncFunction</code>. Both allow you to pass in parameters to the function and even retrieve results of the function.
+			</p>
+			<h5>
+				Synchronous Functions
+			</h5>
+			<p>
+				First, let's look at the <code>KSFunction</code> constructor:
+			</p>
+			<pre>
+				new KSFunction(func:Function, delay:Object = 0, ... args)
+			</pre>
+			<p>
+				The last parameter, <code>args</code>, is an optional list of one or more arguments that will be passed to the function when it's called.
+			</p>
+			<p>
+				The function will wait for the specified delay time then call the function. If the function returns a result, the result will be stored in the <code>KSFunction</code> object's <code>result</code> property.
+			</p>
+			<p>
+				This example shows a simple use of <code>KSFunction</code> to display a hello world message and later retrieve a result from the function.
+			</p>
+			<div style="text-align:center;width:465px;"><iframe title="forked from: HelloKitchenSync - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/3921bfc5b5de99bcf74b3be8f1b083b7ce63e25b" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/3921bfc5b5de99bcf74b3be8f1b083b7ce63e25b" title="forked from: HelloKitchenSync - wonderfl build flash online">View Source Code</a></div>
+			
+			<div class="sidebar">
+				<h4>
+					Tip:
+				</h4>
+				<p>
+					When providing the function name, make sure to leave off the () parentheses.
+				</p>
+				<p>
+					<code>new KSFunction(doSomething);</code> <strong> NOT </strong> <code>new KSFunction(doSomething());</code>
+				</p>
+			</div>
+			
+			<h5>
+				Asynchronous Functions
+			</h5>
+			<p>
+				Asynchronous functions are functions that execute outside of a main thread of an application. Strictly speaking, Flash Player does not support threads but actions such as loading images from a server can still take place in the background while the program continues normally. Running asynchronous functions as actions is a little bit more complicated than regular functions but the core concepts are the same.
+			</p>
+			<p>
+				The constructor for <code>KSAsyncFunction</code> looks like this:
+			</p>
+			<pre>new KSAsyncFunction(func:Function, completeEventDispatcher:IEventDispatcher, completeEventType:String, ... args)</pre>
+			</p>
+			<p>
+				The main difference here is that you need to define the conditions for the asynchronous function to be complete. In other words, you need to provide an event dispatcher and an event type to listen for that triggers when the function completes.
+			</p>
+			<h2>
+				Loading files with KS
+			</h2>
+			<p>
+				KitchenSync provides a set of actions that can be used for loading files from a server. They all extend <code>ILoaderAction</code> and mostly make use of the <code>KSAsyncFunction</code>. There are a few types of loader actions.
+			</p>
+			<ul>
+				<li><code>KSURLLoader</code> - Use this class for loading text files and other generic data. It's analogous to the <code>URLLoader</code> class.
+				</li>
+				<li><code>KSXMLLoader</code> - Use this for loading XML files. Text results are automatically saved in the xml property as an XML object.
+				</li>
+				<li><code>KSLoader</code> - Use this in place of a <code>Loader</code> object for loading SWF files and images. When the load completes you can add the image to the stage by accessing the <code>loader</code> property.
+				</li>
+			</ul>
+			<p>
+				Since usually the first thing you will want to do with the loaded files is get at their data, all of these classes have a property called <code>resultList</code>. This property can point to an array outside of the loader and when the loader completes, the data is automatically added to the result list. This makes the loaded data very easy to access. If you choose not to use the result list, you can still access the data from the <code>data</code> property of the loaders.
+			</p>
+			<h3>
+				Load queues
+			</h3>
+			<p>
+				Like with other actions, loaders become much more useful when sequenced. For this purpose, there is the <code>KSLoadQueue</code>. The load queue extends <code>KSSequenceGroup</code>. It takes a list of URLs and loads them in sequence. You can specify what type of <code>ILoaderAction</code> to use in the constructor. Here's an example that uses a <code>KSXMLLoader</code> to pull in RSS data from <a href="http://flickr.com/">Flickr</a> then load the images from the feed using a a <code>KSLoadQueue</code> of <code>KSLoader</code>s.
+			</p>
+			<div style="text-align:center;width:465px;"><iframe title="Flickr Image loader using KSLoadQueue - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/7931c6ccc4beaa8bf040f72ef73a3cf6dfff3e2d" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/7931c6ccc4beaa8bf040f72ef73a3cf6dfff3e2d" title="Flickr Image loader using KSLoadQueue - wonderfl build flash online">View Source Code</a></div>
+			
+			
+			<h2>
+				Sound actions
+			</h2>
+			<p>
+				The <code>KSSound</code> action allows you an easy way to load and play a sound alone or as part of a sequence. Sequencing sounds together with other actions can be quite useful for when you want to play a sound effect as part of an event, or when you want to sync up sound and other actions (like showing subtitles for example).
+			</p>
+			<p>
+				It's also possible to tween the properties of the sound including pan and volume using a special tween target called <code>SoundTransformTarget</code>.
+			</p>
+			<h3>
+				Playing sounds with KSSound
+			</h3>
+			<p>
+				The <code>KSSound</code> action represents a <code>flash.media.Sound</code> object with all the benefits of actions including the ability to play, pause, and seek. To create a new <code>KSSound</code>, pass a <code>Sound</code> object in the constructor. You can also use a string url or <code>URLRequest</code> instead but be aware that the sound URL will load automatically when the action is created and may not be ready to play right away. When the <code>KSSound</code> action finishes playing, the action will be completed. Meanwhile, you can access the original <code>Sound</code> object and the <code>SoundChannel</code> object if you need more control. You can also set the offset when the sound begins playing.
+			</p>
+			<pre>
+new KSSound(sound:*, delay:* = 0, soundOffset:* = 0)
+</pre>
+			<p>
+				Here's an example using a <code>KSSound</code> and a sequence of functions that show subtitles under a song. Notice that you can pause and play the entire group of actions at once so the subtitles actually pause with the sound.
+			</p>
+			<div style="text-align:center;width:465px;">
+				<iframe title="Closed Captioning Demo - Skrypt Kidz 3000 theme song" scrolling="no" src="http://wonderfl.net/blogparts/75f75396ae4cc3b3e79fd15aa80509f9ad199056" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/75f75396ae4cc3b3e79fd15aa80509f9ad199056" title="Closed Captioning Demo - Skrypt Kidz 3000 theme song - wonderfl build flash online">View Source Code</a>
+			</div>
+			<h3>
+				Tweening sounds
+			</h3>
+			<p>
+				You can also tween sound properties such as <code>pan</code> and <code>volume</code> using the <code>SoundTransformTarget</code> tween target. This class targets the <code>soundTransform</code> property of a sound (or any object with <code>soundTranform</code> like a <code>NetStream</code>). In the constructor, you would provide the object with the <code>soundTransform</code> property, the property of sound transform you want to access (e.g. <code>"volume"</code>), and the start and end values. There's another companion class, <code>SoundTransformProperty</code>, that enumerates the properties that you can tween.
+			</p>
+			<p>
+				The example below could be used to fade in a sound (from volume 0 to 1) over 5 seconds.
+			</p>
+			<pre> 
+var sound:Sound;
+// load your sound here...
+
+// fade up over 5 seconds
+var fadeUp:ITweenTarget = new SoundTransformTarget(sound, SoundTransformProperty.VOLUME, 0, 1);
+var tween:KSTween = TweenFactory.newTweenWithTargets(fadeUp, "5s");
+tween.start();
+</pre>
+			<h2>
+				Setting system defaults
+			</h2>
+			<p>
+				An unexciting but nonetheless useful part of KitchenSync is the ability to set global system defaults. All of these are currently set using the <code>KitchenSyncDefaults</code> class. Many properties, such as whether tweens snap to integers or what easing function to use, can be set here and will become the default choice of new actions. To get the details, check out the <a href="http://kitchensync.as3lib.org/docs/org/as3lib/kitchensync/KitchenSyncDefaults.html">ASDocs for the class</a>.
+			</p>
+			
+			<a name="timestrings"></a>
+			<h2>
+				Appendix A: Time Strings
+			</h2>
+			<p>
+				KitchenSync uses milliseconds as its standard unit of time. For example, setting a duration to an int value of 1500 will make the action run for 1,500 milliseconds or 1.5 seconds. However, in most cases, times can be set by providing string value such as "1.5 seconds". The system interprets the value using a class called <code>TimeStringParser_en</code>*.
+			</p>
+			<p>
+				Valid time strings can be almost anything. These are all acceptable formats:
+			</p>
+			<ul>
+				<li>"1 hour, 2 minutes, 3 seconds, 4 milliseconds"
+				</li>
+				<li>"1h2m3s4ms"
+				</li>
+				<li>"5sec,12fr"†
+				</li>
+				<li>"01:23:45;15"† (timecode - equal to 1h, 23m, 45s, 15f)
+				</li>
+				<li>":03" (equal to 3s)
+				</li>
+				<li>"300 frames"†
+				</li>
+				<li>"1.25s"
+				</li>
+				<li>"5 milliseconds, 15mins, 6 hrs"
+				</li>
+				<li>"0.25 days"
+				</li>
+			</ul>
+			<p>
+				Notice these characteristics:
+			</p>
+			<ul>
+				<li>Abbreviations or full names can be used and plurals are optional. "second", "seconds", "sec", "secs", "s" are all valid ways to write "seconds".
+				</li>
+				<li>Times can be separated by whitespace, commas, or by the beginning of the next number and order isn't important.
+				</li>
+				<li>Decimals will be processed. Leading zeroes are optional.
+				</li>
+				<li>Strings are recognized for milliseconds, seconds, minutes, hours, and days (God knows why you would need the last 2). Frames are supported two but they are less accurate than using real time.
+				</li>
+				<li>Video timecode format (hh:mm:ss;ff) is recognized. Frames per second is interpreted based on a constant value set in the parser.
+				</li>
+			</ul>
+			<p>
+				*: The 'en' represents that it understands English values. For localization or specialized purposes, the class used for parsing can be changed by providing a new implementation of ITimeStringParser in the KitchenSyncDefaults class.
+			</p>
+			<p>
+				†: Frames are interpreted based on the framerate of the parser. They are not recommended because of their inaccuracy and should be considered deprecated. If you must use the frames option, please make sure you have set the frameRate to match the actual frame rate of the swf in the constructor.
+			</p>
+			
+			<a name="objectparser" id="objectparser"></a>
+			<h2>
+				Appendix B: Object Parser
+			</h2>
+			<p class="error">
+				Coming Soon.
+			</p>
+			
+			<a name="easing" id="easing"></a>
+			<h2>
+				Appendix C: Easing Functions
+			</h2>
+			<p class="error">
+				Coming soon.
+			</p>
+		</div>
+	</body>
+</html>
