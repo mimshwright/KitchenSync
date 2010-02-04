@@ -1,72 +1,499 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="TimelineController,org.as3lib.kitchensync.action.tween.TimelineController,AUTO,AUTO_TWEEN_VALUE,CURRENT_TINT,LEFT_TO_RIGHT,NON_NUMERIC_PROPERTY_ERROR,NO_TINT,PAN,RIGHT_TO_LEFT,VOLUME,_blurXTweenTarget,_blurYTweenTarget,_colorMatrix,_currentTransform,_currentValue,_delay,_delta,_duration,_easingFunction,_easingFunction,_easingMod1,_easingMod1,_easingMod2,_easingMod2,_endOnCurrentTint,_endTransform,_endValue,_endValue,_endValue,_endValue,_endValue,_endValue,_filterType,_firstUpdate,_pauseTime,_paused,_previousFilter,_property,_property,_property,_running,_snapToInteger,_snapToValueOnComplete,_startOnCurrentTint,_startTime,_startTransform,_startValue,_startValue,_startValue,_startValue,_startValue,_startValue,_target,_target,_target,_target,_target,_target,_targetSound,_tintOpacity,_tweenTargets,currentTransform,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,delay,differenceInValues,differenceInValues,differenceInValues,differenceInValues,duration,easingFunction,easingFunction,easingFunction,easingMod1,easingMod1,easingMod1,easingMod2,easingMod2,easingMod2,endTransform,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,filterType,filterType,filterType,filterType,filters,filters,isInstantaneous,isPaused,isRunning,objectParser,property,property,property,property,runningTime,snapToInteger,snapToValueOnComplete,startTransform,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,target,target,target,target,target,target,targetSound,tweenTargets,addTweenTarget,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,applyTintOpacity,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,cloneReversed,cloneWithTarget,cloneWithTargetProperty,cloneWithTweenTarget,clone,complete,complete,describeKeywords,evaluateFrameLabel,getDefaultFilter,getNaturalDuration,isPropertyValid,kill,kill,newFilterTween,newPositionTween,newScaleTween,newTimelineTween,newTintTween,newTween,newTweenFromObject,newTweenWithTargets,parseObject,parseObject,pause,removeAllTweenTargets,removeTweenTarget,reset,reset,reset,reset,reset,reset,reset,reset,reset,reset,reverse,setTargetPropterty,start,start,startAtTime,startAtTime,stop,toString,toString,toString,toString,unpause,update,update,updateTarget,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween"><title>org.as3lib.kitchensync.action.tween.TimelineController</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
+<meta content="TimelineController,org.as3lib.kitchensync.action.tween.TimelineController,AUTO,_endValue,_startValue,_target,currentValue,differenceInValues,endValue,startValue,target,clone,evaluateFrameLabel,getNaturalDuration,reset,toString,updateTween" name="keywords">
+<title>org.as3lib.kitchensync.action.tween.TimelineController</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
 				asdocTitle = 'TimelineController - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
-<script type="text/javascript">
-			scrollToNameAnchor();
-		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?org/as3lib/kitchensync/action/tween/TimelineController.html&amp;org/as3lib/kitchensync/action/tween/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">TimelineController</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
-				<!--
-				
-					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("TimelineController"); titleBar_setSubNav(true,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
-				-->
-			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.action.tween</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  TimelineController</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">TimelineController  <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>1.5</td></tr></table><p></p><p></p><p></p>
-	 A TweenTarget that controls a timeline animation in a MovieClip.
-	 It allows you to animate between two frames in a MovieClip using a KSTween so that
-	 you can go forwards, backwards, change the duration and use easing functions 
-	 on a timeline animation. 
-	 
-	 <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="TweenFactory.html#newTimelineTween()" target="">org.as3lib.kitchensync.action.tween.TweenFactory.newTimelineTween()</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentValue" class="signatureLink">currentValue</a> : Number<div class="summaryTableDescription"> The current frame of the movieclip.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#differenceInValues" class="signatureLink">differenceInValues</a> : Number<div class="summaryTableDescription">[read-only] 
-		 The total amount of change between the start and end values.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#endValue" class="signatureLink">endValue</a> : Number<div class="summaryTableDescription"> The number of the frame to end on </div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#startValue" class="signatureLink">startValue</a> : Number<div class="summaryTableDescription"> The number of the frame to begin at </div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#target" class="signatureLink">target</a> : MovieClip<div class="summaryTableDescription"> The target movieclip that will be tweened.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr></table></div><a name="protectedPropertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_endValue" class="signatureLink">_endValue</a> : int<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_startValue" class="signatureLink">_startValue</a> : int = 1<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_target" class="signatureLink">_target</a> : MovieClip<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">TimelineController</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#TimelineController()" class="signatureLink">TimelineController</a>(target:MovieClip, startFrame:Object = null, endFrame:Object = null)</div><div class="summaryTableDescription">
-		 Constructor.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#clone()" class="signatureLink">clone</a>():<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></div><div class="summaryTableDescription">  
-		 Creates a deep copy of the tweenTarget object.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getNaturalDuration()" class="signatureLink">getNaturalDuration</a>(frameRate:int):int</div><div class="summaryTableDescription">
-		 Use this to get the natural duration between the frames of the tween target.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#reset()" class="signatureLink">reset</a>():void</div><div class="summaryTableDescription">  
-		 Resets the current value to it's initial pre-tweened state.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#toString()" class="signatureLink">toString</a>():String</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">TimelineController</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#updateTween()" class="signatureLink">updateTween</a>(percentComplete:Number):Number</div><div class="summaryTableDescription"> 
-		 The main function that the Tween uses to update the TweenTarget.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr></table></div><a name="protectedMethodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#evaluateFrameLabel()" class="signatureLink">evaluateFrameLabel</a>(frameLabel:Object):int</div><div class="summaryTableDescription">
-		 Determines the frame number based on an unknown object.</div></td><td class="summaryTableOwnerCol">TimelineController</td></tr></table></div><a name="constantSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Constants</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableConstant"><tr><th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#AUTO" class="signatureLink">AUTO</a> : int = -1<div class="summaryTableDescription">[static]  
-		 Used by getNaturalDuration()
-		 </div></td><td class="summaryTableOwnerCol">TimelineController</td></tr></table></div><script language="javascript" type="text/javascript"><!--
-										showHideInherited();
-										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="_endValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_endValue</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>protected var _endValue:int</code><p></p></div><a name="propertyDetail"></a><a name="_startValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _startValue:int = 1</code><p></p></div><a name="propertyDetail"></a><a name="_target"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _target:MovieClip</code><p></p></div><a name="propertyDetail"></a><a name="currentValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>currentValue:Number</code><p></p><p></p><p> The current frame of the movieclip. Setting it causes the MC to gotoAndStop() at that frame. </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentValue():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentValue(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="differenceInValues"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">differenceInValues</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>differenceInValues:Number</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
-		 The total amount of change between the start and end values. (used internally)
-		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get differenceInValues():Number</code><br/></div><a name="propertyDetail"></a><a name="endValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>endValue:Number</code><p></p><p></p><p> The number of the frame to end on </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endValue():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set endValue(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="startValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>startValue:Number</code><p></p><p></p><p> The number of the frame to begin at </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startValue():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set startValue(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="target"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>target:MovieClip</code><p></p><p></p><p> The target movieclip that will be tweened. </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get target():MovieClip</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set target(value:MovieClip):void</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="TimelineController()"></a><a name="TimelineController(flash.display.MovieClip,Object,Object)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">TimelineController</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function TimelineController(target:MovieClip, startFrame:Object = null, endFrame:Object = null)</code><p></p><p>
-		 Constructor.
-		 
-		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:MovieClip</code> &mdash; The MovieClip object to animate.
-		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">startFrame</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The frame to begin at. Can be of types String, FrameLabel or a numerical type. Defaults to 1.
-		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">endFrame</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The frame to end on. Can be of types String, FrameLabel or a numerical type. Defaults to the last frame in the MovieClip.
-		 </td></tr></table></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="clone()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function clone():<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></code><p></p><p></p><p>  
-		 Creates a deep copy of the tweenTarget object.
-		 Does not copy the state of the object (such as 
-		 its current progress in the tween).
-		 
-		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></code> &mdash; ITweenTarget a clone of the tween target object 
-		 </td></tr></table></div><a name="evaluateFrameLabel()"></a><a name="evaluateFrameLabel(Object)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">evaluateFrameLabel</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected function evaluateFrameLabel(frameLabel:Object):int</code><p></p><p></p><p>
-		 Determines the frame number based on an unknown object.
-		 
-		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">frameLabel</span>:Object</code> &mdash; An unknown object that can be of type int, uint, Number, FrameLabel, or String. 
-		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>int</code> &mdash; the frame number as an int 
-		 </td></tr></table></div><a name="getNaturalDuration()"></a><a name="getNaturalDuration(int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getNaturalDuration</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getNaturalDuration(frameRate:int):int</code><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>2.0</td></tr></table><p></p><p></p><p>
-		 Use this to get the natural duration between the frames of the tween target.
-		 
-		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">frameRate</span>:int</code> (default = <code>NaN</code>)<code></code> &mdash; The frameRate to use to evaluate the duration. 
-		 					Default is AUTO which uses the target MovieClip's frameRate
-		 					(note: the movieclip must be on the stage for this to work)
-		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>int</code> &mdash; int The duration in Milliseconds
-		 
-		 </td></tr></table></div><a name="reset()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function reset():void</code><p></p><p></p><p>  
-		 Resets the current value to it's initial pre-tweened state.
-		 (typically, sets the currentValue equal to the startValue).
-		 This is usually called by the reset() method of the KSTween class.
-		 
-		 </p></div><a name="toString()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function toString():String</code><p></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>String</code></td></tr></table></div><a name="updateTween()"></a><a name="updateTween(Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">updateTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function updateTween(percentComplete:Number):Number</code><p></p><p></p><p> 
-		 The main function that the Tween uses to update the TweenTarget. 
-		 Sets the percentage complete.
-		 
-		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">percentComplete</span>:Number</code> &mdash; a number between 0 and 1 (but sometimes more or less) that represents
-		 		  the percentage of the tween that has been completed. This should update the currentValue.
-		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Number</code> &mdash; Number the new current value of the tween.
-		 
-		 </td></tr></table></div><div class="detailSectionHeader">Constant Detail</div><a name="constantDetail"></a><a name="AUTO"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">AUTO</td><td class="detailHeaderType">Constant</td></tr></table><div class="detailBody"><code>public static const AUTO:int = -1</code><p></p><p></p><p> 
-		 Used by getNaturalDuration()
-		 </p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Sun Jan 17 2010, 09:12 PM -08:00  </center></div></body></html><!--<br/>Sun Jan 17 2010, 09:12 PM -08:00  -->
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/as3lib/kitchensync/action/tween/TimelineController.html&amp;org/as3lib/kitchensync/action/tween/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;TimelineController</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class TimelineController"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class TimelineController</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="ITweenTarget.html">ITweenTarget</a></td>
+</tr>
+</table>
+<p></p>
+  A TweenTarget that controls a timeline animation in a MovieClip.
+  It allows you to animate between two frames in a MovieClip using a KSTween so that
+  you can go forwards, backwards, change the duration and use easing functions 
+  on a timeline animation. 
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../tween/TweenFactory.html#newTimelineTween()" target="">org.as3lib.kitchensync.action.tween.TweenFactory.newTimelineTween()</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentValue">currentValue</a> : Number<div class="summaryTableDescription"> The current frame of the movieclip.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#differenceInValues">differenceInValues</a> : Number<div class="summaryTableDescription">[read-only]
+   The total amount of change between the start and end values.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#endValue">endValue</a> : Number<div class="summaryTableDescription"> The number of the frame to end on </div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startValue">startValue</a> : Number<div class="summaryTableDescription"> The number of the frame to begin at </div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#target">target</a> : MovieClip<div class="summaryTableDescription"> The target movieclip that will be tweened.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_endValue">_endValue</a> : int<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startValue">_startValue</a> : int = 1<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_target">_target</a> : MovieClip<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#TimelineController()">TimelineController</a>(target:MovieClip, startFrame:Object = null, endFrame:Object = null)</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clone()">clone</a>():<a href="../tween/ITweenTarget.html">ITweenTarget</a>
+</div>
+<div class="summaryTableDescription">  
+   Creates a deep copy of the tweenTarget object.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getNaturalDuration()">getNaturalDuration</a>(frameRate:int):int</div>
+<div class="summaryTableDescription">
+   Use this to get the natural duration between the frames of the tween target.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#reset()">reset</a>():void</div>
+<div class="summaryTableDescription">  
+   Resets the current value to it's initial pre-tweened state.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>():String</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateTween()">updateTween</a>(percentComplete:Number):Number</div>
+<div class="summaryTableDescription"> 
+   The main function that the Tween uses to update the TweenTarget.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#evaluateFrameLabel()">evaluateFrameLabel</a>(frameLabel:Object):int</div>
+<div class="summaryTableDescription">
+   Determines the frame number based on an unknown object.</div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#AUTO">AUTO</a> : int = -1<div class="summaryTableDescription">[static] 
+   Used by getNaturalDuration()
+   </div>
+</td><td class="summaryTableOwnerCol">TimelineController</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="currentValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">currentValue</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>currentValue:Number</code>&nbsp;&nbsp;[read-write]<p> The current frame of the movieclip. Setting it causes the MC to gotoAndStop() at that frame. </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentValue():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentValue(value:Number):void</code>
+<br>
+</div>
+<a name="differenceInValues"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">differenceInValues</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>differenceInValues:Number</code>&nbsp;&nbsp;[read-only]<p>
+   The total amount of change between the start and end values. (used internally)
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get differenceInValues():Number</code>
+<br>
+</div>
+<a name="_endValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _endValue:int</code>
+</div>
+<a name="endValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>endValue:Number</code>&nbsp;&nbsp;[read-write]<p> The number of the frame to end on </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endValue():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set endValue(value:Number):void</code>
+<br>
+</div>
+<a name="_startValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _startValue:int = 1</code>
+</div>
+<a name="startValue"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>startValue:Number</code>&nbsp;&nbsp;[read-write]<p> The number of the frame to begin at </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startValue():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set startValue(value:Number):void</code>
+<br>
+</div>
+<a name="_target"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _target:MovieClip</code>
+</div>
+<a name="target"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>target:MovieClip</code>&nbsp;&nbsp;[read-write]<p> The target movieclip that will be tweened. </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get target():MovieClip</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set target(value:MovieClip):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="TimelineController()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">TimelineController</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function TimelineController(target:MovieClip, startFrame:Object = null, endFrame:Object = null)</code><p>
+   Constructor.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">target</span>:MovieClip</code> &mdash; The MovieClip object to animate.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">startFrame</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The frame to begin at. Can be of types String, FrameLabel or a numerical type. Defaults to 1.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">endFrame</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The frame to end on. Can be of types String, FrameLabel or a numerical type. Defaults to the last frame in the MovieClip.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="clone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function clone():<a href="../tween/ITweenTarget.html">ITweenTarget</a></code><p>  
+   Creates a deep copy of the tweenTarget object.
+   Does not copy the state of the object (such as 
+   its current progress in the tween).
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../tween/ITweenTarget.html">ITweenTarget</a></code> &mdash; 
+                        ITweenTarget a clone of the tween target object 
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="evaluateFrameLabel()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">evaluateFrameLabel</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function evaluateFrameLabel(frameLabel:Object):int</code><p>
+   Determines the frame number based on an unknown object.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">frameLabel</span>:Object</code> &mdash; An unknown object that can be of type int, uint, Number, FrameLabel, or String. 
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; the frame number as an int 
+   </td>
+</tr>
+</table>
+</div>
+<a name="getNaturalDuration()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getNaturalDuration</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getNaturalDuration(frameRate:int):int</code><p>
+   Use this to get the natural duration between the frames of the tween target.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">frameRate</span>:int</code> &mdash; The frameRate to use to evaluate the duration. 
+        Default is AUTO which uses the target MovieClip's frameRate
+        (note: the movieclip must be on the stage for this to work)
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; int The duration in Milliseconds
+   
+   </td>
+</tr>
+</table>
+</div>
+<a name="reset()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function reset():void</code><p>  
+   Resets the current value to it's initial pre-tweened state.
+   (typically, sets the currentValue equal to the startValue).
+   This is usually called by the reset() method of the KSTween class.
+   
+   </p></div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString():String</code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<a name="updateTween()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function updateTween(percentComplete:Number):Number</code><p> 
+   The main function that the Tween uses to update the TweenTarget. 
+   Sets the percentage complete.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">percentComplete</span>:Number</code> &mdash; a number between 0 and 1 (but sometimes more or less) that represents
+       the percentage of the tween that has been completed. This should update the currentValue.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; Number the new current value of the tween.
+   
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="AUTO"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">AUTO</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const AUTO:int = -1</code><p> 
+   Used by getNaturalDuration()
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

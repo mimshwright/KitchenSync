@@ -1,53 +1,193 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../override.css" type="text/css"><meta name="keywords" content="Stepped,org.as3lib.kitchensync.easing.Stepped,absoluteSine,call,ease,ease,ease,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeIn,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeInOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOut,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,easeOutIn,generateArray,getAveragedFunction,getSteppedFunction,pulse,sawtooth,sine,triangle"><title>org.as3lib.kitchensync.easing.Stepped</title></head><body><script language="javascript" type="text/javascript" src="../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Stepped,org.as3lib.kitchensync.easing.Stepped,ease,getSteppedFunction" name="keywords">
+<title>org.as3lib.kitchensync.easing.Stepped</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
 				asdocTitle = 'Stepped - KitchenSyncLib v2.0';
 				var baseRef = '../../../../';
 				window.onload = configPage;
 			--></script>
-<script type="text/javascript">
-			scrollToNameAnchor();
-		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../package-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../class-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../all-index-A.html" onclick="loadClassListFrame('../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../index.html?org/as3lib/kitchensync/easing/Stepped.html&amp;org/as3lib/kitchensync/easing/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">Stepped</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
-				<!--
-				
-					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Stepped"); titleBar_setSubNav(false,false,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
-				-->
-			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.easing</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  Stepped</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Stepped  <img src="../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><p></p><p></p>
-	              <p>Stepped produces values between 0.0 and 1.0 which are rounded up or down to nearby values
-	 so that they jump from one sample to the next creating a stairstep motion. It gives
-	 the impression of low-tech computer graphics.</p>
-	              <p>The easing classes provide static methods for interpolating the change between two values over time.
-	 Each class handles the interpolation, or easing, differently. Each class typically contains three methods
-	  - <code>easeIn()</code>, <code>easeOut()</code> and <code>easeInOut()</code> - which vary the rate of change
-	  of the values. Most of the easing functions produce values as a percentage - a number between 0.0 and 1.0</p>
-	 
- 	          <p></p><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#ease()" class="signatureLink">ease</a>(timeElapsed:Number, duration:Number, steps:Number = 10):Number</div><div class="summaryTableDescription">[static] 
-	    Produces values that are cropped to a threshold based on the number of steps specified.</div></td><td class="summaryTableOwnerCol">Stepped</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getSteppedFunction()" class="signatureLink">getSteppedFunction</a>(easingFunction:Function, steps:int = 10):Function</div><div class="summaryTableDescription">[static] 
-		 Creates a stepped easing function based on another easing function that uses the same method as the 
-		 ease() method.</div></td><td class="summaryTableOwnerCol">Stepped</td></tr></table></div><script language="javascript" type="text/javascript"><!--
-										showHideInherited();
-										--></script><div class="MainContent"><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="ease()"></a><a name="ease(Number,Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">ease</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function ease(timeElapsed:Number, duration:Number, steps:Number = 10):Number</code><p></p><p></p><p>
-	    Produces values that are cropped to a threshold based on the number of steps specified.
-	    For example, if there are 3 steps, the values will jump from 0 to 0.5 to 1.0
-	    If 10 steps are specified, the values will jump from 0 to 0.1 to 0.2, ..., to 1.0
-	    
-	    </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; The time since the tween began in milliseconds or frames.
-	    </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; The duration of the tween, in milliseconds or frames.
-	    </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">steps</span>:Number</code> (default = <code>10</code>)<code></code> &mdash; The number of steps to take. Must be an integer greater than 0. 
-	                 Generally, if steps > duration, you're better off using the Linear.ease().
-	    </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
-	    </td></tr></table><br/><span class="label">Throws</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Error </code> &mdash; If steps is less than 1.
-	    
-	    </td></tr></table></div><a name="getSteppedFunction()"></a><a name="getSteppedFunction(Function,int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getSteppedFunction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getSteppedFunction(easingFunction:Function, steps:int = 10):Function</code><p></p><p></p><p>
-		 Creates a stepped easing function based on another easing function that uses the same method as the 
-		 ease() method. 
-		 
-		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">easingFunction</span>:Function</code> &mdash; The original easing function to use to create ne new function.
- 	     </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">steps</span>:int</code> (default = <code>10</code>)<code></code> &mdash; The number of steps to take. Must be an integer greater than 0. 
-	                  Generally, if steps > duration, you're better off using the original function.
-	     </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Function</code> &mdash; A new easing function that adds stepping to the original easingFunction.
-	     </td></tr></table><br/><span class="label"> Example </span><br/><div class="detailBody">The following code will create a new Tween object which will move with Cubic motion over
-		 			the course of 15 steps.
-		 			<div class="listing" version="3.0"><pre>
-                         var steppedCubic:Tween = new Tween(foo, "bar", 0, 100, 30, Stepped.getSteppedFunction(Cubic.easeInOut, 15));
-                     </pre></div>
-		 
-		 </div></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Sun Jan 17 2010, 09:12 PM -08:00  </center></div></body></html><!--<br/>Sun Jan 17 2010, 09:12 PM -08:00  -->
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/as3lib/kitchensync/easing/Stepped.html&amp;org/as3lib/kitchensync/easing/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Stepped</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Stepped"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.easing</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Stepped</td>
+</tr>
+</table>
+<p></p>
+  <p>Stepped produces values between 0.0 and 1.0 which are rounded up or down to nearby values
+  so that they jump from one sample to the next creating a stairstep motion. It gives
+  the impression of low-tech computer graphics.</p>
+  <p>The easing classes provide static methods for interpolating the change between two values over time.
+  Each class handles the interpolation, or easing, differently. Each class typically contains three methods
+   - <code>easeIn()</code>, <code>easeOut()</code> and <code>easeInOut()</code> - which vary the rate of change
+   of the values. Most of the easing functions produce values as a percentage - a number between 0.0 and 1.0</p>
+  
+   <p></p>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#ease()">ease</a>(timeElapsed:Number, duration:Number, steps:Number = 10):Number</div>
+<div class="summaryTableDescription">[static]
+     Produces values that are cropped to a threshold based on the number of steps specified.</div>
+</td><td class="summaryTableOwnerCol">Stepped</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getSteppedFunction()">getSteppedFunction</a>(easingFunction:Function, steps:int = 10):Function</div>
+<div class="summaryTableDescription">[static]
+   Creates a stepped easing function based on another easing function that uses the same method as the 
+   ease() method.</div>
+</td><td class="summaryTableOwnerCol">Stepped</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="ease()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ease</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function ease(timeElapsed:Number, duration:Number, steps:Number = 10):Number</code><p>
+     Produces values that are cropped to a threshold based on the number of steps specified.
+     For example, if there are 3 steps, the values will jump from 0 to 0.5 to 1.0
+     If 10 steps are specified, the values will jump from 0 to 0.1 to 0.2, ..., to 1.0
+     
+     </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">timeElapsed</span>:Number</code> &mdash; The time since the tween began in milliseconds or frames.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">duration</span>:Number</code> &mdash; The duration of the tween, in milliseconds or frames.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">steps</span>:Number</code> (default = <code>10</code>)<code></code> &mdash; The number of steps to take. Must be an integer greater than 0. 
+                  Generally, if steps > duration, you're better off using the Linear.ease().
+     </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; percentage complete - between 0.0 and 1.0
+     </td>
+</tr>
+</table>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code></code> &mdash; If steps is less than 1.
+     
+     </td>
+</tr>
+</table>
+</div>
+<a name="getSteppedFunction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getSteppedFunction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getSteppedFunction(easingFunction:Function, steps:int = 10):Function</code><p>
+   Creates a stepped easing function based on another easing function that uses the same method as the 
+   ease() method. 
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">easingFunction</span>:Function</code> &mdash; The original easing function to use to create ne new function.
+       </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">steps</span>:int</code> (default = <code>10</code>)<code></code> &mdash; The number of steps to take. Must be an integer greater than 0. 
+                   Generally, if steps > duration, you're better off using the original function.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Function</code> &mdash; A new easing function that adds stepping to the original easingFunction.
+      </td>
+</tr>
+</table>
+<br>
+<span class="label">Example</span>
+<br>The following code will create a new Tween object which will move with Cubic motion over
+      the course of 15 steps.
+      <div class='listing'><pre>
+       var steppedCubic:Tween = new Tween(foo, "bar", 0, 100, 30, Stepped.getSteppedFunction(Cubic.easeInOut, 15));
+      </pre></div>
+   
+   <p></p>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

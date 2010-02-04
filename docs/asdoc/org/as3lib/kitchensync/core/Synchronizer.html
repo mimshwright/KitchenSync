@@ -1,65 +1,341 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../override.css" type="text/css"><meta name="keywords" content="Synchronizer,org.as3lib.kitchensync.core.Synchronizer,ACTION_COMPLETE,ACTION_PAUSE,ACTION_START,ACTION_UNPAUSE,CHILD_ACTION_COMPLETE,CHILD_ACTION_START,SYNCHRONIZER_UPDATE,activeClients,core,currentTime,cycles,isPaused,timestamp,dispatchUpdate,getInstance,interpolateIntervalFromFrameRate,pause,registerClient,start,start,start,start,stop,stop,stop,stop,unpause,unregisterClient,update"><title>org.as3lib.kitchensync.core.Synchronizer</title></head><body><script language="javascript" type="text/javascript" src="../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Synchronizer,org.as3lib.kitchensync.core.Synchronizer,activeClients,core,currentTime,cycles,dispatchUpdate,getInstance,registerClient,unregisterClient" name="keywords">
+<title>org.as3lib.kitchensync.core.Synchronizer</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
 				asdocTitle = 'Synchronizer - KitchenSyncLib v2.0';
 				var baseRef = '../../../../';
 				window.onload = configPage;
 			--></script>
-<script type="text/javascript">
-			scrollToNameAnchor();
-		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../package-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../class-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../all-index-A.html" onclick="loadClassListFrame('../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../index.html?org/as3lib/kitchensync/core/Synchronizer.html&amp;org/as3lib/kitchensync/core/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">Synchronizer</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
-				<!--
-				
-					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Synchronizer"); titleBar_setSubNav(false,true,false,false,false,false,true,false,true,false,false	,false,false,false,false,false);}	
-				-->
-			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.core</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public final   class  Synchronizer</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Synchronizer  <img src="../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> flash.events.EventDispatcher</td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>0.1</td></tr></table><p></p><p></p><p></p>
-	 Synchronizer acts as the main time keeper for the animation engine. 
-	 Normally, this class will not be used directly except by advanced users.
-	 The SynchronizerCore isolates the function that times the dispatches. 
-	 To initialize the class, use KitchenSync.initialize() or initializeWithCore().
-	 
-	 <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="../../../../org/as3lib/kitchensync/KitchenSync.html#initialize()" target="">org.as3lib.kitchensync.KitchenSync.initialize()</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#activeClients" class="signatureLink">activeClients</a> : int<div class="summaryTableDescription">[read-only]  Returns the number of active actions.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#core" class="signatureLink">core</a> : <a href="../../../../org/as3lib/kitchensync/core/ISynchronizerCore.html">ISynchronizerCore</a><div class="summaryTableDescription">
-		 The ISynchronizerCore that causes the Synchronizer to dispatch
-		 events.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentTime" class="signatureLink">currentTime</a> : int<div class="summaryTableDescription">[read-only] 
-		 The official timestamp for the current moment in the synchronizer.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#cycles" class="signatureLink">cycles</a> : int<div class="summaryTableDescription">[read-only] 
-		 The number of times that the update has been dispatched since the
-		 start of the program.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#Synchronizer()" class="signatureLink">Synchronizer</a>(enforcer:SingletonEnforcer)</div><div class="summaryTableDescription">
-		 Constructor.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#dispatchUpdate()" class="signatureLink">dispatchUpdate</a>():void</div><div class="summaryTableDescription">
-		 Dispatches events to children for them to update.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getInstance()" class="signatureLink">getInstance</a>():<a href="../../../../org/as3lib/kitchensync/core/Synchronizer.html">Synchronizer</a></div><div class="summaryTableDescription">[static] 
-		 Returns an instance to the single instance of the class.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#registerClient()" class="signatureLink">registerClient</a>(client:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a>):void</div><div class="summaryTableDescription">
-		 Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#unregisterClient()" class="signatureLink">unregisterClient</a>(client:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a>):void</div><div class="summaryTableDescription">
-		 Removes a Syncrhonizer client from the list.</div></td><td class="summaryTableOwnerCol">Synchronizer</td></tr></table></div><a name="eventSummary"></a><div class="summarySection"><div class="summaryTableTitle">Events</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableEvent"><tr><th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#event:synchronizerUpdate" class="signatureLink">synchronizerUpdate</a></div></td><td class="summaryTableDescription summaryTableCol">
-		 Dispatched by the Synchronizer class at regular intervals.</td><td class="summaryTableOwnerCol">Synchronizer</td></tr></table></div><script language="javascript" type="text/javascript"><!--
-										showHideInherited();
-										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="activeClients"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">activeClients</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>activeClients:int</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p> Returns the number of active actions. </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get activeClients():int</code><br/></div><a name="propertyDetail"></a><a name="core"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">core</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>core:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerCore.html">ISynchronizerCore</a></code><p></p><p></p><p>
-		 The ISynchronizerCore that causes the Synchronizer to dispatch
-		 events.
-		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get core():<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerCore.html">ISynchronizerCore</a></code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set core(value:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerCore.html">ISynchronizerCore</a>):void</code><br/></div><a name="propertyDetail"></a><a name="currentTime"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>currentTime:int</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
-		 The official timestamp for the current moment in the synchronizer.
-		 This time will be dispatched to actions when they are updated so that
-		 everything happens in sync.
-		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentTime():int</code><br/></div><a name="propertyDetail"></a><a name="cycles"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">cycles</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>cycles:int</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
-		 The number of times that the update has been dispatched since the
-		 start of the program. This replaces the <code>frames</code> property in 
-		 v2.0 where different cores can cause different types of updates.
-		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get cycles():int</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="Synchronizer()"></a><a name="Synchronizer(Synchronizer.as$57.SingletonEnforcer)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">Synchronizer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function Synchronizer(enforcer:SingletonEnforcer)</code><p></p><p>
-		 Constructor. SingletonEnforcer prevents this class from being instantiated without
-		 using the initialize() method.
-		 
-		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">enforcer</span>:SingletonEnforcer</code> &mdash; - a SingletonEnforcer can only be created internally.
-		 </td></tr></table></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="dispatchUpdate()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">dispatchUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function dispatchUpdate():void</code><p></p><p></p><p>
-		 Dispatches events to children for them to update.
-		 </p></div><a name="getInstance()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getInstance():<a href="../../../../org/as3lib/kitchensync/core/Synchronizer.html">Synchronizer</a></code><p></p><p></p><p>
-		 Returns an instance to the single instance of the class. 
-		 
-		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../org/as3lib/kitchensync/core/Synchronizer.html">Synchronizer</a></code> &mdash; a reference to the only instance of the Synchronizer.
-		 </td></tr></table></div><a name="registerClient()"></a><a name="registerClient(org.as3lib.kitchensync.core.ISynchronizerClient)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">registerClient</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function registerClient(client:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a>):void</code><p></p><p></p><p>
-		 Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.
-		 
-		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">client</span>:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a></code> &mdash; The client that will receive the update.
-		 </td></tr></table></p></div><a name="unregisterClient()"></a><a name="unregisterClient(org.as3lib.kitchensync.core.ISynchronizerClient)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">unregisterClient</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function unregisterClient(client:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a>):void</code><p></p><p></p><p>
-		 Removes a Syncrhonizer client from the list.
-		 
-		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">client</span>:<a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a></code> &mdash; The client that will be unregistered.
-		 </td></tr></table></p></div><div class="detailSectionHeader"> Event Detail </div><a name="event:synchronizerUpdate"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">synchronizerUpdate</td><td class="detailHeaderType"> Event </td></tr></table><div class="detailBody"><span class="label">Event Object Type: </span><a href="../../../../org/as3lib/kitchensync/core/KitchenSyncEvent.html"><code>org.as3lib.kitchensync.core.KitchenSyncEvent</code></a><br/><span class="label">KitchenSyncEvent.type property = </span><a href="../../../../org/as3lib/kitchensync/core/KitchenSyncEvent.html#SYNCHRONIZER_UPDATE"><code>org.as3lib.kitchensync.core.KitchenSyncEvent.SYNCHRONIZER_UPDATE</code></a><br/><p></p><p></p><p>
-	 </p>
-		 Dispatched by the Synchronizer class at regular intervals.
-		 		 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Sun Jan 17 2010, 09:12 PM -08:00  </center></div></body></html><!--<br/>Sun Jan 17 2010, 09:12 PM -08:00  -->
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/as3lib/kitchensync/core/Synchronizer.html&amp;org/as3lib/kitchensync/core/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Synchronizer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Synchronizer"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.core</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public final  class Synchronizer</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Synchronizer <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+</table>
+<p></p>
+  Synchronizer acts as the main time keeper for the animation engine. 
+  Normally, this class will not be used directly except by advanced users.
+  The SynchronizerCore isolates the function that times the dispatches. 
+  To initialize the class, use KitchenSync.initialize() or initializeWithCore().
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../kitchensync/KitchenSync.html#initialize()" target="">org.as3lib.kitchensync.KitchenSync.initialize()</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#activeClients">activeClients</a> : int<div class="summaryTableDescription">[read-only] Returns the number of active actions.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#core">core</a> : <a href="../core/ISynchronizerCore.html">ISynchronizerCore</a>
+<div class="summaryTableDescription">
+   The ISynchronizerCore that causes the Synchronizer to dispatch
+   events.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentTime">currentTime</a> : int<div class="summaryTableDescription">[read-only]
+   The official timestamp for the current moment in the synchronizer.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#cycles">cycles</a> : int<div class="summaryTableDescription">[read-only]
+   The number of times that the update has been dispatched since the
+   start of the program.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Synchronizer()">Synchronizer</a>(enforcer:SingletonEnforcer)</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#dispatchUpdate()">dispatchUpdate</a>():void</div>
+<div class="summaryTableDescription">
+   Dispatches events to children for them to update.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getInstance()">getInstance</a>():<a href="../core/Synchronizer.html">Synchronizer</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Returns an instance to the single instance of the class.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#registerClient()">registerClient</a>(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</div>
+<div class="summaryTableDescription">
+   Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unregisterClient()">unregisterClient</a>(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</div>
+<div class="summaryTableDescription">
+   Removes a Syncrhonizer client from the list.</div>
+</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:synchronizerUpdate">synchronizerUpdate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+   Dispatched by the Synchronizer class at regular intervals.</td><td class="summaryTableOwnerCol">Synchronizer</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="activeClients"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">activeClients</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>activeClients:int</code>&nbsp;&nbsp;[read-only]<p> Returns the number of active actions. </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get activeClients():int</code>
+<br>
+</div>
+<a name="core"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">core</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>core:<a href="../core/ISynchronizerCore.html">ISynchronizerCore</a></code>&nbsp;&nbsp;[read-write]<p>
+   The ISynchronizerCore that causes the Synchronizer to dispatch
+   events.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get core():<a href="../core/ISynchronizerCore.html">ISynchronizerCore</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set core(value:<a href="../core/ISynchronizerCore.html">ISynchronizerCore</a>):void</code>
+<br>
+</div>
+<a name="currentTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">currentTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>currentTime:int</code>&nbsp;&nbsp;[read-only]<p>
+   The official timestamp for the current moment in the synchronizer.
+   This time will be dispatched to actions when they are updated so that
+   everything happens in sync.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentTime():int</code>
+<br>
+</div>
+<a name="cycles"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">cycles</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>cycles:int</code>&nbsp;&nbsp;[read-only]<p>
+   The number of times that the update has been dispatched since the
+   start of the program. This replaces the <code>frames</code> property in 
+   v2.0 where different cores can cause different types of updates.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get cycles():int</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Synchronizer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Synchronizer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Synchronizer(enforcer:SingletonEnforcer)</code><p>
+   Constructor. SingletonEnforcer prevents this class from being instantiated without
+   using the initialize() method.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">enforcer</span>:SingletonEnforcer</code> &mdash; - a SingletonEnforcer can only be created internally.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="dispatchUpdate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dispatchUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function dispatchUpdate():void</code><p>
+   Dispatches events to children for them to update.
+   </p></div>
+<a name="getInstance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getInstance():<a href="../core/Synchronizer.html">Synchronizer</a></code><p>
+   Returns an instance to the single instance of the class. 
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../core/Synchronizer.html">Synchronizer</a></code> &mdash; 
+                        a reference to the only instance of the Synchronizer.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="registerClient()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">registerClient</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function registerClient(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</code><p>
+   Adds a Syncrhonizer client to the list that will be updated when the dispatchUpdate() method is called.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">client</span>:<a href="ISynchronizerClient.html">ISynchronizerClient</a></code> &mdash; The client that will receive the update.
+   </td>
+</tr>
+</table>
+</div>
+<a name="unregisterClient()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unregisterClient</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unregisterClient(client:<a href="ISynchronizerClient.html">ISynchronizerClient</a>):void</code><p>
+   Removes a Syncrhonizer client from the list.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">client</span>:<a href="ISynchronizerClient.html">ISynchronizerClient</a></code> &mdash; The client that will be unregistered.
+   </td>
+</tr>
+</table>
+</div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:synchronizerUpdate"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">synchronizerUpdate</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../core/KitchenSyncEvent.html"><code>org.as3lib.kitchensync.core.KitchenSyncEvent</code></a>
+<br>
+<span class="label">KitchenSyncEvent.type property = </span><a href="../core/KitchenSyncEvent.html#SYNCHRONIZER_UPDATE"><code>org.as3lib.kitchensync.core.KitchenSyncEvent.SYNCHRONIZER_UPDATE</code></a>
+<br><p>
+   Dispatched by the Synchronizer class at regular intervals.
+      </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

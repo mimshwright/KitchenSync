@@ -1,69 +1,297 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../override.css" type="text/css"><meta name="keywords" content="KitchenSync,org.as3lib.kitchensync.KitchenSync,VERSION,autoDelete,duration,easingFunction,isInitialized,snapToInteger,snapToValueOnComplete,syncrhonizerUsesWeakReferences,timeStringParser,timeStringParser,tweenObjectParser,initialize,initializeWithCore"><title>org.as3lib.kitchensync.KitchenSync</title><script src="../../../AC_OETags.js" type="text/javascript"></script></head><body><script language="javascript" type="text/javascript" src="../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="KitchenSync,org.as3lib.kitchensync.KitchenSync,VERSION,isInitialized,timeStringParser,initialize,initializeWithCore" name="keywords">
+<title>org.as3lib.kitchensync.KitchenSync</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
 				asdocTitle = 'KitchenSync - KitchenSyncLib v2.0';
 				var baseRef = '../../../';
 				window.onload = configPage;
 			--></script>
-<script type="text/javascript">
-			scrollToNameAnchor();
-		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../package-summary.html" onclick="loadClassListFrame('../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../class-summary.html" onclick="loadClassListFrame('../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../all-index-A.html" onclick="loadClassListFrame('../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../index.html?org/as3lib/kitchensync/KitchenSync.html&amp;org/as3lib/kitchensync/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">KitchenSync</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a>&nbsp;| <a href="#includeExamplesSummary">Examples</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
-				<!--
-				
-					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("KitchenSync"); titleBar_setSubNav(true,true,false,false,false,false,false,false,true,true,false	,false,false,false,false,false);}	
-				-->
-			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public final   class  KitchenSync</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">KitchenSync  <img src="../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>1.2</td></tr></table><p></p><p></p><p></p>
-	 Gateway to the library. Initializes the entire system.
-	 
-	 <p></p><p><a href="#includeExamplesSummary">View the examples</a></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="../../../org/as3lib/kitchensync/core/Synchronizer.html" target="">org.as3lib.kitchensync.core.Synchronizer</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isInitialized" class="signatureLink">isInitialized</a> : Boolean<div class="summaryTableDescription">[static] [read-only] 
-		 Will return true once the initialize function has been called.</div></td><td class="summaryTableOwnerCol">KitchenSync</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#timeStringParser" class="signatureLink">timeStringParser</a> : <a href="../../../org/as3lib/kitchensync/utils/ITimeStringParser.html">ITimeStringParser</a><div class="summaryTableDescription">[static] 
-		 A reference to the time string parser used in KitchenSync.</div></td><td class="summaryTableOwnerCol">KitchenSync</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#KitchenSync()" class="signatureLink">KitchenSync</a>()</div><div class="summaryTableDescription">
-		 Constructor.</div></td><td class="summaryTableOwnerCol">KitchenSync</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#initialize()" class="signatureLink">initialize</a>(enterFrameSeed:DisplayObject, versionCheck:String):void</div><div class="summaryTableDescription">[static] 
-		 Initializes the timing core for KitchenSync.</div></td><td class="summaryTableOwnerCol">KitchenSync</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#initializeWithCore()" class="signatureLink">initializeWithCore</a>(synchronizerCore:<a href="../../../org/as3lib/kitchensync/core/ISynchronizerCore.html">ISynchronizerCore</a>, versionCheck:String):void</div><div class="summaryTableDescription">[static] 
-		 Allows you to specify a synchronizer core when you initialize the system.</div></td><td class="summaryTableOwnerCol">KitchenSync</td></tr></table></div><a name="constantSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Constants</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableConstant"><tr><th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#VERSION" class="signatureLink">VERSION</a> : String = 2.0<div class="summaryTableDescription">[static]  
-		 The current version of the library.</div></td><td class="summaryTableOwnerCol">KitchenSync</td></tr></table></div><script language="javascript" type="text/javascript"><!--
-										showHideInherited();
-										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="isInitialized"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isInitialized</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>isInitialized:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
-		 Will return true once the initialize function has been called.
-		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get isInitialized():Boolean</code><br/></div><a name="propertyDetail"></a><a name="timeStringParser"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">timeStringParser</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>timeStringParser:<a href="../../../org/as3lib/kitchensync/utils/ITimeStringParser.html">ITimeStringParser</a></code><p></p><p></p><p>
-		 A reference to the time string parser used in KitchenSync.
-		 The default is defined in KitchenSyncDefaults.
-		 
-		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get timeStringParser():<a href="../../../org/as3lib/kitchensync/utils/ITimeStringParser.html">ITimeStringParser</a></code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set timeStringParser(value:<a href="../../../org/as3lib/kitchensync/utils/ITimeStringParser.html">ITimeStringParser</a>):void</code><br/><p><span class="label">See also</span></p><div class="seeAlso"><a href="../../../org/as3lib/kitchensync/utils/ITimeStringParser.html" target="">org.as3lib.kitchensync.utils.ITimeStringParser</a></div></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="KitchenSync()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">KitchenSync</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function KitchenSync()</code><p></p><p>
-		 Constructor. Not used.
-		 </p></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="initialize()"></a><a name="initialize(flash.display.DisplayObject,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">initialize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public static function initialize(enterFrameSeed:DisplayObject, versionCheck:String):void</code><p></p><p></p><p>
-		 Initializes the timing core for KitchenSync. Must be called before using any actions.
-		 By default, the system uses EnterFrameCore as the core but other cores can be specified by
-		 calling initializeWithCore() instead. 
-		 
-		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">enterFrameSeed</span>:DisplayObject</code> &mdash; A display object whose ENTER_FRAME event will trigger updates to the synchronizer. 
-		 						 Usually, you can use <code>this</code> in your document class / application root. 
-		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">versionCheck</span>:String</code> (default = <code>NaN</code>)<code></code> &mdash; a string for the version you think you're using. e.g. 1.2 This is recommended
-		 					   but not required. It will throw an error if you're using the wrong version of KS. 
-		 </td></tr></table></p><p><span class="label">See also</span></p><div class="seeAlso"><a href="KitchenSync.html#initializeWithCore()" target="">initializeWithCore()</a></div><br/><span class="label"> Example </span><br/><div class="detailBody"><div class="listing" version="3.0"><pre>
-         // In most circumstances you can initialize KS by adding this line to  
-         // the main funciton of your program (or in the first frame)
-         KitchenSync.initialize(this);
-         </pre></div>
-		 
-		 </div></div><a name="initializeWithCore()"></a><a name="initializeWithCore(org.as3lib.kitchensync.core.ISynchronizerCore,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">initializeWithCore</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function initializeWithCore(synchronizerCore:<a href="../../../org/as3lib/kitchensync/core/ISynchronizerCore.html">ISynchronizerCore</a>, versionCheck:String):void</code><p></p><p></p><p>
-		 Allows you to specify a synchronizer core when you initialize the system.
-		 This can be any of the ISynchronizerCores and will allow you to use enterframes, timers, or other mehtods
-		 to drive the dispatches of your synchronizer. If this sounds too complicated, you can use
-		 the default settings by calling <code>KitchenSync.initialize()</code>
-		 		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">synchronizerCore</span>:<a href="../../../org/as3lib/kitchensync/core/ISynchronizerCore.html">ISynchronizerCore</a></code> &mdash; The synchronizer core to use to drive updates.
-		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">versionCheck</span>:String</code> (default = <code>NaN</code>)<code></code> &mdash; a string for the version you think you're using. e.g. 1.2 This is recommended
-		 					   but not required. It will throw an error if you're using the wrong version of KS. 
-		 </td></tr></table></p><p><span class="label">See also</span></p><div class="seeAlso"><a href="KitchenSync.html#initialize()" target="">initialize()</a><br/><a href="../../../org/as3lib/kitchensync/core/ISynchronizerCore.html" target="">org.as3lib.kitchensync.core.ISynchronizerCore</a></div></div><div class="detailSectionHeader">Constant Detail</div><a name="constantDetail"></a><a name="VERSION"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">VERSION</td><td class="detailHeaderType">Constant</td></tr></table><div class="detailBody"><code>public static const VERSION:String = 2.0</code><p></p><p></p><p> 
-		 The current version of the library. Use this to verify that the library is the
-		 version that your software expects. 
-		 </p></div><a name="includeExamplesSummary"></a><div class="detailSectionHeader">Examples</div><div class="detailBody">
-	  Initialize with default settings.
-	 	<div class="listing" version="3.0"><pre>
-         KitchenSync.initialize(this);
-         </pre></div>
-	 
-	  Initialize with a specific core and version checking.
-	 	<div class="listing" version="3.0"><pre>
-         KitchenSync.initializeWitCore(new EnterFrameCore(this), "2.0");
-         </pre></div>
-	 
-	 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Sun Jan 17 2010, 09:12 PM -08:00  </center></div></body></html><!--<br/>Sun Jan 17 2010, 09:12 PM -08:00  -->
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/as3lib/kitchensync/KitchenSync.html&amp;org/as3lib/kitchensync/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;KitchenSync</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class KitchenSync"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public final  class KitchenSync</td>
+</tr>
+</table>
+<p></p>
+  Gateway to the library. Initializes the entire system.
+  
+  <p></p>
+<br>
+<span class="label">Example</span>
+<br>
+   Initialize with default settings.
+   <div class='listing'><pre>
+   KitchenSync.initialize(this);
+   </pre></div>
+  
+   Initialize with a specific core and version checking.
+   <div class='listing'><pre>
+   KitchenSync.initializeWitCore(new EnterFrameCore(this), "2.0");
+   </pre></div>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="core/Synchronizer.html" target="">org.as3lib.kitchensync.core.Synchronizer</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInitialized">isInitialized</a> : Boolean<div class="summaryTableDescription">[static][read-only]
+   Will return true once the initialize function has been called.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeStringParser">timeStringParser</a> : <a href="utils/ITimeStringParser.html">ITimeStringParser</a>
+<div class="summaryTableDescription">[static]
+   A reference to the time string parser used in KitchenSync.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#KitchenSync()">KitchenSync</a>()</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initialize()">initialize</a>(enterFrameSeed:DisplayObject, versionCheck:String):void</div>
+<div class="summaryTableDescription">[static]
+   Initializes the timing core for KitchenSync.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initializeWithCore()">initializeWithCore</a>(synchronizerCore:<a href="core/ISynchronizerCore.html">ISynchronizerCore</a>, versionCheck:String):void</div>
+<div class="summaryTableDescription">[static]
+   Allows you to specify a synchronizer core when you initialize the system.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#VERSION">VERSION</a> : String = "2.0"<div class="summaryTableDescription">[static] 
+   The current version of the library.</div>
+</td><td class="summaryTableOwnerCol">KitchenSync</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="isInitialized"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isInitialized</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>isInitialized:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Will return true once the initialize function has been called.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get isInitialized():Boolean</code>
+<br>
+</div>
+<a name="timeStringParser"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeStringParser</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>timeStringParser:<a href="utils/ITimeStringParser.html">ITimeStringParser</a></code>&nbsp;&nbsp;[read-write]<p>
+   A reference to the time string parser used in KitchenSync.
+   The default is defined in KitchenSyncDefaults.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get timeStringParser():<a href="utils/ITimeStringParser.html">ITimeStringParser</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set timeStringParser(value:<a href="utils/ITimeStringParser.html">ITimeStringParser</a>):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="utils/ITimeStringParser.html" target="">org.as3lib.kitchensync.utils.ITimeStringParser</a>
+</div>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="KitchenSync()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">KitchenSync</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function KitchenSync()</code><p>
+   Constructor. Not used.
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="initialize()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initialize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function initialize(enterFrameSeed:DisplayObject, versionCheck:String):void</code><p>
+   Initializes the timing core for KitchenSync. Must be called before using any actions.
+   By default, the system uses EnterFrameCore as the core but other cores can be specified by
+   calling initializeWithCore() instead. 
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">enterFrameSeed</span>:DisplayObject</code> &mdash; A display object whose ENTER_FRAME event will trigger updates to the synchronizer. 
+          Usually, you can use <code>this</code> in your document class / application root. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">versionCheck</span>:String</code> &mdash; a string for the version you think you're using. e.g. 1.2 This is recommended
+           but not required. It will throw an error if you're using the wrong version of KS. 
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../kitchensync/KitchenSync.html#initializeWithCore()" target="">initializeWithCore()</a>
+</div>
+<br>
+<span class="label">Example</span>
+<br><div class='listing'><pre>
+   // In most circumstances you can initialize KS by adding this line to  
+   // the main funciton of your program (or in the first frame)
+   KitchenSync.initialize(this);
+   </pre></div>
+   
+   <p></p>
+</div>
+<a name="initializeWithCore()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializeWithCore</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function initializeWithCore(synchronizerCore:<a href="core/ISynchronizerCore.html">ISynchronizerCore</a>, versionCheck:String):void</code><p>
+   Allows you to specify a synchronizer core when you initialize the system.
+   This can be any of the ISynchronizerCores and will allow you to use enterframes, timers, or other mehtods
+   to drive the dispatches of your synchronizer. If this sounds too complicated, you can use
+   the default settings by calling <code>KitchenSync.initialize()</code>
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">synchronizerCore</span>:<a href="core/ISynchronizerCore.html">ISynchronizerCore</a></code> &mdash; The synchronizer core to use to drive updates.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">versionCheck</span>:String</code> &mdash; a string for the version you think you're using. e.g. 1.2 This is recommended
+           but not required. It will throw an error if you're using the wrong version of KS. 
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../kitchensync/KitchenSync.html#initialize()" target="">initialize()</a>
+<br>
+<a href="core/ISynchronizerCore.html" target="">org.as3lib.kitchensync.core.ISynchronizerCore</a>
+</div>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="VERSION"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">VERSION</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const VERSION:String = "2.0"</code><p> 
+   The current version of the library. Use this to verify that the library is the
+   version that your software expects. 
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->
