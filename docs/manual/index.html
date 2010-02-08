@@ -7,81 +7,26 @@
 			KitchenSync v2.0 User Guide
 		</title>
 		<script src="toc.js" type="text/javascript"></script>
-		
-		<base target="_top">
-		<style type="text/css">
-			html, body { 
-				margin:0; padding:0;
-				font-family: Optima, Helvetica, Arial, sans-serif;
-				font-size: 12pt;
-			}
-			body {
-				background: url(images/pattern.gif) fixed;
-				position:relative;
-			}
-			#content { 
-				width: 36em; 
-				margin: 0 auto; padding: 40px;
-				background: #FFF;
-				border: 1px solid #69C;
-				border-top:0; border-bottom:0;
-			}
-			
-			img { border:0; display:block; }
-			a, a:link {color: #930; text-decoration:underline;}
-			a:active, a:hover { color: #993300; font-weight:bold; }
-			a:visited { color: #936;}
-			pre, code {
-				font-family: Monaco, Courier, "Courier New", monospace;
-				font-size:12px;
-				background:#EFEFEF; color: #006;
-			}
-			pre { 
-				width:100%; display:block; 
-				white-space: pre-wrap;       /* css-3 */
-				white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-				white-space: -pre-wrap;      /* Opera 4-6 */
-				white-space: -o-pre-wrap;    /* Opera 7 */
-				word-wrap: break-word;       /* Internet Explorer 5.5+ */
-			}
-			code {
-			}
-			ul { margin-bottom: 1.5em;}
-			li { margin-bottom: 1em;}
-			
-			h1 { font-size: 3em; padding:0; margin-bottom: 0em; }
-			h2 { font-size: 2em; padding:0; margin-bottom: 0em; margin-top:1em;}
-			h3 { font-size: 1.5em; padding:0; margin-bottom: 0em; margin-top:1em;}
-			h4 { font-size: 1.2em; padding:0; margin-bottom: 0em; margin-top:1em;}
-			
-			.meta { font-size: x-small; font-style:italic;}
-			.sidebar {
-				border: 1px solid #666;
-				width:32em;
-				padding:15px; margin: 0 auto 15px;
-				background: #FFE;
-			}
-			.pseudocode {
-				font-style: italic;
-			}
-			.error {
-				color: #FF0000;
-			}
-			
-			div#toc ul {
-			  list-style-type: none;
-			}
-		</style>
+		<link rel="stylesheet" href="styles.css" type="text/css" media="screen" charset="utf-8" />
+		<base target="_top" />
 	</head>
-	<body onload="generateTOC(document.getElementById('toc'));">
+	<body onload="generateTOC('toc', 'content');">
 		<div id="content">
 			<img src="http://mimswright.com/kitchensync/docs/img/KSLogo.png" alt="KitchenSync">
 			<h1>
 				KitchenSyncLib User Guide
 			</h1>
 			<p class="meta">
-				Last updated on 2010-02-02 for version 2.0 of KitchenSync by Mims H. Wright.
+				Last updated on 2010-02-08 for version 2.0 of KitchenSync by Mims H. Wright.
 			</p>
+			<div class="sidebar">
+			<div class="header">
+				About the demos
+			</div>
+			<p>
+			 The demos in this document are hosted on <a href="http://wonderfl.net">Wonderfl.net</a> which is an excellent tool for writing and sharing AS3 code online. For any of the examples below, you can click on the "View Source Code" to view the source and even create a fork and edit it with your own variations.
+			</p></div>
+			<input type="button" class="showHideButton" onclick="toggleTOC('toc', this);" value="Show Table of Contents" />
 			<div id="toc"></div>
 			<h2>
 				KitchenSync Basics
@@ -108,9 +53,7 @@
 				Running the command <code>KitchenSync.initialize()</code> at the beginning of your program will start the Synchronizer. More on that in a bit.
 			</p>
 			<div class="sidebar">
-				<h4>
-					Why use a special class instead of an ENTER_FRAME listener or a Timer?
-				</h4>
+				<div class="header">Why use a special class instead of an ENTER_FRAME listener or a Timer?</div>
 				<p>
 					Using Synchronizer provides a number of advantages over a generic event dispatcher.
 				</p>
@@ -238,9 +181,7 @@ KitchenSync.initialize(this, "2.0");
 				The second argument is totally optional and refers to the current version of KitchenSync. It will simply serve as a reminder of what version you are using and will throw an error if the version of KS you're using isn't what you're expecting.
 			</p>
 			<div class="sidebar">
-				<h4>
-					Tip:
-				</h4>
+				<div class="header">Tip:</div>
 				<p>
 					If you see the following error:
 				</p>
@@ -252,9 +193,7 @@ KitchenSync.initialize(this, "2.0");
 				</p>
 			</div>
 			<div class="sidebar">
-				<h4>
-					About Synchronizer Cores
-				</h4>
+				<div class="header">About Synchronizer Cores</div>
 				<p>
 					It is possible to swap out the method that <code>Synchronizer</code> uses for dispatching updates to its clients. In most cases, this is unnecessary, however, your particular project may have special needs in this department. You can chose the method used by initializing KS using the command <code>KitchenSync.initializeWithCore()</code> (instead of initialize) and passing an instance of type <code>ISynchronizerCore</code>.
 				</p>
@@ -278,9 +217,7 @@ KitchenSync.initialize(this, "2.0");
 				Congratulations, you're using actions!
 			</p>
 			<div class="sidebar">
-				<h4>
-					Keeping Track of Actions
-				</h4>
+				<div class="header">Keeping Track of Actions</div>
 				<p>
 					You don't need to keep a reference to an action for it to continue running, you only need the reference if you want to control the action after it starts (with stop, start, pause, etc.). Therefore, the code:
 				</p>
@@ -406,9 +343,7 @@ new KSSimpleTween (sprite, "x", 0, 400, 3000, 500, Cubic.easeInOut).start();
 				Action groups will be covered in more detail in a <a href="#groups">later section</a>.
 			</p>
 			<div class="sidebar">
-				<h4>
-					Shortcut for Combining Group Types
-				</h4>
+				<div class="header">Shortcut for Combining Group Types</div>
 				<p>
 					Since its common to use parallel and sequenced groups together, there is a shortcut to add them to each other easily. In the constructor for <code>KSSequenceGroup</code> and <code>KSParallel</code> group, parameter actions grouped in an array will be substituted with the other type. For example:
 				</p>
@@ -509,9 +444,7 @@ var sequence:IActionGroup = new KSSequenceGroup (
 				Tweens have a more rich set of options for cloning. They include <code>cloneWithTweenTarget()</code>, <code>cloneWithTargetProperty()</code>, and <code>cloneReversed()</code>.
 			</p>
 			<div class="sidebar">
-				<h4>
-					Controlling Groups of actions
-				</h4>
+				<div class="header">Controlling Groups of actions</div>
 				<p>
 					Most of the time, if a method is called upon an action group, the children of that group will also be affected. For example, if you pause a group, all of the children within it will be paused as well.
 				</p>
@@ -523,7 +456,6 @@ var sequence:IActionGroup = new KSSequenceGroup (
 				While there is no "looping" functionality built into actions, the same effect can be achieved with a special kind of <code>KSSequenceGroup</code> called <code>KSLooper</code>. To loop a tween 5 times, for example, you can use:
 			</p>
 			<pre>
-    
 var tween:ITween = new KSSimpleTween ( sprite, "x", 0, 400, 3000, 0, Cubic.easeInOut );
 var looper:KSLooper = new KSLooper ( tween, 5, true );
 looper.start();
@@ -731,17 +663,13 @@ TweenFactory.newTweenFromObject({target: sprite, x:"0~200", y:"0~200",
 				For a complete list of keywords for the object parser see <a href="objectparser">Appendix B</a>.
 			</p>
 			<div class="sidebar">
-				<h4>
-					Targeting multiple objects
-				</h4>
+				<div class="header">Targeting multiple objects</div>
 				<p>
 					In <code>newTweenFromObject</code>, the target can either be a single object or an array of objects to tween. So you could replace <code>'target: sprite'</code> with <code>'targets: [circle, square, triangle]'</code>.
 				</p>
 			</div>
 			<div class="sidebar">
-				<h4>
-					Value ranges
-				</h4>
+				<div class="header">Value ranges</div>
 				<p>
 					As you can see from the example, there are three equally valid ways to give property ranges.
 				</p>
@@ -774,17 +702,13 @@ new KSSequenceGroup (
 TweenFactory.newTween(sprite, "alpha", 0, AUTO_TWEEN_VALUE, "2s").start();
 </pre>
 			<div class="sidebar">
-				<h4>
-					Importing AUTO_TWEEN_VALUE
-				</h4>
+				<div class="header">Importing AUTO_TWEEN_VALUE</div>
 				<p>
 					<code>AUTO_TWEEN_VALUE</code> is actually a static constant (that evaluates to <code>NaN</code>) that is part of the <code>org.as3lib.kitchensync.action.tween</code> package. So if you want to use it, remember to import <code>org.as3lib.kitchensync.action.tween.AUTO_TWEEN_VALUE</code>.
 				</p>
 			</div>
 			<div class="sidebar">
-				<h4>
-					When to use auto tween values
-				</h4>
+				<div class="header">When to use auto tween values</div>
 				<p>
 					<code>AUTO_TWEEN_VALUE</code> can be used in <code>KSTweens</code> and <code>KSSimpleTweens</code> including all of the constructors in <code>TweenFactory</code>. When using <code>TweenFactory.newTweenFromObject()</code>, you can use <code>AUTO_TWEEN_VALUE</code> or just omit either the start or end value for a property.
 				</p>
@@ -871,9 +795,7 @@ TintTweenTarget(target:DisplayObject, startValue:* = CURRENT_TINT, endValue:* = 
 TweenFactory.newTimelineTween(target:MovieClip, startFrame:Object = null, endFrame:Object = null, duration:* = -1, easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween
 </pre>
 			<div class="sidebar">
-				<h4>
-					Tip:
-				</h4>
+				<div class="header">Tip:</div>
 				<p>
 					To play an animation backwards simply make the start frame later than the end frame.
 				</p>
@@ -889,9 +811,7 @@ newTimelineTween(mc, 100, 0, TweenController.AUTO):KSTween;
 				Most of these parameters are pretty straightforward. You provide a movie clip containing the animation, the start and end frame of the animation, and the details of the tween. You may notice that the duration is set to -1 by default. For this particular method, setting the duration to -1 (represented by the constant <code>TimelineController.AUTO</code>) will use the natural duration of the animation instead of a specified duration. For example, if you want to tween from frame 1 to frame 61 of your animation and your framerate is 30fps, setting duration to <code>TimelineController.AUTO</code> will make your tween the natural duration of the animation, in this case 2 seconds. This can be very helpful when you need your tween to sync up with other animations in the timeline.
 			</p>
 			<div class="sidebar">
-				<h4>
-					Making sure you have enough frames
-				</h4>
+				<div class="header">Making sure you have enough frames</div>
 				<p>
 					Timeline tweens work by stepping through each frame on the timeline meaning only frames that exist on the timeline will be shown and motion is not interpolated as it is in a regular tween. The result is that timeline tweens that alter the duration or easing function can appear a little bit chunky. For best results, make the animation much longer than you intend it to be then set the duration to your desired time. That way there are more frames for you to work with and it will appear smoother.
 				</p>
@@ -1001,15 +921,13 @@ var group:IActionGroup = new KSSeuqenceGroup (
 			<p>
 				KitchenSync supports both synchronous (normal) and asynchronous functions with the action classes <code>KSFunction</code> and <code>KSAsyncFunction</code>. Both allow you to pass in parameters to the function and even retrieve results of the function.
 			</p>
-			<h5>
+			<h4>
 				Synchronous Functions
-			</h5>
+			</h4>
 			<p>
 				First, let's look at the <code>KSFunction</code> constructor:
 			</p>
-			<pre>
-				new KSFunction(func:Function, delay:Object = 0, ... args)
-			</pre>
+			<pre>new KSFunction(func:Function, delay:Object = 0, ... args)</pre>
 			<p>
 				The last parameter, <code>args</code>, is an optional list of one or more arguments that will be passed to the function when it's called.
 			</p>
@@ -1022,9 +940,7 @@ var group:IActionGroup = new KSSeuqenceGroup (
 			<div style="text-align:center;width:465px;"><iframe title="forked from: HelloKitchenSync - wonderfl build flash online" scrolling="no" src="http://wonderfl.net/blogparts/3921bfc5b5de99bcf74b3be8f1b083b7ce63e25b" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/3921bfc5b5de99bcf74b3be8f1b083b7ce63e25b" title="forked from: HelloKitchenSync - wonderfl build flash online">View Source Code</a></div>
 			
 			<div class="sidebar">
-				<h4>
-					Tip:
-				</h4>
+				<div class="header">Tip:</div>
 				<p>
 					When providing the function name, make sure to leave off the () parentheses.
 				</p>
@@ -1033,9 +949,9 @@ var group:IActionGroup = new KSSeuqenceGroup (
 				</p>
 			</div>
 			
-			<h5>
+			<h4>
 				Asynchronous Functions
-			</h5>
+			</h4>
 			<p>
 				Asynchronous functions are functions that execute outside of a main thread of an application. Strictly speaking, Flash Player does not support threads but actions such as loading images from a server can still take place in the background while the program continues normally. Running asynchronous functions as actions is a little bit more complicated than regular functions but the core concepts are the same.
 			</p>
@@ -1092,8 +1008,9 @@ var group:IActionGroup = new KSSeuqenceGroup (
 new KSSound(sound:*, delay:* = 0, soundOffset:* = 0)
 </pre>
 			<p>
-				Here's an example using a <code>KSSound</code> and a sequence of functions that show subtitles under a song. Notice that you can pause and play the entire group of actions at once so the subtitles actually pause with the sound.
+				Here's an example using a <code>KSSound</code> and a sequence of functions that show subtitles under a song. Notice that you can pause and play the entire group of actions at once so the subtitles actually pause with the sound. 
 			</p>
+			<p class="meta">Note: because of the way this Flash content is embedded, you will have to visit <a href="http://wonderfl.net/code/75f75396ae4cc3b3e79fd15aa80509f9ad199056" title="Closed Captioning Demo - Skrypt Kidz 3000 theme song - wonderfl build flash online">Wonderfl.net</a> to control the flash with the keyboard.</p>
 			<div style="text-align:center;width:465px;">
 				<iframe title="Closed Captioning Demo - Skrypt Kidz 3000 theme song" scrolling="no" src="http://wonderfl.net/blogparts/75f75396ae4cc3b3e79fd15aa80509f9ad199056" width="465" height="490" style="border:1px black solid;"></iframe><a href="http://wonderfl.net/code/75f75396ae4cc3b3e79fd15aa80509f9ad199056" title="Closed Captioning Demo - Skrypt Kidz 3000 theme song - wonderfl build flash online">View Source Code</a>
 			</div>
@@ -1106,7 +1023,7 @@ new KSSound(sound:*, delay:* = 0, soundOffset:* = 0)
 			<p>
 				The example below could be used to fade in a sound (from volume 0 to 1) over 5 seconds.
 			</p>
-			<pre> 
+			<pre>
 var sound:Sound;
 // load your sound here...
 

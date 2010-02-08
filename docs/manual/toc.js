@@ -1,6 +1,7 @@
 /*
  * Dynamic Table of Contents script
  * by Matt Whitlock <http://www.whitsoftdev.com/>
+ * Modded by mims wright
  */
 
 function createLink(href, innerHTML) {
@@ -10,11 +11,14 @@ function createLink(href, innerHTML) {
 	return a;
 }
 
-function generateTOC(toc) {
+function generateTOC(toc, body) {
 	var i2 = 0, i3 = 0, i4 = 0;
+	toc = document.getElementById(toc);
+	toc.style.display = "none";
 	toc = toc.appendChild(document.createElement("ul"));
-	for (var i = 0; i < document.body.childNodes.length; ++i) {
-		var node = document.body.childNodes[i];
+	body = document.getElementById(body);
+	for (var i = 0; i < body.childNodes.length; ++i) {
+		var node = body.childNodes[i];
 		var tagName = node.nodeName.toLowerCase();
 		if (tagName == "h4") {
 			++i4;
@@ -39,5 +43,16 @@ function generateTOC(toc) {
 			node.id = "section" + section;
 			toc.appendChild(h2item = document.createElement("li")).appendChild(createLink("#section" + section, node.innerHTML));
 		}
+	}
+}
+
+function toggleTOC(toc, button) {
+	toc = document.getElementById(toc);
+	if (toc.style.display == "block" || toc.style.display == "") {
+		toc.style.display = "none";
+		button.value = "Show Table of Contents"
+	} else {
+		toc.style.display = "block";
+		button.value = "Hide Table of Contents"
 	}
 }
