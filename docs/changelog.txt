@@ -6,76 +6,95 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 ===== v2.0* =====
 Note: Version 2.0 represents a major overhaul to the entire system for greater simplicity and practical functionality. This version will not be backwards compatible. Version 1.x development will continue under a separate branch starting with 1.7.
 
-REFACTORED The way time is handled throughout. The sync mode option is deprecated and will always be active.
-ADDED ISynchronizerCore and example core classes. This allows advanced users to switch between different methods of timing (e.g. enterframe or timer based)
-ADDED cycles to replace frames in Synchronizer. Every update counts as a cycle.
-ADDED FrameRateUtil for getting instantaneous and averaged framerates of the system. The FrameRateView now makes use of this class and has more options.
-REMOVED Timestamp class. From now on, the synchronizer will dispatch an int representing the system time since the SWF initialized. Also removed TimestampUtil
-CHANGED Using TimeStringParser_en to work with frames is now not recommended but a frameRate property has been added to support it. timeStringParser is now a property of KitchenSync instead of being defined in AbstractAction. 
-ADDED a method to track the number of active actions.
+USABILITY
 
+ADDED Better docs to KitchenSyncEvent class. 
+ADDED methods in TweenFactory and renamed some.
 REFACTORED Constructors throughout the system for more consistency and ease of use.
 REMOVED delay from the KSFunction constructor.
-
 CHANGED all color matrix tweens to use values between -1 and 1.
 
-REFACTORED Loading classes. Now it's much easier to use and more powerful.
-ADDED KSLoader for queueing up Loaders for loading SWFs and images
-ADDED KSLoadQueue for quickly creating a class to load files from the network in a batch.
-ADDED the resultList property to the ILoaderAction interface so that you can quickly access the loaded files in a batch.
-FIXED some minor bugs
 
-ADDED IPauseable interface extracted from IAction. (wiht intention of making Synchronizer use this)
+SYNCHRONIZER AND TIME
 
-REFACTORED IAction and AbstractAction.
+REFACTORED The way time is handled throughout. The sync mode option is deprecated and will always be active.
+ADDED ISynchronizerCore and example core classes. This allows advanced users to switch between different methods of timing (e.g. enterframe or timer based)
+REMOVED Timestamp class. From now on, the synchronizer will dispatch an int representing the system time since the SWF initialized. Also removed TimestampUtil
+ADDED a method to track the number of active actions.
+ADDED cycles to replace frames in Synchronizer. Every update counts as a cycle.
+ADDED FrameRateUtil for getting instantaneous and averaged framerates of the system. The FrameRateView now makes use of this class and has more options.
+CHANGED Using TimeStringParser_en to work with frames is now not recommended but a frameRate property has been added to support it. timeStringParser is now a property of KitchenSync instead of being defined in AbstractAction. 
+
+
+ACTION ARCHITECTURE
+
 MOVED some important methods from AbstractAction-only to IAction.
-REMOVED action triggers from AbstractAction. Use KSSequenceGroups instead. 
+ADDED IPauseable interface extracted from IAction. (wiht intention of making Synchronizer use this) 
 ADDED an IJumpableAction to specify jumpToTime and jumpByTime separate from IAction.
 ADDED IPrecisionAction that defines a method that can start an action at a specific start time. Used in Staggered group
 ADDED jumpToTime and jumpByTime to AbstractAction so (almost) all actions have this functionality.
 OPTIMIZED startTimeHasElapsed and durationHasElapsed in AbstractAction
-
-
-REFACTORED groups
-MOVED action group related files to org.as3lib.kitchensync.action.group package
-ADDED an interface for groups, IActionGroup. 
-ADDED Syntactic sugar to the group constructors. using an array in the constructor for a parallel group adds a sequence and vice versa.
-ADDED Looping via a new group called KSLooper.
-FIXED a timing issue in KSStaggeredGroup. Now the animations from this group are much smoother. 
-ADDED totalDuration to groups.
-ADDED KSRandomGroup.
-REMOVED KSSteppedSequenceGroup because it seemed kinda useless.
-
-ADDED KSAsynchronousIteration for running processor-intensive for loops spaced out over a period of time so that they are essentially asynchronous.
+REMOVED action triggers from AbstractAction. Use KSSequenceGroups instead.
 ADDED togglePause() method to AbstractAction.
 ADDED progress variable to AbstractAction for getting percentage complete of an action.
 
-ADDED Better docs to KitchenSyncEvent class. 
-RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong event type appear in the auto-complete if the constant name and string don't match.
 
-REMOVED eventType and useWeakReferences class properties of KSEventDispatcher. Modified other methods for garbage collection.
+TWEENS
 
-REMOVED KSMovieClipController since it didn't seem to add much and could be confused easily with TimelineController.
-
-RENAMED KSSoundController to KSSound
-
-FIXED pausing in KSAsynchronousEvent
-
-RENAMED KSAsynchronousFunction and KSAsynchronousLoop to KSAsyncFunction and KSAsyncLoop
-
-REFACTORED tweens.
-ADDED easing related accessors to ITween.
 ADDED methods in TweenFactory and renamed some.
 CHANGED constructors in KSTween. Emphasis is now on using TweenFactory.
 IMPROVED Object parser in TweenFactory
 MOVED all tween related classes and tween targets into org.as3lib.kitchensync.action.tween package. Got rid of tweentarget package.
-REFACTORED KSTween clone functions. Some are a little hacky but easy to use.
-ADDED ITweenTargetCollection for KSTween. 
+REFACTORED KSTween clone functions. Some are a little hacky but easy to use. 
 ADDED a method for getting the natural duration of a timeline tweeen in TimelineController.
 ADDED SoundTransformProperties and refactored SoundTransformTarget
+ADDED easing related accessors to ITween.
+ADDED ITweenTargetCollection for KSTween.
+
+
+ACTION GROUPS
+
+MOVED action group related files to org.as3lib.kitchensync.action.group package
+ADDED an interface for groups, IActionGroup. 
+ADDED Syntactic sugar to the group constructors. using an array in the constructor for a parallel group adds a sequence and vice versa.
+ADDED Looping via a new group called KSLooper. 
+ADDED totalDuration to groups.
+ADDED KSRandomGroup.
+REMOVED KSSteppedSequenceGroup because it seemed kinda useless.
+
+
+LOADING ACTIONS 
+
+REFACTORED Now it's much easier to use and more powerful.
+ADDED KSLoader for queueing up Loaders for loading SWFs and images
+ADDED KSLoadQueue for quickly creating a class to load files from the network in a batch.
+ADDED the resultList property to the ILoaderAction interface so that you can quickly access the loaded files in a batch.
+
+
+RENAMING OF CLASSES
+
+RENAMED KitchenSyncEvent types because of a bug in Flex which makes the wrong event type appear in the auto-complete if the constant name and string don't match.
+RENAMED KSSoundController to KSSound
+RENAMED KSAsynchronousFunction and KSAsynchronousLoop to KSAsyncFunction and KSAsyncLoop
 RENAMED VALUE_AT_START_OF_TWEEN to AUTO_TWEEN_VALUE and moved it to a global file. Fixed a bug where this wasn't working. Also added this to KSSimpleTween.
 
+
+BUG FIXES
+
+FIXED a timing issue in KSStaggeredGroup. Now the animations from this group are much smoother.
+FIXED pausing in KSAsynchronousEvent
+FIXED some minor bugs
+
+
+MISC
+
+ADDED KSAsynchronousIteration for running processor-intensive for loops spaced out over a period of time so that they are essentially asynchronous.
+REMOVED eventType and useWeakReferences class properties of KSEventDispatcher. Modified other methods for garbage collection.
+REMOVED KSMovieClipController since it didn't seem to add much and could be confused easily with TimelineController.
 IMPROVED build.xml to include more targets for building the library. Using SDK 3.4 now.
+
+
+
 
 ===== v1.7 =====
 ADDED Grant Skinner's ColorMatrix class for some color tweens
