@@ -191,9 +191,62 @@ package org.as3lib.kitchensync.action.tween
 											 startValue:Number = NaN, endValue:Number = NaN, 
 											 duration:* = 0, delay:* = 0, 
 											 easingFunciton:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
-			var x:ITweenTarget = new TargetProperty(target, "scaleX", startValue, endValue);
-			var y:ITweenTarget = new TargetProperty(target, "scaleY", startValue, endValue);
-			return newTweenWithTargets([x,y], duration, delay, easingFunciton, easingMod1, easingMod2);
+			
+			
+			var xScale:ITweenTarget = new TargetProperty(target, "scaleX", startValue, endValue);
+			var yScale:ITweenTarget = new TargetProperty(target, "scaleY", startValue, endValue);
+			return newTweenWithTargets([xScale,yScale], duration, delay, easingFunciton, easingMod1, easingMod2);
+		} 
+
+		/**
+		 * Creates a tween that scales x and y but with more options than newScaleTween().
+		 * Note that AUTO_TWEEN_VALUE won't work correctly with this tween because it determines the x and y positioning at
+		 * the time that it is created.
+		 * 
+		 * @param target The display object whose property will be changed
+		 * @param startValueX The starting scaleX of the target. 
+		 * @param endValueX The ending scaleX of the target. 
+		 * @param startValueY The starting scaleY of the target.
+		 * @param endValueY The ending scaleY of the target. 
+		 * @param centerPointX The point in the displayObject's space that will be the centerpoint of the scale. Use a percentage rather than a pixel number. Default is 0, or left.
+		 * @param centerPointY The point in the displayObject's space that will be the centerpoint of the scale. Use a percentage rather than a pixel number. Default is 0, or top.
+		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too. 
+		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
+		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue.
+		 * @param easingMod1 An optional modifier to the easing funtion.
+		 * @param easingMod2 An optional modifier to the easing funtion.
+		 * @return A new KSTween instance.
+		 * 
+		 * @since 2.0.1
+		 */
+		public static function newScaleTweenAdvanced(target:DisplayObject, 
+											 startValueX:Number, endValueX:Number, 
+											 startValueY:Number, endValueY:Number, 
+											 centerPointX:Number = 0, centerPointY:Number = 0, 
+											 duration:* = 0, delay:* = 0, 
+											 easingFunciton:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
+			
+			var xScale:ITweenTarget = new TargetProperty(target, "scaleX", startValueX, endValueX);
+			var yScale:ITweenTarget = new TargetProperty(target, "scaleY", startValueY, endValueY);
+			
+			// get natural width and height of DO.
+			var w:Number = target.width / target.scaleX;
+			var h:Number = target.height / target.scaleY;
+			
+			// get actual point in pixels.
+			var centerPointPx:Point = new Point(
+				(centerPointX * w),
+				(centerPointY * h)
+			);
+			
+			var xFrom:Number = centerPointPx.x - (centerPointX * w * startValueX) + target.x;
+			var xTo:Number = centerPointPx.x - (centerPointX * w * endValueX)  + target.x;
+			var yFrom:Number = centerPointPx.y - (centerPointY * h * startValueY)  + target.y;
+			var yTo:Number = centerPointPx.y - (centerPointY * h * endValueY)  + target.y;
+			
+			var x:ITweenTarget = new TargetProperty(target, "x", xFrom, xTo);
+			var y:ITweenTarget = new TargetProperty(target, "y", yFrom, yTo);
+			return newTweenWithTargets([xScale,yScale,x,y], duration, delay, easingFunciton, easingMod1, easingMod2);
 		} 
 
 		/**

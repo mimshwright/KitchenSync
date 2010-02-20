@@ -5,6 +5,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 ===== v2.0.1 =====
 ADDED KSNullAction
+ADDED Advanced scale method to TweenFactory
 
 ===== v2.0* =====
 Note: Version 2.0 represents a major overhaul to the entire system for greater simplicity and practical functionality. This version will not be backwards compatible. Version 1.x development will continue under a separate branch starting with 1.7.
