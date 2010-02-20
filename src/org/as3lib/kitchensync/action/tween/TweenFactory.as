@@ -203,6 +203,17 @@ package org.as3lib.kitchensync.action.tween
 		 * Note that AUTO_TWEEN_VALUE won't work correctly with this tween because it determines the x and y positioning at
 		 * the time that it is created.
 		 * 
+		 * @example
+		 * <listing version="3.0">
+		 * // scale sprite from 0 to 100% from the centre of the sprite over 1 second, no delay, with Cubic ease-in-out. 
+		 * TweenFactory.newScaleTweenAdvanced(
+		 *		sprite, 
+		 *		0, 1, 
+		 *		0, 1,  
+		 *		0.5, 0.5, 
+		 *		1000, 0, Cubic.easeInOut)
+		 * </listing>
+		 * 
 		 * @param target The display object whose property will be changed
 		 * @param startValueX The starting scaleX of the target. 
 		 * @param endValueX The ending scaleX of the target. 
