@@ -23,7 +23,7 @@ package org.as3lib.kitchensync.action
 	{
 		/** Not used for KSWait. Use delay instead. */
 		override public function set duration(duration:*):void {
-			throw new Error("duration is ignored for KSWait");
+			throw new Error("duration is ignored for this action");
 		}
 		
 		/**
