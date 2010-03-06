@@ -55,26 +55,28 @@ package org.as3lib.kitchensync
 		private static var _timeStringParser:ITimeStringParser;
 		
 		/**
-		 * Initializes the timing core for KitchenSync. Must be called before using any actions.
+		 * Initializes the timing core for KitchenSync. 
+		 * As of 2.0.1 no longer required to start KitchenSync
 		 * By default, the system uses EnterFrameCore as the core but other cores can be specified by
 		 * calling initializeWithCore() instead. 
 		 * 
 		 * @example <listing version="3.0">
 		 * // In most circumstances you can initialize KS by adding this line to  
 		 * // the main funciton of your program (or in the first frame)
-		 * KitchenSync.initialize(this);
+		 * KitchenSync.initialize();
 		 * </listing>
+		 * 
+		 * @deprecated
 		 * 
 		 * @see #initializeWithCore()
 		 * 
-		 * @param enterFrameSeed A display object whose ENTER_FRAME event will trigger updates to the synchronizer. 
-		 * 						 Usually, you can use <code>this</code> in your document class / application root. 
+		 * @param displayObject Actually not used but leaving this in keeps older code backwards compatible.
 		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended
 		 * 					   but not required. It will throw an error if you're using the wrong version of KS. 
 		 */
-		public static function initialize(enterFrameSeed:DisplayObject, versionCheck:String = VERSION):void
+		public static function initialize(displayObject:DisplayObject = null, versionCheck:String = VERSION):void
 		{	
-			var core:ISynchronizerCore = new EnterFrameCore(enterFrameSeed);
+			var core:ISynchronizerCore = new EnterFrameCore();
 			initializeWithCore(core, versionCheck);
 		}
 		

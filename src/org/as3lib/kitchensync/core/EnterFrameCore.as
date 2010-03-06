@@ -1,6 +1,7 @@
 package org.as3lib.kitchensync.core
 {
 	import flash.display.DisplayObject;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	
 	/**
@@ -21,8 +22,11 @@ package org.as3lib.kitchensync.core
 		 * @param displayObject The displayObject to use for enterFrame updates.
 		 * 						Note: this no longer needs to be added to stage (as it was in older versions.)
 		 */
-		public function EnterFrameCore(displayObject:DisplayObject)
+		public function EnterFrameCore(displayObject:DisplayObject = null)
 		{
+			if ( displayObject == null) {
+				displayObject = new Sprite();
+			}
 			_displayObject = displayObject;
 		}
 		

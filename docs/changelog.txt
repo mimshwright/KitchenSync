@@ -4,6 +4,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 * = Contains syntax changes that may require refactoring of legacy code.
 
 ===== v2.0.1 =====
+CHANGED No longer requires KitchenSync.initialize() ! now auto-initializes.
 ADDED KSNullAction
 ADDED Advanced scale method to TweenFactory
 

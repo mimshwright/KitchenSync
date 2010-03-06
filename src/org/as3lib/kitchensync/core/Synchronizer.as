@@ -99,11 +99,10 @@ package org.as3lib.kitchensync.core
 		 * @param client The client that will receive the update.
 		 */ 
 		public function registerClient(client:ISynchronizerClient):void {
-			if (_core && KitchenSync.isInitialized) {
-				_clients[client] = client;
-			} else {
-				throw new Error("KitchenSync has not been initialized yet and actions will not receive updates. Please run KitchenSync.initialize() in the main function of your program (or in the first frame).");
+			if (_core == null) {
+				KitchenSync.initialize();
 			}
+			_clients[client] = client;
 		}
 		
 		/**
