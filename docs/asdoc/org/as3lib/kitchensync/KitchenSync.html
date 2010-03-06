@@ -103,7 +103,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#initialize()">initialize</a>(enterFrameSeed:DisplayObject, versionCheck:String):void</div>
+<a class="signatureLink" href="#initialize()">initialize</a>(displayObject:DisplayObject = null, versionCheck:String):void</div>
 <div class="summaryTableDescription">[static]
    Initializes the timing core for KitchenSync.</div>
 </td><td class="summaryTableOwnerCol">KitchenSync</td>
@@ -198,16 +198,16 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public static function initialize(enterFrameSeed:DisplayObject, versionCheck:String):void</code><p>
-   Initializes the timing core for KitchenSync. Must be called before using any actions.
+<code>public static function initialize(displayObject:DisplayObject = null, versionCheck:String):void</code><p>
+   Initializes the timing core for KitchenSync. 
+   As of 2.0.1 no longer required to start KitchenSync
    By default, the system uses EnterFrameCore as the core but other cores can be specified by
    calling initializeWithCore() instead. 
    
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">enterFrameSeed</span>:DisplayObject</code> &mdash; A display object whose ENTER_FRAME event will trigger updates to the synchronizer. 
-          Usually, you can use <code>this</code> in your document class / application root. 
+<td width="20px"></td><td><code><span class="label">displayObject</span>:DisplayObject</code> (default = <code>null</code>)<code></code> &mdash; Actually not used but leaving this in keeps older code backwards compatible.
    </td>
 </tr>
 <tr>
@@ -230,7 +230,7 @@ showHideInherited();
 <br><div class='listing'><pre>
    // In most circumstances you can initialize KS by adding this line to  
    // the main funciton of your program (or in the first frame)
-   KitchenSync.initialize(this);
+   KitchenSync.initialize();
    </pre></div>
    
    <p></p>

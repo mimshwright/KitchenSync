@@ -58,7 +58,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#EnterFrameCore()">EnterFrameCore</a>(displayObject:DisplayObject)</div>
+<a class="signatureLink" href="#EnterFrameCore()">EnterFrameCore</a>(displayObject:DisplayObject = null)</div>
 <div class="summaryTableDescription">
    Constructor.</div>
 </td><td class="summaryTableOwnerCol">EnterFrameCore</td>
@@ -93,13 +93,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function EnterFrameCore(displayObject:DisplayObject)</code><p>
+<code>public function EnterFrameCore(displayObject:DisplayObject = null)</code><p>
    Constructor.
    
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">displayObject</span>:DisplayObject</code> &mdash; The displayObject to use for enterFrame updates.
+<td width="20px"></td><td><code><span class="label">displayObject</span>:DisplayObject</code> (default = <code>null</code>)<code></code> &mdash; The displayObject to use for enterFrame updates.
          Note: this no longer needs to be added to stage (as it was in older versions.)
    </td>
 </tr>
