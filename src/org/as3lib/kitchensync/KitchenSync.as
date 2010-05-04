@@ -50,7 +50,12 @@ package org.as3lib.kitchensync
 		 * 
 		 * @see org.as3lib.kitchensync.utils.ITimeStringParser
 		 */
-		public static function get timeStringParser():ITimeStringParser { return _timeStringParser; }
+		public static function get timeStringParser():ITimeStringParser { 
+			if (_timeStringParser == null) {
+				_timeStringParser = KitchenSyncDefaults.timeStringParser;
+			} 
+			return _timeStringParser; 
+		}
 		public static function set timeStringParser(timeStringParser:ITimeStringParser):void { _timeStringParser = timeStringParser; }
 		private static var _timeStringParser:ITimeStringParser;
 		
@@ -105,7 +110,6 @@ package org.as3lib.kitchensync
 			synchronizer = Synchronizer.getInstance();
 			synchronizer.core = synchronizerCore;
 			
-			timeStringParser = KitchenSyncDefaults.timeStringParser;
 			_isInitialized = true;
 		}
 		

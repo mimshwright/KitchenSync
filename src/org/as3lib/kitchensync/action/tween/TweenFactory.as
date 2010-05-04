@@ -76,6 +76,34 @@ package org.as3lib.kitchensync.action.tween
 				
 			return new KSTween(tweenTargets, duration, delay, easingFunction, easingMod1, easingMod2);
 		}
+		
+		/**
+		 * Creates an alpha tween that fades out.
+		 * The list of parameters are simplified to keep this function short and practical.
+		 *
+		 * @see #newTween()
+		 * @see #newFadeInTween()
+		 * 
+		 * @param target Tween's target must be a display object.
+		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 */
+		public static function newFadeOutTween(target:DisplayObject, duration:* = 0):KSTween {
+			return newTween(target, "alpha", AUTO_TWEEN_VALUE, 0, duration, 0, Linear.ease); 
+		}
+		
+		/**
+		 * Creates an alpha tween that fades in.
+		 * The list of parameters are simplified to keep this function short and practical.
+		 *
+		 * @see #newTween()
+		 * @see #newFadeOutTween()
+		 * 
+		 * @param target Tween's target must be a display object.
+		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 */
+		public static function newFadeInTween(target:DisplayObject, duration:* = 0):KSTween {
+			return newTween(target, "alpha", AUTO_TWEEN_VALUE, 1, duration, 0, Linear.ease); 
+		}
 
 		/**
 		 * Creates a tint tween.
