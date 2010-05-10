@@ -1,1108 +1,198 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="KSTween,org.as3lib.kitchensync.action.tween.KSTween,_easingFunction,_easingMod1,_easingMod2,_firstUpdate,_snapToValueOnComplete,_tweenTargets,easingFunction,easingMod1,easingMod2,snapToValueOnComplete,tweenTargets,addTweenTarget,clone,cloneReversed,cloneWithTargetProperty,cloneWithTweenTarget,complete,kill,removeAllTweenTargets,removeTweenTarget,reset,reverse,start,startAtTime,toString,update" name="keywords">
-<title>org.as3lib.kitchensync.action.tween.KSTween</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="KSTween,org.as3lib.kitchensync.action.tween.KSTween,AUTO,AUTO_TWEEN_VALUE,CURRENT_TINT,LEFT_TO_RIGHT,NON_NUMERIC_PROPERTY_ERROR,NO_TINT,PAN,RIGHT_TO_LEFT,VOLUME,_blurXTweenTarget,_blurYTweenTarget,_colorMatrix,_currentTransform,_currentValue,_delay,_delta,_duration,_easingFunction,_easingFunction,_easingMod1,_easingMod1,_easingMod2,_easingMod2,_endOnCurrentTint,_endTransform,_endValue,_endValue,_endValue,_endValue,_endValue,_endValue,_filterType,_firstUpdate,_pauseTime,_paused,_previousFilter,_property,_property,_property,_running,_snapToInteger,_snapToValueOnComplete,_startOnCurrentTint,_startTime,_startTransform,_startValue,_startValue,_startValue,_startValue,_startValue,_startValue,_target,_target,_target,_target,_target,_target,_targetSound,_tintOpacity,_tweenTargets,currentTransform,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,delay,differenceInValues,differenceInValues,differenceInValues,differenceInValues,duration,easingFunction,easingFunction,easingFunction,easingMod1,easingMod1,easingMod1,easingMod2,easingMod2,easingMod2,endTransform,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,filterType,filterType,filterType,filterType,filters,filters,isInstantaneous,isPaused,isRunning,objectParser,property,property,property,property,runningTime,snapToInteger,snapToValueOnComplete,startTransform,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,target,target,target,target,target,target,targetSound,tweenTargets,addTweenTarget,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,applyTintOpacity,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,cloneReversed,cloneWithTarget,cloneWithTargetProperty,cloneWithTweenTarget,clone,complete,complete,describeKeywords,evaluateFrameLabel,getDefaultFilter,getNaturalDuration,isPropertyValid,kill,kill,newFadeInTween,newFadeOutTween,newFilterTween,newPositionTween,newScaleTween,newScaleTweenAdvanced,newTimelineTween,newTintTween,newTween,newTweenFromObject,newTweenWithTargets,parseObject,parseObject,pause,removeAllTweenTargets,removeTweenTarget,reset,reset,reset,reset,reset,reset,reset,reset,reset,reset,reverse,setTargetPropterty,start,start,startAtTime,startAtTime,stop,toString,toString,toString,toString,unpause,update,update,updateTarget,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween"><title>org.as3lib.kitchensync.action.tween.KSTween</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'KSTween - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/as3lib/kitchensync/action/tween/KSTween.html&amp;org/as3lib/kitchensync/action/tween/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;KSTween</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class KSTween"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class KSTween</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">KSTween <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="../AbstractAction.html">AbstractAction</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Implements</td><td><a href="../IPrecisionAction.html">IPrecisionAction</a>, <a href="ITween.html">ITween</a>, org.as3lib.kitchensync.action.tween.ITweenTargetCollection</td>
-</tr>
-</table>
-<p></p>
-  Used for animating an object's properties, such as position or scale, over time. 
-  A tween will change an object's numeric value over time.
-  It makes use of one or more TweenTarget objects to determine what to tween. 
-  This can be handled automatically or declared explicitly.
-  
-  Rule of thumb: KSTween is the action that handles the timing and starting and stopping
-  the tween while ITweenTargets control the values of the tween. This allows you to tween
-  all types of values, including complex ones like filter properties, with a single tween class. 
-  
-  It's recommended that you use TweenFactory to create the tweens. 
-  
-  <p></p>
-<p>
-<span class="classHeaderTableLabel">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../tween/TweenFactory.html" target="">org.as3lib.kitchensync.action.tween.TweenFactory</a>
-<br>
-<a href="../tween/ITweenTarget.html" target="">org.as3lib.kitchensync.action.tween.ITweenTarget</a>
-<br>
-<a href="../tween/KSSimpleTween.html" target="">org.as3lib.kitchensync.action.tween.KSSimpleTween</a>
-</div>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<div class="showHideLinks">
-<div class="hideInheritedProperty" id="hideInheritedProperty">
-<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
-</div>
-<div class="showInheritedProperty" id="showInheritedProperty">
-<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
-</div>
-</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#autoDelete">autoDelete</a> : Boolean<div class="summaryTableDescription">
-   autoDelete is a flag that indicates whether the action should be killed 
-   when it is done executing.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#delay">delay</a> : int<div class="summaryTableDescription">
-   delay is the time that will pass after the start() method is called
-   before the action begins.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#description">description</a> : String<div class="summaryTableDescription">
-   An optional human-readable description of the action.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#duration">duration</a> : int<div class="summaryTableDescription">
-   duration is the length of time that the action will run.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#easingFunction">easingFunction</a> : Function<div class="summaryTableDescription"> 
-   The function used to interpolated the values between the start and end points.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#easingMod1">easingMod1</a> : Number<div class="summaryTableDescription"> 
-   Used to modify the results of the easing function.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#easingMod2">easingMod2</a> : Number<div class="summaryTableDescription"> 
-   Used to modify the results of the easing function.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#isInstantaneous">isInstantaneous</a> : Boolean<div class="summaryTableDescription">  
-   Should true if the action will occur instantaneously (if duration is 0).</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#isPaused">isPaused</a> : Boolean<div class="summaryTableDescription">
-    Should return true if paused.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#isRunning">isRunning</a> : Boolean<div class="summaryTableDescription">
-    Should return true if the action is running (or paused).</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#progress">progress</a> : Number<div class="summaryTableDescription">
-   Returns the percentage complete of the action (based on duration).</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#runningTime">runningTime</a> : int<div class="summaryTableDescription">
-   
-   The time in ms since the start of the action or 0 if the action isn't running.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#snapToValueOnComplete">snapToValueOnComplete</a> : Boolean<div class="summaryTableDescription">
-   Indicates whether the final value for the easing function should snap to the 
-   target _toValue.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#tweenTargets">tweenTargets</a> : Array<div class="summaryTableDescription">[read-only]</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-</table>
-</div>
-<a name="protectedPropertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Protected Properties</div>
-<div class="showHideLinks">
-<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
-<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
-</div>
-<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
-<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
-</div>
-</div>
-<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_autoDelete">_autoDelete</a> : Boolean<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_delay">_delay</a> : int = 0<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_description">_description</a> : String<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_duration">_duration</a> : int = 0<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_easingFunction">_easingFunction</a> : Function<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_easingMod1">_easingMod1</a> : Number<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_easingMod2">_easingMod2</a> : Number<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_firstUpdate">_firstUpdate</a> : Boolean = true<div class="summaryTableDescription">
-   Set to true for the first time the update is run so that some
-   initial things can be set up.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_pauseTime">_pauseTime</a> : int<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#pauseTime">pauseTime</a> : int<div class="summaryTableDescription">
-   The time at which the action was last paused.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_running">_running</a> : Boolean = false<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_snapToValueOnComplete">_snapToValueOnComplete</a> : Boolean<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#_startTime">_startTime</a> : int<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../AbstractAction.html#startTime">startTime</a> : int<div class="summaryTableDescription">
-   The time at which the action was last started.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_tweenTargets">_tweenTargets</a> : Array<div class="summaryTableDescription">
-   </div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<div class="showHideLinks">
-<div class="hideInheritedMethod" id="hideInheritedMethod">
-<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
-</div>
-<div class="showInheritedMethod" id="showInheritedMethod">
-<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
-</div>
-</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#KSTween()">KSTween</a>(tweenTargets:*, duration:Function = 0, delay:Number = 0, easingFunction:Number = null, easingMod1:*, easingMod2:*)</div>
-<div class="summaryTableDescription">
-   Constructor - It's recommended to use TweenFactory.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#addTweenTarget()">addTweenTarget</a>(tweenTarget:<a href="ITweenTarget.html">ITweenTarget</a>):void</div>
-<div class="summaryTableDescription"> 
-    
-   Adds a target to the tween.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#clone()">clone</a>():<a href="../../action/IAction.html">IAction</a>
-</div>
-<div class="summaryTableDescription"> 
-   Creates a copy of the object with all the property values of the original and returns it.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#cloneReversed()">cloneReversed</a>():<a href="../tween/KSTween.html">KSTween</a>
-</div>
-<div class="summaryTableDescription">
-   Creates a new Tween and reverses the start and end values of the target property.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#cloneWithTargetProperty()">cloneWithTargetProperty</a>(target:*, property:String = ""):<a href="../tween/KSTween.html">KSTween</a>
-</div>
-<div class="summaryTableDescription">
-   Duplicates a tween and if the first tween target is a TargetProperty, makes 
-   a copy of it with a new target and property.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#cloneWithTweenTarget()">cloneWithTweenTarget</a>(target:<a href="ITweenTarget.html">ITweenTarget</a>):<a href="../tween/KSTween.html">KSTween</a>
-</div>
-<div class="summaryTableDescription">
-   Duplicates a tween and replaces all the tween targets with the ones provided.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#jumpByTime()">jumpByTime</a>(time:*):void</div>
-<div class="summaryTableDescription">
-   
-   Moves the playhead forward (or backward) by a specified time.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#jumpToTime()">jumpToTime</a>(time:*, ignoreDelay:Boolean = false):void</div>
-<div class="summaryTableDescription"> 
-   Moves the playhead to a specified time in the action.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#kill()">kill</a>():void</div>
-<div class="summaryTableDescription"> 
-   Unregisters the function and removes any refrerences to objects that it may be holding onto.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#pause()">pause</a>():void</div>
-<div class="summaryTableDescription"> 
-   
-   Causes the object to be paused.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeAllTweenTargets()">removeAllTweenTargets</a>():void</div>
-<div class="summaryTableDescription"> Removes all tween targets from the tween.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeTweenTarget()">removeTweenTarget</a>(tweenTarget:<a href="ITweenTarget.html">ITweenTarget</a>):void</div>
-<div class="summaryTableDescription">
-   
-   Removes a target from the tween.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#reset()">reset</a>():void</div>
-<div class="summaryTableDescription">
-   Stops the tween and sets the target property to the start value.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#reverse()">reverse</a>():void</div>
-<div class="summaryTableDescription">
-   Flips the values for to and from values.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#start()">start</a>():<a href="../../action/IAction.html">IAction</a>
-</div>
-<div class="summaryTableDescription"> 
-   
-   Begins the action running.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#startAtTime()">startAtTime</a>(startTime:int):<a href="../../action/IPrecisionAction.html">IPrecisionAction</a>
-</div>
-<div class="summaryTableDescription"> 
-   This is used by some groups and by advanced users to start the
-   action at a very specific time down to the millisecond.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#stop()">stop</a>():void</div>
-<div class="summaryTableDescription"> 
-   Stops the action from running and resets the timer.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#togglePause()">togglePause</a>():void</div>
-<div class="summaryTableDescription">
-   A convenience method that allows you to toggle the pauseed state.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#toString()">toString</a>():String</div>
-<div class="summaryTableDescription">
-   Returns a description of the tween.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#unpause()">unpause</a>():void</div>
-<div class="summaryTableDescription"> 
-   Resumes the object at the point where it was paused.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
-<div class="summaryTableDescription">
-   
-   This function will be registered by the register method to respond to update events from the synchronizer.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-</table>
-</div>
-<a name="protectedMethodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Protected Methods</div>
-<div class="showHideLinks">
-<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
-<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
-</div>
-<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
-<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
-</div>
-</div>
-<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#complete()">complete</a>():void</div>
-<div class="summaryTableDescription"> 
-   Internal function that completes the action by cleaning up any running processes
-   and unregistering it from the synchronizer.</div>
-</td><td class="summaryTableOwnerCol">KSTween</td>
-</tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#durationHasElapsed()">durationHasElapsed</a>(currentTime:int):Boolean</div>
-<div class="summaryTableDescription">
-   Checks to see whether the duration of the action has elapsed and if the _startTime is defined.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#forceUpdate()">forceUpdate</a>():void</div>
-<div class="summaryTableDescription">
-   Foreces the update() method to fire without being triggered by Synchronizer.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#register()">register</a>():void</div>
-<div class="summaryTableDescription">
-   Adds the action as a listener to the Synchronizer's update event.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#startTimeHasElapsed()">startTimeHasElapsed</a>(currentTime:int):Boolean</div>
-<div class="summaryTableDescription">
-   Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#unregister()">unregister</a>():void</div>
-<div class="summaryTableDescription">
-   Removes the action as a listener to the Synchronizer's update event.</div>
-</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-</table>
-</div>
-<a name="eventSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Events</div>
-<div class="showHideLinks">
-<div class="hideInheritedEvent" id="hideInheritedEvent">
-<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
-</div>
-<div class="showInheritedEvent" id="showInheritedEvent">
-<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
-</div>
-</div>
-<table id="summaryTableEvent" class="summaryTable hideInheritedEvent" cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="hideInheritedEvent">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#event:actionComplete">actionComplete</a>
-</div>
-</td><td class="summaryTableDescription summaryTableCol"> 
-   Dispatched when an action is completed.</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedEvent">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#event:actionPause">actionPause</a>
-</div>
-</td><td class="summaryTableDescription summaryTableCol"> 
-   Dispatched when the action is paused successfully.</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedEvent">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#event:actionStart">actionStart</a>
-</div>
-</td><td class="summaryTableDescription summaryTableCol">
-   Dispatched at the start of an action when the start() method is called
-   or when the action is started within a group.</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-<tr class="hideInheritedEvent">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../AbstractAction.html#event:actionUnpause">actionUnpause</a>
-</div>
-</td><td class="summaryTableDescription summaryTableCol"> 
-   Dispatched when the action is resumed successfully.</td><td class="summaryTableOwnerCol"><a href="../AbstractAction.html">AbstractAction</a></td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="_easingFunction"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_easingFunction</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _easingFunction:Function</code>
-</div>
-<a name="easingFunction"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">easingFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>easingFunction:Function</code>&nbsp;&nbsp;[read-write]<p> 
-   The function used to interpolated the values between the start and end points.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get easingFunction():Function</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set easingFunction(value:Function):void</code>
-<br>
-</div>
-<a name="_easingMod1"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_easingMod1</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _easingMod1:Number</code>
-</div>
-<a name="easingMod1"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">easingMod1</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>easingMod1:Number</code>&nbsp;&nbsp;[read-write]<p> 
-   Used to modify the results of the easing function. 
-   This is only used on some functions such as Elastic.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get easingMod1():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set easingMod1(value:Number):void</code>
-<br>
-</div>
-<a name="_easingMod2"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_easingMod2</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _easingMod2:Number</code>
-</div>
-<a name="easingMod2"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">easingMod2</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>easingMod2:Number</code>&nbsp;&nbsp;[read-write]<p> 
-   Used to modify the results of the easing function. 
-   This is only used on some functions such as Elastic.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get easingMod2():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set easingMod2(value:Number):void</code>
-<br>
-</div>
-<a name="_firstUpdate"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_firstUpdate</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _firstUpdate:Boolean = true</code><p>
-   Set to true for the first time the update is run so that some
-   initial things can be set up. 
-   </p></div>
-<a name="_snapToValueOnComplete"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_snapToValueOnComplete</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _snapToValueOnComplete:Boolean</code>
-</div>
-<a name="snapToValueOnComplete"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">snapToValueOnComplete</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>snapToValueOnComplete:Boolean</code>&nbsp;&nbsp;[read-write]<p>
-   Indicates whether the final value for the easing function should snap to the 
-   target _toValue. If set to true, the target property will equal _toValue regardless
-   of the results of the easing function.
-   
-   </p><p>The default value is <code>true</code>.</p>
-<span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get snapToValueOnComplete():Boolean</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set snapToValueOnComplete(value:Boolean):void</code>
-<br>
-</div>
-<a name="_tweenTargets"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_tweenTargets</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _tweenTargets:Array</code><p>
-   </p></div>
-<a name="tweenTargets"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">tweenTargets</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>tweenTargets:Array</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get tweenTargets():Array</code>
-<br>
-</div>
-<a name="constructorDetail"></a>
-<div class="detailSectionHeader">Constructor detail</div>
-<a name="KSTween()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">KSTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function KSTween(tweenTargets:*, duration:Function = 0, delay:Number = 0, easingFunction:Number = null, easingMod1:*, easingMod2:*)</code><p>
-   Constructor - It's recommended to use TweenFactory.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">tweenTargets</span>:*</code> &mdash; A tweenTarget object (or an array of tweentargets) that contains the values you want to tween.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">duration</span>:Function</code> (default = <code>0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. Accepts string values.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">delay</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; The time to wait before starting the tween. Accepts string values.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingFunction</span>:Number</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between the start and end values. Default is set in KitchenSyncDefaults.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingMod1</span>:*</code> &mdash; An optional modifier to the easing funtion.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">easingMod2</span>:*</code> &mdash; An optional modifier to the easing funtion.
-   </td>
-</tr>
-</table>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../tween/TweenFactory.html#newTween()" target="">org.as3lib.kitchensync.action.tween.TweenFactory.newTween()</a>
-<br>
-<a href="../tween/KSSimpleTween.html" target="">org.as3lib.kitchensync.action.tween.KSSimpleTween</a>
-<br>
-<a href="../tween/KSTween.html#newWithTweenTarget()" target="">newWithTweenTarget()</a>
-</div>
-</div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="addTweenTarget()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">addTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function addTweenTarget(tweenTarget:<a href="ITweenTarget.html">ITweenTarget</a>):void</code><p> 
-    
-   Adds a target to the tween. 
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">tweenTarget</span>:<a href="ITweenTarget.html">ITweenTarget</a></code></td>
-</tr>
-</table>
-</div>
-<a name="clone()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public override function clone():<a href="../../action/IAction.html">IAction</a></code><p> 
-   Creates a copy of the object with all the property values of the original and returns it.
-   This method should be overrided by child classes to ensure that all properties are copied.
-   
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code></td>
-</tr>
-</table>
-</div>
-<a name="cloneReversed()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">cloneReversed</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function cloneReversed():<a href="../tween/KSTween.html">KSTween</a></code><p>
-   Creates a new Tween and reverses the start and end values of the target property.
-   
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/KSTween.html">KSTween</a></code></td>
-</tr>
-</table>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../tween/KSTween.html#reverse()" target="">reverse()</a>
-<br>
-<a href="../tween/KSTween.html#clone()" target="">clone()</a>
-</div>
-<br>
-<span class="label">Example</span>
-<br>
-     <div class='listing'><pre>
-      var tween:KSTween = new KSTween(foo, "x", 100, 200);
-      var sequence:KSSequence = new KSSequence(
-       tween,       // tweens foo's x from 100 to 200
-       tween.cloneReversed()   // tweens foo's x from 200 to 100
-      );
-     </pre></div>
-   
-   <p></p>
-</div>
-<a name="cloneWithTargetProperty()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">cloneWithTargetProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function cloneWithTargetProperty(target:*, property:String = ""):<a href="../tween/KSTween.html">KSTween</a></code><p>
-   Duplicates a tween and if the first tween target is a TargetProperty, makes 
-   a copy of it with a new target and property.
-   The first tweenTarget of the KSTween must be a TargetProperty for this to work.
-   
-   Personal note: This method is somewhat of a hack. I'm including it for 
-   ease of use but a better way to do this would be to create a clone of a 
-   TargetProperty object and attach that to a clone of this KSTween.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:*</code> &mdash; The new target object.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">property</span>:String</code> (default = "<code></code>")<code></code> &mdash; The new property of the target.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/KSTween.html">KSTween</a></code> &mdash; 
-                        KSTween A cloned instance of this tween with the new tween targets.
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="cloneWithTweenTarget()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">cloneWithTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function cloneWithTweenTarget(target:<a href="ITweenTarget.html">ITweenTarget</a>):<a href="../tween/KSTween.html">KSTween</a></code><p>
-   Duplicates a tween and replaces all the tween targets with the ones provided.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:<a href="ITweenTarget.html">ITweenTarget</a></code> &mdash; An ITweenTarget to use in the cloned tween.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/KSTween.html">KSTween</a></code> &mdash; 
-                        KSTween A cloned instance of this tween with the new tween targets.
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="complete()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">complete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected override function complete():void</code><p> 
-   Internal function that completes the action by cleaning up any running processes
-   and unregistering it from the synchronizer. Called when the action has completed.
-   </p></div>
-<a name="kill()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">kill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public override function kill():void</code><p> 
-   Unregisters the function and removes any refrerences to objects that it may be holding onto.
-   Subclass this function to remove references to objects used by the action.
-   </p></div>
-<a name="removeAllTweenTargets()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeAllTweenTargets</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeAllTweenTargets():void</code><p> Removes all tween targets from the tween. </p></div>
-<a name="removeTweenTarget()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeTweenTarget(tweenTarget:<a href="ITweenTarget.html">ITweenTarget</a>):void</code><p>
-   
-   Removes a target from the tween.
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">tweenTarget</span>:<a href="ITweenTarget.html">ITweenTarget</a></code></td>
-</tr>
-</table>
-</div>
-<a name="reset()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public override function reset():void</code><p>
-   Stops the tween and sets the target property to the start value.
-   </p></div>
-<a name="reverse()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">reverse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function reverse():void</code><p>
-   Flips the values for to and from values. Essentially, causes the animation to run backwards.
-   
-   Internally, this runs thorugh all the tweenTargets and swaps the start and end values.
-   
-   </p><p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../tween/KSTween.html#cloneReversed()" target="">cloneReversed()</a>
-</div>
-</div>
-<a name="start()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public override function start():<a href="../../action/IAction.html">IAction</a></code><p> 
-   
-   Begins the action running. The action will execute whatever it is
-   meant to do when the <code>start()</code> method is called (and after the 
-   <code>delay</code> time has elapsed).
-   <code>start()</code> should also cause the action to unpause if it is
-   paused.
-   
-   </p><p>This method returns a reference to the action that was started. 
-   This allows for an action to be constructed and started in a single line of code.</p>
-   
-   <p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../../action/IAction.html">IAction</a></code> &mdash; 
-                        The action that was just started. For convenience.
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="startAtTime()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">startAtTime</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function startAtTime(startTime:int):<a href="../../action/IPrecisionAction.html">IPrecisionAction</a></code><p> 
-   This is used by some groups and by advanced users to start the
-   action at a very specific time down to the millisecond. Use this
-   when you absoultely need an action to begin at 1000ms rather than 
-   1012ms for example. This will affect the playback of certain actions 
-   with durations > 0 (like tweens) and should help them to appear 
-   at the correct place at the correct time.
-   Note: this is an advanced setting and should not be used in most
-   cases. Instead, use the start() method.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">startTime</span>:int</code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../../action/IPrecisionAction.html">IPrecisionAction</a></code></td>
-</tr>
-</table>
-</div>
-<a name="toString()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public override function toString():String</code><p>
-   Returns a description of the tween.
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>String</code></td>
-</tr>
-</table>
-</div>
-<a name="update()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public override function update(currentTime:int):void</code><p>
-   
-   This function will be registered by the register method to respond to update events from the synchronizer.
-   Code that performs the action associated with this object should go in this function.
-   This function must be implemented by the subclass.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">currentTime</span>:int</code> &mdash; The current timestamp from the Synchronizer.
-   </td>
-</tr>
-</table>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?org/as3lib/kitchensync/action/tween/KSTween.html&amp;org/as3lib/kitchensync/action/tween/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">KSTween</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("KSTween"); titleBar_setSubNav(false,true,false,false,false,false,true,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.action.tween</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  KSTween</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">KSTween  <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> <a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a> <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> flash.events.EventDispatcher</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../../../../org/as3lib/kitchensync/action/tween/ITween.html">ITween</a>,  <a href="../../../../../org/as3lib/kitchensync/action/IPrecisionAction.html">IPrecisionAction</a>,  org.as3lib.kitchensync.action.tween.ITweenTargetCollection</td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>0.1</td></tr></table><p></p><p></p><p></p>
+	 Used for animating an object's properties, such as position or scale, over time. 
+	 A tween will change an object's numeric value over time.
+	 It makes use of one or more TweenTarget objects to determine what to tween. 
+	 This can be handled automatically or declared explicitly.
+	 
+	 Rule of thumb: KSTween is the action that handles the timing and starting and stopping
+	 the tween while ITweenTargets control the values of the tween. This allows you to tween
+	 all types of values, including complex ones like filter properties, with a single tween class. 
+	 
+	 It's recommended that you use TweenFactory to create the tweens. 
+	 
+	 <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="TweenFactory.html" target="">org.as3lib.kitchensync.action.tween.TweenFactory</a><br/><a href="ITweenTarget.html" target="">org.as3lib.kitchensync.action.tween.ITweenTarget</a><br/><a href="KSSimpleTween.html" target="">org.as3lib.kitchensync.action.tween.KSSimpleTween</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><div class="showHideLinks"><div id="hideInheritedProperty" class="hideInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(false,'Property');"><img class="showHideLinkImage" src="../../../../../images/expanded.gif"> Hide Inherited Public Properties</a></div><div id="showInheritedProperty" class="showInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(true,'Property');"><img class="showHideLinkImage" src="../../../../../images/collapsed.gif"> Show Inherited Public Properties</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#autoDelete" class="signatureLink">autoDelete</a> : Boolean<div class="summaryTableDescription">
+		 autoDelete is a flag that indicates whether the action should be killed 
+		 when it is done executing.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#delay" class="signatureLink">delay</a> : int<div class="summaryTableDescription">
+		 delay is the time that will pass after the start() method is called
+		 before the action begins.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#description" class="signatureLink">description</a> : String<div class="summaryTableDescription">
+		 An optional human-readable description of the action.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#duration" class="signatureLink">duration</a> : int<div class="summaryTableDescription">
+		 duration is the length of time that the action will run.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#easingFunction" class="signatureLink">easingFunction</a> : Function<div class="summaryTableDescription"> 
+		 The function used to interpolated the values between the start and end points.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#easingMod1" class="signatureLink">easingMod1</a> : Number<div class="summaryTableDescription"> 
+		 Used to modify the results of the easing function.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#easingMod2" class="signatureLink">easingMod2</a> : Number<div class="summaryTableDescription"> 
+		 Used to modify the results of the easing function.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#isInstantaneous" class="signatureLink">isInstantaneous</a> : Boolean<div class="summaryTableDescription">[read-only]   
+		 Should true if the action will occur instantaneously (if duration is 0).</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#isPaused" class="signatureLink">isPaused</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		  Should return true if paused.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#isRunning" class="signatureLink">isRunning</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		  Should return true if the action is running (or paused).</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#progress" class="signatureLink">progress</a> : Number<div class="summaryTableDescription">[read-only] 
+		 Returns the percentage complete of the action (based on duration).</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#runningTime" class="signatureLink">runningTime</a> : int<div class="summaryTableDescription">[read-only] 
+		 
+		 The time in ms since the start of the action or 0 if the action isn't running.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#snapToValueOnComplete" class="signatureLink">snapToValueOnComplete</a> : Boolean<div class="summaryTableDescription">
+		 Indicates whether the final value for the easing function should snap to the 
+		 target _toValue.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#tweenTargets" class="signatureLink">tweenTargets</a> : Array<div class="summaryTableDescription">[read-only] </div></td><td class="summaryTableOwnerCol">KSTween</td></tr></table></div><a name="protectedPropertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Properties</div><div class="showHideLinks"><div id="hideInheritedProtectedProperty" class="hideInheritedProtectedProperty"><a class="showHideLink" href="#protectedPropertySummary" onclick="javascript:setInheritedVisible(false,'ProtectedProperty');"><img class="showHideLinkImage" src="../../../../../images/expanded.gif"> Hide Inherited Protected Properties</a></div><div id="showInheritedProtectedProperty" class="showInheritedProtectedProperty"><a class="showHideLink" href="#protectedPropertySummary" onclick="javascript:setInheritedVisible(true,'ProtectedProperty');"><img class="showHideLinkImage" src="../../../../../images/collapsed.gif"> Show Inherited Protected Properties</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_autoDelete" class="signatureLink">_autoDelete</a> : Boolean<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_delay" class="signatureLink">_delay</a> : int = 0<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_description" class="signatureLink">_description</a> : String<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_duration" class="signatureLink">_duration</a> : int = 0<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_easingFunction" class="signatureLink">_easingFunction</a> : Function<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_easingMod1" class="signatureLink">_easingMod1</a> : Number<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_easingMod2" class="signatureLink">_easingMod2</a> : Number<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_firstUpdate" class="signatureLink">_firstUpdate</a> : Boolean = true<div class="summaryTableDescription">
+		 Set to true for the first time the update is run so that some
+		 initial things can be set up.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_paused" class="signatureLink">_paused</a> : Boolean = false<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_pauseTime" class="signatureLink">_pauseTime</a> : int<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#pauseTime" class="signatureLink">pauseTime</a> : int<div class="summaryTableDescription">[read-only] 
+		 The time at which the action was last paused.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_running" class="signatureLink">_running</a> : Boolean = false<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_snapToValueOnComplete" class="signatureLink">_snapToValueOnComplete</a> : Boolean<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#_startTime" class="signatureLink">_startTime</a> : int<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#startTime" class="signatureLink">startTime</a> : int<div class="summaryTableDescription">[read-only] 
+		 The time at which the action was last started.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_tweenTargets" class="signatureLink">_tweenTargets</a> : Array<div class="summaryTableDescription">
+		 </div></td><td class="summaryTableOwnerCol">KSTween</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><div class="showHideLinks"><div id="hideInheritedMethod" class="hideInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(false,'Method');"><img class="showHideLinkImage" src="../../../../../images/expanded.gif"> Hide Inherited Public Methods</a></div><div id="showInheritedMethod" class="showInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(true,'Method');"><img class="showHideLinkImage" src="../../../../../images/collapsed.gif"> Show Inherited Public Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#KSTween()" class="signatureLink">KSTween</a>(tweenTargets:*, duration:* = 0, delay:* = 0, easingFunction:Function = null, easingMod1:Number, easingMod2:Number)</div><div class="summaryTableDescription">
+		 Constructor - It's recommended to use TweenFactory.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#addTweenTarget()" class="signatureLink">addTweenTarget</a>(tweenTarget:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a>):void</div><div class="summaryTableDescription"> 
+		  
+		 Adds a target to the tween.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#clone()" class="signatureLink">clone</a>():<a href="../../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></div><div class="summaryTableDescription">[override]  
+		 Creates a clone which is a deep copy of the action.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#cloneReversed()" class="signatureLink">cloneReversed</a>():<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">
+		 Creates a new Tween and reverses the start and end values of the target property.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#cloneWithTargetProperty()" class="signatureLink">cloneWithTargetProperty</a>(target:*, property:String):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">
+		 Duplicates a tween and if the first tween target is a TargetProperty, makes 
+		 a copy of it with a new target and property.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#cloneWithTweenTarget()" class="signatureLink">cloneWithTweenTarget</a>(target:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a>):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></div><div class="summaryTableDescription">
+		 Duplicates a tween and replaces all the tween targets with the ones provided.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#jumpByTime()" class="signatureLink">jumpByTime</a>(time:*):void</div><div class="summaryTableDescription">
+		 
+		 Moves the playhead forward (or backward) by a specified time.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#jumpToTime()" class="signatureLink">jumpToTime</a>(time:*, ignoreDelay:Boolean = false):void</div><div class="summaryTableDescription"> 
+		 Moves the playhead to a specified time in the action.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#kill()" class="signatureLink">kill</a>():void</div><div class="summaryTableDescription">[override]  
+		 Unregisters the action and removes any refrerences to objects that it may be holding onto.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#pause()" class="signatureLink">pause</a>():void</div><div class="summaryTableDescription"> 
+		 
+		 Causes the object to be paused.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeAllTweenTargets()" class="signatureLink">removeAllTweenTargets</a>():void</div><div class="summaryTableDescription"> Removes all tween targets from the tween.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeTweenTarget()" class="signatureLink">removeTweenTarget</a>(tweenTarget:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a>):void</div><div class="summaryTableDescription">
+		 
+		 Removes a target from the tween.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#reset()" class="signatureLink">reset</a>():void</div><div class="summaryTableDescription">[override] 
+		 Stops the tween and sets the target property to the start value.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#reverse()" class="signatureLink">reverse</a>():void</div><div class="summaryTableDescription">
+		 Flips the values for to and from values.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#start()" class="signatureLink">start</a>():<a href="../../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></div><div class="summaryTableDescription">[override]  
+		 Begins the action running.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#startAtTime()" class="signatureLink">startAtTime</a>(startTime:int):<a href="../../../../../org/as3lib/kitchensync/action/IPrecisionAction.html">IPrecisionAction</a></div><div class="summaryTableDescription"> 
+		 This is used by some groups and by advanced users to start the
+		 action at a very specific time down to the millisecond.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#stop()" class="signatureLink">stop</a>():void</div><div class="summaryTableDescription"> 
+		 Stops the action from running and resets the timer.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#togglePause()" class="signatureLink">togglePause</a>():void</div><div class="summaryTableDescription">
+		 A convenience method that allows you to toggle the pauseed state.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#toString()" class="signatureLink">toString</a>():String</div><div class="summaryTableDescription">[override] 
+		 Returns a description of the tween.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#unpause()" class="signatureLink">unpause</a>():void</div><div class="summaryTableDescription"> 
+		 Resumes the object at the point where it was paused.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#update()" class="signatureLink">update</a>(currentTime:int):void</div><div class="summaryTableDescription">[override] 
+		 
+		 Update will allow the synchronizer to update the action with the current time.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr></table></div><a name="protectedMethodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Methods </div><div class="showHideLinks"><div id="hideInheritedProtectedMethod" class="hideInheritedProtectedMethod"><a class="showHideLink" href="#protectedMethodSummary" onclick="javascript:setInheritedVisible(false,'ProtectedMethod');"><img class="showHideLinkImage" src="../../../../../images/expanded.gif"> Show Inherited Protected Methods</a></div><div id="showInheritedProtectedMethod" class="showInheritedProtectedMethod"><a class="showHideLink" href="#protectedMethodSummary" onclick="javascript:setInheritedVisible(true,'ProtectedMethod');"><img class="showHideLinkImage" src="../../../../../images/collapsed.gif"> Show Inherited Protected Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#complete()" class="signatureLink">complete</a>():void</div><div class="summaryTableDescription">[override]  
+		 Internal function that completes the action by cleaning up any running processes
+		 and unregistering it from the synchronizer.</div></td><td class="summaryTableOwnerCol">KSTween</td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#durationHasElapsed()" class="signatureLink">durationHasElapsed</a>(currentTime:int):Boolean</div><div class="summaryTableDescription">
+		 Checks to see whether the duration of the action has elapsed and if the _startTime is defined.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#forceUpdate()" class="signatureLink">forceUpdate</a>():void</div><div class="summaryTableDescription">
+		 Foreces the update() method to fire without being triggered by Synchronizer.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#register()" class="signatureLink">register</a>():void</div><div class="summaryTableDescription">
+		 Adds the action as a listener to the Synchronizer's update event.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#startTimeHasElapsed()" class="signatureLink">startTimeHasElapsed</a>(currentTime:int):Boolean</div><div class="summaryTableDescription">
+		 Checks to see whether the start time delay has elapsed and if the _startTime is defined.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#unregister()" class="signatureLink">unregister</a>():void</div><div class="summaryTableDescription">
+		 Removes the action as a listener to the Synchronizer's update event.</div></td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr></table></div><a name="eventSummary"></a><div class="summarySection"><div class="summaryTableTitle">Events</div><div class="showHideLinks"><div id="hideInheritedEvent" class="hideInheritedEvent"><a class="showHideLink" href="#eventSummary" onclick="javascript:setInheritedVisible(false,'Event');"><img class="showHideLinkImage" src="../../../../../images/expanded.gif"> Hide Inherited Events</a></div><div id="showInheritedEvent" class="showInheritedEvent"><a class="showHideLink" href="#eventSummary" onclick="javascript:setInheritedVisible(true,'Event');"><img class="showHideLinkImage" src="../../../../../images/collapsed.gif"> Show Inherited Events</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable hideInheritedEvent" id="summaryTableEvent"><tr><th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#event:actionComplete" class="signatureLink">actionComplete</a></div></td><td class="summaryTableDescription summaryTableCol"> 
+		 Dispatched when an action is completed.</td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#event:actionPause" class="signatureLink">actionPause</a></div></td><td class="summaryTableDescription summaryTableCol"> 
+		 Dispatched when the action is paused successfully.</td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#event:actionStart" class="signatureLink">actionStart</a></div></td><td class="summaryTableDescription summaryTableCol">
+		 Dispatched at the start of an action when the start() method is called
+		 or when the action is started within a group.</td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr><tr class="hideInheritedEvent"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html#event:actionUnpause" class="signatureLink">actionUnpause</a></div></td><td class="summaryTableDescription summaryTableCol"> 
+		 Dispatched when the action is resumed successfully.</td><td class="summaryTableOwnerCol"><a href="../../../../../org/as3lib/kitchensync/action/AbstractAction.html">AbstractAction</a></td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="_easingFunction"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_easingFunction</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>protected var _easingFunction:Function</code><p></p></div><a name="propertyDetail"></a><a name="_easingMod1"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_easingMod1</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _easingMod1:Number</code><p></p></div><a name="propertyDetail"></a><a name="_easingMod2"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_easingMod2</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _easingMod2:Number</code><p></p></div><a name="propertyDetail"></a><a name="_firstUpdate"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_firstUpdate</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _firstUpdate:Boolean = true</code><p></p><p></p><p>
+		 Set to true for the first time the update is run so that some
+		 initial things can be set up. 
+		 </p></div><a name="propertyDetail"></a><a name="_snapToValueOnComplete"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_snapToValueOnComplete</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _snapToValueOnComplete:Boolean</code><p></p></div><a name="propertyDetail"></a><a name="_tweenTargets"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_tweenTargets</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _tweenTargets:Array</code><p></p><p></p><p>
+		 </p></div><a name="propertyDetail"></a><a name="easingFunction"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">easingFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>easingFunction:Function</code><p></p><p></p><p> 
+		 The function used to interpolated the values between the start and end points.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get easingFunction():Function</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set easingFunction(value:Function):void</code><br/></div><a name="propertyDetail"></a><a name="easingMod1"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">easingMod1</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>easingMod1:Number</code><p></p><p></p><p> 
+		 Used to modify the results of the easing function. 
+		 This is only used on some functions such as Elastic.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get easingMod1():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set easingMod1(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="easingMod2"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">easingMod2</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>easingMod2:Number</code><p></p><p></p><p> 
+		 Used to modify the results of the easing function. 
+		 This is only used on some functions such as Elastic.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get easingMod2():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set easingMod2(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="snapToValueOnComplete"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">snapToValueOnComplete</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>snapToValueOnComplete:Boolean</code><p></p><p></p><p>
+		 Indicates whether the final value for the easing function should snap to the 
+		 target _toValue. If set to true, the target property will equal _toValue regardless
+		 of the results of the easing function.
+		 
+		 </p><p> The default value is <code>true</code>.</p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get snapToValueOnComplete():Boolean</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set snapToValueOnComplete(value:Boolean):void</code><br/></div><a name="propertyDetail"></a><a name="tweenTargets"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">tweenTargets</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>tweenTargets:Array</code>&nbsp;&nbsp;[read-only] <p></p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get tweenTargets():Array</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="KSTween()"></a><a name="KSTween(any,any,any,Function,Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">KSTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function KSTween(tweenTargets:*, duration:* = 0, delay:* = 0, easingFunction:Function = null, easingMod1:Number, easingMod2:Number)</code><p></p><p>
+		 Constructor - It's recommended to use TweenFactory.
+		 
+		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">tweenTargets</span>:*</code> &mdash; A tweenTarget object (or an array of tweentargets) that contains the values you want to tween.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">duration</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time in milliseconds that this tween will take to execute. Accepts string values.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">delay</span>:*</code> (default = <code>0</code>)<code></code> &mdash; The time to wait before starting the tween. Accepts string values.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingFunction</span>:Function</code> (default = <code>null</code>)<code></code> &mdash; The function to use to interpolate the values between the start and end values. Default is set in KitchenSyncDefaults.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingMod1</span>:Number</code> (default = <code>NaN</code>)<code></code> &mdash; An optional modifier to the easing funtion.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">easingMod2</span>:Number</code> (default = <code>NaN</code>)<code></code> &mdash; An optional modifier to the easing funtion.
+		 </td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="TweenFactory.html#newTween()" target="">org.as3lib.kitchensync.action.tween.TweenFactory.newTween()</a><br/><a href="KSSimpleTween.html" target="">org.as3lib.kitchensync.action.tween.KSSimpleTween</a><br/><a href="KSTween.html#newWithTweenTarget()" target="">newWithTweenTarget()</a></div></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="addTweenTarget()"></a><a name="addTweenTarget(org.as3lib.kitchensync.action.tween.ITweenTarget)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">addTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function addTweenTarget(tweenTarget:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a>):void</code><p></p><p></p><p> 
+		  
+		 Adds a target to the tween. 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">tweenTarget</span>:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></code></td></tr></table></p></div><a name="clone()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function clone():<a href="../../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code><p></p><p></p><p> 
+		 Creates a clone which is a deep copy of the action.
+		 States (e.g. isRunning will not be copied)
+		  
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code> &mdash; An exact copy of the action. 
+		 </td></tr></table></div><a name="cloneReversed()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">cloneReversed</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function cloneReversed():<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><p></p><p>
+		 Creates a new Tween and reverses the start and end values of the target property.
+		 
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code></td></tr></table><p><span class="label">See also</span></p><div class="seeAlso"><a href="KSTween.html#reverse()" target="">reverse()</a><br/><a href="KSTween.html#clone()" target="">clone()</a></div><br/><span class="label"> Example </span><br/><div class="detailBody">
+		 		<div class="listing" version="3.0"><pre>
+                     var tween:KSTween = new KSTween(foo, "x", 100, 200);
+                     var sequence:KSSequence = new KSSequence(
+                         tween,                            // tweens foo's x from 100 to 200
+                         tween.cloneReversed()            // tweens foo's x from 200 to 100
+                     );
+                 </pre></div>
+		 
+		 </div></div><a name="cloneWithTargetProperty()"></a><a name="cloneWithTargetProperty(any,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">cloneWithTargetProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function cloneWithTargetProperty(target:*, property:String):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><p></p><p>
+		 Duplicates a tween and if the first tween target is a TargetProperty, makes 
+		 a copy of it with a new target and property.
+		 The first tweenTarget of the KSTween must be a TargetProperty for this to work.
+		 
+		 Personal note: This method is somewhat of a hack. I'm including it for 
+		 ease of use but a better way to do this would be to create a clone of a 
+		 TargetProperty object and attach that to a clone of this KSTween.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:*</code> &mdash; The new target object.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">property</span>:String</code> &mdash; The new property of the target.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code> &mdash; KSTween A cloned instance of this tween with the new tween targets.
+		 </td></tr></table></div><a name="cloneWithTweenTarget()"></a><a name="cloneWithTweenTarget(org.as3lib.kitchensync.action.tween.ITweenTarget)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">cloneWithTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function cloneWithTweenTarget(target:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a>):<a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code><p></p><p></p><p>
+		 Duplicates a tween and replaces all the tween targets with the ones provided.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></code> &mdash; An ITweenTarget to use in the cloned tween.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/KSTween.html">KSTween</a></code> &mdash; KSTween A cloned instance of this tween with the new tween targets.
+		 </td></tr></table></div><a name="complete()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">complete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override protected function complete():void</code><p></p><p></p><p> 
+		 Internal function that completes the action by cleaning up any running processes
+		 and unregistering it from the synchronizer. Called when the action has completed.
+		 </p></div><a name="kill()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">kill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function kill():void</code><p></p><p></p><p> 
+		 Unregisters the action and removes any refrerences to objects that it may be holding onto.
+		 This is done in an attempt to remove the object from memory. 
+		 </p></div><a name="removeAllTweenTargets()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeAllTweenTargets</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeAllTweenTargets():void</code><p></p><p></p><p> Removes all tween targets from the tween. </p></div><a name="removeTweenTarget()"></a><a name="removeTweenTarget(org.as3lib.kitchensync.action.tween.ITweenTarget)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeTweenTarget(tweenTarget:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a>):void</code><p></p><p></p><p>
+		 
+		 Removes a target from the tween.
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">tweenTarget</span>:<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></code></td></tr></table></p></div><a name="reset()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function reset():void</code><p></p><p></p><p>
+		 Stops the tween and sets the target property to the start value.
+		 </p></div><a name="reverse()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">reverse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function reverse():void</code><p></p><p></p><p>
+		 Flips the values for to and from values. Essentially, causes the animation to run backwards.
+		 
+		 Internally, this runs thorugh all the tweenTargets and swaps the start and end values.
+		 
+		 </p><p><span class="label">See also</span></p><div class="seeAlso"><a href="KSTween.html#cloneReversed()" target="">cloneReversed()</a></div></div><a name="start()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function start():<a href="../../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code><p></p><p></p><p> 
+		 Begins the action running. The action will execute whatever it is
+		 meant to do when the <code>start()</code> method is called (and after the 
+		 <code>delay</code> time has elapsed).
+		 <code>start()</code> should also cause the action to unpause if it is
+		 paused.
+		 
+		 <p>This method returns a reference to the action that was started. 
+		 This allows for an action to be constructed and started in a single line of code.</p>
+		 
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/IAction.html">IAction</a></code> &mdash; The action that was just started. For convenience.
+		 </td></tr></table></div><a name="startAtTime()"></a><a name="startAtTime(int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">startAtTime</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function startAtTime(startTime:int):<a href="../../../../../org/as3lib/kitchensync/action/IPrecisionAction.html">IPrecisionAction</a></code><p></p><p></p><p> 
+		 This is used by some groups and by advanced users to start the
+		 action at a very specific time down to the millisecond. Use this
+		 when you absoultely need an action to begin at 1000ms rather than 
+		 1012ms for example. This will affect the playback of certain actions 
+		 with durations > 0 (like tweens) and should help them to appear 
+		 at the correct place at the correct time.
+		 Note: this is an advanced setting and should not be used in most
+		 cases. Instead, use the start() method.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">startTime</span>:int</code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/IPrecisionAction.html">IPrecisionAction</a></code></td></tr></table></div><a name="toString()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function toString():String</code><p></p><p></p><p>
+		 Returns a description of the tween.
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>String</code></td></tr></table></div><a name="update()"></a><a name="update(int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>override public function update(currentTime:int):void</code><p></p><p></p><p>
+		 
+		 Update will allow the synchronizer to update the action with the current time.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">currentTime</span>:int</code> &mdash; The current time from the synchronizer. 
+		 </td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Mon May 3 2010, 09:12 PM -07:00  </center></div></body></html><!--<br/>Mon May 3 2010, 09:12 PM -07:00  -->

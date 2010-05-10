@@ -1,433 +1,70 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
-<meta content="AbstractColorMatrixTweenTarget,org.as3lib.kitchensync.action.tween.AbstractColorMatrixTweenTarget,_colorMatrix,_currentValue,_endValue,_startValue,_target,currentValue,endValue,filterType,filters,startValue,adjustMatrixValue,clone,reset,updateTween" name="keywords">
-<title>org.as3lib.kitchensync.action.tween.AbstractColorMatrixTweenTarget</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="AbstractColorMatrixTweenTarget,org.as3lib.kitchensync.action.tween.AbstractColorMatrixTweenTarget,AUTO,AUTO_TWEEN_VALUE,CURRENT_TINT,LEFT_TO_RIGHT,NON_NUMERIC_PROPERTY_ERROR,NO_TINT,PAN,RIGHT_TO_LEFT,VOLUME,_blurXTweenTarget,_blurYTweenTarget,_colorMatrix,_currentTransform,_currentValue,_delay,_delta,_duration,_easingFunction,_easingFunction,_easingMod1,_easingMod1,_easingMod2,_easingMod2,_endOnCurrentTint,_endTransform,_endValue,_endValue,_endValue,_endValue,_endValue,_endValue,_filterType,_firstUpdate,_pauseTime,_paused,_previousFilter,_property,_property,_property,_running,_snapToInteger,_snapToValueOnComplete,_startOnCurrentTint,_startTime,_startTransform,_startValue,_startValue,_startValue,_startValue,_startValue,_startValue,_target,_target,_target,_target,_target,_target,_targetSound,_tintOpacity,_tweenTargets,currentTransform,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,currentValue,delay,differenceInValues,differenceInValues,differenceInValues,differenceInValues,duration,easingFunction,easingFunction,easingFunction,easingMod1,easingMod1,easingMod1,easingMod2,easingMod2,easingMod2,endTransform,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,endValue,filterType,filterType,filterType,filterType,filters,filters,isInstantaneous,isPaused,isRunning,objectParser,property,property,property,property,runningTime,snapToInteger,snapToValueOnComplete,startTransform,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,startValue,target,target,target,target,target,target,targetSound,tweenTargets,addTweenTarget,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,adjustMatrixValue,applyTintOpacity,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,clone,cloneReversed,cloneWithTarget,cloneWithTargetProperty,cloneWithTweenTarget,clone,complete,complete,describeKeywords,evaluateFrameLabel,getDefaultFilter,getNaturalDuration,isPropertyValid,kill,kill,newFadeInTween,newFadeOutTween,newFilterTween,newPositionTween,newScaleTween,newScaleTweenAdvanced,newTimelineTween,newTintTween,newTween,newTweenFromObject,newTweenWithTargets,parseObject,parseObject,pause,removeAllTweenTargets,removeTweenTarget,reset,reset,reset,reset,reset,reset,reset,reset,reset,reset,reverse,setTargetPropterty,start,start,startAtTime,startAtTime,stop,toString,toString,toString,toString,unpause,update,update,updateTarget,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween,updateTween"><title>org.as3lib.kitchensync.action.tween.AbstractColorMatrixTweenTarget</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'AbstractColorMatrixTweenTarget - KitchenSyncLib v2.0';
 				var baseRef = '../../../../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/as3lib/kitchensync/action/tween/AbstractColorMatrixTweenTarget.html&amp;org/as3lib/kitchensync/action/tween/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;AbstractColorMatrixTweenTarget</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class AbstractColorMatrixTweenTarget"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.action.tween</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Implements</td><td><a href="IFilterTweenTarget.html">IFilterTweenTarget</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Subclasses</td><td><a href="../tween/BrightnessTweenTarget.html">BrightnessTweenTarget</a>, <a href="../tween/ContrastTweenTarget.html">ContrastTweenTarget</a>, <a href="../tween/SaturationTweenTarget.html">SaturationTweenTarget</a></td>
-</tr>
-</table>
-<p></p>
-  A type of tween target that uses a ColorMatrixFilter (using the ColorMatrix
-  object from Grant Skinner). This class is used as a base for other tween targets
-  that adjust individual properties such as saturation or brightness.   
-  
-  <p></p>
-<p>
-<span class="classHeaderTableLabel">See also</span>
-</p>
-<div class="seeAlso">
-<a href="http://www.gskinner.com/blog/archives/2007/12/colormatrix_upd.html" target="mm_external">http://www.gskinner.com/blog/archives/2007/12/colormatrix_upd.html</a>
-</div>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentValue">currentValue</a> : Number<div class="summaryTableDescription"> </div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#endValue">endValue</a> : Number<div class="summaryTableDescription"> 
-   The value that the tweenTarget will tween to.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#filterType">filterType</a> : Class<div class="summaryTableDescription">[read-only]
-   
-   This is the class type of the filter that will be 
-   receiving the tween, such as BlurFilter.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startValue">startValue</a> : Number<div class="summaryTableDescription"> 
-   The value that the tweenTarget will begin from.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-</table>
-</div>
-<a name="protectedPropertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Protected Properties</div>
-<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_colorMatrix">_colorMatrix</a> : ColorMatrix<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_currentValue">_currentValue</a> : Number = 0<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_endValue">_endValue</a> : Number<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#filters">filters</a> : Array<div class="summaryTableDescription"> Shortcut to the list of display object filters.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_startValue">_startValue</a> : Number<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_target">_target</a> : DisplayObject<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#AbstractColorMatrixTweenTarget()">AbstractColorMatrixTweenTarget</a>()</div>
-<div class="summaryTableDescription"> 
-   Constructor.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#clone()">clone</a>():<a href="../tween/ITweenTarget.html">ITweenTarget</a>
-</div>
-<div class="summaryTableDescription"> 
-    
-   Creates a deep copy of the tweenTarget object.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#reset()">reset</a>():void</div>
-<div class="summaryTableDescription">  
-   Resets the current value to it's initial pre-tweened state.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#updateTween()">updateTween</a>(percentComplete:Number):Number</div>
-<div class="summaryTableDescription">
-   The main function that the Tween uses to update the TweenTarget.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-</table>
-</div>
-<a name="protectedMethodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Protected Methods</div>
-<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#adjustMatrixValue()">adjustMatrixValue</a>(colorMatrix:ColorMatrix, value:Number):void</div>
-<div class="summaryTableDescription"> 
-   This is the function that applies the transformation to the matrix by
-   calling the proper adjust method on the ColorMatrix class.</div>
-</td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="_colorMatrix"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_colorMatrix</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _colorMatrix:ColorMatrix</code>
-</div>
-<a name="_currentValue"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_currentValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _currentValue:Number = 0</code>
-</div>
-<a name="currentValue"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">currentValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>currentValue:Number</code>&nbsp;&nbsp;[read-write]<p> </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentValue():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentValue(value:Number):void</code>
-<br>
-</div>
-<a name="_endValue"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _endValue:Number</code>
-</div>
-<a name="endValue"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>endValue:Number</code>&nbsp;&nbsp;[read-write]<p> 
-   The value that the tweenTarget will tween to.
-   You can use NaN or AUTO_TWEEN_VALUE to use the value that exists when the tween runs.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endValue():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set endValue(value:Number):void</code>
-<br>
-</div>
-<a name="filters"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">filters</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>filters:Array</code>&nbsp;&nbsp;[read-write]<p> Shortcut to the list of display object filters. </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get filters():Array</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function set filters(value:Array):void</code>
-<br>
-</div>
-<a name="filterType"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">filterType</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>filterType:Class</code>&nbsp;&nbsp;[read-only]<p>
-   
-   This is the class type of the filter that will be 
-   receiving the tween, such as BlurFilter. This has to be a 
-   class instead of an instance because of the somewhat 
-   complicated way that the filters are applied to a display object.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get filterType():Class</code>
-<br>
-</div>
-<a name="_startValue"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _startValue:Number</code>
-</div>
-<a name="startValue"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>startValue:Number</code>&nbsp;&nbsp;[read-write]<p> 
-   The value that the tweenTarget will begin from.
-   You can use NaN or AUTO_TWEEN_VALUE to use the value that exists when the tween runs.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startValue():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set startValue(value:Number):void</code>
-<br>
-</div>
-<a name="_target"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">_target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var _target:DisplayObject</code>
-</div>
-<a name="constructorDetail"></a>
-<div class="detailSectionHeader">Constructor detail</div>
-<a name="AbstractColorMatrixTweenTarget()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">AbstractColorMatrixTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function AbstractColorMatrixTweenTarget()</code><p> 
-   Constructor. 
-   </p></div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="adjustMatrixValue()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">adjustMatrixValue</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected function adjustMatrixValue(colorMatrix:ColorMatrix, value:Number):void</code><p> 
-   This is the function that applies the transformation to the matrix by
-   calling the proper adjust method on the ColorMatrix class. 
-   
-   This funciton is defined in child classes. 
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">colorMatrix</span>:ColorMatrix</code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">value</span>:Number</code></td>
-</tr>
-</table>
-</div>
-<a name="clone()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function clone():<a href="../tween/ITweenTarget.html">ITweenTarget</a></code><p> 
-    
-   Creates a deep copy of the tweenTarget object.
-   Does not copy the state of the object (such as 
-   its current progress in the tween).
-   
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../tween/ITweenTarget.html">ITweenTarget</a></code> &mdash; 
-                        ITweenTarget a clone of the tween target object 
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="reset()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function reset():void</code><p>  
-   Resets the current value to it's initial pre-tweened state.
-   (typically, sets the currentValue equal to the startValue).
-   This is usually called by the reset() method of the KSTween class.
-   
-   </p></div>
-<a name="updateTween()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">updateTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function updateTween(percentComplete:Number):Number</code><p>
-   The main function that the Tween uses to update the TweenTarget. 
-   Sets the percentage complete.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">percentComplete</span>:Number</code> &mdash; a number between 0 and 1 (but sometimes more or less) that represents
-       the percentage of the tween that has been completed. This should update
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Number</code> &mdash; Number the new current value of the tween.
-   </td>
-</tr>
-</table>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?org/as3lib/kitchensync/action/tween/AbstractColorMatrixTweenTarget.html&amp;org/as3lib/kitchensync/action/tween/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">AbstractColorMatrixTweenTarget</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("AbstractColorMatrixTweenTarget"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.action.tween</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  AbstractColorMatrixTweenTarget</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">AbstractColorMatrixTweenTarget  <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../../../../org/as3lib/kitchensync/action/tween/IFilterTweenTarget.html">IFilterTweenTarget</a></td></tr><tr><td class="classHeaderTableLabel">Subclasses</td><td> <a href="../../../../../org/as3lib/kitchensync/action/tween/BrightnessTweenTarget.html">BrightnessTweenTarget</a>,  <a href="../../../../../org/as3lib/kitchensync/action/tween/ContrastTweenTarget.html">ContrastTweenTarget</a>,  <a href="../../../../../org/as3lib/kitchensync/action/tween/SaturationTweenTarget.html">SaturationTweenTarget</a></td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>1.6</td></tr></table><p></p><p></p><p></p>
+	 A type of tween target that uses a ColorMatrixFilter (using the ColorMatrix
+	 object from Grant Skinner). This class is used as a base for other tween targets
+	 that adjust individual properties such as saturation or brightness.   
+	 
+	 <p></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="http://www.gskinner.com/blog/archives/2007/12/colormatrix_upd.html" target="mm_external">http://www.gskinner.com/blog/archives/2007/12/colormatrix_upd.html</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentValue" class="signatureLink">currentValue</a> : Number<div class="summaryTableDescription"> </div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#endValue" class="signatureLink">endValue</a> : Number<div class="summaryTableDescription"> 
+		 The value that the tweenTarget will tween to.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#filterType" class="signatureLink">filterType</a> : Class<div class="summaryTableDescription">[read-only] 
+		 
+		 This is the class type of the filter that will be 
+		 receiving the tween, such as BlurFilter.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#startValue" class="signatureLink">startValue</a> : Number<div class="summaryTableDescription"> 
+		 The value that the tweenTarget will begin from.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr></table></div><a name="protectedPropertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_colorMatrix" class="signatureLink">_colorMatrix</a> : ColorMatrix<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_currentValue" class="signatureLink">_currentValue</a> : Number = 0<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_endValue" class="signatureLink">_endValue</a> : Number<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#filters" class="signatureLink">filters</a> : Array<div class="summaryTableDescription"> Shortcut to the list of display object filters.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_startValue" class="signatureLink">_startValue</a> : Number<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#_target" class="signatureLink">_target</a> : DisplayObject<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#AbstractColorMatrixTweenTarget()" class="signatureLink">AbstractColorMatrixTweenTarget</a>()</div><div class="summaryTableDescription"> 
+		 Constructor.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#clone()" class="signatureLink">clone</a>():<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></div><div class="summaryTableDescription"> 
+		  
+		 Creates a deep copy of the tweenTarget object.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#reset()" class="signatureLink">reset</a>():void</div><div class="summaryTableDescription">  
+		 Resets the current value to it's initial pre-tweened state.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#updateTween()" class="signatureLink">updateTween</a>(percentComplete:Number):Number</div><div class="summaryTableDescription">
+		 The main function that the Tween uses to update the TweenTarget.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr></table></div><a name="protectedMethodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#adjustMatrixValue()" class="signatureLink">adjustMatrixValue</a>(colorMatrix:ColorMatrix, value:Number):void</div><div class="summaryTableDescription"> 
+		 This is the function that applies the transformation to the matrix by
+		 calling the proper adjust method on the ColorMatrix class.</div></td><td class="summaryTableOwnerCol">AbstractColorMatrixTweenTarget</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="_colorMatrix"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_colorMatrix</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>protected var _colorMatrix:ColorMatrix</code><p></p></div><a name="propertyDetail"></a><a name="_currentValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_currentValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _currentValue:Number = 0</code><p></p></div><a name="propertyDetail"></a><a name="_endValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _endValue:Number</code><p></p></div><a name="propertyDetail"></a><a name="_startValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _startValue:Number</code><p></p></div><a name="propertyDetail"></a><a name="_target"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">_target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>protected var _target:DisplayObject</code><p></p></div><a name="propertyDetail"></a><a name="currentValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>currentValue:Number</code><p></p><p></p><p> </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentValue():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentValue(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="endValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">endValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>endValue:Number</code><p></p><p></p><p> 
+		 The value that the tweenTarget will tween to.
+		 You can use NaN or AUTO_TWEEN_VALUE to use the value that exists when the tween runs.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get endValue():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set endValue(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="filters"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">filters</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>filters:Array</code><p></p><p></p><p> Shortcut to the list of display object filters. </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get filters():Array</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;protected function set filters(value:Array):void</code><br/></div><a name="propertyDetail"></a><a name="filterType"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">filterType</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>filterType:Class</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 This is the class type of the filter that will be 
+		 receiving the tween, such as BlurFilter. This has to be a 
+		 class instead of an instance because of the somewhat 
+		 complicated way that the filters are applied to a display object.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get filterType():Class</code><br/></div><a name="propertyDetail"></a><a name="startValue"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">startValue</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>startValue:Number</code><p></p><p></p><p> 
+		 The value that the tweenTarget will begin from.
+		 You can use NaN or AUTO_TWEEN_VALUE to use the value that exists when the tween runs.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get startValue():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set startValue(value:Number):void</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="AbstractColorMatrixTweenTarget()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">AbstractColorMatrixTweenTarget</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function AbstractColorMatrixTweenTarget()</code><p></p><p> 
+		 Constructor. 
+		 </p></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="adjustMatrixValue()"></a><a name="adjustMatrixValue(com.gskinner.geom.ColorMatrix,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">adjustMatrixValue</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> protected function adjustMatrixValue(colorMatrix:ColorMatrix, value:Number):void</code><p></p><p></p><p> 
+		 This is the function that applies the transformation to the matrix by
+		 calling the proper adjust method on the ColorMatrix class. 
+		 
+		 This funciton is defined in child classes. 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">colorMatrix</span>:ColorMatrix</code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">value</span>:Number</code></td></tr></table></p></div><a name="clone()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function clone():<a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></code><p></p><p></p><p> 
+		  
+		 Creates a deep copy of the tweenTarget object.
+		 Does not copy the state of the object (such as 
+		 its current progress in the tween).
+		 
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../../../../org/as3lib/kitchensync/action/tween/ITweenTarget.html">ITweenTarget</a></code> &mdash; ITweenTarget a clone of the tween target object 
+		 </td></tr></table></div><a name="reset()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function reset():void</code><p></p><p></p><p>  
+		 Resets the current value to it's initial pre-tweened state.
+		 (typically, sets the currentValue equal to the startValue).
+		 This is usually called by the reset() method of the KSTween class.
+		 
+		 </p></div><a name="updateTween()"></a><a name="updateTween(Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">updateTween</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function updateTween(percentComplete:Number):Number</code><p></p><p></p><p>
+		 The main function that the Tween uses to update the TweenTarget. 
+		 Sets the percentage complete.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">percentComplete</span>:Number</code> &mdash; a number between 0 and 1 (but sometimes more or less) that represents
+		 		  the percentage of the tween that has been completed. This should update
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Number</code> &mdash; Number the new current value of the tween.
+		 </td></tr></table></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Mon May 3 2010, 09:12 PM -07:00  </center></div></body></html><!--<br/>Mon May 3 2010, 09:12 PM -07:00  -->

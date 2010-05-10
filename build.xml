@@ -47,7 +47,7 @@
 		<fileset dir="${flex.antLibsPath}">
 			<include name="*.jar"/>
 		</fileset>
-	</path>  
+	</path> 
 	<typedef resource="flexTasks.tasks" classpathref="flex.tasksClasspath" />
 	
 	

@@ -1,235 +1,55 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
-<meta content="FrameRateView,org.as3lib.kitchensync.utils.FrameRateView,formattingFunction,useAverageFrameRate,updateFrequency,value,update" name="keywords">
-<title>org.as3lib.kitchensync.utils.FrameRateView</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../override.css" type="text/css"><meta name="keywords" content="FrameRateView,org.as3lib.kitchensync.utils.FrameRateView,_frameRate,averageFrameRate,averageFrameRateDepth,formattingFunction,frameRate,instantaneousFrameRate,updateFrequency,useAverageFrameRate,value,getInstance,parseTimeString,parseTimeString,update,update"><title>org.as3lib.kitchensync.utils.FrameRateView</title><script src="../../../../AC_OETags.js" type="text/javascript"></script></head><body><script language="javascript" type="text/javascript" src="../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'FrameRateView - KitchenSyncLib v2.0';
 				var baseRef = '../../../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/as3lib/kitchensync/utils/FrameRateView.html&amp;org/as3lib/kitchensync/utils/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;FrameRateView</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class FrameRateView"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.as3lib.kitchensync.utils</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class FrameRateView</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">FrameRateView <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.text.TextField</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Implements</td><td><a href="../core/ISynchronizerClient.html">ISynchronizerClient</a></td>
-</tr>
-</table>
-<p></p>
-  A text field that displays the approximate framerate of the synchronizer.
-  Setting the updateFrequency property will allow you to adjust how often
-  the display is updated. You can also decide whether to show the average or 
-  instantaneous framerate.
-  This class extends TextField so you can add it to the display list, apply 
-  text formatting and use it as you would a TextField.
-  
-  <p></p>
-<br>
-<span class="label">Example</span>
-<br>
-    <div class='listing'><pre>
-     // create the view.
-     public var frameRateView:TextField = new SynchronizerFrameRateView();
-     // set the display to the average frame rate. (optional)
-     frameRateView.useAverageFrameRate = true;
-     // change the frequency of updates to 1 every 10 frames. (optional)
-     frameRateView.updateFrequency = 10;
-     // apply text formatting  (optional)
-     frameRateView.textFormat = myTextFormat;
-     // add the view to the displayList
-     addChild(frameRateView);  
-    </pre></div>
-  
-  <p></p>
-<p>
-<span class="classHeaderTableLabel">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../core/Synchronizer.html" target="">org.as3lib.kitchensync.core.Synchronizer</a>
-<br>
-<a href="../utils/FrameRateUtil.html" target="">org.as3lib.kitchensync.utils.FrameRateUtil</a>
-</div>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#formattingFunction">formattingFunction</a> : Function<div class="summaryTableDescription"> 
-   The function used to format the text displayed in the textfield.</div>
-</td><td class="summaryTableOwnerCol">FrameRateView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#updateFrequency">updateFrequency</a> : int<div class="summaryTableDescription"> 
-   Number of frames between each update.</div>
-</td><td class="summaryTableOwnerCol">FrameRateView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#useAverageFrameRate">useAverageFrameRate</a> : Boolean = false<div class="summaryTableDescription">
-   Determines whether to show the average frame rate or
-   the instantaneous frame rate.</div>
-</td><td class="summaryTableOwnerCol">FrameRateView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#value">value</a> : int<div class="summaryTableDescription">[read-only] The number currently shown in the display.</div>
-</td><td class="summaryTableOwnerCol">FrameRateView</td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#FrameRateView()">FrameRateView</a>()</div>
-<div class="summaryTableDescription"> Constructor </div>
-</td><td class="summaryTableOwnerCol">FrameRateView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#update()">update</a>(currentTime:int):void</div>
-<div class="summaryTableDescription">
-   Display is updated by the synchronizer pulses.</div>
-</td><td class="summaryTableOwnerCol">FrameRateView</td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="formattingFunction"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">formattingFunction</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var formattingFunction:Function</code><p> 
-   The function used to format the text displayed in the textfield. 
-   This can be replaced by the user.
-   </p></div>
-<a name="updateFrequency"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">updateFrequency</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>updateFrequency:int</code>&nbsp;&nbsp;[read-write]<p> 
-   Number of frames between each update.
-   The default value is set to the average
-   set the update frequency to 1. 
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get updateFrequency():int</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set updateFrequency(value:int):void</code>
-<br>
-</div>
-<a name="useAverageFrameRate"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">useAverageFrameRate</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var useAverageFrameRate:Boolean = false</code><p>
-   Determines whether to show the average frame rate or
-   the instantaneous frame rate. 
-   Default is instantaneous frame rate.
-   </p></div>
-<a name="value"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">value</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>value:int</code>&nbsp;&nbsp;[read-only]<p> The number currently shown in the display. </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get value():int</code>
-<br>
-</div>
-<a name="constructorDetail"></a>
-<div class="detailSectionHeader">Constructor detail</div>
-<a name="FrameRateView()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">FrameRateView</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function FrameRateView()</code><p> Constructor </p></div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="update()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function update(currentTime:int):void</code><p>
-   Display is updated by the synchronizer pulses.
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">currentTime</span>:int</code></td>
-</tr>
-</table>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../package-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../class-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../all-index-A.html" onclick="loadClassListFrame('../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../index.html?org/as3lib/kitchensync/utils/FrameRateView.html&amp;org/as3lib/kitchensync/utils/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">FrameRateView</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#includeExamplesSummary">Examples</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("FrameRateView"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,true,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.as3lib.kitchensync.utils</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  FrameRateView</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">FrameRateView  <img src="../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> flash.text.TextField</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../../../org/as3lib/kitchensync/core/ISynchronizerClient.html">ISynchronizerClient</a></td></tr></table><p></p><table cellpadding="0" cellspacing="0" border="0"><tr><td style="white-space:nowrap" valign="top"><b> Since :&nbsp;</b></td><td>1.5</td></tr></table><p></p><p></p><p></p>
+	 A text field that displays the approximate framerate of the synchronizer.
+	 Setting the updateFrequency property will allow you to adjust how often
+	 the display is updated. You can also decide whether to show the average or 
+	 instantaneous framerate.
+	 This class extends TextField so you can add it to the display list, apply 
+	 text formatting and use it as you would a TextField.
+	 
+	 <p></p><p><a href="#includeExamplesSummary">View the examples</a></p><p><span class="classHeaderTableLabel">See also</span></p><div class="seeAlso"><a href="../../../../org/as3lib/kitchensync/core/Synchronizer.html" target="">org.as3lib.kitchensync.core.Synchronizer</a><br/><a href="FrameRateUtil.html" target="">org.as3lib.kitchensync.utils.FrameRateUtil</a></div><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#formattingFunction" class="signatureLink">formattingFunction</a> : Function<div class="summaryTableDescription"> 
+		 The function used to format the text displayed in the textfield.</div></td><td class="summaryTableOwnerCol">FrameRateView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#updateFrequency" class="signatureLink">updateFrequency</a> : int<div class="summaryTableDescription"> 
+		 Number of frames between each update.</div></td><td class="summaryTableOwnerCol">FrameRateView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#useAverageFrameRate" class="signatureLink">useAverageFrameRate</a> : Boolean = false<div class="summaryTableDescription">
+		 Determines whether to show the average frame rate or
+		 the instantaneous frame rate.</div></td><td class="summaryTableOwnerCol">FrameRateView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#value" class="signatureLink">value</a> : int<div class="summaryTableDescription">[read-only]  The number currently shown in the display.</div></td><td class="summaryTableOwnerCol">FrameRateView</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#FrameRateView()" class="signatureLink">FrameRateView</a>()</div><div class="summaryTableDescription"> Constructor </div></td><td class="summaryTableOwnerCol">FrameRateView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#update()" class="signatureLink">update</a>(currentTime:int):void</div><div class="summaryTableDescription">
+		 Display is updated by the synchronizer pulses.</div></td><td class="summaryTableOwnerCol">FrameRateView</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="formattingFunction"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">formattingFunction</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>public var formattingFunction:Function</code><p></p><p></p><p> 
+		 The function used to format the text displayed in the textfield. 
+		 This can be replaced by the user.
+		 </p></div><a name="propertyDetail"></a><a name="updateFrequency"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">updateFrequency</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>updateFrequency:int</code><p></p><p></p><p> 
+		 Number of frames between each update.
+		 The default value is set to the average
+		 set the update frequency to 1. 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get updateFrequency():int</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set updateFrequency(value:int):void</code><br/></div><a name="propertyDetail"></a><a name="useAverageFrameRate"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">useAverageFrameRate</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public var useAverageFrameRate:Boolean = false</code><p></p><p></p><p>
+		 Determines whether to show the average frame rate or
+		 the instantaneous frame rate. 
+		 Default is instantaneous frame rate.
+		 </p></div><a name="propertyDetail"></a><a name="value"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">value</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>value:int</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p> The number currently shown in the display. </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get value():int</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="FrameRateView()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">FrameRateView</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function FrameRateView()</code><p></p><p> Constructor </p></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="update()"></a><a name="update(int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function update(currentTime:int):void</code><p></p><p></p><p>
+		 Display is updated by the synchronizer pulses.
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">currentTime</span>:int</code></td></tr></table></p></div><a name="includeExamplesSummary"></a><div class="detailSectionHeader">Examples</div><div class="detailBody">
+	 		<div class="listing" version="3.0"><pre>
+                 // create the view.
+                 public var frameRateView:TextField = new SynchronizerFrameRateView();
+                 // set the display to the average frame rate. (optional)
+                 frameRateView.useAverageFrameRate = true;
+                 // change the frequency of updates to 1 every 10 frames. (optional)
+                 frameRateView.updateFrequency = 10;
+                 // apply text formatting  (optional)
+                 frameRateView.textFormat = myTextFormat;
+                 // add the view to the displayList
+                 addChild(frameRateView);  
+             </pre></div>
+	 
+	 </div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Mon May 3 2010, 09:12 PM -07:00  </center></div></body></html><!--<br/>Mon May 3 2010, 09:12 PM -07:00  -->
