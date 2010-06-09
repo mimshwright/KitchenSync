@@ -7,13 +7,7 @@ package org.as3lib.kitchensync.core
 	 * @author Mims Wright
 	 * @since 1.6
 	 */
-	public interface ISynchronizerClient
+	public interface ISynchronizerClient extends IUpdatable
 	{
-		/**
-		 * Update will allow the synchronizer to update the action with the current time.
-		 * 
-		 * @param currentTime The current time from the synchronizer. 
-		 */
-		function update(currentTime:int):void;
 	}
 }
