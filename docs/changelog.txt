@@ -3,6 +3,9 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 * = Contains syntax changes that may require refactoring of legacy code.
 
+===== v2.0.2 =====
+FIXED Issues 31 and 32 dealing with KSSequenceGroups and pausing.
+
 ===== v2.0.1 =====
 CHANGED No longer requires KitchenSync.initialize() ! now auto-initializes.
 ADDED KSNullAction
