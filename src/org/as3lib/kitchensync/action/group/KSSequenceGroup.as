@@ -130,7 +130,7 @@ package org.as3lib.kitchensync.action.group
 		 * After the Sequence starts running, it no longer needs to listen to updates so it unregisters.
 		 */
 		override public function update(currentTime:int):void {
-			if (startTimeHasElapsed(currentTime)) {
+			if (startTimeHasElapsed(currentTime) && _currentAction == null) {
 				startNextAction();
 				// Sequence no longer needs to listen for events from Synchronizer
 				// since it now receives all cues from its children.
@@ -165,10 +165,23 @@ package org.as3lib.kitchensync.action.group
 			super.onChildFinished(event);
 			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_COMPLETE, onChildFinished);
 			_currentAction.removeEventListener(KitchenSyncEvent.ACTION_START, onChildStart);
+			
+			if (isPaused) return;
+			completeOrStartNextAction();
+		}
+		
+		protected function completeOrStartNextAction():void {
 			if (!checkForComplete()) {
 				startNextAction();
 			} else {
 				complete();
+			}
+		} 
+		
+		override public function unpause():void {
+			super.unpause();
+			if (!currentAction.isRunning) {
+				completeOrStartNextAction();
 			}
 		}
 		
