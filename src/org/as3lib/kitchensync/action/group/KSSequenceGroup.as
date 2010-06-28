@@ -178,6 +178,12 @@ package org.as3lib.kitchensync.action.group
 			}
 		} 
 		
+		override public function reset():void {
+			super.reset();
+			_currentAction = null;
+			_currentActionIndex = NO_CURRENT_ACTION_INDEX;
+		}
+		
 		override public function unpause():void {
 			super.unpause();
 			if (!currentAction.isRunning) {
