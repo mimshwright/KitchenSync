@@ -4,7 +4,12 @@ package org.as3lib.kitchensync.action.tween
 	import flash.display.MovieClip;
 	import flash.geom.Point;
 	
+	import mx.effects.IAbstractEffect;
+	
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
+	import org.as3lib.kitchensync.action.IAction;
+	import org.as3lib.kitchensync.action.KSSetProperty;
+	import org.as3lib.kitchensync.action.group.KSSequenceGroup;
 	import org.as3lib.kitchensync.easing.Linear;
 	
 	/**
@@ -86,9 +91,14 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @param target Tween's target must be a display object.
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param setVisibility If true, this sets the visibility to false after the fade out is complete.
 		 */
-		public static function newFadeOutTween(target:DisplayObject, duration:* = 0):KSTween {
-			return newTween(target, "alpha", AUTO_TWEEN_VALUE, 0, duration, 0, Linear.ease); 
+		public static function newFadeOutTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true):IAction {
+			var t:KSTween = newTween(target, "alpha", AUTO_TWEEN_VALUE, 0, duration, 0, Linear.ease);
+			if (setVisibility) {
+				return new KSSequenceGroup( t, new KSSetProperty(target, "visible", false));
+			}
+			return t;
 		}
 		
 		/**
@@ -100,9 +110,14 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @param target Tween's target must be a display object.
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param setVisibility If true, this sets the visibility to true before the fade in is complete.
 		 */
-		public static function newFadeInTween(target:DisplayObject, duration:* = 0):KSTween {
-			return newTween(target, "alpha", AUTO_TWEEN_VALUE, 1, duration, 0, Linear.ease); 
+		public static function newFadeInTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true):IAction {
+			var t:KSTween = newTween(target, "alpha", AUTO_TWEEN_VALUE, 1, duration, 0, Linear.ease); 
+			if (setVisibility) {
+				return new KSSequenceGroup ( new KSSetProperty(target, "visible", true), t);
+			}
+			return t;
 		}
 
 		/**
@@ -172,8 +187,11 @@ package org.as3lib.kitchensync.action.tween
 		/**
 		 * Creates a tween that moves a display object between two points.
 		 * 
-		 * @param target - the display object whose property will be changed
-		 * @param startValue - the starting point of the target.
+		 * @param target the display object whose property will be changed
+		 * @param xFrom starting x of the tween
+		 * @param yFrom starting y of the tween
+		 * @param xTo ending x of the tween
+		 * @param yTo ending y of the tween
 		 * @param endValue - the ending point of the target.
 		 * @param duration - the time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
@@ -185,11 +203,12 @@ package org.as3lib.kitchensync.action.tween
 		 * @since 2.0
 		 */
 		public static function newPositionTween(target:DisplayObject, 
-												startValue:Point, endValue:Point, 
+												xFrom:Number = AUTO_TWEEN_VALUE, yFrom:Number = AUTO_TWEEN_VALUE, 
+												xTo:Number = AUTO_TWEEN_VALUE, yTo:Number = AUTO_TWEEN_VALUE,
 												duration:* = 0, delay:* = 0, 
 												easingFunciton:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
-			var x:ITweenTarget = new TargetProperty(target, "x", startValue.x, endValue.x);
-			var y:ITweenTarget = new TargetProperty(target, "y", startValue.y, endValue.y);
+			var x:ITweenTarget = new TargetProperty(target, "x", xFrom, xTo);
+			var y:ITweenTarget = new TargetProperty(target, "y", yFrom, yTo);
 			return newTweenWithTargets([x,y], duration, delay, easingFunciton, easingMod1, easingMod2);
 		} 
 		
@@ -278,13 +297,18 @@ package org.as3lib.kitchensync.action.tween
 				(centerPointY * h)
 			);
 			
-			var xFrom:Number = centerPointPx.x - (centerPointX * w * startValueX) + target.x;
-			var xTo:Number = centerPointPx.x - (centerPointX * w * endValueX)  + target.x;
-			var yFrom:Number = centerPointPx.y - (centerPointY * h * startValueY)  + target.y;
-			var yTo:Number = centerPointPx.y - (centerPointY * h * endValueY)  + target.y;
+			// FIXME: THIS IS CAUSING ERRORS beause target.x and y are being calculated at the time that the tween
+			// gets created rather than when it runs. This is fine if you only ever do the scaling in a sequence of 
+			// tweens but it will screw up if you tween the same object twice without creating both tweens at the same
+			// time.
+			var xFrom:Number = centerPointPx.x * (1 - startValueX) + target.x;// - (w * (1 - startValueX) * centerPointX);
+			var xTo:Number = centerPointPx.x * (1 - endValueX)  + target.x;// - (w * (1 - startValueX) * centerPointX);
+			var yFrom:Number = centerPointPx.y * (1 - startValueY)  + target.y;// - (h * (1 - startValueY) * centerPointY);
+			var yTo:Number = centerPointPx.y * (1 - endValueY)  + target.y;// - (h * (1 - startValueY) * centerPointY);
 			
 			var x:ITweenTarget = new TargetProperty(target, "x", xFrom, xTo);
 			var y:ITweenTarget = new TargetProperty(target, "y", yFrom, yTo);
+			
 			return newTweenWithTargets([xScale,yScale,x,y], duration, delay, easingFunciton, easingMod1, easingMod2);
 		} 
 
