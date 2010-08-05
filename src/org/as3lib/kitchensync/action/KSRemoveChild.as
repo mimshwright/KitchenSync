@@ -13,11 +13,13 @@ package org.as3lib.kitchensync.action
 	{
 		public function KSRemoveChild(child:DisplayObject, fromParent:DisplayObjectContainer, delay:int = 0)
 		{
-			var f:Function =  function (child:DisplayObject, parent:DisplayObjectContainer):void {
-				if (child && parent && parent.contains(child)) {
-					parent.removeChild(child);
-				}
-			}
+			var f:Function =  function (child:DisplayObject, parent:DisplayObjectContainer):void 
+								{
+									var contains:Boolean = child.parent == parent;
+									if (child && parent && contains) {
+										parent.removeChild(child);
+									}
+								}
 			super(f, delay, child, fromParent);
 		}
 	}

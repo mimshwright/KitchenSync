@@ -93,8 +93,9 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param setVisibility If true, this sets the visibility to false after the fade out is complete.
 		 */
-		public static function newFadeOutTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true):IAction {
-			var t:KSTween = newTween(target, "alpha", AUTO_TWEEN_VALUE, 0, duration, 0, Linear.ease);
+		public static function newFadeOutTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true, startFromFullAlpha:Boolean = false):IAction {
+			var startAlpha:Number = startFromFullAlpha ? 1.0 : AUTO_TWEEN_VALUE;
+			var t:KSTween = newTween(target, "alpha", startAlpha , 0, duration, 0, Linear.ease);
 			if (setVisibility) {
 				return new KSSequenceGroup( t, new KSSetProperty(target, "visible", false));
 			}
@@ -112,8 +113,9 @@ package org.as3lib.kitchensync.action.tween
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param setVisibility If true, this sets the visibility to true before the fade in is complete.
 		 */
-		public static function newFadeInTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true):IAction {
-			var t:KSTween = newTween(target, "alpha", AUTO_TWEEN_VALUE, 1, duration, 0, Linear.ease); 
+		public static function newFadeInTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true, startFromZeroAlpha:Boolean = false):IAction {
+			var startAlpha:Number = startFromZeroAlpha ? 0.0 : AUTO_TWEEN_VALUE;
+			var t:KSTween = newTween(target, "alpha", startAlpha, 1, duration, 0, Linear.ease); 
 			if (setVisibility) {
 				return new KSSequenceGroup ( new KSSetProperty(target, "visible", true), t);
 			}
