@@ -91,11 +91,13 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @param target Tween's target must be a display object.
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param setVisibility If true, this sets the visibility to false after the fade out is complete.
+		 * @param startFromFullAlpha If true will set the alpha to 1.0 before executing the fade out.
 		 */
-		public static function newFadeOutTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true, startFromFullAlpha:Boolean = false):IAction {
+		public static function newFadeOutTween(target:DisplayObject, duration:* = 0, delay:* = 0, setVisibility:Boolean = true, startFromFullAlpha:Boolean = false):IAction {
 			var startAlpha:Number = startFromFullAlpha ? 1.0 : AUTO_TWEEN_VALUE;
-			var t:KSTween = newTween(target, "alpha", startAlpha , 0, duration, 0, Linear.ease);
+			var t:KSTween = newTween(target, "alpha", startAlpha , 0, duration, delay, Linear.ease);
 			if (setVisibility) {
 				return new KSSequenceGroup( t, new KSSetProperty(target, "visible", false));
 			}
@@ -111,9 +113,11 @@ package org.as3lib.kitchensync.action.tween
 		 * 
 		 * @param target Tween's target must be a display object.
 		 * @param duration The time in milliseconds that this tween will take to execute. String values are acceptable too.
+		 * @param delay The time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param setVisibility If true, this sets the visibility to true before the fade in is complete.
+		 * @param startFromZeroAlpha If true will set the alpha to 0 before executing the fade in.
 		 */
-		public static function newFadeInTween(target:DisplayObject, duration:* = 0, setVisibility:Boolean = true, startFromZeroAlpha:Boolean = false):IAction {
+		public static function newFadeInTween(target:DisplayObject, duration:* = 0, delay:int = 0, setVisibility:Boolean = true, startFromZeroAlpha:Boolean = false):IAction {
 			var startAlpha:Number = startFromZeroAlpha ? 0.0 : AUTO_TWEEN_VALUE;
 			var t:KSTween = newTween(target, "alpha", startAlpha, 1, duration, 0, Linear.ease); 
 			if (setVisibility) {

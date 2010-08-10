@@ -48,6 +48,12 @@ package org.as3lib.kitchensync.action.group
 		public function get childActions():Array { return _childActions; }
 		protected var _childActions:Array = new Array();
 		
+		/** @inheritDoc */ 
+		public function get lastActionAdded():IAction {
+			return _lastActionAdded;
+		}
+		protected var _lastActionAdded:IAction;
+		
 		/**
 		 * Setting duration is overridden on groups and will always be 0.
 		 * @see totalDuration.
@@ -80,15 +86,18 @@ package org.as3lib.kitchensync.action.group
 			// add the first action
 			if (action != null) { 
 				_childActions.push(action);
+				_lastActionAdded = action;
 			}
 			
 			// add additional actions
 			for each (action in additionalActions) {
 				if (action != null) { 
 					_childActions.push(action); 
+					_lastActionAdded = action;
 				}
 			}
 		}
+		
 		
 		/**
 		 * @inheritDoc
@@ -99,6 +108,7 @@ package org.as3lib.kitchensync.action.group
 			} else {
 				_childActions.splice(index, 0, action);
 			}
+			_lastActionAdded = action;
 		}
 		
 		/**

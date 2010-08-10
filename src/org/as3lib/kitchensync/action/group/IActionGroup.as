@@ -29,6 +29,20 @@ package org.as3lib.kitchensync.action.group
 		 */
 		function get childActions():Array;
 		
+		/** 
+		 * Returns the last action added to the group regardless of
+		 * its position in the child list. This function is useful if you
+		 * want to tweak settings on an anonymous action without storing it in
+		 * a variable. See the example.
+		 * 
+		 * @use <code>
+		 * var group:KSSequenceGroup = new KSSequenceGroup ( new KSSetProperty (this, "visible", false) );
+		 * group.lastActionAdded.delay = 500;
+		 * group.start();
+		 * </code>
+		 */ 
+		function get lastActionAdded():IAction;
+		
 		/**
 		 * Returns the total duration of all the children within
 		 * the group. This is calculated by adding upthe sum of each 

@@ -3,11 +3,12 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 
 * = Contains syntax changes that may require refactoring of legacy code.
 
-===== v2.1 =====
+===== v2.1* =====
 ADDED Auto-visibility to fade in and out tweens.
 ADDED KSRemoveChild and KSAddChild. Just shortcuts for removeChild() and addChild() but with built-in error checking.
+ADDED lastActionAdded to IActionGroup which makes it a little easier to tweak anonymous actions when working with groups.
 FIXED Issues 31 and 32 dealing with KSSequenceGroups and pausing.
-CHANGED position tween from points to numbers.
+CHANGED position tween from points to numbers to make it easier to use.
 
 ===== v2.0.1 =====
 CHANGED No longer requires KitchenSync.initialize() ! now auto-initializes.

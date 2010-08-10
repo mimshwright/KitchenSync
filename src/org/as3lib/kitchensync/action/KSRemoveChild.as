@@ -15,8 +15,7 @@ package org.as3lib.kitchensync.action
 		{
 			var f:Function =  function (child:DisplayObject, parent:DisplayObjectContainer):void 
 								{
-									var contains:Boolean = child.parent == parent;
-									if (child && parent && contains) {
+									if (child && parent && child.parent == parent) {
 										parent.removeChild(child);
 									}
 								}
