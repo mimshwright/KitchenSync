@@ -186,7 +186,7 @@ package org.as3lib.kitchensync.action.group
 		
 		override public function unpause():void {
 			super.unpause();
-			if (!currentAction.isRunning) {
+			if (currentAction && !currentAction.isRunning) {
 				completeOrStartNextAction();
 			}
 		}
