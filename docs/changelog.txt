@@ -4,12 +4,15 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 * = Contains syntax changes that may require refactoring of legacy code.
 
 ===== v2.1* =====
-ADDED Auto-visibility to fade in and out tweens.
+ADDED Auto-visibility to fade in and out tweens plus a parameter for e.g. automatically setting the alpha to 0 before a fadeIn.
 ADDED KSRemoveChild and KSAddChild. Just shortcuts for removeChild() and addChild() but with built-in error checking.
 ADDED lastActionAdded to IActionGroup which makes it a little easier to tweak anonymous actions when working with groups.
 ADDED KSProxy A utility for applying changes from one property to another property. 
-FIXED Issues 31 and 32 dealing with KSSequenceGroups and pausing.
+FIXED Issues 31, 32, 34, 35 dealing with KSSequenceGroups and pausing.
+FIXED Issue when starting a group with no child actions.
+FIXED Possible situation where start event could be dispatched after complete event.
 CHANGED position tween from points to numbers to make it easier to use.
+CHANGED KSSimpleTween no longer requires a value for delay. Default is 0.
 
 ===== v2.0.1 =====
 CHANGED No longer requires KitchenSync.initialize() ! now auto-initializes.
