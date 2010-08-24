@@ -133,7 +133,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @param easingMod1 Optional modifier for the easing function
 		 * @param easingMod2 Optional modifier for the easing function
 		 */
-		public function KSSimpleTween(target:Object, property:String, startValue:Number, endValue:Number, duration:int, delay:int, easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN) {
+		public function KSSimpleTween(target:Object, property:String, startValue:Number, endValue:Number, duration:int, delay:int = 0, easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN) {
 			this.target = target;
 			this.property = property;
 			this.startValue = startValue;

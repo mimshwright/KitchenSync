@@ -7,6 +7,7 @@ Visit http://code.google.com/p/kitchensynclib/ for the latest version
 ADDED Auto-visibility to fade in and out tweens.
 ADDED KSRemoveChild and KSAddChild. Just shortcuts for removeChild() and addChild() but with built-in error checking.
 ADDED lastActionAdded to IActionGroup which makes it a little easier to tweak anonymous actions when working with groups.
+ADDED KSProxy A utility for applying changes from one property to another property. 
 FIXED Issues 31 and 32 dealing with KSSequenceGroups and pausing.
 CHANGED position tween from points to numbers to make it easier to use.
 

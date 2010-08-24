@@ -87,9 +87,7 @@ package org.as3lib.kitchensync.action
 		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed(currentTime)) {
 				invoke();
-				if (durationHasElapsed(currentTime)) {
-					complete();
-				}
+				complete();
 			}
 		}
 		
