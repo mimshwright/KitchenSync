@@ -176,11 +176,13 @@ package org.as3lib.kitchensync.action
 				if (!_running) {
 					_running = true;
 					_startTime = Synchronizer.getInstance().currentTime;
-					register();
 					dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.ACTION_START, _startTime));
-				} else {
-					throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
+					register();
 				}
+				// disabled error for double start
+//				else {
+//					throw new IllegalOperationError("The start() method cannot be called when the action is already running. Try stopping the action first or using the clone() method to create a copy of it.");
+//				}
 			}
 			return this;
 		}

@@ -131,10 +131,15 @@ package org.as3lib.kitchensync.action.group
 		 */
 		override public function update(currentTime:int):void {
 			if (startTimeHasElapsed(currentTime) && _currentAction == null) {
-				startNextAction();
 				// Sequence no longer needs to listen for events from Synchronizer
 				// since it now receives all cues from its children.
 				unregister();
+				
+				if (childActions.length > 0) {
+					startNextAction();
+				} else {
+					complete();
+				}
 			}
 		}
 		
@@ -214,14 +219,6 @@ package org.as3lib.kitchensync.action.group
 			super.complete();
 		}
 		
-		/**
-		 * Override start to automatically quit if there are no children.
-		 */
-		override public function start():IAction {
-			super.start();
-			if (childActions && childActions.length < 1) { complete(); }
-			return this;
-		}
 		
 		override public function clone():IAction {
 			var clone:KSSequenceGroup = new KSSequenceGroup();
