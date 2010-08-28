@@ -5,7 +5,6 @@ package org.as3lib.kitchensync.core
 	
 	/**
 	 * A Synchronizer core based on a Timer class. 
-	 * This is the default core for the Synchronizer.
 	 * It allows the user to specify a timer interval or 
 	 * automatically set it based on the framerate.
 	 * 
