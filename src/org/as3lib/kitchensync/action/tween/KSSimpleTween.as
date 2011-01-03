@@ -230,7 +230,7 @@ package org.as3lib.kitchensync.action.tween
 		
 		/** @inheritDoc */
 		public function pause():void {
-			if (!_running && !_paused) {
+			if (_running && !_paused) {
 				var currentTime:int = Synchronizer.getInstance().currentTime;
 				_pauseTime = currentTime;
 				_paused = true;
