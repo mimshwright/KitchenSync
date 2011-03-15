@@ -1,5 +1,7 @@
 #KitchenSync Library
 
+Still in the process of migrating from [Google Code](http://code.google.com/p/kitchensynclib/) to GitHub. Stay tuned!
+
 ##Setup
 
 See [installation](http://code.google.com/p/kitchensynclib/wiki/Installation) on the old wiki
@@ -7,6 +9,8 @@ See [installation](http://code.google.com/p/kitchensynclib/wiki/Installation) on
 ##Manual
 
 Check out the [manual](http://kitchensync.as3lib.org/manual/)
+
+Also, [ASDoc Reference](http://kitchensync.as3lib.org/docs/)
 
 ##Special Thanks and Shouts-out
 
