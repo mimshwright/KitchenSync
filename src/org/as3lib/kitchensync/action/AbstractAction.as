@@ -69,20 +69,12 @@ package org.as3lib.kitchensync.action
 		protected var _delay:int = 0;
 		
 		/**
-		 * Returns the percentage complete of the action (based on duration).
-		 * If duration is 0, the progress will go from 0 to 1 when the action executes.  
-		 * If the action isn't running it will always return 0 so it will only
-		 * have a value of 1 between the time it completes and the time it stops running.
-		 * Therefore, if you're updating a display with the progress, use the complete event
-		 * to know when it's done rather than waiting for progress to equal 1.
-		 * 
-		 * Read-only.
-		 * 
-		 * @since 2.0 
+		 * @inheritDoc
 		 */
 		public function get progress ():Number {
 			if (!_running) { return 0; }
-			return Math.max(0, Synchronizer.getInstance().currentTime - (_delay + _startTime));
+			return runningTime / duration;
+//			return Math.max(0, Synchronizer.getInstance().currentTime - (_delay + _startTime));
 		}
 		
 		

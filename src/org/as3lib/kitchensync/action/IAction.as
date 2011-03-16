@@ -55,6 +55,26 @@ package org.as3lib.kitchensync.action
 		/** Should return true if the action is running (or paused). */
 		function get isRunning():Boolean;
 		
+		/**
+		 * Returns the percentage complete of the action.
+		 * The value is generally speaking equal to (runningTime / duration).
+		 * This value should be as accurate as possible. When a reading is impractical or if it's difficult
+		 * to get an accurate value, the progress should err on the side of less progress.
+		 * 
+		 * If the action is instantaneous, the progress will go from 0 to 1 when the action executes.  
+		 * 
+		 * If the action completes, it will stop running. When it isn't running it will always return 0 
+		 * so the action may never return a value of 1. Therefore, if you're updating a display with 
+		 * the progress, use the complete event to know when it's done rather than waiting 
+		 * for progress to equal 1.
+		 * 
+		 * 
+		 * Read-only.
+		 * 
+		 * @since 2.0, moved to iAction in  
+		 */
+		function get progress ():Number;
+		
 		
 		/**
 		 * Begins the action running. The action will execute whatever it is

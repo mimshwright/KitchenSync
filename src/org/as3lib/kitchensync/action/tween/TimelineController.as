@@ -3,6 +3,7 @@ package org.as3lib.kitchensync.action.tween
 	import flash.display.FrameLabel;
 	import flash.display.MovieClip;
 	
+	import org.as3lib.kitchensync.KitchenSync;
 	import org.as3lib.utils.FrameUtil;
 	
 	/**
@@ -77,6 +78,7 @@ package org.as3lib.kitchensync.action.tween
 		public function getNaturalDuration(frameRate:int = AUTO):int {
 			if (frameRate == AUTO) {
 				if (_target.stage) { frameRate = _target.stage.frameRate; }
+				else if (KitchenSync.stage) { frameRate = KitchenSync.stage.frameRate; }
 				else { throw new Error("Cannot autodetect frame rate. Either add your target MC to the stage or use an explicit frame rate."); }
 			}
 			var durationInFrames:int = Math.abs(endValue - startValue);

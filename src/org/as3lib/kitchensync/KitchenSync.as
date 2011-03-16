@@ -1,6 +1,7 @@
 package org.as3lib.kitchensync
 {
 	import flash.display.DisplayObject;
+	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
 	
 	import org.as3lib.kitchensync.core.EnterFrameCore;
@@ -36,7 +37,14 @@ package org.as3lib.kitchensync
 		 * The current version of the library. Use this to verify that the library is the
 		 * version that your software expects. 
 		 */ 
-		public static const VERSION:String = "2.0"
+		public static const VERSION:String = "3.0";
+			
+		/**
+		 * A reference to the stage. Can be set here and if defined may be used when 
+		 * the stage is needed to figure out framerates and such.
+		 */
+		public static var stage:Stage; 
+		
 		
 		/**
 		 * Will return true once the initialize function has been called.
@@ -75,14 +83,13 @@ package org.as3lib.kitchensync
 		 * 
 		 * @see #initializeWithCore()
 		 * 
-		 * @param displayObject Actually not used but leaving this in keeps older code backwards compatible.
 		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended
 		 * 					   but not required. It will throw an error if you're using the wrong version of KS. 
 		 */
-		public static function initialize(displayObject:DisplayObject = null, versionCheck:String = VERSION):void
+		public static function initialize(stage:Stage = null, versionCheck:String = VERSION):void
 		{	
 			var core:ISynchronizerCore = new EnterFrameCore();
-			initializeWithCore(core, versionCheck);
+			initializeWithCore(core, stage, versionCheck);
 		}
 		
 		/**
@@ -98,7 +105,9 @@ package org.as3lib.kitchensync
 		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended
 		 * 					   but not required. It will throw an error if you're using the wrong version of KS. 
 		 */
-		public static function initializeWithCore(synchronizerCore:ISynchronizerCore, versionCheck:String = VERSION):void {
+		public static function initializeWithCore(synchronizerCore:ISynchronizerCore, stage:Stage = null, versionCheck:String = VERSION):void {
+			KitchenSync.stage = stage;
+			
 			if (_isInitialized) {
 				trace("Warning: KitchenSync has already been initialized.");
 				return;
@@ -106,6 +115,8 @@ package org.as3lib.kitchensync
 			if (versionCheck != VERSION) {
 				throw new Error ("Version check failed. You tested for version " + versionCheck + " but it's actually version " + VERSION + ". Some syntax may have changed in this version.");
 			}
+			
+			
 			var synchronizer:Synchronizer;
 			synchronizer = Synchronizer.getInstance();
 			synchronizer.core = synchronizerCore;

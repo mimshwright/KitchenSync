@@ -3,6 +3,7 @@ package org.as3lib.kitchensync.action
 	import flash.events.Event;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.net.URLRequest;
 	
 	import org.as3lib.kitchensync.KitchenSync;
@@ -27,6 +28,7 @@ package org.as3lib.kitchensync.action
 	 * @since 0.2
 	 */
 	 // todo: does it make sense to have this be a precision action?
+	 // todo: add looping 
 	public class KSSound extends AbstractAction implements IPrecisionAction
 	{
 		/**
@@ -42,6 +44,12 @@ package org.as3lib.kitchensync.action
 		public function get channel():SoundChannel { return _channel; }
 		public function set channel(channel:SoundChannel):void { _channel = channel; }
 		protected var _channel:SoundChannel;
+		
+		
+		public function get soundTransform():SoundTransform { return _soundTransform; }
+		public function set soundTransform(value:SoundTransform):void { _soundTransform = value; }
+		private var _soundTransform:SoundTransform = null;
+
 		
 		/**
 		 * The offset of the sound object when it is played. For example,
@@ -82,8 +90,10 @@ package org.as3lib.kitchensync.action
 		 * @param delay - The delay before starting the sound.
 		 * @param soundOffset - The point at which to begin playing the sound in milliseconds.
 		 */
-		public function KSSound(sound:*, delay:* = 0, soundOffset:* = 0) {
+		public function KSSound(sound:*, delay:* = 0, soundOffset:* = 0, soundTransform:SoundTransform = null) {
 			super();
+			this.soundTransform = soundTransform;
+			
 			if (sound is Sound) {
 				_sound = Sound(sound);
 			} else if (sound is URLRequest) {
@@ -111,7 +121,7 @@ package org.as3lib.kitchensync.action
 					// todo: test
 					// adds some precision to the start time of this sound
 					var adjustedSoundOffset:int = _soundOffset + (currentTime - _startTime - _delay)
-					_channel = _sound.play(adjustedSoundOffset);
+					_channel = _sound.play(adjustedSoundOffset, 0, soundTransform);
 					_channel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);
 					unregister();
 				}
@@ -122,6 +132,8 @@ package org.as3lib.kitchensync.action
 		 * The event is considered complete when the sound's SOUND_COMPLETE event is fired.
 		 */
 		protected function onSoundComplete(event:Event):void {
+			_channel.removeEventListener(Event.SOUND_COMPLETE, onSoundComplete);
+			_channel = null;
 			complete();
 		}
 		

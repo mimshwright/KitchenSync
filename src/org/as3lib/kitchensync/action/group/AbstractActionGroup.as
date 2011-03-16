@@ -71,6 +71,15 @@ package org.as3lib.kitchensync.action.group
 			return totalDuration;
 		} 
 		
+		/** 
+		 * @inheritDoc
+		 * Uses totalDuration to get the duration of the group.
+		 */
+		override public function get progress():Number {
+			if (!isRunning || totalDuration == 0) { return 0; }
+			return runningTime / totalDuration;
+		}
+		
 		/**
 		 * Constructor.
 		 * 
@@ -170,6 +179,7 @@ package org.as3lib.kitchensync.action.group
 		protected function onChildFinished (event:KitchenSyncEvent):void {
 			dispatchEvent(new KitchenSyncEvent(KitchenSyncEvent.CHILD_ACTION_COMPLETE, event.timestamp));
 		}
+		
 		
 		/**
 		 * @inheritDoc

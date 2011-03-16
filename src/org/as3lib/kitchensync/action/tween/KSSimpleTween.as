@@ -69,6 +69,12 @@ package org.as3lib.kitchensync.action.tween
 			return (Synchronizer.getInstance().currentTime - _startTime); 
 		}
 		
+		/** @inheritDoc */
+		public function get progress():Number {
+			if (!_running) { return 0; }
+			return runningTime / duration;
+		}
+		
 		
 		/** target object whose properties will be affected. */
 		public var target:Object;

@@ -24,13 +24,13 @@ package org.as3lib.kitchensync.core
 			_timer = new Timer(interval);
 		}
 		
-		/** @inherit */
+		/** @inheritDoc */
 		public function start():void {
 			_timer.addEventListener(TimerEvent.TIMER, onTimer);
 			_timer.start();
 		}
 
-		/** @inherit */
+		/** @inheritDoc */
 		public function stop():void {
 			_timer.removeEventListener(TimerEvent.TIMER, onTimer);
 			_timer.stop();

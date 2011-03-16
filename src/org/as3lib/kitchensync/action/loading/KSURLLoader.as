@@ -76,6 +76,30 @@ package org.as3lib.kitchensync.action.loading
 		public function set loader(loader:URLLoader):void {  _loader = loader; }
 		protected var _loader:URLLoader;
 		
+		/** @inheritDoc */
+		override public function get progress():Number {
+			if (loader && loader.bytesTotal > 0) {
+				return (loader.bytesLoaded / loader.bytesTotal);
+			}
+			return 0;
+		}
+		
+		
+		/** @inheritDoc */
+		public function get bytesLoaded():uint { 
+			if (loader) {
+				return loader.bytesLoaded;
+			}
+			return 0;
+		}
+		
+		/** @inheritDoc */
+		public function get bytesTotal():uint { 
+			if (loader && loader.bytesTotal > 0) {
+				return loader.bytesTotal;
+			}
+			return 0;
+		}
 		
 		/**
 		 * @inheritDoc

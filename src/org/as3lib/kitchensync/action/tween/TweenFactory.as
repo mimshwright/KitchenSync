@@ -2,13 +2,18 @@ package org.as3lib.kitchensync.action.tween
 {
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
+	import flash.display.Stage;
+	import flash.filters.BlurFilter;
 	import flash.geom.Point;
 	
 	import mx.effects.IAbstractEffect;
 	
+	import org.as3lib.kitchensync.KitchenSync;
 	import org.as3lib.kitchensync.KitchenSyncDefaults;
 	import org.as3lib.kitchensync.action.IAction;
 	import org.as3lib.kitchensync.action.KSSetProperty;
+	import org.as3lib.kitchensync.action.group.IActionGroup;
+	import org.as3lib.kitchensync.action.group.KSParallelGroup;
 	import org.as3lib.kitchensync.action.group.KSSequenceGroup;
 	import org.as3lib.kitchensync.easing.Linear;
 	
@@ -117,9 +122,9 @@ package org.as3lib.kitchensync.action.tween
 		 * @param setVisibility If true, this sets the visibility to true before the fade in is complete.
 		 * @param startFromZeroAlpha If true will set the alpha to 0 before executing the fade in.
 		 */
-		public static function newFadeInTween(target:DisplayObject, duration:* = 0, delay:int = 0, setVisibility:Boolean = true, startFromZeroAlpha:Boolean = false):IAction {
+		public static function newFadeInTween(target:DisplayObject, duration:* = 0, delay:* = 0, setVisibility:Boolean = true, startFromZeroAlpha:Boolean = false):IAction {
 			var startAlpha:Number = startFromZeroAlpha ? 0.0 : AUTO_TWEEN_VALUE;
-			var t:KSTween = newTween(target, "alpha", startAlpha, 1, duration, 0, Linear.ease); 
+			var t:KSTween = newTween(target, "alpha", startAlpha, 1, duration, delay, Linear.ease); 
 			if (setVisibility) {
 				return new KSSequenceGroup ( new KSSetProperty(target, "visible", true), t);
 			}
@@ -169,6 +174,7 @@ package org.as3lib.kitchensync.action.tween
 		 * @param easingFunction The function to use to interpolate the values between fromValue and toValue. Default is linear.
 		 * @param easingMod1 An optional modifier to the easing funtion.
 		 * @param easingMod2 An optional modifier to the easing funtion.
+		 * @param stage A reference to the stage which can help with determining frame rates and such.
 		 * @return A new KSTween instance
 		 * 
 		 * @since 2.0
@@ -177,7 +183,9 @@ package org.as3lib.kitchensync.action.tween
 												startFrame:Object = null,
 												endFrame:Object = null,
 												duration:* = -1,
-												easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN):KSTween {
+												easingFunction:Function = null, easingMod1:Number = NaN, easingMod2:Number = NaN, 
+												stage:Stage = null):KSTween {
+			if (stage) KitchenSync.stage = stage;
 			
 			var timelineController:TimelineController = new TimelineController(target, startFrame, endFrame);
 			if (duration == TimelineController.AUTO) {
@@ -198,7 +206,6 @@ package org.as3lib.kitchensync.action.tween
 		 * @param yFrom starting y of the tween
 		 * @param xTo ending x of the tween
 		 * @param yTo ending y of the tween
-		 * @param endValue - the ending point of the target.
 		 * @param duration - the time in milliseconds that this tween will take to execute. String values are acceptable too.
 		 * @param delay - the time to wait in milliseconds before starting the tween. String values are acceptable too.
 		 * @param easingFunction - the function to use to interpolate the values between fromValue and toValue.
@@ -223,7 +230,8 @@ package org.as3lib.kitchensync.action.tween
 //			var y:ITweenTarget = new TargetProperty(target, "y", Number(startValue[1]), Number(endValue[1]));
 //			var z:ITweenTarget = new TargetProperty(target, "z", Number(startValue[2]), Number(endValue[2]));
 //			return newWithTargets([x,y,z], duration, delay, easingFunciton);
-//		} 
+//		}
+		
 
 		/**
 		 * Creates a tween that scales x and y simultaneously.

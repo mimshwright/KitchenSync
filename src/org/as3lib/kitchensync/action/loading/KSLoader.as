@@ -44,6 +44,31 @@ package org.as3lib.kitchensync.action.loading
 		public function get data():* { return _data; } 
 		protected var _data:* = null;
 		
+		/** @inheritDoc */
+		override public function get progress():Number {
+			if (loader && loader.contentLoaderInfo && loader.contentLoaderInfo.bytesTotal > 0) {
+				return (loader.contentLoaderInfo.bytesLoaded / loader.contentLoaderInfo.bytesTotal);
+			}
+			return 0;
+		}
+		
+		/** @inheritDoc */
+		public function get bytesLoaded():uint { 
+			if (loader && loader.contentLoaderInfo) {
+				return loader.contentLoaderInfo.bytesLoaded;
+			}
+			return 0;
+		}
+		
+		/** @inheritDoc */
+		public function get bytesTotal():uint { 
+			if (loader && loader.contentLoaderInfo && loader.contentLoaderInfo.bytesTotal > 0) {
+				return loader.contentLoaderInfo.bytesTotal;
+			}
+			return 0;
+		}
+		
+		
 		/**
 		 * @inheritDoc
 		 */
@@ -70,6 +95,7 @@ package org.as3lib.kitchensync.action.loading
 			
 			super(loader.load, loader.contentLoaderInfo, Event.COMPLETE, url, context);
 		}
+		
 		
 		/**
 		 * Called when the load is successful.

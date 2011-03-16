@@ -52,8 +52,30 @@ package org.as3lib.kitchensync.action.group
 		public function get currentActionIndex():int { return _currentActionIndex; }
 		protected var _currentActionIndex:int = NO_CURRENT_ACTION_INDEX;
 		
-		
 		public function get currentAction():IAction { return _currentAction; }
+		
+		/**
+		 * Returns the total progress of the sequence.
+		 * Since it's difficult to judge how long each child will take since some of 
+		 * them will report 0%, it makes an estimate of the total progress based on the 
+		 * number of items in the sequence. Only the currently running item will
+		 * report it's actual progress and it's weighted by its position in the 
+		 * queue. 
+		 * 
+		 * @since 2.1
+		 */
+		override public function get progress():Number {
+			var l:int = childActions.length;
+			var currentProgress:Number = 0;
+			if (l > 0) {
+				if (currentAction) {
+					currentProgress = currentAction.progress / l;
+				} 
+				return currentActionIndex / l + currentProgress;
+			}
+			return 0;
+		}
+		
 		
 		/**
 		 * Constructor.

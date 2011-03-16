@@ -45,5 +45,16 @@ package org.as3lib.kitchensync.action.loading
 		 */
 		function get resultList():Array;
 		function set resultList(resultList:Array):void;
+		
+		/**
+		 * Bytes loaded of the file.
+		 */
+		function get bytesLoaded():uint;
+
+		/**
+		 * Total Bytes in the loaded file.
+		 * Returns 0 if not available.
+		 */
+		function get bytesTotal():uint;
 	}
 }
