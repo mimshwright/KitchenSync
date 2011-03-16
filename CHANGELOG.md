@@ -14,6 +14,12 @@ _Visit [KitchenSync on GitHub](https://github.com/mimshwright/KitchenSync) for t
 
 * **ADDED -** `KSProxy` A utility for applying changes from one property to another property. 
 
+* **ADDED -** Optional stage property to `KitchenSync` which can be used internally to get framerate and such. Changed `initialize()` function syntax.
+
+* **ADDED -** progress to `ILoaderActions`.
+
+* **MOVED -** `get progress` to `IAction`.
+
 * **FIXED -** Issues 31, 32, 34, 35 dealing with `KSSequenceGroups` and pausing.
 
 * **FIXED -** Issue when starting a group with no child actions.
