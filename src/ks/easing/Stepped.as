@@ -1,5 +1,7 @@
 package ks.easing
 {
+	import ks.utils.EasingUtil;
+
 	 /**
 	 * <p>Stepped produces values between 0.0 and 1.0 which are rounded up or down to nearby values
 	 * so that they jump from one sample to the next creating a stairstep motion. It gives

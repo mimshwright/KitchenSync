@@ -2,6 +2,8 @@ package ks.action
 {
 	import flash.errors.IllegalOperationError;
 	import flash.utils.getTimer;
+	import ks.core.AbstractAction;
+	import ks.core.IAction;
 	
 	
 	/**

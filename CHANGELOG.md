@@ -6,7 +6,19 @@ _Visit [KitchenSync on GitHub](http://github.com/mimshwright/KitchenSync) for th
 
 ##===== v3.0* =====
 
-* **CHANGED -** Package name to `ks`.
+* **CHANGED -** Package structure.
+
+	* The main package has changed from `org.as3lib.kitchensync` to `ks`. 
+	
+	* Massively restructured the organization of classes within the packages. 
+		
+		* `ks.action` package contains all action types in a flat structure. 
+		
+		* Most interfaces and support classes have been moved to `ks.core` or `ks.utils`. For example, `IAction` is in core and `EasingUtil` is in utils.
+		
+* **RENAMED -** A couple of tween targets to be more consistent.
+
+* **REMOVED -** Dependencies on as3lib. Only dependencies now are `abstract-as3.swc` and `ColorMatrix.swc`.
 
 * **MOVED -** Project hosting to [GitHub](http://github.com/mimshwright/KitchenSync).
 

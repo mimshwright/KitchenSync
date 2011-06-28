@@ -1,7 +1,7 @@
 package ks.utils
 {
-	import ks.core.ISynchronizerClient;
-	import ks.core.Synchronizer;
+	import ks.core.synchronizer.ISynchronizerClient;
+	import ks.core.synchronizer.Synchronizer;
 
 	/**
 	 * A singleton class that can track the current and average framerate of the

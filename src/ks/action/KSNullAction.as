@@ -1,5 +1,6 @@
 package ks.action
 {
+	import ks.core.IAction;
 	
 	/**
 	 * An empty action that doesn't do anything and has no duration.

@@ -1,7 +1,9 @@
 package ks
 {
 	import ks.action.*;
-	import ks.action.tween.*;
+	import ks.action.tweentarget.*;
+	import ks.core.ITweenObjectParser;
+	import ks.utils.KitchenSyncObjectParser;
 	import ks.easing.*;
 	import ks.utils.*;
 	

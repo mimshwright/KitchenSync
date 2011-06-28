@@ -1,5 +1,7 @@
 package ks.action
 {
+	import ks.core.IAction;
+
 	/**
 	 * An action for tracing a message. Very useful when stringing together 
 	 * several actions in a group to report the progress of a group but can 

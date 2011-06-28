@@ -2,12 +2,12 @@ package ks.animation
 {
 	import flash.display.MovieClip;
 	
-	import ks.action.IAction;
+	import ks.core.IAction;
 	import ks.action.KSFunction;
 	import ks.action.KSSetProperty;
-	import ks.action.group.IActionGroup;
-	import ks.action.group.KSSequenceGroup;
-	import ks.action.tween.TweenFactory;
+	import ks.core.IActionGroup;
+	import ks.action.KSSequenceGroup;
+	import ks.action.TweenFactory;
 	
 	public class GenericTransitionGenerator extends MovieClip implements ITransitionGenerator
 	{

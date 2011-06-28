@@ -1,6 +1,6 @@
 package ks.animation
 {
-	import ks.action.IAction;
+	import ks.core.IAction;
 	
 	/**
 	 * Creates actions using KitchenSync for show and hide transitions.

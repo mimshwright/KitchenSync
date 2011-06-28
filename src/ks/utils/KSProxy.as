@@ -4,9 +4,9 @@ package ks.utils
 	import flash.events.IEventDispatcher;
 	import flash.utils.Dictionary;
 	
-	import ks.core.ISynchronizerClient;
+	import ks.core.synchronizer.ISynchronizerClient;
 	import ks.core.KitchenSyncEvent;
-	import ks.core.Synchronizer;
+	import ks.core.synchronizer.Synchronizer;
 
 	/**
 	 * Watches for changes on an object's properties and applies the values to another object's property.
@@ -125,10 +125,15 @@ package ks.utils
 		 * 						it will use the KitchenSyncEvent.ACTION_COMPLETE type since this class will commonly
 		 * 						be used to mirror a tween onto another property.
 		 */
-		public function KSProxy(watchedObject:*, watchedProperty:String, targetObject:*, targetProperty:String, modFunction:Function = null, killEventDispatcher:IEventDispatcher = null, killEventType:String = "actionComplete" )
+		public function KSProxy(
+								watchedObject:*, watchedProperty:String, 
+								targetObject:*, targetProperty:String, 
+								modFunction:Function = null, 
+								killEventDispatcher:IEventDispatcher = null, killEventType:String = "actionComplete" 
+							   )
 		{
 			if (watchedObject == null || targetObject == null) {
-				throw new ArgumentError ("Both watchedObject and targetObject must not be null.");
+				throw new ArgumentError ("Neither watchedObject nor targetObject may be null.");
 			}
 			
 			_watchedObject = watchedObject;

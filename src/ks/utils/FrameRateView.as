@@ -3,8 +3,8 @@ package ks.utils
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	
-	import ks.core.ISynchronizerClient;
-	import ks.core.Synchronizer;
+	import ks.core.synchronizer.ISynchronizerClient;
+	import ks.core.synchronizer.Synchronizer;
 
 	/**
 	 * A text field that displays the approximate framerate of the synchronizer.

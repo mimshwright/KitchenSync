@@ -4,9 +4,9 @@ package ks
 	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
 	
-	import ks.core.EnterFrameCore;
-	import ks.core.ISynchronizerCore;
-	import ks.core.Synchronizer;
+	import ks.core.synchronizer.EnterFrameCore;
+	import ks.core.synchronizer.ISynchronizerCore;
+	import ks.core.synchronizer.Synchronizer;
 	import ks.utils.ITimeStringParser;
 	
 
