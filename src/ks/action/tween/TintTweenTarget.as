@@ -3,7 +3,7 @@ package ks.action.tween
 	import flash.display.DisplayObject;
 	import flash.geom.ColorTransform;
 	
-	import org.as3lib.math.limit;
+	import utils.number.clamp;
 	
 	/**
 	 * Tween target for adjusting the color of a DisplayObject using a ColorTransform.
@@ -193,7 +193,7 @@ package ks.action.tween
 			_currentTransform = new ColorTransform();
 			
 			// Normalize tint opacity between 0 and 1.
-			_tintOpacity = limit(tintOpacity, 0, 1);
+			_tintOpacity = clamp(tintOpacity, 0, 1);
 			
 			this.startTransform = startValue; 
 			this.endTransform = endValue;

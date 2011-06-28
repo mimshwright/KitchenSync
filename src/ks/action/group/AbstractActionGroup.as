@@ -6,7 +6,8 @@ package ks.action.group
 	import ks.action.AbstractAction;
 	import ks.action.IAction;
 	import ks.core.*;
-	import org.as3lib.utils.AbstractEnforcer;
+	
+	import abstractAS3.*;
 	
 	/**
 	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.CHILD_ACTION_START

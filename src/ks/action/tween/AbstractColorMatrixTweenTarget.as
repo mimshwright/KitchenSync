@@ -1,12 +1,12 @@
 package ks.action.tween
 {
+	import abstractAS3.AbstractEnforcer;
+	
 	import com.gskinner.geom.ColorMatrix;
 	
 	import flash.display.DisplayObject;
 	import flash.filters.BitmapFilter;
 	import flash.filters.ColorMatrixFilter;
-	
-	import org.as3lib.utils.AbstractEnforcer;
 	
 	// todo: consider switching to http://www.quasimondo.com/archives/000671.php
 	

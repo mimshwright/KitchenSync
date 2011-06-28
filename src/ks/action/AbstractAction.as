@@ -6,7 +6,8 @@ package ks.action
 	import ks.*;
 	import ks.core.*;
 	import ks.utils.*;
-	import org.as3lib.utils.AbstractEnforcer;
+	
+	import abstractAS3.*;
 	
 	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_START */
 	[Event(name="actionStart", type="ks.core.KitchenSyncEvent")]

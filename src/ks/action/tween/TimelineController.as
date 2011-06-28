@@ -3,8 +3,9 @@ package ks.action.tween
 	import flash.display.FrameLabel;
 	import flash.display.MovieClip;
 	
-	import ks.KitchenSync;
-	import org.as3lib.utils.FrameUtil;
+	import ks.*;
+	
+	import utils.frame.getFrameNumberForLabel;
 	
 	/**
 	 * A TweenTarget that controls a timeline animation in a MovieClip.
@@ -120,7 +121,7 @@ package ks.action.tween
 			if (frameLabel is FrameLabel) {
 				return FrameLabel(frameLabel).frame;
 			} else if (frameLabel is String) {
-				return FrameUtil.getFrameNumberFromString(target, String(frameLabel));
+				return getFrameNumberForLabel(target, String(frameLabel));
 			} else if (frameLabel is Number || frameLabel is int || frameLabel is uint) {
 				return int(frameLabel);
 			}

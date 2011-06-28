@@ -1,6 +1,6 @@
 package ks.action.tween
 {
-	import org.as3lib.math.INumericController;
+	import ks.core.INumericController;
 
 	/**
 	 * A <em>tween target</em> is a bundle that wraps up a property or other value that can be 

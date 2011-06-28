@@ -1,8 +1,14 @@
 #KitchenSync lib Change Log
 
-_Visit [KitchenSync on GitHub](https://github.com/mimshwright/KitchenSync) for the latest version_
+_Visit [KitchenSync on GitHub](http://github.com/mimshwright/KitchenSync) for the latest version_
 
 \* = Contains syntax changes that may require refactoring of legacy code.
+
+##===== v3.0* =====
+
+* **CHANGED -** Package name to `ks`.
+
+* **MOVED -** Project hosting to [GitHub](http://github.com/mimshwright/KitchenSync).
 
 ###===== v2.1* =====
 
