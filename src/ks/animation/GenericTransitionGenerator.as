@@ -7,7 +7,7 @@ package ks.animation
 	import ks.action.KSSetProperty;
 	import ks.action.IActionGroup;
 	import ks.action.KSSequenceGroup;
-	import ks.action.TweenFactory;
+	import ks.utils.TweenFactory;
 	
 	public class GenericTransitionGenerator extends MovieClip implements ITransitionGenerator
 	{

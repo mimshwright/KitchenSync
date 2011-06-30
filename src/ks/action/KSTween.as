@@ -269,7 +269,7 @@ package ks.action
 		/**
 		 * Duplicates a tween and if the first tween target is a TargetProperty, makes 
 		 * a copy of it with a new target and property.
-		 * The first tweenTarget of the KSTween must be a TargetProperty for this to work.
+		 * The first tweenTarget of the KSTween must be a PropertyTweenTarget for this to work.
 		 * 
 		 * Personal note: This method is somewhat of a hack. I'm including it for 
 		 * ease of use but a better way to do this would be to create a clone of a 
@@ -279,7 +279,7 @@ package ks.action
 		 * @param property The new property of the target.
 		 * @return KSTween A cloned instance of this tween with the new tween targets.
 		 */
-		public function cloneWithTargetProperty (target:*, property:String = ""):KSTween {
+		public function cloneWithProperty (target:*, property:String = ""):KSTween {
 			var oldTarget:PropertyTweenTarget = tweenTargets[0] as PropertyTweenTarget;
 			if (!oldTarget) {
 				throw new Error("You can't use this method unless the first tweenTarget is a TargetProperty");

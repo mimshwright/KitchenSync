@@ -1,4 +1,4 @@
-package ks.action
+package ks.utils
 {
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
@@ -9,15 +9,17 @@ package ks.action
 	import mx.effects.IAbstractEffect;
 	
 	import ks.KitchenSync;
-	import ks.utils.KitchenSyncDefaults;
 	import ks.easing.Linear;
 	import ks.core.AUTO_TWEEN_VALUE;
-	import ks.utils.ITweenObjectParser;
 	import ks.action.tweentarget.ITweenTarget;
 	import ks.action.tweentarget.FilterPropertyTweenTarget;
 	import ks.action.tweentarget.PropertyTweenTarget;
 	import ks.action.tweentarget.TimelineTarget;
 	import ks.action.tweentarget.TintTweenTarget;
+	import ks.action.IAction;
+	import ks.action.KSSequenceGroup;
+	import ks.action.KSSetProperty;
+	import ks.action.KSTween;
 	
 	/**
 	 * Provides a convenient interface for creating all types of tweens.
