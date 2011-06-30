@@ -7,8 +7,6 @@ package ks.action.tweentarget
 	import flash.display.DisplayObject;
 	import flash.filters.BitmapFilter;
 	import flash.filters.ColorMatrixFilter;
-	import ks.core.ITweenTarget;
-	import ks.core.IFilterTweenTarget;
 	
 	// todo: consider switching to http://www.quasimondo.com/archives/000671.php
 	

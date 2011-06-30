@@ -8,7 +8,6 @@ package ks.action
 	import flash.net.URLRequest;
 	import flash.system.LoaderContext;
 	
-	import ks.core.ILoaderAction;
 	
 	/**
 	 * An action for loading swf or image files. Acts as a wrapper for a Loader object.

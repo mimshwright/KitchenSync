@@ -1,4 +1,4 @@
-package ks.core.synchronizer
+package ks.core
 {
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

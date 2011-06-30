@@ -1,4 +1,4 @@
-package ks.core
+package ks.action
 {	
 	import flash.errors.*;
 	import flash.events.*;
@@ -7,18 +7,19 @@ package ks.core
 	import ks.utils.*;
 	
 	import abstractAS3.*;
-	import ks.core.synchronizer.Synchronizer;
+	import ks.core.Synchronizer;
+	import ks.core.KitchenSyncEvent;
 	
-	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_START */
+	/** @eventType ks.core.KitchenSyncEvent.ACTION_START */
 	[Event(name="actionStart", type="ks.core.KitchenSyncEvent")]
 	
-	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_PAUSE */
+	/** @eventType ks.core.KitchenSyncEvent.ACTION_PAUSE */
 	[Event(name="actionPause", type="ks.core.KitchenSyncEvent")]
 	
-	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_UNPAUSE */
+	/** @eventType ks.core.KitchenSyncEvent.ACTION_UNPAUSE */
 	[Event(name="actionUnpause", type="ks.core.KitchenSyncEvent")]
 
-	/** @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.ACTION_COMPLETE */
+	/** @eventType ks.core.KitchenSyncEvent.ACTION_COMPLETE */
 	[Event(name="actionComplete", type="ks.core.KitchenSyncEvent")]
 	
 	/**
@@ -37,7 +38,7 @@ package ks.core
 		 * duration is the length of time that the action will run.
 		 * Will accept an integer or a parsable string.
 		 * 
-		 * @see org.as3lib.kitchensync.ITimeStringParser
+		 * @see ks.ITimeStringParser
 		 */
 		public function get duration():int { return _duration; }
 		public function set duration(duration:*):void { 
@@ -56,7 +57,7 @@ package ks.core
 		 * before the action begins.
 		 * Will accept an integer or a parsable string.
 		 * 
-		 * @see org.as3lib.kitchensync.ITimeStringParser
+		 * @see ks.ITimeStringParser
 		 */
 		public function get delay():int { return _delay; }
 		public function set delay(delay:*):void { 
@@ -99,7 +100,7 @@ package ks.core
 		 * autoDelete is a flag that indicates whether the action should be killed 
 		 * when it is done executing. The default is set in KitchenSyncDefaults
 		 * 
-		 * @see org.as3lib.kitchensync.KitchenSyncDefaults
+		 * @see ks.KitchenSyncDefaults
 		 */
 		public function get autoDelete():Boolean { return _autoDelete; }
 		public function set autoDelete(autoDelete:Boolean):void { _autoDelete = autoDelete; }

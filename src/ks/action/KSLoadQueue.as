@@ -2,8 +2,6 @@ package ks.action
 {
 	import flash.net.URLRequest;
 	
-	import ks.core.IAction;
-	import ks.core.ILoaderAction;
 
 	/**
 	 * Allows you to very quickly create a loading queue to load 

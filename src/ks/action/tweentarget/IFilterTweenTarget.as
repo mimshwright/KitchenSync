@@ -1,4 +1,4 @@
-package ks.core
+package ks.action.tweentarget
 {
 
 	/**

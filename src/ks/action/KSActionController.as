@@ -2,7 +2,6 @@ package ks.action
 {
 	import ks.action.tweentarget.*;
 	import ks.utils.ActionControllerCommand;
-	import ks.core.IAction;
 	
 	/**
 	 * An action that controls another action when executed. 

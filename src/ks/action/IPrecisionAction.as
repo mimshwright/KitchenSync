@@ -1,4 +1,4 @@
-package ks.core
+package ks.action
 {
 	/**
 	 * Used in certain action classes for precision timing. Allows users to 

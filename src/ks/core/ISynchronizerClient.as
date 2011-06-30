@@ -1,6 +1,5 @@
-package ks.core.synchronizer
+package ks.core
 {
-	import ks.core.IUpdatable;
 
 	/**
 	 * A consumer of the Synchronizer class. This type has the ability to be updated incrementally

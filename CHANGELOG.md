@@ -14,9 +14,11 @@ _Visit [KitchenSync on GitHub](http://github.com/mimshwright/KitchenSync) for th
 		
 		* `ks.action` package contains all action types in a flat structure. 
 		
-		* Most interfaces and support classes have been moved to `ks.core` or `ks.utils`. For example, `IAction` is in core and `EasingUtil` is in utils.
+		* `ks.action` contains tween classes except for tween targets which are in `ks.action.tweentarget`.
 		
-* **RENAMED -** A couple of tween targets to be more consistent.
+		* Most support classes have been moved to `ks.core` or `ks.utils`. For example, `KitchenSyncDefaults` and `EasingUtil` are in utils.
+		
+* **RENAMED -** A couple of tween targets to be more consistent. `TargetProperty` is now `PropertyTweenTarget`. `TimelineController` is now `TimelineTarget`. 
 
 * **REMOVED -** Dependencies on as3lib. Only dependencies now are `abstract-as3.swc` and `ColorMatrix.swc`.
 

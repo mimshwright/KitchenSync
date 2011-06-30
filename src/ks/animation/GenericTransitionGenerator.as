@@ -2,10 +2,10 @@ package ks.animation
 {
 	import flash.display.MovieClip;
 	
-	import ks.core.IAction;
+	import ks.action.IAction;
 	import ks.action.KSFunction;
 	import ks.action.KSSetProperty;
-	import ks.core.IActionGroup;
+	import ks.action.IActionGroup;
 	import ks.action.KSSequenceGroup;
 	import ks.action.TweenFactory;
 	

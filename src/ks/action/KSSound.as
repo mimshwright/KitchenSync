@@ -56,7 +56,7 @@ package ks.action
 		 * if this is 1000, the sound will play 1 second from the beginning of the audio file.
 		 * Uses the time parser so string values are okay too.
 		 * 
-		 * @see org.as3lib.kitchensync.util.ITimeStringParser
+		 * @see ks.util.ITimeStringParser
 		 * @see #delay
 		 */
 		public function get soundOffset():int { return _soundOffset; }

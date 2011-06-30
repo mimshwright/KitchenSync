@@ -1,4 +1,4 @@
-package ks.core
+package ks.action
 {
 	
 	/**
@@ -9,8 +9,8 @@ package ks.core
 	 * These types of actions are useful if you wish to queue up several loaders using a 
 	 * KSSequenceGroup and be notified when they're all finished.
 	 * 
-	 * @see org.as3lib.kitchensync.action.KSAsyncFunction
-	 * @see org.as3lib.kitchensync.action.KSSequenceGroup
+	 * @see ks.action.KSAsyncFunction
+	 * @see ks.action.KSSequenceGroup
 	 * 
 	 * @author Mims Wright
 	 * @since 1.7

@@ -1,5 +1,7 @@
-package ks.core
+package ks.utils
 {
+	import ks.action.ITween;
+
 	/**
 	 * An algorithm that parses data from an object into tween data.
 	 * 

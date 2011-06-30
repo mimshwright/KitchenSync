@@ -3,9 +3,9 @@
 * To use this class, you'll need to download the appropriate files from the google code site 
 * http://code.google.com/p/goasap/
 */
-package org.as3lib.kitchensync.test {	
+package ks.test {	
 	import com.mosesSupposes.benchmark.tweenbencher.*;	
-	import org.as3lib.kitchensync.test.*;
+	import ks.test.*;
 	/**
 	 * @author Moses Gunesch / mosessupposes.com (c) 
 	 */

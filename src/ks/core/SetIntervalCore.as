@@ -1,4 +1,4 @@
-package ks.core.synchronizer
+package ks.core
 {
 	import flash.utils.Timer;
 	import flash.utils.clearInterval;

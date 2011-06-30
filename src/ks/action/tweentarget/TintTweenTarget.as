@@ -3,7 +3,6 @@ package ks.action.tweentarget
 	import flash.display.DisplayObject;
 	import flash.geom.ColorTransform;
 	
-	import ks.core.ITweenTarget;
 	
 	/**
 	 * Tween target for adjusting the color of a DisplayObject using a ColorTransform.
@@ -24,7 +23,7 @@ package ks.action.tweentarget
 	 * 
 	 * </listing>
 	 * 
-	 * @see org.as3lib.kitchensync.action.tween.TweenFactory#newTintTween()
+	 * @see ks.action.tween.TweenFactory#newTintTween()
 	 * 
 	 * @since 1.7
 	 * @author Mims Wright

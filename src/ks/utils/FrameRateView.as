@@ -1,10 +1,12 @@
+// TODO: remove this from V3
+
 package ks.utils
 {
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	
-	import ks.core.synchronizer.ISynchronizerClient;
-	import ks.core.synchronizer.Synchronizer;
+	import ks.core.ISynchronizerClient;
+	import ks.core.Synchronizer;
 
 	/**
 	 * A text field that displays the approximate framerate of the synchronizer.
@@ -28,8 +30,8 @@ package ks.utils
 	 * 			addChild(frameRateView);  
 	 * 		</listing>
 	 * 
-	 * @see org.as3lib.kitchensync.core.Synchronizer
-	 * @see org.as3lib.kitchensync.utils.FrameRateUtil
+	 * @see ks.core.Synchronizer
+	 * @see ks.utils.FrameRateUtil
 	 * @author Mims H. Wright
 	 * @since 1.5
 	 */

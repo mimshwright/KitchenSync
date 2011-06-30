@@ -4,10 +4,11 @@ package ks
 	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
 	
-	import ks.core.synchronizer.EnterFrameCore;
-	import ks.core.synchronizer.ISynchronizerCore;
-	import ks.core.synchronizer.Synchronizer;
+	import ks.core.EnterFrameCore;
+	import ks.core.ISynchronizerCore;
+	import ks.core.Synchronizer;
 	import ks.utils.ITimeStringParser;
+	import ks.utils.KitchenSyncDefaults;
 	
 
 	/**
@@ -24,7 +25,7 @@ package ks
 	 * 	KitchenSync.initializeWitCore(new EnterFrameCore(this), "2.0");
 	 * 	</listing>
 	 * 
-	 * @see org.as3lib.kitchensync.core.Synchronizer
+	 * @see ks.core.Synchronizer
 	 * 
 	 * @since 1.2
 	 * @author Mims H. Wright
@@ -56,7 +57,7 @@ package ks
 		 * A reference to the time string parser used in KitchenSync.
 		 * The default is defined in KitchenSyncDefaults.
 		 * 
-		 * @see org.as3lib.kitchensync.utils.ITimeStringParser
+		 * @see ks.utils.ITimeStringParser
 		 */
 		public static function get timeStringParser():ITimeStringParser { 
 			if (_timeStringParser == null) {
@@ -99,7 +100,7 @@ package ks
 		 * the default settings by calling <code>KitchenSync.initialize()</code>
 		 *
 		 * @see #initialize()
-		 * @see org.as3lib.kitchensync.core.ISynchronizerCore
+		 * @see ks.core.ISynchronizerCore
 		 *  
 		 * @param synchronizerCore The synchronizer core to use to drive updates.
 		 * @param versionCheck a string for the version you think you're using. e.g. 1.2 This is recommended

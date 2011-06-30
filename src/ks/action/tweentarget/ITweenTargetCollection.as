@@ -1,5 +1,6 @@
-package ks.core
+package ks.action.tweentarget
 {
+
 	/**
 	 * @private
 	 * 
@@ -7,8 +8,8 @@ package ks.core
 	 * 
 	 * @author Mims Wright
 	 * @since 2.0
-	 * @see org.as3lib.kitchensync.action.tween.KSTween
-	 * @see org.as3lib.kitchensync.action.tween.ITweenTarget
+	 * @see ks.action.tween.KSTween
+	 * @see ks.action.tween.ITweenTarget
 	 */
 	public interface ITweenTargetCollection
 	{

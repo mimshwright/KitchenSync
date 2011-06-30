@@ -1,17 +1,16 @@
-package ks.core.synchronizer
+package ks.core
 {
 	import flash.events.EventDispatcher;
 	import flash.utils.Dictionary;
 	import flash.utils.getTimer;
 	
 	import ks.KitchenSync;
-	import ks.KitchenSyncDefaults;
-	import ks.core.KitchenSyncEvent;
+	import ks.utils.KitchenSyncDefaults;
 	
 	// todo : implement IPauseable
 	
 	/**
-	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.SYNCHRONIZER_UPDATE
+	 * @eventType ks.core.KitchenSyncEvent.SYNCHRONIZER_UPDATE
 	 */
 	[Event(name="synchronizerUpdate", type="ks.core.KitchenSyncEvent")]
 	
@@ -21,7 +20,7 @@ package ks.core.synchronizer
 	 * The SynchronizerCore isolates the function that times the dispatches. 
 	 * To initialize the class, use KitchenSync.initialize() or initializeWithCore().
 	 * 
-	 * @see org.as3lib.kitchensync.KitchenSync#initialize()
+	 * @see ks.KitchenSync#initialize()
 	 * 
 	 * @author Mims H. Wright
 	 * @since 0.1

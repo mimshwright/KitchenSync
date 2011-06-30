@@ -1,6 +1,5 @@
 package ks.action
 {
-	import ks.core.IAction;
 	
 	/**
 	 * A decorator-like group for looping an action a set number of times.

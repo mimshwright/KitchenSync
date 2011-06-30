@@ -6,7 +6,6 @@ package ks.action
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	
-	import ks.core.ILoaderAction;
 	
 	/**
 	 * A KitchenSync action version of a URLLoader. Loads data from a URLRequest
@@ -18,10 +17,10 @@ package ks.action
 	 * 
 	 * package {
 	 * class KSURLLoaderExample {
-	 * import org.as3lib.kitchensync.*
-	 * import org.as3lib.kitchensync.core.*
-	 * import org.as3lib.kitchensync.action.*
-	 * import org.as3lib.kitchensync.action.loading.*
+	 * import ks.*
+	 * import ks.core.*
+	 * import ks.action.*
+	 * import ks.action.loading.*
 	 * 
 	 * public var results:Array;
 	 * private function KSURLLoaderExample () {
@@ -52,7 +51,7 @@ package ks.action
 	 * 
 	 * </listing>
 	 * 
-	 * @see org.as3lib.kitchensync.action.KSSequenceGroup
+	 * @see ks.action.KSSequenceGroup
 	 *  
 	 * @author Mims Wright
 	 * @since 1.7

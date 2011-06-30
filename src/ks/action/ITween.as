@@ -1,4 +1,4 @@
-package ks.core
+package ks.action
 {
 	
 	/**
@@ -13,7 +13,7 @@ package ks.core
 		/**
 		 * The function used to interpolated the values between the start and end points.
 		 * 
-		 * @see org.as3lib.kitchensync.easing
+		 * @see ks.easing
 		 */
 		function get easingFunction():Function;
 		function set easingFunction(easingFunction:Function):void;

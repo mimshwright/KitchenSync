@@ -5,7 +5,6 @@ package ks.action.tweentarget
 	
 	import ks.*;
 	
-	import ks.core.ITweenTarget;
 	
 	/**
 	 * A TweenTarget that controls a timeline animation in a MovieClip.
@@ -13,7 +12,7 @@ package ks.action.tweentarget
 	 * you can go forwards, backwards, change the duration and use easing functions 
 	 * on a timeline animation. 
 	 * 
-	 * @see org.as3lib.kitchensync.action.tween.TweenFactory#newTimelineTween()
+	 * @see ks.action.tween.TweenFactory#newTimelineTween()
 	 * 
 	 * @since 1.5
 	 * @author Mims Wright

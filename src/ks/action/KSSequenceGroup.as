@@ -121,8 +121,8 @@ package ks.action
 		 * Notice that the groups can be nested. If an array contains an array, that array will be
 		 * parsed into a sequence group by addActionOrSequence(). 
 		 * 
-		 * @see org.as3lib.kitchensync.action.group.KSParallelGroup#KSParallelGroup()
-		 * @see org.as3lib.kitchensync.action.group.KSParallelGroup#addActionOrSequence()
+		 * @see ks.action.group.KSParallelGroup#KSParallelGroup()
+		 * @see ks.action.group.KSParallelGroup#addActionOrSequence()
 		 * 
 		 * @param actionOrParallel Either an IAction or an array. Arrays will be added to the group 
 		 * 						   as a KSParallelGroup. 

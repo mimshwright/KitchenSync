@@ -1,6 +1,5 @@
-package ks.core
+package ks.action
 {
-	import ks.action.*;
 	
 	/**
 	 * A group of other actions that is itself an action. 
@@ -15,7 +14,7 @@ package ks.core
 	 * 
 	 * @see AbstractActionGroup
 	 * @see KSSequenceGroup
-	 * @see org.as3lib.kitchensync.IAction
+	 * @see ks.IAction
 	 * @see http://en.wikipedia.org/wiki/Composite_pattern
 	 * 
 	 * @since 2.0

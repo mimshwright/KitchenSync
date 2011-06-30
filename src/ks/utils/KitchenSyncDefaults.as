@@ -1,11 +1,8 @@
-package ks
+package ks.utils
 {
 	import ks.action.*;
 	import ks.action.tweentarget.*;
-	import ks.core.ITweenObjectParser;
-	import ks.utils.KitchenSyncObjectParser;
 	import ks.easing.*;
-	import ks.utils.*;
 	
 	/**
 	 * All default settings for KitchenSync can be configured through this
@@ -36,7 +33,7 @@ package ks
 		 * Set this to true if you are having memory or performance issues with your app.
 		 * 
 		 * @default false
-		 * @see org.as3lib.kitchensync.action.AbstractAction
+		 * @see ks.action.AbstractAction
 		 */
 		public static var autoDelete:Boolean = false;
 		
@@ -44,16 +41,16 @@ package ks
 		 * The Instance of ITimeStringParser to use to parse time strings like "1.4seconds" 
 		 * 
 		 * @default TimeStringParser_en The basic, english language parser.
-		 * @see org.as3lib.kitchensync.utils.ITimeStringParser
+		 * @see ks.utils.ITimeStringParser
 		 */
 		public static var timeStringParser:ITimeStringParser = new TimeStringParser_en();
 		
 		/**
 		 * The default easing function used in KSTweens (KSSimpleTweens do not use this value).
 		 * 
-		 * @default org.as3lib.kitchensync.easing.Linear.ease
-		 * @see org.as3lib.kitchensync.action.KSTween
-		 * @see org.as3lib.kitchensync.easing
+		 * @default ks.easing.Linear.ease
+		 * @see ks.action.KSTween
+		 * @see ks.easing
 		 */
 		public static var easingFunction:Function = Linear.ease;
 		
@@ -86,7 +83,7 @@ package ks
 		 * a dynamic object.
 		 * 
 		 * @default is the standard KitchenSyncObjectParser
-		 * @see org.as3lib.kitchensync.action.tween.ITweenObjectParser
+		 * @see ks.action.tween.ITweenObjectParser
 		 */
 		public static var tweenObjectParser:ITweenObjectParser = new KitchenSyncObjectParser();
 	}

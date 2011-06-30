@@ -2,13 +2,10 @@ package ks.action
 {	
 	import flash.events.EventDispatcher;
 	
-	import ks.core.IAction;
-	import ks.core.IPrecisionAction;
 	import ks.core.KitchenSyncEvent;
-	import ks.core.synchronizer.Synchronizer;
+	import ks.core.Synchronizer;
 	import ks.utils.EasingUtil;
 	import ks.easing.Linear;
-	import ks.core.ITween;
 
 	
 	/**
@@ -35,8 +32,8 @@ package ks.action
 	 * new SimpleTween(target, property, 0, 500, 3000, 1000, Cubic.easeOut).start();
 	 * </listing>
 	 * 
-	 * @see org.as3lib.kitchensync.action.KSTween;
-	 * @see org.as3lib.kitchensync.easing;
+	 * @see ks.action.KSTween;
+	 * @see ks.easing;
 	 * @author Mims Wright
 	 * @since 1.6
 	 */

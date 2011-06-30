@@ -1,4 +1,4 @@
-package ks.core.synchronizer
+package ks.core
 {
 	/**
 	 * Provides a timing core for the Synchronizer. This allows the user to swap out
@@ -7,7 +7,7 @@ package ks.core.synchronizer
 	 * Each pulse from the ISynchronizerCore will trigger the dispatchUpdate() event in 
 	 * the Synchronizer.
 	 * 
-	 * @see org.as3lib.kitchensync.core.Synchronizer 
+	 * @see ks.core.Synchronizer 
 	 * 
 	 * @since 2.0
 	 * @author Mims H. Wright

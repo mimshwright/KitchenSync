@@ -1,7 +1,8 @@
-package ks.core
+package ks.action
 {
 	import flash.events.IEventDispatcher;
-	import ks.core.synchronizer.ISynchronizerClient;
+	import ks.core.ISynchronizerClient;
+	import ks.core.IPauseable;
 	
 	
 	/**
@@ -21,7 +22,7 @@ package ks.core
 		 * duration is the length of time that the action will run.
 		 * Uses * to allow use of time string parser.
 		 * 
-		 * @see org.as3lib.kitchensync.utils.ITimeStringParser
+		 * @see ks.utils.ITimeStringParser
 		 */
 		function get duration():int;
 		function set duration(duration:*):void;
@@ -32,7 +33,7 @@ package ks.core
 		 * before the action begins.
 		 * Uses * to allow use of time string parser.
 		 * 
-		 * @see org.as3lib.kitchensync.utils.ITimeStringParser
+		 * @see ks.utils.ITimeStringParser
 		 */
 		function get delay():int;
 		function set delay(delay:*):void; 

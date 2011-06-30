@@ -4,7 +4,7 @@
 * To use this class, you'll need to download the appropriate files from the google code site 
 * http://code.google.com/p/goasap/
 */ 
-package org.as3lib.kitchensync.test {	
+package ks.test {	
 	import flash.display.*;	
 	import flash.events.*;	
 	
@@ -12,10 +12,10 @@ package org.as3lib.kitchensync.test {
 	import com.mosesSupposes.benchmark.tweenbencher.*;
 	import com.mosesSupposes.benchmark.tweenbencher.tests.*;
 	
-	import org.as3lib.kitchensync.*;
-	import org.as3lib.kitchensync.core.*;
-	import org.as3lib.kitchensync.action.*;
-	import org.as3lib.kitchensync.easing.*;
+	import ks.*;
+	import ks.core.*;
+	import ks.action.*;
+	import ks.easing.*;
 	
 	//	import fl.motion.easing.Exponential; // standard easing function for benchmarks
 	

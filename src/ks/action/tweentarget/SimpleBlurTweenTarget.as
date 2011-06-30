@@ -2,8 +2,6 @@ package ks.action.tweentarget
 {
 	import flash.display.DisplayObject;
 	import flash.filters.BlurFilter;
-	import ks.core.ITweenTarget;
-	import ks.core.IFilterTweenTarget;
 	
 	/**
 	 * A simplified version of the Blur filter tween target. This target

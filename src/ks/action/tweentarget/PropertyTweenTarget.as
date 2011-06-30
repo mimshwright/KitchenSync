@@ -1,7 +1,6 @@
 package ks.action.tweentarget
 {
-	import ks.KitchenSyncDefaults;
-	import ks.core.ITweenTarget;
+	import ks.utils.KitchenSyncDefaults;
 	
 	/**
 	 * A TweenTarget used to tween numeric properties of an object.
@@ -106,7 +105,7 @@ package ks.action.tweentarget
 		 * If set to true, the results of the easing functions on the target property will be 
 		 * rounded to the nearest integer.
 		 * 
-		 * @see org.as3lib.kitchensync.ActionDefaults
+		 * @see ks.ActionDefaults
 		 */
 		public function get snapToInteger():Boolean { return _snapToInteger; }
 		public function set snapToInteger(snapToInteger:Boolean):void { _snapToInteger = snapToInteger; }

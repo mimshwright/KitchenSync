@@ -52,7 +52,7 @@ package ks.action
 		 * Time to wait between the execution of each of the children.
 		 * Accepts integer or parsable time string.
 		 * 
-		 * @see org.as3lib.kitchensync.ITimeStringParser;
+		 * @see ks.ITimeStringParser;
 		 */
 		public function get stagger():int { return _stagger;}
 		public function set stagger(stagger:*):void { 

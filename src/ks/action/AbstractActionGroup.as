@@ -1,18 +1,19 @@
-package ks.core
+package ks.action
 {
 	import flash.errors.IllegalOperationError;
 	
-	import ks.KitchenSyncDefaults;
+	import ks.utils.KitchenSyncDefaults;
 	
 	import abstractAS3.*;
+	import ks.core.KitchenSyncEvent;
 	
 	/**
-	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.CHILD_ACTION_START
+	 * @eventType ks.core.KitchenSyncEvent.CHILD_ACTION_START
 	 */
 	[Event(name="childActionStart", type="ks.core.KitchenSyncEvent")]
 
 	/**
-	 * @eventType org.as3lib.kitchensync.core.KitchenSyncEvent.CHILD_COMPLETE
+	 * @eventType ks.core.KitchenSyncEvent.CHILD_COMPLETE
 	 */
 	[Event(name="childActionComplete", type="ks.core.KitchenSyncEvent")]
 	

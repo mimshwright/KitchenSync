@@ -1,7 +1,6 @@
 package ks.action.tweentarget
 {
 	import flash.media.SoundTransform;
-	import ks.core.ITweenTarget;
 	
 	
 	/** 
@@ -24,7 +23,7 @@ package ks.action.tweentarget
 	 * 
 	 * @author Mims Wright
 	 * @since 1.6
-	 * @see org.as3lib.kitchensync.action.tween.SoundTransformProperty
+	 * @see ks.action.tween.SoundTransformProperty
 	 */
 	public class SoundTransformTweenTarget implements ITweenTarget
 	{
@@ -39,7 +38,7 @@ package ks.action.tweentarget
 		/**
 		 * The property to tween. Use SoundTransformProperty values.
 		 * 
-		 * @see org.as3lib.kitchensync.action.tween.SoundTransformProperty
+		 * @see ks.action.tween.SoundTransformProperty
 		 */
 		public function get property():String { return _property; }
 		public function set property(property:String):void { _property = property; }

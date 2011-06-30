@@ -1,10 +1,9 @@
 package ks.action
 {
-	import ks.KitchenSyncDefaults;
+	import ks.utils.KitchenSyncDefaults;
+	import ks.action.tweentarget.*;
 	import ks.core.*;
-	import ks.utils.EasingUtil;
 	import ks.utils.*;
-	import ks.action.tweentarget.PropertyTweenTarget;
 	
 	/**
 	 * Used for animating an object's properties, such as position or scale, over time. 
@@ -18,9 +17,9 @@ package ks.action
 	 * 
 	 * It's recommended that you use TweenFactory to create the tweens. 
 	 * 
-	 * @see org.as3lib.kitchensync.action.tween.TweenFactory
-	 * @see org.as3lib.kitchensync.action.tween.ITweenTarget
-	 * @see org.as3lib.kitchensync.action.tween.KSSimpleTween
+	 * @see ks.action.TweenFactory
+	 * @see ks.action.tweentarget.ITweenTarget
+	 * @see ks.action.KSSimpleTween
 	 * @since 0.1
 	 * @author Mims Wright
 	 */
@@ -98,8 +97,8 @@ package ks.action
 		/**
 		 * Constructor - It's recommended to use TweenFactory.
 		 * 
-		 * @see org.as3lib.kitchensync.action.tween.TweenFactory#newTween()
-		 * @see org.as3lib.kitchensync.action.tween.KSSimpleTween
+		 * @see ks.action.tween.TweenFactory#newTween()
+		 * @see ks.action.tween.KSSimpleTween
 		 * @see #newWithTweenTarget()
 		 * 
 		 * @param tweenTargets A tweenTarget object (or an array of tweentargets) that contains the values you want to tween.

@@ -1,7 +1,7 @@
 package ks.utils
 {
-	import ks.core.synchronizer.ISynchronizerClient;
-	import ks.core.synchronizer.Synchronizer;
+	import ks.core.ISynchronizerClient;
+	import ks.core.Synchronizer;
 
 	/**
 	 * A singleton class that can track the current and average framerate of the
@@ -10,7 +10,7 @@ package ks.utils
 	 * be set as well. For a quick visual display of the framerate, 
 	 * use <code>FrameRateView</code>.
 	 * 
-	 * @see org.as3lib.kitchensync.utils.FrameRateView
+	 * @see ks.utils.FrameRateView
 	 * 
 	 * @use <code>
 	 *  // get the average framerate

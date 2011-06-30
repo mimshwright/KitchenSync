@@ -1,6 +1,6 @@
-package ks.core
+package ks.action
 {
-	import ks.core.IAction;
+	import ks.action.IAction;
 
 	/**
 	 * An interface that adds methods to IAction for jumping to a certain time

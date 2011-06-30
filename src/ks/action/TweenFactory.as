@@ -9,13 +9,11 @@ package ks.action
 	import mx.effects.IAbstractEffect;
 	
 	import ks.KitchenSync;
-	import ks.KitchenSyncDefaults;
-	import ks.core.IAction;
-	import ks.core.IActionGroup;
+	import ks.utils.KitchenSyncDefaults;
 	import ks.easing.Linear;
 	import ks.core.AUTO_TWEEN_VALUE;
-	import ks.core.ITweenObjectParser;
-	import ks.core.ITweenTarget;
+	import ks.utils.ITweenObjectParser;
+	import ks.action.tweentarget.ITweenTarget;
 	import ks.action.tweentarget.FilterPropertyTweenTarget;
 	import ks.action.tweentarget.PropertyTweenTarget;
 	import ks.action.tweentarget.TimelineTarget;
@@ -138,7 +136,7 @@ package ks.action
 		/**
 		 * Creates a tint tween.
 		 * 
-		 * @see org.as3lib.kitchensync.action.tween.TintTweenTarget
+		 * @see ks.action.tween.TintTweenTarget
 		 * 
 		 * @param target The displayObject whose property will be changed
 		 * @param startValue The starting color of the tint. By default, this is the value of the property before the tween begins.
@@ -169,7 +167,7 @@ package ks.action
 		/**
 		 * Creates a timeline tween.
 		 * 
-		 * @see org.as3lib.kitchensync.action.tween.TimelineController
+		 * @see ks.action.tween.TimelineController
 		 * 
 		 * @param target The movieClip that will be animated
 		 * @param startFrame The starting frame. Can be a frame label or integer. Default is 1.

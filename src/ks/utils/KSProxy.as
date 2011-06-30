@@ -4,9 +4,9 @@ package ks.utils
 	import flash.events.IEventDispatcher;
 	import flash.utils.Dictionary;
 	
-	import ks.core.synchronizer.ISynchronizerClient;
+	import ks.core.ISynchronizerClient;
 	import ks.core.KitchenSyncEvent;
-	import ks.core.synchronizer.Synchronizer;
+	import ks.core.Synchronizer;
 
 	/**
 	 * Watches for changes on an object's properties and applies the values to another object's property.
@@ -28,10 +28,10 @@ package ks.utils
 			import flash.display.*;
 			import flash.text.TextField;
 			
-			import org.as3lib.kitchensync.action.IAction;
-			import org.as3lib.kitchensync.action.tween.TweenFactory;
-			import org.as3lib.kitchensync.easing.Cubic;
-			import org.as3lib.kitchensync.utils.KSProxy;
+			import ks.action.IAction;
+			import ks.action.tween.TweenFactory;
+			import ks.easing.Cubic;
+			import ks.utils.KSProxy;
 			
 			[SWF ( width="600", height="600", frameRate="50") ]
 			public class ProxyTest extends Sprite

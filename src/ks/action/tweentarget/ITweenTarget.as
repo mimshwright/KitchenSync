@@ -1,5 +1,6 @@
-package ks.core
+package ks.action.tweentarget
 {
+	import ks.core.INumericController;
 
 	/**
 	 * A <em>tween target</em> is a bundle that wraps up a property or other value that can be 

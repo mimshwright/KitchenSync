@@ -5,9 +5,8 @@ package ks.utils
 	import ks.action.KSTween;
 	import ks.action.tweentarget.*;
 	import ks.core.AUTO_TWEEN_VALUE;
-	import ks.core.ITween;
-	import ks.core.ITweenObjectParser;
-	import ks.core.ITweenTarget;
+	import ks.action.ITween;
+	import ks.action.tweentarget.ITweenTarget;
 	
 	public final class KitchenSyncObjectParser implements ITweenObjectParser {
 		

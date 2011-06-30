@@ -3,7 +3,6 @@ package ks.action.tweentarget
 	import com.gskinner.geom.ColorMatrix;
 	
 	import flash.display.DisplayObject;
-	import ks.core.ITweenTarget;
 	
 	/**
 	 * A color matrix tween that affects saturation.

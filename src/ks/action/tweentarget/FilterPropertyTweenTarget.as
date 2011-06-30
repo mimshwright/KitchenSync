@@ -2,8 +2,6 @@ package ks.action.tweentarget
 {
 	import flash.display.DisplayObject;
 	import flash.filters.BitmapFilter;
-	import ks.core.ITweenTarget;
-	import ks.core.IFilterTweenTarget;
 	
 	/**
 	 * A tween target that targets a property of a BitmapFilter object. 
