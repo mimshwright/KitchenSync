@@ -16,7 +16,7 @@ _Visit [KitchenSync on GitHub](http://github.com/mimshwright/KitchenSync) for th
 		
 		* `ks.action` contains tween classes except for tween targets which are in `ks.action.tweentarget`.
 		
-		* Most support classes have been moved to `ks.core` or `ks.utils`. For example, `KitchenSyncDefaults` and `EasingUtil` are in utils.
+		* Most support classes have been moved to `ks.core` or `ks.utils`. For example, `KitchenSyncDefaults`, `TweenFactory`, and `EasingUtil` are in utils.
 		
 * **RENAMED -** A couple of tween targets to be more consistent. `TargetProperty` is now `PropertyTweenTarget`. `TimelineController` is now `TimelineTarget`. 
 
