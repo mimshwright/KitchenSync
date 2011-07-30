@@ -152,7 +152,7 @@ package ks.action
 
 		/** Called when a pulse is sent from the Synchronizer */
 		public function update(currentTime:int):void {
-			var currentTime:int = currentTime;
+			currentTime = currentTime;
 			var timeElapsed:int = currentTime - _startTime;
 			
 			// timeElapsed shouldn't exceed the duration.
@@ -200,7 +200,7 @@ package ks.action
 				// cache the delta
 				_delta = endValue - startValue;
 				// record the start time
-				_startTime = startTime
+				_startTime = startTime;
 				// register the class.
 				Synchronizer.getInstance().registerClient(this);
 				_running = true;

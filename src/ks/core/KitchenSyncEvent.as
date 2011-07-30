@@ -67,7 +67,7 @@ package ks.core
 		 * The time (in terms of the Synchronizer) at which the event was dispatched. 
 		 */
 		private var _timestamp:int;
-		public function get timestamp():int { return _timestamp }
+		public function get timestamp():int { return _timestamp; }
 		
 		/**
 		 * Constructor.

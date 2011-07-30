@@ -65,7 +65,10 @@ package ks.core
 		/** Returns the number of active actions. */
 		public function get activeClients():int { 
 			var count:int = 0;
-			for each (var client:* in _clients) count++;
+			for each (var client:* in _clients) { 
+				count++;
+				client;
+			}
 			return count;
 		}
 		

@@ -21,7 +21,7 @@ package ks.action
 						parent.addChildAt(child, index);
 					}
 				}
-			}
+			};
 			super(f, delay, child, toParent, atIndex);
 		}
 	}

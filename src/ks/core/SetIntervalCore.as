@@ -1,6 +1,5 @@
 package ks.core
 {
-	import flash.utils.Timer;
 	import flash.utils.clearInterval;
 	import flash.utils.setInterval;
 	

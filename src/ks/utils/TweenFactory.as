@@ -3,7 +3,6 @@ package ks.utils
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
-	import flash.filters.BlurFilter;
 	import flash.geom.Point;
 	
 	import ks.KitchenSync;
@@ -76,7 +75,7 @@ package ks.utils
 			
 			if (properties == null && properties == "") { throw new ArgumentError("'properties' cannot be null"); }
 			else if (properties is Array) { propertiesArray = properties; }
-			else if (properties is String) { propertiesArray = [String(properties)] }
+			else if (properties is String) { propertiesArray = [String(properties)]; }
 			else { throw new TypeError("'properties' must be either a String or an Array of strings"); }
 			
 			var tweenTargets:Array = [];

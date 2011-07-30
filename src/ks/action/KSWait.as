@@ -1,6 +1,5 @@
 package ks.action
 {
-	import ks.core.*;
 	
 	/**
 	 * Does nothing except wait for the delay to pass. Can be used to delay a sequence.

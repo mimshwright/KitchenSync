@@ -2,7 +2,6 @@ package ks.action
 {
 	import flash.errors.IllegalOperationError;
 	
-	import ks.core.*;
 	
 	/**
 	 * Packages up a function to be run at a specified time or as part of a sequence.

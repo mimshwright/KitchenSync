@@ -33,7 +33,7 @@ package ks.easing
 	    */  
 		public static function sine(timeElapsed:Number, duration:Number, frequency:Number = NaN):Number {
 			if (isNaN(frequency)) { frequency = defaultFrequency; }
-			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			if (timeElapsed >= duration && snapping == true) { return 1.0; }
 			frequency /= 1000;
 			return 0.5 * (1 - Math.cos( TWICE_PI * timeElapsed * frequency));
 		}	
@@ -50,7 +50,7 @@ package ks.easing
 	    */  
 		public static function absoluteSine(timeElapsed:Number, duration:Number, frequency:Number=NaN):Number {
 			if (isNaN(frequency)) { frequency = defaultFrequency; }
-			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			if (timeElapsed >= duration && snapping == true) { return 1.0; }
 			frequency /= 1000;
 			return Math.abs(Math.cos( TWICE_PI * timeElapsed * frequency));
 		}	
@@ -67,7 +67,7 @@ package ks.easing
 	    */  
 		public static function sawtooth(timeElapsed:Number, duration:Number, frequency:Number=NaN):Number {
 			if (isNaN(frequency)) { frequency = defaultFrequency; }
-			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			if (timeElapsed >= duration && snapping == true) { return 1.0; }
 			frequency /= 1000;
 			return timeElapsed * frequency % 1.0;
 		}	
@@ -84,7 +84,7 @@ package ks.easing
 	    */  
 		public static function triangle(timeElapsed:Number, duration:Number, frequency:Number = NaN):Number {
 			if (isNaN(frequency)) { frequency = defaultFrequency; }
-			if (timeElapsed >= duration && snapping == true) { return 1.0 }
+			if (timeElapsed >= duration && snapping == true) { return 1.0; }
 			frequency /= 1000;
 			var position:Number = timeElapsed * frequency;
 			if (position % 2.0 >= 1.0) { return 1.0 - (position % 1.0); }
@@ -106,8 +106,8 @@ package ks.easing
 			if (isNaN(frequency)) { frequency = defaultFrequency; }
 			if (isNaN(pulseWidth)) { pulseWidth = defaultPulseWidth; }
 			frequency /= 1000;
-			if (timeElapsed >= duration && snapping == true) { return 1.0 }
-			if ((timeElapsed * frequency % 1.0) >= pulseWidth) { return 1.0 }
+			if (timeElapsed >= duration && snapping == true) { return 1.0; }
+			if ((timeElapsed * frequency % 1.0) >= pulseWidth) { return 1.0; }
 			return 0;
 		}	
 	}

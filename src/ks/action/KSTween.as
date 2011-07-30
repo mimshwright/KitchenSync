@@ -1,8 +1,6 @@
 package ks.action
 {
-	import ks.utils.KitchenSyncDefaults;
 	import ks.action.tweentarget.*;
-	import ks.core.*;
 	import ks.utils.*;
 	
 	/**
@@ -188,7 +186,7 @@ package ks.action
 			if ( startTimeHasElapsed(currentTime) ) {
 		 		timeElapsed = currentTime - _startTime - _delay;
 				
-				var target:ITweenTarget
+				var target:ITweenTarget;
 				
 				// if this is the start of the tween.
 				if (_firstUpdate) {

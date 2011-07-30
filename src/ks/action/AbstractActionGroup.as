@@ -2,8 +2,6 @@ package ks.action
 {
 	import flash.errors.IllegalOperationError;
 	
-	import ks.utils.KitchenSyncDefaults;
-	
 	import abstractAS3.*;
 	import ks.core.KitchenSyncEvent;
 	

@@ -3,7 +3,6 @@ package ks.action
 	import flash.events.Event;
 	import flash.events.IEventDispatcher;
 	
-	import ks.core.*;
 	
 	/**
 	 * An object that causes an event to be dispatched at the time of execution.

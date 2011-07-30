@@ -2,10 +2,8 @@ package ks.utils
 {
 	import flash.events.Event;
 	import flash.events.IEventDispatcher;
-	import flash.utils.Dictionary;
 	
 	import ks.core.ISynchronizerClient;
-	import ks.core.KitchenSyncEvent;
 	import ks.core.Synchronizer;
 
 	/**

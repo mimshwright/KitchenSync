@@ -18,7 +18,7 @@ package ks.action
 									if (child && parent && child.parent == parent) {
 										parent.removeChild(child);
 									}
-								}
+								};
 			super(f, delay, child, fromParent);
 		}
 	}

@@ -1,6 +1,5 @@
 package ks.action
 {
-	import flash.errors.IllegalOperationError;
 	
 	import ks.core.*;
 	

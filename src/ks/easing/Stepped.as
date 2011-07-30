@@ -53,7 +53,7 @@ package ks.easing
 			func = function (timeElapsed:Number, duration:Number, mod1:Number = NaN, mod2:Number = NaN):Number {
 				var value:Number = EasingUtil.call(easingFunction, timeElapsed, duration, mod1, mod2);
 				return Math.round((value) * steps)/steps;
-			}
+			};
 			return func;
 		}
 	}

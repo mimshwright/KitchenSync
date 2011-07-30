@@ -149,7 +149,7 @@ package ks.action
 		 * @throws flash.errors.IOErrorEvent if there was a problem loading the file.
 		 */
 		protected function onLoadFail(event:IOErrorEvent):void {
-			var loader:URLLoader = URLLoader(event.target);
+//			var loader:URLLoader = URLLoader(event.target);
 			if (_throwErrorOnFail) {
 				throw new IOError(event.text);
 			} else {

@@ -116,7 +116,7 @@ package ks.action
 			if (conditionFunction == null) {
 				conditionFunction = function (i:int):Boolean {
 					return i <= totalLoops; 
-				}
+				};
 			}
 			this._conditionFunction = conditionFunction;
 		}

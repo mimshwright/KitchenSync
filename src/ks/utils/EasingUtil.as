@@ -76,12 +76,11 @@ package ks.utils
 	     */
 		public static function getAveragedFunction(easingFunction1:Function, easingFunction2:Function):Function {
 			var func:Function;
-			var results:Number;
 			func = function (timeElapsed:Number, duration:Number, mod1:Number = NaN, mod2:Number = NaN):Number {
 				var value1:Number = EasingUtil.call(easingFunction1, timeElapsed, duration, mod1, mod2);
 				var value2:Number = EasingUtil.call(easingFunction2, timeElapsed, duration, mod1, mod2);
 				return (value1 + value2)/2;
-			}
+			};
 			return func;
 		}
 	}

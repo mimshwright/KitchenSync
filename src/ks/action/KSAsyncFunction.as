@@ -2,7 +2,6 @@ package ks.action
 {
 	import flash.events.*;
 	
-	import ks.core.*;
 	
 	/**
 	 * An action for calling an asynchronous function that is expected to dipatch an event when

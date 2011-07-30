@@ -7,7 +7,6 @@ package ks.action
 	import flash.net.URLRequest;
 	
 	import ks.KitchenSync;
-	import ks.core.*;
 	
 	/**
 	 * A sound that will be played when the action executes.
@@ -120,7 +119,7 @@ package ks.action
 				if (_sound.bytesLoaded == _sound.bytesTotal && _channel == null) {
 					// todo: test
 					// adds some precision to the start time of this sound
-					var adjustedSoundOffset:int = _soundOffset + (currentTime - _startTime - _delay)
+					var adjustedSoundOffset:int = _soundOffset + (currentTime - _startTime - _delay);
 					_channel = _sound.play(adjustedSoundOffset, 0, soundTransform);
 					_channel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);
 					unregister();

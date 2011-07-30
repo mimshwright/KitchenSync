@@ -1,6 +1,5 @@
 package ks
 {
-	import flash.display.DisplayObject;
 	import flash.display.Stage;
 	import flash.errors.IllegalOperationError;
 	

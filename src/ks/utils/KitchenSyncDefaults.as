@@ -1,7 +1,5 @@
 package ks.utils
 {
-	import ks.action.*;
-	import ks.action.tweentarget.*;
 	import ks.easing.*;
 	
 	/**

@@ -1,24 +1,25 @@
 package ks.utils
 {
+	import ks.action.tweentarget.ITweenTarget;
+	import ks.action.tweentarget.PropertyTweenTarget;
+	import ks.action.tweentarget.FilterPropertyTweenTarget;
 	import flash.utils.Dictionary;
 	
 	import ks.action.KSTween;
-	import ks.action.tweentarget.*;
 	import ks.core.AUTO_TWEEN_VALUE;
 	import ks.action.ITween;
-	import ks.action.tweentarget.ITweenTarget;
 	
 	public final class KitchenSyncObjectParser implements ITweenObjectParser {
 		
 		// Stores some special case keywords.
 		private static var TARGET_KEYWORD:Keyword;
 		private static var SCALE_KEYWORD:Keyword;
-		private static var MOVE_KEYWORD:Keyword;
+//		private static var MOVE_KEYWORD:Keyword;
 		private static var FILTER_KEYWORD:Keyword;
 		
-		private static const PROP_DELIMITER:RegExp = /\s*,\s*/;
-		private static const PROP_VALUE_DELIMITER:RegExp = /\s*(=|:)\s*/;
-		private static const VALUE_RANGE_DELIMITER:RegExp = /\s*[~]\s*/;
+//		private static const PROP_DELIMITER:RegExp = /\s*,\s*/;
+//		private static const PROP_VALUE_DELIMITER:RegExp = /\s*(=|:)\s*/;
+//		private static const VALUE_RANGE_DELIMITER:RegExp = /\s*[~]\s*/;
 		private static const START_VALUE_MARKER:RegExp = /(_start|Start|_from|From)/;
 		private static const END_VALUE_MARKER:RegExp = /(_end|End|_to|To)/;
 		
@@ -63,10 +64,10 @@ package ks.utils
 //			addKeyword(MOVE_KEYWORD);
 		}
 		
-		private function isPropertyAKeyword(property:String):Boolean {
-			if (_allKeywords.indexOf(property) >= 0) { return true; }
-			return false;
-		}
+//		private function isPropertyAKeyword(property:String):Boolean {
+//			if (_allKeywords.indexOf(property) >= 0) { return true; }
+//			return false;
+//		}
 		
 		/** 
 		 * Parses a keyword, checks its value for type, and returns the result.
@@ -196,9 +197,9 @@ package ks.utils
 		
 		private function parseProperties(parameters:Object):Array {
 			var resultsArray:Array = new Array();
-			var property:String;
-			var startValue:Number;
-			var endValue:Number;
+//			var property:String;
+//			var startValue:Number;
+//			var endValue:Number;
 			var key:String;
 			var parsedProperties:Dictionary = new Dictionary();
 			
@@ -318,10 +319,10 @@ internal class Keyword
 	public function get description():String { return _description; }
 	private var _description:String;
 	
-	public function get aliases():Array { return _aliases }
+	public function get aliases():Array { return _aliases; }
 	private var _aliases:Array;
 	
-	public function get hasAliases():Boolean { return _aliases.length > 0 }
+	public function get hasAliases():Boolean { return _aliases.length > 0; }
 	
 	public function get allKeywords():Array { return _aliases.concat(_term); }
 	
@@ -367,5 +368,5 @@ internal class PropertyData {
 		this.endValue = endValue;
 	}
 	
-	public function toString():String { return propertyName + ":" + startValue + "~" + endValue }
+	public function toString():String { return propertyName + ":" + startValue + "~" + endValue; }
 }
