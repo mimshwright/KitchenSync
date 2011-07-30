@@ -6,8 +6,6 @@ package ks.utils
 	import flash.filters.BlurFilter;
 	import flash.geom.Point;
 	
-	import mx.effects.IAbstractEffect;
-	
 	import ks.KitchenSync;
 	import ks.easing.Linear;
 	import ks.core.AUTO_TWEEN_VALUE;

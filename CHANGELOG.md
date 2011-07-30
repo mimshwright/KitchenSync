@@ -2,9 +2,7 @@
 
 _Visit [KitchenSync on GitHub](http://github.com/mimshwright/KitchenSync) for the latest version_
 
-\* = Contains syntax changes that may require refactoring of legacy code.
-
-##===== v3.0* =====
+##===== v3.0 =====
 
 * **CHANGED -** Package structure.
 
@@ -18,13 +16,17 @@ _Visit [KitchenSync on GitHub](http://github.com/mimshwright/KitchenSync) for th
 		
 		* Most support classes have been moved to `ks.core` or `ks.utils`. For example, `KitchenSyncDefaults`, `TweenFactory`, and `EasingUtil` are in utils.
 		
+* **FIXED -** `progress` should now display more accurately.
+
 * **RENAMED -** A couple of tween targets to be more consistent. `TargetProperty` is now `PropertyTweenTarget`. `TimelineController` is now `TimelineTarget`. 
 
 * **REMOVED -** Dependencies on as3lib. Only dependencies now are `abstract-as3.swc` and `ColorMatrix.swc`.
 
 * **MOVED -** Project hosting to [GitHub](http://github.com/mimshwright/KitchenSync).
 
-###===== v2.1* =====
+* **UPDATED -** The ant tasks somewhat. Should be better at running from windows now.
+
+###===== v2.1 =====
 
 * **ADDED -** Auto-visibility to fade in and out tweens plus a parameter for e.g. automatically setting the alpha to 0 before a fadeIn.
 

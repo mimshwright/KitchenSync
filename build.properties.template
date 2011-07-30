@@ -15,3 +15,6 @@ flex.binaryPath=${flex.sdkPath}/bin
 
 # The location of the flex ant tasks on your computer.
 flex.antLibsPath=${flex.sdkPath}/ant/lib
+
+# If you're using windows, uncomment this line to add .exe to the commands.
+#execExt=.exe
