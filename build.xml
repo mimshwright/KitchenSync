@@ -24,7 +24,14 @@
 	-->
 	<property name="project.sourcePath" location="${basedir}/src"/>
 	<property name="project.libraryPath" location="${basedir}/libs"/>
-	<property name="ant.libsPath" location="${project.libraryPath}/ant" />
+
+	<!-- path to the flex task libraries. -->
+	<path id="flex.tasksClasspath">
+		<fileset dir="${flex.antLibsPath}">
+			<include name="*.jar"/>
+		</fileset>
+	</path> 
+	<typedef resource="flexTasks.tasks" classpathref="flex.tasksClasspath" />
 		
 	<!--
 	The Location you wish to output to on your Computer
@@ -33,112 +40,97 @@
 	<property name="output.docsPath" location="${basedir}/docs/asdoc"/>
 	<property name="output.binaryPath" location="${basedir}/bin"/>
 	<property name="output.name" value="${app.title}-${app.version}" />
-	
-	
-	<!-- Define addtional tasks -->
-		
-	<!-- path to the flex task libraries. -->
-	<path id="flex.tasksClasspath">
-		<fileset dir="${flex.antLibsPath}">
-			<include name="*.jar"/>
-		</fileset>
-	</path> 
-	<typedef resource="flexTasks.tasks" classpathref="flex.tasksClasspath" />
-	
-	
-	<!-- Update to the latest version of the source -->
-	<target name="svnUpdate">
-		<echo>Updating to the latest version from SVN</echo>
-		<svn><update dir="." /></svn>
-	</target>
-	
-	
-	<target name="buildAll" description="Runs all compile targets">
-		<antcall target="svnUpdate" /> 
-		<antcall target="releaseBuild" />
-		<antcall target="buildEasing" />
-		<antcall target="docs" />
-	</target>
-	  
-	<target name="incrementalBuild">
-		<property name="incremental" value="true" />
-		<antcall target="build" /> 
-	</target>
-	
-	<target name="build" description="Compiles the kitchensynclib into a SWC library file.">
-		<echo>Compiling library. Incremental build = ${incremental}</echo>
-		<compc o="${output.binaryPath}/${output.name}.swc" incremental="${incremental}">
+	<property name="output.swc" value="${output.binaryPath}/${output.name}.swc" />
+
+<!-- Macros -->
+
+<macrodef name="build-exec">
+	<attribute name="incremental" default="false" />
+	<sequential>
+		<echo>Compiling library. Incremental build = @{incremental}</echo>
+		<compc o="${output.swc}" incremental="@{incremental}">
+			<load-config filename="${flex.configPath}" />
 			<sp path-element="${project.sourcePath}" />
 			<library-path dir="${project.libraryPath}" includes="*" />
 			<is dir="${project.sourcePath}" includes="*" />
 		</compc>
-		<echo>Success! Created ${output.name}.swc</echo> 
-	</target>
-	
-	<target name="releaseBuild" description="Compiles the kitchensynclib into a SWC library file and creates a zip of the source.">
-		<antcall target="build" />
-		
-		<echo>Creating temp files.</echo>
-		<property name="tempPath" location="${output.binaryPath}/compileTemp" />
-		
-		<delete dir="${tempPath}" description="delete any old temp files." />
-		<mkdir dir="${tempPath}" />
-		
-		<echo>Exporting source code to temp path</echo>
-		<svn>
-			<export srcpath="${project.sourcePath}" destpath="${tempPath}/src" />
-		</svn>
-		
-		<echo>Zipping files</echo>
-		<copy file="${output.binaryPath}/${output.name}.swc" toDir="${tempPath}" description="make a copy of the swc in the temp path." />
-		<zip destfile="${output.binaryPath}/${output.name}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
-			<zipfileset dir="${tempPath}" />
-		</zip>
-		<delete dir="${tempPath}" description="delete the temp files." />
-		<echo>Created zip file ${output.name}.zip</echo>
-	</target>
-	
-	
-	<target name="buildEasing" description="Compiles the easing functions into a SWC and packages the code and swc into a folder.">
-		
-		<echo>Creating temp files.</echo>
-		<property name="easingName" value="KSEasing" />
-		<property name="tempPath" location="${output.binaryPath}/easingTemp" />
-		<property name="tempSrcPath" location="${tempPath}/src" />
-		<property name="easingSrcPath" value="org/as3lib/kitchensync/easing" />
-		<property name="easingBinaryPath" value="${tempPath}/${easingName}.swc" />
-		
-		<delete dir="${tempPath}" description="delete any old temp files." />
-		<mkdir dir="${tempSrcPath}/org/as3lib/kitchensync"/>
-		<svn>
-			<export srcpath="${project.sourcePath}/${easingSrcPath}" destpath="${tempSrcPath}/${easingSrcPath}" />
-		</svn>
-		
-		<echo>Compiling easing code</echo>
-		<compc o="${easingBinaryPath}">
-			<sp path-element="${tempSrcPath}" />
-			<is dir="${tempSrcPath}" includes="*" />
-		</compc>
-		
-		<echo>Success! Created ${easingName}.swc</echo> 
-		<echo>Zipping files</echo>
-		<zip destfile="${output.binaryPath}/${easingName}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
-			<zipfileset dir="${tempPath}" />
-		</zip>
-		<delete dir="${tempPath}" description="delete the temp files." />
-		<echo>Created zip file at ${output.binaryPath}/${easingName}.zip</echo>
-	</target>
-		
-	<!--
-	Run the ASDoc executable and generate the ASDocs to the new output folder
-	-->
-	<target name="docs" description="Compiles the asdocs in the source code into HTML.">
+		<echo>Success! Created ${output.name}.swc</echo>
+	</sequential>
+</macrodef>
+
+<macrodef name="docs-exec">
+	<sequential>
+		<echo>Exporting ASDoc documentation</echo>
 		<exec executable="${flex.binaryPath}/asdoc${execExt}" failonerror="true" description="Compiles the asdocs">
+			<arg line="-load-config ${flex.configPath}" />
 			<arg line="-source-path ${project.sourcePath}"/>
 			<arg line="-library-path ${project.libraryPath}"/>
 			<arg line="-doc-sources ${project.sourcePath}"/>
 			<arg line="-window-title &quot;${app.title} v${app.version}&quot;"/>
 			<arg line="-output ${output.docsPath}"/>
 		</exec>
-	</target>	
+	</sequential>
+</macrodef>
+	
+<!-- Targets -->
+	
+<!--
+	<target name="buildAll" description="Runs all compile targets">
+		<antcall target="releaseBuild" />
+		<antcall target="docs" />
+	</target>
+-->
+	
+	<target name="build" description="Compiles the kitchensynclib into a SWC library file.">
+		<build-exec incremental="false" />
+	</target>
+	
+	<target name="buildincremental" description="Compiles the kitchensynclib into a SWC library file using incremental compilation.">
+		<build-exec incremental="true" />
+	</target>
+	
+	<target name="cleanbuild" description="Cleans and Compiles the kitchensynclib into a SWC library file.">
+		<delete file="${output.swc}" />
+		<build-exec incremental="false" />
+	</target>
+	
+	<target name="docs" description="Compiles the asdocs in the source code into HTML.">
+		<docs-exec />
+	</target>
+	<target name="cleandocs" description="Cleans and Compiles the asdocs in the source code into HTML.">
+		<delete dir="${output.docsPath}" />
+		<docs-exec />
+	</target>
+	
+	<target name="releaseBuild" description="Compiles the kitchensynclib into a SWC library file and creates a zip of the source.">
+		<echo>Exporting release build</echo>
+		
+		<delete file="${output.swc}" />
+		
+		<antcall target="cleanbuild" />
+		<antcall target="cleandocs" />
+		
+		<echo>Creating temp files.</echo>
+		<property name="tempPath" location="${output.binaryPath}/compileTemp" />		
+		<delete dir="${tempPath}" description="delete any old temp files." />
+		<mkdir dir="${tempPath}" />
+			<mkdir dir="${tempPath}/source" />
+				<mkdir dir="${tempPath}/source/src" />
+				<mkdir dir="${tempPath}/source/libs" />
+			<mkdir dir="${tempPath}/docs" />
+			<mkdir dir="${tempPath}/bin" />
+		
+		<echo>Exporting source code to temp path</echo>
+		<copy todir="${tempPath}/source/src"><fileset dir="${project.sourcePath}" /></copy>
+		<copy todir="${tempPath}/source/libs"><fileset dir="${project.libraryPath}" /></copy>
+		<copy todir="${tempPath}/docs"><fileset dir="${output.docsPath}" /></copy>
+		<copy todir="${tempPath}/bin" file="${output.binaryPath}/${output.name}.swc" description="make a copy of the swc in the temp path."  />
+		
+		<echo>Zipping files</echo>
+		<zip destfile="${output.binaryPath}/${output.name}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
+			<zipfileset dir="${tempPath}" />
+		</zip>
+		<delete dir="${tempPath}" description="delete the temp files." />
+		<echo>Created zip file bin/${output.name}.zip</echo>
+	</target>
 </project>
