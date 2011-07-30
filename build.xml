@@ -2,14 +2,17 @@
 <project name="kitchensynclib" default="build" basedir=".">
 	<!-- The Title and version of the Application -->
 	<property name="app.title"  value="KitchenSyncLib"/>
-	<property name="app.version" value="2.0" /> <!-- Change this to match the current version of KitchenSyncLib -->
+	<property name="app.version" value="3.0" /> <!-- Change this to match the current version of KitchenSyncLib -->
 	<echo>${app.title} ${app.version}</echo>
+	
+	<property name="execExt" value="" description="Used to add .exe to windows projects." />
 	
 	<!-- Check for the build.properties file and force the user to create one before compiling. -->
 	<available file="build.properties" filePath="." property="build.propsExist" />
 	<fail unless="build.propsExist" message="You must create a file called 'build.properties' with your local settings in order to use ant with this project. You can use the build.properties.template file as a starting point." />
 	<property file="build.properties" />
 	<echo message="Successfully loaded properties." />
+	<echo message="Using Flex SDK v${flex.sdkVersion}" />
 	
 	<!-- The Location of FlexSDK on your Computer. Required by Flex ant tasks -->
 	<property name="FLEX_HOME" location="${flex.sdkPath}" description="Required by flex ant tasks" />
@@ -27,21 +30,13 @@
 	The Location you wish to output to on your Computer
 	NOTE: I have encountered issues with this folder containing Spaces
 	-->
-	<property name="project.output.docsPath" location="${basedir}/docs/asdoc"/>
-	<property name="project.output.binaryPath" location="${basedir}/bin"/>
-	<property name="project.output.name" value="${app.title}-${app.version}" />
+	<property name="output.docsPath" location="${basedir}/docs/asdoc"/>
+	<property name="output.binaryPath" location="${basedir}/bin"/>
+	<property name="output.name" value="${app.title}-${app.version}" />
 	
 	
 	<!-- Define addtional tasks -->
-	
-	<!-- path to the svnant libraries. -->
-	<path id="svnant.classpath">
-		<fileset dir="${ant.libsPath}/svnant">
-			<include name="*.jar"/>
-		</fileset>
-	</path>  
-	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath" />
-	
+		
 	<!-- path to the flex task libraries. -->
 	<path id="flex.tasksClasspath">
 		<fileset dir="${flex.antLibsPath}">
@@ -72,19 +67,19 @@
 	
 	<target name="build" description="Compiles the kitchensynclib into a SWC library file.">
 		<echo>Compiling library. Incremental build = ${incremental}</echo>
-		<compc o="${project.output.binaryPath}/${project.output.name}.swc" incremental="${incremental}">
+		<compc o="${output.binaryPath}/${output.name}.swc" incremental="${incremental}">
 			<sp path-element="${project.sourcePath}" />
 			<library-path dir="${project.libraryPath}" includes="*" />
 			<is dir="${project.sourcePath}" includes="*" />
 		</compc>
-		<echo>Success! Created ${project.output.name}.swc</echo> 
+		<echo>Success! Created ${output.name}.swc</echo> 
 	</target>
 	
 	<target name="releaseBuild" description="Compiles the kitchensynclib into a SWC library file and creates a zip of the source.">
 		<antcall target="build" />
 		
 		<echo>Creating temp files.</echo>
-		<property name="tempPath" location="${project.output.binaryPath}/compileTemp" />
+		<property name="tempPath" location="${output.binaryPath}/compileTemp" />
 		
 		<delete dir="${tempPath}" description="delete any old temp files." />
 		<mkdir dir="${tempPath}" />
@@ -95,12 +90,12 @@
 		</svn>
 		
 		<echo>Zipping files</echo>
-		<copy file="${project.output.binaryPath}/${project.output.name}.swc" toDir="${tempPath}" description="make a copy of the swc in the temp path." />
-		<zip destfile="${project.output.binaryPath}/${project.output.name}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
+		<copy file="${output.binaryPath}/${output.name}.swc" toDir="${tempPath}" description="make a copy of the swc in the temp path." />
+		<zip destfile="${output.binaryPath}/${output.name}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
 			<zipfileset dir="${tempPath}" />
 		</zip>
 		<delete dir="${tempPath}" description="delete the temp files." />
-		<echo>Created zip file ${project.output.name}.zip</echo>
+		<echo>Created zip file ${output.name}.zip</echo>
 	</target>
 	
 	
@@ -108,7 +103,7 @@
 		
 		<echo>Creating temp files.</echo>
 		<property name="easingName" value="KSEasing" />
-		<property name="tempPath" location="${project.output.binaryPath}/easingTemp" />
+		<property name="tempPath" location="${output.binaryPath}/easingTemp" />
 		<property name="tempSrcPath" location="${tempPath}/src" />
 		<property name="easingSrcPath" value="org/as3lib/kitchensync/easing" />
 		<property name="easingBinaryPath" value="${tempPath}/${easingName}.swc" />
@@ -127,23 +122,23 @@
 		
 		<echo>Success! Created ${easingName}.swc</echo> 
 		<echo>Zipping files</echo>
-		<zip destfile="${project.output.binaryPath}/${easingName}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
+		<zip destfile="${output.binaryPath}/${easingName}.zip" update="true" whenempty="fail" description="Zipping all files in temp path.">
 			<zipfileset dir="${tempPath}" />
 		</zip>
 		<delete dir="${tempPath}" description="delete the temp files." />
-		<echo>Created zip file at ${project.output.binaryPath}/${easingName}.zip</echo>
+		<echo>Created zip file at ${output.binaryPath}/${easingName}.zip</echo>
 	</target>
 		
 	<!--
 	Run the ASDoc executable and generate the ASDocs to the new output folder
 	-->
 	<target name="docs" description="Compiles the asdocs in the source code into HTML.">
-		<exec executable="${flex.binaryPath}/asdoc" failonerror="true" description="Compiles the asdocs">
+		<exec executable="${flex.binaryPath}/asdoc${execExt}" failonerror="true" description="Compiles the asdocs">
 			<arg line="-source-path ${project.sourcePath}"/>
 			<arg line="-library-path ${project.libraryPath}"/>
 			<arg line="-doc-sources ${project.sourcePath}"/>
 			<arg line="-window-title &quot;${app.title} v${app.version}&quot;"/>
-			<arg line="-output ${project.output.docsPath}"/>
+			<arg line="-output ${output.docsPath}"/>
 		</exec>
 	</target>	
 </project>
