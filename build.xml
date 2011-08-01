@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="kitchensynclib" default="build" basedir=".">
 	<!-- The Title and version of the Application -->
-	<property name="app.title"  value="KitchenSyncLib"/>
+	<property name="app.title"  value="KitchenSync"/>
 	<property name="app.version" value="3.0" /> <!-- Change this to match the current version of KitchenSyncLib -->
 	<echo>${app.title} ${app.version}</echo>
 	
