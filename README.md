@@ -8,9 +8,9 @@ See [installation](http://code.google.com/p/kitchensynclib/wiki/Installation) on
 
 ##Manual
 
-Check out the [manual](http://kitchensync.as3lib.org/manual/)
+Check out the [manual](http://kitchensync.mimslabs.com/manual/)
 
-Also, [ASDoc Reference](http://kitchensync.as3lib.org/docs/)
+Also, [ASDoc Reference](http://kitchensync.mimslabs.com/docs/)
 
 ##Special Thanks and Shouts-out
 
